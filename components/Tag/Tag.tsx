@@ -5,6 +5,9 @@ import cn from 'classnames';
 
 interface Props {
     date?: string;
+    /**
+     * Режим девелопа. При включении отображает состояние "в разработке".
+     */
     isDevelop?: boolean;
 }
 

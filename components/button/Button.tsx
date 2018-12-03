@@ -4,18 +4,18 @@ import cn from 'classnames';
 
 interface Props {
     children: string;
-    mod?: string;
+    mode?: "danger";
     isDisabled?: boolean
     test: (value: string) => void;
 }
 
 export class Button extends React.Component<Props> {
     public render() {
-        const { children, mod, isDisabled } = this.props
+        const { children, mode, isDisabled } = this.props
         return (
             <button className={
                 cn({
-                    [`button_${mod}`]: mod,
+                    [`button_${mode}`]: mode,
                     [`button_isDisabled`]: isDisabled,
                 }, 
                 'button'

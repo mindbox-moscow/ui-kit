@@ -14,6 +14,20 @@ module.exports = {
     webpackConfig: require('./webpack.config.js'),
 
     getComponentPathLine: getComponentPathLine,
+    
+    template: {
+        head: {
+          links: [{
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css?family=PT+Sans'
+          }]
+        }
+      },
+      theme: {
+        fontFamily: {
+          base: '"PT Sans", sans-serif;'
+        }
+      },
 
     sections: [
         {

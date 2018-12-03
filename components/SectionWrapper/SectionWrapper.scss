@@ -1,0 +1,44 @@
+.section-wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 4px;
+    border: 1px solid #d4d4d4;
+    box-sizing: border-box;
+
+    &_isActive {
+        border-color: #a0ba82;
+        border-width: 2px;
+    }
+
+    &_isEdit {
+        border-color: #a0ba82;
+        border-width: 2px;
+        background-color: #fffaed;
+    }
+
+    &__title {
+        margin: 0;
+        display: inline-block;
+        border-bottom: 1px dashed;
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 1;
+
+        &_isActive {
+            position: relative;
+            color: #417505;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: -20px;
+                width: 14px;
+                height: 10px;
+                background-color: #417505;
+
+            }
+        }
+    }
+}

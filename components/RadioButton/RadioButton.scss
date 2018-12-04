@@ -1,0 +1,39 @@
+.radio {
+    font-family: "PT Sans", sans-serif;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+
+    &:hover .input~.checkmark {
+        // выяснить цвет при ховере
+    }
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked~.checkmark {
+        background-color: #f5f1bb;
+        border: 2px solid #a0ba82;
+        color: #000;
+        font-weight: bold;
+    }
+}
+
+.checkmark {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px dashed #265378;
+    font-size: 14px;
+    box-sizing: border-box;
+    color: #265378;
+}

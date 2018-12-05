@@ -9,7 +9,6 @@
 # production
 /components/**/*.js
 /components/**/*.js.map
-/styleguide
 
 # misc
 .DS_Store
@@ -18,6 +17,11 @@
 .env.test.local
 .env.production.local
 
+# locking via npm
+yarn.lock
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/dist

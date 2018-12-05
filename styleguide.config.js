@@ -9,6 +9,7 @@ const getComponentPathLine = (componentPath) => {
 
 module.exports = {
     title: "Mindbox UI kit",
+    styleguideDir: "docs",
 
     propsParser: require('react-docgen-typescript').parse,
     webpackConfig: require('./webpack.config.js'),
@@ -18,25 +19,25 @@ module.exports = {
     sections: [
         {
           name: 'Introduction',
-          content: 'docs/introduction.md'
+          content: 'styleguide/introduction.md'
         },
         {
           name: 'Documentation',
           sections: [
             {
               name: 'Installation',
-              content: 'docs/installation.md',
+              content: 'styleguide/installation.md',
               description: 'The description for the installation section'
             },
             {
               name: 'Configuration',
-              content: 'docs/configuration.md'
+              content: 'styleguide/configuration.md'
             }
           ]
         },
         {
           name: 'UI Components',
-          content: 'docs/ui.md',
+          content: 'styleguide/ui.md',
           components: 'components/**/[A-Z]*.{tsx}'
         }
       ]

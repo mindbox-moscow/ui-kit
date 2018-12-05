@@ -37,7 +37,7 @@ module.exports = {
         {
           name: 'UI Components',
           content: 'docs/ui.md',
-          components: 'components/**/[A-Z]*.{ts,tsx}'
+          components: 'components/**/[A-Z]*.{tsx}'
         }
       ]
 }

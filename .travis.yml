@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "10"
+
+install:
+  - yarn
+  - yarn global add webpack-cli@3.1.2 webpack@4
+
+script:
+  - webpack --mode production
+  - yarn test

@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/mindbox-moscow/ui-kit.svg?branch=master)](https://travis-ci.com/mindbox-moscow/ui-kit)
+
+
 # Installation
 
 ```shell

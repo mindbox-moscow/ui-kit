@@ -1,0 +1,15 @@
+.controls {
+    display: flex;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 284px;
+    padding-right: 50px;
+
+    &__button {
+        margin-right: 10px;
+
+        &:last-child {
+            margin-left: auto;
+        }
+    }
+}

@@ -15,6 +15,20 @@ module.exports = {
     webpackConfig: require('./webpack.config.js'),
 
     getComponentPathLine: getComponentPathLine,
+    
+    template: {
+        head: {
+          links: [{
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css?family=PT+Sans'
+          }]
+        }
+      },
+      theme: {
+        fontFamily: {
+          base: '"PT Sans", sans-serif;'
+        }
+      },
 
     sections: [
         {
@@ -38,7 +52,7 @@ module.exports = {
         {
           name: 'UI Components',
           content: 'styleguide/ui.md',
-          components: 'components/**/[A-Z]*.{tsx}'
+          components: 'components/**/[A-Z]*.{ts,tsx}'
         }
       ]
 }

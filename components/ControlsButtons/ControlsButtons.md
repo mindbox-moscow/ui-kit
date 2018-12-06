@@ -1,5 +1,5 @@
 ```jsx
-<Button pizza="pizza" />
+<ControlsButtons />
 ```
 
 

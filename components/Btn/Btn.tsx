@@ -1,11 +1,13 @@
 import * as React from "react";
 import './Btn.scss';
+import { Icon } from '../Icon/Icon';
 import cn from 'classnames';
 
 interface Props {
     children: string;
     className?: string;
     mode?: "danger";
+    icon?: "play" | "pause";
     size: "small" | "medium" | "large";
     color: "gray" | "lightgray";
     hasUnderline?: boolean;
@@ -16,7 +18,7 @@ interface Props {
 
 export class Btn extends React.Component<Props> {
     public render() {
-        const { children, className, mode, size, color, hasUnderline, isDisabled, hasBorder } = this.props
+        const { children, className, mode, icon, size, color, hasUnderline, isDisabled, hasBorder } = this.props
         return (
             <button className={
                 cn('button', className, {
@@ -28,6 +30,7 @@ export class Btn extends React.Component<Props> {
                 }
                 )
             }>
+                {icon && <Icon className="button__icon" icon={icon} />}
                 <span className={
                     cn('button__text', {
                         [`button__text_hasUnderline`]: hasUnderline,

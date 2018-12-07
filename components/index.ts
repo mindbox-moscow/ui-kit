@@ -1,1 +1,1 @@
-export * from "./Btn";
+export * from "./Button";

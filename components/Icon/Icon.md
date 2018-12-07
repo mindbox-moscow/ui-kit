@@ -3,6 +3,7 @@
     <Icon />
     <Icon icon="play" />
     <Icon icon="pause" />
+    <Icon icon="edit" />
 </div>
 ```
 

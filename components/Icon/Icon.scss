@@ -16,4 +16,14 @@
     &_pause {
         background-position: -200px -80px;
     }
+
+    &_edit {
+        background-position: -80px -160px;
+        background-image: url(../../base/icons/icons-state.png);
+
+        @media (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            background-image: url(../../base/icons/icons-state@2x.png);
+        }
+    }
 }

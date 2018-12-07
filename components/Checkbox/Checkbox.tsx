@@ -18,7 +18,6 @@ export class Checkbox extends React.Component<Props> {
                     className='checkbox__input'
                     name={name}
                 />
-                <span className='checkbox__square' />
                 {text && (
                     <span className='checkbox__text'>{text}</span>
                 )}

@@ -9,29 +9,11 @@
     color: #000;
 
     &__input {
-        position: absolute;
-        left: -9999px;
-        opacity: 0;
-    }
-
-    &__square {
-        box-sizing: border-box;
-        display: block;
-        flex-shrink: 0;
         width: 16px;
         height: 16px;
-        background-color: #fff;
-        border: 1px solid #c5beb4;
-        border-radius: 2px;
-        user-select: none;
     }
 
     &__text {
-        margin-left: 8px;
-    }
-
-    &__input:checked + &__square {
-        background-color: #2196f3;
-        border-color: #2196f3;
+        margin-left: 5px;
     }
 }

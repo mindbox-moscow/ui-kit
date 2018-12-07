@@ -8,6 +8,12 @@
     border: 1px solid transparent;
     box-sizing: border-box;
     cursor: pointer;
+    
+    &:disabled {
+        color: #e2eaf0;
+        cursor: default;
+        opacity: 0.5;
+    }
 
     &_color-gray {
         background-color: #e2eaf0;

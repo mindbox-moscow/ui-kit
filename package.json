@@ -21,7 +21,7 @@
     "file-loader": "^2.0.0",
     "node-sass": "^4.10.0",
     "react-docgen-typescript": "^1.5.0",
-    "react-styleguidist": "^7.0.14",
+    "react-styleguidist": "^8.0.6",
     "sass-loader": "^7.1.0",
     "ts-loader": "^4.3.0",
     "typescript": "3.1.2",

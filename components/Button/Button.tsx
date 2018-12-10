@@ -12,7 +12,6 @@ interface Props {
     size: "small" | "medium" | "large";
     color: "gray" | "lightgray";
     hasUnderline?: boolean;
-    isDisabled?: boolean;
     hasBorder?: boolean;
     test?: (value: string) => void;
 }
@@ -28,7 +27,6 @@ export class Button extends React.Component<Props> {
             size,
             color,
             hasUnderline,
-            isDisabled,
             hasBorder
         } = this.props;
         return (
@@ -38,9 +36,10 @@ export class Button extends React.Component<Props> {
                         [`button_${mode}`]: mode,
                         [`button_size-${size}`]: size,
                         [`button_color-${color}`]: color,
-                        [`button_isDisabled`]: isDisabled,
                         [`button_hasBorder`]: hasBorder,
-                    })}
+                        [`button_has-icon`]: icon,
+                    })
+                }
                 disabled={disabled}
             >
                 {icon && <Icon className="button__icon" icon={icon} />}

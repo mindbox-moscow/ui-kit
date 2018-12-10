@@ -5,15 +5,14 @@ import cn from 'classnames';
 
 interface Props {
     className?: string;
-    icon: "play" | "pause";
+    icon: "play" | "pause" | "search";
 }
 
 export class Icon extends React.Component<Props> {
     public render() {
-        const { icon, className } = this.props
+        const { icon, className } = this.props;
         return (
-            <span className={cn('icon',
-                {
+            <span className={cn('icon', {
                     [`icon_${icon}`]: icon 
                 }, className)
             }/>

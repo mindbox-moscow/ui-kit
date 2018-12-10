@@ -1,5 +1,6 @@
 .textLine {
     font-family: "PT Sans", sans-serif;
+    position: relative;
     color: #333;
     font-size: 14px;
 
@@ -44,5 +45,15 @@
         line-height: 1;
         color: #888;
         opacity: .5;
+    }
+
+    &__button {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        border: none;
+        background-color: transparent;
+
     }
 }

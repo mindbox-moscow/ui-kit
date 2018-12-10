@@ -11,5 +11,5 @@ install:
   - yarn global add webpack-cli@3.1.2 webpack@4
 
 script:
-  - webpack --mode production
+  - yarn build
   - yarn test

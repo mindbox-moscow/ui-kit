@@ -12,7 +12,7 @@ export class Icon extends React.Component<Props> {
     public render() {
         const { icon, className } = this.props
         return (
-            <div className={cn('icon',
+            <span className={cn('icon',
                 {
                     [`icon_${icon}`]: icon 
                 }, className)

@@ -8,5 +8,3 @@
     <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
 </div>
 ```
-
-Моя кнопка

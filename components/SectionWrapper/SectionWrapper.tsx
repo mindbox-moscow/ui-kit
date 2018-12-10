@@ -2,8 +2,7 @@ import * as React from "react";
 import './SectionWrapper.scss'
 import cn from 'classnames';
 
-interface Props {
-    children: string;
+interface Props extends React.Props<SectionWrapper> {
     title: string;
     mode?: "isEdit" | "isActive";
 }

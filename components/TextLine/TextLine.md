@@ -5,6 +5,3 @@
     <TextLine text="Welcom" isEditing />
 </div>
 ```
-
-
-Мой TextLine

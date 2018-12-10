@@ -4,6 +4,10 @@ const getComponentPathLine = (componentPath) => {
     let name = path.basename(componentPath, '.tsx');
     name = path.basename(name, '.tsx');
     const dir = path.dirname(componentPath).replace(/\\/g, "/");
+
+    if (dir.startsWith("templates"))
+      return null;
+
     return `import { ${name} } from "@mindbox/ui-kit/${dir}";`
 }
 
@@ -53,6 +57,11 @@ module.exports = {
           name: 'UI Components',
           content: 'styleguide/ui.md',
           components: 'components/**/[A-Z]*.{ts,tsx}'
+        },
+        {
+          name: 'Templates',
+          content: 'styleguide/ui.md',
+          components: 'templates/**/[A-Z]*.{ts,tsx}'
         }
       ]
 }

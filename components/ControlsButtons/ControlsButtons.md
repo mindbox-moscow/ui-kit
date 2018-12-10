@@ -1,6 +1,3 @@
 ```jsx
 <ControlsButtons />
 ```
-
-
-Моя кнопка

@@ -1,5 +1,5 @@
 import * as React from "react";
-import './fieldName.scss'
+import './FieldName.scss'
 
 interface Props {
     children: string;

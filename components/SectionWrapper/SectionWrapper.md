@@ -41,6 +41,3 @@
     </div>
 </SectionWrapper>
 ```
-
-
-SectionWrapper

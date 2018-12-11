@@ -1,18 +1,17 @@
 .button {
     font-family: "PT Sans", sans-serif;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 96px;
     border-radius: 3px;
     border: 1px solid transparent;
-    box-sizing: border-box;
     cursor: pointer;
-    
+
     &:disabled {
-        color: #e2eaf0;
-        cursor: default;
-        opacity: 0.5;
+        cursor: auto;
+        opacity: 0.35;
     }
 
     &_color-gray {
@@ -26,7 +25,7 @@
     }
 
     &_size-small {
-        max-height: 24px;
+        height: 24px;
         padding-top: 2px;
         padding-bottom: 2px;
         padding-left: 7px;
@@ -35,16 +34,16 @@
     }
 
     &_size-medium {
-        max-height: 28px;
+        height: 28px;
         padding-top: 4px;
         padding-bottom: 4px;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
         font-size: 13px;
     }
 
     &_size-large {
-        max-height: 38px;
+        height: 38px;
         padding-top: 8px;
         padding-bottom: 8px;
         padding-left: 36px;
@@ -52,9 +51,10 @@
         font-size: 16px;
     }
 
-    &_isDisabled {
-        cursor: auto;
-        opacity: 0.35;
+    &_size-large:disabled {
+        color: #e2eaf0;
+        cursor: default;
+        opacity: 0.5;
     }
 
     &_hasBorder {
@@ -67,17 +67,23 @@
         background-color: rgba(255, 240, 238, 0.5);
     }
 
-    &__text {
+    &_has-icon {
+        padding-right: 24px;
+    }
 
-        &_hasUnderline {
-            color: #265378;
-            border-bottom: 1px dashed #265378;
-        }
+    &__text_hasUnderline {
+        color: #265378;
+        border-bottom: 1px dashed #265378;
     }
 
     &__icon {
-        width: 18px;
-        height: 18px;
+        margin-top: -2px;
         margin-right: 4px;
+        margin-left: -10px;
+        width: 18px;
+        max-width: 18px;
+        height: 18px;
+        max-height: 18px;
+        transform: scale(0.9);
     }
 }

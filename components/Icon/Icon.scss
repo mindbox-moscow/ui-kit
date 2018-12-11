@@ -5,8 +5,7 @@
     background-image: url(../../base/icons/icons.png);
     background-size: 400px;
 
-    @media (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         background-image: url(../../base/icons/icons@2x.png);
     }
 
@@ -16,6 +15,10 @@
 
     &_pause {
         background-position: -200px -80px;
+    }
+
+    &_search {
+        background-position: -240px -160px;
     }
 
     &_edit {

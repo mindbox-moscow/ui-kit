@@ -1,3 +1,4 @@
 ```jsx
-    <FieldName isDisabled>Имя поля</FieldName>
+    <FieldName>Имя поля</FieldName>
+    <FieldName isEdit>Имя поля</FieldName>
 ```

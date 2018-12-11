@@ -1,5 +1,7 @@
 .fieldName {
-    max-width: 160px;
+    width: 160px;
+    margin-top: 0;
+    margin-bottom: 0;
     font-family: "PT Sans", sans-serif;
     overflow: hidden;
     position: relative;
@@ -11,6 +13,11 @@
         max-width: 100px;
         background-color: #fff;
         z-index: 1;
+
+        &_isEdit {
+            background-color: transparent;
+            color: #000
+        }
     }
 
     &::after {
@@ -19,5 +26,14 @@
         border-bottom: 1px dashed #d4d4d4;
         width: 100%;
         bottom: 4px;
+    }
+
+    &_isEdit {
+        min-width: 210px;
+        margin-top: 6px;
+
+        &::after {
+            display: none;
+        }
     }
 }

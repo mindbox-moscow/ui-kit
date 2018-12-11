@@ -1,5 +1,6 @@
 .section-wrapper {
     font-family: "PT Sans", sans-serif;
+    position: relative;
     padding-top: 24px;
     padding-bottom: 24px;
     padding-left: 30px;
@@ -17,6 +18,16 @@
         border-color: #a0ba82;
         border-width: 2px;
         background-color: #fffaed;
+    }
+
+    &__button-edit {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
     }
 
     &__title {

@@ -1,6 +1,7 @@
 import * as React from "react";
 import './SectionWrapper.scss'
 import cn from 'classnames';
+import { Icon } from '../Icon/Icon';
 
 interface Props {
     children: string;
@@ -25,6 +26,9 @@ export class SectionWrapper extends React.Component<Props> {
                         {title}
                     </h2>
                 {children}
+                {!(mode === 'isEdit') && <button className="section-wrapper__button-edit">
+                    <Icon icon="edit" />
+                </button>}
             </section>
         );
     }

@@ -1,0 +1,16 @@
+.row {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+    &_isEdit {
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    &__content {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

@@ -10,10 +10,23 @@ branches:
   only: 
     - master
 
-install:
+script:
+  - node ./deploy/patch-version.js
   - yarn
   - yarn global add webpack-cli@3.1.2 webpack@4
-
-script:
   - yarn build
   - yarn test
+
+jobs:
+  include:
+    - stage:
+      name: deploy
+      script:
+        - node ./deploy/patch-version.js
+      deploy:
+        provider: npm
+        skip_cleanup: true
+        email: $NPM_EMAIL_ADDRESS
+        api_key: $NPM_AUTH_TOKEN
+        on:
+          branch: master

@@ -1,6 +1,6 @@
 {
   "name": "@mindbox/ui-kit",
-  "version": "0.0.5",
+  "version": "0.1.*",
   "dependencies": {
     "classnames": "^2.2.6",
     "react": "^16.4.0",

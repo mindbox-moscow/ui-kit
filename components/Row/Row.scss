@@ -17,4 +17,8 @@
         display: flex;
         flex-wrap: wrap;
     }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }

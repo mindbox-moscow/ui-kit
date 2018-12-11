@@ -21,3 +21,11 @@ webpack.config.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+yarn.lock
+npm.lock
+
+config/
+deploy/
+
+.travis.yml

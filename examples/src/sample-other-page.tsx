@@ -8,7 +8,7 @@ const entryElement = document.createElement("div");
 document.body.appendChild(entryElement);
 
 ReactDOM.render(
-    <SectionWrapper title="Tiitle" mode="isEdit" >
+    <SectionWrapper title="Tiitle" isEdit>
         <p>Test other</p>
         <Button size="large" color="lightgray">Test</Button>
         <p>Other test</p>

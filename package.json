@@ -10,7 +10,7 @@
     "test": "echo no tests",
     "start": "npx styleguidist server",
     "build": "npx styleguidist build",
-    "build-examples": "cd examples && webpack --mode development && cd .."
+    "build-examples": "cd examples && npm i && webpack --mode development && cd .."
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",

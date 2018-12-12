@@ -5,17 +5,21 @@
     font-size: 14px;
 
     &__title {
+        position: relative;
+        display: inline-block;
         margin-top: 0;
         margin-bottom: 0;
-        font-weight: 600;
+        font-weight: normal;
+        color: #000;
         font-size: 26px;
     }
 
     &__description {
+        position: relative;
+        display: inline-block;
         font-weight: normal;
         margin-top: 0;
         margin-bottom: 0;
-        padding-left: 10px;
         padding-top: 7px;
         padding-bottom: 7px;
     }
@@ -27,6 +31,7 @@
 
     &__input {
         width: 100%;
+        margin-bottom: 8px;
         padding-left: 10px;
         padding-right: 178px;
         padding-top: 6px;
@@ -49,11 +54,10 @@
 
     &__button {
         position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
+        top: 8px;
+        right: -35px;
+        cursor: pointer;
         border: none;
         background-color: transparent;
-
     }
 }

@@ -5,7 +5,7 @@ import cn from 'classnames';
 
 interface Props {
     className?: string;
-    icon: "play" | "pause" | "search" | "edit";
+    icon: string;
 }
 
 export class Icon extends React.Component<Props> {

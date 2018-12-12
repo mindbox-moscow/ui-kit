@@ -17,15 +17,18 @@ const formatTime = (value: number, min: number, max: number) => {
 }
 
 interface Props {
-    onChange?: (time: number) => void
+    hours?: number;
+    minutes?: number;
+    disabled?: boolean;
+    onChange?: (time: number) => void;
 }
 
 export class TimeField extends React.Component<Props> {
     minutesInput: HTMLInputElement;
     hoursInput: HTMLInputElement;
     state = {
-        hours: 12,
-        minutes: 0,
+        hours: this.props.hours || 0,
+        minutes: this.props.minutes || 0,
         isSecondHourActive: false,
         isSecondMinuteActive: false,
         isActiveMinutes: false
@@ -144,10 +147,11 @@ export class TimeField extends React.Component<Props> {
 
     public render() {
         const { hours, minutes } = this.state
+        const { disabled } = this.props
         const hoursValue = formatTime(hours, 0, 23);
         const minutesValue = formatTime(minutes, 0, 59);
         return (
-            <div className='time-field'>
+            <div className={cn('time-field', disabled && 'time-field_disabled')}>
                 <input
                     onFocus={this.handleHoursFocus}
                     onChange={() => {}}
@@ -155,6 +159,7 @@ export class TimeField extends React.Component<Props> {
                     type='text'
                     className='time-field__input'
                     value={hoursValue}
+                    disabled={disabled}
                     onKeyDown={this.handleChangeHours}
                 />
                 <span className='time-field__dots'>:</span>
@@ -163,6 +168,7 @@ export class TimeField extends React.Component<Props> {
                     onChange={() => {}}
                     ref={this.handleMinutesRef}
                     type='text'
+                    disabled={disabled}
                     className={cn('time-field__input', 'time-field__input_minutes')}
                     value={minutesValue}
                     onKeyDown={this.handleChangeMinutes}
@@ -172,6 +178,7 @@ export class TimeField extends React.Component<Props> {
                         className='time-field__button'
                         type='button'
                         onClick={this.handleUp}
+                        disabled={disabled}
                     >
                         <span className='time-field__arrow' />
                     </button>
@@ -179,6 +186,7 @@ export class TimeField extends React.Component<Props> {
                         className='time-field__button'
                         type='button'
                         onClick={this.handleDown}
+                        disabled={disabled}
                     >
                         <span className={cn('time-field__arrow', 'time-field__arrow_down')} />
                     </button>

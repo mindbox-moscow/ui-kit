@@ -3,7 +3,7 @@ import './RadioButton.scss'
 
 interface Props {
     children: string;
-    checked: boolean;
+    checked?: boolean;
     name: string;
     onChange?: () => void;
 }
@@ -13,8 +13,8 @@ export class RadioButton extends React.Component<Props> {
         const { children, checked, name, onChange = () => {} } = this.props
         return (
             <label className="radio">
-                <input className="input" type="radio" checked={checked} name={name} onChange={onChange} />
-                <span className="checkmark">{children}</span>
+                <input className="radio__input" type="radio" defaultChecked={checked} name={name} onChange={onChange} />
+                <span className="radio__checkmark">{children}</span>
             </label>
         );
     }

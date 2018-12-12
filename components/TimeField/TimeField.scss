@@ -12,6 +12,10 @@
     border-radius: 2px;
     box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 
+    &_disabled {
+        opacity: 0.35;
+    }
+
     &__input {
         padding-right: 0;
         padding-left: 0;
@@ -23,6 +27,7 @@
         color: #000;
         border: none;
         outline: none;
+        background-color: #fff;
 
         &_minutes {
             text-align: left;
@@ -32,6 +37,7 @@
     &__dots {
         margin-top: -2px;
         width: 4px;
+        cursor: default;
     }
 
     &__controls {
@@ -47,6 +53,10 @@
         background: none;
         border: none;
         outline: none;
+    }
+
+    &_disabled &__button {
+        cursor: default;
     }
 
     &__arrow {

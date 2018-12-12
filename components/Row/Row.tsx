@@ -1,7 +1,6 @@
 import * as React from "react";
 import './Row.scss'
 import cn from 'classnames'
-import { FieldName } from '../FieldName/FieldName';
 
 interface Props {
     title: string;
@@ -15,11 +14,13 @@ export class Row extends React.Component<Props> {
             <div className={cn(
                 {
                     ['row']: true,
-                    ['row_isEdit']: isEdit
+                    ['row_edit']: isEdit
                 }
             )}>
-                <FieldName isEdit={isEdit}>{title}</FieldName>
-                <div className="row__content">{children}</div>
+                <div className='row__name'>
+                    <span className='row__name-text'>{title}{!isEdit && ':'}</span>
+                </div>
+                <div className='row__content'>{children}</div>
             </div>
         );
     }

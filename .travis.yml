@@ -15,6 +15,7 @@ script:
   - yarn
   - yarn global add webpack-cli@3.1.2 webpack@4
   - yarn build
+  - yarn build-examples
   - yarn test
 
 jobs:

@@ -6,20 +6,36 @@ import { Page } from "../../components/Page/Page";
 import { Text } from "../../components/Text/Text";
 import { RadioButton } from "../../components/RadioButton/RadioButton";
 import { Select } from "../../components/Select/Select";
+import { DateField } from "../../components/DateField/DateField";
+import { TimeField } from "../../components/TimeField/TimeField";
+import { Checkbox } from "../../components/Checkbox/Checkbox";
 
-export class Main extends React.Component<{}> {
+import './MainWhen.scss'
+
+export class MainWhen extends React.Component<{}> {
     state = {
         whatEdit: false,
         whomEdit: false,
-        whenEdit: false,
+        whenEdit: true,
+
+        selectedActivePeriod: false,
+        extendedEeventTrigger: false,
+        isSelectedEvent: false,
     }
 
     toggleWhatState = () => this.setState({ whatEdit: !this.state.whatEdit })
     toggleWhomState = () => this.setState({ whomEdit: !this.state.whomEdit })
     toggleWhenState = () => this.setState({ whenEdit: !this.state.whenEdit })
 
+    onActivePeriod= () => this.setState({ selectedActivePeriod: true })
+    offActivePeriod= () => this.setState({ selectedActivePeriod: false })
+    onExtendedEeventTrigger = () => this.setState({ extendedEeventTrigger: true })
+    offExtendedEeventTrigger = () => this.setState({ extendedEeventTrigger: false })
+
+    handleSelect = () => this.setState({ isSelectedEvent: true })
+
     public render() {
-        const { whatEdit, whomEdit, whenEdit } = this.state;
+        const { whatEdit, whomEdit, whenEdit, selectedActivePeriod, extendedEeventTrigger, isSelectedEvent } = this.state;
 
         return (
             <Page
@@ -36,13 +52,34 @@ export class Main extends React.Component<{}> {
                             <>
                                 <Row isEdit title='Период активности'>
                                     <div className='row__segment'>
-                                        <RadioButton name='group1' checked={true}>Триггер активен на протяжении всей кампании</RadioButton>
+                                        <RadioButton name='group1' checked={!selectedActivePeriod} onChange={this.offActivePeriod}>Триггер активен на протяжении всей кампании</RadioButton>
                                     </div>
-                                    <RadioButton name='group1'>Запланировать период активности</RadioButton>
+                                    <RadioButton name='group1' checked={selectedActivePeriod} onChange={this.onActivePeriod}>Запланировать период активности</RadioButton>
                                     <div className='row__desk'>
                                         25 авг 2018 – 1 янв 2019
                                     </div>
                                 </Row>
+                                {selectedActivePeriod &&
+                                    <>
+                                        <Row isEdit title='Дата и время старта'>
+                                            <div className='row__segment'>
+                                                <DateField value='21.07.2018' />
+                                            </div>
+                                            <div>
+                                                <TimeField hours={12} minutes={23} />
+                                            </div>
+                                        </Row>
+                                        <Row isEdit title='Дата окончания'>
+                                            <div className='row__segment'>
+                                                <DateField disabled value='21.07.2019' />
+                                            </div>
+                                            <div className='row__segment'>
+                                                <TimeField disabled hours={12} minutes={20} />
+                                            </div>
+                                            <Checkbox checked text='Триггер активен до конца кампании' />
+                                        </Row>
+                                    </>
+                                }
                                 <Row isEdit title='Режим запуска'>
                                     <div className='row__segment'>
                                         <RadioButton name='group2' checked={true}>По событию</RadioButton>
@@ -53,16 +90,45 @@ export class Main extends React.Component<{}> {
                                 </Row>
                                 <Row isEdit title='Инициатор события'>
                                     <div className='row__segment'>
-                                        <RadioButton name='group3' checked={true}>Любой</RadioButton>
+                                        <RadioButton name='group3' checked={!extendedEeventTrigger} onChange={this.offExtendedEeventTrigger}>Любой</RadioButton>
                                     </div>
                                     <div>
-                                        <RadioButton name='group3'>Настроить фильтр по потребителям</RadioButton>
+                                        <RadioButton name='group3' checked={extendedEeventTrigger} onChange={this.onExtendedEeventTrigger}>Настроить фильтр по потребителям</RadioButton>
                                     </div>
+                                    {extendedEeventTrigger &&
+                                        <div className='main__extended-ecent'>
+                                            <Select
+                                                placeholder='Выберите событие'
+                                                size='small'
+                                                items={[
+                                                    { title: 'Потребитель попал в БД' },
+                                                    null,
+                                                    { title: 'Потребитель был сдедублицирован' },
+                                                    { title: 'Потребитель попал в сегмент' },
+                                                    { title: 'Потребитель вышел из сегментации' },
+                                                    { title: 'Изменился статус подписки' },
+                                                    { title: 'Первое подтверждение мобильного телефона' },
+                                                    null,
+                                                    { title: 'Изменение email' },
+                                                    { title: 'Первое подтверждение email' },
+                                                    { title: 'Обновление данных потребителя' },
+                                                    { title: 'Редактирование анкеты потребителем' },
+                                                    { title: 'Потребитель вошел на сайт' },
+                                                    { title: 'Активация секретного кода потребителем', disabled: true },
+                                                    { title: 'Потребитель получил приз' },
+                                                    { title: 'Изменение статуса FMCG заказа' },
+                                                    { title: 'Создание FMCG заказа' }
+                                                ]}
+                                            />
+                                        </div>
+                                    }
                                 </Row>
                                 <Row isEdit title='Событие'>
                                     <div className='row__select'>
                                         <Select
                                             placeholder='Выберите событие'
+                                            isFiltered
+                                            onChange={this.handleSelect}
                                             items={[
                                                 { title: 'Потребитель попал в БД' },
                                                 null,
@@ -84,6 +150,10 @@ export class Main extends React.Component<{}> {
                                             ]}
                                         />
                                     </div>
+                                    {isSelectedEvent && 
+                                    <div className='row__desk'>
+                                        <Checkbox text='Настроить фильтр по этому событию' />
+                                    </div>}
                                 </Row>
                                 <div className='row__footer'>
                                     <div className='row__submit'>

@@ -9,7 +9,7 @@ interface Item {
 }
 
 interface Props {
-    items: Item[];
+    items: (Item | null)[];
     placeholder: string;
     size?: 'small';
     disabled?: boolean;
@@ -104,12 +104,13 @@ export class Select extends React.Component<Props> {
                     <div className='select__list'>
                         {items
                             .filter(item =>
-                                !filter || item.title.toLowerCase().indexOf(filter.toLowerCase()) !== - 1
+                                !filter || !item || item.title.toLowerCase().indexOf(filter.toLowerCase()) !== - 1
                             )
-                            .map(item =>
+                            .map((item, index) =>
                                 item
                                     ? (
                                         <button
+                                            key={index}
                                             type='button'
                                             className='select__item'
                                             disabled={item.disabled}

@@ -15,7 +15,7 @@ export class Tag extends React.Component<Props> {
     public render() {
         const { isDevelop, date } = this.props
         return (
-            <div className={cn('tag', {'tag_isDevelop': isDevelop})}>
+            <div className={cn('tag', {'tag_develop': isDevelop})}>
                 {isDevelop ? <span>Триггер в разработке</span> : 
                     <div>
                         <span className='tag__text'>Триггер активен</span>

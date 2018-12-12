@@ -1,24 +1,99 @@
 .row {
+    box-sizing: border-box;
     display: flex;
-    width: 100%;
-    align-items: baseline;
+    align-items: flex-end;
     margin-top: 14px;
     margin-bottom: 14px;
+    width: 100%;
 
-    &_isEdit {
+    &_edit {
+        align-items: flex-start;
         border-bottom: 1px solid #d4d4d4;
         margin-top: 0;
         margin-bottom: 0;
-        padding-top: 16px;
-        padding-bottom: 16px;
+        padding-top: 14px;
+        padding-bottom: 15px;
     }
 
     &__content {
+        box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
+        font-size: 14px;
+        
+        &_error {
+            font-style: italic;
+            color: #a12e1e;
+        }
     }
 
     &:last-child {
         margin-bottom: 0;
+    }
+
+    &__name {
+        width: 154px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: "PT Sans", sans-serif;
+        overflow: hidden;
+        position: relative;
+        color: #888;
+        font-size: 14px;
+
+        &::after {
+            position: absolute;
+            content: '';
+            border-bottom: 1px dashed #d4d4d4;
+            width: 100%;
+            bottom: 4px;
+        }
+    }
+    
+    &__name-text {
+        position: relative;
+        max-width: 100px;
+        background-color: #fff;
+        z-index: 1;
+    }
+
+    &_edit &__name {
+        padding-top: 5px;
+        min-width: 210px;
+    
+        &::after {
+            display: none;
+        }
+    }
+    
+    &_edit &__name-text {
+        background-color: transparent;
+        color: #000
+    }
+
+    &__period {
+        margin-top: 7px;
+        margin-bottom: -4px;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    &__radio {
+        margin-right: 8px;
+    }
+
+    &__select {
+        margin-top: -2px;
+        width: 349px;
+    }
+
+    &__submit {
+        width: 210px;
+    }
+
+    &__footer {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
     }
 }

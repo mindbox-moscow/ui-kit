@@ -39,6 +39,8 @@
             border: 1px solid #f0ece4;
         }
     }
+
+    &_size_small &__placeholder,
     &__title:disabled &__placeholder {
         font-size: 13px;
         color: #767676;
@@ -46,9 +48,12 @@
 
     &_size_small &__title {
         height: 21px;
+        cursor: default;
+        background-image: linear-gradient(to bottom, #fcfcfc, #f4f6f5);
+        border: 1px solid #f0ece4;
+
         &::after {
             top: 8px;
-            opacity: 0.8;
         }
     }
 
@@ -95,6 +100,10 @@
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease-out;
+    }
+
+    &_size_small &__drop {
+        padding-top: 21px;
     }
 
     &_filtered &__drop {

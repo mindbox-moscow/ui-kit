@@ -1,13 +1,18 @@
 import * as React from "react";
-import { Button } from "../../components/Button/Button";
-import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
-import { Row } from "../../components/Row/Row";
-import { Page } from "../../components/Page/Page";
-import { Text } from "../../components/Text/Text";
-import { RadioButton } from "../../components/RadioButton/RadioButton";
-import { Select } from "../../components/Select/Select";
+import * as ReactDOM from "react-dom";
+import { Button } from "@mindbox/ui-kit/components/Button/Button";
+import { SectionWrapper } from "@mindbox/ui-kit/components/SectionWrapper/SectionWrapper";
+import { Row } from "@mindbox/ui-kit/components/Row/Row";
+import { Page } from "@mindbox/ui-kit/components/Page/Page";
+import { Text } from "@mindbox/ui-kit/components/Text/Text";
+import { RadioButton } from "@mindbox/ui-kit/components/RadioButton/RadioButton";
+import { Select } from "@mindbox/ui-kit/components/Select/Select";
 
-export class Main extends React.Component<{}> {
+
+const entryElement = document.createElement("div");
+document.body.appendChild(entryElement);
+
+class Main extends React.Component<{}> {
     state = {
         whatEdit: false,
         whomEdit: false,
@@ -17,7 +22,7 @@ export class Main extends React.Component<{}> {
     toggleWhatState = () => this.setState({ whatEdit: !this.state.whatEdit })
     toggleWhomState = () => this.setState({ whomEdit: !this.state.whomEdit })
     toggleWhenState = () => this.setState({ whenEdit: !this.state.whenEdit })
-
+    
     public render() {
         const { whatEdit, whomEdit, whenEdit } = this.state;
 
@@ -35,16 +40,16 @@ export class Main extends React.Component<{}> {
                         whenEdit ? (
                             <>
                                 <Row isEdit title='Период активности'>
-                                    <div className='row__radio'>
+                                    <div className='row__segment'>
                                         <RadioButton name='group1' checked={true}>Триггер активен на протяжении всей кампании</RadioButton>
                                     </div>
                                     <RadioButton name='group1'>Запланировать период активности</RadioButton>
-                                    <div className='row__period'>
+                                    <div className='row__desc'>
                                         25 авг 2018 – 1 янв 2019
                                     </div>
                                 </Row>
                                 <Row isEdit title='Режим запуска'>
-                                    <div className='row__radio'>
+                                    <div className='row__segment'>
                                         <RadioButton name='group2' checked={true}>По событию</RadioButton>
                                     </div>
                                     <div>
@@ -52,7 +57,7 @@ export class Main extends React.Component<{}> {
                                     </div>
                                 </Row>
                                 <Row isEdit title='Инициатор события'>
-                                    <div className='row__radio'>
+                                    <div className='row__segment'>
                                         <RadioButton name='group3' checked={true}>Любой</RadioButton>
                                     </div>
                                     <div>
@@ -105,57 +110,44 @@ export class Main extends React.Component<{}> {
                 <SectionWrapper title='Кому' isEdit={whomEdit} onChangeState={this.toggleWhomState}>
                     {whomEdit ? (
                         <>
-                                <Row isEdit title='Период активности'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group21' checked={true}>Каждый раз при попадании в фильтр триггера</RadioButton>
-                                    </div>
-                                    <RadioButton name='group21'>Периодически</RadioButton>
-                                </Row>
-                                <Row isEdit title='Число срабатываний'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group22' checked={true}>Неограничено</RadioButton>
-                                    </div>
-                                    <div>
-                                        <RadioButton name='group22'>Ограничить</RadioButton>
-                                    </div>
-                                </Row>
-                                <Row isEdit title='Цель триггера'>
-                                    <div className='row__select'>
-                                        <Select
-                                            placeholder='Выберите цель триггера'
-                                            defaultValue='Потребитель из события в блоке «Когда»'
-                                            items={[
-                                                { title: 'Потребитель из события в блоке «Когда»' },
-                                                null,
-                                                { title: 'Потребитель был сдедублицирован' },
-                                                { title: 'Потребитель попал в сегмент' },
-                                                { title: 'Потребитель вышел из сегментации' },
-                                                { title: 'Изменился статус подписки' },
-                                                { title: 'Первое подтверждение мобильного телефона' },
-                                                null,
-                                                { title: 'Изменение email' },
-                                                { title: 'Первое подтверждение email' },
-                                                { title: 'Обновление данных потребителя' },
-                                                { title: 'Редактирование анкеты потребителем' },
-                                                { title: 'Потребитель вошел на сайт' },
-                                                { title: 'Активация секретного кода потребителем', disabled: true },
-                                                { title: 'Потребитель получил приз' },
-                                                { title: 'Изменение статуса FMCG заказа' },
-                                                { title: 'Создание FMCG заказа' }
-                                            ]}
-                                        />
-                                    </div>
-                                    <div className='row__period'>
-                                        Триггер применится к конкретному потребителю
-                                    </div>
-                                </Row>
-                                <div className='row__footer'>
-                                    <div className='row__submit'>
-                                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
-                                    </div>
-                                    <Text mode='danger'>Для сохранения изменений необходимо выбрать событие в блоке «Когда»</Text>
+                            <Row isEdit title='Период активности'>
+                                <div className='row__segment'>
+                                    <RadioButton name='group21' checked >Каждый раз при попадании в фильтр триггера</RadioButton>
                                 </div>
-                            </>
+                                <RadioButton name='group21' >Периодически</RadioButton>
+                            </Row>
+                            <Row isEdit title='Число срабатываний'>
+                                <div className='row__segment'>
+                                    <RadioButton name='group22' checked>Неограничено</RadioButton>
+                                </div>
+                                <div>
+                                    <RadioButton name='group22'>Ограничить</RadioButton>
+                                </div>
+                            </Row>
+                            <Row isEdit title='Цель триггера'>
+                                <div className='row__select'>
+                                    <Select
+                                        placeholder='Выберите цель триггера'
+                                        defaultValue='Потребитель из события в блоке «Когда»'
+                                        items={[
+                                            { title: 'Потребитель из события в блоке «Когда»' },
+                                            { title: 'Потребитель был сдедублицирован' },
+                                            { title: 'Потребитель попал в сегмент' },
+                                            { title: 'Потребитель вышел из сегментации' },
+                                        ]}
+                                    />
+                                </div>
+                                <div className='row__desc'>
+                                    Триггер применится к конкретному потребителю
+                                </div>
+                            </Row>
+                            <div className='row__footer'>
+                                <div className='row__submit'>
+                                    <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                                </div>
+                                <Text mode='danger'>Для сохранения изменений необходимо выбрать событие в блоке «Когда»</Text>
+                            </div>
+                        </>
                     ) : (
                         <>
                             <Row title='Применять к потребителю'>Каждый раз при попадании в фильтр триггера</Row>
@@ -207,3 +199,8 @@ export class Main extends React.Component<{}> {
         );
     }
 }
+
+ReactDOM.render(
+    <Main />,
+    entryElement
+)

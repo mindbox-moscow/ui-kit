@@ -30,9 +30,9 @@ export class Main extends React.Component<{}> {
                 cantPlaying
                 isPlaying
             >
-                <SectionWrapper title='Когда' isEdit={whatEdit} onChangeState={this.toggleWhatState}>
+                <SectionWrapper title='Когда' isEdit={whenEdit} onChangeState={this.toggleWhenState}>
                     {
-                        whatEdit ? (
+                        whenEdit ? (
                             <>
                                 <Row isEdit title='Период активности'>
                                     <div className='row__radio'>
@@ -164,8 +164,8 @@ export class Main extends React.Component<{}> {
                         </>
                     )}
                 </SectionWrapper>
-                <SectionWrapper title='Что' isEdit={whenEdit} onChangeState={this.toggleWhenState}>
-                    {whenEdit ? (
+                <SectionWrapper title='Что' isEdit={whatEdit} onChangeState={this.toggleWhatState}>
+                    {whatEdit ? (
                         <>
                             <Row isEdit title='Действие 1'>
                                 <div className='row__select'>

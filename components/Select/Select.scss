@@ -48,9 +48,8 @@
 
     &_size_small &__title {
         height: 21px;
-        cursor: default;
         background-image: linear-gradient(to bottom, #fcfcfc, #f4f6f5);
-        border: 1px solid #f0ece4;
+        border-color: #f0ece4;
 
         &::after {
             top: 8px;
@@ -62,14 +61,13 @@
     }
 
     &_open &__title {
-        border-bottom: 1px solid transparent;
+        border-bottom: none;
         background: #fff;
     }
 
     &_open &__title::after {
         transform: rotate(180deg);
     }
-
     
     &_filtered.select_open &__title {
         background: #f6f7f7;
@@ -103,7 +101,8 @@
     }
 
     &_size_small &__drop {
-        padding-top: 21px;
+        padding-top: 20px;
+        border-color: #f0ece4;
     }
 
     &_filtered &__drop {

@@ -88,16 +88,12 @@
         }
     }
 
-    &__segment {
+    &__control {
         margin-right: 8px;
     }
 
     &__select {
-        width: 349px;
-
-        &_long {
-            width: 378px
-        }
+        width: 378px
     }
 
     &__submit {
@@ -110,7 +106,7 @@
         align-items: center;
     }
 
-    &__extended-ecent {
+    &__small-filter {
         display: block;
         width: 100%;
         padding: 10px;
@@ -119,7 +115,7 @@
         border-radius: 3px;
     }
 
-    &__extended-inner {
+    &__filter-inner {
         width: 250px;
     }
 

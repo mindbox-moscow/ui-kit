@@ -14,6 +14,7 @@ interface Props {
     isDanger?: boolean;
     isSmallFilter?: boolean;
     isFilter?: boolean;
+    isAction?: boolean;
 }
 
 export class Row extends React.Component<Props> {
@@ -29,7 +30,8 @@ export class Row extends React.Component<Props> {
             isFooter,
             isDanger,
             isSmallFilter,
-            isFilter
+            isFilter,
+            isAction
         } = this.props;
 
         if (isFooter) {
@@ -68,7 +70,8 @@ export class Row extends React.Component<Props> {
                                 'row__control': isControl,
                                 'row__select': isSelect,
                                 'row__small-filter': isSmallFilter,
-                                'row__filter': isFilter
+                                'row__filter': isFilter,
+                                'row__action': isAction,
                             })}>
                                 {
                                     isSmallFilter

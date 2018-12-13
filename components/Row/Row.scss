@@ -19,6 +19,7 @@
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         flex-grow: 1;
         font-size: 14px;
         
@@ -125,5 +126,27 @@
         background-color: #fff;
         border: 1px solid #f0ece4;
         border-radius: 3px;
+    }
+
+    &__action {
+        width: 379px;
+        margin-right: 10px;
+
+        &:nth-child(2) {
+            width: 278px;
+        }
+
+        &:nth-child(3) {
+            width: auto;
+        }
+    }
+
+    &__action-filter {
+        margin-top: 15px;
+        width: 667px;
+        height: 149px;
+        background-color: #fff;
+        border: 1px solid #f0ece4;
+        border-radius: 2px;
     }
 }

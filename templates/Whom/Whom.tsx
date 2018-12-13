@@ -15,8 +15,6 @@ export class Whom extends React.Component<{}> {
                 description='Добавьте короткое описание триггера'
                 hasTag
                 isDevelop
-                cantPlaying
-                isPlaying
             >
                 <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>1. Состояние по умолчанию. Пока не указано событие, сегмент или фильтр, сохранить потребителей нельзя.</div>
                 <SectionWrapper title='Кому' isEdit>

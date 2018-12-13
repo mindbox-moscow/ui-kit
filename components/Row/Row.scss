@@ -20,6 +20,7 @@
         display: flex;
         flex-wrap: wrap;
         font-size: 14px;
+        flex-grow: 1;
         
         &_error {
             font-style: italic;
@@ -71,6 +72,10 @@
         color: #000
     }
 
+    &__text {
+        padding-top: 5px;
+    }  
+
     &__desk {
         margin-top: 7px;
         margin-bottom: -4px;
@@ -82,6 +87,13 @@
         margin-right: 8px;
     }
 
+    &__extended-event {
+        width: 100%;
+        margin-top: 12px;
+        padding: 10px;
+        background-color: #ffffff;
+    }
+
     &__select {
         margin-top: -2px;
         width: 349px;
@@ -89,6 +101,14 @@
 
     &__submit {
         width: 210px;
+    }
+
+    &__filter {
+        width: 100%;
+        height: 283px;
+        background-color: #fff;
+        border: 1px solid #f0ece4;
+        border-radius: 3px;
     }
 
     &__footer {

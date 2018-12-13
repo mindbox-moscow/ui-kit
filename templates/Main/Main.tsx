@@ -17,7 +17,7 @@ export class Main extends React.Component<{}> {
     toggleWhatState = () => this.setState({ whatEdit: !this.state.whatEdit })
     toggleWhomState = () => this.setState({ whomEdit: !this.state.whomEdit })
     toggleWhenState = () => this.setState({ whenEdit: !this.state.whenEdit })
-
+    
     public render() {
         const { whatEdit, whomEdit, whenEdit } = this.state;
 
@@ -34,63 +34,46 @@ export class Main extends React.Component<{}> {
                     {
                         whenEdit ? (
                             <>
-                                <Row isEdit title='Период активности'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group1' checked={true}>Триггер активен на протяжении всей кампании</RadioButton>
-                                    </div>
+                                <Row isEdit title='Период активности' isControl description='25 авг 2018 – 1 янв 2019'>
+                                    <RadioButton name='group1' checked={true}>Триггер активен на протяжении всей кампании</RadioButton>
                                     <RadioButton name='group1'>Запланировать период активности</RadioButton>
-                                    <div className='row__period'>
-                                        25 авг 2018 – 1 янв 2019
-                                    </div>
                                 </Row>
-                                <Row isEdit title='Режим запуска'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group2' checked={true}>По событию</RadioButton>
-                                    </div>
-                                    <div>
-                                        <RadioButton name='group2'>По графику</RadioButton>
-                                    </div>
+                                <Row isEdit title='Режим запуска' isControl>
+                                    <RadioButton name='group2' checked={true}>По событию</RadioButton>
+                                    <RadioButton name='group2'>По графику</RadioButton>
                                 </Row>
-                                <Row isEdit title='Инициатор события'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group3' checked={true}>Любой</RadioButton>
-                                    </div>
-                                    <div>
-                                        <RadioButton name='group3'>Настроить фильтр по потребителям</RadioButton>
-                                    </div>
+                                <Row isEdit title='Инициатор события' isControl>
+                                    <RadioButton name='group3' checked={true}>Любой</RadioButton>
+                                    <RadioButton name='group3'>Настроить фильтр по потребителям</RadioButton>
                                 </Row>
-                                <Row isEdit title='Событие'>
-                                    <div className='row__select'>
-                                        <Select
-                                            placeholder='Выберите событие'
-                                            items={[
-                                                { title: 'Потребитель попал в БД' },
-                                                null,
-                                                { title: 'Потребитель был сдедублицирован' },
-                                                { title: 'Потребитель попал в сегмент' },
-                                                { title: 'Потребитель вышел из сегментации' },
-                                                { title: 'Изменился статус подписки' },
-                                                { title: 'Первое подтверждение мобильного телефона' },
-                                                null,
-                                                { title: 'Изменение email' },
-                                                { title: 'Первое подтверждение email' },
-                                                { title: 'Обновление данных потребителя' },
-                                                { title: 'Редактирование анкеты потребителем' },
-                                                { title: 'Потребитель вошел на сайт' },
-                                                { title: 'Активация секретного кода потребителем', disabled: true },
-                                                { title: 'Потребитель получил приз' },
-                                                { title: 'Изменение статуса FMCG заказа' },
-                                                { title: 'Создание FMCG заказа' }
-                                            ]}
-                                        />
-                                    </div>
+                                <Row isEdit title='Событие' isSelect>
+                                    <Select
+                                        placeholder='Выберите событие'
+                                        items={[
+                                            { title: 'Потребитель попал в БД' },
+                                            null,
+                                            { title: 'Потребитель был сдедублицирован' },
+                                            { title: 'Потребитель попал в сегмент' },
+                                            { title: 'Потребитель вышел из сегментации' },
+                                            { title: 'Изменился статус подписки' },
+                                            { title: 'Первое подтверждение мобильного телефона' },
+                                            null,
+                                            { title: 'Изменение email' },
+                                            { title: 'Первое подтверждение email' },
+                                            { title: 'Обновление данных потребителя' },
+                                            { title: 'Редактирование анкеты потребителем' },
+                                            { title: 'Потребитель вошел на сайт' },
+                                            { title: 'Активация секретного кода потребителем', disabled: true },
+                                            { title: 'Потребитель получил приз' },
+                                            { title: 'Изменение статуса FMCG заказа' },
+                                            { title: 'Создание FMCG заказа' }
+                                        ]}
+                                    />
                                 </Row>
-                                <div className='row__footer'>
-                                    <div className='row__submit'>
-                                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
-                                    </div>
+                                <Row isEdit isFooter>
+                                    <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
                                     <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
-                                </div>
+                                </Row>
                             </>
                         )
                         : (
@@ -105,57 +88,31 @@ export class Main extends React.Component<{}> {
                 <SectionWrapper title='Кому' isEdit={whomEdit} onChangeState={this.toggleWhomState}>
                     {whomEdit ? (
                         <>
-                                <Row isEdit title='Период активности'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group21' checked={true}>Каждый раз при попадании в фильтр триггера</RadioButton>
-                                    </div>
-                                    <RadioButton name='group21'>Периодически</RadioButton>
-                                </Row>
-                                <Row isEdit title='Число срабатываний'>
-                                    <div className='row__radio'>
-                                        <RadioButton name='group22' checked={true}>Неограничено</RadioButton>
-                                    </div>
-                                    <div>
-                                        <RadioButton name='group22'>Ограничить</RadioButton>
-                                    </div>
-                                </Row>
-                                <Row isEdit title='Цель триггера'>
-                                    <div className='row__select'>
-                                        <Select
-                                            placeholder='Выберите цель триггера'
-                                            defaultValue='Потребитель из события в блоке «Когда»'
-                                            items={[
-                                                { title: 'Потребитель из события в блоке «Когда»' },
-                                                null,
-                                                { title: 'Потребитель был сдедублицирован' },
-                                                { title: 'Потребитель попал в сегмент' },
-                                                { title: 'Потребитель вышел из сегментации' },
-                                                { title: 'Изменился статус подписки' },
-                                                { title: 'Первое подтверждение мобильного телефона' },
-                                                null,
-                                                { title: 'Изменение email' },
-                                                { title: 'Первое подтверждение email' },
-                                                { title: 'Обновление данных потребителя' },
-                                                { title: 'Редактирование анкеты потребителем' },
-                                                { title: 'Потребитель вошел на сайт' },
-                                                { title: 'Активация секретного кода потребителем', disabled: true },
-                                                { title: 'Потребитель получил приз' },
-                                                { title: 'Изменение статуса FMCG заказа' },
-                                                { title: 'Создание FMCG заказа' }
-                                            ]}
-                                        />
-                                    </div>
-                                    <div className='row__period'>
-                                        Триггер применится к конкретному потребителю
-                                    </div>
-                                </Row>
-                                <div className='row__footer'>
-                                    <div className='row__submit'>
-                                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
-                                    </div>
-                                    <Text mode='danger'>Для сохранения изменений необходимо выбрать событие в блоке «Когда»</Text>
-                                </div>
-                            </>
+                            <Row isEdit title='Период активности' isControl>
+                                <RadioButton name='group21' checked >Каждый раз при попадании в фильтр триггера</RadioButton>
+                                <RadioButton name='group21' >Периодически</RadioButton>
+                            </Row>
+                            <Row isEdit title='Число срабатываний' isControl>
+                                <RadioButton name='group22' checked>Неограничено</RadioButton>
+                                <RadioButton name='group22'>Ограничить</RadioButton>
+                            </Row>
+                            <Row isEdit title='Цель триггера' isSelect description='Триггер применится к конкретному потребителю'>
+                                <Select
+                                    placeholder='Выберите цель триггера'
+                                    defaultValue='Потребитель из события в блоке «Когда»'
+                                    items={[
+                                        { title: 'Потребитель из события в блоке «Когда»' },
+                                        { title: 'Потребитель был сдедублицирован' },
+                                        { title: 'Потребитель попал в сегмент' },
+                                        { title: 'Потребитель вышел из сегментации' },
+                                    ]}
+                                />
+                            </Row>
+                            <Row isEdit isFooter>
+                                <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                                <Text mode='danger'>Для сохранения изменений необходимо выбрать событие в блоке «Когда»</Text>
+                            </Row>
+                        </>
                     ) : (
                         <>
                             <Row title='Применять к потребителю'>Каждый раз при попадании в фильтр триггера</Row>
@@ -167,37 +124,33 @@ export class Main extends React.Component<{}> {
                 <SectionWrapper title='Что' isEdit={whatEdit} onChangeState={this.toggleWhatState}>
                     {whatEdit ? (
                         <>
-                            <Row isEdit title='Действие 1'>
-                                <div className='row__select'>
-                                    <Select
-                                        placeholder='Выберите действие'
-                                        isFiltered
-                                        items={[
-                                            { title: 'Потребитель из события в блоке «Когда»' },
-                                            { title: 'Потребитель был сдедублицирован' },
-                                            { title: 'Потребитель попал в сегмент' },
-                                            { title: 'Потребитель вышел из сегментации' },
-                                            { title: 'Изменился статус подписки' },
-                                            { title: 'Первое подтверждение мобильного телефона' },
-                                            { title: 'Изменение email' },
-                                            { title: 'Первое подтверждение email' },
-                                            { title: 'Обновление данных потребителя' },
-                                            { title: 'Редактирование анкеты потребителем' },
-                                            { title: 'Потребитель вошел на сайт' },
-                                            { title: 'Активация секретного кода потребителем' },
-                                            { title: 'Потребитель получил приз' },
-                                            { title: 'Изменение статуса FMCG заказа' },
-                                            { title: 'Создание FMCG заказа' }
-                                        ]}
-                                    />
-                                </div>
+                            <Row isEdit title='Действие 1' isSelect>
+                                <Select
+                                    placeholder='Выберите действие'
+                                    isFiltered
+                                    items={[
+                                        { title: 'Потребитель из события в блоке «Когда»' },
+                                        { title: 'Потребитель был сдедублицирован' },
+                                        { title: 'Потребитель попал в сегмент' },
+                                        { title: 'Потребитель вышел из сегментации' },
+                                        { title: 'Изменился статус подписки' },
+                                        { title: 'Первое подтверждение мобильного телефона' },
+                                        { title: 'Изменение email' },
+                                        { title: 'Первое подтверждение email' },
+                                        { title: 'Обновление данных потребителя' },
+                                        { title: 'Редактирование анкеты потребителем' },
+                                        { title: 'Потребитель вошел на сайт' },
+                                        { title: 'Активация секретного кода потребителем' },
+                                        { title: 'Потребитель получил приз' },
+                                        { title: 'Изменение статуса FMCG заказа' },
+                                        { title: 'Создание FMCG заказа' }
+                                    ]}
+                                />
                             </Row>
-                            <div className='row__footer'>
-                                <div className='row__submit'>
-                                    <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
-                                </div>
+                            <Row isEdit isFooter>
+                                <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
                                 <Text mode='danger'>Для сохранения изменений необходимо добавить хотя бы одно действие</Text>
-                            </div>
+                            </Row>
                         </>
                     ) : (
                         <Row title='Действие'>Настройте одно или несколько действий триггера</Row>

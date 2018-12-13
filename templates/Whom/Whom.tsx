@@ -2,7 +2,6 @@ import * as React from "react";
 import { Button } from "../../components/Button/Button";
 import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
 import { Row } from "../../components/Row/Row";
-import { Page } from "../../components/Page/Page";
 import { Text } from "../../components/Text/Text";
 import { RadioButton } from "../../components/RadioButton/RadioButton";
 import { Select } from "../../components/Select/Select";
@@ -10,12 +9,7 @@ import { Select } from "../../components/Select/Select";
 export class Whom extends React.Component<{}> {
     public render() {
         return (
-            <Page
-                title='Триггер №15'
-                description='Добавьте короткое описание триггера'
-                hasTag
-                isDevelop
-            >
+            <>
                 <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>1. Состояние по умолчанию. Пока не указано событие, сегмент или фильтр, сохранить потребителей нельзя.</div>
                 <SectionWrapper title='Кому' isEdit>
                     <Row isEdit title='Период активности' isControl>
@@ -252,7 +246,7 @@ export class Whom extends React.Component<{}> {
                         <Button color="gray" hasUnderline size="large">Сохранить</Button>
                     </Row>
                 </SectionWrapper>
-            </Page>
+            </>
         );
     }
 }

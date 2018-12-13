@@ -2,7 +2,6 @@ import * as React from "react";
 import { Button } from "../../components/Button/Button";
 import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
 import { Row } from "../../components/Row/Row";
-import { Page } from "../../components/Page/Page";
 import { Text } from "../../components/Text/Text";
 import { Select } from "../../components/Select/Select";
 import { DateField } from "../../components/DateField/DateField";
@@ -10,13 +9,7 @@ import { DateField } from "../../components/DateField/DateField";
 export class What extends React.Component<{}> {
     public render() {
         return (
-            <Page
-                title='Триггер №15'
-                description='Добавьте короткое описание триггера'
-                hasTag
-                isDevelop
-                cantPlaying
-            >
+            <>
                 <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     1. Состояние по умолчанию. Пока не выбрано действие, сохранить действие нельзя
                 </div>
@@ -42,7 +35,7 @@ export class What extends React.Component<{}> {
                     2. Выбрали действие, появилась возможность сохранить блок, появилась строка для настройки еще одного действия
                 </div>
                 <SectionWrapper title='Что' isEdit>
-                    <Row isEdit isSelect title='Действие 1' isAction>
+                    <Row isEdit isSelect title='Действие 1' isAction isRemovable>
                         <Select
                             placeholder='Выберите действие'
                             defaultValue='Заполнить поле фиксированным значением'
@@ -62,7 +55,7 @@ export class What extends React.Component<{}> {
                                 { title: 'Создать новую рассылку' },
                             ]}
                         />
-                        <DateField value='21.07.2018' />
+                        <DateField defaultDate={new Date()} />
                     </Row>
                     <Row isEdit isSelect title='Действие 2' isAction>
                         <Select
@@ -84,7 +77,7 @@ export class What extends React.Component<{}> {
                     3. Выбрали второе действие, появилась возможность добавить еще одно. В качестве действия выбрали отправку рассылки. Можно выбрать по названию из списка либо создать новую.
                 </div>
                 <SectionWrapper title='Что' isEdit>
-                    <Row isEdit isSelect title='Действие 1' isAction>
+                    <Row isEdit isSelect title='Действие 1' isAction isRemovable>
                         <Select
                             placeholder='Выберите действие'
                             defaultValue='Заполнить поле фиксированным значением'
@@ -104,9 +97,9 @@ export class What extends React.Component<{}> {
                                 { title: 'Создать новую рассылку' },
                             ]}
                         />
-                        <DateField value='21.07.2018' />
+                        <DateField defaultDate={new Date()} />
                     </Row>
-                    <Row isEdit isSelect title='Действие 2' isAction>
+                    <Row isEdit isSelect title='Действие 2' isAction isRemovable>
                         <Select
                             placeholder='Выберите действие'
                             defaultValue='Отправить Email-рассылку'
@@ -148,7 +141,7 @@ export class What extends React.Component<{}> {
                     4. Выбрали создание новой рассылки, появилась возможность задать тип и название рассылки, дальнейшее редактирование новой рассылки происходит на экране деталей этой рассылки
                 </div>
                 <SectionWrapper title='Что' isEdit>
-                    <Row isEdit isSelect title='Действие 1' isAction>
+                    <Row isEdit isSelect title='Действие 1' isAction isRemovable>
                         <Select
                             placeholder='Выберите действие'
                             defaultValue='Заполнить поле фиксированным значением'
@@ -168,9 +161,9 @@ export class What extends React.Component<{}> {
                                 { title: 'Создать новую рассылку' },
                             ]}
                         />
-                        <DateField value='21.07.2018' />
+                        <DateField defaultDate={new Date()} />
                     </Row>
-                    <Row isEdit isSelect title='Действие 2' isAction>
+                    <Row isEdit isSelect title='Действие 2' isAction isRemovable>
                         <Select
                             placeholder='Выберите действие'
                             defaultValue='Отправить Email-рассылку'
@@ -207,7 +200,7 @@ export class What extends React.Component<{}> {
                         <Button color="gray" hasUnderline size="large">Сохранить</Button>
                     </Row>
                 </SectionWrapper>
-            </Page>
+            </>
         );
     }
 }

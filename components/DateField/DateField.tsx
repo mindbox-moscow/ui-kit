@@ -118,7 +118,7 @@ export class DateField extends React.Component<Props> {
         return (
             <div
                 className={cn('date-field', disabled && 'date-field_disabled')}
-                onClick={this.handleOpen}
+                onClick={disabled ? () => {} : this.handleOpen}
                 ref={this.handleWrapperRef}
             >
                 <input

@@ -1,8 +1,7 @@
 ```jsx
 <div>
-    <DateField value='21.07.2018' />
+    <DateField defaultDate={new Date(2018, 11, 10)} />
     <br />
     <br />
-    <DateField value='21.07.2018' disabled />
 </div>
 ```

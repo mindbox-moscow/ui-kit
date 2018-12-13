@@ -1,17 +1,13 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Button } from "@mindbox/ui-kit/components/Button/Button";
-import { SectionWrapper } from "@mindbox/ui-kit/components/SectionWrapper/SectionWrapper";
-import { Row } from "@mindbox/ui-kit/components/Row/Row";
-import { Page } from "@mindbox/ui-kit/components/Page/Page";
-import { Text } from "@mindbox/ui-kit/components/Text/Text";
-import { RadioButton } from "@mindbox/ui-kit/components/RadioButton/RadioButton";
-import { Select } from "@mindbox/ui-kit/components/Select/Select";
+import { Button } from "../../components/Button/Button";
+import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
+import { Row } from "../../components/Row/Row";
+import { Page } from "../../components/Page/Page";
+import { Text } from "../../components/Text/Text";
+import { RadioButton } from "../../components/RadioButton/RadioButton";
+import { Select } from "../../components/Select/Select";
 
-const entryElement = document.createElement("div");
-document.body.appendChild(entryElement);
-
-class Main extends React.Component<{}> {
+export class Main extends React.Component<{}> {
     state = {
         whatEdit: false,
         whomEdit: false,
@@ -164,8 +160,3 @@ class Main extends React.Component<{}> {
         );
     }
 }
-
-ReactDOM.render(
-    <Main />,
-    entryElement
-)

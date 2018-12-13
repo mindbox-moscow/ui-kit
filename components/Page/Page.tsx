@@ -5,7 +5,6 @@ import { TextLine } from "../TextLine/TextLine";
 import { Tag } from "../Tag/Tag";
 
 interface Props {
-    children: any;
     title: string;
     description: string;
     isPlaying?: boolean;

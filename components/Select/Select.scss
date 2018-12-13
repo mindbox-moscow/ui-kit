@@ -40,6 +40,8 @@
             border: 1px solid #f0ece4;
         }
     }
+
+    &_size_small &__placeholder,
     &__title:disabled &__placeholder {
         font-size: 13px;
         color: #767676;
@@ -47,9 +49,11 @@
 
     &_size_small &__title {
         height: 21px;
+        background-image: linear-gradient(to bottom, #fcfcfc, #f4f6f5);
+        border-color: #f0ece4;
+
         &::after {
             top: 8px;
-            opacity: 0.8;
         }
     }
 
@@ -58,14 +62,13 @@
     }
 
     &_open &__title {
-        border-bottom: 1px solid transparent;
+        border-bottom: none;
         background: #fff;
     }
 
     &_open &__title::after {
         transform: rotate(180deg);
     }
-
     
     &_filtered.select_open &__title {
         background: #f6f7f7;
@@ -96,6 +99,11 @@
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.3s ease-out;
+    }
+
+    &_size_small &__drop {
+        padding-top: 20px;
+        border-color: #f0ece4;
     }
 
     &_filtered &__drop {

@@ -9,6 +9,7 @@ interface Props {
     children?: any;
     isText?: boolean;
     isControl?: boolean;
+    isControlWhithFilter?: boolean;
     isSelect?: boolean;
     isEdit?: boolean;
     isDanger?: boolean;
@@ -25,6 +26,7 @@ export class Row extends React.Component<Props> {
             isEdit,
             isText,
             isControl,
+            isControlWhithFilter,
             description,
             isSelect,
             isFooter,
@@ -64,21 +66,24 @@ export class Row extends React.Component<Props> {
                 </div>
                 <div className='row__content'>
                     {
-                        React.Children.map(children, (item: any) => (
-                            <div className={cn({
-                                'row__text': isText,
-                                'row__control': isControl,
-                                'row__select': isSelect,
-                                'row__small-filter': isSmallFilter,
-                                'row__filter': isFilter,
-                                'row__action': isAction,
-                            })}>
-                                {
-                                    isSmallFilter
-                                        ? <div className='row__filter-inner'>{item}</div>
-                                        : item
-                                }
-                            </div>
+                        React.Children.map(children, (item: any, index: number) => (
+                            <>
+                                <div className={cn({
+                                    'row__text': isText,
+                                    'row__control': isControl || (isControlWhithFilter && index !== children.length - 1),
+                                    'row__select': isSelect,
+                                    'row__small-filter': isSmallFilter || (isControlWhithFilter && index === children.length - 1),
+                                    'row__control-filter': isControlWhithFilter,
+                                    'row__filter': isFilter,
+                                    'row__action': isAction,
+                                })}>
+                                    {
+                                        isSmallFilter || (isControlWhithFilter && index === children.length - 1)
+                                            ? <div className='row__filter-inner'>{item}</div>
+                                            : item
+                                    }
+                                </div>
+                            </>
                         ))
                     }
                     {description && (

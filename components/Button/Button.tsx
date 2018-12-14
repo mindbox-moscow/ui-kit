@@ -9,7 +9,7 @@ interface Props {
     disabled?: boolean;
     mode?: 'danger';
     icon?: 'play' | 'pause';
-    size: 'small' | 'medium' | 'large' | 'xs';
+    size: 'small' | 'medium' | 'large' | 'xs' | 'normal';
     color: 'gray' | 'lightgray';
     hasUnderline?: boolean;
     hasBorder?: boolean;

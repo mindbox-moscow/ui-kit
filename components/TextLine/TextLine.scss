@@ -56,8 +56,13 @@
         position: absolute;
         top: 8px;
         right: -35px;
+        padding: 0;
         cursor: pointer;
         border: none;
         background-color: transparent;
+
+        &:hover {
+            opacity: 0.7;
+        }
     }
 }

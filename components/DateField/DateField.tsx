@@ -140,17 +140,22 @@ export class DateField extends React.Component<Props> {
                             className='date-field__nav'
                         />
                         <div>
-                            <select value={nowMonth} className='date-field__select' onChange={this.handleChangeMonth}>
-                                {monthes.map((item, index) => (
-                                    <option key={index} value={index}>{item}</option>
+                            <select
+                                value={nowMonth}
+                                className='date-field__select'
+                                onChange={this.handleChangeMonth}
+                            >
+                                {monthes.map(item => (
+                                    <option key={item}>{item}</option>
                                 ))}
                             </select>
                             <select
+                                value={nowYear}
                                 className='date-field__select'
                                 onChange={this.handleChangeYear}
                             >
                                 {yearsList.map(item => (
-                                    <option key={item} selected={item === nowYear}>{item}</option>
+                                    <option key={item}>{item}</option>
                                 ))}
                             </select>
                         </div>

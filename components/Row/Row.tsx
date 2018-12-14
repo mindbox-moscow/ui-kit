@@ -2,10 +2,11 @@ import * as React from "react";
 import './Row.scss'
 import cn from 'classnames'
 import { Icon } from '../Icon/Icon'
+import { Help } from '../Help/Help'
 
 interface Props {
     title?: string;
-    hasInfo?: boolean
+    help?: string;
     description?: string;
     isFooter?: boolean;
     children?: any;
@@ -37,7 +38,7 @@ export class Row extends React.Component<Props> {
         const {
             children,
             title,
-            hasInfo,
+            help,
             isEdit,
             isText,
             isControl,
@@ -84,9 +85,14 @@ export class Row extends React.Component<Props> {
                     <span className='row__name-text'>
                         {title}
                         {!isEdit && ':'}
-                        {(hasInfo && isEdit) && <Icon className='row__icon-info' icon='info' />}
-                        </span>
-                    
+                    </span>
+                    {help && isEdit && (
+                        <div className='row__help'>
+                            <Help>
+                                {help}
+                            </Help>
+                        </div>
+                    )}
                 </div>
                 <div className='row__content'>
                     {

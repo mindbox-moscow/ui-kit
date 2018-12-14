@@ -7,7 +7,9 @@ export class Help extends React.Component<{}> {
         const { children } = this.props;
         return (
             <div className='help'>
-                <Icon icon='help__icon' />
+                <div className='help__icon'>
+                    <Icon icon='help' />
+                </div>
                 <div className='help__inner'>
                     {children}
                 </div>

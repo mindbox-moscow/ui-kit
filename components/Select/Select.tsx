@@ -120,7 +120,7 @@ export class Select extends React.Component<Props> {
                                         </button>
                                     )
                                     : (
-                                        <div className='select__separator' />
+                                        <div key={index} className='select__separator' />
                                     )
                             )
                         }

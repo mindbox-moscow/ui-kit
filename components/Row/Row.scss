@@ -43,11 +43,11 @@
     }
 
     &__name {
+        position: relative;
         width: 154px;
         margin-top: 0;
         margin-bottom: 0;
         font-family: "PT Sans", sans-serif;
-        overflow: hidden;
         position: relative;
         color: #888;
         font-size: 14px;
@@ -60,6 +60,18 @@
             bottom: 4px;
         }
     }
+
+    &:not(.row_edit) &__name {
+        overflow: hidden;
+    }
+
+    &__help {
+        position: relative;
+        top: -8px;
+        left: 5px;
+        height: 5px;
+        display: inline-block;
+    }
     
     &__name-text {
         position: relative;
@@ -68,18 +80,15 @@
         z-index: 1;
     }
 
-    &__icon-info {
-        position: absolute;
-        top: 0;
-        right: -30px;
-        opacity: .5;
-    }
-
     &_edit &__name {
         box-sizing: border-box;
         padding-top: 5px;
         min-width: 210px;
         padding-right: 15px;
+
+        &_help {
+            padding-top: 0;
+        }
 
         &::after {
             display: none;
@@ -121,6 +130,7 @@
         &:last-child {
             width: 100%;
             margin-top: 15px;
+            width: 100%;
         }
     }
 

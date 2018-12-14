@@ -22,7 +22,7 @@ export class When extends React.Component<{}> {
                 isDevelop
                 cantPlaying
             >
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     1. Состояние по умолчанию. Пока не выбрано событие, сохранить правило нельзя.
                 </div>
                 <SectionWrapper title='Когда' isEdit>
@@ -67,7 +67,7 @@ export class When extends React.Component<{}> {
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     2. Переключились в планирование периода активности
                 </div>
                 <SectionWrapper title='Когда' isEdit>
@@ -121,7 +121,7 @@ export class When extends React.Component<{}> {
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     3. Инициатор события: переключились в настройку фильтра по потребителям
                 </div>
                 <SectionWrapper title='Когда' isEdit>
@@ -195,7 +195,7 @@ export class When extends React.Component<{}> {
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     4. Настроили фильтр по инициатору события
                 </div>
                 <SectionWrapper title='Когда' isEdit>
@@ -243,7 +243,7 @@ export class When extends React.Component<{}> {
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     5. Выбираем событие для правила запуска
                 </div>
                 <SectionWrapper title='Когда' isEdit>
@@ -291,7 +291,7 @@ export class When extends React.Component<{}> {
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     6. Выбрали событие — появились дополнительные блоки и возможность сохранить правило.
                     По умолчанию правило применяется для всех событий выбранного типа, блок настройки фильтра не выводится,
                     пока не отмечен чекбокс «Настроить фильтр по этому событию».
@@ -337,7 +337,7 @@ export class When extends React.Component<{}> {
                         />
                         <Checkbox text='Настроить фильтр по этому событию' />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Время от события'>
+                    <Row help='Текст подсказки' isEdit isControl title='Время от события'>
                         Активировать триггер
                         <Select
                             placeholder='Выберите'
@@ -349,7 +349,7 @@ export class When extends React.Component<{}> {
                         />
                         после события
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                         <div style={{ width: '40px' }}> 
                             <Input defaultValue='10' maxLength={2} />
@@ -367,7 +367,7 @@ export class When extends React.Component<{}> {
                         <Button color='gray' hasUnderline size='large' >Сохранить</Button>
                     </Row>
                 </SectionWrapper>
-                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                <div style={{ color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     7. Отметили чекбокс «Настроить фильтр по этому событию»,
                     появился блок настройки фильтра для выбраного события.
                 </div>
@@ -436,7 +436,7 @@ export class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Время от события'>
+                    <Row help='Текст подсказки' isEdit isControl title='Время от события'>
                         Активировать триггер
                         <Select
                             placeholder='Выберите'
@@ -448,7 +448,7 @@ export class When extends React.Component<{}> {
                         />
                         после события
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                             Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'> 
                                 <Input defaultValue='10' maxLength={2} />
@@ -513,7 +513,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit isFilter title='Триггер сработает при попадании под фильтр по активации кодов'>
                         &nbsp;
                     </Row>
-                    <Row hasInfo isEdit isControl title='Время от события'>
+                    <Row help='Текст подсказки' isEdit isControl title='Время от события'>
                         Активировать триггер
                         <Select
                             placeholder='Выберите'
@@ -533,7 +533,7 @@ export class When extends React.Component<{}> {
                         />
                         после события
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                             Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'> 
                                 <Input defaultValue='10' maxLength={2} />
@@ -594,7 +594,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -647,7 +647,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -710,7 +710,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -812,7 +812,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -898,7 +898,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -1016,7 +1016,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />
@@ -1116,7 +1116,7 @@ export class When extends React.Component<{}> {
                     <Row isEdit title='Время'>
                         <TimeField hours={12} minutes={23} />
                     </Row>
-                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                    <Row help='Текст подсказки' isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'>
                             <Input defaultValue='10' maxLength={2} />

@@ -5,6 +5,7 @@ import { Icon } from '../Icon/Icon'
 
 interface Props {
     title?: string;
+    hasInfo?: boolean
     description?: string;
     isFooter?: boolean;
     children?: any;
@@ -19,6 +20,8 @@ interface Props {
     isCustom?: boolean;
     isRemovable?: boolean;
     isSelectChecked?: boolean;
+    isSelectCalendar?: boolean;
+    isSelectDouble?: boolean;
     onRemove?: () => void;
 }
 
@@ -34,6 +37,7 @@ export class Row extends React.Component<Props> {
         const {
             children,
             title,
+            hasInfo,
             isEdit,
             isText,
             isControl,
@@ -46,6 +50,8 @@ export class Row extends React.Component<Props> {
             isAction,
             isCustom,
             isSelectChecked,
+            isSelectCalendar,
+            isSelectDouble,
             isRemovable
         } = this.props;
 
@@ -75,7 +81,12 @@ export class Row extends React.Component<Props> {
                 }
             )}>
                 <div className='row__name'>
-                    <span className='row__name-text'>{title}{!isEdit && ':'}</span>
+                    <span className='row__name-text'>
+                        {title}
+                        {!isEdit && ':'}
+                        {(hasInfo && isEdit) && <Icon className='row__icon-info' icon='info' />}
+                        </span>
+                    
                 </div>
                 <div className='row__content'>
                     {
@@ -90,6 +101,8 @@ export class Row extends React.Component<Props> {
                                     'row__filter': isFilter,
                                     'row__action': isAction,
                                     'row__select-checked': isSelectChecked,
+                                    'row__select-calendar': isSelectCalendar,
+                                    'row__select-double': isSelectDouble,
                                     
                                 })}>
                                     {

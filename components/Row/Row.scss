@@ -60,6 +60,13 @@
         z-index: 1;
     }
 
+    &__icon-info {
+        position: absolute;
+        top: 0;
+        right: -30px;
+        opacity: .5;
+    }
+
     &_edit &__name {
         box-sizing: border-box;
         padding-top: 5px;
@@ -104,7 +111,26 @@
         width: 378px;
 
         &:last-child {
+            width: 100%;
             margin-top: 15px;
+        }
+    }
+
+    &__select-calendar {
+        width: 251px;
+
+        &:last-child {
+            width: 100%;
+            margin-top: 15px;
+        }
+    }
+
+    &__select-double {
+        width: 251px;
+        margin-right: 8px;
+
+        &:last-child {
+            margin-right: 0;
         }
     }
 

@@ -1,17 +1,22 @@
-import * as React from 'react';
-import { Button } from '../../components/Button/Button';
-import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
-import { Page } from '../../components/Page/Page';
-import { Row } from '../../components/Row/Row';
-import { Text } from '../../components/Text/Text';
-import { RadioButton } from '../../components/RadioButton/RadioButton';
-import { Select } from '../../components/Select/Select';
-import { DateField } from '../../components/DateField/DateField';
-import { TimeField } from '../../components/TimeField/TimeField';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
-import { Input } from '../../components/Input/Input';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-export class When extends React.Component<{}> {
+import { SectionWrapper } from "@mindbox/ui-kit/components/SectionWrapper";
+import { Button } from "@mindbox/ui-kit/components/Button";
+import { Page } from "@mindbox/ui-kit/components/Page";
+import { Row } from "@mindbox/ui-kit/components/Row";
+import { RadioButton } from "@mindbox/ui-kit/components/RadioButton";
+import { Select } from "@mindbox/ui-kit/components/Select";
+import { Text } from "@mindbox/ui-kit/components/Text";
+import { Input } from "@mindbox/ui-kit/components/Input";
+import { DateField } from "@mindbox/ui-kit/components/DateField";
+import { Checkbox } from "@mindbox/ui-kit/components/Checkbox";
+import { TimeField } from "@mindbox/ui-kit/components/TimeField";
+
+const entryElement = document.createElement("div");
+document.body.appendChild(entryElement);
+
+class When extends React.Component<{}> {
     public render() {
         return (
             <Page
@@ -448,3 +453,8 @@ export class When extends React.Component<{}> {
         );
     }
 }
+
+ReactDOM.render(
+    <When />,
+    entryElement
+)

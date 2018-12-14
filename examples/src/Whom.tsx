@@ -1,13 +1,18 @@
-import * as React from 'react';
-import { Button } from '../../components/Button/Button';
-import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
-import { Page } from '../../components/Page/Page';
-import { Row } from '../../components/Row/Row';
-import { Text } from '../../components/Text/Text';
-import { RadioButton } from '../../components/RadioButton/RadioButton';
-import { Select } from '../../components/Select/Select';
+import * as React from "react";
+import * as ReactDOM from "react-dom";
 
-export class Whom extends React.Component<{}> {
+import { SectionWrapper } from "@mindbox/ui-kit/components/SectionWrapper";
+import { Button } from "@mindbox/ui-kit/components/Button";
+import { Page } from "@mindbox/ui-kit/components/Page";
+import { Row } from "@mindbox/ui-kit/components/Row";
+import { RadioButton } from "@mindbox/ui-kit/components/RadioButton";
+import { Select } from "@mindbox/ui-kit/components/Select";
+import { Text } from "@mindbox/ui-kit/components/Text";
+
+const entryElement = document.createElement("div");
+document.body.appendChild(entryElement);
+
+class Whom extends React.Component<{}> {
     public render() {
         return (
             <Page
@@ -257,3 +262,9 @@ export class Whom extends React.Component<{}> {
         );
     }
 }
+
+
+ReactDOM.render(
+    <Whom />,
+    entryElement
+)

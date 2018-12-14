@@ -67,8 +67,9 @@
 
     &__help {
         position: relative;
-        top: 7px;
+        top: -8px;
         left: 5px;
+        height: 5px;
         display: inline-block;
     }
     
@@ -127,8 +128,27 @@
         width: 378px;
 
         &:last-child {
+            width: 100%;
             margin-top: 15px;
             width: 100%;
+        }
+    }
+
+    &__select-calendar {
+        width: 251px;
+
+        &:last-child {
+            width: 100%;
+            margin-top: 15px;
+        }
+    }
+
+    &__select-double {
+        width: 251px;
+        margin-right: 8px;
+
+        &:last-child {
+            margin-right: 0;
         }
     }
 

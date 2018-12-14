@@ -6,6 +6,7 @@ import { Help } from '../Help/Help'
 
 interface Props {
     title?: string;
+    help?: string;
     description?: string;
     isFooter?: boolean;
     children?: any;
@@ -20,7 +21,8 @@ interface Props {
     isCustom?: boolean;
     isRemovable?: boolean;
     isSelectChecked?: boolean;
-    help?: string;
+    isSelectCalendar?: boolean;
+    isSelectDouble?: boolean;
     onRemove?: () => void;
 }
 
@@ -36,6 +38,7 @@ export class Row extends React.Component<Props> {
         const {
             children,
             title,
+            help,
             isEdit,
             isText,
             isControl,
@@ -48,8 +51,9 @@ export class Row extends React.Component<Props> {
             isAction,
             isCustom,
             isSelectChecked,
-            isRemovable,
-            help
+            isSelectCalendar,
+            isSelectDouble,
+            isRemovable
         } = this.props;
 
         if (isFooter) {
@@ -77,10 +81,11 @@ export class Row extends React.Component<Props> {
                     ['row_edit']: isEdit
                 }
             )}>
-                <div className={cn('row__name', {
-                    'row__name_help': help && isEdit
-                })}>
-                    <span className='row__name-text'>{title}{!isEdit && ':'}</span>
+                <div className='row__name'>
+                    <span className='row__name-text'>
+                        {title}
+                        {!isEdit && ':'}
+                    </span>
                     {help && isEdit && (
                         <div className='row__help'>
                             <Help>
@@ -102,6 +107,8 @@ export class Row extends React.Component<Props> {
                                     'row__filter': isFilter,
                                     'row__action': isAction,
                                     'row__select-checked': isSelectChecked,
+                                    'row__select-calendar': isSelectCalendar,
+                                    'row__select-double': isSelectDouble,
                                     
                                 })}>
                                     {

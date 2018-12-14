@@ -43,11 +43,11 @@
     }
 
     &__name {
+        position: relative;
         width: 154px;
         margin-top: 0;
         margin-bottom: 0;
         font-family: "PT Sans", sans-serif;
-        overflow: hidden;
         position: relative;
         color: #888;
         font-size: 14px;
@@ -59,6 +59,17 @@
             width: 100%;
             bottom: 4px;
         }
+    }
+
+    &:not(.row_edit) &__name {
+        overflow: hidden;
+    }
+
+    &__help {
+        position: relative;
+        top: 7px;
+        left: 5px;
+        display: inline-block;
     }
     
     &__name-text {
@@ -73,6 +84,10 @@
         padding-top: 5px;
         min-width: 210px;
         padding-right: 15px;
+
+        &_help {
+            padding-top: 0;
+        }
 
         &::after {
             display: none;
@@ -113,6 +128,7 @@
 
         &:last-child {
             margin-top: 15px;
+            width: 100%;
         }
     }
 

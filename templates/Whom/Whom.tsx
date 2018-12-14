@@ -17,7 +17,7 @@ export class Whom extends React.Component<{}> {
                 isDevelop
                 cantPlaying
             >
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>1. Состояние по умолчанию. Пока не указано событие, сегмент или фильтр, сохранить потребителей нельзя.</div>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>1. Состояние по умолчанию. Пока не указано событие, сегмент или фильтр, сохранить потребителей нельзя.</div>
                 <SectionWrapper title='Кому' isEdit>
                     <Row isEdit title='Период активности' isControl>
                         <RadioButton name='rgroup1' checked>Каждый раз при попадании в фильтр триггера</RadioButton>
@@ -45,7 +45,7 @@ export class Whom extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     2. Если в блоке «Когда» уже настроено событие, в режиме «Потребители из события» выводится его название, появляется возможность сохранить блок.
                 </div>
                 <SectionWrapper title='Кому' isEdit>
@@ -75,7 +75,7 @@ export class Whom extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     3. Переключились на задание группы потребителей по сегменту базы.
                 </div>
                 <SectionWrapper title='Кому' isEdit>
@@ -120,7 +120,7 @@ export class Whom extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     4. Выбрали сегмент, появилась возможность сохранить блок.
                 </div>
                 <SectionWrapper title='Кому' isEdit>
@@ -167,7 +167,7 @@ export class Whom extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     5. Переключились на задание группы потребителей по фильтру.
                 </div>
                 <SectionWrapper title='Кому' isEdit>
@@ -218,7 +218,7 @@ export class Whom extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     6. Настроили фильтр, появилась возможность сохранить блок.
                 </div>
                 <SectionWrapper title='Кому' isEdit>

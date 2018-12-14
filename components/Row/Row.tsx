@@ -2,6 +2,7 @@ import * as React from "react";
 import './Row.scss'
 import cn from 'classnames'
 import { Icon } from '../Icon/Icon'
+import { Help } from '../Help/Help'
 
 interface Props {
     title?: string;
@@ -19,6 +20,7 @@ interface Props {
     isCustom?: boolean;
     isRemovable?: boolean;
     isSelectChecked?: boolean;
+    help?: string;
     onRemove?: () => void;
 }
 
@@ -46,7 +48,8 @@ export class Row extends React.Component<Props> {
             isAction,
             isCustom,
             isSelectChecked,
-            isRemovable
+            isRemovable,
+            help
         } = this.props;
 
         if (isFooter) {
@@ -74,8 +77,17 @@ export class Row extends React.Component<Props> {
                     ['row_edit']: isEdit
                 }
             )}>
-                <div className='row__name'>
+                <div className={cn('row__name', {
+                    'row__name_help': help && isEdit
+                })}>
                     <span className='row__name-text'>{title}{!isEdit && ':'}</span>
+                    {help && isEdit && (
+                        <div className='row__help'>
+                            <Help>
+                                {help}
+                            </Help>
+                        </div>
+                    )}
                 </div>
                 <div className='row__content'>
                     {

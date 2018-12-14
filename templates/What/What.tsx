@@ -17,7 +17,7 @@ export class What extends React.Component<{}> {
                 isDevelop
                 cantPlaying
             >
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     1. Состояние по умолчанию. Пока не выбрано действие, сохранить действие нельзя
                 </div>
                 <SectionWrapper title='Что' isEdit>
@@ -38,7 +38,7 @@ export class What extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     2. Выбрали действие, появилась возможность сохранить блок, появилась строка для настройки еще одного действия
                 </div>
                 <SectionWrapper title='Что' isEdit>
@@ -80,7 +80,7 @@ export class What extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     3. Выбрали второе действие, появилась возможность добавить еще одно. В качестве действия выбрали отправку рассылки. Можно выбрать по названию из списка либо создать новую.
                 </div>
                 <SectionWrapper title='Что' isEdit>
@@ -144,7 +144,7 @@ export class What extends React.Component<{}> {
                     </Row>
                 </SectionWrapper>
 
-                <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
+                <div style={{color: '#8b572a', fontSize: '16px', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     4. Выбрали создание новой рассылки, появилась возможность задать тип и название рассылки, дальнейшее редактирование новой рассылки происходит на экране деталей этой рассылки
                 </div>
                 <SectionWrapper title='Что' isEdit>

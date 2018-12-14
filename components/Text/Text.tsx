@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 interface Props {
     children: string;
-    mode?: "danger";
+    mode?: string;
 }
 
 export class Text extends React.Component<Props> {

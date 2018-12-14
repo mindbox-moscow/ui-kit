@@ -39,7 +39,7 @@ export class TextLine extends React.Component<Props> {
     public render() {
         const {isTitle, text} = this.props;
         const { isEditing, value } = this.state;
-        let Tag = isTitle ? 'h2' : 'p';
+        let Tag: any = isTitle ? 'h2' : 'p';
 
         return (
             <div className="textLine">

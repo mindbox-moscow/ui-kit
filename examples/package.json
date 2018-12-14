@@ -2,7 +2,7 @@
   "name": "@mindbox/ui-kit-examples",
   "version": "0.0.1",
   "dependencies": {
-    "@mindbox/ui-kit": "^0.1.10",
+    "@mindbox/ui-kit": "^0.1.12",
     "classnames": "^2.2.6",
     "css-loader": "^2.0.0",
     "react": "^16.4.0",

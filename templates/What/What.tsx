@@ -1,15 +1,22 @@
-import * as React from "react";
-import { Button } from "../../components/Button/Button";
-import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
-import { Row } from "../../components/Row/Row";
-import { Text } from "../../components/Text/Text";
-import { Select } from "../../components/Select/Select";
-import { DateField } from "../../components/DateField/DateField";
+import * as React from 'react';
+import { Button } from '../../components/Button/Button';
+import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
+import { Page } from '../../components/Page/Page';
+import { Row } from '../../components/Row/Row';
+import { Text } from '../../components/Text/Text';
+import { Select } from '../../components/Select/Select';
+import { DateField } from '../../components/DateField/DateField';
 
 export class What extends React.Component<{}> {
     public render() {
         return (
-            <>
+            <Page
+                title='Триггер №15'
+                description='Добавьте короткое описание триггера'
+                hasTag
+                isDevelop
+                cantPlaying
+            >
                 <div style={{color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px'}}>
                     1. Состояние по умолчанию. Пока не выбрано действие, сохранить действие нельзя
                 </div>
@@ -26,7 +33,7 @@ export class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо добавить хотя бы одно действие</Text>
                     </Row>
                 </SectionWrapper>
@@ -69,7 +76,7 @@ export class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline size='large' >Сохранить</Button>
                     </Row>
                 </SectionWrapper>
 
@@ -119,7 +126,7 @@ export class What extends React.Component<{}> {
                                 { title: 'Создать новую рассылку' },
                             ]}
                         />
-                        <Button color="gray" hasUnderline size="xs">Редактировать</Button>
+                        <Button color='gray' hasUnderline size='xs'>Редактировать</Button>
                     </Row>
                     <Row isEdit isSelect title='Действие 3' isAction>
                         <Select
@@ -133,7 +140,7 @@ export class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">Сохранить</Button>
+                        <Button color='gray' hasUnderline size='large'>Сохранить</Button>
                     </Row>
                 </SectionWrapper>
 
@@ -197,10 +204,10 @@ export class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">Сохранить</Button>
+                        <Button color='gray' hasUnderline size='large'>Сохранить</Button>
                     </Row>
                 </SectionWrapper>
-            </>
+            </Page>
         );
     }
 }

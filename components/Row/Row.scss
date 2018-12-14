@@ -28,6 +28,14 @@
             font-style: italic;
             color: #a12e1e;
         }
+
+        a {
+            color: #305176;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
     }
 
     &:last-child {

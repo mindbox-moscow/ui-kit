@@ -1,11 +1,11 @@
-import * as React from "react";
-import { Button } from "../../components/Button/Button";
-import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
-import { Row } from "../../components/Row/Row";
-import { Page } from "../../components/Page/Page";
-import { Text } from "../../components/Text/Text";
-import { RadioButton } from "../../components/RadioButton/RadioButton";
-import { Select } from "../../components/Select/Select";
+import * as React from 'react';
+import { Button } from '../../components/Button/Button';
+import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
+import { Row } from '../../components/Row/Row';
+import { Page } from '../../components/Page/Page';
+import { Text } from '../../components/Text/Text';
+import { RadioButton } from '../../components/RadioButton/RadioButton';
+import { Select } from '../../components/Select/Select';
 
 export class Main extends React.Component<{}> {
     state = {
@@ -28,7 +28,6 @@ export class Main extends React.Component<{}> {
                 hasTag
                 isDevelop
                 cantPlaying
-                isPlaying
             >
                 <SectionWrapper title='Когда' isEdit={whenEdit} onChangeState={this.toggleWhenState}>
                     {
@@ -71,7 +70,7 @@ export class Main extends React.Component<{}> {
                                     />
                                 </Row>
                                 <Row isEdit isFooter>
-                                    <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                                    <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                                     <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                                 </Row>
                             </>
@@ -109,7 +108,7 @@ export class Main extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit isFooter>
-                                <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                                <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                                 <Text mode='danger'>Для сохранения изменений необходимо выбрать событие в блоке «Когда»</Text>
                             </Row>
                         </>
@@ -148,7 +147,7 @@ export class Main extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit isFooter>
-                                <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                                <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                                 <Text mode='danger'>Для сохранения изменений необходимо добавить хотя бы одно действие</Text>
                             </Row>
                         </>

@@ -1,19 +1,26 @@
-import * as React from "react";
-import { Button } from "../../components/Button/Button";
-import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
-import { Row } from "../../components/Row/Row";
-import { Text } from "../../components/Text/Text";
-import { RadioButton } from "../../components/RadioButton/RadioButton";
-import { Select } from "../../components/Select/Select";
-import { DateField } from "../../components/DateField/DateField";
-import { TimeField } from "../../components/TimeField/TimeField";
-import { Checkbox } from "../../components/Checkbox/Checkbox";
-import { Input } from "../../components/Input/Input";
+import * as React from 'react';
+import { Button } from '../../components/Button/Button';
+import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
+import { Page } from '../../components/Page/Page';
+import { Row } from '../../components/Row/Row';
+import { Text } from '../../components/Text/Text';
+import { RadioButton } from '../../components/RadioButton/RadioButton';
+import { Select } from '../../components/Select/Select';
+import { DateField } from '../../components/DateField/DateField';
+import { TimeField } from '../../components/TimeField/TimeField';
+import { Checkbox } from '../../components/Checkbox/Checkbox';
+import { Input } from '../../components/Input/Input';
 
 export class When extends React.Component<{}> {
     public render() {
         return (
-            <>
+            <Page
+                title='Триггер №15'
+                description='Добавьте короткое описание триггера'
+                hasTag
+                isDevelop
+                cantPlaying
+            >
                 <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
                     1. Состояние по умолчанию. Пока не выбрано событие, сохранить правило нельзя.
                 </div>
@@ -55,7 +62,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
@@ -109,7 +116,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
@@ -183,7 +190,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large' >Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
@@ -231,7 +238,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large'>Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
@@ -279,7 +286,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">Сохранить</Button>
+                        <Button color='gray' hasUnderline disabled size='large'>Сохранить</Button>
                         <Text mode='danger'>Для сохранения изменений необходимо выбрать событие или настроить график</Text>
                     </Row>
                 </SectionWrapper>
@@ -356,7 +363,7 @@ export class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline size='large' >Сохранить</Button>
                     </Row>
                 </SectionWrapper>
                 <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
@@ -434,10 +441,10 @@ export class When extends React.Component<{}> {
                             />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                        <Button color='gray' hasUnderline size='large' >Сохранить</Button>
                     </Row>
                 </SectionWrapper>
-            </>
+            </Page>
         );
     }
 }

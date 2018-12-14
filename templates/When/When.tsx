@@ -1,15 +1,16 @@
-import * as React from 'react';
-import { Button } from '../../components/Button/Button';
-import { SectionWrapper } from '../../components/SectionWrapper/SectionWrapper';
-import { Page } from '../../components/Page/Page';
-import { Row } from '../../components/Row/Row';
-import { Text } from '../../components/Text/Text';
-import { RadioButton } from '../../components/RadioButton/RadioButton';
-import { Select } from '../../components/Select/Select';
-import { DateField } from '../../components/DateField/DateField';
-import { TimeField } from '../../components/TimeField/TimeField';
-import { Checkbox } from '../../components/Checkbox/Checkbox';
-import { Input } from '../../components/Input/Input';
+import * as React from "react";
+import { Button } from "../../components/Button/Button";
+import { Page } from "../../components/Page/Page";
+import { SectionWrapper } from "../../components/SectionWrapper/SectionWrapper";
+import { Row } from "../../components/Row/Row";
+import { Text } from "../../components/Text/Text";
+import { RadioButton } from "../../components/RadioButton/RadioButton";
+import { Select } from "../../components/Select/Select";
+import { DateField } from "../../components/DateField/DateField";
+import { TimeField } from "../../components/TimeField/TimeField";
+import { Checkbox } from "../../components/Checkbox/Checkbox";
+import { Input } from "../../components/Input/Input";
+import { Period } from "../../components/Period/Period";
 
 export class When extends React.Component<{}> {
     public render() {
@@ -336,7 +337,7 @@ export class When extends React.Component<{}> {
                         />
                         <Checkbox text='Настроить фильтр по этому событию' />
                     </Row>
-                    <Row isEdit isControl title='Время от события'>
+                    <Row hasInfo isEdit isControl title='Время от события'>
                         Активировать триггер
                         <Select
                             placeholder='Выберите'
@@ -348,7 +349,7 @@ export class When extends React.Component<{}> {
                         />
                         после события
                     </Row>
-                    <Row isEdit isControl title='Срок актуальности'>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
                         Допускается запоздание срабатывания триггера не более, чем на
                         <div style={{ width: '40px' }}> 
                             <Input defaultValue='10' maxLength={2} />
@@ -411,10 +412,31 @@ export class When extends React.Component<{}> {
                         />
                         <Checkbox checked text='Настроить фильтр по этому событию' />
                     </Row>
-                    <Row isEdit isFilter title='Триггер сработает при попадании под фильтр по активации кодов'>
-                        &nbsp;
+                    <Row isEdit isSmallFilter title='Триггер сработает при попадании под фильтр по активации кодов'>
+                        <Select
+                            placeholder='Выберите условия фильтрации'
+                            items={[
+                                { title: 'Потребитель попал в БД' },
+                                null,
+                                { title: 'Потребитель был сдедублицирован' },
+                                { title: 'Потребитель попал в сегмент' },
+                                { title: 'Потребитель вышел из сегментации' },
+                                { title: 'Изменился статус подписки' },
+                                { title: 'Первое подтверждение мобильного телефона' },
+                                null,
+                                { title: 'Изменение email' },
+                                { title: 'Первое подтверждение email' },
+                                { title: 'Обновление данных потребителя' },
+                                { title: 'Редактирование анкеты потребителем' },
+                                { title: 'Потребитель вошел на сайт' },
+                                { title: 'Активация секретного кода потребителем', disabled: true },
+                                { title: 'Потребитель получил приз' },
+                                { title: 'Изменение статуса FMCG заказа' },
+                                { title: 'Создание FMCG заказа' }
+                            ]}
+                        />
                     </Row>
-                    <Row isEdit isControl title='Время от события'>
+                    <Row hasInfo isEdit isControl title='Время от события'>
                         Активировать триггер
                         <Select
                             placeholder='Выберите'
@@ -426,7 +448,7 @@ export class When extends React.Component<{}> {
                         />
                         после события
                     </Row>
-                    <Row isEdit isControl title='Срок актуальности'>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
                             Допускается запоздание срабатывания триггера не более, чем на
                             <div className='row__input'> 
                                 <Input defaultValue='10' maxLength={2} />
@@ -442,6 +464,674 @@ export class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isFooter>
                         <Button color='gray' hasUnderline size='large' >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    8. Настроили фильтр для выбраного события, отредактировали время от события и срок актуальности.
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock7-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock7-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock7-group2' checked>По событию</RadioButton>
+                        <RadioButton name='whenBlock7-group2'>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isCustom title='Инициатор события'>
+                        <div className='row__control'>
+                            <RadioButton name='whenBlock7-group3'>Любой</RadioButton>
+                        </div>
+                        <RadioButton name='whenBlock7-group3' checked>Настроить фильтр по потребителям</RadioButton>
+                        <div className='row__filter row__filter_bottom' />
+                    </Row>
+                    <Row isEdit isSelectChecked title='Событие'>
+                        <Select
+                            placeholder='Выберите событие'
+                            items={[
+                                { title: 'Потребитель попал в БД' },
+                                null,
+                                { title: 'Потребитель был сдедублицирован' },
+                                { title: 'Потребитель попал в сегмент' },
+                                { title: 'Потребитель вышел из сегментации' },
+                                { title: 'Изменился статус подписки' },
+                                { title: 'Первое подтверждение мобильного телефона' },
+                                null,
+                                { title: 'Изменение email' },
+                                { title: 'Первое подтверждение email' },
+                                { title: 'Обновление данных потребителя' },
+                                { title: 'Редактирование анкеты потребителем' },
+                                { title: 'Потребитель вошел на сайт' },
+                                { title: 'Активация секретного кода потребителем', disabled: true },
+                                { title: 'Потребитель получил приз' },
+                                { title: 'Изменение статуса FMCG заказа' },
+                                { title: 'Создание FMCG заказа' }
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isFilter title='Триггер сработает при попадании под фильтр по активации кодов'>
+                        &nbsp;
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Время от события'>
+                        Активировать триггер
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'через' },
+                            ]}
+                        />
+                        <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'часа' },
+                                { title: 'недели' },
+                            ]}
+                        />
+                        после события
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                            Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'> 
+                                <Input defaultValue='10' maxLength={2} />
+                            </div>
+                            <Select
+                                placeholder='Выберите'
+                                items={[
+                                    { title: 'минут' },
+                                    { title: 'часов' },
+                                    { title: 'дней' },
+                                ]}
+                            />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 1. Включили запуск триггера по графику.
+                    По умолчанию выбирается простой еженедельный режим,
+                    можно переключиться на простой ежедневный,
+                    ежемесячный, ежегодный,
+                    а также опционально — выбрать вариант «Настроить особый режим»
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock7-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock7-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock7-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock7-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit title='Дни недели'>
+                        <Period
+                            theme='small'
+                            items={[
+                                { title: 'Пн', isChecked: true },
+                                { title: 'Вт' },
+                                { title: 'Ср' },
+                                { title: 'Чт' },
+                                { title: 'Пт' },
+                                { title: 'Сб' },
+                                { title: 'Вс' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 2. Выбрали вариант «Настроить особый режим»,
+                    появились дополнительные опции для подробной настройки запуска триггера.
+                    В случае особого режима, варианты в списке «Режим запуска» меняются с «Каждый день» на «По дням»,
+                    с «Каждую неделю» на «По неделям», с «Каждый месяц» на «По месяцам»
+                    и с «Каждый гол» на «По годам». Пример режима по дням (повторять запуск каждые Х дней).
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock8-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock8-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock8-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock8-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждую'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 3. Пример режима по неделям. Повторять запуск каждые Х недель в определенные дни недели.
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock9-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock9-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock9-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock9-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждую'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit title='Дни недели'>
+                        <Period
+                            theme='small'
+                            items={[
+                                { title: 'Пн', isChecked: true },
+                                { title: 'Вт' },
+                                { title: 'Ср' },
+                                { title: 'Чт' },
+                                { title: 'Пт' },
+                                { title: 'Сб' },
+                                { title: 'Вс' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 4. Пример режима по месяцам. Повторять запуск каждые Х месяцев по конкретным датам.
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock10-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock10-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock10-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock10-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждый'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit isSelectCalendar title='Дни повтора'>
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'По конкретным датам' },
+                                null,
+                                { title: 'Первый' },
+                                { title: 'Второй' },
+                                { title: 'Третий' },
+                                { title: 'Четвёртый' },
+                                { title: 'Пятый' },
+                                null,
+                                { title: 'Последний'}
+                            ]}
+                        />
+                        <Period
+                            theme='small'
+                            items={[
+                                { title: '1', isChecked: true },
+                                { title: '2' },
+                                { title: '3' },
+                                { title: '4' },
+                                { title: '5' },
+                                { title: '6' },
+                                { title: '7' },
+                                { title: '8' },
+                                { title: '9' },
+                                { title: '10' },
+                                { title: '11' },
+                                { title: '12' },
+                                { title: '13' },
+                                { title: '14' },
+                                { title: '15' },
+                                { title: '16' },
+                                { title: '17' },
+                                { title: '18' },
+                                { title: '19' },
+                                { title: '20' },
+                                { title: '21' },
+                                { title: '22' },
+                                { title: '23' },
+                                { title: '24' },
+                                { title: '25' },
+                                { title: '26' },
+                                { title: '27' },
+                                { title: '28' },
+                                { title: '29' },
+                                { title: '30' },
+                                { title: '31' }
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 5. Кроме режима по конкретным датам, пользователь может выбрать из списка других режимов. Во всех режимах,
+                    кроме режима по датам, справа  появляется дополнительный список для выбора дня недели.
+                    Возможна любая комбинация значений этих двух контролов.
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock11-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock11-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock11-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock11-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждый'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit isSelectDouble title='Дни повтора'>
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'По конкретным датам' },
+                                null,
+                                { title: 'Первый' },
+                                { title: 'Второй' },
+                                { title: 'Третий' },
+                                { title: 'Четвёртый' },
+                                { title: 'Пятый' },
+                                null,
+                                { title: 'Последний'}
+                            ]}
+                        />
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'понедельник' },
+                                null,
+                                { title: 'вторник' },
+                                { title: 'среда' },
+                                { title: 'четверг' },
+                                { title: 'пятница' },
+                                { title: 'суббота' },
+                                { title: 'воскресенье' },
+                                null,
+                                { title: 'день месяца' },
+                                { title: 'будний день месяца' },
+                                { title: 'выходной день месяца' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 7. Пример режима по годам. Повторять запуск каждые Х лет по конкретным месяцам. Блок «Дни повтора» содержит все те же опции, что и в варианте по месяцам
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock12-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock12-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock12-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock12-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждый'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit isControl title='Месяцы повтора'>
+                        <Period items={[
+                            { title: 'Янв', isChecked: true },
+                            { title: 'Фев' },
+                            { title: 'Мар' },
+                            { title: 'Апр' },
+                            { title: 'Май' },
+                            { title: 'Июн' },
+                            { title: 'Июл' },
+                            { title: 'Авг' },
+                            { title: 'Сен' },
+                            { title: 'Окт' },
+                            { title: 'Ноя' },
+                            { title: 'Дек' }
+                        ]} />
+                    </Row>
+                    <Row isEdit isSelectCalendar title='Дни повтора'>
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'По конкретным датам' },
+                                null,
+                                { title: 'Первый' },
+                                { title: 'Второй' },
+                                { title: 'Третий' },
+                                { title: 'Четвёртый' },
+                                { title: 'Пятый' },
+                                null,
+                                { title: 'Последний' }
+                            ]}
+                        />
+                        <Period
+                            theme='small'
+                            items={[
+                                { title: '1', isChecked: true },
+                                { title: '2' },
+                                { title: '3' },
+                                { title: '4' },
+                                { title: '5' },
+                                { title: '6' },
+                                { title: '7' },
+                                { title: '8' },
+                                { title: '9' },
+                                { title: '10' },
+                                { title: '11' },
+                                { title: '12' },
+                                { title: '13' },
+                                { title: '14' },
+                                { title: '15' },
+                                { title: '16' },
+                                { title: '17' },
+                                { title: '18' },
+                                { title: '19' },
+                                { title: '20' },
+                                { title: '21' },
+                                { title: '22' },
+                                { title: '23' },
+                                { title: '24' },
+                                { title: '25' },
+                                { title: '26' },
+                                { title: '27' },
+                                { title: '28' },
+                                { title: '29' },
+                                { title: '30' },
+                                { title: '31' }
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
+                    </Row>
+                </SectionWrapper>
+                <div style={{ color: '#8b572a', fontSize: '16px;', paddingTop: '28px', paddingLeft: '2px', paddingBottom: '16px' }}>
+                    1 | 9. Пример режима по годам. Повторять запуск каждые Х лет по конкретным месяцам. Блок «Дни повтора» содержит все те же опции, что и в варианте по месяцам
+                </div>
+                <SectionWrapper title='Когда' isEdit>
+                    <Row isEdit isControl title='Период активности'>
+                        <RadioButton name='whenBlock13-group1' checked>Триггер активен на протяжении всей кампании</RadioButton>
+                        <RadioButton name='whenBlock13-group1'>Запланировать период активности</RadioButton>
+                    </Row>
+                    <Row isEdit isControl title='Режим запуска'>
+                        <RadioButton name='whenBlock13-group2'>По событию</RadioButton>
+                        <RadioButton name='whenBlock13-group2' checked>По графику</RadioButton>
+                    </Row>
+                    <Row isEdit isSelectChecked title='Запускать'>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'по дням' },
+                                { title: 'по месяцам' },
+                            ]}
+                        />
+                        <Checkbox checked text='Настроить фильтр по этому событию' />
+                    </Row>
+                    <Row isEdit isControl title='Повторять запуск каждый'>
+                        <div className='row__input'>
+                            <Input defaultValue='1' maxLength={2} />
+                        </div>
+                        неделю с момента старт
+                    </Row>
+                    <Row isEdit isControl title='Месяцы повтора'>
+                        <Period items={[
+                            { title: 'Янв', isChecked: true },
+                            { title: 'Фев' },
+                            { title: 'Мар' },
+                            { title: 'Апр' },
+                            { title: 'Май' },
+                            { title: 'Июн' },
+                            { title: 'Июл' },
+                            { title: 'Авг' },
+                            { title: 'Сен' },
+                            { title: 'Окт' },
+                            { title: 'Ноя' },
+                            { title: 'Дек' }
+                        ]} />
+                    </Row>
+                    <Row isEdit isSelectDouble title='Дни повтора'>
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'По конкретным датам' },
+                                null,
+                                { title: 'Первый' },
+                                { title: 'Второй' },
+                                { title: 'Третий' },
+                                { title: 'Четвёртый' },
+                                { title: 'Пятый' },
+                                null,
+                                { title: 'Последний' }
+                            ]}
+                        />
+                        <Select
+                            placeholder='Выберите дни повтора'
+                            items={[
+                                { title: 'Последний' },
+                                { title: 'понедельник' },
+                                null,
+                                { title: 'вторник' },
+                                { title: 'среда' },
+                                { title: 'четверг' },
+                                { title: 'пятница' },
+                                { title: 'суббота' },
+                                { title: 'воскресенье' },
+                                null,
+                                { title: 'день месяца' },
+                                { title: 'будний день месяца' },
+                                { title: 'выходной день месяца' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit title='Время'>
+                        <TimeField hours={12} minutes={23} />
+                    </Row>
+                    <Row hasInfo isEdit isControl title='Срок актуальности'>
+                        Допускается запоздание срабатывания триггера не более, чем на
+                            <div className='row__input'>
+                            <Input defaultValue='10' maxLength={2} />
+                        </div>
+                        <Select
+                            placeholder='Выберите'
+                            items={[
+                                { title: 'минут' },
+                                { title: 'часов' },
+                                { title: 'дней' },
+                            ]}
+                        />
+                    </Row>
+                    <Row isEdit isFooter>
+                        <Button color="gray" hasUnderline size="large" >Сохранить</Button>
                     </Row>
                 </SectionWrapper>
             </Page>

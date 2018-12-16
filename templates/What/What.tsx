@@ -6,6 +6,7 @@ import { Row } from '../../components/Row/Row';
 import { Text } from '../../components/Text/Text';
 import { Select } from '../../components/Select/Select';
 import { DateField } from '../../components/DateField/DateField';
+import { ActionFilter } from '../../components/ActionFilter/ActionFilter';
 
 export class What extends React.Component<{}> {
     public render() {
@@ -190,7 +191,18 @@ export class What extends React.Component<{}> {
                                 { title: 'Создать новую рассылку' },
                             ]}
                         />
-                        <div className='row__action-filter'></div>
+                         <ActionFilter
+                            defaultType='Email'
+                            name='Новая рассылка №37'
+                            types={[
+                                {title: 'Email'},
+                                {title: 'Email 2'},
+                                {title: 'Email 3'}
+                            ]}
+                        >
+                            <Button color='gray' hasUnderline size='normal'>Сохранить черновик рассылки</Button>
+                            <Button color='gray' hasUnderline size='normal'>Сохранить и перейти к редактированию</Button>
+                        </ActionFilter>
                     </Row>
                     <Row isEdit isSelect title='Действие 3' isAction>
                         <Select

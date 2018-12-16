@@ -1,0 +1,38 @@
+.action-filter {
+    margin-top: 15px;
+    max-width: 665px;
+    font-family: "PT Sans", sans-serif;
+    background-color: #fff;
+    border: 1px solid #f0ece4;
+    border-radius: 2px;
+
+    &__content {
+        padding: 14px 19px 20px 19px;
+        display: flex;
+    }
+
+    &__title {
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #000;
+    }
+
+    &__type {
+        width: 199px;
+        margin-right: 10px;
+    }
+
+    &__name {
+        width: 417px;
+    }
+
+    &__footer {
+        border-top: 1px solid rgba(212,212,212, 0.35);
+        padding: 14px 19px;
+        display: flex;
+    }
+
+    &__footer-inner {
+        margin-right: 11px;
+    }
+}

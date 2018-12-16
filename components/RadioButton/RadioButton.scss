@@ -23,6 +23,11 @@
         border: 1px dashed #265378;
         font-size: 14px;
         color: #265378;
+
+        &:hover {
+            background-color: lighten($color: #265378, $amount: 65%);
+            color: #000;
+        }
     }
 
     &__input:checked + &__checkmark {
@@ -31,5 +36,9 @@
         border: 2px solid #a0ba82;
         color: #000;
         font-weight: bold;
+
+        &:hover {
+            background-color: darken($color: #f5f1bb, $amount: 18%);
+        }
     }
 }

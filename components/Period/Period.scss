@@ -13,6 +13,10 @@
         width: 56px;
         height: 56px;
         cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
     }
 
     &__input {
@@ -39,6 +43,10 @@
         color: #fff;
         border: none;
         background-image: linear-gradient(to bottom, #69709e, #8299ba);
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     &_theme_small &__item {

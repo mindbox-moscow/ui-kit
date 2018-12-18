@@ -24,16 +24,27 @@ interface Props {
 }
 
 export class TimeField extends React.Component<Props> {
+    dropDown: HTMLDivElement;
     minutesInput: HTMLInputElement;
     hoursInput: HTMLInputElement;
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
-        isSecondHourActive: false,
+        isSecondHourActive: true,
         isSecondMinuteActive: false,
-        isActiveMinutes: false
+        isActiveMinutes: false,
+        isOpen: false,
     };
 
+    componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside);
+    }
+
+    handleDropDownRef = (ref: HTMLDivElement) => this.dropDown = ref;
     handleMinutesRef = (ref: HTMLInputElement) => this.minutesInput = ref;
     handleHoursRef = (ref: HTMLInputElement) => this.hoursInput = ref;
 
@@ -117,9 +128,37 @@ export class TimeField extends React.Component<Props> {
         }
     }
 
-    handleMinutesFocus = () => this.setState({isActiveMinutes: true})
+    handleClickOutside = (event: MouseEvent) => {
+        const target: any = event.target;
+        if (!this.dropDown || !this.dropDown.contains(target)) {
+            this.setState({ isOpen: false })
+        }
+    }
 
-    handleHoursFocus = () => this.setState({isActiveMinutes: false})
+    selectHours = (event: any) => {
+        const num = parseInt(event.target.innerText);
+        this.setState({ isSecondHourActive: true, hours: num });
+    }
+
+    selectMinutes = (event: any) => {
+        const num = parseInt(event.target.innerText);
+        this.setState({ isSecondMinuteActive: true, minutes: num });
+    }
+
+    handleMinutesFocus = () => this.setState({isActiveMinutes: true, isOpen: true})
+
+    handleHoursFocus = () => this.setState({isActiveMinutes: false, isOpen: true})
+
+    createArrayTime = (value: any) => {
+        const numbers = [];
+        for (let i = 0; i <= value; i++) {
+            if (i < 10) {
+                numbers.push(`0${i}`);
+            } else numbers.push(`${i}`);
+        }
+
+        return numbers;
+    }
 
     handleUp = () => {
         const { isActiveMinutes, minutes, hours } = this.state;
@@ -146,52 +185,78 @@ export class TimeField extends React.Component<Props> {
     }
 
     public render() {
-        const { hours, minutes } = this.state
+        const { hours, minutes, isOpen } = this.state
         const { disabled } = this.props
         const hoursValue = formatTime(hours, 0, 23);
         const minutesValue = formatTime(minutes, 0, 59);
         return (
-            <div className={cn('time-field', disabled && 'time-field_disabled')}>
-                <input
-                    onFocus={this.handleHoursFocus}
-                    onChange={() => {}}
-                    ref={this.handleHoursRef}
-                    type='text'
-                    className='time-field__input'
-                    value={hoursValue}
-                    disabled={disabled}
-                    onKeyDown={this.handleChangeHours}
-                />
-                <span className='time-field__dots'>:</span>
-                <input
-                    onFocus={this.handleMinutesFocus}
-                    onChange={() => {}}
-                    ref={this.handleMinutesRef}
-                    type='text'
-                    disabled={disabled}
-                    className={cn('time-field__input', 'time-field__input_minutes')}
-                    value={minutesValue}
-                    onKeyDown={this.handleChangeMinutes}
-                />
-                <div className='time-field__controls'>
-                    <button
-                        className='time-field__button'
-                        type='button'
-                        onClick={this.handleUp}
-                        disabled={disabled}
-                    >
-                        <span className='time-field__arrow' />
-                    </button>
-                    <button
-                        className='time-field__button'
-                        type='button'
-                        onClick={this.handleDown}
-                        disabled={disabled}
-                    >
-                        <span className={cn('time-field__arrow', 'time-field__arrow_down')} />
-                    </button>
+            <>
+            <div ref={this.handleDropDownRef}>
+                <div className={cn('time-field_wrapper', isOpen && 'time-field_wrapper-open')}>
+                    <div className={cn('time-field', disabled && 'time-field_disabled')}>
+                        <input
+                            onFocus={this.handleHoursFocus}
+                            onChange={() => {}}
+                            ref={this.handleHoursRef}
+                            type='text'
+                            className='time-field__input'
+                            value={hoursValue}
+                            disabled={disabled}
+                            onKeyDown={this.handleChangeHours}
+                        />
+                        <span className='time-field__dots'>:</span>
+                        <input
+                            onFocus={this.handleMinutesFocus}
+                            onChange={() => {}}
+                            ref={this.handleMinutesRef}
+                            type='text'
+                            disabled={disabled}
+                            className={cn('time-field__input', 'time-field__input_minutes')}
+                            value={minutesValue}
+                            onKeyDown={this.handleChangeMinutes}
+                        />
+                        <div className='time-field__controls'>
+                            <button
+                                className='time-field__button'
+                                type='button'
+                                onClick={this.handleUp}
+                                disabled={disabled}
+                            >
+                                <span className='time-field__arrow' />
+                            </button>
+                            <button
+                                className='time-field__button'
+                                type='button'
+                                onClick={this.handleDown}
+                                disabled={disabled}
+                            >
+                                <span className={cn('time-field__arrow', 'time-field__arrow_down')} />
+                            </button>
+                        </div>
+                    </div>
                 </div>
+                    {isOpen && <div className='time-field__drop-down'>
+                    <ul className='time-field__drop-down_list'>
+                            {this.createArrayTime(23).map(item => 
+                                <li onClick={this.selectHours} className={cn({
+                                    ['time-field__drop-down_item']: true,
+                                    ['time-field__drop-down_item-selected']: (parseInt(item) === hours),
+                                })}>
+                                    {item}
+                                </li>)}
+                    </ul>
+                    <ul className='time-field__drop-down_list'>
+                        {this.createArrayTime(59).map(item => 
+                                <li onClick={this.selectMinutes} className={cn({
+                                    ['time-field__drop-down_item']: true,
+                                    ['time-field__drop-down_item-selected']: (parseInt(item) === minutes),
+                                })}>
+                                    {item}
+                                </li>)}
+                    </ul>
+                </div>}
             </div>
+            </>
         );
     }
 }

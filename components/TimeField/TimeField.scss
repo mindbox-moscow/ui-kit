@@ -97,6 +97,7 @@
     }
 
     &__drop-down {
+        overflow: hidden;
         box-sizing: border-box;
         position: absolute;
         width: 94px;
@@ -109,12 +110,21 @@
         list-style: none;
 
         &_list {
+            position: absolute;
+            height: 100%;
             display: flex;
             flex-direction: column;
             overflow-y: scroll;
+            overflow-x: hidden;
             border-left: 2px solid #d4d4d4;
             padding: 0;
             margin: 0;
+            padding-right: calc(50% + 15px);
+
+            &:last-child {
+                left: 50%;
+                padding-right: 15px;
+            }
         }
 
         &_item {
@@ -131,3 +141,18 @@
         }
     }
 }
+
+
+// .element::-webkit-scrollbar {
+//     width: 0;
+// }
+
+// /* ie 10+ */
+// .element {
+//     -ms-overflow-style: none;
+// }
+
+// /* фф (свойство больше не работает, других способов тоже нет)*/
+// .element {
+//     overflow: -moz-scrollbars-none;
+// }

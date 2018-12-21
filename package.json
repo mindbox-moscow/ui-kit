@@ -1,7 +1,8 @@
 {
     "name": "@mindbox/ui-kit",
     "version": "0.1.4-dev",
-    "dependencies": {
+    "dependencies": {},
+    "peerDependencies": {
         "classnames": "^2.2.6",
         "react": "^16.4.0",
         "react-dom": "^16.4.0"

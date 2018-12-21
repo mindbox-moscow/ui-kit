@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MainActive } from "@mindbox/ui-kit/templates/MainActive/MainActive";
+import { Main } from "../templates/Main/Main";
 
 const entryElement = document.createElement("div");
 document.body.appendChild(entryElement);
 
 ReactDOM.render(
-    <MainActive />,
+    <Main />,
     entryElement
 )

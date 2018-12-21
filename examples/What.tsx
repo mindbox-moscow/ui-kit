@@ -1,11 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { When } from "@mindbox/ui-kit/templates/When/When";
+
+import { What } from "../templates/What/What";
 
 const entryElement = document.createElement("div");
 document.body.appendChild(entryElement);
 
 ReactDOM.render(
-    <When />,
+    <What />,
     entryElement
 )

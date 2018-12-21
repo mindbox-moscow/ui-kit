@@ -33,12 +33,10 @@ jobs:
         on:
           branch: master
       after_script:
-        - echo $TRAVIS_PULL_REQUEST
-        - if [ "$TRAVIS_PULL_REQUEST" != "true" ]; then exit; fi;
+        - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit; fi;
         - cd ./docs
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"
         - git add --all
-        - git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"
-        - git remote add origin-pages https://$GITHUB_TOKEN@github.com/mindbox-moscow/ui-kit.git > /dev/null 2>&1
-        - git push --quiet
+        - 'git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"'
+        - git push "https://${GITHUB_TOKEN}@github.com/mindbox-moscow/ui-kit.git" gh-pages > /dev/null 2>&1

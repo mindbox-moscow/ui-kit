@@ -1,8 +1,8 @@
 import * as React from "react";
 import './Row.scss'
 import cn from 'classnames'
-import { Icon } from '../Icon/Icon'
 import { Help } from '../Help/Help'
+import Trashcan from '../Trashcan/Trashcan';
 
 interface Props {
     title?: string;
@@ -126,7 +126,7 @@ export class Row extends React.Component<Props> {
                     )}
                     {isRemovable &&
                         <button type='button' className='row__remove' onClick={this.handleRemove}>
-                            <Icon icon='remove' />
+                            <Trashcan />
                         </button>
                     }
                 </div>

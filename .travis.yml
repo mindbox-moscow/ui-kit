@@ -14,10 +14,14 @@ jobs:
   include:
     - stage:
       name: build
+      install:
+        - rm -rf .git
+        - rm -rf docs
+        - git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+        - yarn global add webpack-cli@3.1.2 webpack@4
+        - yarn
       script:
         - node ./deploy/patch-version.js
-        - yarn
-        - yarn global add webpack-cli@3.1.2 webpack@4
         - yarn build
         - yarn build-examples
         - yarn test
@@ -28,3 +32,13 @@ jobs:
         api_key: $NPM_AUTH_TOKEN
         on:
           branch: master
+      after_script:
+        - echo $TRAVIS_PULL_REQUEST
+        - if [ "$TRAVIS_PULL_REQUEST" != "true" ]; then exit; fi;
+        - cd ./docs
+        - git config --global user.email "travis@travis-ci.org"
+        - git config --global user.name "Travis CI"
+        - git add --all
+        - git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"
+        - git remote add origin-pages https://$GITHUB_TOKEN@github.com/mindbox-moscow/ui-kit.git > /dev/null 2>&1
+        - git push --quiet

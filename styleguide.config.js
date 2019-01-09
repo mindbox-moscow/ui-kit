@@ -53,7 +53,7 @@ module.exports = {
         {
             name: 'UI Components',
             content: 'styleguide/ui.md',
-            components: 'components/**/[A-Z]*.{ts,tsx}'
+            components: 'src/**/[A-Z]*.{ts,tsx}'
         }
     ]
 }

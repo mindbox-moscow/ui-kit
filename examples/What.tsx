@@ -1,14 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from '../components/Button/Button';
-import { SectionWrapper } from '../components/SectionWrapper/SectionWrapper';
-import { Page } from '../components/Page/Page';
-import { Row } from '../components/Row/Row';
-import { Text } from '../components/Text/Text';
-import { Select } from '../components/Select/Select';
-import { DateField } from '../components/DateField/DateField';
-import { ActionFilter } from '../components/ActionFilter/ActionFilter';
+import { Button } from '../src/Button/Button';
+import { SectionWrapper } from '../src/SectionWrapper/SectionWrapper';
+import { Page } from '../src/Page/Page';
+import { Row } from '../src/Row/Row';
+import { Text } from '../src/Text/Text';
+import { Select } from '../src/Select/Select';
+import { DateField } from '../src/DateField/DateField';
+import { ActionFilter } from '../src/ActionFilter/ActionFilter';
 
 class What extends React.Component<{}> {
     public render() {

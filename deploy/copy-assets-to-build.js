@@ -3,10 +3,10 @@ const cpy = require('cpy');
 (async () => {
     await cpy(['**/*', '!**/*{.md,.js,.jsx,.ts,.tsx}'], '../build', {
         parents: true,
-        cwd: "components"
+        cwd: "src"
     });
-    console.log('Assets copied!');
+    console.log('NPM:', 'assets copied');
 
     await cpy(['package.json'], 'build');
-    console.log('package.json copied!');
+    console.log('NPM:', 'package.json copied');
 })();

@@ -26,6 +26,7 @@ jobs:
         - yarn build:examples
         - yarn build:npm-module
         - yarn test
+      before_deploy: cd build
       deploy:
         provider: npm
         skip_cleanup: true

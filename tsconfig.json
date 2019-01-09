@@ -5,7 +5,6 @@
     "target": "es5",
     "lib": ["es6", "dom"],
     "sourceMap": true,
-    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
     "rootDir": "components",
@@ -23,6 +22,7 @@
   "exclude": [
     "node_modules",
     "dist",
+    "build",
     "scripts",
     "acceptance-tests",
     "webpack",

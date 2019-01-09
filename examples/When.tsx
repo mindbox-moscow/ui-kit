@@ -1,18 +1,18 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from "../components/Button/Button";
-import { Page } from "../components/Page/Page";
-import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
-import { Row } from "../components/Row/Row";
-import { Text } from "../components/Text/Text";
-import { RadioButton } from "../components/RadioButton/RadioButton";
-import { Select } from "../components/Select/Select";
-import { DateField } from "../components/DateField/DateField";
-import { TimeField } from "../components/TimeField/TimeField";
-import { Checkbox } from "../components/Checkbox/Checkbox";
-import { Input } from "../components/Input/Input";
-import { Period } from "../components/Period/Period";
+import { Button } from "../src/Button/Button";
+import { Page } from "../src/Page/Page";
+import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
+import { Row } from "../src/Row/Row";
+import { Text } from "../src/Text/Text";
+import { RadioButton } from "../src/RadioButton/RadioButton";
+import { Select } from "../src/Select/Select";
+import { DateField } from "../src/DateField/DateField";
+import { TimeField } from "../src/TimeField/TimeField";
+import { Checkbox } from "../src/Checkbox/Checkbox";
+import { Input } from "../src/Input/Input";
+import { Period } from "../src/Period/Period";
 
 class When extends React.Component<{}> {
     public render() {

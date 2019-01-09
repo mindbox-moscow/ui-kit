@@ -7,8 +7,8 @@ node_modules/
 /coverage
 
 # production
-/components/**/*.js
-/components/**/*.js.map
+/src/**/*.js
+/src/**/*.js.map
 
 # misc
 .DS_Store

@@ -7,7 +7,7 @@
     "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "rootDir": "components",
+    "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -17,7 +17,7 @@
     "noUnusedLocals": true
   },
   "include": [
-    "components", "templates/Main/Main.tsx", "templates/Trigger/Trigger.tsx", "templates/Main/Main.tsx"
+    "src", "templates/Main/Main.tsx", "templates/Trigger/Trigger.tsx", "templates/Main/Main.tsx"
   ],
   "exclude": [
     "node_modules",

@@ -1,14 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from '../components/Button/Button';
-import { SectionWrapper } from '../components/SectionWrapper/SectionWrapper';
-import { Row } from '../components/Row/Row';
-import { Page } from '../components/Page/Page';
-import { Text } from '../components/Text/Text';
-import { RadioButton } from '../components/RadioButton/RadioButton';
-import { Select } from '../components/Select/Select';
-import { DateField } from '../components/DateField/DateField';
+import { Button } from '../src/Button/Button';
+import { SectionWrapper } from '../src/SectionWrapper/SectionWrapper';
+import { Row } from '../src/Row/Row';
+import { Page } from '../src/Page/Page';
+import { Text } from '../src/Text/Text';
+import { RadioButton } from '../src/RadioButton/RadioButton';
+import { Select } from '../src/Select/Select';
+import { DateField } from '../src/DateField/DateField';
 
 class MainActive extends React.Component<{}> {
     state = {

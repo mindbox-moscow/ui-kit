@@ -57,12 +57,12 @@
             left: -24px;
             width: 18px;
             height: 16px;
-            background-image: url(../../base/icons/icons.png);
+            background-image: url(../assets/icons/icons.png);
             background-size: 400px;
             background-position: -360px -160px;
 
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-                background-image: url(../../base/icons/icons@2x.png);
+                background-image: url(../assets/icons/icons@2x.png);
             }
         }
     }

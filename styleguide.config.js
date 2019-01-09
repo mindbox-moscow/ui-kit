@@ -3,7 +3,11 @@ const path = require('path');
 const getComponentPathLine = (componentPath) => {
     let name = path.basename(componentPath, '.tsx');
     name = path.basename(name, '.tsx');
-    const dir = path.dirname(componentPath).replace(/\\/g, "/");
+    const dir = path
+        .dirname(componentPath)
+        .replace(/\\/g, "/")
+        // skip src folder in result
+        .substring("src/".length);
 
     if (dir.startsWith("templates"))
         return null;

@@ -2,11 +2,11 @@
     display: block;
     width: 22px;
     height: 22px;
-    background-image: url(../../base/icons/icons.png);
+    background-image: url(../assets/icons/icons.png);
     background-size: 400px;
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        background-image: url(../../base/icons/icons@2x.png);
+        background-image: url(../assets/icons/icons@2x.png);
     }
 
     &_help {
@@ -35,11 +35,11 @@
 
     &_edit {
         background-position: -80px -160px;
-        background-image: url(../../base/icons/icons-state.png);
+        background-image: url(../assets/icons/icons-state.png);
 
         @media (-webkit-min-device-pixel-ratio: 2),
         (min-resolution: 192dpi) {
-            background-image: url(../../base/icons/icons-state@2x.png);
+            background-image: url(../assets/icons/icons-state@2x.png);
         }
     }
 }

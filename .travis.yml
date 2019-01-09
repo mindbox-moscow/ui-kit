@@ -24,6 +24,7 @@ jobs:
         - node ./deploy/patch-version.js
         - yarn build
         - yarn build:examples
+        - yarn build:npm-module
         - yarn test
       deploy:
         provider: npm

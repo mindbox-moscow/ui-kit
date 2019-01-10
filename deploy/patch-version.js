@@ -2,12 +2,14 @@ const execSync = require("child_process").execSync;
 const semver = require("semver");
 const fs = require("fs");
 
-const exec = (command) => execSync(command, { encoding: 'utf8' });
+const exec = command => execSync(command, { encoding: "utf8" });
 
 const version = exec("npm show @mindbox/ui-kit version");
 
 const patch = semver.patch(version);
-const patchedVersion = `${semver.major(version)}.${semver.minor(version)}.${(patch + 1)}`;
+const patchedVersion = `${semver.major(version)}.${semver.minor(
+    version
+)}.${patch + 1}`;
 
 let package = require("../package.json");
 package.version = patchedVersion;

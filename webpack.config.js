@@ -1,4 +1,4 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const glob = require("glob");
 
@@ -9,7 +9,7 @@ const getExampleNames = () => {
     const subResult = glob.sync(testFilesPath);
     names = [...names, ...subResult];
 
-    return names.map((p) => path.basename(p, ".tsx"));
+    return names.map(p => path.basename(p, ".tsx"));
 };
 
 const getEntries = () => {
@@ -20,7 +20,7 @@ const getEntries = () => {
     }
 
     return entry;
-}
+};
 
 const getHtmlPlugins = () => {
     let plugins = [];
@@ -35,30 +35,31 @@ const getHtmlPlugins = () => {
     }
 
     return plugins;
-}
+};
 
 module.exports = () => ({
     entry: getEntries(),
     output: {
-        filename: './[name].js',
-        path: path.resolve(__dirname, "docs"),
+        filename: "./[name].js",
+        path: path.resolve(__dirname, "docs")
     },
-    devtool: 'source-map',
+    devtool: "source-map",
 
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
     },
 
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.tsx?$/,
                 use: {
-                    loader: 'ts-loader',
+                    loader: "ts-loader"
                 }
             },
             {
                 test: /\.css$/,
-                use: 'style-loader'
+                use: "style-loader"
             },
             {
                 test: /\.scss$/,
@@ -70,12 +71,14 @@ module.exports = () => ({
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]"
+                        }
                     }
-                }]
+                ]
             }
         ]
     },

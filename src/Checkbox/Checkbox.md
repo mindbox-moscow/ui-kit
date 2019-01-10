@@ -4,10 +4,10 @@
         <Checkbox />
     </div>
     <div>
-        <Checkbox text='Настроить особый режим' />
+        <Checkbox text="Настроить особый режим" />
     </div>
     <div>
-        <Checkbox checked text='Настроить особый режим' />
+        <Checkbox checked text="Настроить особый режим" />
     </div>
 </div>
 ```

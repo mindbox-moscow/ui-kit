@@ -6,7 +6,7 @@
     &__icon {
         position: relative;
         z-index: 9;
-        opacity: .5;
+        opacity: 0.5;
     }
 
     &__inner {
@@ -30,7 +30,7 @@
             z-index: 1;
             top: 0;
             left: -37px;
-            content: '';
+            content: "";
             width: 37px;
             height: 33px;
             background-color: #fffcf0;
@@ -42,7 +42,7 @@
             z-index: 2;
             top: 0;
             left: -2px;
-            content: '';
+            content: "";
             width: 5px;
             height: 33px;
             background-color: #fffcf0;

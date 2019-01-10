@@ -3,5 +3,6 @@
         "node_modules/": true,
         "build/": true,
         "package-lock.json": true
-    }
+    },
+    "editor.formatOnSave": true
 }

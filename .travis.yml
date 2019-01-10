@@ -34,6 +34,7 @@ jobs:
               api_key: $NPM_AUTH_TOKEN
               on:
                   branch: master
+          after_deploy: cd ..
           after_script:
               - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit; fi;
               - cd ./docs

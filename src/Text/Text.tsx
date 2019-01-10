@@ -1,6 +1,6 @@
 import * as React from "react";
-import './Text.scss'
-import cn from 'classnames';
+import "./Text.scss";
+import cn from "classnames";
 
 interface Props {
     children: string;
@@ -9,14 +9,16 @@ interface Props {
 
 export class Text extends React.Component<Props> {
     public render() {
-        const { children, mode } = this.props
+        const { children, mode } = this.props;
         return (
-            <p className={
-                cn({
-                    [`text_${mode}`]: mode,
-                }, 
-                'text'
-                )}>
+            <p
+                className={cn(
+                    {
+                        [`text_${mode}`]: mode
+                    },
+                    "text"
+                )}
+            >
                 {children}
             </p>
         );

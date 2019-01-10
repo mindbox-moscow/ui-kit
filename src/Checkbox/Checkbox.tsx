@@ -1,5 +1,5 @@
 import * as React from "react";
-import './Checkbox.scss';
+import "./Checkbox.scss";
 
 interface Props {
     text?: string;
@@ -9,18 +9,16 @@ interface Props {
 
 export class Checkbox extends React.Component<Props> {
     public render() {
-        const { text, checked, name } = this.props
+        const { text, checked, name } = this.props;
         return (
-            <label className='checkbox'>
+            <label className="checkbox">
                 <input
                     defaultChecked={checked}
-                    type='checkbox'
-                    className='checkbox__input'
+                    type="checkbox"
+                    className="checkbox__input"
                     name={name}
                 />
-                {text && (
-                    <span className='checkbox__text'>{text}</span>
-                )}
+                {text && <span className="checkbox__text">{text}</span>}
             </label>
         );
     }

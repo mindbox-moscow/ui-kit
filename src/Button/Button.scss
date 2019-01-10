@@ -30,7 +30,7 @@
     &_color-lightgray {
         background-color: #f2f2f2;
         color: #265378;
-        
+
         &:hover:not(:disabled) {
             background-color: darken($color: #f2f2f2, $amount: 8%);
             color: darken($color: #265378, $amount: 18%);
@@ -101,7 +101,10 @@
         &:hover:not(:disabled) {
             border-color: darken($color: #a12e1e, $amount: 18%);
             color: darken($color: #a12e1e, $amount: 18%);
-            background-color: darken($color: rgba(255, 240, 238, 0.5), $amount: 8%);
+            background-color: darken(
+                $color: rgba(255, 240, 238, 0.5),
+                $amount: 8%
+            );
         }
     }
 

@@ -84,7 +84,7 @@
         &::after {
             margin-top: -3px;
             display: block;
-            content: '';
+            content: "";
             border: 3px solid transparent;
             border-bottom: 4px solid #000;
         }
@@ -141,7 +141,6 @@
         }
     }
 }
-
 
 // .element::-webkit-scrollbar {
 //     width: 0;

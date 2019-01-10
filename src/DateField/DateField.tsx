@@ -1,7 +1,7 @@
 import * as React from "react";
-import './DateField.scss';
-import cn from 'classnames';
-import { Icon } from '../Icon/Icon';
+import "./DateField.scss";
+import cn from "classnames";
+import { Icon } from "../Icon/Icon";
 
 interface Props {
     disabled?: boolean;
@@ -9,62 +9,75 @@ interface Props {
     onChange?: (date: Date) => void;
 }
 
-const monthes = ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'];
+const monthes = [
+    "Янв",
+    "Фев",
+    "Мар",
+    "Апр",
+    "Май",
+    "Июн",
+    "Июл",
+    "Авг",
+    "Сен",
+    "Окт",
+    "Ноя",
+    "Дек"
+];
 
-const formatValue = (value: number) => value < 10 ? `0${value}` : `${value}`;
+const formatValue = (value: number) => (value < 10 ? `0${value}` : `${value}`);
 
 export class DateField extends React.Component<Props> {
     wrapper: HTMLElement;
     state = {
         isOpenCalendar: false,
         activeDate: this.props.defaultDate,
-        showedDate: new Date(this.props.defaultDate),
+        showedDate: new Date(this.props.defaultDate)
     };
 
     componentDidMount() {
-        document.addEventListener('click', this.handleClickOutside);
+        document.addEventListener("click", this.handleClickOutside);
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickOutside);
+        document.removeEventListener("click", this.handleClickOutside);
     }
 
-    handleWrapperRef = (ref: HTMLDivElement) => this.wrapper = ref;
+    handleWrapperRef = (ref: HTMLDivElement) => (this.wrapper = ref);
 
     handleClickOutside = (event: MouseEvent) => {
         const target: any = event.target;
         if (!this.wrapper || !this.wrapper.contains(target)) {
-            this.setState({ isOpenCalendar: false })
+            this.setState({ isOpenCalendar: false });
         }
-    }
+    };
 
     handleOpen = () => this.setState({ isOpenCalendar: true });
 
     handlePrevMonth = () => {
         const oldDate = this.state.showedDate;
         oldDate.setMonth(oldDate.getMonth() - 1);
-        this.setState({showedDate: oldDate});
-    }
+        this.setState({ showedDate: oldDate });
+    };
 
     handleNextMonth = () => {
         const oldDate = this.state.showedDate;
         oldDate.setMonth(oldDate.getMonth() + 1);
-        this.setState({showedDate: oldDate});
-    }
+        this.setState({ showedDate: oldDate });
+    };
 
     handleChangeYear = (event: any) => {
         const oldDate = this.state.showedDate;
         const value = parseInt(event.target.value, 10);
         oldDate.setFullYear(value);
-        this.setState({showedDate: oldDate});
-    }
+        this.setState({ showedDate: oldDate });
+    };
 
     handleChangeMonth = (event: any) => {
         const oldDate = this.state.showedDate;
         const value = parseInt(event.target.value, 10);
         oldDate.setMonth(value);
-        this.setState({showedDate: oldDate});
-    }
+        this.setState({ showedDate: oldDate });
+    };
 
     changeActiveDate = (year: number, month: number, date: number) => () => {
         const newDate = new Date(year, month, date);
@@ -72,7 +85,7 @@ export class DateField extends React.Component<Props> {
         if (this.props.onChange) {
             this.props.onChange(newDate);
         }
-    }
+    };
 
     public render() {
         const { isOpenCalendar, activeDate, showedDate } = this.state;
@@ -92,10 +105,14 @@ export class DateField extends React.Component<Props> {
         const lastDay = new Date(nowYear, nowMonth, lastDate).getDay();
         const firstDayFormat = firstDay === 0 ? 6 : firstDay - 1;
         const lastDayFormat = lastDay === 0 ? 6 : lastDay - 1;
-        const lastDateBefore = 32 - new Date(nowYear, nowMonth - 1, 32).getDate();
+        const lastDateBefore =
+            32 - new Date(nowYear, nowMonth - 1, 32).getDate();
         const today = new Date();
         const activeDay = year === nowYear && month === nowMonth && date;
-        const currentDay = today.getFullYear() === nowYear && today.getMonth() === nowMonth && today.getDate();
+        const currentDay =
+            today.getFullYear() === nowYear &&
+            today.getMonth() === nowMonth &&
+            today.getDate();
 
         for (let y = nowYear - 50; y <= nowYear + 50; y++) {
             yearsList.push(y);
@@ -117,32 +134,39 @@ export class DateField extends React.Component<Props> {
 
         return (
             <div
-                className={cn('date-field', disabled && 'date-field_disabled')}
+                className={cn("date-field", disabled && "date-field_disabled")}
                 onClick={disabled ? () => {} : this.handleOpen}
                 ref={this.handleWrapperRef}
             >
                 <input
                     onChange={() => {}}
-                    type='text'
-                    className='date-field__input'
+                    type="text"
+                    className="date-field__input"
                     disabled={disabled}
-                    value={`${formatValue(date)}.${formatValue(month + 1)}.${year}`}
+                    value={`${formatValue(date)}.${formatValue(
+                        month + 1
+                    )}.${year}`}
                 />
-                <div className='date-field__icon'>
-                    <Icon icon='calendar' />
+                <div className="date-field__icon">
+                    <Icon icon="calendar" />
                 </div>
 
-                <div className={cn('date-field__drop', isOpenCalendar && 'date-field__drop_open')}>
-                    <div className='date-field__head'>
+                <div
+                    className={cn(
+                        "date-field__drop",
+                        isOpenCalendar && "date-field__drop_open"
+                    )}
+                >
+                    <div className="date-field__head">
                         <button
-                            type='button'
+                            type="button"
                             onClick={this.handlePrevMonth}
-                            className='date-field__nav'
+                            className="date-field__nav"
                         />
                         <div>
                             <select
                                 value={nowMonth}
-                                className='date-field__select'
+                                className="date-field__select"
                                 onChange={this.handleChangeMonth}
                             >
                                 {monthes.map(item => (
@@ -151,7 +175,7 @@ export class DateField extends React.Component<Props> {
                             </select>
                             <select
                                 value={nowYear}
-                                className='date-field__select'
+                                className="date-field__select"
                                 onChange={this.handleChangeYear}
                             >
                                 {yearsList.map(item => (
@@ -160,37 +184,52 @@ export class DateField extends React.Component<Props> {
                             </select>
                         </div>
                         <button
-                            className='date-field__nav date-field__nav_next'
-                            type='button'
+                            className="date-field__nav date-field__nav_next"
+                            type="button"
                             onClick={this.handleNextMonth}
                         />
                     </div>
-                    <div className='date-field__calendar'>
-                        <div className='date-field__day'>Пн</div>
-                        <div className='date-field__day'>Вт</div>
-                        <div className='date-field__day'>Ср</div>
-                        <div className='date-field__day'>Чт</div>
-                        <div className='date-field__day'>Пт</div>
-                        <div className='date-field__day'>Сб</div>
-                        <div className='date-field__day'>Вс</div>
-                        {beforeDaysList.map((day, index) => <div key={index} className='date-field__date date-field__date_old'>{day}</div>)}
-                        {
-                            daysList.map((day, index) =>
-                                <div
-                                    key={index}
-                                    className={cn(
-                                        'date-field__date', {
-                                            'date-field__date_current': currentDay === day,
-                                            'date-field__date_active': activeDay === day
-                                        }
-                                    )}
-                                    onClick={this.changeActiveDate(nowYear, nowMonth, day)}
-                                >
-                                    {day}
-                                </div>
-                            )
-                        }
-                        {afterDaysList.map((day, index) => <div key={index} className='date-field__date date-field__date_old'>{day}</div>)}
+                    <div className="date-field__calendar">
+                        <div className="date-field__day">Пн</div>
+                        <div className="date-field__day">Вт</div>
+                        <div className="date-field__day">Ср</div>
+                        <div className="date-field__day">Чт</div>
+                        <div className="date-field__day">Пт</div>
+                        <div className="date-field__day">Сб</div>
+                        <div className="date-field__day">Вс</div>
+                        {beforeDaysList.map((day, index) => (
+                            <div
+                                key={index}
+                                className="date-field__date date-field__date_old"
+                            >
+                                {day}
+                            </div>
+                        ))}
+                        {daysList.map((day, index) => (
+                            <div
+                                key={index}
+                                className={cn("date-field__date", {
+                                    "date-field__date_current":
+                                        currentDay === day,
+                                    "date-field__date_active": activeDay === day
+                                })}
+                                onClick={this.changeActiveDate(
+                                    nowYear,
+                                    nowMonth,
+                                    day
+                                )}
+                            >
+                                {day}
+                            </div>
+                        ))}
+                        {afterDaysList.map((day, index) => (
+                            <div
+                                key={index}
+                                className="date-field__date date-field__date_old"
+                            >
+                                {day}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

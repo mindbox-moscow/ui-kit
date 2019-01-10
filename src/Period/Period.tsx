@@ -1,6 +1,6 @@
 import * as React from "react";
-import './Period.scss';
-import cn from 'classnames';
+import "./Period.scss";
+import cn from "classnames";
 
 interface Item {
     title: string;
@@ -15,24 +15,22 @@ interface Props {
 
 export class Period extends React.Component<Props> {
     public render() {
-        const { items, theme } = this.props
+        const { items, theme } = this.props;
         return (
             <div
-                className={cn('period', {
+                className={cn("period", {
                     [`period_theme_${theme}`]: theme
                 })}
             >
                 {items.map(({ name, title, isChecked }, index) => (
-                    <label className='period__item' key={index}>
+                    <label className="period__item" key={index}>
                         <input
-                            className='period__input'
-                            type='checkbox'
+                            className="period__input"
+                            type="checkbox"
                             name={name}
                             defaultChecked={isChecked || false}
                         />
-                        <div className='period__title'>
-                            {title}
-                        </div>
+                        <div className="period__title">{title}</div>
                     </label>
                 ))}
             </div>

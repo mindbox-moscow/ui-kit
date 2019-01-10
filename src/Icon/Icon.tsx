@@ -1,7 +1,7 @@
 import * as React from "react";
-import './Icon.scss';
+import "./Icon.scss";
 
-import cn from 'classnames';
+import cn from "classnames";
 
 interface Props {
     className?: string;
@@ -12,10 +12,15 @@ export class Icon extends React.Component<Props> {
     public render() {
         const { icon, className } = this.props;
         return (
-            <span className={cn('icon', {
-                    [`icon_${icon}`]: icon 
-                }, className)
-            }/>
+            <span
+                className={cn(
+                    "icon",
+                    {
+                        [`icon_${icon}`]: icon
+                    },
+                    className
+                )}
+            />
         );
     }
 }

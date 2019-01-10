@@ -1,8 +1,8 @@
 import * as React from "react";
-import './Row.scss'
-import cn from 'classnames'
-import { Help } from '../Help/Help'
-import Trashcan from '../Trashcan/Trashcan';
+import "./Row.scss";
+import cn from "classnames";
+import { Help } from "../Help/Help";
+import Trashcan from "../Trashcan/Trashcan";
 
 interface Props {
     title?: string;
@@ -27,12 +27,11 @@ interface Props {
 }
 
 export class Row extends React.Component<Props> {
-
     handleRemove = () => {
         if (this.props.onRemove) {
             this.props.onRemove();
         }
-    }
+    };
 
     public render() {
         const {
@@ -58,77 +57,85 @@ export class Row extends React.Component<Props> {
 
         if (isFooter) {
             return (
-                <div className='row__footer'>
-                    {
-                        React.Children.map(children, (item: any, index: number) => {
+                <div className="row__footer">
+                    {React.Children.map(
+                        children,
+                        (item: any, index: number) => {
                             if (index !== 0) {
                                 return item;
                             }
-                            return (
-                                <div className='row__submit'>
-                                    {item}
-                                </div>
-                            )
-                        })
-                    }
+                            return <div className="row__submit">{item}</div>;
+                        }
+                    )}
                 </div>
             );
         }
         return (
-            <div className={cn(
-                {
-                    ['row']: true,
-                    ['row_edit']: isEdit
-                }
-            )}>
-                <div className='row__name'>
-                    <span className='row__name-text'>
+            <div
+                className={cn({
+                    ["row"]: true,
+                    ["row_edit"]: isEdit
+                })}
+            >
+                <div className="row__name">
+                    <span className="row__name-text">
                         {title}
-                        {!isEdit && ':'}
+                        {!isEdit && ":"}
                     </span>
                     {help && isEdit && (
-                        <div className='row__help'>
-                            <Help>
-                                {help}
-                            </Help>
+                        <div className="row__help">
+                            <Help>{help}</Help>
                         </div>
                     )}
                 </div>
-                <div className='row__content'>
-                    {
-                        isCustom
-                            ? children
-                            : React.Children.map(children, (item: any, index: number) => (
-                                <div className={cn({
-                                    'row__text': isText,
-                                    'row__control': isControl,
-                                    'row__select': isSelect,
-                                    'row__small-filter': isSmallFilter,
-                                    'row__filter': isFilter,
-                                    'row__action': isAction,
-                                    'row__select-checked': isSelectChecked,
-                                    'row__select-calendar': isSelectCalendar,
-                                    'row__select-double': isSelectDouble,
-                                    
-                                })}>
-                                    {
-                                        isSmallFilter
-                                            ? <div className='row__filter-inner'>{item}</div>
-                                            : item
-                                    }
-                                </div>
-                            ))
-                    }
+                <div className="row__content">
+                    {isCustom
+                        ? children
+                        : React.Children.map(
+                              children,
+                              (item: any, index: number) => (
+                                  <div
+                                      className={cn({
+                                          row__text: isText,
+                                          row__control: isControl,
+                                          row__select: isSelect,
+                                          "row__small-filter": isSmallFilter,
+                                          row__filter: isFilter,
+                                          row__action: isAction,
+                                          "row__select-checked": isSelectChecked,
+                                          "row__select-calendar": isSelectCalendar,
+                                          "row__select-double": isSelectDouble
+                                      })}
+                                  >
+                                      {isSmallFilter ? (
+                                          <div className="row__filter-inner">
+                                              {item}
+                                          </div>
+                                      ) : (
+                                          item
+                                      )}
+                                  </div>
+                              )
+                          )}
                     {description && (
-                        <div className={cn('row__desc', isDanger && 'row__desc_danger')}>
+                        <div
+                            className={cn(
+                                "row__desc",
+                                isDanger && "row__desc_danger"
+                            )}
+                        >
                             {description}
                         </div>
                     )}
-                    {isRemovable &&
-                        <button type='button' className='row__remove' onClick={this.handleRemove}>
+                    {isRemovable && (
+                        <button
+                            type="button"
+                            className="row__remove"
+                            onClick={this.handleRemove}
+                        >
                             <Trashcan />
                         </button>
-                    }
+                    )}
                 </div>
             </div>
         );

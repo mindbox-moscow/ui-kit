@@ -1,44 +1,44 @@
 language: node_js
 node_js:
-  - "10"
+    - "10"
 
 cache:
-  directories:
-    - node_modules
+    directories:
+        - node_modules
 
 branches:
-  only: 
-    - master
+    only:
+        - master
 
 jobs:
-  include:
-    - stage:
-      name: build
-      install:
-        - rm -rf .git
-        - rm -rf docs
-        - git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
-        - yarn global add webpack-cli@3.1.2 webpack@4
-        - yarn
-      script:
-        - node ./deploy/patch-version.js
-        - yarn build
-        - yarn build:examples
-        - yarn build:npm-module
-        - yarn test
-      before_deploy: cd build
-      deploy:
-        provider: npm
-        skip_cleanup: true
-        email: $NPM_EMAIL_ADDRESS
-        api_key: $NPM_AUTH_TOKEN
-        on:
-          branch: master
-      after_script:
-        - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit; fi;
-        - cd ./docs
-        - git config --global user.email "travis@travis-ci.org"
-        - git config --global user.name "Travis CI"
-        - git add --all
-        - 'git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"'
-        - git push "https://${GITHUB_TOKEN}@github.com/mindbox-moscow/ui-kit.git" gh-pages > /dev/null 2>&1
+    include:
+        - stage:
+          name: build
+          install:
+              - rm -rf .git
+              - rm -rf docs
+              - git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+              - yarn global add webpack-cli@3.1.2 webpack@4
+              - yarn
+          script:
+              - node ./deploy/patch-version.js
+              - yarn build
+              - yarn build:examples
+              - yarn build:npm-module
+              - yarn test
+          before_deploy: cd build
+          deploy:
+              provider: npm
+              skip_cleanup: true
+              email: $NPM_EMAIL_ADDRESS
+              api_key: $NPM_AUTH_TOKEN
+              on:
+                  branch: master
+          after_script:
+              - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then exit; fi;
+              - cd ./docs
+              - git config --global user.email "travis@travis-ci.org"
+              - git config --global user.name "Travis CI"
+              - git add --all
+              - 'git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"'
+              - git push "https://${GITHUB_TOKEN}@github.com/mindbox-moscow/ui-kit.git" gh-pages > /dev/null 2>&1

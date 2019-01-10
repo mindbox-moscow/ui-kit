@@ -1,5 +1,5 @@
 import * as React from "react";
-import './Input.scss';
+import "./Input.scss";
 
 interface Props {
     defaultValue: string;
@@ -9,15 +9,14 @@ interface Props {
 }
 
 export class Input extends React.Component<Props> {
-
     public render() {
-        const { defaultValue, type, onChange, maxLength } = this.props
+        const { defaultValue, type, onChange, maxLength } = this.props;
 
         return (
             <input
                 onChange={onChange}
                 type={type}
-                className='input-field'
+                className="input-field"
                 defaultValue={defaultValue}
                 maxLength={maxLength}
             />

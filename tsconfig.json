@@ -16,12 +16,7 @@
         "suppressImplicitAnyIndexErrors": true,
         "noUnusedLocals": true
     },
-    "include": [
-        "src",
-        "templates/Main/Main.tsx",
-        "templates/Trigger/Trigger.tsx",
-        "templates/Main/Main.tsx"
-    ],
+    "include": ["src"],
     "exclude": [
         "node_modules",
         "dist",

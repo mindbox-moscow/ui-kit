@@ -16,18 +16,31 @@ export class TextLine extends React.Component<Props> {
         value: ""
     };
 
-    handleEdit = () =>
+    handleKeyUp = (event: any) => {
+        if (event.key === "Escape") {
+            this.handleExit();
+        }
+    }
+
+    handleEdit = () => {
         this.setState(
             { isEditing: !this.state.isEditing, value: this.props.text },
             () => this.input.focus()
         );
+        document.addEventListener('keyup', this.handleKeyUp);
+    }
+
+    handleExit = () => {
+        this.setState({ isEditing: false });
+        document.removeEventListener('keyup', this.handleKeyUp);
+    }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
         this.setState({ value: event.target.value });
 
     handleKeyPress = (event: any) => {
         if (event.key === "Enter") {
-            this.setState({ isEditing: false });
+            this.handleExit();
             if (this.props.onChange) {
                 this.props.onChange(this.state.value);
             }
@@ -58,23 +71,23 @@ export class TextLine extends React.Component<Props> {
                         </span>
                     </div>
                 ) : (
-                    <Tag
-                        className={
-                            isTitle
-                                ? "textLine__title"
-                                : "textLine__description"
-                        }
-                    >
-                        {text}
-                        <button
-                            className="textLine__button"
-                            type="button"
-                            onClick={this.handleEdit}
+                        <Tag
+                            className={
+                                isTitle
+                                    ? "textLine__title"
+                                    : "textLine__description"
+                            }
                         >
-                            <Icon icon="edit" />
-                        </button>
-                    </Tag>
-                )}
+                            {text}
+                            <button
+                                className="textLine__button"
+                                type="button"
+                                onClick={this.handleEdit}
+                            >
+                                <Icon icon="edit" />
+                            </button>
+                        </Tag>
+                    )}
             </div>
         );
     }

@@ -20,13 +20,14 @@ interface Props {
     hours?: number;
     minutes?: number;
     disabled?: boolean;
-    onChange?: (time: number) => void;
+    onChange?: (hours: number, minutes: number) => void;
 }
 
 export class TimeField extends React.Component<Props> {
     dropDown: HTMLDivElement;
     minutesInput: HTMLInputElement;
     hoursInput: HTMLInputElement;
+
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
@@ -48,15 +49,11 @@ export class TimeField extends React.Component<Props> {
     handleMinutesRef = (ref: HTMLInputElement) => (this.minutesInput = ref);
     handleHoursRef = (ref: HTMLInputElement) => (this.hoursInput = ref);
 
-    handleChange = (hours: number, minutes: number) => {
-        if (this.props.onChange) {
-            this.props.onChange(hours * 3600 + minutes * 60);
-        }
-    };
-
     handleChangeHours = (event: any) => {
         const { isSecondHourActive, hours, minutes } = this.state;
+        const { onChange = () => { } } = this.props;
         const keyValue = parseInt(event.key, 10);
+
         if (isNaN(keyValue)) {
             return;
         }
@@ -68,7 +65,7 @@ export class TimeField extends React.Component<Props> {
                     isSecondMinuteActive: false
                 },
                 () => {
-                    this.handleChange(keyValue + hours * 10, minutes);
+                    onChange(keyValue + hours * 10, minutes);
                     this.minutesInput.focus();
                 }
             );
@@ -80,7 +77,7 @@ export class TimeField extends React.Component<Props> {
                         isSecondMinuteActive: false
                     },
                     () => {
-                        this.handleChange(keyValue, minutes);
+                        onChange(keyValue, minutes);
                         this.minutesInput.focus();
                     }
                 );
@@ -92,7 +89,7 @@ export class TimeField extends React.Component<Props> {
                         isSecondMinuteActive: false
                     },
                     () => {
-                        this.handleChange(keyValue, minutes);
+                        onChange(keyValue, minutes);
                         this.hoursInput.focus();
                     }
                 );
@@ -102,7 +99,9 @@ export class TimeField extends React.Component<Props> {
 
     handleChangeMinutes = (event: any) => {
         const { isSecondMinuteActive, minutes, hours } = this.state;
+        const { onChange = () => { } } = this.props;
         const keyValue = parseInt(event.key, 10);
+
         if (isNaN(keyValue)) {
             return;
         }
@@ -114,7 +113,7 @@ export class TimeField extends React.Component<Props> {
                     isSecondHourActive: false
                 },
                 () => {
-                    this.handleChange(hours, keyValue + minutes * 10);
+                    onChange(hours, keyValue + minutes * 10);
                     this.minutesInput.focus();
                 }
             );
@@ -126,7 +125,7 @@ export class TimeField extends React.Component<Props> {
                         isSecondHourActive: false
                     },
                     () => {
-                        this.handleChange(hours, keyValue);
+                        onChange(hours, keyValue);
                         this.minutesInput.focus();
                     }
                 );
@@ -138,7 +137,7 @@ export class TimeField extends React.Component<Props> {
                         isSecondHourActive: false
                     },
                     () => {
-                        this.handleChange(hours, keyValue);
+                        onChange(hours, keyValue);
                         this.minutesInput.focus();
                     }
                 );
@@ -226,7 +225,7 @@ export class TimeField extends React.Component<Props> {
                         >
                             <input
                                 onFocus={this.handleHoursFocus}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 ref={this.handleHoursRef}
                                 type="text"
                                 className="time-field__input"
@@ -237,7 +236,7 @@ export class TimeField extends React.Component<Props> {
                             <span className="time-field__dots">:</span>
                             <input
                                 onFocus={this.handleMinutesFocus}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 ref={this.handleMinutesRef}
                                 type="text"
                                 disabled={disabled}

@@ -38,7 +38,7 @@ export class TextLine extends React.Component<Props> {
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
         this.setState({ value: event.target.value });
 
-    handleKeyPress = (event: any) => {
+    handleInputKeyDown = (event: any) => {
         if (event.key === "Enter") {
             this.handleExit();
             if (this.props.onChange) {
@@ -64,7 +64,7 @@ export class TextLine extends React.Component<Props> {
                             type="text"
                             value={value}
                             onChange={this.handleChange}
-                            onKeyUp={this.handleKeyPress}
+                            onKeyDown={this.handleInputKeyDown}
                         />
                         <span className="textLine__signature">
                             Сохранить: нажмите Enter

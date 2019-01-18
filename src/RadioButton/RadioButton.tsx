@@ -12,15 +12,15 @@ export class RadioButton extends React.Component<Props> {
     public render() {
         const { children, checked, name, onSelected = () => { } } = this.props;
         return (
-            <label className="radio">
+            <label className="kit-radio">
                 <input
-                    className="radio__input"
+                    className="kit-radio__input"
                     type="radio"
                     defaultChecked={checked}
                     name={name}
                     onChange={onSelected}
                 />
-                <span className="radio__checkmark">{children}</span>
+                <span className="kit-radio__checkmark">{children}</span>
             </label>
         );
     }

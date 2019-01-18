@@ -61,45 +61,45 @@ export class Select extends React.Component<Props> {
         return (
             <div
                 className={cn(
-                    "select",
-                    isOpen && "select_open",
-                    isFiltered && "select_filtered",
+                    "kit-select",
+                    isOpen && "kit-select_open",
+                    isFiltered && "kit-select_filtered",
                     {
-                        [`select_size_${size}`]: size
+                        [`kit-select_size_${size}`]: size
                     }
                 )}
                 ref={this.handleWrapperRef}
             >
                 <button
-                    className="select__title"
+                    className="kit-select__title"
                     type="button"
                     onClick={this.handleToggle}
                     disabled={disabled}
                 >
                     {activeItem ? (
-                        <span className="select__value">{activeItem}</span>
+                        <span className="kit-select__value">{activeItem}</span>
                     ) : (
-                        <span className="select__placeholder">
-                            {placeholder}
-                        </span>
-                    )}
+                            <span className="kit-select__placeholder">
+                                {placeholder}
+                            </span>
+                        )}
                 </button>
-                <div className="select__drop">
+                <div className="kit-select__drop">
                     {isFiltered && (
-                        <div className="select__filter">
-                            <div className="select__search-field">
+                        <div className="kit-select__filter">
+                            <div className="kit-select__search-field">
                                 <input
                                     type="text"
-                                    className="select__input"
+                                    className="kit-select__input"
                                     onChange={this.handleFilter}
                                 />
-                                <span className="select__icon">
+                                <span className="kit-select__icon">
                                     <Icon icon="search" />
                                 </span>
                             </div>
                         </div>
                     )}
-                    <div className="select__list">
+                    <div className="kit-select__list">
                         {items
                             .filter(
                                 item =>
@@ -114,18 +114,18 @@ export class Select extends React.Component<Props> {
                                     <button
                                         key={index}
                                         type="button"
-                                        className="select__item"
+                                        className="kit-select__item"
                                         disabled={item.disabled}
                                         onClick={this.handleChange(item)}
                                     >
                                         {item.title}
                                     </button>
                                 ) : (
-                                    <div
-                                        key={index}
-                                        className="select__separator"
-                                    />
-                                )
+                                        <div
+                                            key={index}
+                                            className="kit-select__separator"
+                                        />
+                                    )
                             )}
                     </div>
                 </div>

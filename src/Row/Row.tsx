@@ -57,14 +57,14 @@ export class Row extends React.Component<Props> {
 
         if (isFooter) {
             return (
-                <div className="row__footer">
+                <div className="kit-row__footer">
                     {React.Children.map(
                         children,
                         (item: any, index: number) => {
                             if (index !== 0) {
                                 return item;
                             }
-                            return <div className="row__submit">{item}</div>;
+                            return <div className="kit-row__submit">{item}</div>;
                         }
                     )}
                 </div>
@@ -73,55 +73,55 @@ export class Row extends React.Component<Props> {
         return (
             <div
                 className={cn({
-                    ["row"]: true,
-                    ["row_edit"]: isEdit
+                    ["kit-row"]: true,
+                    ["kit-row_edit"]: isEdit
                 })}
             >
-                <div className="row__name">
-                    <span className="row__name-text">
+                <div className="kit-row__name">
+                    <span className="kit-row__name-text">
                         {title}
                         {!isEdit && ":"}
                     </span>
                     {help && isEdit && (
-                        <div className="row__help">
+                        <div className="kit-row__help">
                             <Help>{help}</Help>
                         </div>
                     )}
                 </div>
-                <div className="row__content">
+                <div className="kit-row__content">
                     {isCustom
                         ? children
                         : React.Children.map(
-                              children,
-                              (item: any, index: number) => (
-                                  <div
-                                      className={cn({
-                                          row__text: isText,
-                                          row__control: isControl,
-                                          row__select: isSelect,
-                                          "row__small-filter": isSmallFilter,
-                                          row__filter: isFilter,
-                                          row__action: isAction,
-                                          "row__select-checked": isSelectChecked,
-                                          "row__select-calendar": isSelectCalendar,
-                                          "row__select-double": isSelectDouble
-                                      })}
-                                  >
-                                      {isSmallFilter ? (
-                                          <div className="row__filter-inner">
-                                              {item}
-                                          </div>
-                                      ) : (
-                                          item
-                                      )}
-                                  </div>
-                              )
-                          )}
+                            children,
+                            (item: any, index: number) => (
+                                <div
+                                    className={cn({
+                                        "kit-row__text": isText,
+                                        "kit-row__control": isControl,
+                                        "kit-row__select": isSelect,
+                                        "kit-row__small-filter": isSmallFilter,
+                                        "kit-row__filter": isFilter,
+                                        "kit-row__action": isAction,
+                                        "kit-row__select-checked": isSelectChecked,
+                                        "kit-row__select-calendar": isSelectCalendar,
+                                        "kit-row__select-double": isSelectDouble
+                                    })}
+                                >
+                                    {isSmallFilter ? (
+                                        <div className="kit-row__filter-inner">
+                                            {item}
+                                        </div>
+                                    ) : (
+                                            item
+                                        )}
+                                </div>
+                            )
+                        )}
                     {description && (
                         <div
                             className={cn(
-                                "row__desc",
-                                isDanger && "row__desc_danger"
+                                "kit-row__desc",
+                                isDanger && "kit-row__desc_danger"
                             )}
                         >
                             {description}
@@ -130,7 +130,7 @@ export class Row extends React.Component<Props> {
                     {isRemovable && (
                         <button
                             type="button"
-                            className="row__remove"
+                            className="kit-row__remove"
                             onClick={this.handleRemove}
                         >
                             <Trashcan />

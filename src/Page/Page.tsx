@@ -47,13 +47,13 @@ export class Page extends React.Component<Props> {
         } = this.props;
         const { title, description } = this.state;
         return (
-            <div className="page">
-                <header className="page__header">
-                    <div className="page__container">
-                        <div className="page__head-inner">
+            <div className="kit-page">
+                <header className="kit-page__header">
+                    <div className="kit-page__container">
+                        <div className="kit-page__head-inner">
                             {isPlaying ? (
                                 <Button
-                                    className="page__button"
+                                    className="kit-page__button"
                                     icon="pause"
                                     hasBorder
                                     color="gray"
@@ -62,19 +62,19 @@ export class Page extends React.Component<Props> {
                                     Остановить
                                 </Button>
                             ) : (
-                                <Button
-                                    className="page__button"
-                                    icon="play"
-                                    hasBorder
-                                    color="gray"
-                                    size="medium"
-                                    disabled={cantPlaying}
-                                >
-                                    Запустить
+                                    <Button
+                                        className="kit-page__button"
+                                        icon="play"
+                                        hasBorder
+                                        color="gray"
+                                        size="medium"
+                                        disabled={cantPlaying}
+                                    >
+                                        Запустить
                                 </Button>
-                            )}
+                                )}
                             <Button
-                                className="page__button"
+                                className="kit-page__button"
                                 hasBorder
                                 color="gray"
                                 size="medium"
@@ -82,7 +82,7 @@ export class Page extends React.Component<Props> {
                                 Сохранить и выйти
                             </Button>
                             <Button
-                                className="page__button"
+                                className="kit-page__button"
                                 hasBorder
                                 color="gray"
                                 size="medium"
@@ -90,7 +90,7 @@ export class Page extends React.Component<Props> {
                                 Клонировать
                             </Button>
                             <Button
-                                className="page__button"
+                                className="kit-page__button"
                                 hasBorder
                                 color="gray"
                                 size="medium"
@@ -101,24 +101,24 @@ export class Page extends React.Component<Props> {
                         </div>
                     </div>
                 </header>
-                <main className="page__content">
-                    <div className="page__container">
-                        <div className="page__content-head">
-                            <div className="page__title">
+                <main className="kit-page__content">
+                    <div className="kit-page__container">
+                        <div className="kit-page__content-head">
+                            <div className="kit-page__title">
                                 <TextLine
                                     text={title}
                                     isTitle
                                     onChange={this.handleChangeTitle}
                                 />
                             </div>
-                            <div className="page__description">
+                            <div className="kit-page__description">
                                 <TextLine
                                     text={description}
                                     onChange={this.handleChangeDescription}
                                 />
                             </div>
                             {hasTag && (
-                                <div className="page__tag">
+                                <div className="kit-page__tag">
                                     <Tag isDevelop={isDevelop} date={tagDate} />
                                 </div>
                             )}
@@ -126,7 +126,7 @@ export class Page extends React.Component<Props> {
                         {children}
                     </div>
                 </main>
-                <footer className="main-page__footer" />
+                <footer className="kit-page__footer" />
             </div>
         );
     }

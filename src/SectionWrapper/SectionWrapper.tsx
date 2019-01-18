@@ -48,20 +48,20 @@ export class SectionWrapper extends React.Component<Props> {
                 ref={this.handleWrapperRef}
                 className={cn(
                     {
-                        [`section-wrapper_edit`]: isEdit,
-                        [`section-wrapper_active`]: isActive,
-                        [`section-wrapper_theme_${theme}`]: theme
+                        [`kit-section-wrapper_edit`]: isEdit,
+                        [`kit-section-wrapper_active`]: isActive,
+                        [`kit-section-wrapper_theme_${theme}`]: theme
                     },
-                    "section-wrapper"
+                    "kit-section-wrapper"
                 )}
             >
-                <h2 className="section-wrapper__title">
+                <h2 className="kit-section-wrapper__title">
                     {
                         isEdit
                             ? title
                             : (
                                 <button
-                                    className="section-wrapper__button"
+                                    className="kit-section-wrapper__button"
                                     type='button'
                                     onClick={() => onChangeState(true)}
                                 >
@@ -73,8 +73,8 @@ export class SectionWrapper extends React.Component<Props> {
                 {children}
                 <button
                     className={cn({
-                        "section-wrapper__button-edit": true,
-                        "section-wrapper__button-edit_hide": isEdit,
+                        "kit-section-wrapper__button-edit": true,
+                        "kit-section-wrapper__button-edit_hide": isEdit,
                     })}
                     onClick={() => onChangeState(true)}
                 >

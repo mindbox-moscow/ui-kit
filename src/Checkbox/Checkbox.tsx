@@ -17,15 +17,15 @@ export class Checkbox extends React.Component<Props> {
             onChange = () => { }
         } = this.props;
         return (
-            <label className="checkbox">
+            <label className="kit-checkbox">
                 <input
                     checked={checked}
                     type="checkbox"
-                    className="checkbox__input"
+                    className="kit-checkbox__input"
                     name={name}
                     onChange={() => onChange(!checked)}
                 />
-                {text && <span className="checkbox__text">{text}</span>}
+                {text && <span className="kit-checkbox__text">{text}</span>}
             </label>
         );
     }

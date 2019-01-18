@@ -29,20 +29,20 @@ export class Period extends React.Component<Props> {
         const { items, theme } = this.props;
         return (
             <div
-                className={cn("period", {
-                    [`period_theme_${theme}`]: theme
+                className={cn("kit-period", {
+                    [`kit-period_theme_${theme}`]: theme
                 })}
             >
                 {items.map(({ name, title, isChecked }, index) => (
-                    <label className="period__item" key={index}>
+                    <label className="kit-period__item" key={index}>
                         <input
-                            className="period__input"
+                            className="kit-period__input"
                             type="checkbox"
                             name={name}
                             checked={isChecked || false}
                             onChange={() => this.handleChange(index)}
                         />
-                        <div className="period__title">{title}</div>
+                        <div className="kit-period__title">{title}</div>
                     </label>
                 ))}
             </div>

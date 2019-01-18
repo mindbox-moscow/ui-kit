@@ -23,15 +23,15 @@ export class ActionFilter extends React.Component<Props> {
             types,
             name,
             children,
-            onChangeType = () => {},
-            onChangeName = () => {}
+            onChangeType = () => { },
+            onChangeName = () => { }
         } = this.props;
 
         return (
-            <div className="action-filter">
-                <div className="action-filter__content">
-                    <div className="action-filter__type">
-                        <div className="action-filter__title">Тип рассылки</div>
+            <div className="kit-action-filter">
+                <div className="kit-action-filter__content">
+                    <div className="kit-action-filter__type">
+                        <div className="kit-action-filter__title">Тип рассылки</div>
                         <Select
                             placeholder="Выберите тип"
                             defaultValue={defaultType}
@@ -39,17 +39,17 @@ export class ActionFilter extends React.Component<Props> {
                             onChange={onChangeType}
                         />
                     </div>
-                    <div className="action-filter__name">
-                        <div className="action-filter__title">Название</div>
+                    <div className="kit-action-filter__name">
+                        <div className="kit-action-filter__title">Название</div>
                         <Input defaultValue={name} onChange={onChangeName} />
                     </div>
                 </div>
-                <div className="action-filter__footer">
+                <div className="kit-action-filter__footer">
                     {React.Children.map(
                         children,
                         (item: any, index: number) => (
                             <div
-                                className="action-filter__footer-inner"
+                                className="kit-action-filter__footer-inner"
                                 key={index}
                             >
                                 {item}

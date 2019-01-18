@@ -14,9 +14,9 @@ export class Text extends React.Component<Props> {
             <p
                 className={cn(
                     {
-                        [`text_${mode}`]: mode
+                        [`kit-text_${mode}`]: mode
                     },
-                    "text"
+                    "kit-text"
                 )}
             >
                 {children}

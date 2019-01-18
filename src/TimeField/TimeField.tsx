@@ -214,59 +214,59 @@ export class TimeField extends React.Component<Props> {
                 <div ref={this.handleDropDownRef}>
                     <div
                         className={cn(
-                            "time-field_wrapper",
-                            isOpen && "time-field_wrapper-open"
+                            "kit-time-field_wrapper",
+                            isOpen && "kit-time-field_wrapper-open"
                         )}
                     >
                         <div
                             className={cn(
-                                "time-field",
-                                disabled && "time-field_disabled"
+                                "kit-time-field",
+                                disabled && "kit-time-field_disabled"
                             )}
                         >
                             <input
                                 onFocus={this.handleHoursFocus}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 ref={this.handleHoursRef}
                                 type="text"
-                                className="time-field__input"
+                                className="kit-time-field__input"
                                 value={hoursValue}
                                 disabled={disabled}
                                 onKeyDown={this.handleChangeHours}
                             />
-                            <span className="time-field__dots">:</span>
+                            <span className="kit-time-field__dots">:</span>
                             <input
                                 onFocus={this.handleMinutesFocus}
-                                onChange={() => {}}
+                                onChange={() => { }}
                                 ref={this.handleMinutesRef}
                                 type="text"
                                 disabled={disabled}
                                 className={cn(
-                                    "time-field__input",
-                                    "time-field__input_minutes"
+                                    "kit-time-field__input",
+                                    "kit-time-field__input_minutes"
                                 )}
                                 value={minutesValue}
                                 onKeyDown={this.handleChangeMinutes}
                             />
-                            <div className="time-field__controls">
+                            <div className="kit-time-field__controls">
                                 <button
-                                    className="time-field__button"
+                                    className="kit-time-field__button"
                                     type="button"
                                     onClick={this.handleUp}
                                     disabled={disabled}
                                 >
-                                    <span className="time-field__arrow" />
+                                    <span className="kit-time-field__arrow" />
                                 </button>
                                 <button
-                                    className="time-field__button"
+                                    className="kit-time-field__button"
                                     type="button"
                                     onClick={this.handleDown}
                                     disabled={disabled}
                                 >
                                     <span
                                         className={cn(
-                                            "time-field__arrow",
-                                            "time-field__arrow_down"
+                                            "kit-time-field__arrow",
+                                            "kit-time-field__arrow_down"
                                         )}
                                     />
                                 </button>
@@ -274,14 +274,14 @@ export class TimeField extends React.Component<Props> {
                         </div>
                     </div>
                     {isOpen && (
-                        <div className="time-field__drop-down">
-                            <ul className="time-field__drop-down_list">
+                        <div className="kit-time-field__drop-down">
+                            <ul className="kit-time-field__drop-down_list">
                                 {this.createArrayTime(23).map(item => (
                                     <li
                                         onClick={this.selectHours}
                                         className={cn({
-                                            ["time-field__drop-down_item"]: true,
-                                            ["time-field__drop-down_item-selected"]:
+                                            ["kit-time-field__drop-down_item"]: true,
+                                            ["kit-time-field__drop-down_item-selected"]:
                                                 parseInt(item) === hours
                                         })}
                                     >
@@ -289,13 +289,13 @@ export class TimeField extends React.Component<Props> {
                                     </li>
                                 ))}
                             </ul>
-                            <ul className="time-field__drop-down_list">
+                            <ul className="kit-time-field__drop-down_list">
                                 {this.createArrayTime(59).map(item => (
                                     <li
                                         onClick={this.selectMinutes}
                                         className={cn({
-                                            ["time-field__drop-down_item"]: true,
-                                            ["time-field__drop-down_item-selected"]:
+                                            ["kit-time-field__drop-down_item"]: true,
+                                            ["kit-time-field__drop-down_item-selected"]:
                                                 parseInt(item) === minutes
                                         })}
                                     >

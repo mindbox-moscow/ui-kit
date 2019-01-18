@@ -31,19 +31,20 @@ export class Button extends React.Component<Props> {
         } = this.props;
         return (
             <button
-                className={cn("button", className, {
-                    [`button_${mode}`]: mode,
-                    [`button_size-${size}`]: size,
-                    [`button_color-${color}`]: color,
-                    [`button_hasBorder`]: hasBorder,
-                    [`button_has-icon`]: icon
+                className={cn("kit-button", className, {
+                    [`kit-button_${mode}`]: mode,
+                    [`kit-button_size-${size}`]: size,
+                    [`kit-button_color-${color}`]: color,
+                    [`kit-button_hasBorder`]: hasBorder,
+                    [`kit-button_has-icon`]: icon
                 })}
                 disabled={disabled}
             >
-                {icon && <Icon className="button__icon" icon={icon} />}
+                {icon && <Icon className="kit-button__icon" icon={icon} />}
                 <span
-                    className={cn("button__text", {
-                        [`button__text_hasUnderline`]: hasUnderline
+                    className={cn({
+                        "kit-button__text": true,
+                        "kit-button__text_hasUnderline": hasUnderline
                     })}
                 >
                     {children}

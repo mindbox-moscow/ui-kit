@@ -1,4 +1,4 @@
-.radio {
+.kit-radio {
     font-family: "PT Sans", sans-serif;
     position: relative;
     display: inline-block;
@@ -30,7 +30,7 @@
         }
     }
 
-    &__input:checked + &__checkmark {
+    &__input:checked+&__checkmark {
         margin: 0;
         background-color: #f5f1bb;
         border: 2px solid #a0ba82;

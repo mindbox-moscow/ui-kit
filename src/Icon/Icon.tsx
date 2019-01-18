@@ -14,9 +14,9 @@ export class Icon extends React.Component<Props> {
         return (
             <span
                 className={cn(
-                    "icon",
+                    "kit-icon",
                     {
-                        [`icon_${icon}`]: icon
+                        [`kit-icon_${icon}`]: icon
                     },
                     className
                 )}

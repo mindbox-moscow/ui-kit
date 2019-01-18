@@ -1,4 +1,4 @@
-.period {
+.kit-period {
     font-family: "PT Sans", sans-serif;
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +39,7 @@
         background-image: linear-gradient(to bottom, #fefefe, #e2e3e5);
     }
 
-    &__input:checked + &__title {
+    &__input:checked+&__title {
         color: #fff;
         border: none;
         background-image: linear-gradient(to bottom, #69709e, #8299ba);

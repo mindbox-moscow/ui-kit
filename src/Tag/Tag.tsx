@@ -15,15 +15,15 @@ export class Tag extends React.Component<Props> {
     public render() {
         const { isDevelop, date } = this.props;
         return (
-            <div className={cn("tag", { tag_develop: isDevelop })}>
+            <div className={cn("kit-tag", { tag_develop: isDevelop })}>
                 {isDevelop ? (
                     <span>Триггер в разработке</span>
                 ) : (
-                    <div>
-                        <span className="tag__text">Триггер активен</span>
-                        Запущен: <span className="tag__date">{date}</span>
-                    </div>
-                )}
+                        <div>
+                            <span className="kit-tag__text">Триггер активен</span>
+                            Запущен: <span className="kit-tag__date">{date}</span>
+                        </div>
+                    )}
             </div>
         );
     }

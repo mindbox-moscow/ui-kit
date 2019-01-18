@@ -134,39 +134,39 @@ export class DateField extends React.Component<Props> {
 
         return (
             <div
-                className={cn("date-field", disabled && "date-field_disabled")}
-                onClick={disabled ? () => {} : this.handleOpen}
+                className={cn("kit-date-field", disabled && "date-field_disabled")}
+                onClick={disabled ? () => { } : this.handleOpen}
                 ref={this.handleWrapperRef}
             >
                 <input
-                    onChange={() => {}}
+                    onChange={() => { }}
                     type="text"
-                    className="date-field__input"
+                    className="kit-date-field__input"
                     disabled={disabled}
                     value={`${formatValue(date)}.${formatValue(
                         month + 1
                     )}.${year}`}
                 />
-                <div className="date-field__icon">
+                <div className="kit-date-field__icon">
                     <Icon icon="calendar" />
                 </div>
 
                 <div
                     className={cn(
-                        "date-field__drop",
-                        isOpenCalendar && "date-field__drop_open"
+                        "kit-date-field__drop",
+                        isOpenCalendar && "kit-date-field__drop_open"
                     )}
                 >
-                    <div className="date-field__head">
+                    <div className="kit-date-field__head">
                         <button
                             type="button"
                             onClick={this.handlePrevMonth}
-                            className="date-field__nav"
+                            className="kit-date-field__nav"
                         />
                         <div>
                             <select
                                 value={nowMonth}
-                                className="date-field__select"
+                                className="kit-date-field__select"
                                 onChange={this.handleChangeMonth}
                             >
                                 {monthes.map(item => (
@@ -175,7 +175,7 @@ export class DateField extends React.Component<Props> {
                             </select>
                             <select
                                 value={nowYear}
-                                className="date-field__select"
+                                className="kit-date-field__select"
                                 onChange={this.handleChangeYear}
                             >
                                 {yearsList.map(item => (
@@ -184,23 +184,23 @@ export class DateField extends React.Component<Props> {
                             </select>
                         </div>
                         <button
-                            className="date-field__nav date-field__nav_next"
+                            className="kit-date-field__nav kit-date-field__nav_next"
                             type="button"
                             onClick={this.handleNextMonth}
                         />
                     </div>
-                    <div className="date-field__calendar">
-                        <div className="date-field__day">Пн</div>
-                        <div className="date-field__day">Вт</div>
-                        <div className="date-field__day">Ср</div>
-                        <div className="date-field__day">Чт</div>
-                        <div className="date-field__day">Пт</div>
-                        <div className="date-field__day">Сб</div>
-                        <div className="date-field__day">Вс</div>
+                    <div className="kit-date-field__calendar">
+                        <div className="kit-date-field__day">Пн</div>
+                        <div className="kit-date-field__day">Вт</div>
+                        <div className="kit-date-field__day">Ср</div>
+                        <div className="kit-date-field__day">Чт</div>
+                        <div className="kit-date-field__day">Пт</div>
+                        <div className="kit-date-field__day">Сб</div>
+                        <div className="kit-date-field__day">Вс</div>
                         {beforeDaysList.map((day, index) => (
                             <div
                                 key={index}
-                                className="date-field__date date-field__date_old"
+                                className="kit-date-field__date date-field__date_old"
                             >
                                 {day}
                             </div>
@@ -208,10 +208,10 @@ export class DateField extends React.Component<Props> {
                         {daysList.map((day, index) => (
                             <div
                                 key={index}
-                                className={cn("date-field__date", {
-                                    "date-field__date_current":
+                                className={cn("kit-date-field__date", {
+                                    "kit-date-field__date_current":
                                         currentDay === day,
-                                    "date-field__date_active": activeDay === day
+                                    "kit-date-field__date_active": activeDay === day
                                 })}
                                 onClick={this.changeActiveDate(
                                     nowYear,
@@ -225,7 +225,7 @@ export class DateField extends React.Component<Props> {
                         {afterDaysList.map((day, index) => (
                             <div
                                 key={index}
-                                className="date-field__date date-field__date_old"
+                                className="kit-date-field__date date-field__date_old"
                             >
                                 {day}
                             </div>

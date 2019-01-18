@@ -42,39 +42,39 @@ export class TextLine extends React.Component<Props> {
         let Tag: any = isTitle ? "h2" : "p";
 
         return (
-            <div className="textLine">
+            <div className="kit-textLine">
                 {isEditing ? (
-                    <div className="textLine__input-box">
+                    <div className="kit-textLine__input-box">
                         <input
                             ref={this.handleInputRef}
-                            className="textLine__input"
+                            className="kit-textLine__input"
                             type="text"
                             value={value}
                             onChange={this.handleChange}
                             onKeyUp={this.handleKeyPress}
                         />
-                        <span className="textLine__signature">
+                        <span className="kit-textLine__signature">
                             Сохранить: нажмите Enter
                         </span>
                     </div>
                 ) : (
-                    <Tag
-                        className={
-                            isTitle
-                                ? "textLine__title"
-                                : "textLine__description"
-                        }
-                    >
-                        {text}
-                        <button
-                            className="textLine__button"
-                            type="button"
-                            onClick={this.handleEdit}
+                        <Tag
+                            className={
+                                isTitle
+                                    ? "kit-textLine__title"
+                                    : "kit-textLine__description"
+                            }
                         >
-                            <Icon icon="edit" />
-                        </button>
-                    </Tag>
-                )}
+                            {text}
+                            <button
+                                className="kit-textLine__button"
+                                type="button"
+                                onClick={this.handleEdit}
+                            >
+                                <Icon icon="edit" />
+                            </button>
+                        </Tag>
+                    )}
             </div>
         );
     }

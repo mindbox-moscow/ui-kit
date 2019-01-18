@@ -16,7 +16,7 @@ export class Input extends React.Component<Props> {
             <input
                 onChange={onChange}
                 type={type}
-                className="input-field"
+                className="kit-input-field"
                 defaultValue={defaultValue}
                 maxLength={maxLength}
             />

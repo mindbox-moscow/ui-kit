@@ -11,14 +11,14 @@ export class Checkbox extends React.Component<Props> {
     public render() {
         const { text, checked, name } = this.props;
         return (
-            <label className="checkbox">
+            <label className="kit-checkbox">
                 <input
                     defaultChecked={checked}
                     type="checkbox"
-                    className="checkbox__input"
+                    className="kit-checkbox__input"
                     name={name}
                 />
-                {text && <span className="checkbox__text">{text}</span>}
+                {text && <span className="kit-checkbox__text">{text}</span>}
             </label>
         );
     }

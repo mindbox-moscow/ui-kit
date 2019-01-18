@@ -15,6 +15,7 @@ interface Props {
     hasUnderline?: boolean;
     hasBorder?: boolean;
     test?: (value: string) => void;
+    onClick?: () => void;
 }
 
 export class Button extends React.Component<Props> {
@@ -28,11 +29,13 @@ export class Button extends React.Component<Props> {
             size,
             color,
             hasUnderline,
+            hasBorder,
             inheritFont,
-            hasBorder
+            onClick = () => { }
         } = this.props;
         return (
             <button
+                onClick={onClick}
                 className={cn("button", className, {
                     [`button_${mode}`]: mode,
                     [`button_size-${size}`]: size,

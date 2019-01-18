@@ -5,12 +5,12 @@ interface Props {
     children: string;
     checked?: boolean;
     name: string;
-    onChange?: () => void;
+    onSelected?: () => void;
 }
 
 export class RadioButton extends React.Component<Props> {
     public render() {
-        const { children, checked, name, onChange = () => {} } = this.props;
+        const { children, checked, name, onSelected = () => { } } = this.props;
         return (
             <label className="radio">
                 <input
@@ -18,7 +18,7 @@ export class RadioButton extends React.Component<Props> {
                     type="radio"
                     defaultChecked={checked}
                     name={name}
-                    onChange={onChange}
+                    onChange={onSelected}
                 />
                 <span className="radio__checkmark">{children}</span>
             </label>

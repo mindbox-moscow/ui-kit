@@ -8,10 +8,31 @@ interface Props extends React.Props<SectionWrapper> {
     isEdit?: boolean;
     isActive?: boolean;
     theme?: string;
-    onChangeState?: (event: React.MouseEvent<HTMLElement>) => void;
+    onChangeState?: (isEdit: boolean) => void;
 }
 
 export class SectionWrapper extends React.Component<Props> {
+    wrapper: HTMLDivElement;
+
+    componentDidMount() {
+        document.addEventListener("click", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("click", this.handleClickOutside);
+    }
+
+    handleWrapperRef = (ref: HTMLDivElement) => (this.wrapper = ref);
+
+    handleClickOutside = (event: MouseEvent) => {
+        const target: any = event.target;
+        const { onChangeState = () => { } } = this.props;
+
+        if (!this.wrapper || !this.wrapper.contains(target)) {
+            onChangeState(false);
+        }
+    };
+
     public render() {
         const {
             children,
@@ -19,10 +40,12 @@ export class SectionWrapper extends React.Component<Props> {
             isActive,
             title,
             theme,
-            onChangeState
+            onChangeState = () => { }
         } = this.props;
+
         return (
             <section
+                ref={this.handleWrapperRef}
                 className={cn(
                     {
                         [`kit-section-wrapper_edit`]: isEdit,
@@ -32,16 +55,31 @@ export class SectionWrapper extends React.Component<Props> {
                     "kit-section-wrapper"
                 )}
             >
-                <h2 className="kit-section-wrapper__title">{title}</h2>
+                <h2 className="kit-section-wrapper__title">
+                    {
+                        isEdit
+                            ? title
+                            : (
+                                <button
+                                    className="kit-section-wrapper__button"
+                                    type='button'
+                                    onClick={() => onChangeState(true)}
+                                >
+                                    {title}
+                                </button>
+                            )
+                    }
+                </h2>
                 {children}
-                {!isEdit && (
-                    <button
-                        className="kit-section-wrapper__button-edit"
-                        onClick={onChangeState}
-                    >
-                        <Icon icon="edit" />
-                    </button>
-                )}
+                <button
+                    className={cn({
+                        "kit-section-wrapper__button-edit": true,
+                        "kit-section-wrapper__button-edit_hide": isEdit,
+                    })}
+                    onClick={() => onChangeState(true)}
+                >
+                    <Icon icon="edit" />
+                </button>
             </section>
         );
     }

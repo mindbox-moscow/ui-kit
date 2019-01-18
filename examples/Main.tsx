@@ -16,9 +16,9 @@ class Main extends React.Component<{}> {
         whenEdit: false
     };
 
-    toggleWhatState = () => this.setState({ whatEdit: !this.state.whatEdit });
-    toggleWhomState = () => this.setState({ whomEdit: !this.state.whomEdit });
-    toggleWhenState = () => this.setState({ whenEdit: !this.state.whenEdit });
+    toggleWhatState = (isEdit: boolean) => this.setState({ whatEdit: isEdit });
+    toggleWhomState = (isEdit: boolean) => this.setState({ whomEdit: isEdit });
+    toggleWhenState = (isEdit: boolean) => this.setState({ whenEdit: isEdit });
 
     public render() {
         const { whatEdit, whomEdit, whenEdit } = this.state;
@@ -131,19 +131,19 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <>
-                            <Row title="Период активности">
-                                Триггер активен на протяжении всей кампании: 25
-                                авг 2018 – 1 янв 2019
+                            <>
+                                <Row title="Период активности">
+                                    Триггер активен на протяжении всей кампании: 25
+                                    авг 2018 – 1 янв 2019
                             </Row>
-                            <Row title="Инициатор события">Любой</Row>
-                            <Row title="Запуск">
-                                <Text mode="danger">
-                                    Настройте режим запуска триггера
+                                <Row title="Инициатор события">Любой</Row>
+                                <Row title="Запуск">
+                                    <Text mode="danger">
+                                        Настройте режим запуска триггера
                                 </Text>
-                            </Row>
-                        </>
-                    )}
+                                </Row>
+                            </>
+                        )}
                 </SectionWrapper>
                 <SectionWrapper
                     title="Кому"
@@ -212,17 +212,17 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <>
-                            <Row title="Применять к потребителю">
-                                Каждый раз при попадании в фильтр триггера
+                            <>
+                                <Row title="Применять к потребителю">
+                                    Каждый раз при попадании в фильтр триггера
                             </Row>
-                            <Row title="Число срабатываний">Неограничено</Row>
-                            <Row title="Цель триггера">
-                                Настройте потребителей, к которым будут
-                                применяться действия триггера
+                                <Row title="Число срабатываний">Неограничено</Row>
+                                <Row title="Цель триггера">
+                                    Настройте потребителей, к которым будут
+                                    применяться действия триггера
                             </Row>
-                        </>
-                    )}
+                            </>
+                        )}
                 </SectionWrapper>
                 <SectionWrapper
                     title="Что"
@@ -296,10 +296,10 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <Row title="Действие">
-                            Настройте одно или несколько действий триггера
+                            <Row title="Действие">
+                                Настройте одно или несколько действий триггера
                         </Row>
-                    )}
+                        )}
                 </SectionWrapper>
             </Page>
         );

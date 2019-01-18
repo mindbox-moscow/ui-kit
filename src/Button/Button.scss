@@ -107,6 +107,11 @@
         }
     }
 
+    &_inherit-font {
+        font-size: inherit;
+        vertical-align: baseline;
+    }
+
     &_has-icon {
         padding-right: 24px;
     }

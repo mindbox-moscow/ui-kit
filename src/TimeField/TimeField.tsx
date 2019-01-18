@@ -10,7 +10,7 @@ const formatTime = (value: number, min: number, max: number) => {
     if (result < min) {
         result = max;
     }
-    if (value < 10) {
+    if (result < 10) {
         return `0${result}`;
     }
     return `${result}`;
@@ -20,19 +20,18 @@ interface Props {
     hours?: number;
     minutes?: number;
     disabled?: boolean;
-    onChange?: (time: number) => void;
+    onChange?: (hours: number, minutes: number) => void;
 }
 
 export class TimeField extends React.Component<Props> {
     dropDown: HTMLDivElement;
     minutesInput: HTMLInputElement;
     hoursInput: HTMLInputElement;
+
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
-        isSecondHourActive: true,
-        isSecondMinuteActive: false,
-        isActiveMinutes: false,
+        activeNumber: 0,
         isOpen: false
     };
 
@@ -45,106 +44,58 @@ export class TimeField extends React.Component<Props> {
     }
 
     handleDropDownRef = (ref: HTMLDivElement) => (this.dropDown = ref);
-    handleMinutesRef = (ref: HTMLInputElement) => (this.minutesInput = ref);
-    handleHoursRef = (ref: HTMLInputElement) => (this.hoursInput = ref);
 
-    handleChange = (hours: number, minutes: number) => {
-        if (this.props.onChange) {
-            this.props.onChange(hours * 3600 + minutes * 60);
+    handleInputKeyDown = (event: any) => {
+        const value = parseInt(event.key, 10);
+        if (isNaN(value)) {
+            return
         }
-    };
+        const { activeNumber, hours, minutes } = this.state;
+        let newMinutes = minutes;
+        let newHours = hours;
+        let newActiveNumber = activeNumber + 1;
 
-    handleChangeHours = (event: any) => {
-        const { isSecondHourActive, hours, minutes } = this.state;
-        const keyValue = parseInt(event.key, 10);
-        if (isNaN(keyValue)) {
-            return;
-        }
-        if (isSecondHourActive) {
-            this.setState(
-                {
-                    hours: keyValue + hours * 10,
-                    isSecondHourActive: false,
-                    isSecondMinuteActive: false
-                },
-                () => {
-                    this.handleChange(keyValue + hours * 10, minutes);
-                    this.minutesInput.focus();
+        switch (activeNumber) {
+            case 0:
+                if (value > 2) {
+                    newHours = value;
+                    newActiveNumber = 2;
+                } else {
+                    newHours = value * 10;
                 }
-            );
-        } else {
-            if (keyValue > 2) {
-                this.setState(
-                    {
-                        hours: keyValue,
-                        isSecondMinuteActive: false
-                    },
-                    () => {
-                        this.handleChange(keyValue, minutes);
-                        this.minutesInput.focus();
-                    }
-                );
-            } else {
-                this.setState(
-                    {
-                        hours: keyValue,
-                        isSecondHourActive: true,
-                        isSecondMinuteActive: false
-                    },
-                    () => {
-                        this.handleChange(keyValue, minutes);
-                        this.hoursInput.focus();
-                    }
-                );
-            }
-        }
-    };
+                break;
 
-    handleChangeMinutes = (event: any) => {
-        const { isSecondMinuteActive, minutes, hours } = this.state;
-        const keyValue = parseInt(event.key, 10);
-        if (isNaN(keyValue)) {
-            return;
-        }
-        if (isSecondMinuteActive) {
-            this.setState(
-                {
-                    minutes: keyValue + minutes * 10,
-                    isSecondMinuteActive: false,
-                    isSecondHourActive: false
-                },
-                () => {
-                    this.handleChange(hours, keyValue + minutes * 10);
-                    this.minutesInput.focus();
+            case 1:
+                newHours = hours + value;
+                break;
+
+            case 2:
+                if (value > 5) {
+                    newMinutes = value;
+                    newActiveNumber = 0;
+                } else {
+                    newMinutes = value * 10;
                 }
-            );
-        } else {
-            if (keyValue > 5) {
-                this.setState(
-                    {
-                        minutes: keyValue,
-                        isSecondHourActive: false
-                    },
-                    () => {
-                        this.handleChange(hours, keyValue);
-                        this.minutesInput.focus();
-                    }
-                );
-            } else {
-                this.setState(
-                    {
-                        minutes: keyValue,
-                        isSecondMinuteActive: true,
-                        isSecondHourActive: false
-                    },
-                    () => {
-                        this.handleChange(hours, keyValue);
-                        this.minutesInput.focus();
-                    }
-                );
-            }
+                break;
+
+            case 3:
+                newMinutes = minutes + value;
+                newActiveNumber = 0
+
+            default:
+                break;
         }
-    };
+
+        this.setState({
+            minutes: newMinutes,
+            hours: newHours,
+            activeNumber: newActiveNumber,
+        });
+    }
+
+    handleInputFocus = () => {
+        this.setState({ isOpen: true });
+    }
 
     handleClickOutside = (event: MouseEvent) => {
         const target: any = event.target;
@@ -163,12 +114,6 @@ export class TimeField extends React.Component<Props> {
         this.setState({ isSecondMinuteActive: true, minutes: num });
     };
 
-    handleMinutesFocus = () =>
-        this.setState({ isActiveMinutes: true, isOpen: true });
-
-    handleHoursFocus = () =>
-        this.setState({ isActiveMinutes: false, isOpen: true });
-
     createArrayTime = (value: any) => {
         const numbers = [];
         for (let i = 0; i <= value; i++) {
@@ -181,28 +126,66 @@ export class TimeField extends React.Component<Props> {
     };
 
     handleUp = () => {
-        const { isActiveMinutes, minutes, hours } = this.state;
+        const { minutes, hours } = this.state;
 
-        if (isActiveMinutes) {
-            const newMinutes = minutes + 1 > 59 ? 0 : minutes + 1;
-            this.setState({ minutes: newMinutes });
+        if (minutes >= 30) {
+            this.setState({
+                hours: hours === 23 ? 0 : hours + 1,
+                minutes: 0,
+                activeNumber: 0
+            });
         } else {
-            const newHours = hours + 1 > 23 ? 0 : hours + 1;
-            this.setState({ hours: newHours });
+            this.setState({
+                hours,
+                minutes: 30,
+                activeNumber: 0
+            });
         }
     };
 
     handleDown = () => {
-        const { isActiveMinutes, minutes, hours } = this.state;
+        const { minutes, hours } = this.state;
 
-        if (isActiveMinutes) {
-            const newMinutes = minutes <= 0 ? 59 : minutes - 1;
-            this.setState({ minutes: newMinutes });
+        if (minutes < 30) {
+            this.setState({
+                hours: hours === 0 ? 23 : hours - 1,
+                minutes: 30,
+                activeNumber: 0
+            });
         } else {
-            const newHours = hours <= 0 ? 23 : hours - 1;
-            this.setState({ hours: newHours });
+            this.setState({
+                hours,
+                minutes: 0,
+                activeNumber: 0
+            });
         }
     };
+
+    handleWheel = (event: any) => {
+        event.preventDefault();
+        const { minutes, hours } = this.state;
+
+        if (event.deltaY < 0) {
+            const newMinutes = minutes === 59 || minutes === undefined ? 0 : minutes + 1;
+            const newHours = minutes === 59 && hours !== undefined ? hours + 1 : hours;
+            this.setState({
+                minutes: newMinutes,
+                hours: newHours === 24 ? 0 : newHours
+            });
+        } else {
+            const newMinutes = minutes === 0 || minutes === undefined ? 59 : minutes - 1;
+            const newHours = minutes === 0 && hours !== undefined ? hours - 1 : hours;
+            this.setState({
+                minutes: newMinutes,
+                hours: newHours < 0 ? 23 : newHours
+            });
+        }
+    }
+
+    handleStopScroll = () => (event: MouseEvent) => event.preventDefault();
+
+    handleMouseEnter = () => document.addEventListener('mousewheel', this.handleStopScroll)
+    handleMouseLeave = () => document.removeEventListener('mousewheel', this.handleStopScroll)
 
     public render() {
         const { hours, minutes, isOpen } = this.state;
@@ -210,75 +193,83 @@ export class TimeField extends React.Component<Props> {
         const hoursValue = formatTime(hours, 0, 23);
         const minutesValue = formatTime(minutes, 0, 59);
         return (
-            <>
-                <div ref={this.handleDropDownRef}>
+            <div
+                className="kit-time-field__outer"
+                ref={this.handleDropDownRef}
+                onClick={this.handleInputFocus}
+            >
+                <div
+                    className={cn(
+                        "kit-time-field_wrapper",
+                        isOpen && "kit-time-field_wrapper-open"
+                    )}
+                >
                     <div
                         className={cn(
-                            "kit-time-field_wrapper",
-                            isOpen && "kit-time-field_wrapper-open"
+                            "kit-time-field",
+                            disabled && "kit-time-field_disabled"
                         )}
+                        onWheel={this.handleWheel}
+                        onMouseEnter={this.handleMouseEnter}
+                        onMouseLeave={this.handleMouseLeave}
                     >
                         <div
-                            className={cn(
-                                "kit-time-field",
-                                disabled && "kit-time-field_disabled"
-                            )}
-                        >
-                            <input
-                                onFocus={this.handleHoursFocus}
-                                onChange={() => { }}
-                                ref={this.handleHoursRef}
-                                type="text"
-                                className="kit-time-field__input"
-                                value={hoursValue}
+                            className={cn({
+                                "kit-time-field__select": true,
+                                "kit-time-field__select_show": isOpen
+                            })}
+                        />
+                        <input
+                            type="text"
+                            readOnly
+                            value={`${hoursValue}:${minutesValue}`}
+                            disabled={disabled}
+                            onKeyDown={this.handleInputKeyDown}
+                            onFocus={this.handleInputFocus}
+                            className={cn({
+                                "kit-time-field__input": true,
+                                "kit-time-field__input_selected": isOpen
+                            })}
+                        />
+                        <div className="kit-time-field__controls">
+                            <button
+                                className="kit-time-field__button"
+                                type="button"
+                                onClick={this.handleUp}
                                 disabled={disabled}
-                                onKeyDown={this.handleChangeHours}
-                            />
-                            <span className="kit-time-field__dots">:</span>
-                            <input
-                                onFocus={this.handleMinutesFocus}
-                                onChange={() => { }}
-                                ref={this.handleMinutesRef}
-                                type="text"
+                            >
+                                <span className="kit-time-field__arrow" />
+                            </button>
+                            <button
+                                className="kit-time-field__button"
+                                type="button"
+                                onClick={this.handleDown}
                                 disabled={disabled}
-                                className={cn(
-                                    "kit-time-field__input",
-                                    "kit-time-field__input_minutes"
-                                )}
-                                value={minutesValue}
-                                onKeyDown={this.handleChangeMinutes}
-                            />
-                            <div className="kit-time-field__controls">
-                                <button
-                                    className="kit-time-field__button"
-                                    type="button"
-                                    onClick={this.handleUp}
-                                    disabled={disabled}
-                                >
-                                    <span className="kit-time-field__arrow" />
-                                </button>
-                                <button
-                                    className="kit-time-field__button"
-                                    type="button"
-                                    onClick={this.handleDown}
-                                    disabled={disabled}
-                                >
-                                    <span
-                                        className={cn(
-                                            "kit-time-field__arrow",
-                                            "kit-time-field__arrow_down"
-                                        )}
-                                    />
-                                </button>
-                            </div>
+                            >
+                                <span
+                                    className={cn(
+                                        "kit-time-field__arrow",
+                                        "kit-time-field__arrow_down"
+                                    )}
+                                />
+                            </button>
                         </div>
                     </div>
-                    {isOpen && (
-                        <div className="kit-time-field__drop-down">
-                            <ul className="kit-time-field__drop-down_list">
-                                {this.createArrayTime(23).map(item => (
-                                    <li
-                                        onClick={this.selectHours}
+                </div>
+                {isOpen && (
+                    <div className="kit-time-field__drop-down">
+                        <ul
+                            onMouseEnter={this.handleMouseEnter}
+                            onMouseLeave={this.handleMouseLeave}
+                            className="kit-time-field__drop-down_list"
+                        >
+                            {this.createArrayTime(23).map((item, index) => (
+                                <li
+                                    key={index}
+                                    onClick={this.selectHours}
+                                    className="kit-time-field__drop-wrapper"
+                                >
+                                    <button
                                         className={cn({
                                             ["kit-time-field__drop-down_item"]: true,
                                             ["kit-time-field__drop-down_item-selected"]:
@@ -286,13 +277,22 @@ export class TimeField extends React.Component<Props> {
                                         })}
                                     >
                                         {item}
-                                    </li>
-                                ))}
-                            </ul>
-                            <ul className="kit-time-field__drop-down_list">
-                                {this.createArrayTime(59).map(item => (
-                                    <li
-                                        onClick={this.selectMinutes}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                        <ul
+                            className="kit-time-field__drop-down_list"
+                            onMouseEnter={this.handleMouseEnter}
+                            onMouseLeave={this.handleMouseLeave}
+                        >
+                            {this.createArrayTime(59).map((item, index) => (
+                                <li
+                                    key={index}
+                                    onClick={this.selectMinutes}
+                                    className="kit-time-field__drop-wrapper"
+                                >
+                                    <button
                                         className={cn({
                                             ["kit-time-field__drop-down_item"]: true,
                                             ["kit-time-field__drop-down_item-selected"]:
@@ -300,13 +300,13 @@ export class TimeField extends React.Component<Props> {
                                         })}
                                     >
                                         {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
-                </div>
-            </>
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
         );
     }
 }

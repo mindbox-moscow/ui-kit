@@ -9,6 +9,13 @@ interface Props {
     onChange?: (date: Date) => void;
 }
 
+interface State {
+    isOpenCalendar: boolean,
+    activeDate: Date,
+    showedDate: Date,
+    dateString: string
+}
+
 const monthes = [
     "Янв",
     "Фев",
@@ -28,11 +35,19 @@ const formatValue = (value: number) => (value < 10 ? `0${value}` : `${value}`);
 
 export class DateField extends React.Component<Props> {
     wrapper: HTMLElement;
-    state = {
-        isOpenCalendar: false,
-        activeDate: this.props.defaultDate,
-        showedDate: new Date(this.props.defaultDate)
-    };
+    state: State;
+
+    constructor(props: Props) {
+        super(props);
+        const { defaultDate } = props;
+
+        this.state = {
+            isOpenCalendar: false,
+            activeDate: defaultDate,
+            showedDate: defaultDate,
+            dateString: `${formatValue(defaultDate.getDate())}.${formatValue(defaultDate.getMonth() + 1)}.${defaultDate.getFullYear()}`
+        };
+    }
 
     componentDidMount() {
         document.addEventListener("click", this.handleClickOutside);
@@ -80,15 +95,41 @@ export class DateField extends React.Component<Props> {
     };
 
     changeActiveDate = (year: number, month: number, date: number) => () => {
+        const { onChange = () => { } } = this.props;
         const newDate = new Date(year, month, date);
-        this.setState({ activeDate: newDate });
-        if (this.props.onChange) {
-            this.props.onChange(newDate);
-        }
+        this.setState({
+            dateString: `${formatValue(newDate.getDate())}.${formatValue(newDate.getMonth() + 1)}.${newDate.getFullYear()}`,
+            activeDate: newDate
+        });
+        onChange(newDate);
     };
 
+    handleChange = (event: any) => {
+        const { onChange = () => { } } = this.props;
+
+        const dateParser = /(\d{2})\.(\d{2})\.(\d{4})/;
+        const match = event.target.value.match(dateParser);
+        const parsedDate = match && new Date(
+            parseInt(match[3], 10),
+            parseInt(match[2], 10) - 1,
+            parseInt(match[1], 10),
+        );
+
+        const nowDate = parsedDate || Date.parse(event.target.value);
+        const activeDate = !nowDate && isNaN(nowDate) ? this.state.activeDate : new Date(nowDate);
+        const showedDate = !nowDate && isNaN(nowDate) ? this.state.showedDate : new Date(nowDate);
+
+        onChange(activeDate);
+
+        this.setState({
+            dateString: event.target.value,
+            activeDate,
+            showedDate,
+        });
+    }
+
     public render() {
-        const { isOpenCalendar, activeDate, showedDate } = this.state;
+        const { isOpenCalendar, activeDate, showedDate, dateString } = this.state;
         const { disabled } = this.props;
         const date = activeDate.getDate();
         const month = activeDate.getMonth();
@@ -134,18 +175,16 @@ export class DateField extends React.Component<Props> {
 
         return (
             <div
-                className={cn("kit-date-field", disabled && "date-field_disabled")}
+                className={cn("kit-date-field", disabled && "kit-date-field_disabled")}
                 onClick={disabled ? () => { } : this.handleOpen}
                 ref={this.handleWrapperRef}
             >
                 <input
-                    onChange={() => { }}
+                    onChange={this.handleChange}
                     type="text"
                     className="kit-date-field__input"
                     disabled={disabled}
-                    value={`${formatValue(date)}.${formatValue(
-                        month + 1
-                    )}.${year}`}
+                    value={dateString}
                 />
                 <div className="kit-date-field__icon">
                     <Icon icon="calendar" />
@@ -165,7 +204,7 @@ export class DateField extends React.Component<Props> {
                         />
                         <div>
                             <select
-                                value={nowMonth}
+                                value={monthes[nowMonth]}
                                 className="kit-date-field__select"
                                 onChange={this.handleChangeMonth}
                             >

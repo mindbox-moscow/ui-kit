@@ -16,18 +16,31 @@ export class TextLine extends React.Component<Props> {
         value: ""
     };
 
-    handleEdit = () =>
+    handleKeyUp = (event: any) => {
+        if (event.key === "Escape") {
+            this.handleExit();
+        }
+    }
+
+    handleEdit = () => {
         this.setState(
             { isEditing: !this.state.isEditing, value: this.props.text },
             () => this.input.focus()
         );
+        document.addEventListener('keyup', this.handleKeyUp);
+    }
+
+    handleExit = () => {
+        this.setState({ isEditing: false });
+        document.removeEventListener('keyup', this.handleKeyUp);
+    }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
         this.setState({ value: event.target.value });
 
-    handleKeyPress = (event: any) => {
+    handleInputKeyDown = (event: any) => {
         if (event.key === "Enter") {
-            this.setState({ isEditing: false });
+            this.handleExit();
             if (this.props.onChange) {
                 this.props.onChange(this.state.value);
             }
@@ -51,7 +64,7 @@ export class TextLine extends React.Component<Props> {
                             type="text"
                             value={value}
                             onChange={this.handleChange}
-                            onKeyUp={this.handleKeyPress}
+                            onKeyDown={this.handleInputKeyDown}
                         />
                         <span className="kit-textLine__signature">
                             Сохранить: нажмите Enter

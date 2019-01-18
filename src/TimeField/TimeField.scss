@@ -2,8 +2,8 @@
     font-family: "PT Sans", sans-serif;
     position: relative;
     box-sizing: border-box;
-    padding-left: 5px;
-    display: flex;
+    padding-left: 9px;
+    display: inline-flex;
     align-items: center;
     width: 72px;
     height: 29px;
@@ -16,6 +16,10 @@
 
     &_disabled {
         opacity: 0.35;
+    }
+
+    &__outer {
+        display: inline-block;
     }
 
     &_wrapper {
@@ -31,28 +35,41 @@
         }
     }
 
-    &__input {
-        padding-right: 0;
-        padding-left: 0;
-        width: 20px;
-        height: 16px;
-        font-family: "PT Sans", sans-serif;
-        font-size: 14px;
-        text-align: right;
-        color: #000;
-        border: none;
-        outline: none;
-        background-color: #fff;
+    &__select {
+        position: absolute;
+        z-index: 1;
+        top: 4px;
+        left: 9px;
+        background-color: #335DFF;
+        width: 38px;
+        height: 18px;
+        visibility: hidden;
+        opacity: 0;
 
-        &_minutes {
-            text-align: left;
+        &_show {
+            visibility: visible;
+            opacity: 0.9;
         }
     }
 
-    &__dots {
-        margin-top: -2px;
-        width: 4px;
-        cursor: default;
+    &__input {
+        position: relative;
+        z-index: 2;
+        padding-right: 0;
+        padding-left: 0;
+        width: 40px;
+        height: 16px;
+        font-family: "PT Sans", sans-serif;
+        font-size: 14px;
+        text-align: left;
+        color: #000;
+        border: none;
+        outline: none;
+        background: none;
+
+        &_selected {
+            color: #fff;
+        }
     }
 
     &__controls {
@@ -132,6 +149,10 @@
             padding-bottom: 3px;
             padding-left: 14px;
             padding-right: 14px;
+            font-family: "PT Sans", sans-serif;
+            font-size: 14px;
+            background: none;
+            border: none;
             cursor: pointer;
 
             &-selected {

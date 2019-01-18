@@ -7,6 +7,7 @@ interface Props {
     children: string;
     className?: string;
     disabled?: boolean;
+    inheritFont?: boolean;
     mode?: "danger";
     icon?: "play" | "pause";
     size: "small" | "medium" | "large" | "xs" | "normal";
@@ -29,6 +30,7 @@ export class Button extends React.Component<Props> {
             color,
             hasUnderline,
             hasBorder,
+            inheritFont,
             onClick = () => { }
         } = this.props;
         return (
@@ -39,7 +41,8 @@ export class Button extends React.Component<Props> {
                     [`button_size-${size}`]: size,
                     [`button_color-${color}`]: color,
                     [`button_hasBorder`]: hasBorder,
-                    [`button_has-icon`]: icon
+                    [`button_has-icon`]: icon,
+                    [`button_inherit-font`]: inheritFont
                 })}
                 disabled={disabled}
             >

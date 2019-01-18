@@ -20,11 +20,14 @@ interface Props {
     hours?: number;
     minutes?: number;
     disabled?: boolean;
-    onChange?: (time: number) => void;
+    onChange?: (hours: number, minutes: number) => void;
 }
 
 export class TimeField extends React.Component<Props> {
     dropDown: HTMLDivElement;
+    minutesInput: HTMLInputElement;
+    hoursInput: HTMLInputElement;
+
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
@@ -41,12 +44,6 @@ export class TimeField extends React.Component<Props> {
     }
 
     handleDropDownRef = (ref: HTMLDivElement) => (this.dropDown = ref);
-
-    handleChange = (hours: number, minutes: number) => {
-        if (this.props.onChange) {
-            this.props.onChange(hours * 3600 + minutes * 60);
-        }
-    };
 
     handleInputKeyDown = (event: any) => {
         const value = parseInt(event.key, 10);
@@ -164,6 +161,27 @@ export class TimeField extends React.Component<Props> {
         }
     };
 
+    handleWheel = (event: any) => {
+        event.preventDefault();
+        const { minutes, hours } = this.state;
+
+        if (event.deltaY < 0) {
+            const newMinutes = minutes === 59 || minutes === undefined ? 0 : minutes + 1;
+            const newHours = minutes === 59 && hours !== undefined ? hours + 1 : hours;
+            this.setState({
+                minutes: newMinutes,
+                hours: newHours === 24 ? 0 : newHours
+            });
+        } else {
+            const newMinutes = minutes === 0 || minutes === undefined ? 59 : minutes - 1;
+            const newHours = minutes === 0 && hours !== undefined ? hours - 1 : hours;
+            this.setState({
+                minutes: newMinutes,
+                hours: newHours < 0 ? 23 : newHours
+            });
+        }
+    }
+
     handleStopScroll = () => (event: MouseEvent) => event.preventDefault();
 
     handleMouseEnter = () => document.addEventListener('mousewheel', this.handleStopScroll)
@@ -191,6 +209,9 @@ export class TimeField extends React.Component<Props> {
                             "time-field",
                             disabled && "time-field_disabled"
                         )}
+                        onWheel={this.handleWheel}
+                        onMouseEnter={this.handleMouseEnter}
+                        onMouseLeave={this.handleMouseLeave}
                     >
                         <div
                             className={cn({

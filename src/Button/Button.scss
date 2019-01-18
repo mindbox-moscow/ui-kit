@@ -88,6 +88,7 @@
 
     &_hasBorder {
         border-color: #8aacc2;
+
         &:hover:not(:disabled) {
             border-color: darken($color: #8aacc2, $amount: 8%);
         }
@@ -101,11 +102,14 @@
         &:hover:not(:disabled) {
             border-color: darken($color: #a12e1e, $amount: 18%);
             color: darken($color: #a12e1e, $amount: 18%);
-            background-color: darken(
-                $color: rgba(255, 240, 238, 0.5),
-                $amount: 8%
-            );
+            background-color: darken($color: rgba(255, 240, 238, 0.5),
+                $amount: 8%);
         }
+    }
+
+    &_inherit-font {
+        font-size: inherit;
+        vertical-align: baseline;
     }
 
     &_has-icon {

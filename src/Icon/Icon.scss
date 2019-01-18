@@ -35,10 +35,6 @@
 
     &_edit {
         background-position: -80px -160px;
-        background-image: url(../assets/icons/icons-state.png);
-
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            background-image: url(../assets/icons/icons-state@2x.png);
-        }
+        opacity: 0.25;
     }
 }

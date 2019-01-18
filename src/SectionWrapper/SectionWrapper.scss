@@ -35,6 +35,13 @@
         &:hover {
             opacity: 0.7;
         }
+
+        &_hide {
+            visibility: hidden;
+            opacity: 0;
+            left: -9999;
+            right: auto;
+        }
     }
 
     &__title {
@@ -44,6 +51,22 @@
         font-size: 18px;
         font-weight: normal;
         line-height: 1;
+    }
+
+    &__button {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        height: 18px;
+        font-family: "PT Sans", sans-serif;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: 1;
+        color: inherit;
+        background: none;
+        border: none;
+        vertical-align: top;
+        cursor: pointer;
     }
 
     &_active &__title {

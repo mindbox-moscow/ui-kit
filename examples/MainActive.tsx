@@ -17,9 +17,9 @@ class MainActive extends React.Component<{}> {
         whenEdit: false
     };
 
-    toggleWhatState = () => this.setState({ whatEdit: !this.state.whatEdit });
-    toggleWhomState = () => this.setState({ whomEdit: !this.state.whomEdit });
-    toggleWhenState = () => this.setState({ whenEdit: !this.state.whenEdit });
+    toggleWhatState = (isEdit: boolean) => this.setState({ whatEdit: isEdit });
+    toggleWhomState = (isEdit: boolean) => this.setState({ whomEdit: isEdit });
+    toggleWhenState = (isEdit: boolean) => this.setState({ whenEdit: isEdit });
 
     public render() {
         const { whatEdit, whomEdit, whenEdit } = this.state;

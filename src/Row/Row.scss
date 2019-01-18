@@ -22,6 +22,7 @@
         flex-wrap: wrap;
         align-items: center;
         flex-grow: 1;
+        min-height: 23px;
         font-size: 14px;
 
         &_error {
@@ -47,6 +48,7 @@
         width: 154px;
         margin-top: 0;
         margin-bottom: 0;
+        padding-bottom: 2px;
         font-family: "PT Sans", sans-serif;
         position: relative;
         color: #888;
@@ -57,7 +59,7 @@
             content: "";
             border-bottom: 1px dashed #d4d4d4;
             width: 100%;
-            bottom: 4px;
+            bottom: 6px;
         }
     }
 

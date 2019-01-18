@@ -16,6 +16,25 @@ interface State {
     dateString: string
 }
 
+const controledKeys = {
+    "arrowLeft": true,
+    "arrowRight": true,
+    "Delete": true,
+    "Backspace": true,
+    "Tab": true,
+    ".": true,
+    "0": true,
+    "1": true,
+    "2": true,
+    "3": true,
+    "4": true,
+    "5": true,
+    "6": true,
+    "7": true,
+    "8": true,
+    "9": true,
+}
+
 const monthes = [
     "Янв",
     "Фев",
@@ -104,6 +123,12 @@ export class DateField extends React.Component<Props> {
         onChange(newDate);
     };
 
+    handleKeyDown = (event: any) => {
+        if (!controledKeys[event.key]) {
+            event.preventDefault();
+        }
+    }
+
     handleChange = (event: any) => {
         const { onChange = () => { } } = this.props;
 
@@ -181,6 +206,7 @@ export class DateField extends React.Component<Props> {
             >
                 <input
                     onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}
                     type="text"
                     className="kit-date-field__input"
                     disabled={disabled}

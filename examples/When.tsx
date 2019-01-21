@@ -119,7 +119,12 @@ class When extends React.Component<{}> {
                     2. Переключились в планирование периода активности
                 </div>
                 <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
+                    <Row
+                        isEdit
+                        isControl
+                        title="Период активности"
+                        description="25 авг 2018 – 1 янв 2019"
+                    >
                         <RadioButton name="whenBlock2-group1">
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
@@ -347,7 +352,12 @@ class When extends React.Component<{}> {
                     4. Настроили фильтр по инициатору события
                 </div>
                 <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
+                    <Row
+                        isEdit
+                        isControl
+                        title="Период активности"
+                        description="25 авг 2018 – 1 янв 2019"
+                    >
                         <RadioButton name="whenBlock41-group1" checked>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
@@ -427,7 +437,12 @@ class When extends React.Component<{}> {
                     5. Выбираем событие для правила запуска
                 </div>
                 <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
+                    <Row
+                        isEdit
+                        isControl
+                        title="Период активности"
+                        description="25 авг 2018 – 1 янв 2019"
+                    >
                         <RadioButton name="whenBlock4-group1" checked>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
@@ -457,28 +472,20 @@ class When extends React.Component<{}> {
                     <Row isEdit isSelect title="Событие">
                         <Select
                             placeholder="Выберите событие"
+                            isFiltered
                             items={[
                                 { title: "Потребитель попал в БД" },
-                                null,
                                 { title: "Потребитель был сдедублицирован" },
                                 { title: "Потребитель попал в сегмент" },
                                 { title: "Потребитель вышел из сегментации" },
                                 { title: "Изменился статус подписки" },
-                                {
-                                    title:
-                                        "Первое подтверждение мобильного телефона"
-                                },
-                                null,
+                                { title: "Первое подтверждение мобильного телефона" },
                                 { title: "Изменение email" },
                                 { title: "Первое подтверждение email" },
                                 { title: "Обновление данных потребителя" },
                                 { title: "Редактирование анкеты потребителем" },
                                 { title: "Потребитель вошел на сайт" },
-                                {
-                                    title:
-                                        "Активация секретного кода потребителем",
-                                    disabled: true
-                                },
+                                { title: "Активация секретного кода потребителем" },
                                 { title: "Потребитель получил приз" },
                                 { title: "Изменение статуса FMCG заказа" },
                                 { title: "Создание FMCG заказа" }
@@ -511,7 +518,12 @@ class When extends React.Component<{}> {
                     фильтр по этому событию».
                 </div>
                 <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
+                    <Row
+                        isEdit
+                        isControl
+                        title="Период активности"
+                        description="25 авг 2018 – 1 янв 2019"
+                    >
                         <RadioButton name="whenBlock5-group1" checked>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
@@ -626,7 +638,12 @@ class When extends React.Component<{}> {
                     появился блок настройки фильтра для выбраного события.
                 </div>
                 <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
+                    <Row
+                        isEdit
+                        isControl
+                        title="Период активности"
+                        description="25 авг 2018 – 1 янв 2019"
+                    >
                         <RadioButton name="whenBlock6-group1" checked>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>

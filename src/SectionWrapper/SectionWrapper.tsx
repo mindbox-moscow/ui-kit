@@ -56,19 +56,22 @@ export class SectionWrapper extends React.Component<Props> {
                 )}
             >
                 <h2 className="kit-section-wrapper__title">
-                    {
-                        isEdit
-                            ? title
-                            : (
-                                <button
-                                    className="kit-section-wrapper__button"
-                                    type='button'
-                                    onClick={() => onChangeState(true)}
-                                >
-                                    {title}
-                                </button>
-                            )
-                    }
+                    <span
+                        className={cn({
+                            "kit-section-wrapper__title-inner": true,
+                            "kit-section-wrapper__title-inner_show": isEdit,
+                        })}
+                    >{title}</span>
+                    <button
+                        className={cn({
+                            "kit-section-wrapper__button": true,
+                            "kit-section-wrapper__button_show": !isEdit,
+                        })}
+                        type='button'
+                        onClick={() => onChangeState(true)}
+                    >
+                        {title}
+                    </button>
                 </h2>
                 {children}
                 <button

@@ -53,10 +53,17 @@
         line-height: 1;
     }
 
+    &__title-inner {
+        display: none;
+
+        &_show {
+            display: inline-block;
+        }
+    }
+
     &__button {
         padding: 0;
         margin: 0;
-        display: inline-block;
         height: 18px;
         font-family: "PT Sans", sans-serif;
         font-size: inherit;
@@ -67,6 +74,11 @@
         border: none;
         vertical-align: top;
         cursor: pointer;
+        display: none;
+
+        &_show {
+            display: inline-block
+        }
     }
 
     &_active &__title {

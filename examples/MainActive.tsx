@@ -63,7 +63,7 @@ class MainActive extends React.Component<{}> {
                                 </RadioButton>
                             </Row>
                             <Row isEdit isCustom title="Инициатор события">
-                                <div className="row__control">
+                                <div className="kit-row__control">
                                     <RadioButton name="whenBlock3-group3">
                                         Любой
                                     </RadioButton>
@@ -71,8 +71,8 @@ class MainActive extends React.Component<{}> {
                                 <RadioButton name="whenBlock3-group3" checked>
                                     Настроить фильтр по потребителям
                                 </RadioButton>
-                                <div className="row__small-filter row__small-filter_bottom">
-                                    <div className="row__filter-inner">
+                                <div className="kit-row__small-filter kit-row__small-filter_bottom">
+                                    <div className="kit-row__filter-inner">
                                         <Select
                                             placeholder="Выберите событие"
                                             size="small"
@@ -243,7 +243,7 @@ class MainActive extends React.Component<{}> {
                                 </RadioButton>
                             </Row>
                             <Row isEdit title="Число срабатываний" isControl>
-                                <div className="row__segment">
+                                <div className="kit-row__segment">
                                     <RadioButton name="rgroup23" checked>
                                         Неограничено
                                     </RadioButton>

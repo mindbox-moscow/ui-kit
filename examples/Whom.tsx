@@ -215,7 +215,7 @@ class Whom extends React.Component<{}> {
                         <RadioButton name="rgroup13">Периодически</RadioButton>
                     </Row>
                     <Row isEdit title="Число срабатываний" isControl>
-                        <div className="row__segment">
+                        <div className="kit-row__segment">
                             <RadioButton name="rgroup23" checked>
                                 Неограничено
                             </RadioButton>

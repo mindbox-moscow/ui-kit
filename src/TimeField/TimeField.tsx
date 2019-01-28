@@ -2,18 +2,27 @@ import * as React from "react";
 import "./TimeField.scss";
 import cn from "classnames";
 
-const formatTime = (value: number, min: number, max: number) => {
+const timeRange = (value: number, min: number, max: number) => {
     let result = value;
     if (result > max) {
-        result = min;
-    }
-    if (result < min) {
         result = max;
     }
+    if (result < min) {
+        result = min;
+    }
+    return result;
+}
+
+const formatTime = (value: number, min: number, max: number) => {
+    let result = timeRange(value, min, max);
     if (result < 10) {
         return `0${result}`;
     }
     return `${result}`;
+};
+
+const stringTime = (hours: number | undefined, minutes: number | undefined) => {
+    return `${formatTime(hours || 0, 0, 23)}:${formatTime(minutes || 0, 0, 59)}`;
 };
 
 interface Props {
@@ -25,14 +34,16 @@ interface Props {
 
 export class TimeField extends React.Component<Props> {
     dropDown: HTMLDivElement;
-    minutesInput: HTMLInputElement;
-    hoursInput: HTMLInputElement;
+    hoursList: HTMLUListElement;
+    minutesList: HTMLUListElement;
+    input: HTMLInputElement;
 
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
-        activeNumber: 0,
-        isOpen: false
+        isOpen: false,
+        allowScroll: false,
+        stringValue: stringTime(this.props.hours, this.props.minutes),
     };
 
     componentDidMount() {
@@ -43,75 +54,89 @@ export class TimeField extends React.Component<Props> {
         document.removeEventListener("click", this.handleClickOutside);
     }
 
+    componentDidUpdate = () => {
+        const { allowScroll, isOpen, hours, minutes } = this.state;
+
+        if (this.hoursList && isOpen && allowScroll) {
+            this.hoursList.scrollTo(0, 24 * hours - 144);
+        }
+
+        if (this.minutesList && isOpen && allowScroll) {
+            this.minutesList.scrollTo(0, 24 * minutes - 144);
+        }
+    }
+
+    handleMinutesListRef = (ref: HTMLUListElement) => (this.minutesList = ref);
+
+    handleHoursListRef = (ref: HTMLUListElement) => (this.hoursList = ref);
+
+    handleInputRef = (ref: HTMLInputElement) => (this.input = ref);
+
     handleDropDownRef = (ref: HTMLDivElement) => (this.dropDown = ref);
 
-    handleInputKeyDown = (event: any) => {
-        const value = parseInt(event.key, 10);
-        if (isNaN(value)) {
-            return
-        }
-        const { activeNumber, hours, minutes } = this.state;
-        let newMinutes = minutes;
+    handleInputChange = (event: any) => {
+        const { onChange = () => { } } = this.props;
+        const { value } = event.target;
+        const newValue = value.length > 5 ? value.substr(0, 5) : value;
+        const { hours, minutes } = this.state;
         let newHours = hours;
-        let newActiveNumber = activeNumber + 1;
+        let newMinutes = minutes;
 
-        switch (activeNumber) {
-            case 0:
-                if (value > 2) {
-                    newHours = value;
-                    newActiveNumber = 2;
-                } else {
-                    newHours = value * 10;
-                }
-                break;
-
-            case 1:
-                newHours = hours + value;
-                break;
-
-            case 2:
-                if (value > 5) {
-                    newMinutes = value;
-                    newActiveNumber = 0;
-                } else {
-                    newMinutes = value * 10;
-                }
-                break;
-
-            case 3:
-                newMinutes = minutes + value;
-                newActiveNumber = 0
-
-            default:
-                break;
+        if (newValue.indexOf(':')) {
+            const times = newValue.split(':');
+            newHours = parseInt(times[0], 10);
+            newMinutes = parseInt(times[1], 10);
+        } else {
+            newHours = parseInt(newValue, 10);
         }
+        newHours = isNaN(newHours) ? 0 : timeRange(newHours, 0, 23);
+        newMinutes = isNaN(newMinutes) ? 0 : timeRange(newMinutes, 0, 59);
 
         this.setState({
-            minutes: newMinutes,
+            stringValue: newValue,
             hours: newHours,
-            activeNumber: newActiveNumber,
-        });
+            minutes: newMinutes,
+            allowScroll: true,
+        })
+        onChange(newHours, newMinutes);
     }
 
     handleInputFocus = () => {
-        this.setState({ isOpen: true });
+        if (!this.state.isOpen) {
+            this.setState({ isOpen: true, allowScroll: false });
+            this.input.setSelectionRange(0, 5);
+        }
     }
 
     handleClickOutside = (event: MouseEvent) => {
         const target: any = event.target;
         if (!this.dropDown || !this.dropDown.contains(target)) {
-            this.setState({ isOpen: false });
+            this.setState({ isOpen: false, allowScroll: false });
         }
     };
 
     selectHours = (event: any) => {
+        const { onChange = () => { } } = this.props;
+        const { minutes } = this.state;
         const num = parseInt(event.target.innerText);
-        this.setState({ isSecondHourActive: true, hours: num });
+        this.setState({
+            hours: num,
+            stringValue: stringTime(num, minutes),
+            allowScroll: false,
+        });
+        onChange(num, minutes);
     };
 
     selectMinutes = (event: any) => {
+        const { onChange = () => { } } = this.props;
+        const { hours } = this.state;
         const num = parseInt(event.target.innerText);
-        this.setState({ isSecondMinuteActive: true, minutes: num });
+        this.setState({
+            minutes: num,
+            stringValue: stringTime(hours, num),
+            allowScroll: false,
+        });
+        onChange(hours, num);
     };
 
     createArrayTime = (value: any) => {
@@ -127,58 +152,79 @@ export class TimeField extends React.Component<Props> {
 
     handleUp = () => {
         const { minutes, hours } = this.state;
+        const { onChange = () => { } } = this.props;
 
         if (minutes >= 30) {
+            const h = hours === 23 ? 0 : hours + 1;
             this.setState({
-                hours: hours === 23 ? 0 : hours + 1,
+                hours: h,
                 minutes: 0,
-                activeNumber: 0
+                stringValue: stringTime(h, 0),
+                allowScroll: true,
             });
+            onChange(h, 0);
         } else {
             this.setState({
                 hours,
                 minutes: 30,
-                activeNumber: 0
+                stringValue: stringTime(hours, 30),
+                allowScroll: true,
             });
+            onChange(hours, 30);
         }
     };
 
     handleDown = () => {
         const { minutes, hours } = this.state;
+        const { onChange = () => { } } = this.props;
 
         if (minutes < 30) {
+            const h = hours === 0 ? 23 : hours - 1;
             this.setState({
-                hours: hours === 0 ? 23 : hours - 1,
+                hours: h,
                 minutes: 30,
-                activeNumber: 0
+                stringValue: stringTime(h, 30),
+                allowScroll: true,
             });
+            onChange(h, 30);
         } else {
             this.setState({
                 hours,
                 minutes: 0,
-                activeNumber: 0
+                stringValue: stringTime(hours, 0),
+                allowScroll: true,
             });
+            onChange(hours, 0);
         }
     };
 
     handleWheel = (event: any) => {
         event.preventDefault();
         const { minutes, hours } = this.state;
+        const { onChange = () => { } } = this.props;
 
         if (event.deltaY < 0) {
             const newMinutes = minutes === 59 || minutes === undefined ? 0 : minutes + 1;
             const newHours = minutes === 59 && hours !== undefined ? hours + 1 : hours;
+            const h = newHours === 24 ? 0 : newHours;
             this.setState({
                 minutes: newMinutes,
-                hours: newHours === 24 ? 0 : newHours
+                hours: h,
+                stringValue: stringTime(h, newMinutes),
+                allowScroll: true,
             });
+            onChange(h, newMinutes);
         } else {
             const newMinutes = minutes === 0 || minutes === undefined ? 59 : minutes - 1;
             const newHours = minutes === 0 && hours !== undefined ? hours - 1 : hours;
+            const h = newHours < 0 ? 23 : newHours;
             this.setState({
                 minutes: newMinutes,
-                hours: newHours < 0 ? 23 : newHours
+                hours: h,
+                stringValue: stringTime(h, newMinutes),
+                allowScroll: true,
             });
+            onChange(h, newMinutes);
         }
     }
 
@@ -188,10 +234,8 @@ export class TimeField extends React.Component<Props> {
     handleMouseLeave = () => document.removeEventListener('mousewheel', this.handleStopScroll)
 
     public render() {
-        const { hours, minutes, isOpen } = this.state;
+        const { hours, minutes, isOpen, stringValue } = this.state;
         const { disabled } = this.props;
-        const hoursValue = formatTime(hours, 0, 23);
-        const minutesValue = formatTime(minutes, 0, 59);
         return (
             <div
                 className="kit-time-field__outer"
@@ -213,23 +257,14 @@ export class TimeField extends React.Component<Props> {
                         onMouseEnter={this.handleMouseEnter}
                         onMouseLeave={this.handleMouseLeave}
                     >
-                        <div
-                            className={cn({
-                                "kit-time-field__select": true,
-                                "kit-time-field__select_show": isOpen
-                            })}
-                        />
                         <input
                             type="text"
-                            readOnly
-                            value={`${hoursValue}:${minutesValue}`}
+                            ref={this.handleInputRef}
+                            value={stringValue}
                             disabled={disabled}
-                            onKeyDown={this.handleInputKeyDown}
+                            onChange={this.handleInputChange}
                             onFocus={this.handleInputFocus}
-                            className={cn({
-                                "kit-time-field__input": true,
-                                "kit-time-field__input_selected": isOpen
-                            })}
+                            className="kit-time-field__input"
                         />
                         <div className="kit-time-field__controls">
                             <button
@@ -262,6 +297,7 @@ export class TimeField extends React.Component<Props> {
                             onMouseEnter={this.handleMouseEnter}
                             onMouseLeave={this.handleMouseLeave}
                             className="kit-time-field__drop-down_list"
+                            ref={this.handleHoursListRef}
                         >
                             {this.createArrayTime(23).map((item, index) => (
                                 <li
@@ -285,6 +321,7 @@ export class TimeField extends React.Component<Props> {
                             className="kit-time-field__drop-down_list"
                             onMouseEnter={this.handleMouseEnter}
                             onMouseLeave={this.handleMouseLeave}
+                            ref={this.handleMinutesListRef}
                         >
                             {this.createArrayTime(59).map((item, index) => (
                                 <li

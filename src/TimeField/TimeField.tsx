@@ -33,13 +33,13 @@ export class TimeField extends React.Component<Props> {
     hoursList: HTMLUListElement;
     minutesList: HTMLUListElement;
     input: HTMLInputElement;
+    selection: (number | null)[] = [0, 5]
 
     state = {
         hours: this.props.hours || 0,
         minutes: this.props.minutes || 0,
         isOpen: false,
-        allowScroll: false,
-        selection: [0, 0],
+        allowScroll: false
     };
 
     componentDidMount() {
@@ -50,19 +50,19 @@ export class TimeField extends React.Component<Props> {
         document.removeEventListener("click", this.handleClickOutside);
     }
 
-    componentDidUpdate = () => {
-        const { allowScroll, isOpen, hours, minutes, selection } = this.state;
+    // componentDidUpdate = () => {
+    //     const { allowScroll, isOpen, hours, minutes, selection } = this.state;
 
-        if (this.hoursList && isOpen && allowScroll) {
-            this.hoursList.scrollTo(0, 24 * hours - 144);
-        }
+    //     if (this.hoursList && isOpen && allowScroll) {
+    //         this.hoursList.scrollTo(0, 24 * hours - 144);
+    //     }
 
-        if (this.minutesList && isOpen && allowScroll) {
-            this.minutesList.scrollTo(0, 24 * minutes - 144);
-        }
-        this.input.setSelectionRange(selection[0], selection[1]);
+    //     if (this.minutesList && isOpen && allowScroll) {
+    //         this.minutesList.scrollTo(0, 24 * minutes - 144);
+    //     }
+    //     this.input.setSelectionRange(selection[0], selection[1]);
 
-    }
+    // }
 
     handleMinutesListRef = (ref: HTMLUListElement) => (this.minutesList = ref);
 
@@ -81,8 +81,6 @@ export class TimeField extends React.Component<Props> {
         let newSelection = [selectionStart, selectionEnd];
         const { key } = event;
         const number = parseInt(key, 10);
-
-        if (event.ctrlKey || event.altKey || event.metaKey) return;
 
         if (key === 'Backspace') {
             if (selectionStart === 1) {
@@ -155,24 +153,33 @@ export class TimeField extends React.Component<Props> {
         } else if (key === 'ArrowDown') {
             this.handleDown();
             return;
-        } else if (key === 'ArrowLeft' || key === 'ArrowRight') {
-            return;
+        } else if (key === 'ArrowLeft') {
+            const s = selectionStart ? selectionStart - 1 : 0
+            newSelection = [s, s]
+        } else if (key === 'ArrowRight') {
+            const s = selectionStart !== null && selectionStart < 5 ? selectionStart + 1 : 5
+            newSelection = [s, s]
         }
 
         this.setState({
             hours: newHours,
             minutes: newMinutes,
-            selection: newSelection,
+        }, () => {
+            this.input.setSelectionRange(newSelection[0] || 0, newSelection[1] || 0)
         });
+        this.selection = newSelection;
         onChange(newHours, newMinutes);
+
         event.preventDefault();
-        return false;
+    }
+
+    handleKeyUp = (event: any) => {
+        event.target.setSelectionRange(this.selection[0], this.selection[1])
     }
 
     handleInputFocus = () => {
         if (!this.state.isOpen) {
             this.setState({ isOpen: true, allowScroll: false });
-            this.input.setSelectionRange(0, 5);
         }
     }
 
@@ -321,6 +328,7 @@ export class TimeField extends React.Component<Props> {
                             type="text"
                             ref={this.handleInputRef}
                             onChange={() => { }}
+                            onKeyUp={this.handleKeyUp}
                             value={`${formatTime(hours, 0, 23)}:${formatTime(minutes, 0, 59)}`}
                             disabled={disabled}
                             onKeyDown={this.handleKeyDown}

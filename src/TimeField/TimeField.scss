@@ -45,23 +45,6 @@
         }
     }
 
-    &__select {
-        position: absolute;
-        z-index: 1;
-        top: 4px;
-        left: 9px;
-        background-color: #335DFF;
-        width: 38px;
-        height: 18px;
-        visibility: hidden;
-        opacity: 0;
-
-        &_show {
-            visibility: visible;
-            opacity: 0.9;
-        }
-    }
-
     &__input {
         position: relative;
         z-index: 2;
@@ -76,10 +59,6 @@
         border: none;
         outline: none;
         background: none;
-
-        &_selected {
-            color: #fff;
-        }
     }
 
     &__controls {

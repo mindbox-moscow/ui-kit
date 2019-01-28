@@ -223,7 +223,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock3-group3">
                                 Любой
                             </RadioButton>
@@ -231,8 +231,8 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock3-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__small-filter row__small-filter_bottom">
-                            <div className="row__filter-inner">
+                        <div className="kit-row__small-filter kit-row__small-filter_bottom">
+                            <div className="kit-row__filter-inner">
                                 <Select
                                     placeholder="Выберите событие"
                                     size="small"
@@ -350,7 +350,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock41-group3">
                                 Любой
                             </RadioButton>
@@ -358,7 +358,7 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock41-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__filter row__filter_bottom" />
+                        <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
                     <Row isEdit isSelect title="Событие">
                         <Select
@@ -427,7 +427,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock4-group3">
                                 Любой
                             </RadioButton>
@@ -435,7 +435,7 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock4-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__filter row__filter_bottom" />
+                        <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
                     <Row isEdit isSelect title="Событие">
                         <Select
@@ -508,7 +508,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom isFilter title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock5-group3">
                                 Любой
                             </RadioButton>
@@ -516,7 +516,7 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock5-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__filter row__filter_bottom" />
+                        <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
                     <Row isEdit isSelectChecked title="Событие">
                         <Select
@@ -620,7 +620,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock6-group3">
                                 Любой
                             </RadioButton>
@@ -628,7 +628,7 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock6-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__filter row__filter_bottom" />
+                        <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
                     <Row isEdit isSelectChecked title="Событие">
                         <Select
@@ -717,7 +717,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -765,7 +765,7 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isCustom title="Инициатор события">
-                        <div className="row__control">
+                        <div className="kit-row__control">
                             <RadioButton name="whenBlock7-group3">
                                 Любой
                             </RadioButton>
@@ -773,7 +773,7 @@ class When extends React.Component<{}> {
                         <RadioButton name="whenBlock7-group3" checked>
                             Настроить фильтр по потребителям
                         </RadioButton>
-                        <div className="row__filter row__filter_bottom" />
+                        <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
                     <Row isEdit isSelectChecked title="Событие">
                         <Select
@@ -820,7 +820,7 @@ class When extends React.Component<{}> {
                             placeholder="Выберите"
                             items={[{ title: "через" }]}
                         />
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -837,7 +837,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -921,7 +921,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -987,7 +987,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждую">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1003,7 +1003,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -1064,7 +1064,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждую">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1094,7 +1094,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -1155,7 +1155,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1224,7 +1224,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -1288,7 +1288,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1339,7 +1339,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -1401,7 +1401,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1488,7 +1488,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select
@@ -1550,7 +1550,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="1" maxLength={2} />
                         </div>
                         неделю с момента старт
@@ -1619,7 +1619,7 @@ class When extends React.Component<{}> {
                     >
                         Допускается запоздание срабатывания триггера не более,
                         чем на
-                        <div className="row__input">
+                        <div className="kit-row__input">
                             <Input defaultValue="10" maxLength={2} />
                         </div>
                         <Select

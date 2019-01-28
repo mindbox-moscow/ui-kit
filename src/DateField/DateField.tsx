@@ -62,8 +62,8 @@ export class DateField extends React.Component<Props> {
 
         this.state = {
             isOpenCalendar: false,
-            activeDate: defaultDate,
-            showedDate: defaultDate,
+            activeDate: new Date(defaultDate),
+            showedDate: new Date(defaultDate),
             dateString: `${formatValue(defaultDate.getDate())}.${formatValue(defaultDate.getMonth() + 1)}.${defaultDate.getFullYear()}`
         };
     }
@@ -174,13 +174,15 @@ export class DateField extends React.Component<Props> {
         const lastDateBefore =
             32 - new Date(nowYear, nowMonth - 1, 32).getDate();
         const today = new Date();
+        const todayYear = today.getFullYear();
+
         const activeDay = year === nowYear && month === nowMonth && date;
         const currentDay =
-            today.getFullYear() === nowYear &&
+            todayYear === nowYear &&
             today.getMonth() === nowMonth &&
             today.getDate();
 
-        for (let y = nowYear - 50; y <= nowYear + 50; y++) {
+        for (let y = todayYear - 50; y <= todayYear + 50; y++) {
             yearsList.push(y);
         }
 
@@ -230,12 +232,12 @@ export class DateField extends React.Component<Props> {
                         />
                         <div>
                             <select
-                                value={monthes[nowMonth]}
+                                value={nowMonth}
                                 className="kit-date-field__select"
                                 onChange={this.handleChangeMonth}
                             >
-                                {monthes.map(item => (
-                                    <option key={item}>{item}</option>
+                                {monthes.map((item, index) => (
+                                    <option key={index} value={index}>{item}</option>
                                 ))}
                             </select>
                             <select

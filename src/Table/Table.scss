@@ -1,0 +1,78 @@
+.kit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "PT Sans", sans-serif;
+    color: #333333;
+
+    & thead {
+        border-bottom: 1px solid #d4d4d4;
+
+        & th:not(:first-child) {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        & th:first-child {
+            text-align-last: left;
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    & td:not(:first-child),
+    & th:not(:first-child) {
+        width: 50%;
+        text-align: right;
+    }
+
+    & th {
+        padding-bottom: 12px;
+    }
+
+    &__wrapper {
+        padding-top: 22px;
+        padding-bottom: 22px;
+        padding-left: 22px;
+        padding-right: 22px;
+        background-color: #fffaed;
+        border-radius: 4px;
+    }
+
+    &__row {
+        vertical-align: top;
+
+        & td {
+            padding-top: 18px;
+        }
+    }
+
+    &__col-1 {
+        width: 326px;
+    }
+
+    &__name {
+        width: 326px;
+        font-weight: 300;
+    }
+
+    &__description {
+        font-size: 13px;
+        line-height: 1.15;
+        color: #999999;
+    }
+
+    &__sale-signature {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 13px;
+        color: #417505;
+    }
+
+    &__old-price {
+        margin-right: 10px;
+        text-decoration: line-through;
+        color: #979797;
+    }
+}

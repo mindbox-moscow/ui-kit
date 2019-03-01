@@ -10,6 +10,7 @@ interface Props {
     inheritFont?: boolean;
     mode?: "danger";
     icon?: "play" | "pause";
+    arrow?: "left" | "right";
     size: "small" | "medium" | "large" | "xs" | "normal";
     color: "gray" | "lightgray";
     hasUnderline?: boolean;
@@ -26,6 +27,7 @@ export class Button extends React.Component<Props> {
             className,
             mode,
             icon,
+            arrow,
             size,
             color,
             hasUnderline,
@@ -42,7 +44,9 @@ export class Button extends React.Component<Props> {
                     [`kit-button_color-${color}`]: color,
                     [`kit-button_hasBorder`]: hasBorder,
                     [`kit-button_has-icon`]: icon,
-                    [`kit-button_inherit-font`]: inheritFont
+                    [`kit-button_inherit-font`]: inheritFont,
+                    [`kit-button_whith-arrow`]: arrow,
+                    [`kit-button_whith-arrow_${arrow}`]: arrow,
                 })}
                 disabled={disabled}
             >

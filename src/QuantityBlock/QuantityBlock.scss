@@ -1,0 +1,15 @@
+.kit-quantityBlock {
+    display: flex;
+    flex-direction: column;
+    font-family: "PT Sans", sans-serif;
+    color: #333333;
+
+    &__value {
+        font-size: 22px;
+        line-height: 1;
+    }
+
+    &__name {
+        font-size: 14px;
+    }
+}

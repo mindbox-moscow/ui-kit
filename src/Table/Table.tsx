@@ -40,8 +40,8 @@ export class Table extends React.Component<Props> {
     public render() {
         const { className, th1, th2, rows } = this.props;
         return (
-            <div className="kit-table__wrapper">
-                <table className={cn("kit-table", className)}>
+            <div className={cn("kit-table__wrapper", className)}>
+                <table className={"kit-table"}>
                     <thead>
                         <tr className="kit-table__header">
                             <th>{th1}</th>

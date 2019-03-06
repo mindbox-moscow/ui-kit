@@ -1,0 +1,39 @@
+.kit-tabs {
+    width: 100%;
+    font-family: "PT Sans", sans-serif;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__list {
+        display: flex;
+        list-style: none;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 22px;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &__module {
+        margin-bottom: 20px;
+    }
+
+    &__module:not(:nth-child(3n)) {
+        margin-right: 20px;
+    }
+
+    &__tabs-content {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}

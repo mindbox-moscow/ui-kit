@@ -5,6 +5,7 @@
     width: 352px;
     height: 220px;
     padding-top: 24px;
+    padding-bottom: 56px;
     padding-left: 28px;
     padding-right: 28px;
     font-family: "PT Sans", sans-serif;
@@ -29,14 +30,14 @@
     }
 
     &__text {
-        margin-bottom: 22px;
+        margin-bottom: auto;
         font-size: 13px;
         line-height: 1.15;
         color: #999999;
     }
 
     &__signature {
-        margin-bottom: 6px;
+        margin-bottom: 3px;
         font-size: 13px;
         color: #333333;
     }

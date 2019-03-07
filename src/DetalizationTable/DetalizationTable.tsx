@@ -156,7 +156,7 @@ const renderDetailsRow = (item: any) => {
         <div key={item.name} className="kit-detalization__details-row">
             <span>{`${item.name}:`}</span>
             <span className="kit-detalization__details-value">{item.value}</span>
-            {item.icon && <Help />}
+            {item.icon && <Help className="kit-detalization__details-help" />}
         </div>
     );
 }
@@ -199,7 +199,7 @@ export class DetalizationTable extends React.Component<{}> {
                         {detailsRows2.map(renderDetailsRow)}
                         <Button
                             className="kit-detalization__button"
-                            size="xs"
+                            size="medium"
                             color="gray"
                             hasBorder
                         >

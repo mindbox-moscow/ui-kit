@@ -3,6 +3,7 @@ import { Table } from "../Table/Table";
 import { Button } from "../Button/Button";
 import { Help } from "../Help/Help";
 import { QuantityBlock } from "../QuantityBlock/QuantityBlock";
+import { DetalizationRow } from "../DetalizationRow/DetalizationRow";
 import "./DetalizationTable.scss";
 
 const data = [{
@@ -144,20 +145,19 @@ const renderQuanityBlock = (item: any) => {
 
 const renderRow = (item: any) => {
     return (
-        <div key={item.name} className="kit-detalization__row">
-            <span>{item.name}</span>
-            <span>{item.value}</span>
-        </div>
+        <li key={item.name} className="kit-detalization__row">
+            <DetalizationRow name={item.name} value={item.value} />
+        </li>
     );
 }
 
 const renderDetailsRow = (item: any) => {
     return (
-        <div key={item.name} className="kit-detalization__details-row">
+        <li key={item.name} className="kit-detalization__details-row">
             <span>{`${item.name}:`}</span>
             <span className="kit-detalization__details-value">{item.value}</span>
             {item.icon && <Help className="kit-detalization__details-help" />}
-        </div>
+        </li>
     );
 }
 
@@ -183,9 +183,9 @@ export class DetalizationTable extends React.Component<{}> {
                     </div>
                     <Table className="kit-detalization__yellow-table" th1="Дополнительные модули" th2="Стоимость в % от базового модуля" rows={data} />
                     <Table className="kit-detalization__yellow-table" th1="хранение данных" th2="Данные сверх лимита" rows={data2} />
-                    <div className="kit-detalization__rows">
+                    <ul className="kit-detalization__rows">
                         {rows.map(renderRow)}
-                    </div>
+                    </ul>
                     <div className="kit-detalization__total-box">
                         <span className="kit-detalization__total">Итого с НДС</span>
                         <span className="kit-detalization__total-result">132 1460</span>

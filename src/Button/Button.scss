@@ -107,6 +107,25 @@
         }
     }
 
+    &_whith-arrow {
+
+        &::after,
+        &::before {
+            display: inline-block;
+            margin-top: 1px;
+        }
+
+        &_left::before {
+            content: '←';
+            margin-right: 4px;
+        }
+
+        &_right::after {
+            content: '→';
+            margin-left: 4px;
+        }
+    }
+
     &_inherit-font {
         font-size: inherit;
         vertical-align: baseline;

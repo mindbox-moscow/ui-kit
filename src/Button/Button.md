@@ -13,6 +13,9 @@
     <Button color="gray" size="medium" hasBorder>
         Кнопка
     </Button>
+    <Button color="gray" arrow="right" size="medium" hasBorder>
+        Кнопка
+    </Button>
     <Button color="gray" size="medium" hasBorder mode="danger">
         Кнопка
     </Button>

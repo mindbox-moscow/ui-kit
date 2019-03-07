@@ -1,0 +1,132 @@
+.kit-detalization {
+    width: 100%;
+    display: flex;
+    font-family: "PT Sans", sans-serif;
+    color: #333333;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+
+    &__left-content {
+        flex-grow: 1;
+        padding-top: 33px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 18px;
+        box-sizing: border-box;
+        border-right: 1px solid #d4d4d4;
+    }
+
+    &__table {
+        margin-bottom: 18px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    &__table-header {
+        padding-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        font-weight: 900;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    &__table-row {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &__table-signature {
+        width: 326px;
+        font-size: 13px;
+        line-height: 1.15;
+        color: #999999;
+    }
+
+    &__yellow-table {
+        margin-bottom: 18px;
+    }
+
+    &__rows {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+
+        &:not(:last-child) {
+            margin-bottom: 14px;
+        }
+    }
+
+    &__total-box {
+        margin-top: 15px;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 22px;
+        font-weight: 900;
+        border-top: 1px solid #d4d4d4;
+    }
+
+    &__right-content {
+        flex: 1 0 auto;
+        padding-top: 15px;
+    }
+
+    &__details {
+        padding-top: 18px;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 22px;
+        border-bottom: 1px solid #d4d4d4;
+        font-size: 14px;
+
+        &-row {
+            display: flex;
+
+            &:not(:last-child) {
+                margin-bottom: 4px;
+            }
+        }
+
+        &-value {
+            margin-left: 4px;
+            font-weight: 900;
+        }
+
+        &-help {
+            margin-left: 6px;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        margin-top: 9px;
+    }
+
+    &__statistics {
+        padding-top: 28px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        &-item {
+            margin-bottom: 20px;
+        }
+
+        &-title {
+            margin: 0;
+            margin-bottom: 14px;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    }
+}

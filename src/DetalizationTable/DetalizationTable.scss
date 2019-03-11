@@ -50,9 +50,9 @@
     }
 
     &__rows {
+        width: auto;
         padding-left: 24px;
         padding-right: 24px;
-        list-style: none;
     }
 
     &__row:not(:last-child) {

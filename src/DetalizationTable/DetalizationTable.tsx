@@ -187,9 +187,7 @@ export class DetalizationTable extends React.Component<{}> {
                     <div className="kit-detalization__rows">
                         {rows.map(renderRow)}
                     </div>
-                    <div className="kit-detalization__total-box">
-                        <DetalizationTotal name="Итого с НДС" result="132 1460" />
-                    </div>
+                    <DetalizationTotal className="kit-detalization__total-box" name="Итого с НДС" result="132 1460" />
                 </div>
                 <div className="kit-detalization__right-content">
                     <div className="kit-detalization__details">

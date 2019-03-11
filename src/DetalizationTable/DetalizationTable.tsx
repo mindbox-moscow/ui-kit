@@ -4,6 +4,7 @@ import { Button } from "../Button/Button";
 import { Help } from "../Help/Help";
 import { QuantityBlock } from "../QuantityBlock/QuantityBlock";
 import { DetalizationList } from "../DetalizationList/DetalizationList";
+import { DetalizationTotal } from "../DetalizationTotal/DetalizationTotal";
 import "./DetalizationTable.scss";
 
 const data = [{
@@ -176,10 +177,7 @@ export class DetalizationTable extends React.Component<{}> {
                     <Table className="kit-detalization__yellow-table" th1="Дополнительные модули" th2="Стоимость в % от базового модуля" rows={data} />
                     <Table className="kit-detalization__yellow-table" th1="хранение данных" th2="Данные сверх лимита" rows={data2} />
                     <DetalizationList className="kit-detalization__rows" rows={rows} />
-                    <div className="kit-detalization__total-box">
-                        <span className="kit-detalization__total">Итого с НДС</span>
-                        <span className="kit-detalization__total-result">132 1460</span>
-                    </div>
+                    <DetalizationTotal className="kit-detalization__total-box" name="Итого с НДС" result="132 1460" />
                 </div>
                 <div className="kit-detalization__right-content">
                     <div className="kit-detalization__details">

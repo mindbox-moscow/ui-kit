@@ -3,3 +3,4 @@
 -   ["What" section states](./What)
 -   ["When" section states](./When)
 -   ["Whom" section states](./Whom)
+-   ["Detalization" page](./Detalization)

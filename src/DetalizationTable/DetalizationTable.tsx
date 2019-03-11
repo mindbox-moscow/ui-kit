@@ -3,6 +3,7 @@ import { Table } from "../Table/Table";
 import { Button } from "../Button/Button";
 import { Help } from "../Help/Help";
 import { QuantityBlock } from "../QuantityBlock/QuantityBlock";
+import { DetalizationTotal } from "../DetalizationTotal/DetalizationTotal";
 import "./DetalizationTable.scss";
 
 const data = [{
@@ -186,10 +187,7 @@ export class DetalizationTable extends React.Component<{}> {
                     <div className="kit-detalization__rows">
                         {rows.map(renderRow)}
                     </div>
-                    <div className="kit-detalization__total-box">
-                        <span className="kit-detalization__total">Итого с НДС</span>
-                        <span className="kit-detalization__total-result">132 1460</span>
-                    </div>
+                    <DetalizationTotal className="kit-detalization__total-box" name="Итого с НДС" result="132 1460" />
                 </div>
                 <div className="kit-detalization__right-content">
                     <div className="kit-detalization__details">

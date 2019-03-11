@@ -64,15 +64,10 @@
     }
 
     &__total-box {
+        width: auto;
         margin-top: 15px;
         margin-left: 24px;
         margin-right: 24px;
-        padding-top: 20px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 22px;
-        font-weight: 900;
-        border-top: 1px solid #d4d4d4;
     }
 
     &__right-content {

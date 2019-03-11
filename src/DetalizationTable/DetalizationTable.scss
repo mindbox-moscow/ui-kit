@@ -50,17 +50,13 @@
     }
 
     &__rows {
+        width: auto;
         padding-left: 24px;
         padding-right: 24px;
     }
 
-    &__row {
-        display: flex;
-        justify-content: space-between;
-
-        &:not(:last-child) {
-            margin-bottom: 14px;
-        }
+    &__row:not(:last-child) {
+        margin-bottom: 14px;
     }
 
     &__total-box {

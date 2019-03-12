@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { DetalizationHeader } from "../src/DetalizationHeader/DetalizationHeader";
-import { DetalizationTable } from "../src/DetalizationTable/DetalizationTable";
+import { DetalizationContent } from "../src/DetalizationContent/DetalizationContent";
 import { Tabs } from "../src/Tabs/Tabs"
 
 const dataTab = [
@@ -150,7 +150,7 @@ class Detalization extends React.Component<{}> {
                 <div style={{ marginBottom: "10px" }}>
                     <DetalizationHeader title="Детализация за февраль 2019" />
                 </div>
-                <DetalizationTable />
+                <DetalizationContent />
                 <div style={{ marginTop: "40px" }}>
                     <Tabs dataTabs={dataTab} dataTabsContent={dataModule} />
                 </div>

@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
@@ -206,25 +208,25 @@ class MainActive extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                            <>
-                                <Row title="Период активности">
-                                    Триггер активен на протяжении всей кампании: 25
-                                    авг 2018 – 1 янв 2019
-                                </Row>
-                                <Row title="Инициатор события">
-                                    Потребители из фильтра&nbsp;
-                                    <Button color="lightgray" inheritFont size="xs">
-                                        Условия фильтрации
-                                    </Button>
-                                </Row>
-                                <Row title="Запуск по событию">
-                                    Активация секретного кода потребителем&nbsp;
-                                    <Button color="lightgray" inheritFont size="xs">
-                                        Условия фильтрации
-                                    </Button>
-                                </Row>
-                            </>
-                        )}
+                        <>
+                            <Row title="Период активности">
+                                Триггер активен на протяжении всей кампании: 25
+                                авг 2018 – 1 янв 2019
+                            </Row>
+                            <Row title="Инициатор события">
+                                Потребители из фильтра&nbsp;
+                                <Button color="lightgray" inheritFont size="xs">
+                                    Условия фильтрации
+                                </Button>
+                            </Row>
+                            <Row title="Запуск по событию">
+                                Активация секретного кода потребителем&nbsp;
+                                <Button color="lightgray" inheritFont size="xs">
+                                    Условия фильтрации
+                                </Button>
+                            </Row>
+                        </>
+                    )}
                 </SectionWrapper>
                 <SectionWrapper
                     isActive
@@ -298,22 +300,22 @@ class MainActive extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                            <>
-                                <Row title="Применять к потребителю">
-                                    Периодически: Максимум один раз за календарный
-                                    месяц
-                                </Row>
-                                <Row title="Число срабатываний">
-                                    Ограничить 5 разами или меньше
-                                </Row>
-                                <Row title="Цель триггера">
-                                    Потребители из фильтра&nbsp;
-                                    <Button color="lightgray" inheritFont size="xs">
-                                        Условия фильтрации
-                                    </Button>
-                                </Row>
-                            </>
-                        )}
+                        <>
+                            <Row title="Применять к потребителю">
+                                Периодически: Максимум один раз за календарный
+                                месяц
+                            </Row>
+                            <Row title="Число срабатываний">
+                                Ограничить 5 разами или меньше
+                            </Row>
+                            <Row title="Цель триггера">
+                                Потребители из фильтра&nbsp;
+                                <Button color="lightgray" inheritFont size="xs">
+                                    Условия фильтрации
+                                </Button>
+                            </Row>
+                        </>
+                    )}
                 </SectionWrapper>
                 <SectionWrapper
                     title="Что"
@@ -479,25 +481,25 @@ class MainActive extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                            <>
-                                <Row title="Действие 1">
-                                    Отправить email-рассылку&nbsp;
+                        <>
+                            <Row title="Действие 1">
+                                Отправить email-рассылку&nbsp;
                                 <a href="#">Повторное welcome-письмо</a>
-                                </Row>
-                                <Row title="Действие 2">
-                                    Заполнить поле фиксированным значением:
-                                    Предпочитаемый размер кровати:&nbsp;
+                            </Row>
+                            <Row title="Действие 2">
+                                Заполнить поле фиксированным значением:
+                                Предпочитаемый размер кровати:&nbsp;
                                 <strong>King Size</strong>
-                                </Row>
-                                <Row title="Действие 3">
-                                    Отправить SMS-рассылку&nbsp;
+                            </Row>
+                            <Row title="Действие 3">
+                                Отправить SMS-рассылку&nbsp;
                                 <a href="#">
-                                        Напоминание о необходимости подтвердить
-                                        регистрацию
+                                    Напоминание о необходимости подтвердить
+                                    регистрацию
                                 </a>
-                                </Row>
-                            </>
-                        )}
+                            </Row>
+                        </>
+                    )}
                 </SectionWrapper>
             </Page>
         );

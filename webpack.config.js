@@ -31,7 +31,8 @@ const getHtmlPlugins = () => {
                 filename: `${name}.html`,
                 chunks: [name],
                 meta: {
-                    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+                    viewport:
+                        "width=device-width, initial-scale=1, shrink-to-fit=no"
                 }
             })
         );
@@ -53,7 +54,8 @@ module.exports = () => ({
     },
 
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.tsx?$/,
                 use: {
                     loader: "ts-loader"
@@ -72,13 +74,15 @@ module.exports = () => ({
                 ]
             },
             {
-                test: /\.(png|jpg|gif)$/,
-                use: [{
-                    loader: "file-loader",
-                    options: {
-                        name: "[name].[ext]"
+                test: /\.(png|jpg|gif|woff)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: "[name].[ext]"
+                        }
                     }
-                }]
+                ]
             }
         ]
     },

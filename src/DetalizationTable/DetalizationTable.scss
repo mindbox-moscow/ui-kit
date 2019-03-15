@@ -1,3 +1,5 @@
+@import '../variables';
+
 .kit-detalization-table {
     width: 100%;
     font-family: "PT Sans", sans-serif;
@@ -17,6 +19,10 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
+
+        @media (max-width: $tablet) {
+            justify-content: flex-start;
+        }
     }
 
     &__signature {
@@ -24,5 +30,18 @@
         font-size: 13px;
         line-height: 1.15;
         color: #999999;
+
+        @media (max-width: $tablet) {
+            width: auto;
+        }
+    }
+
+    &__value {
+        text-align: right;
+        flex: 1 0 auto;
+    }
+
+    &__col {
+        margin-right: 30px;
     }
 }

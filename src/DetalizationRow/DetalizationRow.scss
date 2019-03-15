@@ -1,7 +1,20 @@
+@import '../variables';
+
 .kit-detalization-row {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     font-family: "PT Sans", sans-serif;
     box-sizing: border-box;
+
+    &__name {
+        @media (max-width: $tablet) {
+            margin-right: 30px;
+        }
+    }
+
+    &__value {
+        margin-left: auto;
+        flex: 1 0 auto;
+        text-align: right;
+    }
 }

@@ -158,8 +158,10 @@ export class DetalizationContent extends React.Component<{}> {
                     <DetalizationTotal className="kit-detalization__total-box" name="Итого с НДС" result="132 1460" />
                 </div>
                 <div className="kit-detalization__right-content">
-                    <DetalizationBlockInfo className="kit-detalization__details" rows={detailsRows} />
-                    <DetalizationBlockInfo className="kit-detalization__details" rows={detailsRows2} hasButton buttonText="Пересчитать по новому тарифу" />
+                    <div className="kit-detalization__details-box">
+                        <DetalizationBlockInfo className="kit-detalization__details" rows={detailsRows} />
+                        <DetalizationBlockInfo className="kit-detalization__details" rows={detailsRows2} hasButton buttonText="Пересчитать по новому тарифу" />
+                    </div>
                     <DetalizationCalculations className="kit-detalization__statistics" data={statistics} title="В ВАШЕМ АККАУНТЕ:" />
                 </div>
             </div>

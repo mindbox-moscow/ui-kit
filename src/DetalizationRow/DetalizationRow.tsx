@@ -13,8 +13,8 @@ export class DetalizationRow extends React.Component<Props> {
         const { name, value, className } = this.props;
         return (
             <div className={cn("kit-detalization-row", className)}>
-                <span>{name}</span>
-                <span>{value}</span>
+                <span className="kit-detalization-row__name">{name}</span>
+                <span className="kit-detalization-row__value">{value}</span>
             </div>
         );
     }

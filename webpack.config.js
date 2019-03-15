@@ -29,7 +29,10 @@ const getHtmlPlugins = () => {
         plugins.push(
             new HtmlWebpackPlugin({
                 filename: `${name}.html`,
-                chunks: [name]
+                chunks: [name],
+                meta: {
+                    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+                }
             })
         );
     }
@@ -50,8 +53,7 @@ module.exports = () => ({
     },
 
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.tsx?$/,
                 use: {
                     loader: "ts-loader"
@@ -71,14 +73,12 @@ module.exports = () => ({
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[name].[ext]"
-                        }
+                use: [{
+                    loader: "file-loader",
+                    options: {
+                        name: "[name].[ext]"
                     }
-                ]
+                }]
             }
         ]
     },

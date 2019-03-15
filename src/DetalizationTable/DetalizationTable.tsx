@@ -12,11 +12,11 @@ interface Props {
 const renderRow = (item: any) => {
     return (
         <div key={item.name} className="kit-detalization-table__row">
-            <div>
+            <div className="kit-detalization-table__col">
                 <div className="kit-detalization-table__name">{item.name}</div>
                 <div className="kit-detalization-table__signature">{item.description}</div>
             </div>
-            <span>{item.value}</span>
+            <span className="kit-detalization-table__value">{item.value}</span>
         </div>
     );
 }

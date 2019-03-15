@@ -1,3 +1,5 @@
+@import '../variables';
+
 .kit-tabs {
     width: 100%;
     font-family: "PT Sans", sans-serif;
@@ -5,12 +7,27 @@
     &__header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+
+        @media (max-width: $tablet-medium) {
+            flex-direction: column;
+        }
     }
 
     &__list {
+        margin: 0;
+        padding-left: 0;
         display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        flex: 1 0 auto;
         list-style: none;
+        text-align: right;
+
+        @media (max-width: $tablet-medium) {
+            margin-top: 8px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
     }
 
     &__title {
@@ -23,11 +40,28 @@
     }
 
     &__module {
+        max-width: 32%;
         margin-bottom: 20px;
+        flex: 1 0 32%;
+
+        @media (max-width: $tablet-large) {
+            max-width: 48%;
+            flex-basis: 48%;
+        }
+
+        @media (max-width: $tablet) {
+            max-width: 100%;
+            flex-basis: 100%;
+        }
     }
 
-    &__module:not(:nth-child(3n)) {
-        margin-right: 20px;
+    &__module:not(:nth-child(3n)),
+    &____module:not(:last-child) {
+        margin-right: 2%;
+
+        @media (max-width: $tablet-large) {
+            margin-right: 0;
+        }
     }
 
     &__tabs-content {
@@ -35,5 +69,9 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+
+        @media (max-width: $tablet-large) {
+            justify-content: space-between;
+        }
     }
 }

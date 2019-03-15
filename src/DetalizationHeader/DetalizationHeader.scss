@@ -1,22 +1,67 @@
+@import '../variables';
+
 .kit-detalizationHeader {
     width: 100%;
     display: flex;
     font-family: "PT Sans", sans-serif;
+
+    @media (max-width: $tablet-medium) {
+        flex-direction: column;
+    }
 
     &__title {
         margin: 0;
         font-size: 26px;
         font-weight: 300;
         color: #000000;
+
+        @media (max-width: $mobile-large) {
+            font-size: 22px;
+            text-align: center;
+        }
     }
 
     &__controls {
         display: flex;
         align-items: center;
         margin-left: auto;
+
+        @media (max-width: $tablet-medium) {
+            margin-top: 16px;
+            margin-left: 0;
+        }
+
+        @media (max-width: $mobile-large) {
+            flex-wrap: wrap;
+        }
     }
 
     &__btn:not(:last-child) {
         margin-right: 15px;
+
+        @media (max-width: $mobile-large) {
+            margin-right: 0;
+        }
+    }
+
+    &__btn {
+        @media (max-width: $mobile-large) {
+            flex-basis: 48%;
+            order: 2;
+        }
+
+        &:last-child {
+            @media (max-width: $mobile-large) {
+                margin-left: auto;
+            }
+        }
+    }
+
+    &__btn-month {
+        @media (max-width: $mobile-large) {
+            margin-bottom: 10px;
+            order: 1;
+            flex: 1 0 100%;
+        }
     }
 }

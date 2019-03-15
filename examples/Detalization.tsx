@@ -146,7 +146,7 @@ const dataModule = {
 class Detalization extends React.Component<{}> {
     public render() {
         return (
-            <div style={{ width: "1100px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
                 <div style={{ marginBottom: "10px" }}>
                     <DetalizationHeader title="Детализация за февраль 2019" />
                 </div>

@@ -6,12 +6,6 @@
     font-family: "PT Sans", sans-serif;
     color: #333333;
 
-    @media (max-width: $tablet-medium) {
-        width: 640px;
-        padding-right: 22px;
-        display: block;
-    }
-
     @media (max-width: $tablet) {
         padding-right: 16px;
     }
@@ -31,12 +25,22 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+        & th:nth-child(2) {
+            @media (max-width: $tablet-medium) {
+                display: none;
+            }
+        }
     }
 
     & td:not(:first-child),
     & th:not(:first-child) {
         width: 56%;
         text-align: right;
+
+        @media (max-width: $tablet-medium) {
+            text-align: left;
+        }
     }
 
     & th {
@@ -44,16 +48,23 @@
     }
 
     &__wrapper {
-        padding-top: 22px;
-        padding-bottom: 22px;
+        position: relative;
+        max-height: 60px;
+        padding-top: 16px;
+        padding-bottom: 16px;
         padding-left: 22px;
         padding-right: 22px;
+        overflow: hidden;
         background-color: #fffaed;
         border-radius: 4px;
+        box-sizing: border-box;
+        // transition: max-height .4s linear;
+
+        &_open {
+            max-height: 600px;
+        }
 
         @media (max-width: $tablet-medium) {
-            overflow-x: scroll;
-            box-sizing: border-box;
             padding-left: 22px;
             padding-right: 22px;
         }
@@ -64,11 +75,50 @@
         }
     }
 
+    &__th {
+        opacity: 0;
+
+        &_visible {
+            opacity: 1;
+        }
+    }
+
     &__row {
         vertical-align: top;
 
+        @media (max-width: $tablet-medium) {
+            display: flex;
+            flex-direction: column;
+        }
+
         & td {
             padding-top: 18px;
+
+            &:nth-child(2) {
+                @media (max-width: $tablet-medium) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        top: 16px;
+        right: 22px;
+        padding: 0;
+        border: 1px solid #d4d4d4;
+        border-radius: 4px;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+    }
+
+    &__icon {
+        transition: transform .2s ease;
+
+        &_open {
+            transform: rotate(180deg);
         }
     }
 
@@ -78,6 +128,10 @@
 
         @media (max-width: $tablet-medium) {
             width: 240px;
+        }
+
+        @media (max-width: $tablet) {
+            width: auto;
         }
     }
 

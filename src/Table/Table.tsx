@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./Table.scss";
+import { Icon } from '../Icon/Icon';
 
 import cn from "classnames";
 
@@ -37,15 +38,35 @@ const renderColumn = (item: any) => {
 }
 
 export class Table extends React.Component<Props> {
+    state = {
+        tableIsOpen: false,
+    };
+
+    handleToggleTable = () => {
+        this.setState({ tableIsOpen: !this.state.tableIsOpen });
+    }
+
     public render() {
         const { className, th1, th2, rows } = this.props;
+        const { tableIsOpen } = this.state;
         return (
-            <div className={cn("kit-table__wrapper", className)}>
+            <div className={cn("kit-table__wrapper",
+                {
+                    [`kit-table__wrapper_open`]: tableIsOpen
+                }, className)}
+            >
+                <button className="kit-table__btn" onClick={this.handleToggleTable}>
+                    <Icon icon="arrowDown" className={cn({
+                        [`kit-table__icon`]: true,
+                        [`kit-table__icon_open`]: tableIsOpen,
+                    })}
+                    />
+                </button>
                 <table className={"kit-table"}>
                     <thead>
                         <tr className="kit-table__header">
                             <th>{th1}</th>
-                            <th>{th2}</th>
+                            <th className={cn("kit-table__th", { [`kit-table__th_visible`]: tableIsOpen, })}>{th2}</th>
                         </tr>
                     </thead>
                     <tbody>

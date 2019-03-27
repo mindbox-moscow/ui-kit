@@ -59,6 +59,7 @@ export class Table extends React.Component<Props> {
                     <Icon icon="arrowDown" className={cn({
                         [`kit-table__icon`]: true,
                         [`kit-table__icon_open`]: tableIsOpen,
+                        [`kit-table__btn_hidden`]: tableIsOpen,
                     })}
                     />
                 </button>

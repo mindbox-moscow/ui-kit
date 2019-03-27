@@ -93,12 +93,14 @@
 
         & td {
             padding-top: 18px;
+        }
+    }
 
-            &:nth-child(2) {
-                @media (max-width: $tablet-medium) {
-                    display: none;
-                }
-            }
+    &__mob-title {
+        display: none;
+
+        @media (max-width: $tablet-medium) {
+            display: inline-block;
         }
     }
 
@@ -112,6 +114,11 @@
         background-color: transparent;
         outline: none;
         cursor: pointer;
+
+        &_hidden {
+            display: none;
+            visibility: hidden;
+        }
     }
 
     &__icon {
@@ -137,8 +144,9 @@
 
     &__description {
         font-size: 13px;
-        line-height: 1.15;
+        line-height: 15px;
         color: #999999;
+        margin-top: 2px;
     }
 
     &__sale-signature {

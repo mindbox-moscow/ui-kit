@@ -13,10 +13,10 @@
         position: absolute;
         z-index: 8;
         top: -8px;
-        left: 30px;
+        right: 30px;
         box-sizing: border-box;
         padding: 8px 14px 8px;
-        width: 548px;
+        width: 200px;
         color: #000;
         min-height: 33px;
         visibility: hidden;
@@ -29,7 +29,7 @@
             position: absolute;
             z-index: 1;
             top: 0;
-            left: -37px;
+            right: -37px;
             content: "";
             width: 37px;
             height: 33px;
@@ -41,7 +41,7 @@
             position: absolute;
             z-index: 2;
             top: 0;
-            left: -2px;
+            right: -2px;
             content: "";
             width: 5px;
             height: 33px;

@@ -28,7 +28,7 @@ const renderColumn = (item: any) => {
                 <div className={"kit-table__description"}>{item.description}</div>
             </td>
             <td>
-                {item.firstValue}
+                <span className={"kit-table__mob-title"}>{item.firsValueMobTitle}:</span> {item.firstValue}
             </td>
             <td>
                 {item.newPrice ? renderSalePrice(item) : item.secondValue}

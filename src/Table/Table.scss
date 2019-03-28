@@ -14,8 +14,15 @@
         border-bottom: 1px solid #d4d4d4;
 
         & th:not(:first-child) {
+            position: relative;
+            display: block;
             font-size: 14px;
             font-weight: bold;
+            text-align: right;
+            width: 137%;
+            max-height: 31px;
+            left: -37%;
+            padding-bottom: 5px;
         }
 
         & th:first-child {
@@ -33,12 +40,12 @@
         }
     }
 
-    & td:not(:first-child),
-    & th:not(:first-child) {
+    & td:not(:first-child) {
         width: 56%;
         text-align: right;
 
         @media (max-width: $tablet-medium) {
+            width: 100%;
             text-align: left;
         }
     }
@@ -61,7 +68,7 @@
         // transition: max-height .4s linear;
 
         &_open {
-            max-height: 600px;
+            max-height: 100%;
         }
 
         @media (max-width: $tablet-medium) {
@@ -147,6 +154,11 @@
         line-height: 15px;
         color: #999999;
         margin-top: 2px;
+        min-width: 330px;
+
+        @media (max-width: $tablet) {
+            min-width: auto;
+        }
     }
 
     &__sale-signature {

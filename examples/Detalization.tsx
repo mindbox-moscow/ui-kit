@@ -176,5 +176,6 @@ class Detalization extends React.Component<{}> {
 
 const entryElement = document.createElement("div");
 document.body.appendChild(entryElement);
+document.body.style.backgroundColor = '#fafaf7';
 
 ReactDOM.render(<Detalization />, entryElement);

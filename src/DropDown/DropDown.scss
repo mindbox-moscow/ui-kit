@@ -4,12 +4,18 @@
   position: relative;
   font-family: "PT Sans", sans-serif;
   box-sizing: border-box;
-  margin-right: 15px;
+  margin: 0 15px;
+
+  @media (max-width: $mobile-large) {
+    width: 100%;
+    margin: 0 0 15px;
+  }
 
   &__btn {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    font-weight: bold;
     width: 130px;
     height: 28px;
     border-radius: 3px;
@@ -18,6 +24,11 @@
     color: #000;
     cursor: pointer;
     outline: none;
+
+    @media (max-width: $mobile-large) {
+      justify-content: center;
+      width: 100%;
+    }
 
     &:hover:not(:disabled) {
       background-color: darken($color: #e2eaf0, $amount: 8%);
@@ -52,6 +63,7 @@
     display: flex;
     flex-direction: column;
     width: 130px;
+    max-height: 483px;
     padding: 0;
     margin: 0;
     background-color: #f2f2f2;
@@ -62,6 +74,13 @@
     box-sizing: border-box;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+    overflow: hidden;
+    overflow-y: auto;
+    z-index: 10;
+
+    @media (max-width: $mobile-large) {
+      width: 100%;
+    }
 
     &_open {
       opacity: 1;
@@ -86,6 +105,9 @@
     font-size: 13px;
     line-height: 1;
     padding: 12px 14px;
+    background-color: transparent;
+    border: none;
+    outline: none;
     cursor: pointer;
   }
 
@@ -111,6 +133,11 @@
     line-height: 1;
     color: #000000;
     padding: 12px 14px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffffff;
+    }
 
     &_active {
       background-color: #ffffff;

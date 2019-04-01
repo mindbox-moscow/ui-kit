@@ -4,22 +4,48 @@ import cn from "classnames";
 import {Icon} from "../Icon";
 
 interface Props {
-    // className?: string;
+    className?: string;
+    itemYears: any;
 }
 
 export class DropDown extends React.Component<Props> {
     state = {
         dropDownIsOpen: false,
+        currentYear: null,
+        currentMonth: null,
     };
 
     handleToggleDropDown = () => {
-        this.setState({ dropDownIsOpen: !this.state.dropDownIsOpen });
+        this.setState({ dropDownIsOpen: !this.state.dropDownIsOpen});
     };
 
+    handleToggleCurrentYear = (index: number) => this.setState({ currentYear: index, currentMonth: null });
+
+    handleToggleCurrentMonth = (index: number) => this.setState({ currentMonth: index, dropDownIsOpen: false });
+
+    renderListYears = (item: any, index: number) => (
+        <li key={item.year} className="kit-dropdown__list-item">
+            <button className={"kit-dropdown__year"} onClick={() => this.handleToggleCurrentYear(index)}>
+                <span className={"kit-dropdown__year-value"}>{item.year}</span>
+                <span>+</span>
+            </button>
+            <ul className={cn({
+                [`kit-dropdown__month`]: true,
+                [`kit-dropdown__month_open`]: this.state.currentYear === index,
+            })}>
+                {
+                    item.months.map((month: any, monthIndex: number) =>
+                        <li key={`${item.year}${month}`} onClick={() => this.handleToggleCurrentMonth(monthIndex)} className={cn({
+                            [`kit-dropdown__month-item`]: true,
+                            [`kit-dropdown__month-item_active`]: this.state.currentMonth === monthIndex,
+                        })}>{month}</li>)
+                }
+            </ul>
+        </li>
+    );
+
     public render() {
-        const {
-            // className
-        } = this.props;
+        const { itemYears } = this.props;
         const { dropDownIsOpen } = this.state;
         return (
             <div className="kit-dropdown">
@@ -38,38 +64,7 @@ export class DropDown extends React.Component<Props> {
                     [`kit-dropdown__list`]: true,
                     [`kit-dropdown__list_open`]: dropDownIsOpen
                 })}>
-                    <li className="kit-dropdown__list-item">
-                        <div className={"kit-dropdown__year"}>
-                            <span className={"kit-dropdown__year-value"}>2017</span>
-                            <span>+</span>
-                        </div>
-                        <ul className={"kit-dropdown__month"}>
-                            <li className={"kit-dropdown__month-item"}>Январь</li>
-                            <li className={"kit-dropdown__month-item"}>Февраль</li>
-                            <li className={"kit-dropdown__month-item"}>Март</li>
-                        </ul>
-                    </li>
-                    <li className="kit-dropdown__list-item">
-                        <div className={"kit-dropdown__year"}>
-                            <span className={"kit-dropdown__year-value"}>2018</span>
-                            <span>+</span>
-                        </div>
-                        <ul className={"kit-dropdown__month"}>
-                            <li className={"kit-dropdown__month-item"}>Январь</li>
-                            <li className={"kit-dropdown__month-item"}>Февраль</li>
-                            <li className={"kit-dropdown__month-item"}>Март</li>
-                        </ul>
-                    </li>
-                    <li className="kit-dropdown__list-item">
-                        <div className={"kit-dropdown__year"}>
-                            <span className={"kit-dropdown__year-value"}>2019</span>
-                            <span>+</span>
-                        </div>
-                        <ul className={"kit-dropdown__month kit-dropdown__month_open"}>
-                            <li className={"kit-dropdown__month-item"}>Январь</li>
-                            <li className={"kit-dropdown__month-item kit-dropdown__month-item_active"}>Февраль</li>
-                        </ul>
-                    </li>
+                    {itemYears.map(this.renderListYears)}
                 </ul>
             </div>
         );

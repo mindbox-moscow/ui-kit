@@ -17,8 +17,9 @@ class Whom extends React.Component<{}> {
             <Page
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
-                hasTag
-                isDevelop
+                hasBadge
+                badgeName="Триггер в разработке"
+                badgeBgColor="#ae00d2"
                 cantPlaying
             >
                 <div

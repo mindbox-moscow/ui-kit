@@ -30,8 +30,10 @@ class MainActive extends React.Component<{}> {
             <Page
                 title="Повторное Welcome письмо"
                 description="Триггер для обработки регистрации новых пользователей через сайт или другие каналы"
-                hasTag
-                tagDate="12 авг 2018"
+                hasBadge
+                badgeName="Триггер активен"
+                badgeDate="12 авг 2018"
+                badgeBgColor="#ae00d2"
                 cantPlaying
                 isPlaying
             >

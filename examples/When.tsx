@@ -22,8 +22,8 @@ class When extends React.Component<{}> {
             <Page
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
-                hasTag
-                isDevelop
+                hasBadge
+                badgeName="Триггер в разработке"
                 cantPlaying
             >
                 <div

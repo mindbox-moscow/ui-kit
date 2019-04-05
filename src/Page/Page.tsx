@@ -2,16 +2,17 @@ import * as React from "react";
 import "./Page.scss";
 import { Button } from "../Button/Button";
 import { TextLine } from "../TextLine/TextLine";
-import { Tag } from "../Tag/Tag";
+import { Badge } from "../Badge/Badge";
 
 interface Props {
     title: string;
     description: string;
     isPlaying?: boolean;
     cantPlaying?: boolean;
-    hasTag?: boolean;
-    isDevelop?: boolean;
-    tagDate?: string;
+    hasBadge?: boolean;
+    badgeName: string;
+    badgeDate?: string;
+    badgeBgColor?: string;
     onChangeTitle?: (value: string) => void;
     onChangeDescription?: (value: string) => void;
 }
@@ -39,9 +40,10 @@ export class Page extends React.Component<Props> {
     public render() {
         const {
             children,
-            tagDate,
-            isDevelop,
-            hasTag,
+            hasBadge,
+            badgeName,
+            badgeDate,
+            badgeBgColor,
             isPlaying,
             cantPlaying
         } = this.props;
@@ -117,9 +119,9 @@ export class Page extends React.Component<Props> {
                                     onChange={this.handleChangeDescription}
                                 />
                             </div>
-                            {hasTag && (
+                            {hasBadge && (
                                 <div className="kit-page__tag">
-                                    <Tag isDevelop={isDevelop} date={tagDate} />
+                                    <Badge name={badgeName} bgColor={badgeBgColor} date={badgeDate} />
                                 </div>
                             )}
                         </div>

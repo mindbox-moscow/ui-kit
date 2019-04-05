@@ -18,8 +18,9 @@ class What extends React.Component<{}> {
             <Page
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
-                hasTag
-                isDevelop
+                hasBadge
+                badgeName="Триггер активен"
+                badgeDate="11 авг 2018"
                 cantPlaying
             >
                 <div

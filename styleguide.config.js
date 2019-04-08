@@ -67,5 +67,9 @@ module.exports = {
             content: "styleguide/ui.md",
             components: "src/**/[A-Z]*.{ts,tsx}"
         }
-    ]
+    ],
+
+    context: {
+        constants: path.resolve(__dirname, 'src/utils/constants.ts')
+    }
 };

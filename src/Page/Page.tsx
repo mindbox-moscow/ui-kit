@@ -3,7 +3,7 @@ import "./Page.scss";
 import { Button } from "../Button/Button";
 import { TextLine } from "../TextLine/TextLine";
 import { Badge } from "../Badge/Badge";
-import {COLORS} from '../utils/constants'
+import { COLORS } from '../utils/constants'
 
 interface Props {
     title: string;

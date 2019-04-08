@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./Badge.scss";
-import {COLORS} from '../utils/constants'
+import { COLORS } from '../utils/constants'
 
 import cn from "classnames";
 
@@ -11,6 +11,9 @@ interface Props {
 }
 
 export class Badge extends React.Component<Props> {
+    static defaultProps = {
+         color: COLORS.Green,
+    };
     public render() {
         const {
             title,

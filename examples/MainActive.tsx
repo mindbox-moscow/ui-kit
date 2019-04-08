@@ -11,7 +11,7 @@ import { Text } from "../src/Text/Text";
 import { RadioButton } from "../src/RadioButton/RadioButton";
 import { Select } from "../src/Select/Select";
 import { DateField } from "../src/DateField/DateField";
-import { Badge } from "../src/Badge/Badge";
+import { COLORS } from '../src/utils/constants'
 
 class MainActive extends React.Component<{}> {
     state = {
@@ -34,7 +34,7 @@ class MainActive extends React.Component<{}> {
                 hasBadge
                 badgeTitle="Триггер активен"
                 badgeDate="12 авг 2018"
-                badgeBgColor={Badge.Colors.Purple}
+                badgeBgColor={COLORS.Purple}
                 cantPlaying
                 isPlaying
             >

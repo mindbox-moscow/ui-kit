@@ -3,6 +3,7 @@ import "./Page.scss";
 import { Button } from "../Button/Button";
 import { TextLine } from "../TextLine/TextLine";
 import { Badge } from "../Badge/Badge";
+import {COLORS} from '../utils/constants'
 
 interface Props {
     title: string;
@@ -10,9 +11,9 @@ interface Props {
     isPlaying?: boolean;
     cantPlaying?: boolean;
     hasBadge?: boolean;
-    badgeName: string;
+    badgeTitle: string;
     badgeDate?: string;
-    badgeBgColor?: string;
+    badgeBgColor?: COLORS;
     onChangeTitle?: (value: string) => void;
     onChangeDescription?: (value: string) => void;
 }
@@ -41,7 +42,7 @@ export class Page extends React.Component<Props> {
         const {
             children,
             hasBadge,
-            badgeName,
+            badgeTitle,
             badgeDate,
             badgeBgColor,
             isPlaying,
@@ -121,7 +122,7 @@ export class Page extends React.Component<Props> {
                             </div>
                             {hasBadge && (
                                 <div className="kit-page__tag">
-                                    <Badge name={badgeName} bgColor={badgeBgColor} date={badgeDate} />
+                                    <Badge title={badgeTitle} color={badgeBgColor} date={badgeDate} />
                                 </div>
                             )}
                         </div>

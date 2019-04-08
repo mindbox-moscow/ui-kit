@@ -15,6 +15,7 @@ import { TimeField } from "../src/TimeField/TimeField";
 import { Checkbox } from "../src/Checkbox/Checkbox";
 import { Input } from "../src/Input/Input";
 import { Period } from "../src/Period/Period";
+import { Badge } from "../src/Badge/Badge";
 
 class When extends React.Component<{}> {
     public render() {
@@ -23,7 +24,8 @@ class When extends React.Component<{}> {
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
                 hasBadge
-                badgeName="Триггер в разработке"
+                badgeTitle="Триггер в разработке"
+                badgeBgColor={Badge.Colors.Gray}
                 cantPlaying
             >
                 <div

@@ -11,6 +11,7 @@ import { Text } from "../src/Text/Text";
 import { Select } from "../src/Select/Select";
 import { DateField } from "../src/DateField/DateField";
 import { ActionFilter } from "../src/ActionFilter/ActionFilter";
+import { Badge } from "../src/Badge/Badge";
 
 class What extends React.Component<{}> {
     public render() {
@@ -19,7 +20,8 @@ class What extends React.Component<{}> {
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
                 hasBadge
-                badgeName="Триггер активен"
+                badgeTitle="Триггер активен"
+                badgeBgColor={Badge.Colors.Yellow}
                 badgeDate="11 авг 2018"
                 cantPlaying
             >

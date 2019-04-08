@@ -10,6 +10,7 @@ import { Row } from "../src/Row/Row";
 import { Text } from "../src/Text/Text";
 import { RadioButton } from "../src/RadioButton/RadioButton";
 import { Select } from "../src/Select/Select";
+import { Badge } from "../src/Badge/Badge";
 
 class Whom extends React.Component<{}> {
     public render() {
@@ -18,8 +19,8 @@ class Whom extends React.Component<{}> {
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
                 hasBadge
-                badgeName="Триггер в разработке"
-                badgeBgColor="#ae00d2"
+                badgeTitle="Триггер в разработке"
+                badgeBgColor={Badge.Colors.Blue}
                 cantPlaying
             >
                 <div

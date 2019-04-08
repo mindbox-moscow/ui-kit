@@ -11,6 +11,7 @@ import { Text } from "../src/Text/Text";
 import { RadioButton } from "../src/RadioButton/RadioButton";
 import { Select } from "../src/Select/Select";
 import { DateField } from "../src/DateField/DateField";
+import { Badge } from "../src/Badge/Badge";
 
 class MainActive extends React.Component<{}> {
     state = {
@@ -31,9 +32,9 @@ class MainActive extends React.Component<{}> {
                 title="Повторное Welcome письмо"
                 description="Триггер для обработки регистрации новых пользователей через сайт или другие каналы"
                 hasBadge
-                badgeName="Триггер активен"
+                badgeTitle="Триггер активен"
                 badgeDate="12 авг 2018"
-                badgeBgColor="#ae00d2"
+                badgeBgColor={Badge.Colors.Purple}
                 cantPlaying
                 isPlaying
             >

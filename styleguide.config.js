@@ -25,6 +25,11 @@ module.exports = {
 
     template: {
         head: {
+            // scripts: [
+            //     {
+            //         src: 'src/utils/constants.ts'
+            //     }
+            // ],
             links: [
                 {
                     rel: "stylesheet",

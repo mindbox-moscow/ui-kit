@@ -29,8 +29,8 @@ class Main extends React.Component<{}> {
             <Page
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
-                hasTag
-                isDevelop
+                hasBadge
+                badgeTitle="Триггер активен"
                 cantPlaying
             >
                 <SectionWrapper

@@ -9,21 +9,19 @@ interface Props {
     title: string;
 }
 
-const renderQuanityBlock = (item: any) => {
-    return (
+export class DetalizationCalculations extends React.Component<Props> {
+    renderQuanityBlock = (item: any) => (
         <li key={item.name} className="kit-detalization-calculation__item">
             <QuantityBlock value={item.value} name={item.name} />
         </li>
     );
-}
 
-export class DetalizationCalculations extends React.Component<Props> {
-    public render() {
+    render() {
         const { className, data, title } = this.props;
         return (
             <ul className={cn("kit-detalization-calculation", className)}>
                 <h3 className="kit-detalization-calculation__title">{title}</h3>
-                {data.map(renderQuanityBlock)}
+                {data.map(this.renderQuanityBlock)}
             </ul>
         );
     }

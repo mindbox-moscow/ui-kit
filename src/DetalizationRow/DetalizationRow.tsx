@@ -9,7 +9,7 @@ interface Props {
 }
 
 export class DetalizationRow extends React.Component<Props> {
-    public render() {
+    render() {
         const { name, value, className } = this.props;
         return (
             <div className={cn("kit-detalization-row", className)}>

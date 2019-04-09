@@ -9,20 +9,18 @@ interface Props {
     rows: any;
 }
 
-const renderRow = (item: any) => {
-    return (
+export class DetalizationList extends React.Component<Props> {
+    renderRow = (item: any) => (
         <li key={item.name} className="kit-detalization__row">
             <DetalizationRow name={item.name} value={item.value} />
         </li>
     );
-}
 
-export class DetalizationList extends React.Component<Props> {
-    public render() {
+    render() {
         const { className, rows } = this.props;
         return (
             <ul className={cn("kit-detalization-list", className)}>
-                {rows.map(renderRow)}
+                {rows.map(this.renderRow)}
             </ul>
         );
     }

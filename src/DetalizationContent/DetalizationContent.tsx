@@ -137,7 +137,7 @@ const statistics = [
 ];
 
 export class DetalizationContent extends React.Component<{}> {
-    public render() {
+    render() {
         return (
             <div className="kit-detalization">
                 <div className="kit-detalization__left-content">

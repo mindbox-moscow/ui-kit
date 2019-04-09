@@ -9,8 +9,8 @@ interface Props {
     rows: any;
 }
 
-const renderRow = (item: any) => {
-    return (
+export class DetalizationTable extends React.Component<Props> {
+    renderRow = (item: any) => (
         <div key={item.name} className="kit-detalization-table__row">
             <div className="kit-detalization-table__col">
                 <div className="kit-detalization-table__name">{item.name}</div>
@@ -19,10 +19,8 @@ const renderRow = (item: any) => {
             <span className="kit-detalization-table__value">{item.value}</span>
         </div>
     );
-}
 
-export class DetalizationTable extends React.Component<Props> {
-    public render() {
+    render() {
         const { className, th1, th2, rows } = this.props;
         return (
             <div className={cn("kit-detalization-table", className)}>
@@ -30,7 +28,7 @@ export class DetalizationTable extends React.Component<Props> {
                     <span>{th1}</span>
                     <span>{th2}</span>
                 </div>
-                {rows.map(renderRow)}
+                {rows.map(this.renderRow)}
             </div>
         );
     }

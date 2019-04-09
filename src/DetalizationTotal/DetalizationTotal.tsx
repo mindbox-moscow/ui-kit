@@ -10,7 +10,7 @@ interface Props {
 }
 
 export class DetalizationTotal extends React.Component<Props> {
-    public render() {
+    render() {
         const { name, result, className } = this.props;
         return (
             <div className={cn("kit-detalization-total", className)}>

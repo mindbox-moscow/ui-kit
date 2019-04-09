@@ -12,22 +12,20 @@ interface Props {
     onClick?: any;
 }
 
-const renderDetailsRow = (item: any) => {
-    return (
+export class DetalizationBlockInfo extends React.Component<Props> {
+    renderDetailsRow = (item: any) => (
         <li key={item.name} className="kit-detalization-info__row">
             <span>{`${item.name}:`}</span>
             <span className="kit-detalization-info__value">{item.value}</span>
             {item.icon && <Help className="kit-detalization-info__help">{item.help}</Help>}
         </li>
     );
-}
 
-export class DetalizationBlockInfo extends React.Component<Props> {
     public render() {
         const { className, rows, hasButton, buttonText, onClick } = this.props;
         return (
             <div className={cn("kit-detalization-info", className)}>
-                {rows.map(renderDetailsRow)}
+                {rows.map(this.renderDetailsRow)}
                 {hasButton &&
                     <Button
                         className="kit-detalization-info__button"

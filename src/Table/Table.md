@@ -3,6 +3,7 @@ const data = [{
         name: "Email-рассылки",
         description: "Массовые, триггерные, транзакционные email-рассылки, включая шлюз без ограничения трафика",
         firstValue: "25%",
+        firsValueMobTitle: "Стоимость в % от базового модуля",
         secondValue: "28 000",
         newPrice: "24 000",
         signature: "с учетом скидки 13%"
@@ -11,6 +12,7 @@ const data = [{
         name: "Рекомендации на сайте",
         description: "Ручные и автоматические алгоритмы товарных рекомендаций на сайте, виджет для сайта",
         firstValue: "20%",
+        firsValueMobTitle: "Стоимость в % от базового модуля",
         secondValue: "4 000"
     }
 ];

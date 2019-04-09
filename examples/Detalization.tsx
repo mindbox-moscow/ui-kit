@@ -47,7 +47,7 @@ const dataModule = {
             signature: "10% от стоимости базового модуля",
             price: "4 000",
             text:
-                "Ручные и автоматические алготитмы товарных рекомендаций по API Mindbox"
+                "Ручные и автоматические алгоритмы товарных рекомендаций по API Mindbox"
         },
         {
             name: "Алгоритм: Предсказание оттока",
@@ -176,5 +176,6 @@ class Detalization extends React.Component<{}> {
 
 const entryElement = document.createElement("div");
 document.body.appendChild(entryElement);
+document.body.style.backgroundColor = '#fafaf7';
 
 ReactDOM.render(<Detalization />, entryElement);

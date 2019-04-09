@@ -4,6 +4,7 @@
     height: 22px;
     background-image: url(../assets/icons/icons.png);
     background-size: 400px;
+    cursor: pointer;
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         background-image: url(../assets/icons/icons@2x.png);

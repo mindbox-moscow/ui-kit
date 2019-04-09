@@ -28,7 +28,7 @@ const renderColumn = (item: any) => {
                 <div className={"kit-table__description"}>{item.description}</div>
             </td>
             <td>
-                {item.firstValue}
+                <span className={"kit-table__mob-title"}>{item.firsValueMobTitle}:</span> {item.firstValue}
             </td>
             <td>
                 {item.newPrice ? renderSalePrice(item) : item.secondValue}
@@ -59,6 +59,7 @@ export class Table extends React.Component<Props> {
                     <Icon icon="arrowDown" className={cn({
                         [`kit-table__icon`]: true,
                         [`kit-table__icon_open`]: tableIsOpen,
+                        [`kit-table__btn_hidden`]: tableIsOpen,
                     })}
                     />
                 </button>

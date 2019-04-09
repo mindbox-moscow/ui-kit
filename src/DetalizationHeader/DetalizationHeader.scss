@@ -36,14 +36,6 @@
         }
     }
 
-    &__btn:not(:last-child) {
-        margin-right: 15px;
-
-        @media (max-width: $mobile-large) {
-            margin-right: 0;
-        }
-    }
-
     &__btn {
         @media (max-width: $mobile-large) {
             flex-basis: 48%;

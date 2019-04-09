@@ -5,6 +5,7 @@
     display: flex;
     font-family: "PT Sans", sans-serif;
     color: #333333;
+    background-color: #fff;
     border: 1px solid #d4d4d4;
     border-radius: 4px;
     overflow: hidden;
@@ -119,6 +120,11 @@
         @media (max-width: $tablet-large) {
             padding-top: 28px;
             padding-right: 54px;
+            height: 50%;
+
+            & + & {
+                border-bottom: none;
+            }
         }
 
         @media (max-width: $tablet) {
@@ -142,6 +148,7 @@
         padding-top: 28px;
         padding-left: 30px;
         padding-right: 30px;
+        padding-bottom: 28px;
 
         @media (max-width: $tablet-large) {
             width: auto;

@@ -6,6 +6,10 @@ interface Props {
     text: string;
     isTitle?: boolean;
     isEditing?: boolean;
+
+    /**
+     * If set, makes text editable
+     */
     onChange?: (value: string) => void;
 }
 
@@ -20,20 +24,20 @@ export class TextLine extends React.Component<Props> {
         if (event.key === "Escape") {
             this.handleExit();
         }
-    }
+    };
 
     handleEdit = () => {
         this.setState(
             { isEditing: !this.state.isEditing, value: this.props.text },
             () => this.input.focus()
         );
-        document.addEventListener('keyup', this.handleKeyUp);
-    }
+        document.addEventListener("keyup", this.handleKeyUp);
+    };
 
     handleExit = () => {
         this.setState({ isEditing: false });
-        document.removeEventListener('keyup', this.handleKeyUp);
-    }
+        document.removeEventListener("keyup", this.handleKeyUp);
+    };
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
         this.setState({ value: event.target.value });
@@ -50,7 +54,7 @@ export class TextLine extends React.Component<Props> {
     handleInputRef = (ref: HTMLInputElement) => (this.input = ref);
 
     public render() {
-        const { isTitle, text } = this.props;
+        const { isTitle, text, onChange } = this.props;
         const { isEditing, value } = this.state;
         let Tag: any = isTitle ? "h2" : "p";
 
@@ -71,14 +75,15 @@ export class TextLine extends React.Component<Props> {
                         </span>
                     </div>
                 ) : (
-                        <Tag
-                            className={
-                                isTitle
-                                    ? "kit-textLine__title"
-                                    : "kit-textLine__description"
-                            }
-                        >
-                            {text}
+                    <Tag
+                        className={
+                            isTitle
+                                ? "kit-textLine__title"
+                                : "kit-textLine__description"
+                        }
+                    >
+                        {text}
+                        {onChange == null ? null : (
                             <button
                                 className="kit-textLine__button"
                                 type="button"
@@ -86,8 +91,9 @@ export class TextLine extends React.Component<Props> {
                             >
                                 <Icon icon="edit" />
                             </button>
-                        </Tag>
-                    )}
+                        )}
+                    </Tag>
+                )}
             </div>
         );
     }

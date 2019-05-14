@@ -6,7 +6,7 @@ import * as ReactDOM from "react-dom";
 import { Button } from "../src/Button/Button";
 import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
 import { Row } from "../src/Row/Row";
-import { Page } from "../src/Page/Page";
+import { Page, Header } from "../src/Page";
 import { Text } from "../src/Text/Text";
 import { RadioButton } from "../src/RadioButton/RadioButton";
 import { Select } from "../src/Select/Select";
@@ -31,8 +31,53 @@ class Main extends React.Component<{}> {
                 description="Добавьте короткое описание триггера"
                 hasBadge
                 badgeTitle="Триггер активен"
-                cantPlaying
             >
+                <Header>
+                    <Button
+                        className="kit-page__button"
+                        icon="pause"
+                        hasBorder
+                        color="gray"
+                        size="medium"
+                    >
+                        Остановить
+                    </Button>
+                    <Button
+                        className="kit-page__button"
+                        icon="play"
+                        hasBorder
+                        color="gray"
+                        size="medium"
+                        disabled
+                    >
+                        Запустить
+                    </Button>
+                    <Button
+                        className="kit-page__button"
+                        hasBorder
+                        color="gray"
+                        size="medium"
+                    >
+                        Сохранить и выйти
+                    </Button>
+                    <Button
+                        className="kit-page__button"
+                        hasBorder
+                        color="gray"
+                        size="medium"
+                    >
+                        Клонировать
+                    </Button>
+                    <Button
+                        className="kit-page__button"
+                        hasBorder
+                        color="gray"
+                        size="medium"
+                        mode="danger"
+                    >
+                        Удалить
+                    </Button>
+                </Header>
                 <SectionWrapper
                     title="Когда"
                     isEdit={whenEdit}

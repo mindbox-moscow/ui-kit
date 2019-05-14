@@ -1,20 +1,25 @@
 import * as React from "react";
 import "./Page.scss";
-import { Button } from "../Button/Button";
 import { TextLine } from "../TextLine/TextLine";
 import { Badge } from "../Badge/Badge";
-import { COLORS } from '../utils/constants'
+import { COLORS } from "../utils/constants";
 
 interface Props {
     title: string;
     description: string;
-    isPlaying?: boolean;
-    cantPlaying?: boolean;
     hasBadge?: boolean;
     badgeTitle: string;
     badgeDate?: string;
     badgeBgColor?: COLORS;
+
+    /**
+     * If set, makes title editable
+     */
     onChangeTitle?: (value: string) => void;
+
+    /**
+     * If set, makes description editable
+     */
     onChangeDescription?: (value: string) => void;
 }
 
@@ -44,66 +49,22 @@ export class Page extends React.Component<Props> {
             hasBadge,
             badgeTitle,
             badgeDate,
-            badgeBgColor,
-            isPlaying,
-            cantPlaying
+            badgeBgColor
         } = this.props;
         const { title, description } = this.state;
+
+        const handleTitleChange =
+            this.props.onChangeTitle == null
+                ? ((null as unknown) as (v: string) => void)
+                : this.handleChangeTitle;
+
+        const handleChangeDescription =
+            this.props.onChangeDescription == null
+                ? ((null as unknown) as (v: string) => void)
+                : this.handleChangeDescription;
+
         return (
             <div className="kit-page">
-                <header className="kit-page__header">
-                    <div className="kit-page__container">
-                        <div className="kit-page__head-inner">
-                            {isPlaying ? (
-                                <Button
-                                    className="kit-page__button"
-                                    icon="pause"
-                                    hasBorder
-                                    color="gray"
-                                    size="medium"
-                                >
-                                    Остановить
-                                </Button>
-                            ) : (
-                                    <Button
-                                        className="kit-page__button"
-                                        icon="play"
-                                        hasBorder
-                                        color="gray"
-                                        size="medium"
-                                        disabled={cantPlaying}
-                                    >
-                                        Запустить
-                                </Button>
-                                )}
-                            <Button
-                                className="kit-page__button"
-                                hasBorder
-                                color="gray"
-                                size="medium"
-                            >
-                                Сохранить и выйти
-                            </Button>
-                            <Button
-                                className="kit-page__button"
-                                hasBorder
-                                color="gray"
-                                size="medium"
-                            >
-                                Клонировать
-                            </Button>
-                            <Button
-                                className="kit-page__button"
-                                hasBorder
-                                color="gray"
-                                size="medium"
-                                mode="danger"
-                            >
-                                Удалить
-                            </Button>
-                        </div>
-                    </div>
-                </header>
                 <main className="kit-page__content">
                     <div className="kit-page__container">
                         <div className="kit-page__content-head">
@@ -111,18 +72,22 @@ export class Page extends React.Component<Props> {
                                 <TextLine
                                     text={title}
                                     isTitle
-                                    onChange={this.handleChangeTitle}
+                                    onChange={handleTitleChange}
                                 />
                             </div>
                             <div className="kit-page__description">
                                 <TextLine
                                     text={description}
-                                    onChange={this.handleChangeDescription}
+                                    onChange={handleChangeDescription}
                                 />
                             </div>
                             {hasBadge && (
                                 <div className="kit-page__tag">
-                                    <Badge title={badgeTitle} color={badgeBgColor} date={badgeDate} />
+                                    <Badge
+                                        title={badgeTitle}
+                                        color={badgeBgColor}
+                                        date={badgeDate}
+                                    />
                                 </div>
                             )}
                         </div>

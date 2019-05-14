@@ -11,7 +11,7 @@ import { Text } from "../src/Text/Text";
 import { Select } from "../src/Select/Select";
 import { DateField } from "../src/DateField/DateField";
 import { ActionFilter } from "../src/ActionFilter/ActionFilter";
-import { COLORS } from '../src/utils/constants'
+import { COLORS } from "../src/utils/constants";
 
 class What extends React.Component<{}> {
     public render() {
@@ -23,7 +23,6 @@ class What extends React.Component<{}> {
                 badgeTitle="Триггер активен"
                 badgeBgColor={COLORS.Yellow}
                 badgeDate="11 авг 2018"
-                cantPlaying
             >
                 <div
                     style={{

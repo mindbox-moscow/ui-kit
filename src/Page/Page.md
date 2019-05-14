@@ -4,6 +4,9 @@
     description="Добавьте короткое описание триггера"
     isDevelop
 >
+    <Header>
+        <div>Header</div>
+    </Header>
     <div>content</div>
 </Page>
 ```

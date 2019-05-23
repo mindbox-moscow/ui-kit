@@ -29,8 +29,10 @@ export class SectionWrapper extends React.Component<Props> {
     handleWrapperRef = (ref: HTMLDivElement) => (this.wrapper = ref);
 
     handleClickOutside = (event: MouseEvent) => {
-        const target: any = event.target;
+        const target = event.target as Node;
         const { onChangeState = () => {} } = this.props;
+
+        if (!target.isConnected) return;
 
         if (!this.wrapper || !this.wrapper.contains(target)) {
             onChangeState(false);

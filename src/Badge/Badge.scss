@@ -1,35 +1,47 @@
 .kit-badge {
-  font-family: "PT Sans", sans-serif;
-  display: inline-flex;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 13px;
+	font-family: "PT Sans", sans-serif;
+	display: inline-flex;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 13px;
+	cursor: default;
 
-  &__date {
+	&_size_small {
+		font-size: 11px;
+		line-height: 14px;
+		padding: 3px 8px;
+	}
+
+	&_mode_ghost {
+		color: #999999;
+		border: 1px solid #999999;
+		padding: 2px 7px;
+	}
+}
+
+.kit-badge__date {
     margin-left: 5px;
     border-bottom: 1px dashed #fff;
   }
 
-  &__text {
+.kit-badge__text {
+	&_withPoint {
+		position: relative;
+		margin-right: 30px;
 
-    &_withPoint {
-      position: relative;
-      margin-right: 30px;
-
-      &::after {
-        position: absolute;
-        top: 50%;
-        right: -15px;
-        content: "";
-        width: 2px;
-        height: 2px;
-        border-radius: 50%;
-        background-color: #fff;
-      }
-    }
-  }
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: -15px;
+			content: "";
+			width: 2px;
+			height: 2px;
+			border-radius: 50%;
+			background-color: #fff;
+		}
+	}
 }

@@ -1,20 +1,58 @@
 ```jsx
-// Нужно скрывать дропдаун по клику за его пределы
-<ActionsDropdown className="extended-class">
-	<div>Item 0</div>
-	<ActionsDropdown.Group title="Group 1">
-		<ul>
-			<li>Item 1</li>
-			<li>Item 2</li>
-			<li>Item 3</li>
-		</ul>
-	</ActionsDropdown.Group>
-	<ActionsDropdown.Group>
-		<ul>
-			<li>Item 4</li>
-			<li>Item 5</li>
-			<li>Item 6</li>
-		</ul>
-	</ActionsDropdown.Group>
-</ActionsDropdown>
+<>
+	<div style={{ marginBottom: "15px" }}>
+		<span style={{ marginRight: "8px" }}>Группы с заголовками</span>
+
+		<ActionsDropdown className="extended-class">
+			<ActionsDropdown.Action
+				title="Редактировать"
+				onClick={() => console.log("Редактировать")}
+			/>
+			<ActionsDropdown.Group title="Добавить">
+				<ActionsDropdown.Action
+					title="Акцию"
+					onClick={() => console.log("Добавить акцию")}
+				/>
+				<ActionsDropdown.Action
+					title="Подгруппу"
+					onClick={() => console.log("Добавить подгруппу")}
+				/>
+			</ActionsDropdown.Group>
+			<ActionsDropdown.Group title="Акции в группе">
+				<ActionsDropdown.Action
+					title="Остановить"
+					onClick={() => console.log("Остановить")}
+				/>
+				<ActionsDropdown.Action
+					title="Запустить"
+					onClick={() => console.log("Запустить")}
+				/>
+				<ActionsDropdown.Action
+					title="Архивировать"
+					onClick={() => console.log("Архивировать")}
+				/>
+			</ActionsDropdown.Group>
+		</ActionsDropdown>
+	</div>
+	<div style={{ marginBottom: "15px" }}>
+		<span style={{ marginRight: "8px" }}>Группа без заголовка</span>
+
+		<ActionsDropdown className="extended-class">
+			<ActionsDropdown.Action
+				title="Редактировать"
+				onClick={() => console.log("Редактировать")}
+			/>
+			<ActionsDropdown.Group>
+				<ActionsDropdown.Action
+					title="Остановить"
+					onClick={() => console.log("Остановить")}
+				/>
+				<ActionsDropdown.Action
+					title="Архивировать"
+					onClick={() => console.log("Архивировать")}
+				/>
+			</ActionsDropdown.Group>
+		</ActionsDropdown>
+	</div>
+</>
 ```

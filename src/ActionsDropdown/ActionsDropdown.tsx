@@ -3,41 +3,53 @@ import "./ActionsDropdown.scss";
 
 import cn from "classnames";
 
-interface IPropsActionsDropdownGroup {
+interface IPropsAction {
+	title: React.ReactNode;
+	onClick: () => void;
+}
+
+interface IPropsGroup {
 	children: React.ReactNode;
 	title?: string;
 }
 
-interface IPropsActionsDropdown {
+interface IProps {
 	className?: string;
 }
 
-interface IStateActionsDropdown {
+interface IState {
 	isOpen: boolean;
 }
 
-const ActionsDropdownGroup = (props: IPropsActionsDropdownGroup) => {
-	const { title, children } = props;
+const ActionsDropdownAction = (props: IPropsAction) => {
+	const { title, onClick } = props;
 
 	return (
-		<div className="kit-actions-dropdown__group">
-			{title && <h3>{title}</h3>}
-			{children}
+		<div className="kit-actions-dropdown__action" onClick={onClick}>
+			{title}
 		</div>
 	);
 };
 
-class ActionsDropdown extends React.Component<
-	IPropsActionsDropdown,
-	IStateActionsDropdown
-> {
-	public static Group: (props: IPropsActionsDropdownGroup) => JSX.Element;
-	// public wrapRef: HTMLElement;
+const ActionsDropdownGroup = (props: IPropsGroup) => {
+	const { title, children } = props;
+
+	return (
+		<section className="kit-actions-dropdown__group">
+			{title && (
+				<h6 className="kit-actions-dropdown__group-title">{title}</h6>
+			)}
+			{children}
+		</section>
+	);
+};
+
+class ActionsDropdown extends React.Component<IProps, IState> {
+	public static Action: (props: IPropsAction) => JSX.Element;
+	public static Group: (props: IPropsGroup) => JSX.Element;
 	public state = {
 		isOpen: false
 	};
-
-	// public handleWrapRef = (ref: HTMLDivElement) => (this.wrapRef = ref);
 
 	public wrapRef = React.createRef<HTMLDivElement>();
 
@@ -66,13 +78,16 @@ class ActionsDropdown extends React.Component<
 
 		return (
 			<div
-				className={cn("kit-actions-dropdown", className)}
+				className={cn("kit-actions-dropdown", className, {
+					"kit-actions-dropdown_opened": isOpen
+				})}
 				ref={this.wrapRef}
 			>
 				<button
 					className="kit-actions-dropdown__toggle"
 					onClick={this.handleClick}
 				>
+					<div className="kit-actions-dropdown__toggle-icon" />
 					<span className="kit-actions-dropdown__toggle-label">
 						Действия
 					</span>
@@ -88,5 +103,6 @@ class ActionsDropdown extends React.Component<
 }
 
 ActionsDropdown.Group = ActionsDropdownGroup;
+ActionsDropdown.Action = ActionsDropdownAction;
 
 export { ActionsDropdown };

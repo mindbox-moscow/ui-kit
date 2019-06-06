@@ -32,19 +32,43 @@ class ActionsDropdown extends React.Component<
 	IStateActionsDropdown
 > {
 	public static Group: (props: IPropsActionsDropdownGroup) => JSX.Element;
+	// public wrapRef: HTMLElement;
 	public state = {
 		isOpen: false
 	};
 
+	// public handleWrapRef = (ref: HTMLDivElement) => (this.wrapRef = ref);
+
+	public wrapRef = React.createRef<HTMLDivElement>();
+
 	public handleClick = () =>
 		this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
+
+	public handleClickOutside = (e: MouseEvent) => {
+		const dropdownWrap = this.wrapRef.current!;
+
+		if (!dropdownWrap.contains(e.target as Node)) {
+			this.setState({ isOpen: false });
+		}
+	};
+
+	public componentDidMount() {
+		document.addEventListener("click", this.handleClickOutside);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("click", this.handleClickOutside);
+	}
 
 	public render() {
 		const { isOpen } = this.state;
 		const { className, children } = this.props;
 
 		return (
-			<div className={cn("kit-actions-dropdown", className)}>
+			<div
+				className={cn("kit-actions-dropdown", className)}
+				ref={this.wrapRef}
+			>
 				<button
 					className="kit-actions-dropdown__toggle"
 					onClick={this.handleClick}

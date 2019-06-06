@@ -1,4 +1,5 @@
 ```jsx
+// Нужно скрывать дропдаун по клику за его пределы
 <ActionsDropdown className="extended-class">
 	<div>Item 0</div>
 	<ActionsDropdown.Group title="Group 1">

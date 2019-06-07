@@ -1,0 +1,50 @@
+.kit-breadcrumb {
+  position: relative;
+  padding: 9px 14px 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 19px;
+  color: #265378;
+  margin-left: 28px;
+  text-decoration: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 13px;
+    left: -17px;
+    background-image: url(../assets/icons/arrow.svg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 11px;
+  }
+
+  &:last-child {
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: -20px;
+      background-size: auto;
+      background-repeat: no-repeat;
+      width: 8px;
+      height: 11px;
+      background-image: url(../assets/icons/arrow.svg);
+      transform: rotate(90deg);
+    }
+  }
+
+    //display: block;
+    //width: 22px;
+    //height: 22px;
+    //background-image: url(../assets/icons/icons.png);
+    //background-size: 400px;
+    //cursor: pointer;
+    //
+    //@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    //    background-image: url(../assets/icons/icons@2x.png);
+    //}
+}

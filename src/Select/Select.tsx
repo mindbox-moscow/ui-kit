@@ -6,15 +6,18 @@ import { Icon } from "../Icon/Icon";
 interface Item {
     title: string;
     disabled?: boolean;
+    description?: string;
 }
 
 interface Props {
     items: (Item | null)[];
     placeholder: string;
+    description?: string;
     size?: "small";
     disabled?: boolean;
     defaultValue?: string;
     isFiltered?: boolean;
+    isSelected?: boolean;
     onChange?: (item: Item) => void;
 }
 
@@ -23,7 +26,7 @@ export class Select extends React.Component<Props> {
     state = {
         isOpen: false,
         filter: "",
-        activeItem: this.props.defaultValue || ""
+        activeItem: this.props.defaultValue || "",
     };
 
     componentDidMount() {
@@ -57,12 +60,13 @@ export class Select extends React.Component<Props> {
 
     public render() {
         const { isOpen, filter, activeItem } = this.state;
-        const { items, placeholder, isFiltered, disabled, size } = this.props;
+        const { items, isSelected,  placeholder, isFiltered, disabled, size } = this.props;
         return (
             <div
                 className={cn(
                     "kit-select",
                     isOpen && "kit-select_open",
+                    isOpen && isSelected && "kit-select_selected",
                     isFiltered && "kit-select_filtered",
                     {
                         [`kit-select_size_${size}`]: size
@@ -118,7 +122,13 @@ export class Select extends React.Component<Props> {
                                         disabled={item.disabled}
                                         onClick={this.handleChange(item)}
                                     >
-                                        {item.title}
+                                        {item.description ? (
+                                            <React.Fragment>
+                                                <h6 className="kit-select__h6">{item.title}</h6>
+                                                <p className="kit-select__desc">{item.description}</p>
+                                            </React.Fragment>
+                                            ) : (item.title)
+                                        }
                                     </button>
                                 ) : (
                                         <div
@@ -126,7 +136,8 @@ export class Select extends React.Component<Props> {
                                             className="kit-select__separator"
                                         />
                                     )
-                            )}
+                            )
+                        }
                     </div>
                 </div>
             </div>

@@ -42,6 +42,21 @@
         }
     }
 
+    &__h6 {
+        margin: 0;
+        margin-top: 14px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    &__desc {
+        margin: 0;
+        font-size: 13px;
+        line-height: 18px;
+        color: rgba(0, 0, 0, 0.66);
+    }
+
     &_size_small &__placeholder,
     &__title:disabled &__placeholder {
         font-size: 13px;
@@ -230,5 +245,10 @@
         padding-right: 12px;
         padding-left: 12px;
         height: 25px;
+    }
+
+    &_selected &__title {
+        background: #F6F7F7;
+        border-bottom: 1px dashed;
     }
 }

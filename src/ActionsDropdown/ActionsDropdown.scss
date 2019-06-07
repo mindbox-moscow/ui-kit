@@ -99,7 +99,7 @@ $kit-actions-dropdown-padding: 15px;
 .kit-actions-dropdown__group {
 	border-top: 1px solid #f1f1f1;
 	border-bottom: 1px solid #f1f1f1;
-	margin: 0 -28px -1px ($kit-actions-dropdown-padding * -1);
+	margin: 0 -28px -1px (-$kit-actions-dropdown-padding);
 	padding: 4px $kit-actions-dropdown-padding 8px;
 
 	&:first-child {

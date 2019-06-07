@@ -9,9 +9,9 @@ export class Breadcrumb extends React.Component<Props> {
     public render() {
         const { text } = this.props;
         return (
-            <a className='kit-breadcrumb' href={'#!'}>
+            <button className='kit-breadcrumb'>
                 {text}
-            </a>
+            </button>
         );
     }
 }

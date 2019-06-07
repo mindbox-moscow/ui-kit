@@ -1,13 +1,13 @@
 .kit-breadcrumb {
   position: relative;
+  margin-left: 28px;
   padding: 9px 14px 8px;
+  border: 0;
   background-color: #fff;
   border-radius: 4px;
   font-size: 14px;
   line-height: 19px;
   color: #265378;
-  margin-left: 28px;
-  text-decoration: none;
 
   &::before {
     content: "";

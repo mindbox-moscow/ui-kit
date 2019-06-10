@@ -24,54 +24,81 @@ interface IState {
 
 const renderDetailsList = (details: string[]): JSX.Element[] =>
 	details.map((detail, i) => (
-		<li className="kit-select-nested__dropdown-item-details" key={i}>
+		<li className="kit-select-nested__dropdown-option-details" key={i}>
 			{detail}
 		</li>
 	));
 
-export class SelectNested extends React.Component<IProps, IState> {
+export class SelectNested extends React.PureComponent<IProps, IState> {
 	public state = {
 		filterInput: "",
 		isOpen: false,
 		selectedOption: this.props.selectedOption || null
 	};
 
-	public renderDropdownList = (option: IOption): JSX.Element => {
+	public renderOptionsList = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
 		const isOutOfFilter =
 			title.toLowerCase().indexOf(this.state.filterInput) === -1;
 
 		return (
-			<li className="kit-select-nested__dropdown-item" key={id}>
+			<li className="kit-select-nested__dropdown-option" key={id}>
 				<button
-					className="kit-select-nested__dropdown-item-label"
+					className="kit-select-nested__dropdown-option-label"
 					type="button"
 					onClick={this.handleChange(option)}
 					disabled={disabled || isOutOfFilter}
 				>
-					<div className="kit-select-nested__dropdown-item-title">
+					<div className="kit-select-nested__dropdown-option-title">
 						{title}
 					</div>
-					<ul className="kit-select-nested__dropdown-item-details-list">
+					<ul className="kit-select-nested__dropdown-option-details-list">
 						{renderDetailsList(details)}
 					</ul>
 				</button>
 				{children && (
 					<ul className="kit-select-nested__dropdown-sublist">
-						{children.map(this.renderDropdownList)}
+						{children.map(this.renderOptionsList)}
 					</ul>
 				)}
 			</li>
 		);
 	};
 
-	public handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+	public renderDropdown = (options: IOption[]): JSX.Element => (
+		<div className="kit-select-nested__dropdown">
+			<div className="kit-select-nested__filter">
+				<div className="kit-select-nested__search-field">
+					<input
+						type="text"
+						className="kit-select-nested__input"
+						onChange={this.handleFilter}
+					/>
+					<span className="kit-select-nested__icon">
+						<Icon icon="search" />
+					</span>
+				</div>
+			</div>
+			<ul className="kit-select-nested__dropdown-list">
+				{options && options.map(this.renderOptionsList)}
+			</ul>
+		</div>
+	);
+
+	public handleToggle = (): void =>
+		this.setState(state => ({
+			...state,
+			filterInput: "",
+			isOpen: !state.isOpen
+		}));
+
+	public handleFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		this.setState({ filterInput: e.target.value });
 	};
 
 	public handleChange = (option: IOption) => (
 		e: React.MouseEvent<HTMLElement>
-	) => {
+	): void => {
 		this.setState({ selectedOption: option, isOpen: false });
 
 		if (this.props.onChange) {
@@ -80,12 +107,16 @@ export class SelectNested extends React.Component<IProps, IState> {
 	};
 
 	public render() {
-		const { selectedOption } = this.state;
+		const { selectedOption, isOpen } = this.state;
 		const { options } = this.props;
 
 		return (
 			<div className="kit-select-nested">
-				<button className="kit-select-nested__label" type="button">
+				<button
+					className="kit-select-nested__label"
+					type="button"
+					onClick={this.handleToggle}
+				>
 					<div className="kit-select-nested__label-title">
 						{selectedOption ? selectedOption.title : "Выбрать"}
 					</div>
@@ -94,23 +125,7 @@ export class SelectNested extends React.Component<IProps, IState> {
 							renderDetailsList(selectedOption.details)}
 					</ul>
 				</button>
-				<div className="kit-select-nested__dropdown">
-					<div className="kit-select-nested__filter">
-						<div className="kit-select-nested__search-field">
-							<input
-								type="text"
-								className="kit-select-nested__input"
-								onChange={this.handleFilter}
-							/>
-							<span className="kit-select-nested__icon">
-								<Icon icon="search" />
-							</span>
-						</div>
-					</div>
-					<ul className="kit-select-nested__dropdown-list">
-						{options && options.map(this.renderDropdownList)}
-					</ul>
-				</div>
+				{isOpen && this.renderDropdown(options)}
 			</div>
 		);
 	}

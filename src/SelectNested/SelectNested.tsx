@@ -7,7 +7,7 @@ interface IOption {
 	title: string;
 	details: string[];
 	children: IOption[] | null;
-	disabled: boolean;
+	disabled?: boolean;
 }
 
 interface IProps {
@@ -99,7 +99,11 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	public handleChange = (option: IOption) => (
 		e: React.MouseEvent<HTMLElement>
 	): void => {
-		this.setState({ selectedOption: option, isOpen: false });
+		this.setState({
+			filterInput: "",
+			isOpen: false,
+			selectedOption: option
+		});
 
 		if (this.props.onChange) {
 			this.props.onChange(option);

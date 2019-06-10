@@ -4,8 +4,7 @@ const options = [
 		id: 1,
 		title: "Учебный год 2019–2020",
 		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-		children: null,
-		disabled: false
+		children: null
 	},
 	{
 		id: 2,
@@ -25,8 +24,7 @@ const options = [
 						id: 4,
 						title: "Учебный год 2019–2020",
 						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						children: null,
-						disabled: false
+						children: null
 					},
 					{
 						id: 5,
@@ -35,18 +33,15 @@ const options = [
 						children: null,
 						disabled: true
 					}
-				],
-				disabled: false
+				]
 			}
-		],
-		disabled: false
+		]
 	},
 	{
 		id: 6,
 		title: "Учебный год 2019–2020",
 		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-		children: null,
-		disabled: false
+		children: null
 	}
 ];
 

@@ -34,7 +34,7 @@ export class NestedItem extends React.Component<Props, State> {
                         <span className="kit-nested-item__name">{article}</span>
                         <span className="kit-nested-item__number">{number}</span>
                     </div>
-                    <div className="kit-nested-item__promo">
+                    <div className={classnames('kit-nested-item__promo', { "kit-nested-item__promo_expand": !isChangeTree })}>
                         <span className="kit-nested-item__promo-title">{information}</span>
                         <span className="kit-nested-item__sale">{sales}</span>
                     </div>

@@ -38,6 +38,8 @@ export class SelectNested extends React.Component<IProps, IState> {
 
 	public renderDropdownList = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
+		const isOutOfFilter =
+			title.toLowerCase().indexOf(this.state.filterInput) === -1;
 
 		return (
 			<li className="kit-select-nested__dropdown-item" key={id}>
@@ -45,7 +47,7 @@ export class SelectNested extends React.Component<IProps, IState> {
 					className="kit-select-nested__dropdown-item-label"
 					type="button"
 					onClick={this.handleChange(option)}
-					disabled={disabled}
+					disabled={disabled || isOutOfFilter}
 				>
 					<div className="kit-select-nested__dropdown-item-title">
 						{title}

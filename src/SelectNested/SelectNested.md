@@ -5,7 +5,7 @@ const options = [
 		title: "Учебный год 2019–2020",
 		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
 		children: null,
-		selected: false
+		disabled: false
 	},
 	{
 		id: 2,
@@ -26,29 +26,33 @@ const options = [
 						title: "Учебный год 2019–2020",
 						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
 						children: null,
-						selected: false
+						disabled: false
 					},
 					{
 						id: 5,
 						title: "Учебный год 2019–2020222",
 						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
 						children: null,
-						selected: true
+						disabled: true
 					}
 				],
-				selected: false
+				disabled: false
 			}
 		],
-		selected: false
+		disabled: false
 	},
 	{
 		id: 6,
 		title: "Учебный год 2019–2020",
 		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
 		children: null,
-		selected: false
+		disabled: false
 	}
 ];
 
-<SelectNested options={options} />;
+<SelectNested
+	options={options}
+	selectedOption={options[0]}
+	onChange={newSelectedOption => console.log(newSelectedOption)}
+/>;
 ```

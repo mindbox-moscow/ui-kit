@@ -8,7 +8,7 @@ interface IOption {
 	id: number;
 	title: string;
 	details: string[];
-	children: IOption[] | null;
+	children?: IOption[];
 	disabled?: boolean;
 }
 
@@ -19,7 +19,7 @@ interface IProps {
 }
 
 interface IState {
-	filterInput: string;
+	filter: string;
 	isOpen: boolean;
 	selectedOption: IOption | null;
 }
@@ -33,7 +33,7 @@ const renderDetailsList = (details: string[]): JSX.Element[] =>
 
 export class SelectNested extends React.PureComponent<IProps, IState> {
 	public state = {
-		filterInput: "",
+		filter: "",
 		isOpen: false,
 		selectedOption: this.props.selectedOption || null
 	};
@@ -42,24 +42,20 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 
 	public renderOptionsList = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
+		const { filter } = this.state;
 		const isOutOfFilter =
-			title.toLowerCase().indexOf(this.state.filterInput) === -1;
+			title.toLowerCase().indexOf(this.state.filter) === -1;
 
 		return (
 			<li
 				className={cn(
 					"kit-select-nested__dropdown-option",
-					children && "kit-select-nested__dropdown-option_has_sublist"
+					children &&
+						"kit-select-nested__dropdown-option_has_sublist",
+					filter && "kit-select-nested__dropdown-option_show_sublist"
 				)}
 				key={id}
 			>
-				{children && (
-					<button className="kit-select-nested__dropdown-option-sublist-toggle">
-						<span className="kit-select-nested__dropdown-option-sublist-toggle-title">
-							Показать подгруппы
-						</span>
-					</button>
-				)}
 				<button
 					className="kit-select-nested__dropdown-option-label"
 					type="button"
@@ -74,9 +70,16 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					</ul>
 				</button>
 				{children && (
-					<ul className="kit-select-nested__dropdown-sublist">
-						{children.map(this.renderOptionsList)}
-					</ul>
+					<>
+						<button className="kit-select-nested__dropdown-option-sublist-toggle">
+							<span className="kit-select-nested__dropdown-option-sublist-toggle-title">
+								Показать подгруппы
+							</span>
+						</button>
+						<ul className="kit-select-nested__dropdown-sublist">
+							{children.map(this.renderOptionsList)}
+						</ul>
+					</>
 				)}
 			</li>
 		);
@@ -105,19 +108,19 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	public handleToggle = (): void =>
 		this.setState(state => ({
 			...state,
-			filterInput: "",
+			filter: "",
 			isOpen: !state.isOpen
 		}));
 
 	public handleFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		this.setState({ filterInput: e.target.value });
+		this.setState({ filter: e.target.value });
 	};
 
 	public handleChange = (option: IOption) => (
 		e: React.MouseEvent<HTMLElement>
 	): void => {
 		this.setState({
-			filterInput: "",
+			filter: "",
 			isOpen: false,
 			selectedOption: option
 		});
@@ -143,7 +146,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		const wrap = this.wrapRef.current!;
 
 		if (!wrap.contains(e.target as Node)) {
-			this.setState({ isOpen: false, filterInput: "" });
+			this.setState({ isOpen: false, filter: "" });
 		}
 	};
 
@@ -168,7 +171,13 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		const { options } = this.props;
 
 		return (
-			<div className="kit-select-nested" ref={this.wrapRef}>
+			<div
+				className={cn(
+					"kit-select-nested",
+					isOpen && "kit-select-nested_show_dropdown"
+				)}
+				ref={this.wrapRef}
+			>
 				<button
 					className="kit-select-nested__label"
 					type="button"

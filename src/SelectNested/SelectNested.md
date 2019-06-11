@@ -2,9 +2,12 @@
 const options = [
 	{
 		id: 1,
-		title: "Учебный год 2019–2020",
-		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-		children: null
+		title: "Товары двойного назначения",
+		details: [
+			"Несовм. по товарам",
+			"Последовательное применение",
+			"Макс. скидка: 30%"
+		]
 	},
 	{
 		id: 2,
@@ -22,15 +25,13 @@ const options = [
 				children: [
 					{
 						id: 4,
-						title: "Учебный год 2019–2020",
-						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						children: null
+						title: "Призы и подарки",
+						details: ["Несовм. по заказу", "Макс. скидка: 30%"]
 					},
 					{
 						id: 5,
-						title: "Учебный год 2019–2020222",
+						title: "Школьные товары",
 						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						children: null,
 						disabled: true
 					}
 				]
@@ -39,15 +40,16 @@ const options = [
 	},
 	{
 		id: 6,
-		title: "Учебный год 2019–2020",
-		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-		children: null
+		title: "Горящие товары",
+		details: ["Несовм. по заказу", "Макс. скидка: 30%"]
 	}
 ];
 
-<SelectNested
-	options={options}
-	selectedOption={options[0]}
-	onChange={newSelectedOption => console.log(newSelectedOption)}
-/>;
+<div style={{ background: "#fffaed", padding: "20px" }}>
+	<SelectNested
+		options={options}
+		selectedOption={options[0]}
+		onChange={newSelectedOption => console.log(newSelectedOption)}
+	/>
+</div>;
 ```

@@ -2,6 +2,8 @@ import * as React from "react";
 import { Icon } from "../Icon";
 import "./SelectNested.scss";
 
+import cn from "classnames";
+
 interface IOption {
 	id: number;
 	title: string;
@@ -36,13 +38,28 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		selectedOption: this.props.selectedOption || null
 	};
 
+	public wrapRef = React.createRef<HTMLDivElement>();
+
 	public renderOptionsList = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
 		const isOutOfFilter =
 			title.toLowerCase().indexOf(this.state.filterInput) === -1;
 
 		return (
-			<li className="kit-select-nested__dropdown-option" key={id}>
+			<li
+				className={cn(
+					"kit-select-nested__dropdown-option",
+					children && "kit-select-nested__dropdown-option_has_sublist"
+				)}
+				key={id}
+			>
+				{children && (
+					<button className="kit-select-nested__dropdown-option-sublist-toggle">
+						<span className="kit-select-nested__dropdown-option-sublist-toggle-title">
+							Показать подгруппы
+						</span>
+					</button>
+				)}
 				<button
 					className="kit-select-nested__dropdown-option-label"
 					type="button"
@@ -110,12 +127,48 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		}
 	};
 
+	public handleWrapRefClick = (e: MouseEvent): void => {
+		const isSublistToggle = (e.target as HTMLElement).classList.contains(
+			"kit-select-nested__dropdown-option-sublist-toggle"
+		);
+
+		if (isSublistToggle) {
+			(e.target as HTMLElement).parentElement!.classList.toggle(
+				"kit-select-nested__dropdown-option_show_sublist"
+			);
+		}
+	};
+
+	public handleClickOutside = (e: MouseEvent) => {
+		const wrap = this.wrapRef.current!;
+
+		if (!wrap.contains(e.target as Node)) {
+			this.setState({ isOpen: false, filterInput: "" });
+		}
+	};
+
+	public componentDidMount() {
+		this.wrapRef.current!.addEventListener(
+			"click",
+			this.handleWrapRefClick
+		);
+		document.addEventListener("click", this.handleClickOutside);
+	}
+
+	public componentWillUnmount() {
+		this.wrapRef.current!.removeEventListener(
+			"click",
+			this.handleWrapRefClick
+		);
+		document.removeEventListener("click", this.handleClickOutside);
+	}
+
 	public render() {
 		const { selectedOption, isOpen } = this.state;
 		const { options } = this.props;
 
 		return (
-			<div className="kit-select-nested">
+			<div className="kit-select-nested" ref={this.wrapRef}>
 				<button
 					className="kit-select-nested__label"
 					type="button"

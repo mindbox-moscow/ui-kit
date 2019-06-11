@@ -34,3 +34,15 @@
         transform: scale(0.8);
     }
 }
+
+.kit-select-nested__dropdown-sublist {
+	display: none;
+
+	.kit-select-nested__dropdown-option_show_sublist > & {
+		display: block;
+	}
+}
+
+.kit-select-nested__dropdown-option-sublist-toggle-title {
+	pointer-events: none;
+}

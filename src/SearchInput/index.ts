@@ -1,1 +1,1 @@
-export * from "./SeacrhInput";
+export * from "./SearchInput";

@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./SeacrhInput.scss";
+import "./SearchInput.scss";
 import { Icon } from "../Icon";
 
 interface Props {
@@ -10,7 +10,7 @@ interface State {
 	filter?: any;
 }
 
-export class SeacrhInput extends React.Component<Props, State> {
+export class SearchInput extends React.Component<Props, State> {
 
 	public state: State = { filter: "" };
 

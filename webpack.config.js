@@ -50,7 +50,8 @@ module.exports = () => ({
     devtool: "source-map",
 
     resolve: {
-        extensions: [".ts", ".tsx", ".js"]
+		modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+		extensions: ['.js', '.jsx', '.ts', '.tsx']
     },
 
     module: {
@@ -74,7 +75,7 @@ module.exports = () => ({
                 ]
             },
             {
-                test: /\.(png|jpg|gif|woff)$/,
+				test: /\.(png|jpg|gif|svg|swf)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -83,7 +84,11 @@ module.exports = () => ({
                         }
                     }
                 ]
-            }
+            },
+			{
+				test: /\.(woff|woff2|ttf|eot)([\?]?.*)$/,
+				loader: 'file-loader?name=fonts/[name]-[hash:6].[ext]'
+			}
         ]
     },
 

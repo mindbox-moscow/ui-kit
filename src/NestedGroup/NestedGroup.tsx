@@ -10,28 +10,31 @@ export class NestedGroup extends React.Component<Props> {
     public render() {
         return (
             <NestedList>
-                <NestedItem number={5}
-                            article={"Бытовая техника"}
+                <NestedItem childrenCount={5}
+							title={"Бытовая техника"}
                             information={"Максимальная выгода"}
-                            sales={"Максимальная скидка: 50%"}/>
-                <NestedItem number={180}
-                            article={"Школьные товары, канцтовары"}
+							details={{maxDiscount: 20, typeOfSales: true}}
+				/>
+                <NestedItem childrenCount={180}
+							title={"Школьные товары, канцтовары"}
                             information={"Последовательное применение"}
-                            sales={"Без максимальной скидки"}/>
-                <NestedItem number={12}
-                            article={"Видео, фото"}
+							details={{typeOfSales: false}}
+				/>
+                <NestedItem childrenCount={12}
+							title={"Видео, фото"}
                             information={"Суммирование"}
-                            sales={"Максимальная скидка: 10%"}>
+							details={{maxDiscount: 10, typeOfSales: true}}
+                            >
                     <ul>
-                        <NestedItem number={5}
-                                    article={"Бытовая техника"}
+                        <NestedItem childrenCount={5}
+									title={"Бытовая техника"}
                                     information={"Максимальная выгода"}
-                                    sales={"Максимальная скидка: 50%"}>
+									details={{maxDiscount: 20, typeOfSales: true}}>
                             <ul>
-                                <NestedItem number={5}
-                                            article={"Бытовая техника"}
-                                            information={"Максимальная выгода"}
-                                            sales={"Максимальная скидка: 50%"}/>
+                                <NestedItem childrenCount={5}
+											details={{maxDiscount: 50, typeOfSales: true}}
+											title={"Бытовая техника"}
+                                            information={"Максимальная выгода"}/>
                             </ul>
                         </NestedItem>
                     </ul>

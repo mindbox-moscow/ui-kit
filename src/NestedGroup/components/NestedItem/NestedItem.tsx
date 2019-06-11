@@ -4,42 +4,50 @@ import classnames from "classnames";
 import "./NestedItem.scss";
 
 interface Props {
-    number: number;
-    article: string;
+	childrenCount: number;
+	title: string;
     information: string;
-    sales: string;
+	details: {
+		maxDiscount?: number;
+		typeOfSales?: boolean;
+	};
 }
 
 interface State {
-    isChangeTree?: boolean;
+	isExpanded?: boolean;
 }
 
 export class NestedItem extends React.Component<Props, State> {
-    public state: State = { isChangeTree: true };
+    public state: State = { isExpanded: true };
 
     private expandTree = () => {
-        console.log(this.state);
-        this.setState({ isChangeTree: !this.state.isChangeTree});
+        this.setState({ isExpanded: !this.state.isExpanded});
     };
 
     public render() {
-        const { number, article, information, sales, children } = this.props;
-        const { isChangeTree } = this.state;
+        const { childrenCount, title, information, details, children } = this.props;
+        const { isExpanded } = this.state;
 
         return (
             <React.Fragment>
-            <li className="kit-nested-item">
+            <li className={classnames('kit-nested-item', { "kit-nested-item_expand": !isExpanded })}>
                 <div className="kit-nested-item__wrap" onClick={this.expandTree}>
-                    <div className={classnames('kit-nested-item__title-wrap', { "kit-nested-item__title-wrap_expand": !isChangeTree })}>
-                        <span className="kit-nested-item__name">{article}</span>
-                        <span className="kit-nested-item__number">{number}</span>
+                    <div className={classnames('kit-nested-item__title-wrap', { "kit-nested-item__title-wrap_expand": !isExpanded })}>
+                        <span className="kit-nested-item__name">{title}</span>
+                        <span className="kit-nested-item__number">{childrenCount}</span>
                     </div>
-                    <div className={classnames('kit-nested-item__promo', { "kit-nested-item__promo_expand": !isChangeTree })}>
-                        <span className="kit-nested-item__promo-title">{information}</span>
-                        <span className="kit-nested-item__sale">{sales}</span>
+                    <div className={classnames('kit-nested-item__promo', { "kit-nested-item__promo_expand": !isExpanded })}>
+                        <span className="kit-nested-item__promo-title">
+							{information}
+                        </span>
+                        <span className={classnames('kit-nested-item__sale', { "kit-nested-item__sale_no-sale": !details.typeOfSales })}>
+							{details.typeOfSales ? `Максимальная скидка: ${details.maxDiscount}%` : 'Без' +
+								' максимальной' +
+								' скидки' }
+						</span>
                     </div>
                 </div>
-                {!isChangeTree && children}
+                {!isExpanded && children}
             </li>
             </React.Fragment>
         );

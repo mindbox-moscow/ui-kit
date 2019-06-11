@@ -7,17 +7,17 @@
     align-items: center;
     font-family: "PT Sans", sans-serif;
 
-
     &_expand {
+		margin-bottom: 0;
 
         &::before {
             content: "";
             position: absolute;
-            left: 0;
-            bottom: -44px;
+			bottom: 0;
+			left: 0;
             width: 20px;
-            height: 100%;
-            background-color: #E2EAF0;
+            height: calc(100% - 44px);
+			background-color: rgba(226, 234, 240, 0.35);
         }
     }
 }
@@ -69,6 +69,10 @@
 .kit-nested-item__sale {
     font-size: 14px;
     line-height: 18px;
+
+	&_no-sale {
+		color: #999;
+	}
 }
 
 .kit-nested-item__title-wrap {

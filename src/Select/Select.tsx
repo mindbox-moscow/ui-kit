@@ -17,7 +17,7 @@ interface Props {
     disabled?: boolean;
     defaultValue?: string;
     isFiltered?: boolean;
-    isSelected?: boolean;
+    oneChooseSelect?: boolean;
     onChange?: (item: Item) => void;
 }
 
@@ -60,13 +60,13 @@ export class Select extends React.Component<Props> {
 
     public render() {
         const { isOpen, filter, activeItem } = this.state;
-        const { items, isSelected,  placeholder, isFiltered, disabled, size } = this.props;
+        const { items, oneChooseSelect,  placeholder, isFiltered, disabled, size } = this.props;
         return (
             <div
                 className={cn(
                     "kit-select",
                     isOpen && "kit-select_open",
-                    isOpen && isSelected && "kit-select_selected",
+                    isOpen && oneChooseSelect && "kit-select_selected",
                     isFiltered && "kit-select_filtered",
                     {
                         [`kit-select_size_${size}`]: size

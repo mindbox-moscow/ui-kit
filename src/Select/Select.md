@@ -81,7 +81,7 @@
     <br />
     <br />
     <Select
-    isSelected={true}
+    oneChooseSelect={true}
       placeholder="Выберите событие"
       items={[
         { title: "Максимальная выгода",

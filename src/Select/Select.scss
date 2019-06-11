@@ -197,6 +197,10 @@
 
         &:hover {
             color: #fff;
+
+            .kit-select__desc {
+                color: #fff;
+            }
         }
 
         &::before {

@@ -1,12 +1,12 @@
 .kit-nested-list {
 	position: relative;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
 
-    ul {
-        margin-top: 8px;
-		padding-left: 28px;
-		width: calc(100% - 28px);
-    }
+.kit-nested-list__sublist {
+	margin-top: 8px;
+	padding-left: 28px;
+	width: calc(100% - 28px);
 }

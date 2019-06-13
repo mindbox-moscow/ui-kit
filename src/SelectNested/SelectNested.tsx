@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Button } from "../Button";
 import { Icon } from "../Icon";
 import "./SelectNested.scss";
 
@@ -14,6 +15,7 @@ interface IOption {
 
 interface IProps {
 	options: IOption[];
+	name: string;
 	selectedOption?: IOption;
 	onChange?: (option: IOption) => void;
 }
@@ -22,6 +24,7 @@ interface IState {
 	filter: string;
 	isOpen: boolean;
 	selectedOption: IOption | null;
+	markedOption: IOption | null;
 }
 
 const renderDetailsList = (details: string[]): JSX.Element[] =>
@@ -35,16 +38,17 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	public state = {
 		filter: "",
 		isOpen: false,
-		selectedOption: this.props.selectedOption || null
+		selectedOption: this.props.selectedOption || null,
+		markedOption: this.props.selectedOption || null
 	};
 
-	public wrapRef = React.createRef<HTMLDivElement>();
+	public wrapRef = React.createRef<HTMLFormElement>();
 
 	public renderOptionsList = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
+		const { name } = this.props;
 		const { filter } = this.state;
-		const isOutOfFilter =
-			title.toLowerCase().indexOf(this.state.filter) === -1;
+		const isOutOfFilter = title.toLowerCase().indexOf(filter) === -1;
 
 		return (
 			<li
@@ -56,22 +60,32 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 				)}
 				key={id}
 			>
-				<button
-					className="kit-select-nested__dropdown-option-label"
-					type="button"
-					onClick={this.handleChange(option)}
-					disabled={disabled || isOutOfFilter}
+				<label
+					className={cn("kit-select-nested__dropdown-option-label", {
+						"kit-select-nested__dropdown-option-label_disabled":
+							disabled || isOutOfFilter
+					})}
 				>
+					<input
+						className="kit-select-nested__dropdown-option-radio"
+						type="radio"
+						name={name}
+						disabled={disabled || isOutOfFilter}
+						onChange={this.markOption(option)}
+					/>
 					<div className="kit-select-nested__dropdown-option-title">
 						{title}
 					</div>
 					<ul className="kit-select-nested__dropdown-option-details-list">
 						{renderDetailsList(details)}
 					</ul>
-				</button>
+				</label>
 				{children && (
 					<>
-						<button className="kit-select-nested__dropdown-option-sublist-toggle">
+						<button
+							className="kit-select-nested__dropdown-option-sublist-toggle"
+							type="button"
+						>
 							<span className="kit-select-nested__dropdown-option-sublist-toggle-title">
 								Показать подгруппы
 							</span>
@@ -85,7 +99,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		);
 	};
 
-	public renderDropdown = (options: IOption[]): JSX.Element => (
+	public renderDropdownList = (options: IOption[]): JSX.Element => (
 		<div className="kit-select-nested__dropdown">
 			<div className="kit-select-nested__filter">
 				<div className="kit-select-nested__filter-input-wrap">
@@ -99,9 +113,11 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					</span>
 				</div>
 			</div>
-			<ul className="kit-select-nested__dropdown-list">
-				{options && options.map(this.renderOptionsList)}
-			</ul>
+			<div className="kit-select-nested__dropdown-list-wrap">
+				<ul className="kit-select-nested__dropdown-list">
+					{options && options.map(this.renderOptionsList)}
+				</ul>
+			</div>
 		</div>
 	);
 
@@ -114,20 +130,6 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 
 	public handleFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		this.setState({ filter: e.target.value });
-	};
-
-	public handleChange = (option: IOption) => (
-		e: React.MouseEvent<HTMLElement>
-	): void => {
-		this.setState({
-			filter: "",
-			isOpen: false,
-			selectedOption: option
-		});
-
-		if (this.props.onChange) {
-			this.props.onChange(option);
-		}
 	};
 
 	public handleWrapRefClick = (e: MouseEvent): void => {
@@ -148,6 +150,30 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		if (!wrap.contains(e.target as Node)) {
 			this.setState({ isOpen: false, filter: "" });
 		}
+	};
+
+	public markOption = (option: IOption) => (
+		e: React.ChangeEvent<HTMLInputElement>
+	): void => {
+		this.setState({ markedOption: option });
+	};
+
+	public handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const { onChange } = this.props;
+		const { markedOption } = this.state;
+
+		if (onChange && markedOption) {
+			onChange(markedOption!);
+		}
+
+		this.setState({
+			filter: "",
+			isOpen: false,
+			selectedOption: markedOption,
+			markedOption: null
+		});
 	};
 
 	public componentDidMount() {
@@ -171,12 +197,13 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		const { options } = this.props;
 
 		return (
-			<div
+			<form
 				className={cn(
 					"kit-select-nested",
 					isOpen && "kit-select-nested_show_dropdown"
 				)}
 				ref={this.wrapRef}
+				onSubmit={this.handleSubmit}
 			>
 				<button
 					className="kit-select-nested__label"
@@ -191,8 +218,31 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 							renderDetailsList(selectedOption.details)}
 					</ul>
 				</button>
-				{isOpen && this.renderDropdown(options)}
-			</div>
+				{isOpen && this.renderDropdownList(options)}
+				{isOpen && (
+					<div className="kit-select-nested__dropdown-footer">
+						<Button
+							className="kit-select-nested__dropdown-footer-submit"
+							type="submit"
+							color="gray"
+							size="medium"
+							hasBorder={true}
+						>
+							Выбрать
+						</Button>
+						<Button
+							className="kit-select-nested__dropdown-footer-reset"
+							type="reset"
+							mode="simple_text"
+							color="gray"
+							size="medium"
+							onClick={this.handleToggle}
+						>
+							Отменить
+						</Button>
+					</div>
+				)}
+			</form>
 		);
 	}
 }

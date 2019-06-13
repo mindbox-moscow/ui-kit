@@ -126,10 +126,13 @@ const options = [
 ];
 
 <div style={{ background: "#fffaed", padding: "20px" }}>
-	<SelectNested
-		options={options}
-		selectedOption={options[0]}
-		onChange={newSelectedOption => console.log(newSelectedOption)}
-	/>
+	<div style={{ width: "55%" }}>
+		<SelectNested
+			options={options}
+			name="parent_group"
+			selectedOption={options[0]}
+			onChange={newSelectedOption => console.log(newSelectedOption)}
+		/>
+	</div>
 </div>;
 ```

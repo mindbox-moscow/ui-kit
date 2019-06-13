@@ -88,13 +88,13 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	public renderDropdown = (options: IOption[]): JSX.Element => (
 		<div className="kit-select-nested__dropdown">
 			<div className="kit-select-nested__filter">
-				<div className="kit-select-nested__search-field">
+				<div className="kit-select-nested__filter-input-wrap">
 					<input
 						type="text"
-						className="kit-select-nested__input"
+						className="kit-select-nested__filter-input"
 						onChange={this.handleFilter}
 					/>
-					<span className="kit-select-nested__icon">
+					<span className="kit-select-nested__filter-icon">
 						<Icon icon="search" />
 					</span>
 				</div>

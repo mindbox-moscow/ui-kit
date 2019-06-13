@@ -18,6 +18,7 @@ interface IProps {
 	name: string;
 	selectedOption?: IOption;
 	onChange?: (option: IOption) => void;
+	className?: string;
 }
 
 interface IState {
@@ -193,8 +194,8 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	}
 
 	public render() {
-		const { selectedOption, isOpen } = this.state;
 		const { options } = this.props;
+		const { selectedOption, isOpen } = this.state;
 
 		return (
 			<form

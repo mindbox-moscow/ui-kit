@@ -1,5 +1,6 @@
 import * as React from "react";
-import "./Breadcrumb.scss";
+import { BreadcrumbList } from "./components/BreadcrumbList/BreadcrumbList";
+import { BreadcrumbItem } from "./components/BreadcrumbItem/BreadcrumbItem";
 
 interface Props {
     text: string;
@@ -9,9 +10,9 @@ export class Breadcrumb extends React.Component<Props> {
     public render() {
         const { text } = this.props;
         return (
-            <button className='kit-breadcrumb'>
-                {text}
-            </button>
+            <BreadcrumbList>
+                <BreadcrumbItem text={text}/>
+            </BreadcrumbList>
         );
     }
 }

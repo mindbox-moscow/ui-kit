@@ -5,10 +5,10 @@ $kit-select-nested-offset-left: 16px;
 $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested {
-    position: relative;
-    z-index: 1;
-    display: block;
-    min-width: 108px;
+	position: relative;
+	z-index: 1;
+	display: block;
+	min-width: 108px;
 	font-family: "PT Sans", sans-serif;
 	border: 1px solid #C5D6E1;
 	border-radius: $kit-select-nested-border-radius;
@@ -82,7 +82,7 @@ $kit-select-nested-padding-left: 10px;
 .kit-select-nested__filter {
 	position: relative;
 	padding: 6px $kit-select-nested-padding-left 9px;
-	border-bottom: 2px dashed #939393;
+	border-bottom: 1px dashed #939393;
 	background-color: #F6F7F7;
 }
 
@@ -91,12 +91,15 @@ $kit-select-nested-padding-left: 10px;
 }
 
 .kit-select-nested__filter-input {
-	padding-right: 20px;
+	padding-right: 26px;
 	padding-left: 6px;
 	box-sizing: border-box;
 	width: 100%;
 	height: 26px;
 	font-family: "PT Sans", sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	color: #000000;
 	border: 1px solid #b0b2b5;
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.3);

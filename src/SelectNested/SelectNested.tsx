@@ -105,7 +105,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 			<div className="kit-select-nested__filter">
 				<div className="kit-select-nested__filter-input-wrap">
 					<input
-						type="text"
+						type="search"
 						className="kit-select-nested__filter-input"
 						onChange={this.handleFilter}
 					/>

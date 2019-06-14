@@ -9,13 +9,15 @@ interface Props {
 	icon: string,
 	start: string | null;
 	finish: string | null;
+	isFinished?: boolean;
 }
 
 export class StockItem extends React.Component<Props> {
     public render() {
-    	const {title, icon, start, finish} = this.props;
+    	const {title, icon, start, finish, isFinished} = this.props;
         return (
-            <div className="kit-stock-item">
+            <div className={cn("kit-stock-item", {
+				"kit-stock-item_finished": isFinished })}>
 				<div className="kit-stock-item__title-wrap">
 					<span className="kit-stock-item__name">
 						{title}

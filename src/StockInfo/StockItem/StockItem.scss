@@ -8,6 +8,17 @@
 	&:last-child {
 		border: 0;
 	}
+
+	&_finished {
+
+		.kit-stock-item__name {
+			color: #999;
+		}
+
+		.kit-icon_percent {
+			background-image: url("../../assets/icons/precent-grey.svg");
+		}
+	}
 }
 
 .kit-stock-item__promo {

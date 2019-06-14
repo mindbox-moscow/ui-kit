@@ -42,4 +42,18 @@
     &_arrowDown {
         background-position: -280px -200px;
     }
+
+	&_percent {
+		background-image: url("../assets/icons/percent.svg");
+		background-size: auto;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	&_coins {
+		background-image: url("../assets/icons/coins.svg");
+		background-size: auto;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
 }

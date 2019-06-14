@@ -2,15 +2,8 @@
   position: relative;
   margin-left: 28px;
   margin-bottom: 10px;
-  padding: 9px 14px 8px;
-  border: 0;
-  background-color: #fff;
-  border-radius: 4px;
-  font-family: "PT Sans", sans-serif;
-  font-size: 14px;
-  line-height: 19px;
-  color: #265378;
   list-style: none;
+  z-index: 1;
 
   &::before,
   &::after {
@@ -51,4 +44,14 @@
       transform: rotate(90deg);
     }
   }
+}
+
+.kit-breadcrumb-item__btn {
+  padding: 9px 14px 8px;
+  border: 0;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 19px;
+  color: #265378;
 }

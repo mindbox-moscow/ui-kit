@@ -10,7 +10,7 @@ export class BreadcrumbItem extends React.Component<Props> {
         const { text } = this.props;
         return (
             <li className='kit-breadcrumb-item'>
-                {text}
+                <button className="kit-breadcrumb-item__btn" >{text}</button>
             </li>
         );
     }

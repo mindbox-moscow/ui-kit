@@ -16,9 +16,12 @@ const options = [
 	}
 ];
 
-<SelectMulti
-	options={options}
-	name="status"
-	onChange={selectedOptions => console.log(selectedOptions)}
-/>;
+<div style={{ width: "50%" }}>
+	<SelectMulti
+		options={options}
+		name="status"
+		placeholder="Все статусы"
+		onChange={selectedOptions => console.log(selectedOptions)}
+	/>
+</div>;
 ```

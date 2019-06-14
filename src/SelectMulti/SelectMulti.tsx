@@ -13,6 +13,7 @@ interface IOption {
 interface IProps {
 	options: IOption[];
 	name: string;
+	placeholder?: string;
 	onChange?: (options: IOption[]) => void;
 	className?: string;
 }
@@ -40,16 +41,26 @@ export class SelectMulti extends React.Component<IProps, IState> {
 		);
 
 		return (
-			<li key={value}>
-				<label>
+			<li
+				className={cn(
+					"kit-select-multi__dropdown-option",
+					checked && "kit-select-multi__dropdown-option_checked",
+					disabled && "kit-select-multi__dropdown-option_disabled"
+				)}
+				key={value}
+			>
+				<label className="kit-select-multi__dropdown-option-label">
 					<input
+						className="kit-select-multi__dropdown-option-input"
 						type="checkbox"
 						name={name}
 						onChange={this.handleChange(option)}
 						checked={checked}
 						disabled={disabled}
 					/>
-					<span>{title}</span>
+					<span className="kit-select-multi__dropdown-option-label-title">
+						{title}
+					</span>
 				</label>
 			</li>
 		);
@@ -110,8 +121,24 @@ export class SelectMulti extends React.Component<IProps, IState> {
 		}
 	};
 
+	public handleClickOutside = (e: MouseEvent) => {
+		const wrap = this.wrapRef.current!;
+
+		if (!wrap.contains(e.target as Node)) {
+			this.setState({ isOpen: false });
+		}
+	};
+
+	public componentDidMount() {
+		document.addEventListener("click", this.handleClickOutside);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("click", this.handleClickOutside);
+	}
+
 	public render() {
-		const { options } = this.props;
+		const { options, placeholder } = this.props;
 		const { isOpen, selectedOptions } = this.state;
 
 		return (
@@ -128,12 +155,13 @@ export class SelectMulti extends React.Component<IProps, IState> {
 					onClick={this.handleToggle}
 				>
 					<div className="kit-select-multi__label-title">
-						{selectedOptions &&
-							selectedOptions.reduce(
-								(acc, { title }, i) =>
-									`${acc}${i > 0 ? ";" : ""} ${title}`,
-								""
-							)}
+						{selectedOptions.length
+							? selectedOptions.reduce(
+									(acc, { title }, i) =>
+										`${acc}${i > 0 ? ";" : ""} ${title}`,
+									""
+							  )
+							: placeholder}
 					</div>
 				</button>
 				{isOpen && this.renderDropdownList(options)}

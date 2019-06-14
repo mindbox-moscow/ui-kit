@@ -6,12 +6,13 @@ import cn from "classnames";
 interface IOption {
 	title: string;
 	value: string;
+	checked?: boolean;
+	disabled?: boolean;
 }
 
 interface IProps {
 	options: IOption[];
 	name: string;
-	selectedOptions?: IOption[];
 	onChange?: (options: IOption[]) => void;
 	className?: string;
 }
@@ -24,14 +25,19 @@ interface IState {
 export class SelectMulti extends React.Component<IProps, IState> {
 	public state = {
 		isOpen: false,
-		selectedOptions: this.props.selectedOptions || []
+		selectedOptions: this.props.options.filter(({ checked }) => checked)
 	};
 
 	public wrapRef = React.createRef<HTMLDivElement>();
 
 	public renderOptionsList = (option: IOption): JSX.Element => {
-		const { title, value } = option;
+		const { title, value, disabled } = option;
 		const { name } = this.props;
+		const { selectedOptions } = this.state;
+
+		const checked = !!selectedOptions.find(
+			selectedOption => selectedOption.value === option.value
+		);
 
 		return (
 			<li key={value}>
@@ -40,6 +46,8 @@ export class SelectMulti extends React.Component<IProps, IState> {
 						type="checkbox"
 						name={name}
 						onChange={this.handleChange(option)}
+						checked={checked}
+						disabled={disabled}
 					/>
 					<span>{title}</span>
 				</label>
@@ -58,21 +66,32 @@ export class SelectMulti extends React.Component<IProps, IState> {
 	);
 
 	public addToSelected = (option: IOption) => {
-		this.setState(state => ({
-			...state,
-			selectedOptions: [...state.selectedOptions, option]
-		}));
+		const { onChange } = this.props;
+		const selectedOptions = [
+			...this.state.selectedOptions,
+			{ ...option, checked: true }
+		];
+
+		this.setState({ selectedOptions });
+
+		if (onChange) {
+			onChange(selectedOptions);
+		}
 	};
 
 	public removeFromSelected = (option: IOption) => {
-		this.setState(state => ({
-			...state,
-			selectedOptions: [
-				...state.selectedOptions.filter(
-					selectedOption => selectedOption !== option
-				)
-			]
-		}));
+		const { onChange } = this.props;
+		const selectedOptions = [
+			...this.state.selectedOptions.filter(
+				({ value }) => value !== option.value
+			)
+		];
+
+		this.setState({ selectedOptions });
+
+		if (onChange) {
+			onChange(selectedOptions);
+		}
 	};
 
 	public handleToggle = (): void =>
@@ -84,16 +103,10 @@ export class SelectMulti extends React.Component<IProps, IState> {
 	public handleChange = (option: IOption) => (
 		e: React.ChangeEvent<HTMLInputElement>
 	): void => {
-		const { onChange } = this.props;
-
 		if (e.target.checked) {
 			this.addToSelected(option);
 		} else {
 			this.removeFromSelected(option);
-		}
-
-		if (onChange) {
-			onChange(this.state.selectedOptions);
 		}
 	};
 

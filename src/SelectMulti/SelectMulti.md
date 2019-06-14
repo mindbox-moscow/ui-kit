@@ -6,11 +6,13 @@ const options = [
 	},
 	{
 		title: "Запущена (тест)",
-		value: "started_test"
+		value: "started_test",
+		checked: true
 	},
 	{
 		title: "Остановлена",
-		value: "stopped"
+		value: "stopped",
+		disabled: true
 	}
 ];
 

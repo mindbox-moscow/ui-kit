@@ -1,4 +1,19 @@
+.kit-confirmation-container {
+	position: fixed;
+	bottom: 52px;
+	left: 0;
+	right: 0;
+	height: 0;
+	text-align: center;
+	z-index: 1;
+}
+
 .kit-confirmation {
+	opacity: 0;
+
+	display: inline-block;
+	text-align: left;
+
 	margin: 0 auto;
 	padding: 9px 20px 16px;
 	width: 84%;
@@ -8,6 +23,7 @@
 	line-height: 18px;
 	box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.36);
 	border-radius: 4px;
+	transition: opacity 0.5s 0.3s;
 
 	a {
 		margin-left: 3px;
@@ -17,6 +33,11 @@
 		line-height: 18px;
 		color: #265378;
 		text-decoration: none;
+	}
+
+	&_visible {
+		opacity: 1;
+		transition: opacity 0.5s 0.3s;
 	}
 }
 

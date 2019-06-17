@@ -1,5 +1,5 @@
 ```jsx
-<div style={{ position: "relative", height: "400px"
+<div style={{ position: "relative", height: "100px"
  }}>
     <Confirmation>
     	Группа <a href="">«При регистрации через приложение»</a> 

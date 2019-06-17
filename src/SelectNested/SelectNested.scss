@@ -1,7 +1,7 @@
 $kit-select-nested-border-radius: 3px;
-$kit-select-nested-triangle-width: 5px;
+$kit-select-nested-triangle-width: 3.6px;
 $kit-select-nested-limit: 7;
-$kit-select-nested-offset-left: 16px;
+$kit-select-nested-offset-left: 20px;
 $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested {
@@ -64,6 +64,7 @@ $kit-select-nested-padding-left: 10px;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	letter-spacing: -0.2px;
 }
 
 .kit-select-nested__dropdown-option-details {
@@ -81,7 +82,7 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__filter {
 	position: relative;
-	padding: 6px $kit-select-nested-padding-left 9px;
+	padding: 4px $kit-select-nested-padding-left 10px;
 	border-bottom: 1px dashed #939393;
 	background-color: #F6F7F7;
 }
@@ -121,8 +122,8 @@ $kit-select-nested-padding-left: 10px;
 	width: fit-content;
 	list-style: none;
 	margin: 0;
-	padding: 0;
-	max-height: 320px;
+	padding: 9px 0;
+	max-height: 511px;
 }
 
 .kit-select-nested__dropdown-option-label {
@@ -140,7 +141,7 @@ $kit-select-nested-padding-left: 10px;
 	border: 0;
 	border-radius: 0;
 	margin: 0;
-	padding: 7px ($kit-select-nested-offset-left + $kit-select-nested-padding-left);
+	padding: 3.5px ($kit-select-nested-offset-left + $kit-select-nested-padding-left);
 	appearance: none;
 	text-align: left;
 	cursor: pointer;
@@ -199,6 +200,7 @@ $kit-select-nested-padding-left: 10px;
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	letter-spacing: -0.1px;
 
 	.kit-select-nested__dropdown-option-label:hover &,
 	.kit-select-nested__dropdown-option-label:focus-within & {
@@ -230,12 +232,12 @@ $kit-select-nested-padding-left: 10px;
 }
 
 .kit-select-nested__dropdown-option-sublist-toggle {
-	$cent-left: 20px - $kit-select-nested-padding-left;
+	$cent-left: 19px - $kit-select-nested-padding-left;
 	$inner-classes: "+ .kit-select-nested__dropdown-sublist .kit-select-nested__dropdown-option-sublist-toggle";
 	$recursive-class-name: $inner-classes;
 
 	position: absolute;
-	top: 10px;
+	top: 8px;
 	left: $kit-select-nested-offset-left - $cent-left;
 	background-color: transparent;
 	padding: 2px 5px;
@@ -306,10 +308,11 @@ $kit-select-nested-padding-left: 10px;
 	align-items: center;
 	border-top: 1px solid #D7D8DA;
 	background-color: #F6F7F7;
-	padding: 10px;
+	padding: 10px 16px;
 }
 
 .kit-select-nested__dropdown-footer-submit {
 	font-weight: bold;
-	margin-right: 15px;
+	margin-right: 13px;
+	min-width: 107px;
 }

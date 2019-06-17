@@ -7,12 +7,13 @@ interface Props {
     type?: string;
     maxLength?: number;
     onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-	classname?: string;
+	// classname?: string;
+	noShadow?: boolean
 }
 
 export class Input extends React.Component<Props> {
     public render() {
-        const { defaultValue, type, onChange, maxLength, classname } = this.props;
+        const { defaultValue, type, onChange, maxLength, noShadow } = this.props;
 
         return (
             <input
@@ -21,7 +22,7 @@ export class Input extends React.Component<Props> {
 				className={cn(
 					"kit-input-field",
 					{
-						[`kit-input-field_${classname}`]: classname
+						[`kit-input-field_no-shadow`]: noShadow
 					}
 				)}
                 defaultValue={defaultValue}

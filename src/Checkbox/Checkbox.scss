@@ -1,19 +1,68 @@
 .kit-checkbox {
-    position: relative;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-family: "PT Sans", sans-serif;
-    font-size: 14px;
-    cursor: pointer;
-    color: #000;
+	display: block;
+	position: relative;
+	padding-left: 25px;
+	margin-bottom: 15px;
+	cursor: pointer;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+}
 
-    &__input {
-        width: 16px;
-        height: 16px;
-    }
+.kit-checkbox--hidden {
+	display: none;
+}
 
-    &__text {
-        margin-left: 5px;
-    }
+// Custom control
+.kit-checkbox--show {
+	box-sizing: border-box;
+	position: absolute;
+	top: 2px;
+	left: 0;
+	height: 16px;
+	width: 16px;
+	border: 1px solid grey;
+	border-radius: 4px;
+
+	&::after {
+		content: "";
+		position: absolute;
+		display: none;
+
+		&:checked ~ & {
+			display: block; // Show check
+		}
+
+		.kit-checkbox & {
+			left: 5px;
+			top: 2px;
+			width: 3px;
+			height: 7px;
+			border: solid white;
+			border-width: 0 3px 3px 0;
+			transform: rotate(45deg);
+		}
+	}
+}
+
+.kit-checkbox--show {
+	// Checked
+	.kit-checkbox--primary:checked ~ & {
+		width: 16px;
+		height: 16px;
+		background-size: auto;
+		background-image: url("../assets/icons/check.svg");
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-position: center;
+		border: none;
+	}
+
+	.kit-checkbox--primary:disabled ~ & {
+		cursor: not-allowed;
+	}
+
+	.kit-checkbox--primary:checked:disabled ~ & {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
 }

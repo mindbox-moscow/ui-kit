@@ -9,5 +9,11 @@
     <div>
         <Checkbox checked text="Настроить особый режим" />
     </div>
+        <div>
+    		<Checkbox disabled text="Настроить особый режим" />
+    	</div>
+    <div>
+		<Checkbox disabled checked text="Настроить особый режим" />
+	</div>
 </div>
 ```

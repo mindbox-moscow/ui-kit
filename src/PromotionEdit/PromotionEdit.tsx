@@ -1,85 +1,105 @@
 import * as React from "react";
-import { Button } from "../Button/Button";
-import { Checkbox } from "../Checkbox/Checkbox";
-import { Icon } from "../Icon/Icon";
-import { Input } from "../Input/Input";
-import { Select } from "../Select/Select";
+import { Button } from "../Button";
+import { Checkbox } from "../Checkbox";
+import { Icon } from "../Icon/";
+import { Input } from "../Input";
+import { Select } from "../Select";
 import "./PromotionEdit.scss";
 
-export class PromotionEdit extends React.Component {
+interface Item {
+	title: string;
+	disabled?: boolean;
+}
+
+interface Props {
+	defaultValueHeader: string;
+	defaultValueDiscount: string;
+	itemsSelectStockType: Array<Item | null>;
+	itemsSelectCategory: Array<Item | null>;
+}
+
+export class PromotionEdit extends React.Component<Props> {
 	public render() {
+		const {
+			defaultValueHeader,
+			defaultValueDiscount,
+			itemsSelectStockType,
+			itemsSelectCategory
+		} = this.props;
+
 		return (
-			<div className="kit-promotion-wrapper">
-				<div className="kit-promotion-wrapper__header">
-					<div className="kit-promotion-wrapper__header-left">
-						<Input defaultValue="Снова в школу" />
+			<form className="kit-promotion">
+				<fieldset className="kit-promotion__header">
+					<div className="kit-promotion__header-left">
+						<Input defaultValue={defaultValueHeader} />
 					</div>
-					<button className="kit-promotion-wrapper__close">
+					<button className="kit-promotion__close">
 						<Icon icon="remove" />
 					</button>
-				</div>
-				<div className="kit-promotion-wrapper__body">
-					<div className="kit-promotion-wrapper__row">
-						<div className="kit-promotion-wrapper__row-left">
-							<div className="kit-promotion-wrapper__row-title">
-								Родительская группа
-							</div>
+				</fieldset>
+
+				<div className="kit-promotion__body">
+					<fieldset className="kit-promotion__row">
+						<legend className="kit-promotion__row-title">
+							Родительская группа
+						</legend>
+						<div className="kit-promotion__row-left">
 							<Input defaultValue="Учебный год 2019–2020" />
 						</div>
-					</div>
-					<div className="kit-promotion-wrapper__row">
-						<div className="kit-promotion-wrapper__row-title">
+					</fieldset>
+
+					<fieldset className="kit-promotion__row">
+						<legend className="kit-promotion__row-title">
 							Правила применения акций
-						</div>
-						<div className="kit-promotion-wrapper__row-left">
+						</legend>
+
+						<div className="kit-promotion__row-left">
 							<Select
 								placeholder="Несовместимость"
-								items={[
-									{ title: "Несовместимость 2" },
-									{ title: "Несовместимость 3" },
-									{ title: "Несовместимость 4" }
-								]}
+								items={itemsSelectStockType}
 							/>
 						</div>
-						<div className="kit-promotion-wrapper__row-right">
+
+						<div className="kit-promotion__row-right">
 							<Select
 								placeholder="На уровне товара"
-								items={[
-									{ title: "На уровне товара 2" },
-									{ title: "На уровне товара 3" },
-									{ title: "На уровне товара 4" }
-								]}
+								items={itemsSelectCategory}
 							/>
 						</div>
-						<p className="kit-promotion-wrapper__row-description">
+
+						<p className="kit-promotion__row-description">
 							Расчеты промо-активностей, скидок, дисконтирование
 							по программе лояльности — все это собирается и
 							настраивается в Mindbox, а сама кассовая программа
 							является лишь отображением того рассчета, которое
 							предоставляет система.{" "}
 						</p>
-					</div>
-					<div className="kit-promotion-wrapper__row">
+					</fieldset>
+
+					<fieldset className="kit-promotion__row">
 						<Checkbox
 							checked={true}
 							text="Ограничить максимальный процент скидки для группы на уровне"
 						/>
-						<div className="kit-promotion-wrapper__max-discount">
-							<Input defaultValue="50" />
+
+						<div className="kit-promotion__max-discount">
+							<Input defaultValue={defaultValueDiscount} />
 						</div>
-					</div>
+					</fieldset>
 				</div>
-				<div className="kit-promotion-wrapper__footer">
+
+				<div className="kit-promotion__footer">
 					<Button color="gray" size="medium">
 						Сохранить изменения
 					</Button>
-					<div className="kit-promotion-wrapper__footer-right">
+
+					<div className="kit-promotion__footer-right">
 						<Button color="gray" size="medium">
 							Отменить
 						</Button>
 					</div>
 				</div>
-			</div>
+			</form>
 		);
 	}
 }

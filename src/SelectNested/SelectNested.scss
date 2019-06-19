@@ -150,6 +150,7 @@ $kit-select-nested-padding-left: 10px;
 	top: 2px;
 	right: 2px;
 	transform: scale(0.8);
+	pointer-events: none;
 }
 
 .kit-select-nested__dropdown-list-wrap {

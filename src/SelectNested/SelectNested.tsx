@@ -102,9 +102,10 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 						className="kit-select-nested__filter-input"
 						onChange={this.handleFilter}
 					/>
-					<span className="kit-select-nested__filter-icon">
-						<Icon icon="search" />
-					</span>
+					<Icon
+						className="kit-select-nested__filter-icon"
+						icon="search"
+					/>
 				</div>
 			</div>
 			<div className="kit-select-nested__dropdown-list-wrap">

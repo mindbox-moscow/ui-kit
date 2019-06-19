@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
-import { Icon } from "../Icon";
+import { IconSvg } from "../IconSvg";
 import { Input } from "../Input";
 import { Select } from "../Select";
 import "./PromotionGroupEdit.scss";
@@ -59,7 +59,7 @@ export class PromotionGroupEdit extends React.Component<Props> {
 						className="kit-promotion-group-edit__close"
 						aria-label={closeBtnText}
 					>
-						<Icon icon="remove" />
+						<IconSvg type="close" ariaHidden={true} />
 					</button>
 				</fieldset>
 

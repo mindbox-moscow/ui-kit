@@ -33,7 +33,7 @@ $kit-select-nested-padding-left: 10px;
 	border-radius: $kit-select-nested-border-radius;
 	appearance: none;
 	margin: 0;
-	padding: 4px 10px;
+	padding: 4px 50px 4px 10px;
 	cursor: pointer;
 	text-align: left;
 
@@ -72,6 +72,24 @@ $kit-select-nested-padding-left: 10px;
 	padding: 0;
 	overflow: hidden;
 	letter-spacing: -0.2px;
+}
+
+.kit-select-nested__label-icon {
+	width: 11px;
+	height: 16px;
+	position: absolute;
+	top: calc(50% + 1px);
+	right: 20px;
+	transform: translateY(-50%);
+
+	svg {
+		fill: #8AACC2;
+
+		.kit-select-nested_show_dropdown & {
+			fill: #323232;
+			margin-top: -1px;
+		}
+	}
 }
 
 .kit-select-nested__dropdown-wrap {

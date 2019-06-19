@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
+import { IconSvg } from "../IconSvg";
 import "./SelectNested.scss";
 
 import cn from "classnames";
@@ -237,6 +238,11 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 						{selectedOption &&
 							renderDetailsList(selectedOption.details)}
 					</ul>
+					<IconSvg
+						className="kit-select-nested__label-icon"
+						type="catalog-tree"
+						ariaHidden={true}
+					/>
 				</button>
 				{isOpen && this.renderDropdown(options)}
 			</form>

@@ -126,20 +126,13 @@ const options = [
 ];
 
 <div style={{ background: "#fffaed", padding: "20px" }}>
-	<div style={{ width: "446px", marginBottom: "10px" }}>
+	<div style={{ width: "446px" }}>
 		<SelectNested
 			options={options}
 			selectedOption={options[1].children[0]}
 			onChange={newSelectedOption => console.log(newSelectedOption)}
-		/>
-	</div>
-	<div style={{ width: "446px", marginBottom: "10px" }}>
-		<SelectNested
-			options={options}
-			selectedOption={options[0]}
-			onChange={newSelectedOption => console.log(newSelectedOption)}
-			submitBtnText="Choose"
-			cancelBtnText="Cancel"
+			submitBtnText="Выбрать"
+			cancelBtnText="Отменить"
 		/>
 	</div>
 </div>;

@@ -1,5 +1,7 @@
 ```jsx
 <div style={{ width: "42px" }}>
+    <Input noShadow />
+	<br />
     <Input />
     <br />
     <div>

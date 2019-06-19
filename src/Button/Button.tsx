@@ -27,7 +27,7 @@ export class Button extends React.Component<Props> {
 			children,
 			className,
 			mode,
-			type,
+			type = "submit",
 			icon,
 			arrow,
 			size,

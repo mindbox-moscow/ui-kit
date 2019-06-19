@@ -31,6 +31,10 @@
 		color: #000;
 	}
 
+	&_has-icon {
+		padding: 4px 12px 4px 10px;
+	}
+
 	.kit-radio_icon & {
 		padding-left: 8px;
 	}
@@ -53,6 +57,17 @@
 .kit-radio__icon {
 	width: 18px;
 	height: 18px;
-	margin-top: -3px;
-	margin-right: 5px;
+	margin-right: 7px;
+
+	&_svg {
+		fill: #265378;
+
+		.kit-radio__checkmark:hover & {
+			fill: #000000;
+		}
+
+		.kit-radio__input:checked + .kit-radio__checkmark & {
+			fill: #000000;
+		}
+	}
 }

@@ -23,4 +23,4 @@ const IconSvg = ({ type, className, ariaHidden = false }: IProps) => {
 	);
 };
 
-export { IconSvg };
+export { IconSvg, IconType as IconSvgTypes };

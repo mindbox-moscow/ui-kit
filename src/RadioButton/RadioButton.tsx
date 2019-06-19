@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Icon, IconsTypes } from "../Icon";
+import { IconSvg, IconSvgTypes } from "../IconSvg";
 import "./RadioButton.scss";
 
 import cn from "classnames";
@@ -10,6 +11,7 @@ interface IProps {
 	name: string;
 	onSelected?: () => void;
 	icon?: IconsTypes;
+	iconSvg?: IconSvgTypes;
 }
 
 export class RadioButton extends React.Component<IProps> {
@@ -19,7 +21,8 @@ export class RadioButton extends React.Component<IProps> {
 			checked,
 			name,
 			onSelected = () => {},
-			icon
+			icon,
+			iconSvg
 		} = this.props;
 
 		return (
@@ -31,8 +34,19 @@ export class RadioButton extends React.Component<IProps> {
 					onChange={onSelected}
 					checked={checked}
 				/>
-				<span className="kit-radio__checkmark">
+				<span
+					className={cn(
+						"kit-radio__checkmark",
+						(icon || iconSvg) && "kit-radio__checkmark_has-icon"
+					)}
+				>
 					{icon && <Icon className="kit-radio__icon" icon={icon} />}
+					{iconSvg && (
+						<IconSvg
+							className="kit-radio__icon kit-radio__icon_svg"
+							type={iconSvg}
+						/>
+					)}
 					{children}
 				</span>
 			</label>

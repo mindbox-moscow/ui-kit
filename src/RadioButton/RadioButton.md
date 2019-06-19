@@ -13,5 +13,8 @@
 	<RadioButton name="group_1" icon="search">
 		Radio-button with Icon
 	</RadioButton>
+	<RadioButton name="group_1" iconSvg="coins">
+		Radio-button with SVG Icon
+	</RadioButton>
 </div>
 ```

@@ -15,6 +15,7 @@ interface IPropsGroup {
 
 interface IProps {
 	className?: string;
+	toggleBtnText?: string;
 }
 
 interface IState {
@@ -74,7 +75,7 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 
 	public render() {
 		const { isOpen } = this.state;
-		const { className, children } = this.props;
+		const { className, children, toggleBtnText } = this.props;
 
 		return (
 			<div
@@ -89,7 +90,7 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 				>
 					<div className="kit-actions-dropdown__toggle-icon" />
 					<span className="kit-actions-dropdown__toggle-label">
-						Действия
+						{toggleBtnText || 'Действия'}
 					</span>
 				</button>
 				{isOpen && (

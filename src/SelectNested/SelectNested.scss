@@ -33,7 +33,7 @@ $kit-select-nested-padding-left: 10px;
 	border-radius: $kit-select-nested-border-radius;
 	appearance: none;
 	margin: 0;
-	padding: 4px 50px 4px 10px;
+	padding: 5px 50px 3px 10px;
 	cursor: pointer;
 	text-align: left;
 
@@ -120,7 +120,7 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__filter {
 	position: relative;
-	padding: 4px $kit-select-nested-padding-left 10px;
+	padding: 5px $kit-select-nested-padding-left 10px;
 	border-bottom: 1px dashed #939393;
 	background-color: #F6F7F7;
 }
@@ -147,8 +147,8 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__filter-icon {
 	position: absolute;
-	top: 2px;
-	right: 2px;
+	top: 3px;
+	right: 4px;
 	transform: scale(0.8);
 	pointer-events: none;
 }

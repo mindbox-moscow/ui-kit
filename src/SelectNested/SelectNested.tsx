@@ -15,11 +15,11 @@ interface IOption {
 
 interface IProps {
 	options: IOption[];
+	submitBtnText: string;
+	cancelBtnText: string;
+	showSubgroupBtnText: string;
 	selectedOption?: IOption;
 	onChange?: (option: IOption) => void;
-	submitBtnText?: string;
-	cancelBtnText?: string;
-	showSubgroupBtnText?: string;
 	className?: string;
 }
 
@@ -81,12 +81,8 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 						<button
 							className="kit-select-nested__dropdown-option-sublist-toggle"
 							type="button"
-						>
-							<span className="kit-select-nested__dropdown-option-sublist-toggle-title">
-								{this.props.showSubgroupBtnText ||
-									"Показать подгруппы"}
-							</span>
-						</button>
+							aria-label={this.props.showSubgroupBtnText}
+						/>
 						<ul className="kit-select-nested__dropdown-sublist">
 							{children.map(this.renderOption)}
 						</ul>
@@ -129,7 +125,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					size="medium"
 					hasBorder={true}
 				>
-					{this.props.submitBtnText || "Выбрать"}
+					{this.props.submitBtnText}
 				</Button>
 				<Button
 					className="kit-select-nested__dropdown-footer-reset"
@@ -139,7 +135,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					size="medium"
 					onClick={this.handleToggle}
 				>
-					{this.props.cancelBtnText || "Отменить"}
+					{this.props.cancelBtnText}
 				</Button>
 			</div>
 		</div>

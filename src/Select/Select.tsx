@@ -67,6 +67,7 @@ export class Select extends React.Component<Props> {
                     "kit-select",
                     isOpen && "kit-select_open",
                     isOpen && oneChooseSelect && "kit-select_selected",
+                    oneChooseSelect && "kit-select_one-selected",
                     isFiltered && "kit-select_filtered",
                     {
                         [`kit-select_size_${size}`]: size

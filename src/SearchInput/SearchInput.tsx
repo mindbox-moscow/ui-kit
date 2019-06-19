@@ -1,6 +1,7 @@
 import * as React from "react";
 import "./SearchInput.scss";
-import { Icon } from "../Icon";
+import { IconSvg } from "../IconSvg";
+//import { Icon } from "../Icon";
 
 interface Props {
 	placeholder?: string;
@@ -29,7 +30,7 @@ export class SearchInput extends React.Component<Props, State> {
 						placeholder={placeholder}
 					/>
 					<span className="kit-input-search__icon">
-						<Icon icon="search" />
+						<IconSvg type="glasses" />
 					</span>
 				</div>
 			</div>

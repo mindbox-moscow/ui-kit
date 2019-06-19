@@ -17,7 +17,7 @@ interface Props {
 	hasUnderline?: boolean;
 	hasBorder?: boolean;
 	test?: (value: string) => void;
-	onClick?: () => void;
+	onClick?: (e: React.MouseEvent) => void;
 }
 
 export class Button extends React.Component<Props> {

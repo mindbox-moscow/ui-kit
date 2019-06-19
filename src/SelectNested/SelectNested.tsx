@@ -46,7 +46,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		markedOption: this.props.selectedOption || null
 	};
 
-	public wrapRef = React.createRef<HTMLFormElement>();
+	public wrapRef = React.createRef<HTMLDivElement>();
 
 	public renderOption = (option: IOption): JSX.Element => {
 		const { id, title, details, children, disabled } = option;
@@ -122,16 +122,17 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 			<div className="kit-select-nested__dropdown-footer">
 				<Button
 					className="kit-select-nested__dropdown-footer-submit"
-					type="submit"
+					type="button"
 					color="gray"
 					size="medium"
 					hasBorder={true}
+					onClick={this.handleChoose}
 				>
 					{this.props.submitBtnText}
 				</Button>
 				<Button
 					className="kit-select-nested__dropdown-footer-reset"
-					type="reset"
+					type="button"
 					mode="simple_text"
 					color="gray"
 					size="medium"
@@ -143,12 +144,16 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		</div>
 	);
 
-	public handleToggle = (): void =>
+	public handleToggle = (e: React.MouseEvent): void => {
+		e.preventDefault();
+
 		this.setState(state => ({
 			...state,
 			filter: "",
-			isOpen: !state.isOpen
+			isOpen: !state.isOpen,
+			markedOption: null
 		}));
+	};
 
 	public handleFilter = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		this.setState({ filter: e.target.value });
@@ -180,7 +185,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		this.setState({ markedOption: option });
 	};
 
-	public handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	public handleChoose = (e: React.MouseEvent) => {
 		e.preventDefault();
 
 		const { onChange } = this.props;
@@ -219,13 +224,12 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		const { selectedOption, isOpen } = this.state;
 
 		return (
-			<form
+			<div
 				className={cn(
 					"kit-select-nested",
 					isOpen && "kit-select-nested_show_dropdown"
 				)}
 				ref={this.wrapRef}
-				onSubmit={this.handleSubmit}
 			>
 				<button
 					className="kit-select-nested__label"
@@ -246,7 +250,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					/>
 				</button>
 				{isOpen && this.renderDropdown(options)}
-			</form>
+			</div>
 		);
 	}
 }

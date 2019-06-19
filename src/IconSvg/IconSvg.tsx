@@ -7,13 +7,17 @@ import "./IconSvg.scss";
 interface IProps {
 	type: IconType;
 	className?: string;
+	ariaHidden?: boolean;
 }
 
-const IconSvg = ({ type, className }: IProps) => {
+const IconSvg = ({ type, className, ariaHidden = false }: IProps) => {
 	const Icon = assets[type];
 
 	return (
-		<span className={cn("kit-icon-svg", className)}>
+		<span
+			className={cn("kit-icon-svg", className)}
+			aria-hidden={ariaHidden}
+		>
 			<Icon />
 		</span>
 	);

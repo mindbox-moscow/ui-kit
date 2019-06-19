@@ -1,0 +1,51 @@
+.kit-tooltip {
+	position: relative;
+	display: inline;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	cursor: default;
+}
+
+.kit-tooltip__title {
+	color: #999999;
+	border-bottom: 1px dashed #999999;
+}
+
+.kit-tooltip__content {
+	box-sizing: border-box;
+	position: absolute;
+	top: 22px;
+	left: 50%;
+	transform: translateX(-60px);
+	background-color: #ffffff;
+	padding: 13px 24px 13px 15px;
+	border: 1px solid #c7c5bd;
+	border-radius: 4px;
+	width: 284px;
+	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.35);
+
+	&::before,
+	&::after {
+		position: absolute;
+		pointer-events: none;
+		border: solid transparent;
+		content: '';
+		height: 0;
+		width: 0;
+		bottom: 100%;
+		left: 60px;
+	}
+
+	&::before {
+		border-width: 9px;
+		margin: 0 -9px;
+		border-bottom-color: #c7c5bd;
+	}
+
+	&::after {
+		border-width: 7px;
+		margin: 0 -7px;
+		border-bottom-color: #fff;
+	}
+}

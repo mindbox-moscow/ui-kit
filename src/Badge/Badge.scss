@@ -1,6 +1,7 @@
 .kit-badge {
 	font-family: "PT Sans", sans-serif;
 	display: inline-flex;
+	justify-content: center;
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 10px;
@@ -29,6 +30,8 @@
   }
 
 .kit-badge__text {
+	text-align: center;
+
 	&_withPoint {
 		position: relative;
 		margin-right: 30px;

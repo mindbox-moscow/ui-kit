@@ -23,7 +23,7 @@
 			alignItems: "center"
 		}}
 	>
-		<Badge title="Запущена" size="small" />
+		<Badge title="Запущена" size="small" mode="success" />
 		<Badge title="Запущена (тест)" size="small" mode="warning" />
 		<Badge title="Остановлена" size="small" mode="danger" />
 		<Badge title="Завершена" size="small" mode="disabled" />

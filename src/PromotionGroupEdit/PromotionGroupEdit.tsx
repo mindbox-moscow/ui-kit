@@ -59,7 +59,11 @@ export class PromotionGroupEdit extends React.Component<Props> {
 						className="kit-promotion-group-edit__close"
 						aria-label={closeBtnText}
 					>
-						<IconSvg type="close" ariaHidden={true} />
+						<IconSvg
+							className="kit-promotion-group-edit__close-icon"
+							type="close"
+							ariaHidden={true}
+						/>
 					</button>
 				</fieldset>
 

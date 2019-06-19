@@ -28,7 +28,7 @@ export class SearchInput extends React.Component<Props, State> {
 						onChange={this.handleFilter}
 						placeholder={placeholder}
 					/>
-					<span className="kit-select__icon">
+					<span className="kit-input-search__icon">
 						<Icon icon="search" />
 					</span>
 				</div>

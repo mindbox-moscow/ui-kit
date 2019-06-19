@@ -2,16 +2,24 @@
 <PromotionGroupEdit
 	title="Снова в школу"
 	maxDiscount="50"
-	itemsSelectStockType={[
+	stockType="Несовместимость"
+	parentGroupLabel="Родительская группа"
+	stokTypePlaceholder="Выберите"
+	stockTypeItems={[
 		{ title: "Несовместимость 2" },
 		{ title: "Несовместимость 3" },
 		{ title: "Несовместимость 4" }
 	]}
-	itemsSelectCategory={[
+	category="На уровне товара"
+	categoryPlaceholder="Выберите"
+	categoryItems={[
 		{ title: "На уровне товара 2" },
 		{ title: "На уровне товара 3" },
 		{ title: "На уровне товара 4" }
 	]}
+	rulesTitle="Правила применения акций"
+	rulesText="Расчеты промо-активностей, скидок, дисконтирование по программе лояльности — все это собирается и настраивается в Mindbox, а сама кассовая программа является лишь отображением того рассчета, которое предоставляет система."
+	discountText="Ограничить максимальный процент скидки для группы на уровне"
 	closeBtnText="Закрыть"
 	sendBtnText="Сохранить изменения"
 	resetBtnText="Отменить"

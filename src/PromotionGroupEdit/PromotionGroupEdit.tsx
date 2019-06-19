@@ -17,8 +17,16 @@ interface Props {
 	sendBtnText: string;
 	resetBtnText: string;
 	maxDiscount: string;
-	itemsSelectStockType: Array<Item | null>;
-	itemsSelectCategory: Array<Item | null>;
+	stockType: string;
+	stockTypePlaceholder: string;
+	stockTypeItems: Array<Item | null>;
+	category: string;
+	categoryPlaceholder: string;
+	categoryItems: Array<Item | null>;
+	parentGroupLabel: string;
+	rulesTitle: string;
+	rulesText: string;
+	discountText: string;
 }
 
 export class PromotionGroupEdit extends React.Component<Props> {
@@ -26,11 +34,19 @@ export class PromotionGroupEdit extends React.Component<Props> {
 		const {
 			title,
 			maxDiscount,
-			itemsSelectStockType,
-			itemsSelectCategory,
+			stockType,
+			stockTypePlaceholder,
+			stockTypeItems,
+			category,
+			categoryPlaceholder,
+			categoryItems,
 			closeBtnText,
+			parentGroupLabel,
 			sendBtnText,
-			resetBtnText
+			resetBtnText,
+			rulesTitle,
+			rulesText,
+			discountText
 		} = this.props;
 
 		return (
@@ -50,7 +66,7 @@ export class PromotionGroupEdit extends React.Component<Props> {
 				<div className="kit-promotion-group-edit__body">
 					<fieldset className="kit-promotion-group-edit__row">
 						<legend className="kit-promotion-group-edit__row-title">
-							Родительская группа
+							{parentGroupLabel}
 						</legend>
 						<div className="kit-promotion-group-edit__row-left">
 							<Input defaultValue="Учебный год 2019–2020" />
@@ -59,39 +75,32 @@ export class PromotionGroupEdit extends React.Component<Props> {
 
 					<fieldset className="kit-promotion-group-edit__row">
 						<legend className="kit-promotion-group-edit__row-title">
-							Правила применения акций
+							{rulesTitle}
 						</legend>
 
 						<div className="kit-promotion-group-edit__row-left">
 							<Select
-								placeholder="Выберите"
-								defaultValue="Несовместимость"
-								items={itemsSelectStockType}
+								placeholder={stockTypePlaceholder}
+								defaultValue={stockType}
+								items={stockTypeItems}
 							/>
 						</div>
 
 						<div className="kit-promotion-group-edit__row-right">
 							<Select
-								placeholder="Выберите"
-								defaultValue="На уровне товара"
-								items={itemsSelectCategory}
+								placeholder={categoryPlaceholder}
+								defaultValue={category}
+								items={categoryItems}
 							/>
 						</div>
 
 						<p className="kit-promotion-group-edit__row-description">
-							Расчеты промо-активностей, скидок, дисконтирование
-							по программе лояльности — все это собирается и
-							настраивается в Mindbox, а сама кассовая программа
-							является лишь отображением того рассчета, которое
-							предоставляет система.
+							{rulesText}
 						</p>
 					</fieldset>
 
 					<fieldset className="kit-promotion-group-edit__row">
-						<Checkbox
-							checked={true}
-							text="Ограничить максимальный процент скидки для группы на уровне"
-						/>
+						<Checkbox checked={true} text={discountText} />
 
 						<div className="kit-promotion-group-edit__max-discount">
 							<Input defaultValue={maxDiscount} />

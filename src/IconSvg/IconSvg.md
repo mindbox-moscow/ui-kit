@@ -10,7 +10,7 @@
 	<IconSvg type="percent-round" />
 	<IconSvg type="catalog-tree" />
 	<IconSvg type="coins" />
-	<IconSvg type="glasses" />
+	<IconSvg type="magnifier" />
 	<IconSvg type="dots" ariaHidden />
 </div>
 ```

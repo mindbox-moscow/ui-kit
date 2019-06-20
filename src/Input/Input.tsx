@@ -5,7 +5,7 @@ import { IconSvg } from "../IconSvg";
 
 interface Props {
     defaultValue: string;
-    type?: string;
+    type: string;
 	placeholder?: string;
     maxLength?: number;
     onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
@@ -18,32 +18,27 @@ interface State {
 
 export class Input extends React.Component<Props, State> {
 
-	public state: State = { filter: "" };
+	public state = { filter: "" };
 
     public render() {
-        const { defaultValue, type,placeholder, onChange, maxLength, noShadow } = this.props;
+        const { defaultValue, type, placeholder, onChange, maxLength, noShadow } = this.props;
 
         return (
 			<div className="kit-input-field-wrap">
 				<input
 					onChange={onChange}
-					type={type}
+					type={type || "text"}
 					className={cn(
 						"kit-input-field",
-						{
-							[`kit-input-field_no-shadow`]: noShadow,
-							[`kit-input-field_search`]: type === "search"
-						}
+						noShadow && "kit-input-field_no-shadow",
+						type === "search" && "kit-input-field_search"
 					)}
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
+					aria-hidden={true}
 				/>
-				{type === "search" &&
-					<span className="kit-input-field__icon">
-						<IconSvg type="glasses" />
-					</span>
-				}
+				{type === "search" && <IconSvg className="kit-input-field__icon" type="magnifier" /> }
 			</div>
         );
     }

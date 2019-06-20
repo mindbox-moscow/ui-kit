@@ -43,7 +43,7 @@
     }
 
     &__h6 {
-		display: inline-block;
+        display: inline-block;
         margin: 0;
         margin-top: 14px;
         font-weight: 400;
@@ -52,7 +52,7 @@
     }
 
     &__desc {
-		display: inline-block;
+        display: inline-block;
         margin: 0;
         font-size: 13px;
         line-height: 18px;
@@ -254,11 +254,10 @@
     }
 
     &_one-selected {
-
         .kit-select__title {
             background-color: #fff;
             background-image: none;
-            border: 1px solid #C5D6E1;
+            border: 1px solid #c5d6e1;
         }
 
         .kit-select__placeholder {
@@ -267,15 +266,14 @@
     }
 
     &_selected {
-
         .kit-select__drop {
-            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.20);
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
         }
     }
 
     &_selected &__title {
-        border: 1px solid #B0B2B5;
-        background: #F6F7F7;
+        border: 1px solid #b0b2b5;
+        background: #f6f7f7;
         border-bottom: 1px dashed;
     }
 }

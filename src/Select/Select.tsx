@@ -1,72 +1,63 @@
 import * as React from "react";
-import "./Select.scss";
 import cn from "classnames";
 import { Icon } from "../Icon/Icon";
 
-interface Item {
+import "./Select.scss";
+
+interface IItem {
     title: string;
     disabled?: boolean;
+    description?: string;
 }
 
-interface Props {
-    items: (Item | null)[];
+interface IProps {
+    items: Array<IItem | null>;
     placeholder: string;
     size?: "small";
     disabled?: boolean;
     defaultValue?: string;
     isFiltered?: boolean;
-    onChange?: (item: Item) => void;
+    hasDescriptions?: boolean;
+    onChange?: (item: IItem) => void;
 }
 
-export class Select extends React.Component<Props> {
-    wrapper: HTMLDivElement;
-    state = {
-        isOpen: false,
+export class Select extends React.Component<IProps> {
+    public wrapper: HTMLDivElement;
+    public state = {
+        activeItem: this.props.defaultValue || "",
         filter: "",
-        activeItem: this.props.defaultValue || ""
+        isOpen: false
     };
 
-    componentDidMount() {
+    public componentDidMount() {
         document.addEventListener("click", this.handleClickOutside);
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
         document.removeEventListener("click", this.handleClickOutside);
     }
 
-    handleWrapperRef = (ref: HTMLDivElement) => (this.wrapper = ref);
-
-    handleClickOutside = (event: MouseEvent) => {
-        const target: any = event.target;
-        if (!this.wrapper || !this.wrapper.contains(target)) {
-            this.setState({ isOpen: false });
-        }
-    };
-
-    handleToggle = () => this.setState({ isOpen: !this.state.isOpen });
-
-    handleFilter = (e: React.ChangeEvent<HTMLInputElement>) =>
-        this.setState({ filter: e.target.value });
-
-    handleChange = (item: Item) => (e: React.MouseEvent<HTMLElement>) => {
-        this.setState({ activeItem: item.title, isOpen: false });
-        if (this.props.onChange) {
-            this.props.onChange(item);
-        }
-    };
+    public handleWrapperRef = (ref: HTMLDivElement) => (this.wrapper = ref);
 
     public render() {
         const { isOpen, filter, activeItem } = this.state;
-        const { items, placeholder, isFiltered, disabled, size } = this.props;
+        const {
+            items,
+            hasDescriptions,
+            placeholder,
+            isFiltered,
+            disabled,
+            size
+        } = this.props;
         return (
             <div
                 className={cn(
                     "kit-select",
                     isOpen && "kit-select_open",
+                    isOpen && hasDescriptions && "kit-select_selected",
+                    hasDescriptions && "kit-select_one-selected",
                     isFiltered && "kit-select_filtered",
-                    {
-                        [`kit-select_size_${size}`]: size
-                    }
+                    size && `kit-select_size_${size}`
                 )}
                 ref={this.handleWrapperRef}
             >
@@ -79,10 +70,10 @@ export class Select extends React.Component<Props> {
                     {activeItem ? (
                         <span className="kit-select__value">{activeItem}</span>
                     ) : (
-                            <span className="kit-select__placeholder">
-                                {placeholder}
-                            </span>
-                        )}
+                        <span className="kit-select__placeholder">
+                            {placeholder}
+                        </span>
+                    )}
                 </button>
                 <div className="kit-select__drop">
                     {isFiltered && (
@@ -118,18 +109,57 @@ export class Select extends React.Component<Props> {
                                         disabled={item.disabled}
                                         onClick={this.handleChange(item)}
                                     >
-                                        {item.title}
+                                        {item.description ? (
+                                            <React.Fragment>
+                                                <span
+                                                    className={cn(
+                                                        item.description &&
+                                                            "kit-select__option-title"
+                                                    )}
+                                                >
+                                                    {item.title}
+                                                </span>
+                                                {item.description && (
+                                                    <span className="kit-select__desc">
+                                                        {item.description}
+                                                    </span>
+                                                )}
+                                            </React.Fragment>
+                                        ) : (
+                                            item.title
+                                        )}
                                     </button>
                                 ) : (
-                                        <div
-                                            key={index}
-                                            className="kit-select__separator"
-                                        />
-                                    )
+                                    <div
+                                        key={index}
+                                        className="kit-select__separator"
+                                    />
+                                )
                             )}
                     </div>
                 </div>
             </div>
         );
     }
+
+    private handleClickOutside = (event: MouseEvent) => {
+        const target: any = event.target;
+        if (!this.wrapper || !this.wrapper.contains(target)) {
+            this.setState({ isOpen: false });
+        }
+    };
+
+    private handleToggle = () => this.setState({ isOpen: !this.state.isOpen });
+
+    private handleFilter = (e: React.ChangeEvent<HTMLInputElement>) =>
+        this.setState({ filter: e.target.value });
+
+    private handleChange = (item: IItem) => (
+        e: React.MouseEvent<HTMLElement>
+    ) => {
+        this.setState({ activeItem: item.title, isOpen: false });
+        if (this.props.onChange) {
+            this.props.onChange(item);
+        }
+    };
 }

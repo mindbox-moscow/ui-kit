@@ -1,0 +1,115 @@
+$kit-select-multi-border-radius: 3px;
+
+.kit-select-multi {
+	position: relative;
+	z-index: 1;
+	display: block;
+	min-width: 108px;
+	font-family: "PT Sans", sans-serif;
+	border: 1px solid #C5D6E1;
+	border-radius: $kit-select-multi-border-radius;
+	background-color: #ffffff;
+	white-space: nowrap;
+	box-sizing: border-box;
+
+	& * {
+		box-sizing: border-box;
+	}
+
+	&_show_dropdown {
+		border-color: #8AACC2;
+		box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
+	}
+}
+
+.kit-select-multi__label {
+	width: 100%;
+	min-height: 29px;
+	background-color: #ffffff;
+	border: none;
+	border-radius: $kit-select-multi-border-radius;
+	appearance: none;
+	margin: 0;
+	padding: 4px 30px 4px 10px;
+	cursor: pointer;
+	text-align: left;
+
+	.kit-select-multi_show_dropdown & {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		border-bottom: 1px solid #f0f0f0;
+	}
+}
+
+.kit-select-multi__label-title {
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	font-weight: 400;
+	color: #000000;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	&::after {
+		position: absolute;
+		top: 13px;
+		right: 14px;
+		content: "";
+		border: 3px solid transparent;
+		border-top: 4px solid #323232;
+		transform-origin: 50% 2px;
+		transition: transform 0.3s ease-out;
+
+		.kit-select-multi_show_dropdown & {
+			transform: rotate(180deg);
+		}
+	}
+}
+
+.kit-select-multi__dropdown-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.kit-select-multi__dropdown-option {
+
+	&_checked {
+		color: #ffffff;
+		background-color: #3875D7;
+	}
+
+	&:focus-within {
+		box-shadow: 0 0 5px #3875D7;
+	}
+
+	&_disabled {
+		opacity: 0.25;
+	}
+}
+
+.kit-select-multi__dropdown-option-label {
+	display: block;
+	cursor: pointer;
+	padding: 4px 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	.kit-select-multi__dropdown-option_disabled & {
+		cursor: default;
+	}
+}
+
+.kit-select-multi__dropdown-option-input {
+	pointer-events: none;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+	transform: translate(1px, 1px);
+}

@@ -5,40 +5,69 @@
     cursor: pointer;
     font-size: 22px;
     user-select: none;
+}
 
-    &__input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        left: -9999px;
-    }
+.kit-radio__input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	left: -9999px;
+}
 
-    &__checkmark {
-        margin: 1px;
-        box-sizing: border-box;
-        display: block;
-        padding: 4px 15px;
-        background-color: transparent;
-        border-radius: 4px;
-        border: 1px dashed #265378;
-        font-size: 14px;
-        color: #265378;
+.kit-radio__checkmark {
+	display: flex;
+	align-items: center;
+	margin: 1px;
+	box-sizing: border-box;
+	padding: 4px 15px;
+	background-color: transparent;
+	border-radius: 4px;
+	border: 1px dashed #265378;
+	font-size: 14px;
+	color: #265378;
 
-        &:hover {
-            background-color: lighten($color: #265378, $amount: 65%);
-            color: #000;
-        }
-    }
+	&:hover {
+		background-color: lighten($color: #265378, $amount: 65%);
+		color: #000;
+	}
 
-    &__input:checked+&__checkmark {
-        margin: 0;
-        background-color: #f5f1bb;
-        border: 2px solid #a0ba82;
-        color: #000;
-        font-weight: bold;
+	&_has-icon {
+		padding: 4px 12px 4px 10px;
+	}
 
-        &:hover {
-            background-color: darken($color: #f5f1bb, $amount: 18%);
-        }
-    }
+	.kit-radio_icon & {
+		padding-left: 8px;
+	}
+}
+
+.kit-radio__input {
+	&:checked + .kit-radio__checkmark {
+		margin: 0;
+		background-color: #f5f1bb;
+		border: 2px solid #a0ba82;
+		color: #000;
+		font-weight: bold;
+
+		&:hover {
+			background-color: darken($color: #f5f1bb, $amount: 18%);
+		}
+	}
+}
+
+.kit-radio__icon {
+	width: 18px;
+	height: 18px;
+	margin-right: 7px;
+
+	&_svg {
+		fill: #265378;
+
+		.kit-radio__checkmark:hover & {
+			fill: #000000;
+		}
+
+		.kit-radio__input:checked + .kit-radio__checkmark & {
+			fill: #000000;
+		}
+	}
 }

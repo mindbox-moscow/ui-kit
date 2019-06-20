@@ -77,6 +77,7 @@ export class PromotionGroupEdit extends React.Component<Props> {
 					<button
 						className="kit-promotion-group-edit__close"
 						aria-label={closeBtnText}
+						type="button"
 					>
 						<IconSvg
 							className="kit-promotion-group-edit__close-icon"
@@ -141,12 +142,17 @@ export class PromotionGroupEdit extends React.Component<Props> {
 				</div>
 
 				<div className="kit-promotion-group-edit__footer">
-					<Button color="gray" size="medium">
+					<Button color="gray" size="medium" type="submit">
 						{sendBtnText}
 					</Button>
 
 					<div className="kit-promotion-group-edit__footer-right">
-						<Button color="gray" size="medium">
+						<Button
+							color="gray"
+							size="medium"
+							mode="simple_text"
+							type="reset"
+						>
 							{resetBtnText}
 						</Button>
 					</div>

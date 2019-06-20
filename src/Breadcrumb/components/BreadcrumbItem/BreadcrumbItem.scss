@@ -24,11 +24,6 @@
     pointer-events: none;
   }
 
-  &:focus {
-    outline:none;
-    box-shadow: 0 0 5px grey;
-  }
-
   &:last-child {
 
     &::after {
@@ -54,4 +49,11 @@
   font-size: 14px;
   line-height: 19px;
   color: #265378;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px grey;
+  }
 }

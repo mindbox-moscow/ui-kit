@@ -17,7 +17,7 @@ interface Props {
     disabled?: boolean;
     defaultValue?: string;
     isFiltered?: boolean;
-    oneChooseSelect?: boolean;
+    hasDescriptions?: boolean;
     onChange?: (item: Item) => void;
 }
 
@@ -26,7 +26,7 @@ export class Select extends React.Component<Props> {
     state = {
         isOpen: false,
         filter: "",
-        activeItem: this.props.defaultValue || "",
+        activeItem: this.props.defaultValue || ""
     };
 
     componentDidMount() {
@@ -60,14 +60,21 @@ export class Select extends React.Component<Props> {
 
     public render() {
         const { isOpen, filter, activeItem } = this.state;
-        const { items, oneChooseSelect,  placeholder, isFiltered, disabled, size } = this.props;
+        const {
+            items,
+            hasDescriptions,
+            placeholder,
+            isFiltered,
+            disabled,
+            size
+        } = this.props;
         return (
             <div
                 className={cn(
                     "kit-select",
                     isOpen && "kit-select_open",
-                    isOpen && oneChooseSelect && "kit-select_selected",
-                    oneChooseSelect && "kit-select_one-selected",
+                    isOpen && hasDescriptions && "kit-select_selected",
+                    hasDescriptions && "kit-select_one-selected",
                     isFiltered && "kit-select_filtered",
                     {
                         [`kit-select_size_${size}`]: size
@@ -84,10 +91,10 @@ export class Select extends React.Component<Props> {
                     {activeItem ? (
                         <span className="kit-select__value">{activeItem}</span>
                     ) : (
-                            <span className="kit-select__placeholder">
-                                {placeholder}
-                            </span>
-                        )}
+                        <span className="kit-select__placeholder">
+                            {placeholder}
+                        </span>
+                    )}
                 </button>
                 <div className="kit-select__drop">
                     {isFiltered && (
@@ -125,20 +132,24 @@ export class Select extends React.Component<Props> {
                                     >
                                         {item.description ? (
                                             <React.Fragment>
-                                                <h6 className="kit-select__h6">{item.title}</h6>
-                                                <p className="kit-select__desc">{item.description}</p>
+                                                <h6 className="kit-select__h6">
+                                                    {item.title}
+                                                </h6>
+                                                <p className="kit-select__desc">
+                                                    {item.description}
+                                                </p>
                                             </React.Fragment>
-                                            ) : (item.title)
-                                        }
+                                        ) : (
+                                            item.title
+                                        )}
                                     </button>
                                 ) : (
-                                        <div
-                                            key={index}
-                                            className="kit-select__separator"
-                                        />
-                                    )
-                            )
-                        }
+                                    <div
+                                        key={index}
+                                        className="kit-select__separator"
+                                    />
+                                )
+                            )}
                     </div>
                 </div>
             </div>

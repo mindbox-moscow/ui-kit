@@ -32,6 +32,17 @@
 	&_search {
 		padding-right: 35px;
 	}
+
+	&_size_small {
+		height: 26px;
+		padding-right: 5px;
+		padding-left: 5px;
+		font-size: 13px;
+	}
+
+	&_search#{&}_size_small {
+		padding-right: 27px;
+	}
 }
 
 .kit-input-field__icon {
@@ -42,6 +53,13 @@
 	height: 22px;
 	cursor: default;
 	pointer-events: none;
+
+	.kit-input-field_size_small + & {
+		width: 17px;
+		height: 17px;
+		top: 5px;
+		right: 6px;
+	}
 
 	svg {
 		fill: #999;

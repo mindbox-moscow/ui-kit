@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "../Button";
-import { Icon } from "../Icon";
 import { IconSvg } from "../IconSvg";
+import { Input } from "../Input";
 import "./SelectNested.scss";
 
 import cn from "classnames";
@@ -96,17 +96,12 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 	public renderDropdownList = (options: IOption[]): JSX.Element => (
 		<div className="kit-select-nested__dropdown">
 			<div className="kit-select-nested__filter">
-				<div className="kit-select-nested__filter-input-wrap">
-					<input
-						type="search"
-						className="kit-select-nested__filter-input"
-						onChange={this.handleFilter}
-					/>
-					<Icon
-						className="kit-select-nested__filter-icon"
-						icon="search"
-					/>
-				</div>
+				<Input
+					type="search"
+					size="small"
+					defaultValue={this.state.filter}
+					onChange={this.handleFilter}
+				/>
 			</div>
 			<div className="kit-select-nested__dropdown-list-wrap">
 				<ul className="kit-select-nested__dropdown-list">

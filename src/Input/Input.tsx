@@ -36,27 +36,22 @@ export class Input extends React.Component<Props, State> {
 					type={type || "text"}
 					className={cn(
 						"kit-input-field",
-						noShadow && "kit-input-field_no-shadow",
-						type === "search" && "kit-input-field_search-no-shadow"
+						type === "search" && "kit-input-field_search",
+						noShadow && "kit-input-field_no-shadow"
 					)}
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
 					aria-hidden={true}
 				/>
-				{type === "search" && noShadow ? (
+				{type === "search" && (
 					<IconSvg
-						className="kit-input-field__icon"
+						className={cn(
+							"kit-input-field__icon",
+							noShadow && "kit-input-field__icon_blue"
+						)}
 						type="magnifier"
 					/>
-				) : (
-					type === "search" &&
-					!noShadow && (
-						<IconSvg
-							className="kit-input-field__icon kit-input-field__icon_grey"
-							type="magnifier"
-						/>
-					)
 				)}
 			</div>
 		);

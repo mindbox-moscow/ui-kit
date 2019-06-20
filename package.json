@@ -10,6 +10,9 @@
         "react-dom": "^16.4.0"
     },
     "scripts": {
+		"lint": "tslint -c tslint.json src/**/*.{ts,tsx} --fix --format verbose",
+		"prettier": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\"",
+		"prettier-lint": "prettier \"./src/**/*.{js,jsx,ts,tsx}\" --list-different",
         "test": "echo no tests",
         "start": "styleguidist server",
         "build": "styleguidist build",

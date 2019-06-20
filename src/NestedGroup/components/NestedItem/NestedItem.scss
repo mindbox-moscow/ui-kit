@@ -1,45 +1,42 @@
 .kit-nested-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 8px;
-    width: 100%;
-    align-items: center;
-    font-family: "PT Sans", sans-serif;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 8px;
+	width: 100%;
+	align-items: center;
+	font-family: "PT Sans", sans-serif;
 
-    &_expand {
-		margin-bottom: 0;
-
-        &::before {
-            content: "";
-            position: absolute;
+	&_expand {
+		&::before {
+			content: "";
+			position: absolute;
 			bottom: 0;
 			left: 0;
-            width: 20px;
-            height: calc(100% - 44px);
+			width: 20px;
+			height: calc(100% - 44px);
 			background-color: rgba(226, 234, 240, 0.35);
-        }
-    }
+		}
+	}
 }
 
 .kit-nested-item__wrap {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    background: #fff;
-    border: 1px solid #D4D4D4;
-    border-radius: 4px;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	border: 1px solid #d4d4d4;
+	border-radius: 4px;
 }
 
 .kit-nested-item__promo {
-    width: 471.5px;
-    display: flex;
-    align-items: center;
-    padding-left: 16px;
+	width: 471.5px;
+	display: flex;
+	align-items: center;
+	padding-left: 16px;
 
 	&_expand {
-
 		.kit-nested-item__promo-title,
 		.kit-nested-item__sale {
 			font-weight: 600;
@@ -48,27 +45,27 @@
 }
 
 .kit-nested-item__promo-title {
-    min-width: 210px;
-    margin-right: 8px;
-    font-size: 14px;
-    line-height: 18px;
+	min-width: 210px;
+	margin-right: 8px;
+	font-size: 14px;
+	line-height: 18px;
 }
 
 .kit-nested-item__number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #E2EAF0;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    font-size: 12px;
-    line-height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e2eaf0;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	font-size: 12px;
+	line-height: 18px;
 }
 
 .kit-nested-item__sale {
-    font-size: 14px;
-    line-height: 18px;
+	font-size: 14px;
+	line-height: 18px;
 
 	&_no-sale {
 		color: #999;
@@ -83,7 +80,7 @@
 	align-items: center;
 	padding: 8px 16px 8px 38px;
 	width: calc(100% - 471.5px);
-	border-right: 1px solid #D8D8D8;
+	border-right: 1px solid #d8d8d8;
 
 	&::before {
 		content: "";
@@ -97,7 +94,6 @@
 	}
 
 	&_expand {
-
 		&::before {
 			transform: rotate(90deg);
 		}

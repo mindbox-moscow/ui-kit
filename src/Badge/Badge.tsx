@@ -15,11 +15,11 @@ const ModeColors = {
 };
 
 interface IProps {
-	title: string;
+	title: string | any;
 	color?: COLORS;
 	date?: string;
 	size?: string;
-	mode?: Mode;
+	mode?: Mode | string;
 }
 
 export const Badge = (props: IProps) => {

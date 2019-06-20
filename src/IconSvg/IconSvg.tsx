@@ -5,7 +5,7 @@ import { assets, IconType } from "./assets";
 import "./IconSvg.scss";
 
 interface IProps {
-	type: IconType;
+	type: IconType | string;
 	className?: string;
 	ariaHidden?: boolean;
 }

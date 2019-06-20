@@ -9,14 +9,22 @@ interface Props {
 	start: string | null;
 	finish: string | null;
 	isFinished?: boolean;
+	badgeTitle: string;
 }
 
 export class StockInfo extends React.Component<Props> {
     public render() {
-    	const {title, icon, start, finish, isFinished} = this.props;
+    	const {title, icon, start, finish, isFinished, badgeTitle} = this.props;
         return (
 			<StockList>
-				<StockItem isFinished={isFinished} title={title} icon={icon} start={start} finish={finish}/>
+				<StockItem
+					isFinished={isFinished}
+					title={title}
+					icon={icon}
+					start={start}
+					finish={finish}
+					badgeTitle={badgeTitle}
+				/>
 			</StockList>
         );
     }

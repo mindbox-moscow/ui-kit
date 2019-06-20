@@ -42,6 +42,23 @@
         }
     }
 
+    &__option-title {
+        display: inline-block;
+        margin: 0;
+        margin-top: 14px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    &__desc {
+        display: inline-block;
+        margin: 0;
+        font-size: 13px;
+        line-height: 18px;
+        color: rgba(0, 0, 0, 0.66);
+    }
+
     &_size_small &__placeholder,
     &__title:disabled &__placeholder {
         font-size: 13px;
@@ -182,6 +199,10 @@
 
         &:hover {
             color: #fff;
+
+            .kit-select__desc {
+                color: #fff;
+            }
         }
 
         &::before {
@@ -230,5 +251,29 @@
         padding-right: 12px;
         padding-left: 12px;
         height: 25px;
+    }
+
+    &_one-selected {
+        .kit-select__title {
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #c5d6e1;
+        }
+
+        .kit-select__placeholder {
+            font-style: normal;
+        }
+    }
+
+    &_selected {
+        .kit-select__drop {
+            box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &_selected &__title {
+        border: 1px solid #b0b2b5;
+        background: #f6f7f7;
+        border-bottom: 1px dashed;
     }
 }

@@ -113,12 +113,19 @@ export class Select extends React.Component<IProps> {
                                     >
                                         {item.description ? (
                                             <React.Fragment>
-                                                <span className="kit-select__option-title">
+                                                <span
+                                                    className={cn(
+                                                        item.description &&
+                                                            "kit-select__option-title"
+                                                    )}
+                                                >
                                                     {item.title}
                                                 </span>
-                                                <span className="kit-select__desc">
-                                                    {item.description}
-                                                </span>
+                                                {item.description && (
+                                                    <span className="kit-select__desc">
+                                                        {item.description}
+                                                    </span>
+                                                )}
                                             </React.Fragment>
                                         ) : (
                                             item.title

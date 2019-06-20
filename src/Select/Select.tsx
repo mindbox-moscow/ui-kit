@@ -57,9 +57,7 @@ export class Select extends React.Component<IProps> {
                     isOpen && hasDescriptions && "kit-select_selected",
                     hasDescriptions && "kit-select_one-selected",
                     isFiltered && "kit-select_filtered",
-                    {
-                        [`kit-select_size_${size}`]: size
-                    }
+					size && `kit-select_size_${size}`
                 )}
                 ref={this.handleWrapperRef}
             >

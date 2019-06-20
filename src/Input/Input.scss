@@ -31,12 +31,6 @@
 
 	&_search {
 		padding-right: 35px;
-		padding-left: 10px;
-		box-shadow: none;
-	}
-
-	&_search-no-shadow {
-		padding-right: 35px;
 	}
 }
 
@@ -51,10 +45,8 @@
 
 	svg {
 		fill: #999;
-	}
 
-	&_blue {
-		svg {
+		.kit-input-field_no-shadow + & {
 			fill: #265378;
 		}
 	}

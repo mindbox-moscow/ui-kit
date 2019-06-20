@@ -26,6 +26,7 @@
 
 	&_no-shadow {
 		box-shadow: none;
+		border: 1px solid #C5D6E1;
 	}
 
 	&_search {
@@ -39,6 +40,19 @@
 	position: absolute;
 	top: 3px;
 	right: 9px;
+	width: 22px;
+	height: 22px;
 	cursor: default;
 	pointer-events: none;
+
+	svg {
+		fill: #265378;
+	}
+
+	&_grey {
+
+		svg {
+			fill: #999;
+		}
+	}
 }

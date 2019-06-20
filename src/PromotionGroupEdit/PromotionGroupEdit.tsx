@@ -4,10 +4,19 @@ import { Checkbox } from "../Checkbox";
 import { IconSvg } from "../IconSvg";
 import { Input } from "../Input";
 import { Select } from "../Select";
+import { SelectNested } from "../SelectNested";
 import "./PromotionGroupEdit.scss";
 
 interface Item {
 	title: string;
+	disabled?: boolean;
+}
+
+interface IOption {
+	id: number;
+	title: string;
+	details: string[];
+	children?: IOption[];
 	disabled?: boolean;
 }
 
@@ -27,6 +36,11 @@ interface Props {
 	rulesTitle: string;
 	rulesText: string;
 	discountText: string;
+	selectNestedItems: IOption[];
+	selectedNestedItem: IOption;
+	showSubgroupBtnText: string;
+	submitBtnText: string;
+	cancelBtnText: string;
 }
 
 export class PromotionGroupEdit extends React.Component<Props> {
@@ -46,7 +60,12 @@ export class PromotionGroupEdit extends React.Component<Props> {
 			resetBtnText,
 			rulesTitle,
 			rulesText,
-			discountText
+			discountText,
+			selectNestedItems,
+			selectedNestedItem,
+			showSubgroupBtnText,
+			submitBtnText,
+			cancelBtnText
 		} = this.props;
 
 		return (
@@ -73,7 +92,16 @@ export class PromotionGroupEdit extends React.Component<Props> {
 							{parentGroupLabel}
 						</legend>
 						<div className="kit-promotion-group-edit__row-left">
-							<Input defaultValue="Учебный год 2019–2020" />
+							<SelectNested
+								options={selectNestedItems}
+								selectedOption={selectedNestedItem}
+								onChange={newSelectedOption =>
+									console.log(newSelectedOption)
+								}
+								showSubgroupBtnText={showSubgroupBtnText}
+								submitBtnText={submitBtnText}
+								cancelBtnText={cancelBtnText}
+							/>
 						</div>
 					</fieldset>
 

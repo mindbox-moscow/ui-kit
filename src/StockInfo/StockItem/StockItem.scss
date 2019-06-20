@@ -1,0 +1,81 @@
+.kit-stock-item {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 42px;
+	border-bottom: 1px solid #D8D8D8;
+
+	&:last-child {
+		border: 0;
+	}
+
+	&_finished {
+
+		.kit-stock-item__name {
+			color: #999;
+		}
+
+		.kit-icon_percent {
+			background-image: url("../../assets/icons/precent-grey.svg");
+		}
+	}
+}
+
+.kit-stock-item__promo {
+	width: 471.5px;
+	display: flex;
+	align-items: center;
+	padding-left: 16px;
+}
+
+.kit-stock-item__promo-title-wrap {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	margin-right: 8px;
+	min-width: 150px;
+}
+
+.kit-stock-item__promo-title {
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	margin-left: 26px;
+
+	&_no-sale {
+		color: #999;
+	}
+}
+
+.kit-stock-item__title-wrap {
+	position: relative;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 16px 11px 38px;
+	width: calc(100% - 471.5px);
+	border-right: 1px solid #D8D8D8;
+}
+
+.kit-stock-item__sale {
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+
+	&_no-sale {
+		color: #999;
+	}
+}
+
+.kit-stock-item__name {
+	max-width: 85%;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-right: 5px;
+	text-overflow: ellipsis;
+	color: #265378;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+}

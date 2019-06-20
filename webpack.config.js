@@ -4,27 +4,27 @@ const glob = require("glob");
 
 const getExampleNames = () => {
 	let names = [];
-
+	
 	const testFilesPath = path.join("examples", `**/*.tsx`);
 	const subResult = glob.sync(testFilesPath);
 	names = [...names, ...subResult];
-
+	
 	return names.map(p => path.basename(p, ".tsx"));
 };
 
 const getEntries = () => {
 	let entry = {};
-
+	
 	for (let name of getExampleNames()) {
 		entry[name] = `./examples/${name}.tsx`;
 	}
-
+	
 	return entry;
 };
 
 const getHtmlPlugins = () => {
 	let plugins = [];
-
+	
 	for (let name of getExampleNames()) {
 		plugins.push(
 			new HtmlWebpackPlugin({
@@ -37,7 +37,7 @@ const getHtmlPlugins = () => {
 			})
 		);
 	}
-
+	
 	return plugins;
 };
 
@@ -48,11 +48,11 @@ module.exports = () => ({
 		path: path.resolve(__dirname, "docs")
 	},
 	devtool: "source-map",
-
+	
 	resolve: {
 		extensions: [".ts", ".tsx", ".js"]
 	},
-
+	
 	module: {
 		rules: [
 			{
@@ -101,6 +101,6 @@ module.exports = () => ({
 			}
 		]
 	},
-
+	
 	plugins: getHtmlPlugins()
 });

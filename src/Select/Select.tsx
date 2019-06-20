@@ -12,7 +12,6 @@ interface Item {
 interface Props {
     items: (Item | null)[];
     placeholder: string;
-    description?: string;
     size?: "small";
     disabled?: boolean;
     defaultValue?: string;
@@ -132,12 +131,12 @@ export class Select extends React.Component<Props> {
                                     >
                                         {item.description ? (
                                             <React.Fragment>
-                                                <h6 className="kit-select__h6">
+                                                <span className="kit-select__h6">
                                                     {item.title}
-                                                </h6>
-                                                <p className="kit-select__desc">
+                                                </span>
+                                                <span className="kit-select__desc">
                                                     {item.description}
-                                                </p>
+                                                </span>
                                             </React.Fragment>
                                         ) : (
                                             item.title

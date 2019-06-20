@@ -1,4 +1,5 @@
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
 import "./ActionsDropdown.scss";
 
 import cn from "classnames";
@@ -60,7 +61,12 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 	public handleClickOutside = (e: MouseEvent) => {
 		const dropdownWrap = this.wrapRef.current!;
 
-		if (!dropdownWrap.contains(e.target as Node)) {
+		if (
+			!dropdownWrap.contains(e.target as Node) ||
+			(e.target as Element).classList.contains(
+				"kit-actions-dropdown__action"
+			)
+		) {
 			this.setState({ isOpen: false });
 		}
 	};
@@ -86,12 +92,14 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 			>
 				<button
 					className="kit-actions-dropdown__toggle"
+					aria-label={toggleBtnText}
 					onClick={this.handleClick}
 				>
-					<div className="kit-actions-dropdown__toggle-icon" />
-					<span className="kit-actions-dropdown__toggle-label">
-						{toggleBtnText}
-					</span>
+					<IconSvg
+						className="kit-actions-dropdown__toggle-icon"
+						type="dots"
+						ariaHidden={true}
+					/>
 				</button>
 				{isOpen && (
 					<div className="kit-actions-dropdown__container">

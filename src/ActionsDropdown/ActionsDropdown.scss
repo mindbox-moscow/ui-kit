@@ -7,7 +7,7 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__toggle {
 	position: relative;
-	top: -3px;
+	top: 2px;
 	display: flex;
 	width: 14px;
 	height: 20px;
@@ -26,36 +26,15 @@ $kit-actions-dropdown-padding: 15px;
 }
 
 .kit-actions-dropdown__toggle-icon {
-	position: relative;
 	width: 4px;
-	height: 4px;
+	height: 16px;
 	margin: auto;
-	background-color: #c5d6e1;
-	border-radius: 50%;
 
-	&::before,
-	&::after {
-		content: '';
-		position: absolute;
-		top: -6px;
-		left: 0;
-		width: 4px;
-		height: 4px;
-		background-color: #c5d6e1;
-		border-radius: 50%;
-	}
+	svg {
+		fill: #c5d6e1;
 
-	&::after {
-		top: auto;
-		bottom: -6px;
-	}
-
-	.kit-actions-dropdown_opened & {
-		background-color: #8aacc2;
-
-		&::before,
-		&::after {
-			background-color: #8aacc2;
+		.kit-actions-dropdown_opened & {
+			fill: #8aacc2;
 		}
 	}
 }
@@ -76,8 +55,8 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__container {
 	position: absolute;
-	top: -15px;
-	right: -7px;
+	top: -10px;
+	right: -8px;
 	z-index: 2;
 	min-width: 106px;
 	padding: 7px 28px 8px $kit-actions-dropdown-padding;

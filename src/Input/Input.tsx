@@ -1,7 +1,7 @@
-import * as React from "react";
 import cn from "classnames";
-import "./Input.scss";
+import * as React from "react";
 import { IconSvg } from "../IconSvg";
+import "./Input.scss";
 
 interface Props {
 	defaultValue: string;
@@ -46,10 +46,7 @@ export class Input extends React.Component<Props, State> {
 				/>
 				{type === "search" && (
 					<IconSvg
-						className={cn(
-							"kit-input-field__icon",
-							noShadow && "kit-input-field__icon_blue"
-						)}
+						className="kit-input-field__icon"
 						type="magnifier"
 					/>
 				)}

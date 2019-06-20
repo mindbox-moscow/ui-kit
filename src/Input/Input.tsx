@@ -3,6 +3,8 @@ import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import "./Input.scss";
 
+type SizeTypes = "small";
+
 interface Props {
 	defaultValue: string;
 	type?: string;
@@ -10,6 +12,7 @@ interface Props {
 	maxLength?: number;
 	onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
+	size?: SizeTypes;
 }
 
 interface State {
@@ -26,7 +29,8 @@ export class Input extends React.Component<Props, State> {
 			placeholder,
 			onChange,
 			maxLength,
-			noShadow
+			noShadow,
+			size
 		} = this.props;
 
 		return (
@@ -37,7 +41,8 @@ export class Input extends React.Component<Props, State> {
 					className={cn(
 						"kit-input-field",
 						type === "search" && "kit-input-field_search",
-						noShadow && "kit-input-field_no-shadow"
+						noShadow && "kit-input-field_no-shadow",
+						size && `kit-input-field_size_${size}`
 					)}
 					defaultValue={defaultValue}
 					maxLength={maxLength}

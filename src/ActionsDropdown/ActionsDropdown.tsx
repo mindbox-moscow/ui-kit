@@ -15,7 +15,7 @@ interface IPropsGroup {
 
 interface IProps {
 	className?: string;
-	toggleBtnText?: string;
+	toggleBtnText: string;
 }
 
 interface IState {
@@ -90,7 +90,7 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 				>
 					<div className="kit-actions-dropdown__toggle-icon" />
 					<span className="kit-actions-dropdown__toggle-label">
-						{toggleBtnText || 'Действия'}
+						{toggleBtnText}
 					</span>
 				</button>
 				{isOpen && (

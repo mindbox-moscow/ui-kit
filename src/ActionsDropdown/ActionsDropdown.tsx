@@ -15,8 +15,8 @@ interface IPropsGroup {
 }
 
 interface IProps {
-	className?: string;
 	toggleBtnText: string;
+	className?: string;
 }
 
 interface IState {

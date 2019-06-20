@@ -3,7 +3,7 @@
 	<div style={{ marginBottom: "15px" }}>
 		<span style={{ marginRight: "8px" }}>Группы с заголовками</span>
 
-		<ActionsDropdown className="extended-class">
+		<ActionsDropdown className="extended-class" toggleBtnText="Действия">
 			<ActionsDropdown.Action
 				title="Редактировать"
 				onClick={() => console.log("Редактировать")}

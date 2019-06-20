@@ -149,5 +149,19 @@
         height: 18px;
         max-height: 18px;
         transform: scale(0.9);
-    }
+	}
+
+	&_simple_text {
+		min-width: 0;
+		min-height: 0;
+		width: auto;
+		height: auto;
+		padding: 0;
+		color: #265378;
+		background-color: transparent;
+
+		&:hover:not(:disabled) {
+			background-color: transparent;
+		}
+	}
 }

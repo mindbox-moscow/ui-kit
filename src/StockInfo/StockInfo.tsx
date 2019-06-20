@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./StockInfo.scss";
 import { StockList } from "./StockList/StockList";
 import { StockItem } from "./StockItem/StockItem";
 

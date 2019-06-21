@@ -1,158 +1,89 @@
 ```jsx
-const options = [
+const data = {
+	title: "Снова в школу",
+	parentGroup: 1,
+	rule1: 1,
+	rule2: 1,
+	maxDiscount: 50,
+	hasMaxDiscount: true
+};
+
+const labels = {
+	titleField: "Название группы",
+	parentGroupField: "Родительская группа",
+	rulesField: "Правила применения акций",
+	maxDiscountField: "Максимальный процент скидки",
+	maxDiscountCheckbox:
+		"Ограничить максимальный процент скидки для группы на уровне",
+	submitBtn: "Сохранить изменения",
+	cancelBtn: "Отменить"
+};
+
+const groups = [
 	{
-		id: 1,
-		title: "Товары двойного назначения",
-		details: [
-			"Несовм. по товарам",
-			"Последовательное применение",
-			"Макс. скидка: 30%"
-		]
-	},
-	{
-		id: 2,
-		title: "Акции с кассы",
-		details: [
-			"Без несовместимости",
-			"Суммирование акций",
-			"Макс. скидка: 35%"
-		],
-		children: [
-			{
-				id: 3,
-				title: "Учебный год 2019–2020",
-				details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-				children: [
-					{
-						id: 4,
-						title: "Призы и подарки",
-						details: ["Несовм. по заказу", "Макс. скидка: 30%"]
-					},
-					{
-						id: 5,
-						title: "Школьные товары",
-						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						disabled: true
-					}
-				]
-			}
-		]
-	},
-	{
-		id: 6,
-		title: "Горящие товары",
+		id: 3,
+		title: "Учебный год 2019–2020",
 		details: ["Несовм. по заказу", "Макс. скидка: 30%"],
 		children: [
 			{
-				id: 3,
-				title: "Учебный год 2019–2020",
+				id: 4,
+				title: "Призы и подарки",
+				details: ["Несовм. по заказу", "Макс. скидка: 30%"]
+			},
+			{
+				id: 5,
+				title: "Школьные товары",
 				details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-				children: [
-					{
-						id: 4,
-						title: "Призы и подарки",
-						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						children: [
-							{
-								id: 3,
-								title: "Учебный год 2019–2020",
-								details: [
-									"Несовм. по заказу",
-									"Макс. скидка: 30%"
-								],
-								children: [
-									{
-										id: 4,
-										title: "Призы и подарки",
-										details: [
-											"Несовм. по заказу",
-											"Макс. скидка: 30%"
-										],
-										children: [
-											{
-												id: 3,
-												title: "Учебный год 2019–2020",
-												details: [
-													"Несовм. по заказу",
-													"Макс. скидка: 30%"
-												],
-												children: [
-													{
-														id: 4,
-														title:
-															"Призы и подарки",
-														details: [
-															"Несовм. по заказу",
-															"Макс. скидка: 30%"
-														]
-													},
-													{
-														id: 5,
-														title:
-															"Школьные товары",
-														details: [
-															"Несовм. по заказу",
-															"Макс. скидка: 30%"
-														],
-														disabled: true
-													}
-												]
-											}
-										]
-									},
-									{
-										id: 5,
-										title: "Школьные товары",
-										details: [
-											"Несовм. по заказу",
-											"Макс. скидка: 30%"
-										],
-										disabled: true
-									}
-								]
-							}
-						]
-					},
-					{
-						id: 5,
-						title: "Школьные товары",
-						details: ["Несовм. по заказу", "Макс. скидка: 30%"],
-						disabled: true
-					}
-				]
+				disabled: true
 			}
 		]
 	}
 ];
 
+const parentGroupData = {
+	options: groups,
+	selectedOption: groups[0].children[0],
+	submitBtnText: "Выбрать",
+	cancelBtnText: "Отменить",
+	showSubgroupBtnText: "Показать подгруппы"
+};
+
+const rules1 = [
+	{
+		title: "Максимальная выгода",
+		description:
+			"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+	},
+	{
+		title: "Последовательное применение",
+		description:
+			"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+	}
+];
+
+const rules2 = [
+	{ title: "На уровне товара" },
+	{ title: "На уровне товара 1" },
+	{ title: "На уровне товара 2" }
+];
+
+const rule1Data = {
+	items: rules1,
+	defaultValue: "Последовательное применение",
+	placeholder: "Выбрать"
+};
+
+const rule2Data = {
+	items: rules2,
+	defaultValue: "На уровне товара",
+	placeholder: "Выбрать"
+};
+
 <PromotionGroupEdit
-	title="Снова в школу"
-	maxDiscount="50"
-	stockType="Несовместимость"
-	parentGroupLabel="Родительская группа"
-	stokTypePlaceholder="Выберите"
-	stockTypeItems={[
-		{ title: "Несовместимость 2" },
-		{ title: "Несовместимость 3" },
-		{ title: "Несовместимость 4" }
-	]}
-	category="На уровне товара"
-	categoryPlaceholder="Выберите"
-	categoryItems={[
-		{ title: "На уровне товара 2" },
-		{ title: "На уровне товара 3" },
-		{ title: "На уровне товара 4" }
-	]}
-	rulesTitle="Правила применения акций"
-	rulesText="Расчеты промо-активностей, скидок, дисконтирование по программе лояльности — все это собирается и настраивается в Mindbox, а сама кассовая программа является лишь отображением того рассчета, которое предоставляет система."
-	discountText="Ограничить максимальный процент скидки для группы на уровне"
-	closeBtnText="Закрыть"
-	sendBtnText="Сохранить изменения"
-	resetBtnText="Отменить"
-	selectNestedItems={options}
-	selectedNestedItem={options[1].children[0]}
-	showSubgroupBtnText="Выбрать"
-	submitBtnText="Выбрать"
-	cancelBtnText="Отменить"
+	data={data}
+	labels={labels}
+	parentGroupData={parentGroupData}
+	rule1Data={rule1Data}
+	rule2Data={rule2Data}
 />;
 ```

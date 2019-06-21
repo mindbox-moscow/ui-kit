@@ -3,160 +3,115 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { IconSvg } from "../IconSvg";
 import { Input } from "../Input";
-import { Select } from "../Select";
-import { SelectNested } from "../SelectNested";
-import "./PromotionGroupEdit.scss";
+import { IItem as ISelectOption, Select } from "../Select";
+import { IOption as ISelectNestedOption, SelectNested } from "../SelectNested";
 
-interface Item {
+interface IPromotionGroupData {
 	title: string;
-	disabled?: boolean;
+	parentGroup: number;
+	rule1: string;
+	rule2: string;
+	maxDiscount: number;
+	hasMaxDiscount: boolean;
 }
 
-interface IOption {
-	id: number;
-	title: string;
-	details: string[];
-	children?: IOption[];
-	disabled?: boolean;
+interface IProps {
+	data: IPromotionGroupData;
+	labels: {
+		titleField: string;
+		closeBtn: string;
+		parentGroupField: string;
+		rulesField: string;
+		maxDiscountField: string;
+		maxDiscountCheckbox: string;
+		submitBtn: string;
+		cancelBtn: string;
+	};
+	parentGroupData: {
+		options: ISelectNestedOption[];
+		selectedOption?: ISelectNestedOption;
+		submitBtnText: string;
+		cancelBtnText: string;
+		showSubgroupBtnText: string;
+	};
+	rule1Data: {
+		items: Array<ISelectOption | null>;
+		placeholder: string;
+		defaultValue?: string;
+	};
+	rule2Data: {
+		items: Array<ISelectOption | null>;
+		placeholder: string;
+		defaultValue?: string;
+	};
 }
 
-interface Props {
-	title: string;
-	closeBtnText: string;
-	sendBtnText: string;
-	resetBtnText: string;
-	maxDiscount: string;
-	stockType: string;
-	stockTypePlaceholder: string;
-	stockTypeItems: Array<Item | null>;
-	category: string;
-	categoryPlaceholder: string;
-	categoryItems: Array<Item | null>;
-	parentGroupLabel: string;
-	rulesTitle: string;
-	rulesText: string;
-	discountText: string;
-	selectNestedItems: IOption[];
-	selectedNestedItem: IOption;
-	showSubgroupBtnText: string;
-	submitBtnText: string;
-	cancelBtnText: string;
-}
+const renderCloseButton = (label: string) => (
+	<button
+		className="kit-promotion-group-edit__close"
+		aria-label={label}
+		type="button"
+	>
+		<IconSvg
+			className="kit-promotion-group-edit__close-icon"
+			type="close"
+		/>
+	</button>
+);
 
-export class PromotionGroupEdit extends React.Component<Props> {
+export class PromotionGroupEdit extends React.Component<IProps> {
 	public render() {
 		const {
-			title,
-			maxDiscount,
-			stockType,
-			stockTypePlaceholder,
-			stockTypeItems,
-			category,
-			categoryPlaceholder,
-			categoryItems,
-			closeBtnText,
-			parentGroupLabel,
-			sendBtnText,
-			resetBtnText,
-			rulesTitle,
-			rulesText,
-			discountText,
-			selectNestedItems,
-			selectedNestedItem,
-			showSubgroupBtnText,
-			submitBtnText,
-			cancelBtnText
+			data,
+			labels,
+			parentGroupData,
+			rule1Data,
+			rule2Data
 		} = this.props;
 
 		return (
 			<form className="kit-promotion-group-edit">
-				<fieldset className="kit-promotion-group-edit__header">
-					<div className="kit-promotion-group-edit__header-left">
-						<Input defaultValue={title} />
-					</div>
-					<button
-						className="kit-promotion-group-edit__close"
-						aria-label={closeBtnText}
-						type="button"
-					>
-						<IconSvg
-							className="kit-promotion-group-edit__close-icon"
-							type="close"
-							ariaHidden={true}
-						/>
-					</button>
+				<fieldset className="kit-promotion-group-edit__title">
+					<legend>{labels.titleField}</legend>
+					<Input type="text" defaultValue={data.title} />
 				</fieldset>
 
-				<div className="kit-promotion-group-edit__body">
-					<fieldset className="kit-promotion-group-edit__row">
-						<legend className="kit-promotion-group-edit__row-title">
-							{parentGroupLabel}
-						</legend>
-						<div className="kit-promotion-group-edit__row-left">
-							<SelectNested
-								options={selectNestedItems}
-								selectedOption={selectedNestedItem}
-								onChange={newSelectedOption =>
-									console.log(newSelectedOption)
-								}
-								showSubgroupBtnText={showSubgroupBtnText}
-								submitBtnText={submitBtnText}
-								cancelBtnText={cancelBtnText}
-							/>
-						</div>
-					</fieldset>
+				{renderCloseButton(labels.closeBtn)}
 
-					<fieldset className="kit-promotion-group-edit__row">
-						<legend className="kit-promotion-group-edit__row-title">
-							{rulesTitle}
-						</legend>
+				<fieldset className="kit-promotion-group-edit__parent-group">
+					<legend>{labels.parentGroupField}</legend>
+					<SelectNested {...parentGroupData} />
+				</fieldset>
 
-						<div className="kit-promotion-group-edit__row-left">
-							<Select
-								placeholder={stockTypePlaceholder}
-								defaultValue={stockType}
-								items={stockTypeItems}
-							/>
-						</div>
+				<fieldset className="kit-promotion-group-edit__rules">
+					<legend>{labels.rulesField}</legend>
+					<Select {...rule1Data} hasDescriptions={true} />
+					<Select {...rule2Data} hasDescriptions={true} />
+					<p>{rule1Data.items[1]!.description}</p>
+				</fieldset>
 
-						<div className="kit-promotion-group-edit__row-right">
-							<Select
-								placeholder={categoryPlaceholder}
-								defaultValue={category}
-								items={categoryItems}
-							/>
-						</div>
+				<fieldset className="kit-promotion-group-edit__max-discount">
+					<legend>{labels.maxDiscountField}</legend>
+					<Checkbox
+						text={labels.maxDiscountCheckbox}
+						checked={data.hasMaxDiscount}
+					/>
+					<Input type="number" defaultValue={`${data.maxDiscount}`} />
+				</fieldset>
 
-						<p className="kit-promotion-group-edit__row-description">
-							{rulesText}
-						</p>
-					</fieldset>
-
-					<fieldset className="kit-promotion-group-edit__row">
-						<Checkbox checked={true} text={discountText} />
-
-						<div className="kit-promotion-group-edit__max-discount">
-							<Input defaultValue={maxDiscount} />
-						</div>
-					</fieldset>
-				</div>
-
-				<div className="kit-promotion-group-edit__footer">
-					<Button color="gray" size="medium" type="submit">
-						{sendBtnText}
+				<fieldset className="kit-promotion-group-edit__submit">
+					<Button type="submit" size="medium" color="gray">
+						{labels.submitBtn}
 					</Button>
-
-					<div className="kit-promotion-group-edit__footer-right">
-						<Button
-							color="gray"
-							size="medium"
-							mode="simple_text"
-							type="reset"
-						>
-							{resetBtnText}
-						</Button>
-					</div>
-				</div>
+					<Button
+						type="reset"
+						size="medium"
+						color="gray"
+						mode="simple_text"
+					>
+						{labels.cancelBtn}
+					</Button>
+				</fieldset>
 			</form>
 		);
 	}

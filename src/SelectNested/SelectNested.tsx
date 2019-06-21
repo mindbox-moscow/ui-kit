@@ -6,7 +6,7 @@ import "./SelectNested.scss";
 
 import cn from "classnames";
 
-interface IOption {
+export interface IOption {
 	id: number;
 	title: string;
 	details: string[];

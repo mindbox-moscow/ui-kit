@@ -10,7 +10,7 @@ interface IProps {
 	ariaHidden?: boolean;
 }
 
-const IconSvg = ({ type, className, ariaHidden = false }: IProps) => {
+const IconSvg = ({ type, className, ariaHidden = true }: IProps) => {
 	const Icon = assets[type];
 
 	return (

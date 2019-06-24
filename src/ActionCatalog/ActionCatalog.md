@@ -1,5 +1,12 @@
 ```jsx
-<div style={{ width: "100%" }}>
-<ActionCatalog/>
+<div
+	style={{
+		display: "flex",
+		justifyContent: "space-between",
+		backgroundColor: "#F3F3EB",
+		flexDirection: "column"
+	}}
+>
+	<ActionCatalog />
 </div>
 ```

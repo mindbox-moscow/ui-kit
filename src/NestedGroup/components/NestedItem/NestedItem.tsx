@@ -3,19 +3,26 @@ import cn from "classnames";
 
 import "./NestedItem.scss";
 
-interface Props {
+interface IProps {
 	childrenCount: number;
 	title: string;
 	information: string;
 	maxDiscount?: number | null;
+	defaultStatus: any;
+	onClick: any;
+	updateData: any;
 }
 
-interface State {
+interface IState {
 	isExpanded: boolean;
+	defaultStatus?: boolean;
 }
 
-export class NestedItem extends React.Component<Props, State> {
-	public state = { isExpanded: true };
+export class NestedItem extends React.Component<IProps, IState> {
+	public state = {
+		defaultStatus: false,
+		isExpanded: false
+	};
 
 	public render() {
 		const {
@@ -25,22 +32,23 @@ export class NestedItem extends React.Component<Props, State> {
 			maxDiscount,
 			children
 		} = this.props;
-		const { isExpanded } = this.state;
 
 		return (
 			<React.Fragment>
 				<li
 					className={cn("kit-nested-item", {
-						"kit-nested-item_expand": !isExpanded
+						"kit-nested-item_expand":
+							this.props.defaultStatus || this.state.isExpanded
 					})}
 				>
 					<div
 						className="kit-nested-item__wrap"
-						onClick={this.expandTree}
+						onClick={this.expandChild}
 					>
 						<div
 							className={cn("kit-nested-item__title-wrap", {
-								"kit-nested-item__title-wrap_expand": !isExpanded
+								"kit-nested-item__title-wrap_expand":
+									this.props.defaultStatus || this.state.isExpanded
 							})}
 						>
 							<span className="kit-nested-item__name">
@@ -52,7 +60,8 @@ export class NestedItem extends React.Component<Props, State> {
 						</div>
 						<div
 							className={cn("kit-nested-item__promo", {
-								"kit-nested-item__promo_expand": !isExpanded
+								"kit-nested-item__promo_expand":
+									this.props.defaultStatus || this.state.isExpanded
 							})}
 						>
 							<span className="kit-nested-item__promo-title">
@@ -63,17 +72,20 @@ export class NestedItem extends React.Component<Props, State> {
 									"kit-nested-item__sale_no-sale": !maxDiscount
 								})}
 							>
-								{maxDiscount ? `Максимальная скидка: ${maxDiscount}%` : `Без максимальной скидки`}
+								{maxDiscount
+									? `Максимальная скидка: ${maxDiscount}%`
+									: `Без максимальной скидки`}
 							</span>
 						</div>
 					</div>
-					{!isExpanded && children}
+					{(this.props.defaultStatus && children) ||
+						(this.state.isExpanded && children)}
 				</li>
 			</React.Fragment>
 		);
 	}
 
-	private expandTree = () => {
-		this.setState(state => ({...state, isExpanded: !this.state.isExpanded }));
+	private expandChild = () => {
+		this.setState(state => ({ ...state, isExpanded: !this.state.isExpanded }));
 	};
 }

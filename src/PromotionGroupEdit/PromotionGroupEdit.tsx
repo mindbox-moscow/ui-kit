@@ -46,6 +46,7 @@ interface IProps {
 		placeholder: string;
 		defaultValue?: string;
 	};
+	onClose: (e: React.MouseEvent) => void;
 }
 
 export class PromotionGroupEdit extends React.Component<IProps> {
@@ -55,11 +56,15 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 			labels,
 			parentGroupData,
 			rule1Data,
-			rule2Data
+			rule2Data,
+			onClose
 		} = this.props;
 
 		return (
-			<PromotionEditContainer closeBtnLabel={labels.closeBtn}>
+			<PromotionEditContainer
+				closeBtnLabel={labels.closeBtn}
+				onCloseClick={onClose}
+			>
 				<form className="kit-promotion-group-edit">
 					<PromotionEditContainer.Header>
 						<fieldset className="kit-promotion-group-edit__title">

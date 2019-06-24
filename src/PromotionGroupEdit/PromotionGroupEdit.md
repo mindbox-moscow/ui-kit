@@ -85,5 +85,6 @@ const rule2Data = {
 	parentGroupData={parentGroupData}
 	rule1Data={rule1Data}
 	rule2Data={rule2Data}
+	onClose={() => console.log("PromotionGroupEdit closed")}
 />;
 ```

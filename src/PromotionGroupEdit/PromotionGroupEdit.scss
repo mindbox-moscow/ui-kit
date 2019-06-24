@@ -1,125 +1,126 @@
-.kit-promotion-group-edit {
-	border-radius: 6px;
-	border-color: #a0ba82;
-	border-style: solid;
-	border-width: 2px;
-	background-color: #fffaed;
-}
-
-.kit-promotion-group-edit__close {
-	background-color: transparent;
-	border: none;
-	padding: 0;
+@mixin visually-hidden {
 	position: absolute;
-	top: 10px;
-	right: 10px;
-	cursor: pointer;
-}
-
-.kit-promotion-group-edit__close-icon {
-	width: 13px;
-	height: 12px;
-	padding: 10px;
-}
-
-.kit-promotion-group-edit__header {
-	position: relative;
-	margin: 0;
-	padding-left: 30px;
-	padding-top: 12px;
-	padding-bottom: 10px;
-	border: none;
-	border-bottom-color: #d8d8d8;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-.kit-promotion-group-edit__header-left {
-	max-width: 447px;
-}
-
-.kit-promotion-group-edit__body {
-	padding-left: 30px;
-	padding-right: 30px;
-	padding-bottom: 15px;
-}
-
-.kit-promotion-group-edit__row {
+	width: 1px;
+	height: 1px;
+	margin: -1px;
 	padding: 0;
-	margin: 0;
-	padding-top: 10px;
-	width: 100%;
-	display: inline-block;
-	vertical-align: middle;
-	border: none;
+	border: 0;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	clip-path: inset(100%);
+	white-space: nowrap;
+	transform: translate(1px, 1px);
 }
 
-.kit-promotion-group-edit__row-title {
+.kit-promotion-group-edit {
 	font-family: "PT Sans", sans-serif;
 	font-size: 16px;
-	line-height: 1;
-	color: #333;
-	padding-top: 23px;
-	display: inline-block;
-	width: 100%;
-}
-
-.kit-promotion-group-edit__row-left {
-	display: inline-block;
-	width: 100%;
-	max-width: 447px;
-}
-
-.kit-promotion-group-edit__row-right {
-	display: inline-block;
-	width: 100%;
-	max-width: 267px;
-	margin-left: 10px;
-}
-
-.kit-promotion-group-edit__row-description {
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
 	line-height: 16px;
 	color: #333;
-	max-width: 725px;
-	margin-top: 8px;
-	margin-bottom: 8px;
-}
 
-.kit-promotion-group-edit__max-discount {
-	display: inline-flex;
-	align-items: center;
-	top: -3px;
-	width: 40px;
-	margin-left: 7px;
-	position: relative;
-
-	&::after {
-		content: "%";
-		font-family: "PT Sans", sans-serif;
-		font-size: 14px;
-		line-height: 16px;
-		color: #333;
-		position: absolute;
-		top: 50%;
-		right: -20px;
-		transform: translateY(-50%);
+	legend {
+		margin-left: -3px;
+		margin-bottom: 7px;
 	}
 }
 
-.kit-promotion-group-edit__footer {
-	display: flex;
-	position: relative;
-	padding-left: 30px;
-	padding-top: 15px;
-	padding-bottom: 14px;
-	border-top-color: #d8d8d8;
-	border-top-width: 1px;
-	border-top-style: solid;
+.kit-promotion-group-edit__title {
+	width: 100%;
+	max-width: 446px;
+	margin: 0;
+	padding: 0;
+	border: none;
+
+	legend {
+		@include visually-hidden();
+	}
 }
 
-.kit-promotion-group-edit__footer-right {
-	padding-left: 10px;
-	padding-top: 3px;
+.kit-promotion-group-edit__parent-group {
+	width: 100%;
+	max-width: 446px;
+	margin: 0;
+	margin-bottom: 25px;
+	padding: 0;
+	border: none;
+}
+
+.kit-promotion-group-edit__rules {
+	margin: 0;
+	margin-bottom: 3px;
+	padding: 0;
+	border: none;
+
+	&:first-child {
+		width: 100%;
+		max-width: 446px;
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	&:last-child {
+		width: 100%;
+		max-width: 267px;
+		display: inline-block;
+	}
+}
+
+.kit-promotion-group-edit__rule-1 {
+	width: 100%;
+	max-width: 446px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.kit-promotion-group-edit__rule-2 {
+	width: 100%;
+	max-width: 267px;
+	display: inline-block;
+}
+
+.kit-promotion-group-edit__rule-desc {
+	font-size: 14px;
+	margin: 0;
+	padding: 11px 0 10px;
+	width: 100%;
+	max-width: 670px;
+	letter-spacing: -0.05px;
+}
+
+.kit-promotion-group-edit__max-discount {
+	margin: 0;
+	margin-left: -3px;
+	padding: 0;
+	border: none;
+	font-size: 14px;
+
+	legend {
+		@include visually-hidden();
+	}
+}
+
+.kit-promotion-group-edit__max-discount-inner {
+	display: flex;
+	align-items: center;
+}
+
+.kit-promotion-group-edit__max-discount-input {
+	width: 40px;
+	margin-left: 6px;
+	margin-right: 9px;
+}
+
+.kit-promotion-group-edit__submit {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.kit-promotion-group-edit__submit-inner {
+	display: flex;
+	align-items: center;
+}
+
+.kit-promotion-group-edit__submit-btn {
+	margin-right: 10px;
 }

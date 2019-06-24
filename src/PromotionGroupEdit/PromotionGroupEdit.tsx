@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
-import { IconSvg } from "../IconSvg";
 import { Input } from "../Input";
+import { PromotionEditContainer } from "../PromotionEditContainer";
 import { IItem as ISelectOption, Select } from "../Select";
 import { IOption as ISelectNestedOption, SelectNested } from "../SelectNested";
+
+import "./PromotionGroupEdit.scss";
 
 interface IPromotionGroupData {
 	title: string;
@@ -46,19 +48,6 @@ interface IProps {
 	};
 }
 
-const renderCloseButton = (label: string) => (
-	<button
-		className="kit-promotion-group-edit__close"
-		aria-label={label}
-		type="button"
-	>
-		<IconSvg
-			className="kit-promotion-group-edit__close-icon"
-			type="close"
-		/>
-	</button>
-);
-
 export class PromotionGroupEdit extends React.Component<IProps> {
 	public render() {
 		const {
@@ -70,49 +59,79 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 		} = this.props;
 
 		return (
-			<form className="kit-promotion-group-edit">
-				<fieldset className="kit-promotion-group-edit__title">
-					<legend>{labels.titleField}</legend>
-					<Input type="text" defaultValue={data.title} />
-				</fieldset>
+			<PromotionEditContainer closeBtnLabel={labels.closeBtn}>
+				<form className="kit-promotion-group-edit">
+					<PromotionEditContainer.Header>
+						<fieldset className="kit-promotion-group-edit__title">
+							<legend>{labels.titleField}</legend>
+							<Input type="text" defaultValue={data.title} />
+						</fieldset>
+					</PromotionEditContainer.Header>
 
-				{renderCloseButton(labels.closeBtn)}
+					<PromotionEditContainer.Main>
+						<fieldset className="kit-promotion-group-edit__parent-group">
+							<legend>{labels.parentGroupField}</legend>
+							<SelectNested {...parentGroupData} />
+						</fieldset>
 
-				<fieldset className="kit-promotion-group-edit__parent-group">
-					<legend>{labels.parentGroupField}</legend>
-					<SelectNested {...parentGroupData} />
-				</fieldset>
+						<fieldset className="kit-promotion-group-edit__rules">
+							<legend>{labels.rulesField}</legend>
+							<Select
+								className="kit-promotion-group-edit__rule-1"
+								hasDescriptions={true}
+								{...rule1Data}
+							/>
+							<Select
+								className="kit-promotion-group-edit__rule-2"
+								hasDescriptions={true}
+								{...rule2Data}
+							/>
+							<p className="kit-promotion-group-edit__rule-desc">
+								{rule1Data.items[1]!.description}
+							</p>
+						</fieldset>
 
-				<fieldset className="kit-promotion-group-edit__rules">
-					<legend>{labels.rulesField}</legend>
-					<Select {...rule1Data} hasDescriptions={true} />
-					<Select {...rule2Data} hasDescriptions={true} />
-					<p>{rule1Data.items[1]!.description}</p>
-				</fieldset>
+						<fieldset className="kit-promotion-group-edit__max-discount">
+							<legend>{labels.maxDiscountField}</legend>
+							<div className="kit-promotion-group-edit__max-discount-inner">
+								<Checkbox
+									text={labels.maxDiscountCheckbox}
+									checked={data.hasMaxDiscount}
+								/>
+								<Input
+									className="kit-promotion-group-edit__max-discount-input"
+									type="text"
+									defaultValue={`${data.maxDiscount}`}
+								/>
+								&#37;
+							</div>
+						</fieldset>
+					</PromotionEditContainer.Main>
 
-				<fieldset className="kit-promotion-group-edit__max-discount">
-					<legend>{labels.maxDiscountField}</legend>
-					<Checkbox
-						text={labels.maxDiscountCheckbox}
-						checked={data.hasMaxDiscount}
-					/>
-					<Input type="number" defaultValue={`${data.maxDiscount}`} />
-				</fieldset>
-
-				<fieldset className="kit-promotion-group-edit__submit">
-					<Button type="submit" size="medium" color="gray">
-						{labels.submitBtn}
-					</Button>
-					<Button
-						type="reset"
-						size="medium"
-						color="gray"
-						mode="simple_text"
-					>
-						{labels.cancelBtn}
-					</Button>
-				</fieldset>
-			</form>
+					<PromotionEditContainer.Footer>
+						<fieldset className="kit-promotion-group-edit__submit">
+							<div className="kit-promotion-group-edit__submit-inner">
+								<Button
+									className="kit-promotion-group-edit__submit-btn"
+									type="submit"
+									size="medium"
+									color="gray"
+								>
+									{labels.submitBtn}
+								</Button>
+								<Button
+									type="reset"
+									size="medium"
+									color="gray"
+									mode="simple_text"
+								>
+									{labels.cancelBtn}
+								</Button>
+							</div>
+						</fieldset>
+					</PromotionEditContainer.Footer>
+				</form>
+			</PromotionEditContainer>
 		);
 	}
 }

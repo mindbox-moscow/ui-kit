@@ -19,6 +19,7 @@ interface IProps {
 	isFiltered?: boolean;
 	hasDescriptions?: boolean;
 	onChange?: (item: IItem) => void;
+	className?: string;
 }
 
 export class Select extends React.Component<IProps> {
@@ -47,7 +48,8 @@ export class Select extends React.Component<IProps> {
 			placeholder,
 			isFiltered,
 			disabled,
-			size
+			size,
+			className
 		} = this.props;
 		return (
 			<div
@@ -57,7 +59,8 @@ export class Select extends React.Component<IProps> {
 					isOpen && hasDescriptions && "kit-select_selected",
 					hasDescriptions && "kit-select_one-selected",
 					isFiltered && "kit-select_filtered",
-					size && `kit-select_size_${size}`
+					size && `kit-select_size_${size}`,
+					className
 				)}
 				ref={this.handleWrapperRef}
 			>

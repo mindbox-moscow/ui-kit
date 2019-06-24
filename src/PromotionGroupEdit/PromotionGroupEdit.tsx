@@ -3,51 +3,11 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
 import { PromotionEditContainer } from "../PromotionEditContainer";
-import { IItem as ISelectOption, Select } from "../Select";
-import { IOption as ISelectNestedOption, SelectNested } from "../SelectNested";
+import { Select } from "../Select";
+import { SelectNested } from "../SelectNested";
+import { IProps } from "./types";
 
 import "./PromotionGroupEdit.scss";
-
-interface IPromotionGroupData {
-	title: string;
-	parentGroup: number;
-	rule1: string;
-	rule2: string;
-	maxDiscount: number;
-	hasMaxDiscount: boolean;
-}
-
-interface IProps {
-	data: IPromotionGroupData;
-	labels: {
-		titleField: string;
-		closeBtn: string;
-		parentGroupField: string;
-		rulesField: string;
-		maxDiscountField: string;
-		maxDiscountCheckbox: string;
-		submitBtn: string;
-		cancelBtn: string;
-	};
-	parentGroupData: {
-		options: ISelectNestedOption[];
-		selectedOption?: ISelectNestedOption;
-		submitBtnText: string;
-		cancelBtnText: string;
-		showSubgroupBtnText: string;
-	};
-	rule1Data: {
-		items: Array<ISelectOption | null>;
-		placeholder: string;
-		defaultValue?: string;
-	};
-	rule2Data: {
-		items: Array<ISelectOption | null>;
-		placeholder: string;
-		defaultValue?: string;
-	};
-	onClose: (e: React.MouseEvent) => void;
-}
 
 export class PromotionGroupEdit extends React.Component<IProps> {
 	public render() {

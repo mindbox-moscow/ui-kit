@@ -10,6 +10,7 @@ interface IProps {
 interface IPropsContainer {
 	closeBtnLabel: string;
 	children: React.ReactNode;
+	onCloseClick: (e: React.MouseEvent) => void;
 }
 
 const Header = ({ children }: IProps) => (
@@ -26,7 +27,8 @@ const Footer = ({ children }: IProps) => (
 
 const PromotionEditContainer = ({
 	closeBtnLabel,
-	children
+	children,
+	onCloseClick
 }: IPropsContainer) => (
 	<div className="kit-promotion-edit-container">
 		{children}
@@ -34,6 +36,7 @@ const PromotionEditContainer = ({
 			className="kit-promotion-edit-container__close"
 			aria-label={closeBtnLabel}
 			type="button"
+			onClick={onCloseClick}
 		>
 			<IconSvg
 				className="kit-promotion-edit-container__close-icon"

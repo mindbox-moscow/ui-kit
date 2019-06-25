@@ -23,7 +23,7 @@ interface IState {
 	selectedOptions: IOption[];
 }
 
-export class SelectMulti extends React.Component<IProps, IState> {
+export class SelectMulti extends React.PureComponent<IProps, IState> {
 	public state = {
 		isOpen: false,
 		selectedOptions: this.props.options.filter(({ checked }) => checked)

@@ -3,8 +3,8 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
 import { PromotionEditContainer } from "../PromotionEditContainer";
-import { IItem as ISelectItem, Select } from "../Select";
-import { IOption as ISelectNestedOption, SelectNested } from "../SelectNested";
+import { ISelectOption, Select } from "../Select";
+import { ISelectNestedOption, SelectNested } from "../SelectNested";
 import { IProps, IState } from "./types";
 
 import "./PromotionGroupEdit.scss";
@@ -14,57 +14,93 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 		data: this.props.data
 	};
 
-	public handleParentGropuChange = ({ id }: ISelectNestedOption) => {
-		this.setState(state => ({
-			...state,
+	public handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({
 			data: {
-				...state.data,
-				parentGroup: id
+				...this.state.data,
+				title: e.target.value
 			}
-		}));
+		});
 	};
 
-	public handleRule1Change = ({ title }: ISelectItem) => {
-		this.setState(state => ({
-			...state,
+	public handleParentGropuChange = (parentGroup: ISelectNestedOption) => {
+		this.setState({
 			data: {
-				...state.data,
-				rule1: title
+				...this.state.data,
+				parentGroup
 			}
-		}));
+		});
 	};
 
-	public handleRule2Change = ({ title }: ISelectItem) => {
-		this.setState(state => ({
-			...state,
+	public handleRule1Change = (rule1: ISelectOption) => {
+		this.setState({
 			data: {
-				...state.data,
-				rule2: title
+				...this.state.data,
+				rule1
 			}
-		}));
+		});
+	};
+
+	public handleRule2Change = (rule2: ISelectOption) => {
+		this.setState({
+			data: {
+				...this.state.data,
+				rule2
+			}
+		});
+	};
+
+	public handleMaxDiscountChange = (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		this.setState({
+			data: {
+				...this.state.data,
+				maxDiscount: parseInt(e.target.value, 10)
+			}
+		});
+	};
+
+	public handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		this.props.onSubmit(e, this.state.data);
 	};
 
 	public render() {
 		const {
-			data,
 			labels,
 			parentGroupData,
 			rule1Data,
 			rule2Data,
-			onClose,
-			onSubmit
+			onClose
 		} = this.props;
+		const {
+			title,
+			parentGroup,
+			rule1,
+			rule2,
+			hasMaxDiscount,
+			maxDiscount
+		} = this.state.data;
 
 		return (
 			<PromotionEditContainer
 				closeBtnLabel={labels.closeBtn}
 				onCloseClick={onClose}
 			>
-				<form className="kit-promotion-group-edit" onSubmit={onSubmit}>
+				<form
+					className="kit-promotion-group-edit"
+					onSubmit={this.handleSubmit}
+				>
 					<PromotionEditContainer.Header>
 						<fieldset className="kit-promotion-group-edit__title">
 							<legend>{labels.titleField}</legend>
-							<Input type="text" defaultValue={data.title} />
+							<Input
+								type="text"
+								defaultValue={title!}
+								onChange={this.handleTitleChange}
+							/>
 						</fieldset>
 					</PromotionEditContainer.Header>
 
@@ -73,6 +109,7 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							<legend>{labels.parentGroupField}</legend>
 							<SelectNested
 								{...parentGroupData}
+								selectedOption={parentGroup}
 								onChange={this.handleParentGropuChange}
 							/>
 						</fieldset>
@@ -82,17 +119,21 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							<Select
 								className="kit-promotion-group-edit__rule-1"
 								hasDescriptions={true}
-								{...rule1Data}
+								items={rule1Data.items}
+								placeholder={rule1Data.placeholder}
+								defaultValue={rule1!.title}
 								onChange={this.handleRule1Change}
 							/>
 							<Select
 								className="kit-promotion-group-edit__rule-2"
 								hasDescriptions={true}
-								{...rule2Data}
+								items={rule2Data.items}
+								placeholder={rule2Data.placeholder}
+								defaultValue={rule2!.title}
 								onChange={this.handleRule2Change}
 							/>
 							<p className="kit-promotion-group-edit__rule-desc">
-								{rule1Data.items[1]!.description}
+								{rule1!.description}
 							</p>
 						</fieldset>
 
@@ -101,12 +142,13 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							<div className="kit-promotion-group-edit__max-discount-inner">
 								<Checkbox
 									text={labels.maxDiscountCheckbox}
-									checked={data.hasMaxDiscount}
+									checked={hasMaxDiscount}
 								/>
 								<Input
 									className="kit-promotion-group-edit__max-discount-input"
 									type="text"
-									defaultValue={`${data.maxDiscount}`}
+									defaultValue={`${maxDiscount}`}
+									onChange={this.handleMaxDiscountChange}
 								/>
 								&#37;
 							</div>

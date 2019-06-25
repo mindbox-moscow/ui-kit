@@ -1,13 +1,4 @@
 ```jsx
-const data = {
-	title: "Снова в школу",
-	parentGroup: 1,
-	rule1: 1,
-	rule2: 1,
-	maxDiscount: 50,
-	hasMaxDiscount: true
-};
-
 const labels = {
 	titleField: "Название группы",
 	parentGroupField: "Родительская группа",
@@ -42,7 +33,6 @@ const groups = [
 
 const parentGroupData = {
 	options: groups,
-	selectedOption: groups[0].children[0],
 	submitBtnText: "Выбрать",
 	cancelBtnText: "Отменить",
 	showSubgroupBtnText: "Показать подгруппы"
@@ -69,14 +59,21 @@ const rules2 = [
 
 const rule1Data = {
 	items: rules1,
-	defaultValue: "Последовательное применение",
 	placeholder: "Выбрать"
 };
 
 const rule2Data = {
 	items: rules2,
-	defaultValue: "На уровне товара",
 	placeholder: "Выбрать"
+};
+
+const data = {
+	title: "Снова в школу",
+	parentGroup: groups[0].children[0],
+	rule1: rules1[0],
+	rule2: rules2[0],
+	maxDiscount: 50,
+	hasMaxDiscount: true
 };
 
 <PromotionGroupEdit
@@ -86,5 +83,6 @@ const rule2Data = {
 	rule1Data={rule1Data}
 	rule2Data={rule2Data}
 	onClose={() => console.log("PromotionGroupEdit closed")}
+	onSubmit={(_, data) => console.log(data)}
 />;
 ```

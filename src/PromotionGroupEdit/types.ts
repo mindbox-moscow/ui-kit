@@ -1,13 +1,13 @@
-import { IItem as ISelectOption } from "../Select";
-import { IOption as ISelectNestedOption } from "../SelectNested";
+import { ISelectOption } from "../Select";
+import { ISelectNestedOption } from "../SelectNested";
 
 interface IPromotionGroupData {
-	title: string;
-	parentGroup: number;
-	rule1: string;
-	rule2: string;
-	maxDiscount: number;
-	hasMaxDiscount: boolean;
+	title?: string;
+	parentGroup?: ISelectNestedOption;
+	rule1?: ISelectOption;
+	rule2?: ISelectOption;
+	maxDiscount?: number;
+	hasMaxDiscount?: boolean;
 }
 
 export interface IProps {
@@ -24,7 +24,6 @@ export interface IProps {
 	};
 	parentGroupData: {
 		options: ISelectNestedOption[];
-		selectedOption?: ISelectNestedOption;
 		submitBtnText: string;
 		cancelBtnText: string;
 		showSubgroupBtnText: string;
@@ -32,15 +31,13 @@ export interface IProps {
 	rule1Data: {
 		items: Array<ISelectOption | null>;
 		placeholder: string;
-		defaultValue?: string;
 	};
 	rule2Data: {
 		items: Array<ISelectOption | null>;
 		placeholder: string;
-		defaultValue?: string;
 	};
 	onClose: (e: React.MouseEvent) => void;
-	onSubmit: (e: React.FormEvent) => void;
+	onSubmit: (e: React.FormEvent, data: IPromotionGroupData) => void;
 }
 
 export interface IState {

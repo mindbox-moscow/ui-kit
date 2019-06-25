@@ -4,11 +4,13 @@ import { Icon } from "../Icon/Icon";
 
 import "./Select.scss";
 
-export interface IItem {
+interface IItem {
 	title: string;
 	disabled?: boolean;
 	description?: string;
 }
+
+export { IItem as ISelectOption };
 
 interface IProps {
 	items: Array<IItem | null>;
@@ -22,7 +24,7 @@ interface IProps {
 	className?: string;
 }
 
-export class Select extends React.Component<IProps> {
+export class Select extends React.PureComponent<IProps> {
 	public wrapper: HTMLDivElement;
 	public state = {
 		activeItem: this.props.defaultValue || "",

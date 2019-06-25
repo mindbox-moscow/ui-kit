@@ -10,7 +10,7 @@ interface Props {
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
-	onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
@@ -20,7 +20,7 @@ interface State {
 	filter?: any;
 }
 
-export class Input extends React.Component<Props, State> {
+export class Input extends React.PureComponent<Props, State> {
 	public state = { filter: "" };
 
 	public render() {

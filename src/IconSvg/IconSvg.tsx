@@ -10,17 +10,25 @@ interface IProps {
 	ariaHidden?: boolean;
 }
 
-const IconSvg = ({ type, className, ariaHidden = true }: IProps) => {
-	const Icon = assets[type];
+const Svg = ({ type }: { type: IconType }) => {
+	const Asset = assets[type];
 
-	return (
-		<span
-			className={cn("kit-icon-svg", className)}
-			aria-hidden={ariaHidden}
-		>
-			<Icon />
-		</span>
-	);
+	return <Asset />;
 };
+
+class IconSvg extends React.PureComponent<IProps> {
+	public render() {
+		const { type, className, ariaHidden = true } = this.props;
+
+		return (
+			<span
+				className={cn("kit-icon-svg", className)}
+				aria-hidden={ariaHidden}
+			>
+				<Svg type={type} />
+			</span>
+		);
+	}
+}
 
 export { IconSvg, IconType as IconSvgTypes };

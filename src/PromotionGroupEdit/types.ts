@@ -40,4 +40,9 @@ export interface IProps {
 		defaultValue?: string;
 	};
 	onClose: (e: React.MouseEvent) => void;
+	onSubmit: (e: React.FormEvent) => void;
+}
+
+export interface IState {
+	data: IPromotionGroupData;
 }

@@ -3,13 +3,47 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
 import { PromotionEditContainer } from "../PromotionEditContainer";
-import { Select } from "../Select";
-import { SelectNested } from "../SelectNested";
-import { IProps } from "./types";
+import { IItem as ISelectItem, Select } from "../Select";
+import { IOption as ISelectNestedOption, SelectNested } from "../SelectNested";
+import { IProps, IState } from "./types";
 
 import "./PromotionGroupEdit.scss";
 
-export class PromotionGroupEdit extends React.Component<IProps> {
+export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
+	public state = {
+		data: this.props.data
+	};
+
+	public handleParentGropuChange = ({ id }: ISelectNestedOption) => {
+		this.setState(state => ({
+			...state,
+			data: {
+				...state.data,
+				parentGroup: id
+			}
+		}));
+	};
+
+	public handleRule1Change = ({ title }: ISelectItem) => {
+		this.setState(state => ({
+			...state,
+			data: {
+				...state.data,
+				rule1: title
+			}
+		}));
+	};
+
+	public handleRule2Change = ({ title }: ISelectItem) => {
+		this.setState(state => ({
+			...state,
+			data: {
+				...state.data,
+				rule2: title
+			}
+		}));
+	};
+
 	public render() {
 		const {
 			data,
@@ -17,7 +51,8 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 			parentGroupData,
 			rule1Data,
 			rule2Data,
-			onClose
+			onClose,
+			onSubmit
 		} = this.props;
 
 		return (
@@ -25,7 +60,7 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 				closeBtnLabel={labels.closeBtn}
 				onCloseClick={onClose}
 			>
-				<form className="kit-promotion-group-edit">
+				<form className="kit-promotion-group-edit" onSubmit={onSubmit}>
 					<PromotionEditContainer.Header>
 						<fieldset className="kit-promotion-group-edit__title">
 							<legend>{labels.titleField}</legend>
@@ -36,7 +71,10 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 					<PromotionEditContainer.Main>
 						<fieldset className="kit-promotion-group-edit__parent-group">
 							<legend>{labels.parentGroupField}</legend>
-							<SelectNested {...parentGroupData} />
+							<SelectNested
+								{...parentGroupData}
+								onChange={this.handleParentGropuChange}
+							/>
 						</fieldset>
 
 						<fieldset className="kit-promotion-group-edit__rules">
@@ -45,11 +83,13 @@ export class PromotionGroupEdit extends React.Component<IProps> {
 								className="kit-promotion-group-edit__rule-1"
 								hasDescriptions={true}
 								{...rule1Data}
+								onChange={this.handleRule1Change}
 							/>
 							<Select
 								className="kit-promotion-group-edit__rule-2"
 								hasDescriptions={true}
 								{...rule2Data}
+								onChange={this.handleRule2Change}
 							/>
 							<p className="kit-promotion-group-edit__rule-desc">
 								{rule1Data.items[1]!.description}

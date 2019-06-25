@@ -6,13 +6,15 @@ import "./SelectNested.scss";
 
 import cn from "classnames";
 
-export interface IOption {
+interface IOption {
 	id: number;
 	title: string;
 	details: string[];
 	children?: IOption[];
 	disabled?: boolean;
 }
+
+export { IOption as ISelectNestedOption };
 
 interface IProps {
 	options: IOption[];

@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import "./BreadcrumbList.scss";
+import "./List.scss";
 
-export class BreadcrumbList extends React.Component {
+export class List extends React.Component {
     public render() {
         return (
             <ul className='kit-breadcrumb-list'>

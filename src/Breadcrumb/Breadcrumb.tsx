@@ -1,18 +1,23 @@
 import * as React from "react";
-import { BreadcrumbList } from "./components/BreadcrumbList/BreadcrumbList";
-import { BreadcrumbItem } from "./components/BreadcrumbItem/BreadcrumbItem";
+import { Item } from "./components/Item/Item";
+import { List } from "./components/List/List";
 
 interface Props {
     text: string;
+	onClick: (e: React.MouseEvent) => void;
 }
 
 export class Breadcrumb extends React.Component<Props> {
+
+	public static Item = Item;
+	public static List = List;
+
     public render() {
         const { text } = this.props;
         return (
-            <BreadcrumbList>
-                <BreadcrumbItem text={text}/>
-            </BreadcrumbList>
+            <Breadcrumb.List>
+                <Breadcrumb.Item text={text}/>
+            </Breadcrumb.List>
         );
     }
 }

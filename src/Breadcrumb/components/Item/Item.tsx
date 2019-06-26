@@ -1,11 +1,11 @@
 import * as React from "react";
-import "./BreadcrumbItem.scss";
+import "./Item.scss";
 
 interface Props {
     text: string;
 }
 
-export class BreadcrumbItem extends React.Component<Props> {
+export class Item extends React.Component<Props> {
     public render() {
         const { text } = this.props;
         return (

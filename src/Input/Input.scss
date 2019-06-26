@@ -1,15 +1,71 @@
+.kit-input-field-wrap {
+	position: relative;
+}
+
 .kit-input-field {
-    font-family: "PT Sans", sans-serif;
-    box-sizing: border-box;
-    padding-right: 10px;
-    padding-left: 10px;
-    display: block;
-    width: 100%;
-    height: 29px;
-    font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #b0b2b5;
-    border-radius: 2px;
-    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    outline: none;
+	font-family: "PT Sans", sans-serif;
+	box-sizing: border-box;
+	padding-right: 10px;
+	padding-left: 10px;
+	display: block;
+	width: 100%;
+	height: 29px;
+	font-size: 14px;
+	line-height: 19px;
+	background-color: #fff;
+	border: 1px solid #b0b2b5;
+	border-radius: 2px;
+	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+	outline: none;
+
+	&::placeholder {
+		font-size: 14px;
+		line-height: 19px;
+		color: #999;
+	}
+
+	&_no-shadow {
+		box-shadow: none;
+		border: 1px solid #c5d6e1;
+	}
+
+	&_search {
+		padding-right: 35px;
+	}
+
+	&_size_small {
+		height: 26px;
+		padding-right: 5px;
+		padding-left: 5px;
+		font-size: 13px;
+	}
+
+	&_search#{&}_size_small {
+		padding-right: 27px;
+	}
+}
+
+.kit-input-field__icon {
+	position: absolute;
+	top: 3px;
+	right: 9px;
+	width: 22px;
+	height: 22px;
+	cursor: default;
+	pointer-events: none;
+
+	.kit-input-field_size_small + & {
+		width: 17px;
+		height: 17px;
+		top: 5px;
+		right: 6px;
+	}
+
+	svg {
+		fill: #999;
+
+		.kit-input-field_no-shadow + & {
+			fill: #265378;
+		}
+	}
 }

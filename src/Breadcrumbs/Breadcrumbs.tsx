@@ -3,13 +3,13 @@ import * as React from "react";
 import "./Breadcrumbs.scss"
 
 interface IProps {
-	children: any;
+	children: React.ReactNode;
 	text: string;
 }
 
 interface IPropsItem {
 	text: string;
-	onClick: (e: React.MouseEvent) => void;
+	onClick?: (e: React.MouseEvent) => void;
 }
 
 const Item = (props: IPropsItem) => {

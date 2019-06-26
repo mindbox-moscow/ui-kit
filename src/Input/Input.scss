@@ -19,6 +19,10 @@
 	outline: none;
 	-webkit-appearance: textfield;
 
+	&::-webkit-search-decoration {
+		display: none;
+	}
+
 	&::placeholder {
 		font-size: 14px;
 		color: #999;

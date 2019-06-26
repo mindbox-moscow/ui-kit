@@ -5,19 +5,19 @@ import "./Breadcrumbs.scss"
 interface IProps {
 	children: any;
 	text: string;
-	onClick: (e: React.MouseEvent) => void;
 }
 
 interface IPropsItem {
 	text: string;
+	onClick: (e: React.MouseEvent) => void;
 }
 
 const Item = (props: IPropsItem) => {
-	const { text } = props;
+	const { text, onClick } = props;
 
 	return (
 		<li className="kit-breadcrumb__item">
-			<button className="kit-breadcrumb__btn">{text}</button>
+			<button className="kit-breadcrumb__btn" onClick={onClick}>{text}</button>
 		</li>
 	);
 };

@@ -12,5 +12,6 @@
 	<IconSvg type="coins" />
 	<IconSvg type="magnifier" />
 	<IconSvg type="dots" ariaHidden />
+	<IconSvg type="arrow-right" />
 </div>
 ```

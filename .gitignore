@@ -28,6 +28,7 @@ yarn-error.log*
 dist/
 docs/
 build/
+.idea/
 
 # using yarn for build
 package-lock.json

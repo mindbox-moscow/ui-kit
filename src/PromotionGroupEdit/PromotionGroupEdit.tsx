@@ -116,10 +116,12 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							/>
 						</fieldset>
 
-						<fieldset className="kit-promotion-group-edit__rules">
-							<legend>{labels.rulesField}</legend>
+						<fieldset className="kit-promotion-group-edit__calc-strategy-wrap">
+							<legend>
+								{labels.groupCalculationStrategyField}
+							</legend>
 							<Select
-								className="kit-promotion-group-edit__rule-1"
+								className="kit-promotion-group-edit__calc-strategy"
 								hasDescriptions={true}
 								items={groupCalculationStrategyList.items}
 								placeholder={
@@ -131,14 +133,14 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 								}
 							/>
 							<Select
-								className="kit-promotion-group-edit__rule-2"
+								className="kit-promotion-group-edit__arbitration-mode"
 								hasDescriptions={true}
 								items={arbitrationModeList.items}
 								placeholder={arbitrationModeList.placeholder}
 								defaultValue={arbitrationMode!.title}
 								onChange={this.handleArbitrationModeChange}
 							/>
-							<p className="kit-promotion-group-edit__rule-desc">
+							<p className="kit-promotion-group-edit__calc-strategy-desc">
 								{groupCalculationStrategy!.description}
 							</p>
 						</fieldset>

@@ -2,7 +2,7 @@
 const labels = {
 	titleField: "Название группы",
 	parentGroupField: "Родительская группа",
-	rulesField: "Правила применения акций",
+	groupCalculationStrategyField: "Правила применения акций",
 	maxDiscountField: "Максимальный процент скидки",
 	maxDiscountCheckbox:
 		"Ограничить максимальный процент скидки для группы на уровне",

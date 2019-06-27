@@ -16,7 +16,7 @@ export interface IProps {
 		titleField: string;
 		closeBtn: string;
 		parentGroupField: string;
-		rulesField: string;
+		groupCalculationStrategyField: string;
 		maxDiscountField: string;
 		maxDiscountCheckbox: string;
 		submitBtn: string;

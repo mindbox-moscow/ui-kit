@@ -243,7 +243,6 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					<IconSvg
 						className="kit-select-nested__label-icon"
 						type="catalog-tree"
-						ariaHidden={true}
 					/>
 				</button>
 				{isOpen && this.renderDropdown(options)}

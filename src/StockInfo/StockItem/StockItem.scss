@@ -23,10 +23,16 @@
 }
 
 .kit-stock-item__promo {
-	width: 471.5px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	padding-left: 16px;
+	width: 471.5px;
+}
+
+.kit-stock-item__date-wrap {
+	display: flex;
+	align-items: center;
 }
 
 .kit-stock-item__promo-title-wrap {
@@ -35,6 +41,16 @@
 	margin: 0;
 	margin-right: 8px;
 	min-width: 150px;
+}
+
+.kit-stock-item__icon {
+
+	&_grey {
+
+		svg {
+			fill: #999;
+		}
+	}
 }
 
 .kit-stock-item__promo-title {
@@ -79,4 +95,8 @@
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
+}
+
+.kit-stock-item__action-dropdown {
+	margin-right: 10px;
 }

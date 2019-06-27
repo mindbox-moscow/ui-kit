@@ -15,7 +15,7 @@ interface IProps {
 
 interface IState {
 	defaultStatus: any;
-	isExpanded: boolean
+	isExpanded: boolean;
 }
 
 export class ActionCatalog extends React.Component<IProps, IState> {
@@ -103,7 +103,8 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 											}
 											start={null}
 											finish={"25.11.19"}
-											badgeTitle={"Остановлена"}
+											badgeTitle="Заверешена"
+											size="small"
 										/>
 										<StockItem
 											icon={"coins"}
@@ -112,7 +113,9 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 											}
 											start={"25.11.19"}
 											finish={"25.11.20"}
-											badgeTitle={"Завершена"}
+											badgeTitle="Заверешена"
+											size="small"
+											mode="danger"
 										/>
 										<StockItem
 											isFinished={true}
@@ -122,7 +125,9 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 											}
 											start={null}
 											finish={null}
-											badgeTitle={"Остановлена"}
+											badgeTitle="Заверешена"
+											size="small"
+											mode="disabled"
 										/>
 									</StockList>
 								</ul>

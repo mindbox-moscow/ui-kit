@@ -13,8 +13,8 @@ interface Props {
 	finish: string | null;
 	isFinished?: boolean;
 	badgeTitle: string;
-	size?: string;
-	mode?: string;
+	size?: any;
+	mode?: any;
 }
 
 export class StockItem extends React.Component<Props> {
@@ -33,7 +33,6 @@ export class StockItem extends React.Component<Props> {
 				</div>
 				<div className="kit-stock-item__promo">
 					<p className="kit-stock-item__promo-title-wrap">
-						{/*<Icon icon={icon}/>*/}
 						<IconSvg type={icon}/>
 						<span className={cn("kit-stock-item__promo-title", {
 						"kit-stock-item__promo-title_no-sale": !start })}>

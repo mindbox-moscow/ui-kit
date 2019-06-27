@@ -79,7 +79,7 @@ export class NestedItem extends React.Component<IProps, IState> {
 						</div>
 					</div>
 					{(this.props.defaultStatus && children) ||
-						(this.state.isExpanded && children)}
+						(this.state.defaultStatus && children)}
 				</li>
 			</React.Fragment>
 		);

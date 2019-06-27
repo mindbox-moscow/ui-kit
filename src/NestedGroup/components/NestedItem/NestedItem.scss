@@ -2,7 +2,8 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 8px;
+	//margin-bottom: 8px;
+	margin-top: 8px;
 	width: 100%;
 	align-items: center;
 	font-family: "PT Sans", sans-serif;
@@ -24,6 +25,7 @@
 
 .kit-nested-item__wrap {
 	display: flex;
+	//margin-bottom: 8px;
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;

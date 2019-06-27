@@ -4,7 +4,8 @@
 		display: "flex",
 		justifyContent: "space-between",
 		backgroundColor: "#F3F3EB",
-		flexDirection: "column"
+		flexDirection: "column",
+		padding: "10px"
 	}}
 >
 	<ActionCatalog />

@@ -38,9 +38,9 @@ $kit-select-nested-padding-left: 10px;
 	text-align: left;
 
 	.kit-select-nested_show_dropdown & {
-		background-color: #F6F7F7;
+		background-color: #f6f7f7;
 		padding-bottom: 4px;
-		border: 1px solid #8AACC2;
+		border: 1px solid #8aacc2;
 		border-bottom-width: 0;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
@@ -90,14 +90,15 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__dropdown-wrap {
 	position: absolute;
+	top: 0;
+	padding-top: 47px;
 	z-index: 1;
 	width: 100%;
 	background-color: #ffffff;
 	border: 1px solid #8aacc2;
 	border-top-width: 0;
-	border-bottom-left-radius: $kit-select-nested-border-radius;
-	border-bottom-right-radius: $kit-select-nested-border-radius;
-	box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
+	border-radius: $kit-select-nested-border-radius;
+	overflow: hidden;
 }
 
 .kit-select-nested__dropdown-option-details {

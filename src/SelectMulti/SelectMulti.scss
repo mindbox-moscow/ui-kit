@@ -6,7 +6,6 @@ $kit-select-multi-border-radius: 3px;
 	display: block;
 	min-width: 108px;
 	font-family: "PT Sans", sans-serif;
-	border: 1px solid #c5d6e1;
 	border-radius: $kit-select-multi-border-radius;
 	background-color: #ffffff;
 	white-space: nowrap;
@@ -25,7 +24,7 @@ $kit-select-multi-border-radius: 3px;
 	width: 100%;
 	min-height: 29px;
 	background-color: #ffffff;
-	border: none;
+	border: 1px solid #c5d6e1;
 	border-radius: $kit-select-multi-border-radius;
 	appearance: none;
 	margin: 0;
@@ -34,9 +33,7 @@ $kit-select-multi-border-radius: 3px;
 	text-align: left;
 
 	.kit-select-multi_show_dropdown & {
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
-		border-bottom: 1px solid #f0f0f0;
+		border-color: transparent;
 	}
 }
 

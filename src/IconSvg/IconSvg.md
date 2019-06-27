@@ -11,6 +11,6 @@
 	<IconSvg type="catalog-tree" />
 	<IconSvg type="coins" />
 	<IconSvg type="magnifier" />
-	<IconSvg type="dots" ariaHidden />
+	<IconSvg type="dots" ariaHidden={false} />
 </div>
 ```

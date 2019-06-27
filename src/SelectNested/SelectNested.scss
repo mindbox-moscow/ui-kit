@@ -81,13 +81,10 @@ $kit-select-nested-padding-left: 10px;
 	position: absolute;
 	top: 15px;
 	right: 20px;
+	fill: #8aacc2;
 
-	svg {
-		fill: #8aacc2;
-
-		.kit-select-nested_show_dropdown & {
-			fill: #323232;
-		}
+	.kit-select-nested_show_dropdown & {
+		fill: #323232;
 	}
 }
 

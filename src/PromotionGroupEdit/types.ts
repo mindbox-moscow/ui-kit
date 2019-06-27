@@ -4,8 +4,8 @@ import { ISelectNestedOption } from "../SelectNested";
 interface IPromotionGroupData {
 	title?: string;
 	parentGroup?: ISelectNestedOption;
-	rule1?: ISelectOption;
-	rule2?: ISelectOption;
+	groupCalculationStrategy?: ISelectOption;
+	arbitrationMode?: ISelectOption;
 	maxDiscount?: number;
 	hasMaxDiscount?: boolean;
 }
@@ -28,11 +28,11 @@ export interface IProps {
 		cancelBtnText: string;
 		showSubgroupBtnText: string;
 	};
-	rule1Data: {
+	groupCalculationStrategyList: {
 		items: Array<ISelectOption | null>;
 		placeholder: string;
 	};
-	rule2Data: {
+	arbitrationModeList: {
 		items: Array<ISelectOption | null>;
 		placeholder: string;
 	};

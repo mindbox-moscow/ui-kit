@@ -32,20 +32,22 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 		});
 	};
 
-	public handleRule1Change = (rule1: ISelectOption) => {
+	public handleGroupCalculationStrategyChange = (
+		groupCalculationStrategy: ISelectOption
+	) => {
 		this.setState({
 			data: {
 				...this.state.data,
-				rule1
+				groupCalculationStrategy
 			}
 		});
 	};
 
-	public handleRule2Change = (rule2: ISelectOption) => {
+	public handleArbitrationModeChange = (arbitrationMode: ISelectOption) => {
 		this.setState({
 			data: {
 				...this.state.data,
-				rule2
+				arbitrationMode
 			}
 		});
 	};
@@ -71,15 +73,15 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 		const {
 			labels,
 			parentGroupData,
-			rule1Data,
-			rule2Data,
+			groupCalculationStrategyList,
+			arbitrationModeList,
 			onClose
 		} = this.props;
 		const {
 			title,
 			parentGroup,
-			rule1,
-			rule2,
+			groupCalculationStrategy,
+			arbitrationMode,
 			hasMaxDiscount,
 			maxDiscount
 		} = this.state.data;
@@ -119,21 +121,25 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							<Select
 								className="kit-promotion-group-edit__rule-1"
 								hasDescriptions={true}
-								items={rule1Data.items}
-								placeholder={rule1Data.placeholder}
-								defaultValue={rule1!.title}
-								onChange={this.handleRule1Change}
+								items={groupCalculationStrategyList.items}
+								placeholder={
+									groupCalculationStrategyList.placeholder
+								}
+								defaultValue={groupCalculationStrategy!.title}
+								onChange={
+									this.handleGroupCalculationStrategyChange
+								}
 							/>
 							<Select
 								className="kit-promotion-group-edit__rule-2"
 								hasDescriptions={true}
-								items={rule2Data.items}
-								placeholder={rule2Data.placeholder}
-								defaultValue={rule2!.title}
-								onChange={this.handleRule2Change}
+								items={arbitrationModeList.items}
+								placeholder={arbitrationModeList.placeholder}
+								defaultValue={arbitrationMode!.title}
+								onChange={this.handleArbitrationModeChange}
 							/>
 							<p className="kit-promotion-group-edit__rule-desc">
-								{rule1!.description}
+								{groupCalculationStrategy!.description}
 							</p>
 						</fieldset>
 

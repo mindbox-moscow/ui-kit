@@ -38,7 +38,7 @@ const parentGroupData = {
 	showSubgroupBtnText: "Показать подгруппы"
 };
 
-const rules1 = [
+const groupCalculationStrategyData = [
 	{
 		title: "Максимальная выгода",
 		description:
@@ -51,27 +51,27 @@ const rules1 = [
 	}
 ];
 
-const rules2 = [
+const arbitrationModeData = [
 	{ title: "На уровне товара" },
 	{ title: "На уровне товара 1" },
 	{ title: "На уровне товара 2" }
 ];
 
-const rule1Data = {
-	items: rules1,
+const groupCalculationStrategyList = {
+	items: groupCalculationStrategyData,
 	placeholder: "Выбрать"
 };
 
-const rule2Data = {
-	items: rules2,
+const arbitrationModeList = {
+	items: arbitrationModeData,
 	placeholder: "Выбрать"
 };
 
 const data = {
 	title: "Снова в школу",
 	parentGroup: groups[0].children[0],
-	rule1: rules1[0],
-	rule2: rules2[0],
+	groupCalculationStrategy: groupCalculationStrategyData[0],
+	arbitrationMode: arbitrationModeData[0],
 	maxDiscount: 50,
 	hasMaxDiscount: true
 };
@@ -80,8 +80,8 @@ const data = {
 	data={data}
 	labels={labels}
 	parentGroupData={parentGroupData}
-	rule1Data={rule1Data}
-	rule2Data={rule2Data}
+	groupCalculationStrategyList={groupCalculationStrategyList}
+	arbitrationModeList={arbitrationModeList}
 	onClose={() => console.log("PromotionGroupEdit closed")}
 	onSubmit={(_, data) => console.log(data)}
 />;

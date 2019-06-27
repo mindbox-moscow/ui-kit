@@ -29,13 +29,10 @@ $kit-actions-dropdown-padding: 15px;
 	width: 4px;
 	height: 16px;
 	margin: auto;
+	fill: #c5d6e1;
 
-	svg {
-		fill: #c5d6e1;
-
-		.kit-actions-dropdown_opened & {
-			fill: #8aacc2;
-		}
+	.kit-actions-dropdown_opened & {
+		fill: #8aacc2;
 	}
 }
 

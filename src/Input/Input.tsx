@@ -10,16 +10,17 @@ interface Props {
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
-	onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
 	size?: SizeTypes;
+	className?: string;
 }
 
 interface State {
 	filter?: any;
 }
 
-export class Input extends React.Component<Props, State> {
+export class Input extends React.PureComponent<Props, State> {
 	public state = { filter: "" };
 
 	public render() {
@@ -30,7 +31,8 @@ export class Input extends React.Component<Props, State> {
 			onChange,
 			maxLength,
 			noShadow,
-			size
+			size,
+			className
 		} = this.props;
 
 		return (
@@ -42,7 +44,8 @@ export class Input extends React.Component<Props, State> {
 						"kit-input-field",
 						type === "search" && "kit-input-field_search",
 						noShadow && "kit-input-field_no-shadow",
-						size && `kit-input-field_size_${size}`
+						size && `kit-input-field_size_${size}`,
+						className
 					)}
 					defaultValue={defaultValue}
 					maxLength={maxLength}

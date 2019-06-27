@@ -60,19 +60,16 @@
 	height: 22px;
 	cursor: default;
 	pointer-events: none;
+	fill: #999;
+
+	.kit-input-field_no-shadow + & {
+		fill: #265378;
+	}
 
 	.kit-input-field_size_small + & {
 		width: 17px;
 		height: 17px;
 		top: 5px;
 		right: 6px;
-	}
-
-	svg {
-		fill: #999;
-
-		.kit-input-field_no-shadow + & {
-			fill: #265378;
-		}
 	}
 }

@@ -14,6 +14,8 @@ interface IOption {
 	disabled?: boolean;
 }
 
+export { IOption as ISelectNestedOption };
+
 interface IProps {
 	options: IOption[];
 	submitBtnText: string;
@@ -241,7 +243,6 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 					<IconSvg
 						className="kit-select-nested__label-icon"
 						type="catalog-tree"
-						ariaHidden={true}
 					/>
 				</button>
 				{isOpen && this.renderDropdown(options)}

@@ -20,7 +20,6 @@ $kit-select-nested-padding-left: 10px;
 		z-index: 2;
 		border-top-left-radius: $kit-select-nested-border-radius;
 		border-top-right-radius: $kit-select-nested-border-radius;
-		box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
 	}
 }
 
@@ -99,6 +98,7 @@ $kit-select-nested-padding-left: 10px;
 	border-top-width: 0;
 	border-radius: $kit-select-nested-border-radius;
 	overflow: hidden;
+	box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
 }
 
 .kit-select-nested__dropdown-option-details {

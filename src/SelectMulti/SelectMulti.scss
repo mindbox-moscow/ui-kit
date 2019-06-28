@@ -6,17 +6,12 @@ $kit-select-multi-border-radius: 3px;
 	display: block;
 	min-width: 108px;
 	font-family: "PT Sans", sans-serif;
-	border-radius: $kit-select-multi-border-radius;
 	background-color: #ffffff;
 	white-space: nowrap;
 	box-sizing: border-box;
 
 	& * {
 		box-sizing: border-box;
-	}
-
-	&_show_dropdown {
-		border-color: transparent;
 	}
 }
 
@@ -34,6 +29,8 @@ $kit-select-multi-border-radius: 3px;
 
 	.kit-select-multi_show_dropdown & {
 		border-color: transparent;
+		border-bottom: 1px dashed #000;
+		background: #f6f7f7;
 	}
 }
 

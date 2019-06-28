@@ -9,27 +9,26 @@ import { StockList } from "../StockInfo/StockList/StockList";
 import "./ActionCatalog.scss";
 
 interface IProps {
-	onClick?: any;
-	updateData: any;
+
 }
 
 interface IState {
-	defaultStatus: any;
-	isExpanded: boolean;
+	name: any,
 }
 
 export class ActionCatalog extends React.Component<IProps, IState> {
+
 	public state = {
-		defaultStatus: false,
-		isExpanded: false
+		name: false,
 	};
 
 	public render() {
-		const { onClick } = this.props;
 
+		// @ts-ignore
+		// @ts-ignore
 		return (
-			<React.Fragment>
-				<div>
+			<>
+				<div style={{ display: "flex" }}>
 					<Button
 						color="gray"
 						size="medium"
@@ -53,27 +52,24 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 						title={"Бытовая техника"}
 						information={"Максимальная выгода"}
 						maxDiscount={20}
-						defaultStatus={this.state.defaultStatus}
-						onClick={onClick}
-						updateData={this.updateData}
+						name={this.state.name}
+						updateState={null}
 					/>
 					<NestedItem
 						childrenCount={180}
 						title={"Школьные товары, канцтовары"}
 						information={"Последовательное применение"}
 						maxDiscount={null}
-						defaultStatus={this.state.defaultStatus}
-						onClick={onClick}
-						updateData={this.updateData}
+						name={this.state.name}
+						updateState={null}
 					/>
 					<NestedItem
 						childrenCount={12}
 						title={"Видео, фото"}
 						information={"Суммирование"}
 						maxDiscount={10}
-						defaultStatus={this.state.defaultStatus}
-						onClick={onClick}
-						updateData={this.updateData}
+						name={this.state.name}
+						updateState={this.updateData}
 					>
 						<ul className="kit-nested-list__sublist">
 							<NestedItem
@@ -81,9 +77,8 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 								title={"Бытовая техника"}
 								information={"Максимальная выгода"}
 								maxDiscount={null}
-								defaultStatus={this.state.defaultStatus}
-								onClick={onClick}
-								updateData={this.updateData}
+								name={this.state.name}
+								updateState={this.updateData}
 							>
 								<ul className="kit-nested-list__sublist">
 									<NestedItem
@@ -91,9 +86,8 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 										maxDiscount={50}
 										title={"Бытовая техника"}
 										information={"Максимальная выгода"}
-										defaultStatus={this.state.defaultStatus}
-										onClick={onClick}
-										updateData={this.updateData}
+										name={this.state.name}
+										updateState={this.updateData}
 									/>
 									<StockList>
 										<StockItem
@@ -135,23 +129,22 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 						</ul>
 					</NestedItem>
 				</NestedList>
-			</React.Fragment>
+			</>
 		);
 	}
 
 	private expandTree = () => {
-		this.setState(state => ({ ...state, defaultStatus: true }));
+		this.setState({name: true });
 	};
 
 	private collapseTree = () => {
-		this.setState(state => ({ ...state, defaultStatus: false }));
+		this.setState({name: false });
 	};
 
 	private updateData = () => {
 		this.setState(state => ({
 			...state,
-			defaultStatus: !this.state.defaultStatus,
-			isExpanded: !this.state.isExpanded
+			name: !state.name
 		}));
 	};
 }

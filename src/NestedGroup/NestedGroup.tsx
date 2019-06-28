@@ -1,4 +1,5 @@
 import * as React from "react";
+//import { Button } from "../Button";
 import { NestedItem } from "./components/NestedItem/NestedItem";
 import { NestedList } from "./components/NestedList/NestedList";
 import "./NestedGroup.scss";
@@ -8,27 +9,37 @@ interface Props {
 	title: string;
 	information: string;
 	maxDiscount: number | null;
-	onClick: any;
-	updateData: any
+	updateState: any
 }
 
-export class NestedGroup extends React.Component<Props> {
+interface State {
+
+}
+
+export class NestedGroup extends React.Component<Props, State> {
 	public render() {
-		const {childrenCount, title, information, maxDiscount, onClick} = this.props;
+		const {
+			childrenCount,
+			title,
+			information,
+			maxDiscount,
+			updateState
+		} = this.props;
+
 		return (
-			<NestedList>
-				<NestedItem
-					{...this.props}
-					childrenCount={childrenCount}
-					title={title}
-					information={information}
-					maxDiscount={maxDiscount}
-					defaultStatus={defaultStatus}
-					onClick={onClick}
-				/>
-			</NestedList>
+			<>
+				<NestedList>
+					<NestedItem
+						{...this.props}
+						childrenCount={childrenCount}
+						title={title}
+						information={information}
+						maxDiscount={maxDiscount}
+						name={name}
+						updateState={updateState}
+					/>
+				</NestedList>
+			</>
 		);
 	}
-
-
 }

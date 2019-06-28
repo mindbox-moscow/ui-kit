@@ -8,21 +8,19 @@ interface IProps {
 	title: string;
 	information: string;
 	maxDiscount?: number | null;
-	defaultStatus: any;
-	onClick: any;
-	updateData: any;
+	name: any;
+	updateState: any
 }
 
 interface IState {
-	isExpanded: boolean;
-	defaultStatus?: boolean;
+	isExpanded: boolean
 }
 
 export class NestedItem extends React.Component<IProps, IState> {
+
 	public state = {
-		defaultStatus: false,
-		isExpanded: false
-	};
+		isExpanded: false,
+	}
 
 	public render() {
 		const {
@@ -30,25 +28,29 @@ export class NestedItem extends React.Component<IProps, IState> {
 			title,
 			information,
 			maxDiscount,
-			children
+			children,
+			updateState
 		} = this.props;
+
+		console.log('props', this.props.name);
 
 		return (
 			<React.Fragment>
 				<li
 					className={cn("kit-nested-item", {
 						"kit-nested-item_expand":
-							this.props.defaultStatus || this.state.isExpanded
+						this.props.name
 					})}
 				>
 					<div
 						className="kit-nested-item__wrap"
-						onClick={this.expandChild}
+						onClick={updateState}
+						//onClick={updateData}
 					>
 						<div
 							className={cn("kit-nested-item__title-wrap", {
 								"kit-nested-item__title-wrap_expand":
-									this.props.defaultStatus || this.state.isExpanded
+								this.props.name
 							})}
 						>
 							<span className="kit-nested-item__name">
@@ -61,7 +63,7 @@ export class NestedItem extends React.Component<IProps, IState> {
 						<div
 							className={cn("kit-nested-item__promo", {
 								"kit-nested-item__promo_expand":
-									this.props.defaultStatus || this.state.isExpanded
+								this.props.name
 							})}
 						>
 							<span className="kit-nested-item__promo-title">
@@ -78,14 +80,15 @@ export class NestedItem extends React.Component<IProps, IState> {
 							</span>
 						</div>
 					</div>
-					{(this.props.defaultStatus && children) ||
-						(this.state.isExpanded && children)}
+					{(this.props.name && children)}
 				</li>
 			</React.Fragment>
 		);
 	}
-
-	private expandChild = () => {
-		this.setState(state => ({ ...state, isExpanded: !this.state.isExpanded }));
-	};
+	//
+	// private expandChild = () => {
+	// 	this.setState(state => ({ ...state, isExpanded: !this.state.isExpanded }));
+	// };
 }
+
+// this.props.defaultStatus ||

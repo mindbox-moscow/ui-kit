@@ -9,6 +9,7 @@ $kit-select-multi-border-radius: 3px;
 	background-color: #ffffff;
 	white-space: nowrap;
 	box-sizing: border-box;
+	border-radius: $kit-select-multi-border-radius;
 
 	& * {
 		box-sizing: border-box;

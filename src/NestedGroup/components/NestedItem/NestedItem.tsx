@@ -8,19 +8,10 @@ interface IProps {
 	title: string;
 	information: string;
 	maxDiscount?: number | null;
-	name: any;
-	updateState: any
+	defaultCollapsed: any;
 }
 
-interface IState {
-	isExpanded: boolean
-}
-
-export class NestedItem extends React.Component<IProps, IState> {
-
-	public state = {
-		isExpanded: false,
-	}
+export class NestedItem extends React.Component<IProps> {
 
 	public render() {
 		const {
@@ -28,29 +19,25 @@ export class NestedItem extends React.Component<IProps, IState> {
 			title,
 			information,
 			maxDiscount,
-			children,
-			updateState
+			children
 		} = this.props;
 
-		console.log('props', this.props.name);
+		console.log('p', this.props.defaultCollapsed)
 
 		return (
 			<React.Fragment>
 				<li
 					className={cn("kit-nested-item", {
-						"kit-nested-item_expand":
-						this.props.name
+						"kit-nested-item_expand": !this.props.defaultCollapsed
 					})}
 				>
 					<div
 						className="kit-nested-item__wrap"
-						onClick={updateState}
-						//onClick={updateData}
 					>
 						<div
 							className={cn("kit-nested-item__title-wrap", {
 								"kit-nested-item__title-wrap_expand":
-								this.props.name
+								!this.props.defaultCollapsed
 							})}
 						>
 							<span className="kit-nested-item__name">
@@ -62,8 +49,7 @@ export class NestedItem extends React.Component<IProps, IState> {
 						</div>
 						<div
 							className={cn("kit-nested-item__promo", {
-								"kit-nested-item__promo_expand":
-								this.props.name
+								"kit-nested-item__promo_expand": !this.props.defaultCollapsed
 							})}
 						>
 							<span className="kit-nested-item__promo-title">
@@ -80,15 +66,9 @@ export class NestedItem extends React.Component<IProps, IState> {
 							</span>
 						</div>
 					</div>
-					{(this.props.name && children)}
+					{!this.props.defaultCollapsed && children}
 				</li>
 			</React.Fragment>
 		);
 	}
-	//
-	// private expandChild = () => {
-	// 	this.setState(state => ({ ...state, isExpanded: !this.state.isExpanded }));
-	// };
 }
-
-// this.props.defaultStatus ||

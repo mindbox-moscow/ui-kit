@@ -9,7 +9,7 @@ interface Props {
 	title: string;
 	information: string;
 	maxDiscount: number | null;
-	updateState: any
+	defaultCollapsed: boolean
 }
 
 interface State {
@@ -23,7 +23,6 @@ export class NestedGroup extends React.Component<Props, State> {
 			title,
 			information,
 			maxDiscount,
-			updateState
 		} = this.props;
 
 		return (
@@ -35,8 +34,7 @@ export class NestedGroup extends React.Component<Props, State> {
 						title={title}
 						information={information}
 						maxDiscount={maxDiscount}
-						name={name}
-						updateState={updateState}
+						defaultCollapsed={this.props.defaultCollapsed}
 					/>
 				</NestedList>
 			</>

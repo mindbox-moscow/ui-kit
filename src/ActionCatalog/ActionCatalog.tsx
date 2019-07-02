@@ -1,31 +1,71 @@
 import * as React from "react";
 
+import Nestable from "react-nestable";
 import { Button } from "../Button";
 import { NestedItem } from "../NestedGroup/components/NestedItem/NestedItem";
-import { NestedList } from "../NestedGroup/components/NestedList/NestedList";
-import { StockItem } from "../StockInfo/StockItem/StockItem";
-import { StockList } from "../StockInfo/StockList/StockList";
+// import { NestedList } from "../NestedGroup/components/NestedList/NestedList";
+// import { StockItem } from "../StockInfo/StockItem/StockItem";
+// import { StockList } from "../StockInfo/StockList/StockList";
 
 import "./ActionCatalog.scss";
 
 interface IProps {
-
+	refNestable?: any
 }
 
 interface IState {
-	name: any,
+	name: any;
+	defaultCollapsed: any;
 }
 
-export class ActionCatalog extends React.Component<IProps, IState> {
+const items = [
+	{
+		id: 0,
+		title: "Бытовая техника",
+		childrenCount: 5,
+		information: "Максимальная выгода",
+		maxDiscount: 20,
+	},
+	{
+		id: 1,
+		title: "Бытовая техника",
+		childrenCount: 12,
+		maxDiscount: null,
+		information: "Суммирование",
+		children:
+		[
+			{
+				id: 2,
+				title: "Видео, фото",
+				childrenCount: 50,
+				maxDiscount: 50,
+				information: "Суммирование"
+			}
+		]
+	},
+	{
+		id: 3,
+		title: "Бытовая техника",
+		maxDiscount: null,
+		childrenCount: 180,
+		information: "Максимальная выгода"
+	}
+];
 
+// @ts-ignore
+// const renderItem = ({ item }) => {
+// 	return item.text;
+// };
+
+export class ActionCatalog extends React.Component<IProps, IState> {
 	public state = {
-		name: false,
+		defaultCollapsed: false,
+		name: false
 	};
 
-	public render() {
+	private refNestable: any;
 
-		// @ts-ignore
-		// @ts-ignore
+	public render() {
 		return (
 			<>
 				<div style={{ display: "flex" }}>
@@ -33,118 +73,63 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 						color="gray"
 						size="medium"
 						hasBorder={true}
-						onClick={this.expandTree}
+						onClick={() => this.collapse(1)}
 					>
-						Развернуть всё
+						Свернуть всё
 					</Button>
 					<Button
 						color="gray"
 						size="medium"
 						hasBorder={true}
-						onClick={this.collapseTree}
+						onClick={() => this.collapse(0)}
 					>
-						Свернуть всё
+						Развернуть всё
 					</Button>
 				</div>
-				<NestedList>
-					<NestedItem
-						childrenCount={5}
-						title={"Бытовая техника"}
-						information={"Максимальная выгода"}
-						maxDiscount={20}
-						name={this.state.name}
-						updateState={null}
-					/>
-					<NestedItem
-						childrenCount={180}
-						title={"Школьные товары, канцтовары"}
-						information={"Последовательное применение"}
-						maxDiscount={null}
-						name={this.state.name}
-						updateState={null}
-					/>
-					<NestedItem
-						childrenCount={12}
-						title={"Видео, фото"}
-						information={"Суммирование"}
-						maxDiscount={10}
-						name={this.state.name}
-						updateState={this.updateData}
-					>
-						<ul className="kit-nested-list__sublist">
-							<NestedItem
-								childrenCount={5}
-								title={"Бытовая техника"}
-								information={"Максимальная выгода"}
-								maxDiscount={null}
-								name={this.state.name}
-								updateState={this.updateData}
-							>
-								<ul className="kit-nested-list__sublist">
-									<NestedItem
-										childrenCount={5}
-										maxDiscount={50}
-										title={"Бытовая техника"}
-										information={"Максимальная выгода"}
-										name={this.state.name}
-										updateState={this.updateData}
-									/>
-									<StockList>
-										<StockItem
-											icon={"percent-round"}
-											title={
-												"Скидка физическим лицам по промокоду"
-											}
-											start={null}
-											finish={"25.11.19"}
-											badgeTitle="Заверешена"
-											size="small"
-										/>
-										<StockItem
-											icon={"coins"}
-											title={
-												"Скидка физическим лицам по промокоду"
-											}
-											start={"25.11.19"}
-											finish={"25.11.20"}
-											badgeTitle="Заверешена"
-											size="small"
-											mode="danger"
-										/>
-										<StockItem
-											isFinished={true}
-											icon={"percent-round"}
-											title={
-												"Скидка физическим лицам по промокоду"
-											}
-											start={null}
-											finish={null}
-											badgeTitle="Заверешена"
-											size="small"
-											mode="disabled"
-										/>
-									</StockList>
-								</ul>
-							</NestedItem>
-						</ul>
-					</NestedItem>
-				</NestedList>
+				<Nestable
+					items={items}
+					renderItem={this.renderItem}
+					collapsed={this.state.defaultCollapsed}
+					ref={(el: any) => this.refNestable = el}
+					handler={<span className="hand"/>}
+				/>
 			</>
 		);
 	}
 
-	private expandTree = () => {
-		this.setState({name: true });
+	public onDefaultCollapsed = () => {
+		this.setState({
+			defaultCollapsed: !this.state.defaultCollapsed
+		});
 	};
 
-	private collapseTree = () => {
-		this.setState({name: false });
+	// @ts-ignore
+	public renderItem = ({ item, handler, collapseIcon }) => {
+		return (
+			<>
+				{handler}
+				{collapseIcon}
+				<NestedItem
+					childrenCount={item.childrenCount}
+					maxDiscount={item.maxDiscount}
+					title={item.title}
+					information={item.information}
+					defaultCollapsed={this.state.defaultCollapsed}
+				/>
+			</>
+		);
 	};
 
-	private updateData = () => {
-		this.setState(state => ({
-			...state,
-			name: !state.name
-		}));
-	};
+	private collapse = (collapseCase: any) => {
+		if (this.refNestable) {
+			switch (collapseCase) {
+				case 0:
+					this.refNestable.collapse('NONE');
+					break;
+				case 1:
+					this.refNestable.collapse('ALL');
+					break;
+			}
+		}
+	}
 }

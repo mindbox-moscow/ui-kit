@@ -22,8 +22,6 @@ export class NestedItem extends React.Component<IProps> {
 			children
 		} = this.props;
 
-		console.log('p', this.props.defaultCollapsed)
-
 		return (
 			<React.Fragment>
 				<li

@@ -8,6 +8,8 @@ import { NestedItem } from "../NestedGroup/components/NestedItem/NestedItem";
 // import { StockList } from "../StockInfo/StockList/StockList";
 
 import "./ActionCatalog.scss";
+import { StockItem } from "../StockInfo/StockItem/StockItem";
+import { StockList } from "../StockInfo/StockList/StockList";
 
 interface IProps {
 	refNestable?: any
@@ -52,10 +54,17 @@ const items = [
 	}
 ];
 
-// @ts-ignore
-// const renderItem = ({ item }) => {
-// 	return item.text;
-// };
+
+const subItem = [
+	{
+		id: 0,
+		title: 'Hello',
+		icon: 'percent',
+		start: "22.01.14",
+		finish: "24.01.15",
+		badgeTitle: "Завершено"
+	}
+]
 
 export class ActionCatalog extends React.Component<IProps, IState> {
 	public state = {
@@ -73,7 +82,9 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 						color="gray"
 						size="medium"
 						hasBorder={true}
-						onClick={() => this.collapse(1)}
+						onClick={() => {
+							return this.collapse(1);
+						}}
 					>
 						Свернуть всё
 					</Button>
@@ -104,7 +115,22 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 	};
 
 	// @ts-ignore
-	public renderItem = ({ item, handler, collapseIcon }) => {
+
+	public renderSublist = ({subItem}) => {
+		return (
+			<StockList>
+				<StockItem title={subItem.title}
+						   icon={subItem.icon}
+						   start={subItem.start}
+						   finish={subItem.finish}
+						   badgeTitle={subItem.badgeTitle}/>
+			</StockList>
+		)
+	}
+
+
+	// @ts-ignore
+	public renderItem = ({ item, handler, collapseIcon, children }) => {
 		return (
 			<>
 				{handler}
@@ -115,7 +141,13 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 					title={item.title}
 					information={item.information}
 					defaultCollapsed={this.state.defaultCollapsed}
-				/>
+				>
+					{children &&
+						<ul className="kit-nested-list__sublist">
+							{children.map(this.renderSublist)}
+						</ul>
+					}
+				</NestedItem>
 			</>
 		);
 	};

@@ -7,7 +7,7 @@ interface Props {
 	children: string;
 	size: "small" | "medium" | "large" | "xs" | "normal";
 	color: "gray" | "lightgray";
-	type?: string;
+	type?: "button" | "submit" | "reset";
 	className?: string;
 	disabled?: boolean;
 	inheritFont?: boolean;

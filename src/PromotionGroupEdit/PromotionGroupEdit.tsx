@@ -10,7 +10,7 @@ import { IProps, IState } from "./types";
 import "./PromotionGroupEdit.scss";
 
 export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
-	public state = {
+	public state: IState = {
 		data: this.props.data
 	};
 

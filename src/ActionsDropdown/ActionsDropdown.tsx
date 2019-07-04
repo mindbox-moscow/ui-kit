@@ -98,7 +98,6 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 					<IconSvg
 						className="kit-actions-dropdown__toggle-icon"
 						type="dots"
-						ariaHidden={true}
 					/>
 				</button>
 				{isOpen && (

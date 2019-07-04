@@ -20,7 +20,6 @@ $kit-select-nested-padding-left: 10px;
 		z-index: 2;
 		border-top-left-radius: $kit-select-nested-border-radius;
 		border-top-right-radius: $kit-select-nested-border-radius;
-		box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
 	}
 }
 
@@ -29,7 +28,7 @@ $kit-select-nested-padding-left: 10px;
 	width: 100%;
 	min-height: 47px;
 	background-color: #ffffff;
-	border: 1px solid #C5D6E1;
+	border: 1px solid #c5d6e1;
 	border-radius: $kit-select-nested-border-radius;
 	appearance: none;
 	margin: 0;
@@ -38,9 +37,10 @@ $kit-select-nested-padding-left: 10px;
 	text-align: left;
 
 	.kit-select-nested_show_dropdown & {
-		background-color: #F6F7F7;
-		border: 1px solid #8AACC2;
-		border-bottom-color: transparent;
+		background-color: #f6f7f7;
+		padding-bottom: 4px;
+		border: 1px solid #8aacc2;
+		border-bottom-width: 0;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 	}
@@ -78,33 +78,30 @@ $kit-select-nested-padding-left: 10px;
 	width: 11px;
 	height: 16px;
 	position: absolute;
-	top: calc(50% + 1px);
+	top: 15px;
 	right: 20px;
-	transform: translateY(-50%);
+	fill: #8aacc2;
 
-	svg {
-		fill: #8AACC2;
-
-		.kit-select-nested_show_dropdown & {
-			fill: #323232;
-		}
+	.kit-select-nested_show_dropdown & {
+		fill: #323232;
 	}
 }
 
 .kit-select-nested__dropdown-wrap {
 	position: absolute;
+	top: 0;
+	padding-top: 47px;
 	z-index: 1;
 	width: 100%;
 	background-color: #ffffff;
-	border: 1px solid #8AACC2;
+	border: 1px solid #8aacc2;
 	border-top-width: 0;
-	border-bottom-left-radius: $kit-select-nested-border-radius;
-	border-bottom-right-radius: $kit-select-nested-border-radius;
+	border-radius: $kit-select-nested-border-radius;
+	overflow: hidden;
 	box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
 }
 
 .kit-select-nested__dropdown-option-details {
-
 	&:not(:first-child)::before {
 		content: "·";
 		margin: 0 8px;
@@ -120,7 +117,7 @@ $kit-select-nested-padding-left: 10px;
 	position: relative;
 	padding: 5px $kit-select-nested-padding-left 10px;
 	border-bottom: 1px dashed #939393;
-	background-color: #F6F7F7;
+	background-color: #f6f7f7;
 }
 
 .kit-select-nested__dropdown-list-wrap {
@@ -129,6 +126,7 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__dropdown-list {
 	width: fit-content;
+	min-width: 100%;
 	list-style: none;
 	margin: 0;
 	padding: 9px 0;
@@ -150,7 +148,8 @@ $kit-select-nested-padding-left: 10px;
 	border: 0;
 	border-radius: 0;
 	margin: 0;
-	padding: 3.5px ($kit-select-nested-offset-left + $kit-select-nested-padding-left);
+	padding: 3.5px
+		($kit-select-nested-offset-left + $kit-select-nested-padding-left);
 	appearance: none;
 	text-align: left;
 	cursor: pointer;
@@ -159,7 +158,7 @@ $kit-select-nested-padding-left: 10px;
 	&:focus {
 		outline: none;
 		color: #ffffff;
-		background-color: #3875D7;
+		background-color: #3875d7;
 	}
 
 	&_disabled {
@@ -174,12 +173,15 @@ $kit-select-nested-padding-left: 10px;
 	}
 
 	.kit-select-nested__dropdown-sublist & {
-		padding-left: $kit-select-nested-offset-left * 2 + $kit-select-nested-padding-left;
+		padding-left: $kit-select-nested-offset-left * 2 +
+			$kit-select-nested-padding-left;
 	}
 
 	@for $i from 2 through $kit-select-nested-limit {
 		#{$recursive-class-name} {
-		  padding-left: $kit-select-nested-offset-left * $i + $kit-select-nested-padding-left;
+			padding-left: $kit-select-nested-offset-left *
+				$i +
+				$kit-select-nested-padding-left;
 		}
 
 		$recursive-class-name: "#{$recursive-class-name} #{$inner-classes}";
@@ -257,7 +259,8 @@ $kit-select-nested-padding-left: 10px;
 
 		.kit-select-nested__dropdown-option_show_sublist > & {
 			transform: rotate(90deg);
-			transform-origin: ($kit-select-nested-triangle-width / 2) $kit-select-nested-triangle-width 0;
+			transform-origin: ($kit-select-nested-triangle-width / 2)
+				$kit-select-nested-triangle-width 0;
 		}
 
 		.kit-select-nested__dropdown-option-label_disabled + & {
@@ -277,7 +280,7 @@ $kit-select-nested-padding-left: 10px;
 
 	@for $i from 2 through $kit-select-nested-limit {
 		#{$recursive-class-name} {
-		  left: $kit-select-nested-offset-left * $i - $cent-left;
+			left: $kit-select-nested-offset-left * $i - $cent-left;
 		}
 
 		$recursive-class-name: "#{$recursive-class-name} #{$inner-classes}";
@@ -287,8 +290,8 @@ $kit-select-nested-padding-left: 10px;
 .kit-select-nested__dropdown-footer {
 	display: flex;
 	align-items: center;
-	border-top: 1px solid #D7D8DA;
-	background-color: #F6F7F7;
+	border-top: 1px solid #d7d8da;
+	background-color: #f6f7f7;
 	padding: 10px 16px;
 }
 

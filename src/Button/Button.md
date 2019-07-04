@@ -19,6 +19,9 @@
 	<Button color="gray" size="medium" hasBorder mode="danger">
 		Кнопка
 	</Button>
+	<Button size="medium" mode="simple_text">
+		Кнопка
+	</Button>
 	<Button color="lightgray" size="small">
 		Кнопка
 	</Button>

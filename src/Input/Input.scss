@@ -17,10 +17,16 @@
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&::-webkit-search-decoration {
+		display: none;
+	}
 
 	&::placeholder {
 		font-size: 14px;
-		line-height: 19px;
 		color: #999;
 	}
 
@@ -31,6 +37,7 @@
 
 	&_search {
 		padding-right: 35px;
+		border-radius: 2px;
 	}
 
 	&_size_small {
@@ -47,25 +54,22 @@
 
 .kit-input-field__icon {
 	position: absolute;
-	top: 3px;
-	right: 9px;
+	top: 6px;
+	right: 6px;
 	width: 22px;
 	height: 22px;
 	cursor: default;
 	pointer-events: none;
+	fill: #999;
+
+	.kit-input-field_no-shadow + & {
+		fill: #265378;
+	}
 
 	.kit-input-field_size_small + & {
 		width: 17px;
 		height: 17px;
 		top: 5px;
 		right: 6px;
-	}
-
-	svg {
-		fill: #999;
-
-		.kit-input-field_no-shadow + & {
-			fill: #265378;
-		}
 	}
 }

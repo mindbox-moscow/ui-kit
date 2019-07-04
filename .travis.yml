@@ -42,4 +42,4 @@ jobs:
               - git config --global user.name "Travis CI"
               - git add --all
               - 'git commit --message "📝 Update docs via build $TRAVIS_BUILD_NUMBER"'
-              - git push "https://${GITHUB_TOKEN}@github.com/mindbox-moscow/ui-kit.git" gh-pages > /dev/null 2>&1
+              - git push "https://${GITHUB_TOKEN}@github.com/mindbox-moscow/ui-kit.git" gh-pages

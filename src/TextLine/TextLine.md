@@ -7,8 +7,8 @@
         height: "120px"
     }}
 >
-    <TextLine text="Welcom" isTitle />
-    <TextLine text="Welcom" />
-    <TextLine text="Welcom" isEditing />
+    <TextLine text="Welcom" isEditing={true} />
+    
+    <TextLine text="Welcome" onChange={() => {console.log('hello')}} isEditing={false} />
 </div>
 ```

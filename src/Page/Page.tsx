@@ -71,7 +71,7 @@ export class Page extends React.Component<Props> {
                             <div className="kit-page__title">
                                 <TextLine
                                     text={title}
-                                    isTitle
+                                    isTitle={true}
                                     onChange={handleTitleChange}
                                 />
                             </div>

@@ -4,14 +4,14 @@
 		display: "flex",
 		width: "200px",
 		justifyContent: "space-between",
-		alignItems: "flex-start"
+		alignItems: "center"
 	}}
 >
-	<IconSvg type="percent-round" />
+	<IconSvg className="custom-class-name" type="percent-round" />
 	<IconSvg type="catalog-tree" />
 	<IconSvg type="coins" />
 	<IconSvg type="magnifier" />
-	<IconSvg type="dots" ariaHidden={false} />
+	<IconSvg type="dots" />
 	<IconSvg type="arrow-right" />
 </div>
 ```

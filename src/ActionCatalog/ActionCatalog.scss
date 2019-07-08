@@ -20,7 +20,7 @@
 	bottom: 0;
 	left: 0;
 	width: 20px;
-	height: 100%;
+	height: calc(100% - 44px);
 	background-color: rgba(226, 234, 240, 0.35);
 }
 
@@ -42,3 +42,19 @@
 .icon-plus-gray {
 	background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%238AACC2' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 }
+
+//
+//.nestable-kit-nested-list__sub {
+//
+//	.nestable-group,
+//	.nestable-item {
+//		margin: 0;
+//	}
+//}
+//
+//.kit-nested-list__sublist {
+//
+//	 > .nestable-kit-nested-list__sub {
+//		 margin-left: -28px;
+//	}
+//}

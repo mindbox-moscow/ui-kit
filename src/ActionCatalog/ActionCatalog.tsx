@@ -12,7 +12,7 @@ import { StockItem } from "../StockInfo/StockItem/StockItem";
 import { StockList } from "../StockInfo/StockList/StockList";
 
 interface IProps {
-	refNestable?: any
+	refNestable?: any;
 }
 
 interface IState {
@@ -26,7 +26,7 @@ const items = [
 		title: "Бытовая техника",
 		childrenCount: 5,
 		information: "Максимальная выгода",
-		maxDiscount: 20,
+		maxDiscount: 20
 	},
 	{
 		id: 1,
@@ -34,16 +34,7 @@ const items = [
 		childrenCount: 12,
 		maxDiscount: null,
 		information: "Суммирование",
-		children:
-		[
-			{
-				id: 2,
-				title: "Видео, фото",
-				childrenCount: 50,
-				maxDiscount: 50,
-				information: "Суммирование"
-			}
-		]
+		sublist: true,
 	},
 	{
 		id: 3,
@@ -54,17 +45,21 @@ const items = [
 	}
 ];
 
-
 const subItem = [
 	{
 		id: 0,
-		title: 'Hello',
-		icon: 'percent',
+		stockTitle: "Скидка 10% по промокоду",
+		type: "percent-round",
 		start: "22.01.14",
 		finish: "24.01.15",
-		badgeTitle: "Завершено"
+		badgeTitle: "Завершено",
+		size: "small",
+		badge: "danger",
+		stockCount: 50,
+		maxDiscount: 50,
+		information: "Суммирование"
 	}
-]
+];
 
 export class ActionCatalog extends React.Component<IProps, IState> {
 	public state = {
@@ -101,8 +96,9 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 					items={items}
 					renderItem={this.renderItem}
 					collapsed={this.state.defaultCollapsed}
-					ref={(el: any) => this.refNestable = el}
-					handler={<span className="hand"/>}
+					ref={(el: any) => (this.refNestable = el)}
+					handler={<span className="hand" />}
+					group="kit-nested-item__group"
 				/>
 			</>
 		);
@@ -116,21 +112,26 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 
 	// @ts-ignore
 
-	public renderSublist = ({subItem}) => {
+	public renderSublist = ({ item }) => {
 		return (
 			<StockList>
-				<StockItem title={subItem.title}
-						   icon={subItem.icon}
-						   start={subItem.start}
-						   finish={subItem.finish}
-						   badgeTitle={subItem.badgeTitle}/>
+				<StockItem
+					title={item.title}
+					stockTitle={item.stockTitle}
+					information={item.information}
+					type={item.type}
+					start={item.start}
+					finish={item.finish}
+					badgeTitle={item.badgeTitle}
+					size={item.size}
+					stockCount={item.stockCount}
+				/>
 			</StockList>
-		)
-	}
-
+		);
+	};
 
 	// @ts-ignore
-	public renderItem = ({ item, handler, collapseIcon, children }) => {
+	public renderItem = ({ item, handler, collapseIcon }) => {
 		return (
 			<>
 				{handler}
@@ -142,11 +143,21 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 					information={item.information}
 					defaultCollapsed={this.state.defaultCollapsed}
 				>
-					{children &&
+					{item.sublist && (
+						<>
 						<ul className="kit-nested-list__sublist">
-							{children.map(this.renderSublist)}
+							{/*{item.sublist.map(this.renderSublist)}*/}
+							<Nestable
+								childrenProp="kit-nested-list__sub"
+								items={subItem}
+								renderItem={this.renderSublist}
+								group="kit-nested-list__sub"
+								//defaultCollapsed={this.state.defaultCollapsed}
+							/>
 						</ul>
-					}
+							{handler}
+						</>
+					)}
 				</NestedItem>
 			</>
 		);
@@ -156,12 +167,12 @@ export class ActionCatalog extends React.Component<IProps, IState> {
 		if (this.refNestable) {
 			switch (collapseCase) {
 				case 0:
-					this.refNestable.collapse('NONE');
+					this.refNestable.collapse("NONE");
 					break;
 				case 1:
-					this.refNestable.collapse('ALL');
+					this.refNestable.collapse("ALL");
 					break;
 			}
 		}
-	}
+	};
 }

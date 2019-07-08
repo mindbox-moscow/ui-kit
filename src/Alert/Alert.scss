@@ -1,0 +1,26 @@
+.kit-alert {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 1;
+	margin: 0 auto;
+	padding: 9px 20px 8px;
+	width: 90%;
+	max-width: 1000px;
+	background-color: #FFFAED;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	box-shadow: 0px -2px 8px 0px rgba(0, 0, 0, 0.36);
+	border-radius: 4px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	min-height: 44px;
+	box-sizing: border-box;
+
+	&:not(:last-of-type) {
+		display: none;
+	}
+}

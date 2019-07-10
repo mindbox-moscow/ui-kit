@@ -37,7 +37,8 @@
     type='discount'/>
     <ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'
                                      type='discount'/>
-                                    
+                                     
+                                     <div className="group-action">Группа акций</div>
     <ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'
         type='discount'/>
         <ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'

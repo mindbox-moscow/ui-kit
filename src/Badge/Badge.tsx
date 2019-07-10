@@ -19,7 +19,7 @@ interface IProps {
 	color?: COLORS;
 	date?: string;
 	size?: string;
-	mode?: Mode;
+	mode?: string | Mode;
 }
 
 export const Badge = (props: IProps) => {

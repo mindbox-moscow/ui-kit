@@ -5,7 +5,7 @@ import { icons, IconType } from "./icons";
 import "./IconSvg.scss";
 
 interface IProps {
-	type: IconType;
+	type: string | IconType;
 	className?: string;
 }
 

@@ -15,8 +15,12 @@
 		}
 	}
 
-
 	&:first-child:not(:only-child) {
+		border-bottom-style: solid;
+		border-radius: 4px 4px 0 0;
+	}
+
+	.group-action + &  {
 		border-bottom-style: solid;
 		border-radius: 4px 4px 0 0;
 	}

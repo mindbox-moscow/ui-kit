@@ -3,13 +3,18 @@
 	align-items: center;
 	border: 1px dashed #d8d8d8;
 	border-radius: 4px;
+	height: 42px;
 
 	& + .kit-stock-item {
 		border-top: 0;
-		border-radius: 0;
-		border-bottom-style: solid;
+		border-radius: 0 0 4px 4px;
 
-		&:last-child {
+		&:not(.kit-stock-item_last-before-group) {
+			border-radius: 0.01px;
+			border-bottom-style: solid;
+		}
+
+		&:last-of-type {
 			border-radius: 0 0 4px 4px;
 			border-bottom-style: dashed;
 		}
@@ -20,9 +25,30 @@
 		border-radius: 4px 4px 0 0;
 	}
 
-	.group-action + &  {
+	:not(.kit-stock-item) + & {
 		border-bottom-style: solid;
 		border-radius: 4px 4px 0 0;
+	}
+
+		.kit-tooltip {
+			display: none;
+		}
+
+		&:hover {
+			.kit-tooltip {
+				display: inline;
+			}
+
+			.kit-badge {
+				display: none;
+			}
+		}
+
+	&_finished {
+
+		svg {
+			fill: #999;
+		}
 	}
 }
 
@@ -83,4 +109,8 @@
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
+}
+
+.kit-stock-item__action-dropdown {
+	margin-right: 10px;
 }

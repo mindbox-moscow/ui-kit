@@ -45,6 +45,11 @@
 		}
 
 	&_finished {
+		color: #999;
+
+		.kit-stock-item__name {
+			color: #999;
+		}
 
 		svg {
 			fill: #999;

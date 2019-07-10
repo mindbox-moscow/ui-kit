@@ -43,10 +43,10 @@ interface IProps {
 	endDate: string | null;
 	status: StatusType;
 	lastBeforeGroup: boolean;
+	statusType: StatusType;
 }
 
 export class ActionItem extends React.Component<IProps> {
-	private StatusType: string;
 
 	public render() {
 		const {
@@ -55,12 +55,14 @@ export class ActionItem extends React.Component<IProps> {
 			startDate,
 			endDate,
 			status,
-			lastBeforeGroup
+			lastBeforeGroup,
+			statusType
 		} = this.props;
+
 		return (
 			<div
 				className={cn("kit-stock-item", {
-					"kit-stock-item_finished": this.StatusType === "end",
+					"kit-stock-item_finished": statusType === "end",
 					"kit-stock-item_last-before-group": lastBeforeGroup
 				})}
 			>

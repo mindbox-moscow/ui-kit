@@ -42,7 +42,7 @@ type='discount' lastBeforeGroup={true}
 
 	<div className="group-action">Группа акций</div>
 
-	<ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='ended'
+	<ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='ended' statusType="end"
 type='discount'
 />
 	<ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'

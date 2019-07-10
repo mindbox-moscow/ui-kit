@@ -60,7 +60,7 @@ export class ActionItem extends React.Component<IProps> {
 		return (
 			<div
 				className={cn("kit-stock-item", {
-					"kit-stock-item_finished": this.StatusType === 'end',
+					"kit-stock-item_finished": this.StatusType === "end",
 					"kit-stock-item_last-before-group": lastBeforeGroup
 				})}
 			>

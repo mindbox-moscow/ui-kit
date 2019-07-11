@@ -7,7 +7,7 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__toggle {
 	position: relative;
-	top: 2px;
+	top: 0;
 	display: flex;
 	width: 14px;
 	height: 20px;
@@ -52,7 +52,7 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__container {
 	position: absolute;
-	top: -10px;
+	top: -12px;
 	right: -8px;
 	z-index: 2;
 	min-width: 106px;

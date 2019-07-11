@@ -40,7 +40,41 @@ type='discount'
 type='discount' lastBeforeGroup={true}
 />
 
-	<div className="group-action">Группа акций</div>
+	<ActionGroup>
+    <GroupItem childrenCount={5}
+    maxDiscount={20}
+    title={"Бытовая техника"}
+    information={"Максимальная выгода"}>
+    <GroupItem sublist={true}
+    childrenCount={15}
+    maxDiscount={25}
+    title={"Бытовая техника"}
+    information={"Максимальная выгода"}>
+    
+    	<GroupItem sublist={true}
+    	childrenCount={15}
+    	maxDiscount={25}
+    	title={"Бытовая техника"}
+    	information={"Максимальная выгода"}>
+    	
+    		<GroupItem sublist={true}
+    		childrenCount={15}
+    		maxDiscount={25}
+    		title={"Бытовая техника"}
+    		information={"Максимальная выгода"}>
+    		
+    			<GroupItem sublist={true}
+    			childrenCount={15}
+    			maxDiscount={25}
+    			title={"Бытовая техника"}
+    			information={"Максимальная выгода"}/>
+    			</GroupItem>
+    		
+    		</GroupItem>
+    	
+    	</GroupItem>
+    	</GroupItem>
+    </ActionGroup>
 
 	<ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='ended' statusType="end"
 type='discount'

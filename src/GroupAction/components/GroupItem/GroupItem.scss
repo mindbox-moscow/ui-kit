@@ -1,0 +1,136 @@
+.kit-group-item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	//margin-bottom: 8px;
+	margin-top: 8px;
+	width: 100%;
+	align-items: center;
+	font-family: "PT Sans", sans-serif;
+
+	&_expand {
+
+		&::before {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 20px;
+			height: calc(100% - 44px);
+			background-color: rgba(226, 234, 240, 0.35);
+		}
+	}
+}
+
+.kit-group-item__wrap {
+	display: flex;
+	//margin-bottom: 8px;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	border: 1px solid #d4d4d4;
+	border-radius: 4px;
+}
+
+.kit-group-item__promo {
+	width: 471.5px;
+	display: flex;
+	align-items: center;
+	padding-left: 16px;
+
+	&_expand {
+		.kit-group-item__promo-title,
+		.kit-group-item__sale {
+			font-weight: 600;
+		}
+	}
+}
+
+.kit-group-item__promo-title {
+	min-width: 210px;
+	margin-right: 8px;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.kit-group-item__number {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e2eaf0;
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.kit-group-item__sale {
+	font-size: 14px;
+	line-height: 18px;
+
+	&_no-sale {
+		color: #999;
+	}
+}
+
+.kit-group-item__title-wrap {
+	position: relative;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 16px 8px 38px;
+	width: calc(100% - 471.5px);
+	border-right: 1px solid #d8d8d8;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 15px;
+		left: 16px;
+		background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%238AACC2' stroke-width='2' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		width: 8px;
+		height: 12px;
+	}
+
+	&_expand {
+
+		&::before {
+			transform: rotate(90deg);
+		}
+
+		.kit-group-item__name {
+			font-weight: 600;
+		}
+	}
+}
+
+.kit-group-item__name {
+	max-width: 85%;
+	white-space: nowrap;
+	overflow: hidden;
+	padding-right: 5px;
+	text-overflow: ellipsis;
+}
+
+
+.kit-nested-list {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.kit-nested-list__sublist {
+	margin-top: 8px;
+	padding-left: 28px;
+	width: calc(100% - 28px);
+
+
+	&::before {
+		left: 30px;
+	}
+}

@@ -9,6 +9,7 @@ interface IProps {
 	information: string;
 	maxDiscount?: number | null;
 	sublist: boolean;
+	isEditing: boolean
 }
 
 interface State {
@@ -26,7 +27,8 @@ export class GroupItem extends React.Component<IProps, State> {
 			information,
 			maxDiscount,
 			children,
-			sublist
+			sublist,
+			isEditing
 		} = this.props;
 
 		const { isExpanded } = this.state;
@@ -37,6 +39,7 @@ export class GroupItem extends React.Component<IProps, State> {
 					className={cn("kit-group-item", {
 						"kit-group-item_expand": !isExpanded,
 						"kit-nested-list__sublist": sublist,
+						"kit-group-item_edit-mode": isEditing
 					})}
 				>
 					<div
@@ -46,7 +49,7 @@ export class GroupItem extends React.Component<IProps, State> {
 						<div
 							className={cn("kit-group-item__title-wrap", {
 								"kit-group-item__title-wrap_expand":
-									!isExpanded
+									!isExpanded,
 							})}
 						>
 							<span className="kit-group-item__name">

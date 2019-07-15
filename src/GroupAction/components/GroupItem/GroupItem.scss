@@ -13,10 +13,24 @@
 			content: "";
 			position: absolute;
 			bottom: 0;
-			left: 0;
+			left: 2px;
 			width: 20px;
 			height: calc(100% - 44px);
 			background-color: rgba(226, 234, 240, 0.35);
+		}
+	}
+
+	&_edit-mode {
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 17px;
+			left: -4px;
+			width: 9px;
+			height: 9px;
+			background-color: #E7950F;
+			border-radius: 50%;
 		}
 	}
 }
@@ -35,9 +49,11 @@
 	width: 471.5px;
 	display: flex;
 	align-items: center;
-	padding: 0 22px;
+	padding: 12px 22px;
 
 	&_expand {
+		background-color: rgba(226, 234, 240, 0.35);
+
 		.kit-group-item__promo-title,
 		.kit-group-item__sale {
 			font-weight: 600;
@@ -107,6 +123,7 @@
 	}
 
 	&_expand {
+		background-color: rgba(226, 234, 240, 0.35);
 
 		&::before {
 			transform: rotate(90deg);

@@ -67,6 +67,19 @@
 			fill: #999;
 		}
 	}
+
+	&_edit-mode {
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: -5px;
+			width: 9px;
+			height: 9px;
+			background-color: #E7950F;
+			border-radius: 50%;
+		}
+	}
 }
 
 .kit-stock-item__promo {

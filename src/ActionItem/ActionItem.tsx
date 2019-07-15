@@ -36,7 +36,7 @@ const StatusMap = {
 };
 
 interface IProps {
-	title: string;
+	actionTitle: string;
 	type: ActionItemType;
 	description: string;
 	startDate: string | null;
@@ -44,30 +44,33 @@ interface IProps {
 	status: StatusType;
 	lastBeforeGroup: boolean;
 	statusType: StatusType;
+	isEditing: boolean;
 }
 
 export class ActionItem extends React.Component<IProps> {
 
 	public render() {
 		const {
-			title,
+			actionTitle,
 			type,
 			startDate,
 			endDate,
 			status,
 			lastBeforeGroup,
-			statusType
+			statusType,
+			isEditing
 		} = this.props;
 
 		return (
 			<li
 				className={cn("kit-stock-item", {
 					"kit-stock-item_finished": statusType === "end",
-					"kit-stock-item_last-before-group": lastBeforeGroup
+					"kit-stock-item_last-before-group": lastBeforeGroup,
+					"kit-stock-item_edit-mode": isEditing
 				})}
 			>
 				<div className="kit-stock-item__title-wrap">
-					<span className="kit-stock-item__name">{title}</span>
+					<span className="kit-stock-item__name">{actionTitle}</span>
 					<div className="kit-stock-item__btn-wrap">
 						<Tooltip title="Описание">
 							Раздаем промокод за регистрацию на сайте, при

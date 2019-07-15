@@ -60,7 +60,7 @@ export class ActionItem extends React.Component<IProps> {
 		} = this.props;
 
 		return (
-			<div
+			<li
 				className={cn("kit-stock-item", {
 					"kit-stock-item_finished": statusType === "end",
 					"kit-stock-item_last-before-group": lastBeforeGroup
@@ -136,7 +136,7 @@ export class ActionItem extends React.Component<IProps> {
 						/>
 					</ActionsDropdown.Group>
 				</ActionsDropdown>
-			</div>
+			</li>
 		);
 	}
 }

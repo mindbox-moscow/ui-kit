@@ -1,5 +1,5 @@
 ```jsx
-<div
+<ul
     style={{
         display: "flex",
         justifyContent: "space-between",
@@ -9,9 +9,9 @@
     <ActionItem  title={'Скидка физическим лицам по промокоду'} startDate={null} endDate={'25.11.19'}
     status="started" type='bonus'
     />
-</div>
+</ul>
 <br/>
-<div
+<ul
     style={{
         display: "flex",
         justifyContent: "space-between",
@@ -24,9 +24,9 @@
         type='discount'/>
         <ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'
             type='discount'/>
-</div>
+</ul>
 <br/>
-<div
+<ul
     style={{
         display: "flex",
         justifyContent: "space-between",
@@ -50,28 +50,28 @@ type='discount' lastBeforeGroup={true}
     maxDiscount={25}
     title={"Бытовая техника"}
     information={"Максимальная выгода"}>
-    
+
     	<GroupItem sublist={true}
     	childrenCount={15}
     	maxDiscount={25}
     	title={"Бытовая техника"}
     	information={"Максимальная выгода"}>
-    	
+
     		<GroupItem sublist={true}
     		childrenCount={15}
     		maxDiscount={25}
     		title={"Бытовая техника"}
     		information={"Максимальная выгода"}>
-    		
+
     			<GroupItem sublist={true}
     			childrenCount={15}
     			maxDiscount={25}
     			title={"Бытовая техника"}
     			information={"Максимальная выгода"}/>
     			</GroupItem>
-    		
+
     		</GroupItem>
-    	
+
     	</GroupItem>
     	</GroupItem>
     </ActionGroup>
@@ -82,5 +82,5 @@ type='discount'
 	<ActionItem  title={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'
 type='discount'
 />
-</div>
+</ul>
 ```

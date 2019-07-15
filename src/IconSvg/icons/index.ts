@@ -3,9 +3,9 @@ import { CatalogTree } from "./CatalogTree";
 import { Close } from "./Close";
 import { Coins } from "./Coins";
 import { Dots } from "./Dots";
+import { Drop } from "./Drop";
 import { Magnifier } from "./Magnifier";
 import { PercentRound } from "./PercentRound";
-import { Drop } from "./Drop";
 
 interface ISvgProps {
 	className: string;

@@ -19,20 +19,6 @@
 			background-color: rgba(226, 234, 240, 0.35);
 		}
 	}
-
-	&_edit-mode {
-
-		&::after {
-			content: "";
-			position: absolute;
-			top: 17px;
-			left: -4px;
-			width: 9px;
-			height: 9px;
-			background-color: #E7950F;
-			border-radius: 50%;
-		}
-	}
 }
 
 .kit-group-item__wrap {
@@ -113,15 +99,6 @@
 		height: 12px;
 	}
 
-	&::after {
-		content: "";
-		position: absolute;
-		left: 14px;
-		width: 10px;
-		height: 14px;
-		background-image: url("data:image/svg+xml,%3Csvg width='10' height='14' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238AACC2' fill-rule='evenodd' opacity='.5'%3E%3Ccircle cx='1' cy='1' r='1'/%3E%3Ccircle cx='5' cy='1' r='1'/%3E%3Ccircle cx='9' cy='1' r='1'/%3E%3Ccircle cx='1' cy='5' r='1'/%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3Ccircle cx='9' cy='5' r='1'/%3E%3Ccircle cx='1' cy='9' r='1'/%3E%3Ccircle cx='5' cy='9' r='1'/%3E%3Ccircle cx='9' cy='9' r='1'/%3E%3Ccircle cx='1' cy='13' r='1'/%3E%3Ccircle cx='5' cy='13' r='1'/%3E%3Ccircle cx='9' cy='13' r='1'/%3E%3C/g%3E%3C/svg%3E");
-	}
-
 	&_expand {
 		background-color: rgba(226, 234, 240, 0.35);
 
@@ -131,6 +108,20 @@
 
 		.kit-group-item__name {
 			font-weight: 600;
+		}
+	}
+
+	&_edit-mode {
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 17px;
+			left: -4px;
+			width: 9px;
+			height: 9px;
+			background-color: #E7950F;
+			border-radius: 50%;
 		}
 	}
 }
@@ -143,6 +134,12 @@
 	text-overflow: ellipsis;
 }
 
+.kit-group-item__icon {
+	position: absolute;
+	left: 14px;
+	width: 10px;
+	height: 14px;
+}
 
 .kit-nested-list {
 	position: relative;

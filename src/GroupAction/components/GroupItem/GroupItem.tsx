@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import { IconSvg } from "../../../IconSvg";
 
 import "./GroupItem.scss";
 
@@ -39,7 +40,6 @@ export class GroupItem extends React.Component<IProps, State> {
 					className={cn("kit-group-item", {
 						"kit-group-item_expand": !isExpanded,
 						"kit-nested-list__sublist": sublist,
-						"kit-group-item_edit-mode": isEditing
 					})}
 				>
 					<div
@@ -50,8 +50,10 @@ export class GroupItem extends React.Component<IProps, State> {
 							className={cn("kit-group-item__title-wrap", {
 								"kit-group-item__title-wrap_expand":
 									!isExpanded,
+								"kit-group-item__title-wrap_edit-mode": isEditing
 							})}
 						>
+							<IconSvg type="drop" className="kit-group-item__icon"/>
 							<span className="kit-group-item__name">
 								{title}
 							</span>

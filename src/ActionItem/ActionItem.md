@@ -56,7 +56,9 @@
                    childrenCount={15}
                    maxDiscount={25}
                    title={"Бытовая техника"}
-                   information={"Максимальная выгода"}>
+                   information={"Максимальная выгода"}
+                   isEditing={true}
+                   >
           <GroupItem sublist={true}
                      childrenCount={15}
                      maxDiscount={25}

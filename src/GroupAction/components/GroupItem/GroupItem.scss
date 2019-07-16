@@ -32,7 +32,7 @@
 }
 
 .kit-group-item__promo {
-	width: 471.5px;
+	width: 470px;
 	display: flex;
 	align-items: center;
 	padding: 12px 22px;
@@ -48,6 +48,7 @@
 }
 
 .kit-group-item__promo-title {
+	min-width: 150px;
 	max-width: 185px;
 	margin-right: 8px;
 	font-size: 14px;
@@ -81,11 +82,10 @@
 .kit-group-item__title-wrap {
 	position: relative;
 	display: flex;
-	flex-shrink: 0;
 	justify-content: space-between;
 	align-items: center;
 	padding: 8px 16px 8px 61px;
-	width: calc(100% - 471.5px);
+	width: calc(100% - 471px);
 	border-right: 1px solid #d8d8d8;
 
 	&::before {
@@ -101,6 +101,11 @@
 
 	&_expand {
 		background-color: rgba(226, 234, 240, 0.35);
+
+		.kit-group-item__number {
+			border: 1px solid #F1F1F1;
+			background-color: #fff;
+		}
 
 		&::before {
 			transform: rotate(90deg);

@@ -83,7 +83,7 @@
 }
 
 .kit-stock-item__promo {
-	width: 471.5px;
+	width: 470px;
 	display: flex;
 	align-items: center;
 	padding-left: 22px;
@@ -111,11 +111,10 @@
 .kit-stock-item__title-wrap {
 	position: relative;
 	display: flex;
-	flex-shrink: 0;
 	justify-content: space-between;
 	align-items: center;
-	padding: 11px 16px 11px 61px;
-	width: calc(100% - 471.5px);
+	padding: 10px 16px 10px 61px;
+	width: calc(100% - 470px);
 	border-right: 1px solid #d8d8d8;
 }
 

@@ -74,10 +74,10 @@
       </GroupItem>
     </GroupItem>
   </ActionGroup>
-  <ActionItem  actionTitle={'Бытовая техника'} startDate={'25.05.18'} endDate={'25.11.19'} status='stopped' statusType="end"
+  <ActionItem  actionTitle={'Бытовая техника'} startDate={null} endDate={null} status='ended' statusType="end"
               type='discount' isEditing={true}
               />
-  <ActionItem  actionTitle={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='ended'
+  <ActionItem  actionTitle={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='stopped'
               type='bonus'
               />
 </ul>

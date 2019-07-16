@@ -1,5 +1,6 @@
 import * as React from "react";
 import cn from "classnames";
+import { ActionsDropdown } from "../../../ActionsDropdown";
 import { IconSvg } from "../../../IconSvg";
 
 import "./GroupItem.scss";
@@ -43,15 +44,20 @@ export class GroupItem extends React.Component<IProps, State> {
 					})}
 				>
 					<div
-						className="kit-group-item__wrap"
+						// className="kit-group-item__wrap"
 						onClick={this.expandTree}
+						className={cn("kit-group-item__wrap", {
+							"kit-group-item__wrap_expand":
+								!isExpanded,
+							"kit-group-item__wrap_edit-mode": isEditing
+						})}
 					>
 						<div
-							className={cn("kit-group-item__title-wrap", {
-								"kit-group-item__title-wrap_expand":
-									!isExpanded,
-								"kit-group-item__title-wrap_edit-mode": isEditing
-							})}
+							className={cn("kit-group-item__title-wrap")}
+							// 	"kit-group-item__title-wrap_expand":
+							// 		!isExpanded,
+							// 	"kit-group-item__title-wrap_edit-mode": isEditing
+							// })}
 						>
 							<IconSvg type="drop" className="kit-group-item__icon"/>
 							<span className="kit-group-item__name">
@@ -79,6 +85,39 @@ export class GroupItem extends React.Component<IProps, State> {
 									: `Без максимальной скидки`}
 							</span>
 						</div>
+						<ActionsDropdown
+							className="kit-stock-item__action-dropdown"
+							toggleBtnText="Действия"
+						>
+							<ActionsDropdown.Action
+								title="Редактировать"
+								onClick={() => console.log("Редактировать")}
+							/>
+							<ActionsDropdown.Group title="Добавить">
+								<ActionsDropdown.Action
+									title="Акцию"
+									onClick={() => console.log("Добавить акцию")}
+								/>
+								<ActionsDropdown.Action
+									title="Подгруппу"
+									onClick={() => console.log("Добавить подгруппу")}
+								/>
+							</ActionsDropdown.Group>
+							<ActionsDropdown.Group title="Акции в группе">
+								<ActionsDropdown.Action
+									title="Остановить"
+									onClick={() => console.log("Остановить")}
+								/>
+								<ActionsDropdown.Action
+									title="Запустить"
+									onClick={() => console.log("Запустить")}
+								/>
+								<ActionsDropdown.Action
+									title="Архивировать"
+									onClick={() => console.log("Архивировать")}
+								/>
+							</ActionsDropdown.Group>
+						</ActionsDropdown>
 					</div>
 					{!isExpanded && <ul className="kit-nested-list">{children}</ul>}
 				</li>

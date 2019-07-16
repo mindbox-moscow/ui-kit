@@ -53,11 +53,9 @@ export class GroupItem extends React.Component<IProps, State> {
 						})}
 					>
 						<div
-							className={cn("kit-group-item__title-wrap")}
-							// 	"kit-group-item__title-wrap_expand":
-							// 		!isExpanded,
-							// 	"kit-group-item__title-wrap_edit-mode": isEditing
-							// })}
+							className={cn("kit-group-item__title-wrap", {
+								"kit-group-item__title-wrap_edit-mode": isEditing
+							})}
 						>
 							<IconSvg type="drop" className="kit-group-item__icon"/>
 							<span className="kit-group-item__name">

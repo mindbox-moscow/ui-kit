@@ -73,11 +73,12 @@
 		&::after {
 			content: "";
 			position: absolute;
-			left: -5px;
+			left: -8px;
 			width: 9px;
 			height: 9px;
 			background-color: #E7950F;
 			border-radius: 50%;
+			border: 3px solid #fff;
 		}
 	}
 }
@@ -115,7 +116,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 16px 10px 61px;
-	width: calc(100% - 470px);
+	width: calc(100% - 552px);
 	border-right: 1px solid #d8d8d8;
 }
 

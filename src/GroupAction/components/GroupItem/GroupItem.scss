@@ -95,7 +95,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 7px 16px 7px 60px;
-	width: calc(100% - 471px);
+	width: 100%;
 	border-right: 1px solid #d8d8d8;
 
 	&::before {
@@ -126,12 +126,12 @@
 		&::after {
 			content: "";
 			position: absolute;
-			top: 17px;
-			left: -4px;
+			left: -8px;
 			width: 9px;
 			height: 9px;
 			background-color: #E7950F;
 			border-radius: 50%;
+			border: 2px solid #fff;
 		}
 	}
 }

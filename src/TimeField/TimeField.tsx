@@ -84,7 +84,7 @@ export class TimeField extends React.Component<Props> {
 		let newMinutes = minutes;
 		let newSelection = [selectionStart, selectionEnd];
 		const { key } = event;
-		const number = parseInt(key, 10);
+		const numberField = parseInt(key, 10);
 
 		if (key === "Backspace") {
 			if (selectionStart === 1) {
@@ -120,32 +120,32 @@ export class TimeField extends React.Component<Props> {
 				newMinutes = Math.floor(minutes / 10) * 10;
 				newSelection = [5, 5];
 			}
-		} else if (!isNaN(number)) {
+		} else if (!isNaN(numberField)) {
 			if (selectionStart === 0) {
-				newHours = number * 10 + (hours % 10);
+				newHours = numberField * 10 + (hours % 10);
 				newSelection = [1, 1];
 				if (newHours > 23) {
-					newHours = number;
+					newHours = numberField;
 					newSelection = [2, 2];
 				}
 			}
 			if (selectionStart === 1) {
-				newHours = Math.floor(hours / 10) * 10 + number;
+				newHours = Math.floor(hours / 10) * 10 + numberField;
 				newSelection = [2, 2];
 				if (newHours > 23) {
 					newHours = 23;
 				}
 			}
 			if (selectionStart === 2 || selectionStart === 3) {
-				newMinutes = number * 10 + (minutes % 10);
+				newMinutes = numberField * 10 + (minutes % 10);
 				newSelection = [4, 4];
 				if (newMinutes > 59) {
-					newMinutes = number;
+					newMinutes = numberField;
 					newSelection = [5, 5];
 				}
 			}
 			if (selectionStart === 4) {
-				newMinutes = Math.floor(minutes / 10) * 10 + number;
+				newMinutes = Math.floor(minutes / 10) * 10 + numberField;
 				newSelection = [5, 5];
 				if (newMinutes > 59) {
 					newMinutes = 59;

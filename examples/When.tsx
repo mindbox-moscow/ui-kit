@@ -72,7 +72,7 @@ class When extends React.Component<{}> {
                     <Row isEdit isSelect title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -134,15 +134,16 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit isControl title="Дата и время старта">
-                        <DateField defaultDate={new Date("07/21/2019")} />
-                        <TimeField hours={12} minutes={23} />
+                        <DateField defaultDate={new Date("07/21/2019")} noShadow={false} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row isEdit isControl title="Дата окончания">
                         <DateField
                             disabled
                             defaultDate={new Date("07/21/2019")}
+							noShadow={false}
                         />
-                        <TimeField disabled hours={12} minutes={20} />
+                        <TimeField disabled hours={12} minutes={20} noShadow={false} />
                         <Checkbox
                             checked
                             text="Триггер активен до конца кампании"
@@ -962,7 +963,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1044,7 +1045,7 @@ class When extends React.Component<{}> {
                         неделю с момента старт
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1135,7 +1136,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1265,7 +1266,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1380,7 +1381,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1529,7 +1530,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1660,7 +1661,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit title="Время">
-                        <TimeField hours={12} minutes={23} />
+                        <TimeField hours={12} minutes={23} noShadow={false} />
                     </Row>
                     <Row
                         help="Текст подсказки"

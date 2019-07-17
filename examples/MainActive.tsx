@@ -363,7 +363,7 @@ class MainActive extends React.Component<{}> {
                                         { title: "Создать новую рассылку" }
                                     ]}
                                 />
-                                <DateField defaultDate={new Date()} />
+                                <DateField defaultDate={new Date()} noShadow={false} />
                             </Row>
                             <Row
                                 isEdit

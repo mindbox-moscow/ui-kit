@@ -104,7 +104,7 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <DateField defaultDate={new Date()} />
+                        <DateField defaultDate={new Date()} noShadow={false} />
                     </Row>
                     <Row isEdit isSelect title="Действие 2" isAction>
                         <Select
@@ -170,7 +170,7 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <DateField defaultDate={new Date()} />
+                        <DateField defaultDate={new Date()} noShadow={false} />
                     </Row>
                     <Row
                         isEdit
@@ -269,7 +269,7 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <DateField defaultDate={new Date()} />
+                        <DateField defaultDate={new Date()} noShadow={false} />
                     </Row>
                     <Row
                         isEdit

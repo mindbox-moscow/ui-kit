@@ -10,7 +10,7 @@ import "./ActionItem.scss";
 
 type ActionItemType = "discount" | "bonus";
 
-type StatusType = "start" | "end";
+type StatusType = "start" | "ended";
 
 const StatusMap = {
 	in_development: {
@@ -43,7 +43,6 @@ interface IProps {
 	endDate: string | null;
 	status: StatusType;
 	lastBeforeGroup: boolean;
-	statusType: StatusType;
 	isEditing: boolean;
 }
 
@@ -57,14 +56,13 @@ export class ActionItem extends React.Component<IProps> {
 			endDate,
 			status,
 			lastBeforeGroup,
-			statusType,
 			isEditing
 		} = this.props;
 
 		return (
 			<li
 				className={cn("kit-stock-item", {
-					"kit-stock-item_finished": statusType === "end",
+					"kit-stock-item_finished": status === "ended",
 					"kit-stock-item_last-before-group": lastBeforeGroup,
 					"kit-stock-item_edit-mode": isEditing
 				})}

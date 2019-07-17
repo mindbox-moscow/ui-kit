@@ -77,7 +77,7 @@
       </GroupItem>
     </GroupItem>
   </ActionGroup>
-  <ActionItem  actionTitle={'Бытовая техника'} startDate={null} endDate={null} status='ended' statusType="end"
+  <ActionItem  actionTitle={'Бытовая техника'} startDate={null} endDate={null} status='ended'
               type='discount' isEditing={true}
               />
   <ActionItem  actionTitle={'Другая акция'} startDate={'25.05.18'} endDate={null} status='stopped'

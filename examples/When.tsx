@@ -23,7 +23,7 @@ class When extends React.Component<{}> {
             <Page
                 title="Триггер №15"
                 description="Добавьте короткое описание триггера"
-                hasBadge
+                hasBadge={true}
                 badgeTitle="Триггер в разработке"
                 badgeBgColor={COLORS.Gray}
             >

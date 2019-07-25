@@ -1,4 +1,5 @@
 .kit-group-item {
+	box-sizing: border-box;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -6,6 +7,7 @@
 	width: 100%;
 	align-items: center;
 	font-family: "PT Sans", sans-serif;
+	height: 42px;
 
 	&_expand {
 
@@ -23,10 +25,10 @@
 
 .kit-group-item__wrap {
 	display: flex;
-	width: 99.9%; // because we have border and it overflow main container
+	width: 100%; // because we have border and it overflow main container
 	justify-content: space-between;
 	align-items: center;
-	height: 40px;
+	height: 42px;
 	background: #fff;
 	border: 1px solid #d4d4d4;
 	border-radius: 4px;
@@ -51,11 +53,12 @@
 }
 
 .kit-group-item__promo {
-	width: 406px;
 	display: flex;
 	align-items: center;
+	padding: 0 20px;
+	width: 411px;
 	flex-shrink: 0;
-	padding: 12px 22px;
+	flex-grow: 0;
 
 	&_expand {
 
@@ -67,8 +70,8 @@
 }
 
 .kit-group-item__promo-title {
-	min-width: 150px;
-	max-width: 185px;
+	min-width: 205px;
+	max-width: 50%;
 	margin-right: 8px;
 	font-size: 14px;
 	line-height: 18px;
@@ -103,6 +106,8 @@
 	position: relative;
 	display: flex;
 	justify-content: space-between;
+	flex-grow: 1;
+	flex-shrink: 1;
 	align-items: center;
 	padding: 7px 16px 7px 60px;
 	width: 100%;
@@ -145,6 +150,7 @@
 
 .kit-group-item__icon {
 	position: absolute;
+	top: 13px;
 	left: 14px;
 	width: 10px;
 	height: 14px;

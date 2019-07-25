@@ -36,6 +36,11 @@
 	}
 }
 
+.kit-promotion-group-edit__title-promo {
+	margin: 0;
+	padding: 8px 0;
+}
+
 .kit-promotion-group-edit__parent-group {
 	width: 100%;
 	max-width: 446px;
@@ -62,6 +67,12 @@
 		width: 100%;
 		max-width: 267px;
 		display: inline-block;
+	}
+
+	&_full-width {
+		&:first-child {
+			max-width: 100%;
+		}
 	}
 }
 

@@ -73,9 +73,18 @@ const data = {
 	groupCalculationStrategy: groupCalculationStrategyData[0],
 	arbitrationMode: arbitrationModeData[0],
 	maxDiscount: 50,
+	hasMaxDiscount: true,
+};
+const secondData = {
+	title: "Снова в школу",
+	parentGroup: groups[0].children[0],
+	groupCalculationStrategy: groupCalculationStrategyData[0],
+	arbitrationMode: arbitrationModeData[0],
+	maxDiscount: 50,
 	hasMaxDiscount: true
 };
 
+<div>
 <PromotionGroupEdit
 	data={data}
 	labels={labels}
@@ -84,5 +93,20 @@ const data = {
 	arbitrationModeList={arbitrationModeList}
 	onClose={() => console.log("PromotionGroupEdit closed")}
 	onSubmit={(_, data) => console.log(data)}
-/>;
+/>
+
+<br/>
+<br/>
+
+<PromotionGroupEdit
+	titlePromo='Базовые правила применения акций'
+	data={secondData}
+	labels={labels}
+	parentGroupData={parentGroupData}
+	groupCalculationStrategyList={groupCalculationStrategyList}
+	arbitrationModeList={arbitrationModeList}
+	onClose={() => console.log("PromotionGroupEdit closed")}
+	onSubmit={(_, data) => console.log(data)}
+/>
+</div>
 ```

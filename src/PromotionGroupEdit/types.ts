@@ -11,6 +11,7 @@ interface IPromotionGroupData {
 }
 
 export interface IProps {
+	titlePromo?: string;
 	data: IPromotionGroupData;
 	labels: {
 		titleField: string;

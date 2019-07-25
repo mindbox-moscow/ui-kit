@@ -1,4 +1,5 @@
 import * as React from "react";
+import cn from "classnames";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
@@ -68,15 +69,16 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 
 		this.props.onSubmit(e, this.state.data);
 	};
-
 	public render() {
 		const {
 			labels,
 			parentGroupData,
 			groupCalculationStrategyList,
 			arbitrationModeList,
-			onClose
+			onClose,
+			titlePromo
 		} = this.props;
+
 		const {
 			title,
 			parentGroup,
@@ -96,27 +98,41 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 					onSubmit={this.handleSubmit}
 				>
 					<PromotionEditContainer.Header>
-						<fieldset className="kit-promotion-group-edit__title">
-							<legend>{labels.titleField}</legend>
-							<Input
-								type="text"
-								defaultValue={title!}
-								onChange={this.handleTitleChange}
-							/>
-						</fieldset>
+						{!titlePromo ? (
+							<fieldset className="kit-promotion-group-edit__title">
+								<legend>{labels.titleField}</legend>
+								<Input
+									type="text"
+									defaultValue={title!}
+									onChange={this.handleTitleChange}
+								/>
+							</fieldset>
+						) : (
+							<p className="kit-promotion-group-edit__title-promo">
+								{titlePromo}
+							</p>
+						)}
 					</PromotionEditContainer.Header>
 
 					<PromotionEditContainer.Main>
-						<fieldset className="kit-promotion-group-edit__parent-group">
-							<legend>{labels.parentGroupField}</legend>
-							<SelectNested
-								{...parentGroupData}
-								selectedOption={parentGroup}
-								onChange={this.handleParentGropuChange}
-							/>
-						</fieldset>
-
-						<fieldset className="kit-promotion-group-edit__calc-strategy-wrap">
+						{!titlePromo && (
+							<fieldset className="kit-promotion-group-edit__parent-group">
+								<legend>{labels.parentGroupField}</legend>
+								<SelectNested
+									{...parentGroupData}
+									selectedOption={parentGroup}
+									onChange={this.handleParentGropuChange}
+								/>
+							</fieldset>
+						)}
+						<fieldset
+							className={cn(
+								"kit-promotion-group-edit__calc-strategy-wrap",
+								{
+									"kit-promotion-group-edit__calc-strategy-wrap_full-width": titlePromo
+								}
+							)}
+						>
 							<legend>
 								{labels.groupCalculationStrategyField}
 							</legend>

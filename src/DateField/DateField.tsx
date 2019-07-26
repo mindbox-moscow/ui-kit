@@ -7,7 +7,7 @@ interface Props {
 	disabled?: boolean;
 	defaultDate: Date;
 	onChange?: (date: Date) => void;
-	noShadow: boolean;
+	noShadow?: boolean;
 }
 
 interface State {
@@ -177,7 +177,7 @@ export class DateField extends React.Component<Props, State> {
 			showedDate,
 			dateString
 		} = this.state;
-		const { disabled } = this.props;
+		const { disabled, noShadow } = this.props;
 		const date = activeDate.getDate();
 		const month = activeDate.getMonth();
 		const year = activeDate.getFullYear();
@@ -227,7 +227,7 @@ export class DateField extends React.Component<Props, State> {
 				className={cn(
 					"kit-date-field", {
 					"kit-date-field_disabled": disabled,
-					"kit-date-field_no-shadow": this.props.noShadow
+					"kit-date-field_no-shadow": noShadow
 					}
 				)}
 				onClick={disabled ? () => {} : this.handleOpen}

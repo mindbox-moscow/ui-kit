@@ -27,7 +27,7 @@ interface Props {
 	minutes?: number;
 	disabled?: boolean;
 	onChange?: (hours: number, minutes: number) => void;
-	noShadow: boolean;
+	noShadow?: boolean;
 }
 
 export class TimeField extends React.Component<Props> {

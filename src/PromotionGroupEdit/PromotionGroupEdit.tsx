@@ -105,6 +105,7 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 									type="text"
 									defaultValue={title!}
 									onChange={this.handleTitleChange}
+									placeholder={labels.titleField}
 								/>
 							</fieldset>
 						) : (

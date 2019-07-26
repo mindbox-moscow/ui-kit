@@ -68,12 +68,12 @@ const arbitrationModeList = {
 };
 
 const data = {
-	title: "Снова в школу",
+	title: "",
 	parentGroup: groups[0].children[0],
 	groupCalculationStrategy: groupCalculationStrategyData[0],
 	arbitrationMode: arbitrationModeData[0],
 	maxDiscount: 50,
-	hasMaxDiscount: true,
+	hasMaxDiscount: true
 };
 const secondData = {
 	title: "Снова в школу",
@@ -85,28 +85,28 @@ const secondData = {
 };
 
 <div>
-<PromotionGroupEdit
-	data={data}
-	labels={labels}
-	parentGroupData={parentGroupData}
-	groupCalculationStrategyList={groupCalculationStrategyList}
-	arbitrationModeList={arbitrationModeList}
-	onClose={() => console.log("PromotionGroupEdit closed")}
-	onSubmit={(_, data) => console.log(data)}
-/>
+	<PromotionGroupEdit
+		data={data}
+		labels={labels}
+		parentGroupData={parentGroupData}
+		groupCalculationStrategyList={groupCalculationStrategyList}
+		arbitrationModeList={arbitrationModeList}
+		onClose={() => console.log("PromotionGroupEdit closed")}
+		onSubmit={(_, data) => console.log(data)}
+	/>
 
-<br/>
-<br/>
+	<br />
+	<br />
 
-<PromotionGroupEdit
-	titlePromo='Базовые правила применения акций'
-	data={secondData}
-	labels={labels}
-	parentGroupData={parentGroupData}
-	groupCalculationStrategyList={groupCalculationStrategyList}
-	arbitrationModeList={arbitrationModeList}
-	onClose={() => console.log("PromotionGroupEdit closed")}
-	onSubmit={(_, data) => console.log(data)}
-/>
-</div>
+	<PromotionGroupEdit
+		titlePromo="Базовые правила применения акций"
+		data={secondData}
+		labels={labels}
+		parentGroupData={parentGroupData}
+		groupCalculationStrategyList={groupCalculationStrategyList}
+		arbitrationModeList={arbitrationModeList}
+		onClose={() => console.log("PromotionGroupEdit closed")}
+		onSubmit={(_, data) => console.log(data)}
+	/>
+</div>;
 ```

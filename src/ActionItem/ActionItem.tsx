@@ -44,10 +44,10 @@ interface IProps {
 	status: StatusType;
 	lastBeforeGroup: boolean;
 	isEditing: boolean;
+	isOutOfFilter?: boolean;
 }
 
 export class ActionItem extends React.Component<IProps> {
-
 	public render() {
 		const {
 			actionTitle,
@@ -56,7 +56,8 @@ export class ActionItem extends React.Component<IProps> {
 			endDate,
 			status,
 			lastBeforeGroup,
-			isEditing
+			isEditing,
+			isOutOfFilter
 		} = this.props;
 
 		return (
@@ -64,7 +65,8 @@ export class ActionItem extends React.Component<IProps> {
 				className={cn("kit-stock-item", {
 					"kit-stock-item_finished": status === "ended",
 					"kit-stock-item_last-before-group": lastBeforeGroup,
-					"kit-stock-item_edit-mode": isEditing
+					"kit-stock-item_edit-mode": isEditing,
+					"kit-stock-item_filtering": isOutOfFilter
 				})}
 			>
 				<div className="kit-stock-item__title-wrap">

@@ -22,7 +22,7 @@
     }}
     >
   <ActionItem  actionTitle={'Другая акция'} startDate={'25.05.18'} endDate={'25.11.19'} status='in_development'
-              type='discount'/>
+              type='discount' isOutOfFilter={true} />
   <ActionItem  actionTitle={'Акции с кассы'} startDate={'01.05.18'} endDate={'21.11.19'} status='stopped'
               type='bonus'/>
   <ActionItem  actionTitle={'Футболка в подарок'} startDate={'05.10.18'} endDate={'25.01.19'} status='started'
@@ -83,5 +83,13 @@
   <ActionItem  actionTitle={'Другая акция'} startDate={'25.05.18'} endDate={null} status='stopped'
               type='bonus'
               />
+  <ActionGroup>
+    <GroupItem childrenCount={5}
+               maxDiscount={20}
+               title={"Бытовая техника"}
+               information={"Максимальная выгода"}
+              isOutOfFilter={true}
+               />
+  </ActionGroup>
 </ul>
 ```

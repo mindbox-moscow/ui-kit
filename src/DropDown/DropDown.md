@@ -29,6 +29,11 @@ const list = [{
     }
 ];
 <div style={{ display: "flex" }}>
-    <DropDown itemYears={list}></DropDown>
+    <DropDown itemYears={list} btnText="Февраль 2019" />
+    <br/>
+    <br/>
+    <DropDown itemYears={list} icon={true} noBorder={true} 
+    btnText="По списку"
+/>
 </div>
 ```

@@ -18,6 +18,11 @@
         opacity: 0.35;
     }
 
+	&_no-shadow {
+		box-shadow: none;
+		border: 1px solid #c5d6e1;
+	}
+
     &__outer {
         display: inline-block;
         position: relative;

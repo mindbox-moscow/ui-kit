@@ -1,14 +1,20 @@
 import * as React from "react";
+import { Button } from "../Button";
 
 import "./FilterWrapper.scss";
-import { Button } from "../Button";
 
 interface State {
 	changeCondition: boolean;
 }
 
 interface Props {
-	numberClients?: string;
+	StatisticsValue?: React.ReactNode;
+	StatisticsDescription: string;
+	buttonTextFirst: string;
+	buttonTextSecond: string;
+	buttonTextThird: string;
+	buttonTextFouth: string;
+	buttonTextFives: string;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
@@ -17,68 +23,76 @@ export class FilterWrapper extends React.Component<Props, State> {
 	};
 
 	public render() {
-		const { children, numberClients } = this.props;
+		const {
+			children,
+			StatisticsValue,
+			StatisticsDescription,
+			buttonTextFirst,
+			buttonTextSecond,
+			buttonTextThird,
+			buttonTextFouth,
+			buttonTextFives
+		} = this.props;
 
 		return (
 			<>
 				<div className="kit-filter">
-				<ul className="kit-filter__all-wrap">
-					{children}
+					<ul className="kit-filter__all-wrap">
+						{children}
 
-					<div className="kit-filter__btn-wrap">
-						<Button
-							size={"small"}
-							color={"gray"}
-							className="kit-filter__btn"
-						>
-							Добавить фильтр
-						</Button>
-						<Button
-							size={"small"}
-							color={"gray"}
-							className="kit-filter__btn"
-						>
-							Добавить группу
-						</Button>
-						<Button
-							size={"small"}
-							color={"gray"}
-							className="kit-filter__btn"
-							onClick={() => {
-								this.setState({
-									changeCondition: !this
-										.state
-										.changeCondition
-								});
-							}}
-						>
-							Сменить тип связи «ИЛИ»
-						</Button>
-					</div>
-				</ul>
-				<div className="kit-filter__wrap">
-					<div className="kit-filter__wrap-filter">
-						<button className="kit-filter__use-filter">
-							Применить фильтр
-						</button>
-					</div>
-					<div className="kit-filter__info-wrap">
-						<span className="kit-filter__clients">
-							Потребителей найдено:{" "}
-							<span className="kit-filter__clients-number">
-								{numberClients}
+						<div className="kit-filter__btn-wrap">
+							<Button
+								size={"small"}
+								color={"gray"}
+								className="kit-filter__btn"
+							>
+								{buttonTextFirst}
+							</Button>
+							<Button
+								size={"small"}
+								color={"gray"}
+								className="kit-filter__btn"
+							>
+								{buttonTextSecond}
+							</Button>
+							<Button
+								size={"small"}
+								color={"gray"}
+								className="kit-filter__btn"
+								onClick={() => {
+									this.setState({
+										changeCondition: !this.state
+											.changeCondition
+									});
+								}}
+							>
+								{buttonTextThird}
+							</Button>
+						</div>
+					</ul>
+					<div className="kit-filter__wrap">
+						<div className="kit-filter__wrap-filter">
+							<button className="kit-filter__use-filter">
+								{buttonTextFouth}
+							</button>
+						</div>
+						<div className="kit-filter__info-wrap">
+							<span className="kit-filter__clients">
+								{StatisticsDescription}:{" "}
+								<span className="kit-filter__clients-number">
+									{StatisticsValue}
+								</span>
 							</span>
-						</span>
-						<button
-							className="kit-filter__clear-filter-btn"
-							onClick={() => {
-								console.log("clear filter");
-							}}
-						>
-							Сбросить фильтр
-						</button>
+							<button
+								className="kit-filter__clear-filter-btn"
+								onClick={() => {
+									console.log("clear filter");
+								}}
+							>
+								{buttonTextFives}
+							</button>
+						</div>
 					</div>
-				</div>
 				</div>
 			</>
 		);

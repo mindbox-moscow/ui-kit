@@ -6,8 +6,8 @@
 		width: "100%"
 	}}
 >
-	<Filter numberClients={"50 248"}>
+	<FilterWrapper numberClients={"50 248"}>
 		Other components here...
-	</Filter>
+	</FilterWrapper>
 </div>
 ```

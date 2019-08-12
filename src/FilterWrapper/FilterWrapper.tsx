@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "./Filter.scss";
+import "./FilterWrapper.scss";
 import { Button } from "../Button";
 
 interface State {
@@ -11,7 +11,7 @@ interface Props {
 	numberClients?: string;
 }
 
-export class Filter extends React.Component<Props, State> {
+export class FilterWrapper extends React.Component<Props, State> {
 	public state = {
 		changeCondition: false
 	};
@@ -50,7 +50,6 @@ export class Filter extends React.Component<Props, State> {
 										.state
 										.changeCondition
 								});
-								console.log('b', this.state.changeCondition)
 							}}
 						>
 							Сменить тип связи «ИЛИ»

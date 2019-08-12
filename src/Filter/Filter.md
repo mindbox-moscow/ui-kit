@@ -6,31 +6,34 @@
 		width: "100%"
 	}}
 >
-	<FilterWrapper>
-		<Filter numberClients={"50 248"}>
+	<Filter numberClients={"50 248"}>
+		<FilterConditionComponent
+			filtrationMethodName="нет таких"
+			filtrationObjectName={"Розничный заказ"}
+		/>
+		<FilterConditionComponent
+			isNested={"and"}
+			isBooleanCondition={true}
+			filtrationMethodName="есть такие"
+			filtrationObjectName={"Что-нибудь"}
+		>
 			<FilterConditionComponent
-				typeOfCondition="нет таких"
-				nameOfList={"Розничный заказ"}
+				isNested={"or"}
 				isBooleanCondition={true}
-			/>
-			<FilterConditionComponent
-				isNested={true}
-				typeOfCondition="есть такие"
-				nameOfList={"Что-нибудь"}
+				filtrationMethodName="нет таких"
+				filtrationObjectName={"Видео, аудио"}
 			>
 				<FilterConditionComponent
-					isNested={true}
-					typeOfCondition="есть такие"
-					nameOfList={"Видео, аудио"}
-				>
-					<FilterConditionComponent
-						isNested={true}
-						typeOfCondition="Нет таких"
-						nameOfList={"Что-то ещё"}
-					/>
-				</FilterConditionComponent>
+					filtrationMethodName="нет таких"
+					filtrationObjectName={"Что-то ещё"}
+				/>
+				<FilterConditionComponent
+					filtrationMethodName="нет таких"
+					filtrationObjectName={"Что-то ещё"}
+					priceNumber={5000}
+				/>
 			</FilterConditionComponent>
-		</Filter>
-	</FilterWrapper>
+		</FilterConditionComponent>
+	</Filter>
 </div>
 ```

@@ -3,16 +3,26 @@ import * as React from "react";
 import "./Filter.scss";
 import { Button } from "../Button";
 
+interface State {
+	changeCondition: boolean;
+}
+
 interface Props {
 	numberClients?: string;
 }
 
-export class Filter extends React.Component<Props> {
+export class Filter extends React.Component<Props, State> {
+	public state = {
+		changeCondition: false
+	};
+
 	public render() {
 		const { children, numberClients } = this.props;
+
 		return (
 			<>
-				<ul className="kit-filter">
+				<div className="kit-filter">
+				<ul className="kit-filter__all-wrap">
 					{children}
 
 					<div className="kit-filter__btn-wrap">
@@ -34,6 +44,14 @@ export class Filter extends React.Component<Props> {
 							size={"small"}
 							color={"gray"}
 							className="kit-filter__btn"
+							onClick={() => {
+								this.setState({
+									changeCondition: !this
+										.state
+										.changeCondition
+								});
+								console.log('b', this.state.changeCondition)
+							}}
 						>
 							Сменить тип связи «ИЛИ»
 						</Button>
@@ -61,6 +79,7 @@ export class Filter extends React.Component<Props> {
 							Сбросить фильтр
 						</button>
 					</div>
+				</div>
 				</div>
 			</>
 		);

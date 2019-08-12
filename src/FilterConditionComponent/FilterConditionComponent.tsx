@@ -3,22 +3,23 @@ import cn from "classnames";
 
 import "./FilterConditionComponent.scss";
 
+type Nested = "or" | "and";
+
 interface Props {
-	typeOfCondition: string;
-	isNested?: boolean;
+	filtrationMethodName: string;
+	isNested?: Nested;
 	children: any;
 	listChildren: any;
-	nameOfList: string;
+	filtrationObjectName: string;
 	isBooleanCondition: boolean;
+	changeCondition?: boolean;
+	priceNumber?: number;
 }
 
 export class FilterConditionComponent extends React.Component<Props> {
 	public render() {
 		const {
-			// children,
-			// listChildren,
 			// isNested
-			// typeOfCondition
 		} = this.props;
 		return (
 			<ul className="parent">
@@ -32,36 +33,39 @@ export class FilterConditionComponent extends React.Component<Props> {
 const List = (props: Props) => {
 	const {
 		children,
-		nameOfList,
-		// isNested,
-		isBooleanCondition,
-		typeOfCondition
+		filtrationObjectName,
+		filtrationMethodName,
+		// isBooleanCondition,
+		isNested,
+		priceNumber
 	} = props;
+
 	return (
 		<>
-			<li
-				// className="kit-filter-condition"
-				className={cn("kit-filter-condition", {
-					"kit-filter-condition_boolean-and": isBooleanCondition,
-					// "kit-filter-condition_boolean-or": !isBooleanCondition
+			<div
+				className={cn({
+					// "kit-filter-condition_boolean": isNested,
+					"kit-filter-condition_boolean_and": isNested === "and",
+					"kit-filter-condition_boolean_or": isNested === "or"
+					// "kit-filter-condition_boolean-and": isNested === "and",
+					// "kit-filter-condition_boolean-or": isNested === "or",
 				})}
 			>
-				{nameOfList}{" "}
-				{typeOfCondition && (
-					<span className="kit-filter-condition__type-condition">
-						{typeOfCondition}
-					</span>
-				)}
-				{children}
-			</li>
-			{isBooleanCondition && (
-				<div className={cn("kit-filter-condition__bool", {
-					"kit-filter-condition__bool_and": isBooleanCondition,
-					"kit-filter-condition__bool_or": !isBooleanCondition
-				})}>
-					ИЛИ
-				</div>
-			)}
+				<li className={cn("kit-filter-condition", {})}>
+					{filtrationObjectName}{" "}
+					{filtrationMethodName && (
+						<span className="kit-filter-condition__type-condition">
+							{filtrationMethodName}
+						</span>
+					)}
+					{filtrationMethodName && priceNumber &&
+						<div className="kit-filter-condition__type-condition kit-filter-condition__type-condition_price">
+							<b>Цена</b> заполнена и от <b>{priceNumber}</b>
+						</div>
+					}
+					{children}
+				</li>
+			</div>
 		</>
 	);
 };

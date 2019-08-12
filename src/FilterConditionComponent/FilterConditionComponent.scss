@@ -1,71 +1,174 @@
-//.kit-filter-condition {
-//	box-sizing: border-box;
-
 .parent {
 	position: relative;
 	box-sizing: border-box;
-	margin-top: 20px;
+	margin-top: 18px;
 	margin-bottom: 32px;
+	padding-left: 22px;
 
-	li {
-		&::before {
-			content: "";
-			position: absolute;
-			top: 11px;
-			left: -37px;
-			height: 2px;
-			width: 26px;
-			background-color: #fee1c8;
-		}
+	&:last-child {
+		margin-bottom: 10px;
 	}
 }
 
 .kit-filter-condition {
+	box-sizing: border-box;
 	position: relative;
 	font-family: "PT Sans", sans-serif;
 	list-style: none;
 	font-size: 14px;
 	line-height: 19px;
 	font-weight: 600;
-	margin-bottom: 25px;
+	//margin-bottom: 25px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 8px;
+		left: -19px;
+		height: 2px;
+		width: 13px;
+		background-color: #e3ebf2;
+	}
 
 	&::after {
 		content: "";
 		position: absolute;
 		top: 20px;
-		left: 2px;
+		left: 1px;
 		height: 100%;
+		//height: 62%;
 		width: 2px;
-		background-color: #fee1c8;
+		background-color: #e3ebf2;
 	}
 
-	&_boolean-and {
-		padding: 5px 14px;
-		//height: 30px;
-		max-width: 95%;
-		border: 1px solid #fee1c8;
-		background-color: #fef7f1;
-		border-radius: 4px;
+	//&_boolean-or {
+	//	margin-left: -5px;
+	//	padding: 4px;
+	//	background: rgb(241, 245, 248);
+	//	background: linear-gradient(
+	//		90deg,
+	//		rgba(241, 245, 248, 1) 0%,
+	//		rgba(255, 255, 255, 1) 100%
+	//	);
+	//	border-radius: 4px;
+	//
+	//	&::after {
+	//		top: 30px;
+	//		left: 15px;
+	//		height: 14px;
+	//	}
+	//
+	//	.kit-filter-condition_boolean-and {
+	//		background: transparent;
+	//	}
+	//
+	//	.kit-filter-condition_boolean {
+	//		&::before {
+	//			content: "ИЛИ";
+	//		}
+	//	}
+	//}
+	//
+	//&_boolean-and {
+	//	margin-left: -5px;
+	//	padding: 4px;
+	//	background: rgb(247, 241, 255);
+	//	background: linear-gradient(
+	//			90deg,
+	//			rgba(247, 241, 255, 1) 0%,
+	//			rgba(255, 255, 255, 1) 100%
+	//	);
+	//	border-radius: 4px;
+	//
+	//	&::after {
+	//		top: 30px;
+	//		left: 15px;
+	//		height: 14px;
+	//	}
+	//
+	//	.kit-filter-condition_boolean-or {
+	//		background: transparent;
+	//	}
+	//
+	//	.kit-filter-condition_boolean {
+	//		background-color: #2D597D;
+	//		&::before {
+	//			content: "И";
+	//		}
+	//	}
+	//}
+
+	&_boolean_and {
+		&::before {
+			content: "И";
+			position: absolute;
+			top: 50%;
+			left: -15px;
+			padding: 3px;
+			height: 11px;
+			width: 28px;
+			border-radius: 3px;
+			font-family: "PT Sans", sans-serif;
+			font-size: 10px;
+			line-height: 13px;
+			color: #fff;
+			text-align: center;
+			font-weight: 600;
+			background-color: #2D597D;
+			z-index: 2;
+		}
 
 		&::after {
-			top: 30px;
-			left: 15px;
-			height: 14px;
+			content: "";
+			position: absolute;
+			top: 8px;
+			left: 1px;
+			height: 100%;
+			width: 2px;
+			background-color: #2D597D;
+			z-index: 1;
+		}
+
+		.kit-filter-condition::before {
+			background-color: #2D597D;
 		}
 	}
 
-	&_boolean-or {
-		padding: 5px 14px;
-		//height: 30px;
-		width: 100%;
-		border: 1px solid #dcc6f3;
-		background-color: #f6f1fc;
-		border-radius: 4px;
+
+	&_boolean_or {
+		&::before {
+			content: "ИЛИ";
+			position: absolute;
+			top: 50%;
+			left: -15px;
+			padding: 3px;
+			height: 11px;
+			width: 28px;
+			border-radius: 3px;
+			font-family: "PT Sans", sans-serif;
+			font-size: 10px;
+			line-height: 13px;
+			color: #fff;
+			text-align: center;
+			font-weight: 600;
+			background-color: #9859dc;
+			z-index: 2;
+		}
 
 		&::after {
-			top: 30px;
-			left: 15px;
-			height: 14px;
+			content: "";
+			position: absolute;
+			top: 8px;
+			left: 1px;
+			height: 100%;
+			width: 2px;
+			background-color: #9859dc;
+			z-index: 1;
+		}
+
+
+		.kit-filter-condition::before {
+			background-color: #9859dc;
 		}
 	}
 }
@@ -73,6 +176,12 @@
 .kit-filter-condition__type-condition {
 	margin-left: 5px;
 	font-weight: 400;
+
+	&_price {
+		position: absolute;
+		top: 40px;
+		left: -5px;
+	}
 }
 
 .kit-filter-condition__bool {

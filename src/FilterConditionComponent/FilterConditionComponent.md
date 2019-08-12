@@ -1,24 +1,24 @@
 ```jsx
 <div style={{}}>
 	<FilterConditionComponent
-		typeOfCondition="нет таких"
-		nameOfList={"Розничный заказ"}
+		filtrationMethodName="нет таких"
+		filtrationObjectName={"Розничный заказ"}
 		isBooleanCondition={true}
 	/>
 	<FilterConditionComponent
 		isNested={true}
-		typeOfCondition="есть такие"
-		nameOfList={"Что-нибудь"}
+		filtrationMethodName="есть такие"
+		filtrationObjectName={"Что-нибудь"}
 	>
 		<FilterConditionComponent
 			isNested={true}
-			typeOfCondition="есть такие"
-			nameOfList={"Видео, аудио"}
+			filtrationMethodName="есть такие"
+			filtrationObjectName={"Видео, аудио"}
 		>
 			<FilterConditionComponent
 				isNested={true}
-				typeOfCondition="Нет таких"
-				nameOfList={"Что-то ещё"}
+				filtrationMethodName="Нет таких"
+				filtrationObjectName={"Что-то ещё"}
 			/>
 		</FilterConditionComponent>
 	</FilterConditionComponent>

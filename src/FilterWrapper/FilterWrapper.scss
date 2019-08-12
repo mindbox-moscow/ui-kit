@@ -1,0 +1,97 @@
+.kit-filter {
+	width: 1100px;
+	border: 1px solid #d4d4d4;
+	border-radius: 4px;
+	background-color: #ffffff;
+}
+
+.kit-filter__all-wrap {
+	margin-bottom: 20px;
+	padding: 0;
+	margin-left: 25px;
+}
+
+.kit-filter__btn-wrap {
+	display: flex;
+	margin-top: 56px;
+
+	.kit-button:not(:last-child) {
+		margin-right: 10px;
+	}
+}
+
+.kit-filter__btn {
+	height: 22px;
+	min-width: 160px;
+	border: 1px solid #c5d6e1;
+	border-radius: 3px;
+	background-color: #f1f5f8;
+	color: #265378;
+	font-family: "PT Sans", sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+}
+
+.kit-filter__wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-top: 1px solid #d4d4d4;
+}
+
+.kit-filter__info-wrap {
+	padding-right: 10px;
+}
+
+.kit-filter__use-filter {
+	height: 40px;
+	width: 399px;
+	background-color: #e2eaf0;
+	font-family: "PT Sans", sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	text-align: center;
+	border: 0;
+}
+
+.kit-filter__clients,
+.kit-filter__clients-number {
+	color: #333333;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	letter-spacing: -0.4px;
+	line-height: 19px;
+}
+
+.kit-filter__clients {
+	padding-right: 12px;
+}
+
+.kit-filter__clients-number {
+	font-weight: 600;
+}
+
+.kit-filter__clear-filter-btn {
+	position: relative;
+	padding: 0;
+	margin-left: 28px;
+	border: 0;
+	border-bottom: 1px dotted #a4a4a4;
+	color: #a4a4a4;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	letter-spacing: -0.4px;
+	line-height: 19px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: -15px;
+		width: 8px;
+		height: 8px;
+		color: #a4a4a4;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8px' height='8px' viewBox='0 0 14 14'%3E%3Cpath d='M.125 13.887a.424.424 0 0 0 .297.125c.11 0 .219-.043.3-.125l6.282-6.285 6.285 6.285a.424.424 0 0 0 .297.125.424.424 0 0 0 .3-.723L7.603 7.004 13.887.723a.424.424 0 0 0 0-.598.417.417 0 0 0-.598 0L7.004 6.406.723.125a.417.417 0 0 0-.598 0 .417.417 0 0 0 0 .598l6.281 6.28L.125 13.29a.417.417 0 0 0 0 .598zm0 0'/%3E%3C/svg%3E");
+	}
+}

@@ -9,7 +9,7 @@ interface State {
 }
 
 interface Props {
-	numberClients?: number | null;
+	numberClients?: string | null;
 }
 
 export class FilterPanel extends React.PureComponent<Props, State> {
@@ -33,6 +33,18 @@ export class FilterPanel extends React.PureComponent<Props, State> {
 					>
 						Добавить фильтр
 					</button>
+
+					<button
+						className="kit-filter-panel__btn kit-filter-panel__btn_small"
+						onClick={() =>
+							this.setState({
+								openModal: !openModal
+							})
+						}
+					>
+						ИЛИ
+					</button>
+					<p className="kit-filter-panel__text">Добавьте фильтр, чтобы создать выборку клиентов</p>
 				</div>
 				<div className="kit-filter-panel__info-wrap">
 					<div className="kit-filter-panel__info">
@@ -41,9 +53,6 @@ export class FilterPanel extends React.PureComponent<Props, State> {
 							{numberClients}
 						</span>
 					</div>
-					<button className="kit-filter-panel__clear-btn">
-						Сбросить фильтр
-					</button>
 				</div>
 
 				{openModal && openPage()}

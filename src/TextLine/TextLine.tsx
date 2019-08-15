@@ -1,100 +1,133 @@
+import cn from "classnames";
 import * as React from "react";
-import "./TextLine.scss";
+
 import { Icon } from "../Icon/Icon";
 
-interface Props {
-    text: string;
-    isTitle?: boolean;
-    isEditing?: boolean;
+import "./TextLine.scss";
 
-    /**
-     * If set, makes text editable
-     */
-    onChange?: (value: string) => void;
+interface IProps {
+	text: string;
+	isTitle?: boolean;
+	isEditing?: boolean;
+	invalid?: boolean;
+	onChange?: (value: string) => boolean | void;
 }
 
-export class TextLine extends React.Component<Props> {
-    input: HTMLInputElement;
-    state = {
-        isEditing: false,
-        value: ""
-    };
+interface IState {
+	isEditing: boolean;
+	invalid: boolean;
+	value: string;
+}
 
-    handleKeyUp = (event: any) => {
-        if (event.key === "Escape") {
-            this.handleExit();
-        }
-    };
+export class TextLine extends React.Component<IProps, IState> {
+	public input: HTMLInputElement;
+	public state = {
+		isEditing: (this.props.onChange && this.props.isEditing) || false,
+		invalid: this.props.invalid || false,
+		value: this.props.text
+	};
 
-    handleEdit = () => {
-        this.setState(
-            { isEditing: !this.state.isEditing, value: this.props.text },
-            () => this.input.focus()
-        );
-        document.addEventListener("keyup", this.handleKeyUp);
-    };
+	public handleKeyUp = ({ key }: KeyboardEvent): void => {
+		if (key === "Escape") {
+			this.handleExit();
+		}
+	};
 
-    handleExit = () => {
-        this.setState({ isEditing: false });
-        document.removeEventListener("keyup", this.handleKeyUp);
-    };
+	public setFocusToInput = (): void => this.input.focus();
 
-    handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-        this.setState({ value: event.target.value });
+	public handleEdit = (): void => {
+		this.setState({ isEditing: true }, this.setFocusToInput);
+		document.addEventListener("keyup", this.handleKeyUp);
+	};
 
-    handleInputKeyDown = (event: any) => {
-        if (event.key === "Enter") {
-            this.handleExit();
-            if (this.props.onChange) {
-                this.props.onChange(this.state.value);
-            }
-        }
-    };
+	public handleExit = (newValue?: string): void => {
+		this.setState({
+			isEditing: false,
+			invalid: false,
+			value: newValue || this.props.text
+		});
+		document.removeEventListener("keyup", this.handleKeyUp);
+	};
 
-    handleInputRef = (ref: HTMLInputElement) => (this.input = ref);
+	public handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) =>
+		this.setState({ value: target.value });
 
-    public render() {
-        const { isTitle, text, onChange } = this.props;
-        const { isEditing, value } = this.state;
-        let Tag: any = isTitle ? "h2" : "p";
+	public handleInputKeyDown = ({ key }: React.KeyboardEvent): void => {
+		if (key === "Enter") {
+			const { onChange } = this.props;
+			const { value } = this.state;
 
-        return (
-            <div className="kit-textLine">
-                {isEditing ? (
-                    <div className="kit-textLine__input-box">
-                        <input
-                            ref={this.handleInputRef}
-                            className="kit-textLine__input"
-                            type="text"
-                            value={value}
-                            onChange={this.handleChange}
-                            onKeyDown={this.handleInputKeyDown}
-                        />
-                        <span className="kit-textLine__signature">
-                            Сохранить: нажмите Enter
-                        </span>
-                    </div>
-                ) : (
-                    <Tag
-                        className={
-                            isTitle
-                                ? "kit-textLine__title"
-                                : "kit-textLine__description"
-                        }
-                    >
-                        {text}
-                        {onChange == null ? null : (
-                            <button
-                                className="kit-textLine__button"
-                                type="button"
-                                onClick={this.handleEdit}
-                            >
-                                <Icon icon="edit" />
-                            </button>
-                        )}
-                    </Tag>
-                )}
-            </div>
-        );
-    }
+			if (onChange) {
+				const valid = onChange(value);
+
+				if (valid !== false) {
+					this.handleExit(value);
+				} else {
+					this.setState({ invalid: true });
+				}
+			}
+		}
+	};
+
+	public handleInputRef = (ref: HTMLInputElement) => (this.input = ref);
+
+	public componentDidMount() {
+		if (this.state.isEditing) {
+			document.addEventListener("keyup", this.handleKeyUp);
+		}
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("keyup", this.handleKeyUp);
+	}
+
+	public render() {
+		const { isTitle, onChange } = this.props;
+		const { isEditing, value, invalid } = this.state;
+		const Tag: keyof JSX.IntrinsicElements = isTitle ? "h2" : "p";
+
+		return (
+			<div className="kit-textLine">
+				{isEditing ? (
+					<div
+						className={cn(
+							"kit-textLine__input-box",
+							invalid && "kit-textLine__input-box_invalid"
+						)}
+					>
+						<input
+							ref={this.handleInputRef}
+							className="kit-textLine__input"
+							type="text"
+							value={value}
+							onChange={this.handleChange}
+							onKeyDown={this.handleInputKeyDown}
+						/>
+						<span className="kit-textLine__signature">
+							Сохранить: нажмите Enter
+						</span>
+					</div>
+				) : (
+					<Tag
+						className={
+							isTitle
+								? "kit-textLine__title"
+								: "kit-textLine__description"
+						}
+					>
+						{value}
+						{onChange && (
+							<button
+								className="kit-textLine__button"
+								type="button"
+								onClick={this.handleEdit}
+							>
+								<Icon icon="edit" />
+							</button>
+						)}
+					</Tag>
+				)}
+			</div>
+		);
+	}
 }

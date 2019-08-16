@@ -5,6 +5,18 @@
 	list-style: none;
 }
 
+.kit-filtration-condition__last-child {
+	b:after {
+		content: "";
+		position: absolute;
+		top: 9px;
+		left: -19px;
+		width: 15px;
+		height: 2px;
+		background-color: #dcc6f3;
+	}
+}
+
 .kit-filtration-condition__item-text {
 	margin: 0;
 	margin-bottom: 5px;
@@ -15,5 +27,4 @@
 	b {
 		margin-right: 5px;
 	}
-
 }

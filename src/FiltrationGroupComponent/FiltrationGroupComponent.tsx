@@ -7,11 +7,10 @@ type GroupType = "and" | "or";
 
 interface Props {
 	groupType: GroupType; // тип группы: И или ИЛИ
-	andLabel?: string; // лейбл для И
-	orLabel?: string; // лейбл для ИЛИ
+	andLabel: string; // лейбл для И
+	orLabel: string; // лейбл для ИЛИ
 	shouldShowLabel?: boolean; // нужно ли отображать лейбл на брекете группы
 	children: React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
-	className?: string;
 }
 
 export class FiltrationGroupComponent extends React.Component<Props> {
@@ -21,12 +20,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			andLabel,
 			orLabel,
 			shouldShowLabel,
-			children,
-			className
+			children
 		} = this.props;
 		return (
 			<ul
-				className={cn("kit-filtration-group", className, {
+				className={cn("kit-filtration-group", {
 					// "kit-filtration-group_show-label": shouldShowLabel,
 					// "kit-filtration-group__label_and": shouldShowLabel && groupType === "and",
 					// "kit-filtration-group__label_or": shouldShowLabel && groupType === "or"

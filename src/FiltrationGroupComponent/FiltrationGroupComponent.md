@@ -8,22 +8,41 @@
 	>
 		<FiltrationConditionComponent
 			filtrationObjectName="Розничный заказ"
-			filtrationMethodName="в количестве"
+			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
 					groupType="and"
 					andLabel="И"
 					orLabel="ИЛИ"
-					shouldShowLabel={false}
-classname="kit-filtration-group__child"
+					shouldShowLabel={true}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Цена"
-						filtrationMethodName="заполнена и"
-className="kit-filtration-condition__last-child"
+						filtrationObjectName="Покупка"
+						filtrationMethodName="есть такие"
+						linkedConditionComponent={
+							<>
+								<FiltrationGroupComponent
+								>
+									<FiltrationConditionComponent
+										filtrationObjectName="Цена заполнена"
+										filtrationMethodName="и от 5000"
+									/>
+								</FiltrationGroupComponent>
+								<FiltrationConditionComponent
+									filtrationObjectName="Первое действие"
+									filtrationMethodName=""
+									linkedConditionComponent={
+										<FiltrationGroupComponent>
+											<FiltrationConditionComponent
+												filtrationObjectName="Период от текущей даты"
+												filtrationMethodName="до 90 дней назад"
+											/>
+										</FiltrationGroupComponent>
+									}
+								/>
+							</>
+						}
 					/>
-
-					<FiltrationConditionComponent filtrationObjectName="Доступен" />
 				</FiltrationGroupComponent>
 			}
 		/>
@@ -39,12 +58,21 @@ className="kit-filtration-condition__last-child"
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Цена"
-						filtrationMethodName="заполнена и"
-className="kit-filtration-condition__last-child"
+						filtrationObjectName="Покупка"
+						filtrationMethodName="нет таких"
 					/>
 
-					<FiltrationConditionComponent filtrationObjectName="Доступен" />
+					<FiltrationConditionComponent
+						filtrationObjectName="Первое действие"
+						linkedConditionComponent={
+							<FiltrationGroupComponent>
+								<FiltrationConditionComponent
+									filtrationObjectName="Период от текущей даты"
+									filtrationMethodName="до 14 дней назад"
+								/>
+							</FiltrationGroupComponent>
+						}
+					/>
 				</FiltrationGroupComponent>
 			}
 		/>

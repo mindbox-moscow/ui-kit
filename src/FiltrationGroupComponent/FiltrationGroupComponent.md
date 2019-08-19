@@ -1,7 +1,7 @@
 ```jsx
 <div style={{ display: "flex", justifyContent: "space-between" }}>
 	<FiltrationGroupComponent
-		groupType="or"
+		groupType=""
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
@@ -11,7 +11,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-					groupType="and"
+					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
 					shouldShowLabel={true}
@@ -20,27 +20,52 @@
 						filtrationObjectName="Покупка"
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
-							<>
-								<FiltrationGroupComponent
-								>
-									<FiltrationConditionComponent
-										filtrationObjectName="Цена заполнена"
-										filtrationMethodName="и от 5000"
-									/>
-								</FiltrationGroupComponent>
+							<FiltrationGroupComponent
+								groupType="and"
+								andLabel="И"
+								orLabel="ИЛИ"
+								shouldShowLabel={false}
+							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Первое действие"
-									filtrationMethodName=""
-									linkedConditionComponent={
-										<FiltrationGroupComponent>
-											<FiltrationConditionComponent
-												filtrationObjectName="Период от текущей даты"
-												filtrationMethodName="до 90 дней назад"
-											/>
-										</FiltrationGroupComponent>
+									filtrationObjectName="Цена"
+									filtrationMethodName="заполнена и от"
+									filtrationMethodParametersComponent={
+										<span style={{ fontWeight: "bold" }}>
+											5000
+										</span>
 									}
 								/>
-							</>
+							</FiltrationGroupComponent>
+						}
+					/>
+					<FiltrationConditionComponent
+						filtrationObjectName="Первое действие"
+						linkedConditionComponent={
+							<FiltrationGroupComponent
+								groupType="and"
+								andLabel="И"
+								orLabel="ИЛИ"
+								shouldShowLabel={false}
+							>
+								<FiltrationConditionComponent
+									filtrationObjectName="Период от текущей даты"
+									filtrationMethodName="до"
+									filtrationMethodParametersComponent={
+										<>
+											<span
+												style={{ fontWeight: "bold" }}
+											>
+												90 дней{" "}
+											</span>
+											<span
+												style={{ fontWeight: "normal" }}
+											>
+												назад
+											</span>
+										</>
+									}
+								/>
+							</FiltrationGroupComponent>
 						}
 					/>
 				</FiltrationGroupComponent>
@@ -49,7 +74,7 @@
 
 		<FiltrationConditionComponent
 			filtrationObjectName="Розничный заказ"
-			filtrationMethodName="в количестве"
+			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
 					groupType="and"
@@ -61,14 +86,32 @@
 						filtrationObjectName="Покупка"
 						filtrationMethodName="нет таких"
 					/>
-
 					<FiltrationConditionComponent
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
-							<FiltrationGroupComponent>
+							<FiltrationGroupComponent
+								groupType="and"
+								andLabel="И"
+								orLabel="ИЛИ"
+								shouldShowLabel={false}
+							>
 								<FiltrationConditionComponent
 									filtrationObjectName="Период от текущей даты"
-									filtrationMethodName="до 14 дней назад"
+									filtrationMethodName="до"
+									filtrationMethodParametersComponent={
+										<>
+											<span
+												style={{ fontWeight: "bold" }}
+											>
+												14 дней{" "}
+											</span>
+											<span
+												style={{ fontWeight: "normal" }}
+											>
+												назад
+											</span>
+										</>
+									}
 								/>
 							</FiltrationGroupComponent>
 						}

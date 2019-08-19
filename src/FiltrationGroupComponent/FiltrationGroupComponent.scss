@@ -3,42 +3,62 @@
 	padding: 0;
 	position: relative;
 
-	ul {
+	.kit-filtration-group {
+		&::before {
+			content: "";
+			position: absolute;
+			top: -4px;
+			left: 1px;
+			height: 15px;
+			width: 2px;
+			background-color: #e3ebf2;
+		}
+	}
+
+	> li {
+		margin-top: 10px;
 		margin-left: 20px;
 
-		li:first-child:before {
+		&::before {
 			content: "";
 			position: absolute;
-			top: -3px;
+			top: 10px;
 			left: -19px;
-			height: 21px;
+			height: calc(100% + 10px);
 			width: 2px;
-			background-color: #dcc6f3;
+			background-color: #e3ebf2;
+		}
+
+		&:last-child {
+			&::before {
+				display: none;
+			}
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 10px;
+			left: -19px;
+			height: 2px;
+			width: 15px;
+			background-color: #e3ebf2;
 		}
 	}
 
-	&__child {
-		&:after {
-			content: "";
-			position: absolute;
-			top: 11px;
-			left: -19px;
-			height: 100%;
-			width: 2px;
-			background-color: #dcc6f3;
-		}
+	span {
+		font-size: 14px;
+		line-height: 19px;
 	}
-
-	//& ~ .kit-filtration-condition:last-child:after {
-	//	content: none;
-	//}
 }
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 25%;
-	left: -30px;
+	display: block;
+	top: 31.5%;
+	left: -12px;
 	padding: 3px;
+	min-width: 20px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #ffffff;
@@ -48,42 +68,33 @@
 	text-align: center;
 	z-index: 1;
 
+	&_and {
+		background-color: #2d597d;
+		top: 29.5%;
+		left: -11px;
+
+		& + .kit-filtration-condition::before,
+		& + .kit-filtration-condition::after {
+			background-color: #2d597d;
+		}
+
+		& + .kit-filtration-condition + .kit-filtration-condition:after {
+			background-color: #2d597d;
+		}
+	}
+
 	&_or {
 		background-color: #dcc6f3;
-	}
-}
+		top: 29.5%;
+		left: -11px;
 
-.kit-filtration-condition {
-	//&:first-of-type {
-	&::before {
-		content: "";
-		position: absolute;
-		top: 9px;
-		left: -19px;
-		width: 15px;
-		height: 2px;
-		background-color: #dcc6f3;
-	}
+		& + .kit-filtration-condition::before,
+		& + .kit-filtration-condition::after {
+			background-color: #dcc6f3;
+		}
 
-	&:not(:last-child):after {
-		content: "";
-		position: absolute;
-		top: 11px;
-		left: -19px;
-		height: 100%;
-		width: 2px;
-		background-color: #dcc6f3;
+		& + .kit-filtration-condition + .kit-filtration-condition:after {
+			background-color: #dcc6f3;
+		}
 	}
-
-	&:last-child:after {
-		content: "";
-		position: absolute;
-		top: -10px;
-		left: -19px;
-		height: 21px;
-		width: 2px;
-		background-color: #dcc6f3;
-	}
-
-	//}
 }

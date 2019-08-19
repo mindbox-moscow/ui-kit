@@ -1,5 +1,4 @@
 import * as React from "react";
-import cn from "classnames";
 
 import "./FiltrationGroupComponent.scss";
 
@@ -23,20 +22,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			children
 		} = this.props;
 		return (
-			<ul
-				className={cn("kit-filtration-group", {
-					// "kit-filtration-group_show-label": shouldShowLabel,
-					// "kit-filtration-group__label_and": shouldShowLabel && groupType === "and",
-					// "kit-filtration-group__label_or": shouldShowLabel && groupType === "or"
-				})}
-			>
-				{/*{groupType}*/}
-				{/*{andLabel}*/}
-				{/*{orLabel}*/}
+			<ul className="kit-filtration-group">
 				{shouldShowLabel && groupType === "or" && (
-					<span className="kit-filtration-group__label kit-filtration-group__label_or">
+					<div className="kit-filtration-group__label kit-filtration-group__label_or">
 						{orLabel}
-					</span>
+					</div>
 				)}
 				{shouldShowLabel && groupType === "and" && (
 					<div className="kit-filtration-group__label kit-filtration-group__label_and">

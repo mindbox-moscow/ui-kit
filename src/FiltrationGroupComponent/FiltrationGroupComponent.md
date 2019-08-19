@@ -1,5 +1,5 @@
 ```jsx
-<div style={{ }}>
+<div style={{}}>
 	<FiltrationGroupComponent
 		groupType=""
 		andLabel="И"
@@ -121,8 +121,8 @@
 		/>
 	</FiltrationGroupComponent>
 
-<br/><br/>
-
+	<br />
+	<br />
 
 	<FiltrationGroupComponent
 		groupType="or"

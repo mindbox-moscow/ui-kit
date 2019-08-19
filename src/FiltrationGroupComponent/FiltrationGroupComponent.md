@@ -11,7 +11,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-					groupType="or"
+					groupType=""
 					andLabel="И"
 					orLabel="ИЛИ"
 					shouldShowLabel={true}
@@ -135,7 +135,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-					groupType="and"
+					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
 					shouldShowLabel={true}

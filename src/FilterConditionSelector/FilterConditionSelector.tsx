@@ -2,7 +2,6 @@ import * as React from "react";
 
 import "./FilterConditionSelector.scss";
 
-
 type ElementType =
 	| "filtrationObjectCategory"
 	| "simpleFiltrationObject"
@@ -28,29 +27,35 @@ interface FilterConditionSelectorProps {
 	selectedElement: FiltrationObjectHierarchyElement;
 }
 
-export class FilterConditionSelector extends React.Component<
-	FilterConditionSelectorProps
-> {
-	public render() {
-		return (
-			<div className="kit-filter-panel">
+const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
+	const {
+		editorComponent,
+		helpComponent,
+		helpCaption
+	} = props.selectedElement;
 
-				<div className="kit-filter-window">
-					<div className="kit-filter-window__wrap kit-filter-window__wrap_first">
-
-					</div>
-					<div className="kit-filter-window__wrap  kit-filter-window__wrap_second">
-						<div className="kit-filter-window__wrapper">
-							<h2 className="kit-filter-window__help-caption-title">
-
-							</h2>
-							<div className="kit-filter-window__editor-wrapper">
-								область редактирования
-							</div>
-						</div>
-					</div>
-				</div>
+	return (
+		<div className="kit-filter-condition-selector">
+			<div className="kit-filter-condition-selector__hierarchy">
+				Иерархия
 			</div>
-		);
-	}
-}
+			<div className="kit-filter-condition-selector__helper">
+				<h2 className="kit-filter-condition-selector__help-caption-title">
+					{helpCaption}
+				</h2>
+				{editorComponent && (
+					<div className="kit-filter-condition-selector__editor-wrapper">
+						{editorComponent}
+					</div>
+				)}
+				{helpComponent && (
+					<div className="kit-filter-condition-selector__help-wrapper-text">
+						{helpComponent}
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export { FilterConditionSelector };

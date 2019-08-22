@@ -34,30 +34,6 @@ export class FilterConditionSelector extends React.Component<
 	public render() {
 		return (
 			<div className="kit-filter-panel">
-				<div className="kit-filter-panel__btn-wrap">
-					<button
-						className="kit-filter-panel__btn"
-					>
-						Добавить фильтр
-					</button>
-
-					<button
-						className="kit-filter-panel__btn kit-filter-panel__btn_small"
-					>
-						ИЛИ
-					</button>
-					<p className="kit-filter-panel__text">
-						Добавьте фильтр, чтобы создать выборку клиентов
-					</p>
-				</div>
-				<div className="kit-filter-panel__info-wrap">
-					<div className="kit-filter-panel__info">
-						Всего клиентов:
-						<span className="kit-filter-panel__clients">
-							 1 256 783
-						</span>
-					</div>
-				</div>
 
 				<div className="kit-filter-window">
 					<div className="kit-filter-window__wrap kit-filter-window__wrap_first">
@@ -68,6 +44,9 @@ export class FilterConditionSelector extends React.Component<
 							<h2 className="kit-filter-window__help-caption-title">
 
 							</h2>
+							<div className="kit-filter-window__editor-wrapper">
+								область редактирования
+							</div>
 						</div>
 					</div>
 				</div>

@@ -78,6 +78,7 @@
 	border-radius: 4px;
 	font-family: "PT Sans", sans-serif;
 	z-index: 2;
+	overflow: hidden;
 }
 
 .kit-filter-window__wrap {
@@ -127,7 +128,7 @@
 }
 
 .kit-filter-window__wrapper {
-	padding: 24px;
+	//padding: 24px;
 }
 
 .kit-filter-window__help-caption-title {
@@ -135,4 +136,10 @@
 	font-size: 18px;
 	line-height: 23px;
 	font-weight: 400;
+}
+
+.kit-filter-window__editor-wrapper {
+	background-color: #fff;
+	min-height: 250px;
+	border-bottom: 1px solid #eee;
 }

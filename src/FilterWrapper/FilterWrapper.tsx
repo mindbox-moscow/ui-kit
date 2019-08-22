@@ -8,13 +8,10 @@ interface State {
 }
 
 interface Props {
-	StatisticsValue?: React.ReactNode;
-	StatisticsDescription: string;
-	buttonTextFirst: string;
-	buttonTextSecond: string;
-	buttonTextThird: string;
-	buttonTextFouth: string;
-	buttonTextFives: string;
+	statisticsValue?: React.ReactNode;
+	statisticsDescription: string;
+	applyButtonCaption: string;
+	onApply: () => void;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
@@ -25,13 +22,10 @@ export class FilterWrapper extends React.Component<Props, State> {
 	public render() {
 		const {
 			children,
-			StatisticsValue,
-			StatisticsDescription,
-			buttonTextFirst,
-			buttonTextSecond,
-			buttonTextThird,
-			buttonTextFouth,
-			buttonTextFives
+			statisticsValue,
+			statisticsDescription,
+			applyButtonCaption,
+			onApply
 		} = this.props;
 
 		return (
@@ -46,14 +40,14 @@ export class FilterWrapper extends React.Component<Props, State> {
 								color={"gray"}
 								className="kit-filter__btn"
 							>
-								{buttonTextFirst}
+								Добавить фильтр
 							</Button>
 							<Button
 								size={"small"}
 								color={"gray"}
 								className="kit-filter__btn"
 							>
-								{buttonTextSecond}
+								Добавить группу
 							</Button>
 							<Button
 								size={"small"}
@@ -66,21 +60,21 @@ export class FilterWrapper extends React.Component<Props, State> {
 									});
 								}}
 							>
-								{buttonTextThird}
+								Сменить тип связи «ИЛИ»
 							</Button>
 						</div>
 					</ul>
 					<div className="kit-filter__wrap">
 						<div className="kit-filter__wrap-filter">
-							<button className="kit-filter__use-filter">
-								{buttonTextFouth}
+							<button className="kit-filter__use-filter" onClick={onApply}>
+								{applyButtonCaption}
 							</button>
 						</div>
 						<div className="kit-filter__info-wrap">
 							<span className="kit-filter__clients">
-								{StatisticsDescription}:{" "}
+								{statisticsDescription}:{" "}
 								<span className="kit-filter__clients-number">
-									{StatisticsValue}
+									{statisticsValue}
 								</span>
 							</span>
 							<button
@@ -89,7 +83,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 									console.log("clear filter");
 								}}
 							>
-								{buttonTextFives}
+								Сбросить фильтр
 							</button>
 						</div>
 					</div>

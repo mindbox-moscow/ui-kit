@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
@@ -62,41 +61,7 @@ export class FilterConditionSelector extends React.Component<
 
 				<div className="kit-filter-window">
 					<div className="kit-filter-window__wrap kit-filter-window__wrap_first">
-						<div className="kit-filter-window__filter-block">
-							Добавить фильтр
-							<Input
-								noShadow={true}
-								defaultValue={""}
-								type="search"
-								placeholder="Название акции, группы или кампании"
-							/>
-							<div className="kit-filter-window__filter-btn-block">
-								<a
-									href=""
-									className="kit-filter-window__filter-btn kit-filter-window__filter-btn_active"
-								>
-									Готовые шаблоны
-								</a>
-								<a
-									href=""
-									className="kit-filter-window__filter-btn"
-								>
-									Все фильтры
-								</a>
-								<a
-									href=""
-									className="kit-filter-window__filter-btn"
-								>
-									Недавние
-								</a>
-								<a
-									href=""
-									className="kit-filter-window__filter-btn"
-								>
-									Сохранённые
-								</a>
-							</div>
-						</div>
+
 					</div>
 					<div className="kit-filter-window__wrap  kit-filter-window__wrap_second">
 						<div className="kit-filter-window__wrapper">

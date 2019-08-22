@@ -13,8 +13,9 @@ interface Props {
 	buttonTextFirst: string;
 	buttonTextSecond: string;
 	buttonTextThird: string;
-	buttonTextFouth: string;
+	buttonTextFourth: string;
 	buttonTextFives: string;
+	onButtonFourClick: () => void;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
@@ -30,8 +31,9 @@ export class FilterWrapper extends React.Component<Props, State> {
 			buttonTextFirst,
 			buttonTextSecond,
 			buttonTextThird,
-			buttonTextFouth,
-			buttonTextFives
+			buttonTextFourth,
+			buttonTextFives,
+			onButtonFourClick
 		} = this.props;
 
 		return (
@@ -72,8 +74,8 @@ export class FilterWrapper extends React.Component<Props, State> {
 					</ul>
 					<div className="kit-filter__wrap">
 						<div className="kit-filter__wrap-filter">
-							<button className="kit-filter__use-filter">
-								{buttonTextFouth}
+							<button className="kit-filter__use-filter" onClick={onButtonFourClick}>
+								{buttonTextFourth}
 							</button>
 						</div>
 						<div className="kit-filter__info-wrap">

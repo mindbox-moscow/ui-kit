@@ -35,24 +35,6 @@ const EditorComponentExample = () => {
 				</div>
 			</div>
 			<Input noShadow />
-
-			<button
-				style={{
-					marginTop: "15px",
-					width: "100%",
-					height: "32px",
-					borderRadius: "3px",
-					backgroundColor: "#E2EAF0",
-					border: "0",
-					fontFamily: "PT Sans",
-					fontSize: "13px",
-					lineHeight: "18px",
-					color: "#ADADAD"
-				}}
-                disabled
-			>
-				Добавить фильтр
-			</button>
 		</div>
 	);
 };
@@ -81,7 +63,14 @@ const hierarchy = [
 		isExpanded: false,
 		onSelect: () => null,
 		toggleExpand: () => null,
-		editorComponent: EditorComponentExample(),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
 		getChildren: () => [],
 		helpComponent: (

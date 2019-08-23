@@ -33,7 +33,7 @@ const hierarchy = [
 <div style={{ position: "relative" }}>
 	<FilterConditionSelector
 		hierarchy={hierarchy}
-		selectedElement={hierarchy[1]}
+		selectedElement={hierarchy[0]}
 	/>
 </div>;
 ```

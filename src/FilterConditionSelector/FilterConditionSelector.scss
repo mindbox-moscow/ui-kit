@@ -57,6 +57,7 @@
 }
 
 .kit-filter-condition-selector__help-caption-title {
+	position: absolute;
 	margin: 0;
 	padding-top: 24px;
 	padding-left: 24px;
@@ -68,6 +69,7 @@
 
 .kit-filter-condition-selector__editor-wrapper {
 	padding: 24px;
+	padding-top: 60px;
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
 	border-top-right-radius: 2px;
@@ -75,4 +77,9 @@
 
 .kit-filter-condition-selector__help-wrapper-text {
 	padding: 24px;
+	padding-top: 60px;
+
+	.kit-filter-condition-selector__editor-wrapper + & {
+		padding-top: 24px;
+	}
 }

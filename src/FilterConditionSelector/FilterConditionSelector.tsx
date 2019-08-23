@@ -1,4 +1,5 @@
 import * as React from "react";
+import cn from "classnames";
 
 import "./FilterConditionSelector.scss";
 
@@ -31,14 +32,25 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 	const {
 		editorComponent,
 		helpComponent,
-		helpCaption
+		helpCaption,
+		name,
+		isSelected
 	} = props.selectedElement;
 
 	return (
 		<div className="kit-filter-condition-selector">
-			<div className="kit-filter-condition-selector__hierarchy">
-				Иерархия
-			</div>
+			<ul className="kit-filter-condition-selector__hierarchy">
+				<li
+					className={cn(
+						"kit-filter-condition-selector__hierarchy-item",
+						{
+							"kit-filter-condition-selector__hierarchy-item_selected": isSelected
+						}
+					)}
+				>
+					{name}
+				</li>
+			</ul>
 			<div className="kit-filter-condition-selector__helper">
 				<h2 className="kit-filter-condition-selector__help-caption-title">
 					{helpCaption}

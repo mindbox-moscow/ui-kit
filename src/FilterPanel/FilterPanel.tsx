@@ -1,7 +1,13 @@
 import * as React from "react";
-import { FilterConditionEditorButton } from "../FilterConditionEditorButton/FilterConditionEditorButton";
+import { FilterConditionEditorButton } from "../FilterConditionEditorButton";
 
-export class FilterPanel extends React.PureComponent {
+import "./FilterPanel.scss";
+
+interface Props {
+	numberClients: string;
+}
+
+export class FilterPanel extends React.PureComponent<Props> {
 	public state = {
 		openModal: false
 	};
@@ -11,14 +17,17 @@ export class FilterPanel extends React.PureComponent {
 		return (
 			<div className="kit-filter-panel">
 				<div className="kit-filter-panel__btn-wrap">
-					<FilterConditionEditorButton isOpened={true} toggleOpen={() => null}
-						className="kit-filter-panel__btn"
+					<FilterConditionEditorButton
+						isOpened={true}
+						toggleOpen={() => null}
 					>
 						Добавить фильтр
 					</FilterConditionEditorButton>
 
-					<FilterConditionEditorButton isOpened={true} toggleOpen={() => null}
-						className="kit-filter-panel__btn kit-filter-panel__btn_small"
+					<FilterConditionEditorButton
+						isOpened={true}
+						toggleOpen={() => null}
+						small={true}
 					>
 						ИЛИ
 					</FilterConditionEditorButton>

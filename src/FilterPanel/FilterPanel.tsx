@@ -4,46 +4,52 @@ import { FilterConditionEditorButton } from "../FilterConditionEditorButton";
 import "./FilterPanel.scss";
 
 interface Props {
-	numberClients: string;
+	clientsCount: string;
+	onAddAndFilter: () => void;
+	onAddOrFilter: () => void;
+	hintText: string;
+	addAndFilterBtnText: string;
+	addOrFilterBtnText: string;
+	clientsCountText: string;
 }
 
-export class FilterPanel extends React.PureComponent<Props> {
-	public state = {
-		openModal: false
-	};
-
-	public render() {
-		const { numberClients } = this.props;
+export const FilterPanel = (props: Props) => {
+		const {
+			clientsCount,
+			onAddAndFilter,
+			onAddOrFilter,
+			hintText,
+			addAndFilterBtnText,
+			addOrFilterBtnText,
+			clientsCountText
+		} = props;
 		return (
 			<div className="kit-filter-panel">
 				<div className="kit-filter-panel__btn-wrap">
 					<FilterConditionEditorButton
-						isOpened={true}
-						toggleOpen={() => null}
+						isActive={true}
+						toggleOpen={onAddAndFilter}
 					>
-						Добавить фильтр
+						{addAndFilterBtnText}
 					</FilterConditionEditorButton>
 
 					<FilterConditionEditorButton
-						isOpened={true}
-						toggleOpen={() => null}
-						small={true}
+						isActive={false}
+						toggleOpen={onAddOrFilter}
+						className="kit-filter-panel__btn-second"
 					>
-						ИЛИ
+						{addOrFilterBtnText}
 					</FilterConditionEditorButton>
-					<p className="kit-filter-panel__text">
-						Добавьте фильтр, чтобы создать выборку клиентов
-					</p>
+					<p className="kit-filter-panel__text">{hintText}</p>
 				</div>
 				<div className="kit-filter-panel__info-wrap">
 					<div className="kit-filter-panel__info">
-						Всего клиентов:
+						{clientsCountText}:
 						<span className="kit-filter-panel__clients">
-							{numberClients}
+							{clientsCount}
 						</span>
 					</div>
 				</div>
 			</div>
 		);
-	}
-}
+};

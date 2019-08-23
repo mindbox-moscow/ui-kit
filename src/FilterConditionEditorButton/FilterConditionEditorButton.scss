@@ -1,18 +1,11 @@
 .kit-filter-editor-btn {
 	position: relative;
-	padding: 3px;
+	padding: 3px 24px;
 	border-radius: 4px 0 0 4px;
-	min-width: 160px;
 	color: #265378;
 	text-align: center;
 	border: 1px solid #c7d8e2;
 	background-color: #f1f5f8;
 	font-size: 13px;
 	line-height: 18px;
-
-	&_small {
-		border-radius: 0 4px 4px 0;
-		min-width: 70px;
-		border-left: 0;
-	}
 }

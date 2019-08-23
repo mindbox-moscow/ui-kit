@@ -5,23 +5,20 @@ import "./FilterConditionEditorButton.scss";
 
 interface Props {
 	className?: string;
-	children?: any;
-	isOpened: boolean;
-	toggleOpen: any;
-	small?: boolean;
+	children: React.ReactNode;
+	isActive: boolean;
+	toggleOpen: () => void;
 }
 
-export class FilterConditionEditorButton extends React.Component<Props> {
-	public render() {
-		const { children, small, className } = this.props;
-		return (
-			<button
-				className={cn("kit-filter-editor-btn", className, {
-					"kit-filter-editor-btn_small": small
-				})}
-			>
-				{children}
-			</button>
-		);
-	}
-}
+export const FilterConditionEditorButton = (props: Props) => {
+	const { children, className, toggleOpen } = props;
+	return (
+		<button
+			className={cn("kit-filter-editor-btn", className)}
+			type="button"
+			onClick={toggleOpen}
+		>
+			{children}
+		</button>
+	);
+};

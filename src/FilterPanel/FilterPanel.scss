@@ -17,23 +17,10 @@
 	align-items: center;
 }
 
-.kit-filter-panel__btn {
-	position: relative;
-	padding: 3px 0;
-	border-radius: 4px 0 0 4px;
-	min-width: 160px;
-	color: #265378;
-	text-align: center;
-	border: 1px solid #c7d8e2;
-	background-color: #f1f5f8;
-	font-size: 13px;
-	line-height: 18px;
-
-	&_small {
-		border-radius: 0 4px 4px 0;
-		min-width: 70px;
-		border-left: 0;
-	}
+.kit-filter-panel__btn-second {
+	border-radius: 0 4px 4px 0;
+	min-width: 70px;
+	border-left: 0;
 }
 
 .kit-filter-panel__text {
@@ -53,7 +40,6 @@
 }
 
 .kit-filter-panel__info {
-	//margin-right: 35px;
 	font-size: 14px;
 }
 

@@ -12,6 +12,7 @@ interface Props {
 
 export const FilterConditionEditorButton = (props: Props) => {
 	const { children, className, toggleOpen } = props;
+
 	return (
 		<button
 			className={cn("kit-filter-editor-btn", className)}

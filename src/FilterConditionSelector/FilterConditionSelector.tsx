@@ -34,23 +34,42 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 		helpComponent,
 		helpCaption,
 		name,
-		isSelected
+		isSelected,
+		toggleExpand,
+		hasChildren,
+		type
 	} = props.selectedElement;
 
 	return (
 		<div className="kit-filter-condition-selector">
-			<ul className="kit-filter-condition-selector__hierarchy">
-				<li
+			<div className="kit-filter-condition-selector__hierarchy">
+				<div
 					className={cn(
 						"kit-filter-condition-selector__hierarchy-item",
 						{
 							"kit-filter-condition-selector__hierarchy-item_selected": isSelected
 						}
 					)}
+					onClick={toggleExpand}
 				>
 					{name}
-				</li>
-			</ul>
+				</div>
+				{hasChildren && (
+					<div className="kit-filter-condition-selector__hierarchy-selected">
+						<div
+							className={cn(
+								"kit-filter-condition-selector__hierarchy-selected-item",
+								{
+									"kit-filter-condition-selector__hierarchy-item_filtration":
+										type === "simpleFiltrationObject"
+								}
+							)}
+						>
+							<span>{name}</span>
+						</div>
+					</div>
+				)}
+			</div>
 			<div className="kit-filter-condition-selector__helper">
 				<h2 className="kit-filter-condition-selector__help-caption-title">
 					{helpCaption}

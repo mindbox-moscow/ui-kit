@@ -56,13 +56,13 @@ const hierarchy = [
 	},
 	{
 		id: "empty",
-		type: "filtrationObjectCategory",
+		type: "simpleFiltrationObject",
 		name: "Пустая тестовая категория",
 		helpCaption: "Ссылка на установку электронной карты",
-		hasChildren: false,
+		hasChildren: true,
 		isExpanded: false,
 		onSelect: () => null,
-		toggleExpand: () => null,
+		toggleExpand: () => console.log("Toogle click"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}

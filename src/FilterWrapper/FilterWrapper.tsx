@@ -11,6 +11,7 @@ interface Props {
 	statisticsValue?: React.ReactNode;
 	statisticsDescription: string;
 	applyButtonCaption: string;
+	clearButtonCaption: string;
 	onApply: () => void;
 }
 
@@ -25,6 +26,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 			statisticsValue,
 			statisticsDescription,
 			applyButtonCaption,
+			clearButtonCaption,
 			onApply
 		} = this.props;
 
@@ -83,7 +85,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 									console.log("clear filter");
 								}}
 							>
-								Сбросить фильтр
+								{clearButtonCaption}
 							</button>
 						</div>
 					</div>

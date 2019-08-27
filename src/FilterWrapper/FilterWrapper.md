@@ -3,6 +3,7 @@
 	statisticsDescription="Потребителей найдено"
 	statisticsValue={50248}
 	applyButtonCaption="Применить фильтр"
+	clearButtonCaption="Сбросить фильтр"
 	onApply={() => { console.log("apply filter"); }}
 >
 	Other components here...

@@ -50,6 +50,21 @@
 		font-size: 14px;
 		line-height: 19px;
 	}
+
+	.kit-filter__btn {
+		position: relative;
+		margin-left: 20px;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 9px;
+			left: -20px;
+			height: 2px;
+			width: 15px;
+			background-color: #dcc6f3;
+		}
+	}
 }
 
 .kit-filtration-group__label {

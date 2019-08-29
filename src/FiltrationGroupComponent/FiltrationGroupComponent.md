@@ -1,5 +1,6 @@
 ```jsx
 <div style={{}}>
+	<h2>1.</h2>
 	<FiltrationGroupComponent
 		groupType=""
 		andLabel="И"
@@ -123,6 +124,7 @@
 
 	<br />
 	<br />
+	<h2>2.</h2>
 
 	<FiltrationGroupComponent
 		groupType="or"
@@ -247,6 +249,7 @@
 
 	<br />
 	<br />
+	<h2>3.</h2>
 
 	<FiltrationGroupComponent
 		groupType="or"
@@ -376,6 +379,7 @@
 
 	<br />
 	<br />
+	<h2>4.</h2>
 
 	<FiltrationConditionComponent
 		linkedConditionComponent={
@@ -405,6 +409,8 @@
 
 	<br />
 	<br />
+
+	<h2>5.</h2>
 
 	<FiltrationConditionComponent
 		linkedConditionComponent={
@@ -445,12 +451,104 @@
 	<br />
 	<br />
 
+	<h2>6.</h2>
+
 	<FiltrationGroupComponent
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
+		<FiltrationConditionComponent
+			linkedConditionComponent={
+				<FiltrationGroupComponent
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+				>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Мужской</span>
+						}
+					/>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Женский</span>
+						}
+					/>
+				</FiltrationGroupComponent>
+			}
+		/>
+
+		<FiltrationConditionComponent
+			linkedConditionComponent={
+				<FiltrationGroupComponent
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+				>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Мужской</span>
+						}
+					/>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Женский</span>
+						}
+					/>
+				</FiltrationGroupComponent>
+			}
+		/>
+	</FiltrationGroupComponent>
+
+	<br />
+	<br />
+
+	<h2>7.</h2>
+
+	<FiltrationGroupComponent
+		groupType="or"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+	>
+		<FiltrationConditionComponent
+			linkedConditionComponent={
+				<FiltrationGroupComponent
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+				>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Мужской</span>
+						}
+					/>
+					<FiltrationConditionComponent
+						filtrationObjectName="Пол"
+						filtrationMethodName="заполнен и "
+						filtrationMethodParametersComponent={
+							<span style={{ fontWeight: "bold" }}>Женский</span>
+						}
+					/>
+				</FiltrationGroupComponent>
+			}
+		/>
+
 		<FiltrationConditionComponent
 			linkedConditionComponent={
 				<FiltrationGroupComponent

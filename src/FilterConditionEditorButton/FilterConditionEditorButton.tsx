@@ -8,18 +8,23 @@ interface Props {
 	children: React.ReactNode;
 	isActive: boolean;
 	toggleOpen: () => void;
+	label: string;
+	isOpened: boolean;
 }
 
 export const FilterConditionEditorButton = (props: Props) => {
-	const { children, className, toggleOpen } = props;
+	const { children, className, toggleOpen, label, isOpened } = props;
 
 	return (
-		<button
-			className={cn("kit-filter-editor-btn", className)}
-			type="button"
-			onClick={toggleOpen}
-		>
-			{children}
-		</button>
+		<div>
+			<button
+				className={cn("kit-filter-editor-btn", className)}
+				type="button"
+				onClick={toggleOpen}
+			>
+				{label}
+			</button>
+			{isOpened && children}
+		</div>
 	);
 };

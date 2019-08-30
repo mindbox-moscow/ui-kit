@@ -88,36 +88,28 @@ const hierarchy = [
 ];
 
 class ExampleComponent extends React.Component {
-	constructor() {
-		super();
-		this.state = { showPopup: false };
-		this.togglePopup = this.togglePopup.bind(this);
-	}
-
-	togglePopup() {
-		console.log("hello");
-		this.setState(state => ({
-			showPopup: !state.showPopup
-		}));
-	}
 	render() {
 		return (
 			<>
-				<FilterPanel
-					addAndFilterBtnText="Добавить фильтр"
-					addOrFilterBtnText="ИЛИ"
-					hintText="Добавьте фильтр, чтобы создать выборку клиентов"
-					clientsCountText="Всего клиентов"
-					clientsCount="1 021 318"
-					onAddAndFilter={this.togglePopup}
-					onAddOrFilter={this.togglePopup}
-				/>
-				{this.state.showPopup && (
-					<FilterConditionSelector
-						hierarchy={hierarchy}
-						selectedElement={hierarchy[1]}
-					/>
-				)}
+				<FilterWrapper
+					statisticsDescription="Потребителей найдено"
+					statisticsValue={50248}
+					applyButtonCaption="Применить фильтр"
+					onApply={() => {
+						console.log("apply filter");
+					}}
+				>
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						isOpened={false}
+						toggleOpen={() => null}
+					>
+						<FilterConditionSelector
+							hierarchy={hierarchy}
+							selectedElement={hierarchy[1]}
+						/>
+					</FilterConditionEditorButton>
+				</FilterWrapper>
 			</>
 		);
 	}

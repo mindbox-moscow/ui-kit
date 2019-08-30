@@ -16,9 +16,9 @@ export const FilterConditionEditorButton = (props: Props) => {
 	const { children, className, toggleOpen, label, isOpened } = props;
 
 	return (
-		<div>
+		<div className="kit-filter-editor">
 			<button
-				className={cn("kit-filter-editor-btn", className)}
+				className={cn("kit-filter-editor__btn", className)}
 				type="button"
 				onClick={toggleOpen}
 			>

@@ -33,42 +33,55 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 		editorComponent,
 		helpComponent,
 		helpCaption,
-		name,
-		isSelected,
+		// name,
+		// isSelected,
 		toggleExpand,
-		hasChildren,
-		type
+		// hasChildren,
+		// type
 	} = props.selectedElement;
+
+	console.log(
+		props.hierarchy.map(item => <span key={item.id}>{item.name}</span>)
+	);
 
 	return (
 		<div className="kit-filter-condition-selector">
 			<div className="kit-filter-condition-selector__hierarchy">
-				<div
-					className={cn(
-						"kit-filter-condition-selector__hierarchy-item",
-						{
-							"kit-filter-condition-selector__hierarchy-item_selected": isSelected
-						}
-					)}
-					onClick={toggleExpand}
-				>
-					{name}
-				</div>
-				{hasChildren && (
-					<div className="kit-filter-condition-selector__hierarchy-selected">
+				{props.hierarchy.map(item => (
+					<>
 						<div
+							key={item.id}
 							className={cn(
-								"kit-filter-condition-selector__hierarchy-selected-item",
+								"kit-filter-condition-selector__hierarchy-item",
 								{
-									"kit-filter-condition-selector__hierarchy-item_filtration":
-										type === "simpleFiltrationObject"
+									"kit-filter-condition-selector__hierarchy-item_selected": item.isSelected
 								}
 							)}
+							onClick={toggleExpand}
 						>
-							<span>{name}</span>
+							{item.name}
 						</div>
-					</div>
-				)}
+						{item.hasChildren && (
+							<div className="kit-filter-condition-selector__hierarchy-selected">
+								<div
+									className={cn(
+										"kit-filter-condition-selector__hierarchy-selected-item",
+										{
+											"kit-filter-condition-selector__hierarchy-selected-item_filtration":
+												item.type ===
+												"simpleFiltrationObject",
+											"kit-filter-condition-selector__hierarchy-selected-item":
+												item.type ===
+												"filtrationObjectCategory"
+										}
+									)}
+								>
+									<span>{item.name}</span>
+								</div>
+							</div>
+						)}
+					</>
+				))}
 			</div>
 			<div className="kit-filter-condition-selector__helper">
 				<h2 className="kit-filter-condition-selector__help-caption-title">

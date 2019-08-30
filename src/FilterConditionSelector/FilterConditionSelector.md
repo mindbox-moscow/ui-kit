@@ -105,6 +105,13 @@ class ExampleComponent extends React.Component {
 						toggleOpen={() => null}
 					>
 						<FilterConditionSelector
+							style={{ position: "relative" }}
+							hierarchy={hierarchy}
+							selectedElement={hierarchy[0]}
+						/>
+						<br />
+						<FilterConditionSelector
+							style={{ position: "relative" }}
 							hierarchy={hierarchy}
 							selectedElement={hierarchy[1]}
 						/>

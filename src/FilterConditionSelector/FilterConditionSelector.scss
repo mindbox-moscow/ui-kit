@@ -1,7 +1,8 @@
 .kit-filter-condition-selector {
-	position: absolute;
-	top: 30px;
-	left: 10px;
+	//position: absolute;
+	position: relative;
+	top: 20px;
+	left: 0;
 	display: flex;
 	width: 982px;
 	height: 740px;
@@ -15,7 +16,7 @@
 
 .kit-filter-condition-selector__hierarchy {
 	margin: 0;
-	margin-top: 12px;
+	//margin-top: 12px;
 	padding: 0;
 	width: 100%;
 	max-width: 382px;
@@ -49,16 +50,6 @@
 
 		&::before {
 			background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' class='kit-icon-svg' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-			background-repeat: no-repeat;
-		}
-	}
-
-	&_filtration {
-		span::before {
-			top: 10px !important;
-			height: 12px !important;
-			width: 12px !important;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M11.965.68a.36.36 0 0 0-.328-.211H.363a.367.367 0 1 0-.281.598L4.418 6.32v4.848a.363.363 0 0 0 .523.324l2.434-1.207a.359.359 0 0 0 .203-.324l.004-3.64 4.336-5.255a.367.367 0 0 0 .047-.386zM6.938 5.957a.386.386 0 0 0-.083.23l-.003 3.547-1.707.848v-4.39a.388.388 0 0 0-.082-.235L1.136 1.195h9.726zm0 0'/%3E%3C/svg%3E") !important;
 			background-repeat: no-repeat;
 		}
 	}
@@ -112,19 +103,13 @@
 		}
 	}
 
-	.kit-filter-condition-selector__hierarchy-selected-item {
-		padding-left: 30px;
-
+	&_filtration {
 		span::before {
-			left: 18px;
-		}
-
-		&::before {
-			left: 3px;
-		}
-
-		&::after {
-			left: 3px;
+			top: 10px;
+			height: 12px;
+			width: 12px;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M11.965.68a.36.36 0 0 0-.328-.211H.363a.367.367 0 1 0-.281.598L4.418 6.32v4.848a.363.363 0 0 0 .523.324l2.434-1.207a.359.359 0 0 0 .203-.324l.004-3.64 4.336-5.255a.367.367 0 0 0 .047-.386zM6.938 5.957a.386.386 0 0 0-.083.23l-.003 3.547-1.707.848v-4.39a.388.388 0 0 0-.082-.235L1.136 1.195h9.726zm0 0'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
 		}
 	}
 }

@@ -101,7 +101,7 @@ class ExampleComponent extends React.Component {
 				>
 					<FilterConditionEditorButton
 						label="Добавить фильтр"
-						isOpened={false}
+						isOpened={true}
 						toggleOpen={() => null}
 					>
 						<FilterConditionSelector

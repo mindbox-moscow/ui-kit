@@ -445,57 +445,27 @@
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
-		<FiltrationConditionComponent
-			linkedConditionComponent={
-				<FiltrationGroupComponent
-					groupType="or"
-					andLabel="И"
-					orLabel="ИЛИ"
-					shouldShowLabel={false}
-				>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Мужской</span>
-						}
-					/>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Женский</span>
-						}
-					/>
-				</FiltrationGroupComponent>
-			}
-		/>
-
-		<FiltrationConditionComponent
-			linkedConditionComponent={
-				<FiltrationGroupComponent
-					groupType="and"
-					andLabel="И"
-					orLabel="ИЛИ"
-					shouldShowLabel={false}
-				>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Мужской</span>
-						}
-					/>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Женский</span>
-						}
-					/>
-				</FiltrationGroupComponent>
-			}
-		/>
+		<FiltrationGroupComponent
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Женский</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
 	</FiltrationGroupComponent>
 
 	<br />
@@ -507,85 +477,73 @@
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
-		shouldShowLabel={false}
+		shouldShowLabel={true}
 	>
-		<FiltrationConditionComponent
-			linkedConditionComponent={
-				<FiltrationGroupComponent
-					groupType="or"
-					andLabel="И"
-					orLabel="ИЛИ"
-					shouldShowLabel={true}
-				>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Мужской</span>
-						}
-					/>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Женский</span>
-						}
-					/>
-				</FiltrationGroupComponent>
-			}
-		/>
+		<FiltrationGroupComponent
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
 
-		<FiltrationConditionComponent
-			linkedConditionComponent={
-				<FiltrationGroupComponent
-					groupType="or"
-					andLabel="И"
-					orLabel="ИЛИ"
-					shouldShowLabel={true}
-				>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Мужской</span>
-						}
-					/>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Женский</span>
-						}
-					/>
-				</FiltrationGroupComponent>
-			}
-		/>
+		<FiltrationGroupComponent
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
 
-		<FiltrationConditionComponent
-			linkedConditionComponent={
-				<FiltrationGroupComponent
-					groupType="or"
-					andLabel="И"
-					orLabel="ИЛИ"
-					shouldShowLabel={true}
-				>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Мужской</span>
-						}
-					/>
-					<FiltrationConditionComponent
-						filtrationObjectName="Пол"
-						filtrationMethodName="заполнен и "
-						filtrationMethodParametersComponent={
-							<span style={{ fontWeight: "bold" }}>Женский</span>
-						}
-					/>
-				</FiltrationGroupComponent>
-			}
-		/>
+		<FiltrationGroupComponent
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
 	</FiltrationGroupComponent>
 </div>
 ```

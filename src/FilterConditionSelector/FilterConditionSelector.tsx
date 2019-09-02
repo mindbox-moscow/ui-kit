@@ -35,7 +35,7 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 		helpCaption,
 		// name,
 		// isSelected,
-		toggleExpand,
+		toggleExpand
 		// hasChildren,
 		// type
 	} = props.selectedElement;
@@ -54,7 +54,8 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 							className={cn(
 								"kit-filter-condition-selector__hierarchy-item",
 								{
-									"kit-filter-condition-selector__hierarchy-item_selected": item.isSelected
+									"kit-filter-condition-selector__hierarchy-item_selected":
+										item.isSelected
 								}
 							)}
 							onClick={toggleExpand}
@@ -65,18 +66,95 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 							<div className="kit-filter-condition-selector__hierarchy-selected">
 								<div
 									className={cn(
-										"kit-filter-condition-selector__hierarchy-selected-item",
-										{
-											"kit-filter-condition-selector__hierarchy-selected-item_filtration":
-												item.type ===
-												"simpleFiltrationObject",
-											"kit-filter-condition-selector__hierarchy-selected-item":
-												item.type ===
-												"filtrationObjectCategory"
-										}
+										"kit-filter-condition-selector__hierarchy-selected-item"
 									)}
 								>
-									<span>{item.name}</span>
+									<span
+										className={cn(
+											"kit-filter-condition-selector__hierarchy-name",
+											{
+												"kit-filter-condition-selector__hierarchy-name_filtration":
+													item.type ===
+													"simpleFiltrationObject",
+												"kit-filter-condition-selector__hierarchy-name":
+													item.type ===
+													"filtrationObjectCategory"
+											}
+										)}
+									>
+										{item.name}
+									</span>
+
+									{item.getChildren() !== null &&
+										item.getChildren().map(items => (
+											<div
+												className={cn(
+													"kit-filter-condition-selector__hierarchy-selected-item",
+													{
+														"kit-filter-condition-selector__hierarchy-selected-item_filtration":
+															items.type ===
+															"simpleFiltrationObject",
+														"kit-filter-condition-selector__hierarchy-selected-item":
+															items.type ===
+															"filtrationObjectCategory"
+													}
+												)}
+											>
+												<span
+													className={cn(
+														"kit-filter-condition-selector__hierarchy-name",
+														{
+															"kit-filter-condition-selector__hierarchy-name_filtration":
+																items.type ===
+																"simpleFiltrationObject",
+															"kit-filter-condition-selector__hierarchy-name":
+																items.type ===
+																"filtrationObjectCategory"
+														}
+													)}
+												>
+													{items.name}
+
+													{items.getChildren() !==
+														null &&
+														items
+															.getChildren()
+															.map(it => (
+																<div
+																	className={cn(
+																		"kit-filter-condition-selector__hierarchy-selected-item",
+																		{
+																			"kit-filter-condition-selector__hierarchy-selected-item_filtration":
+																				it.type ===
+																				"simpleFiltrationObject",
+																			"kit-filter-condition-selector__hierarchy-selected-item":
+																				it.type ===
+																				"filtrationObjectCategory"
+																		}
+																	)}
+																>
+																	<span
+																		className={cn(
+																			"kit-filter-condition-selector__hierarchy-name",
+																			{
+																				"kit-filter-condition-selector__hierarchy-name_filtration":
+																					it.type ===
+																					"simpleFiltrationObject",
+																				"kit-filter-condition-selector__hierarchy-name":
+																					items.type ===
+																					"filtrationObjectCategory"
+																			}
+																		)}
+																	>
+																		{
+																			it.name
+																		}
+																	</span>
+																</div>
+															))}
+												</span>
+											</div>
+										))}
 								</div>
 							</div>
 						)}

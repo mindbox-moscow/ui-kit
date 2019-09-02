@@ -72,7 +72,51 @@ const hierarchy = [
 			/>
 		),
 		isSelected: true,
-		getChildren: () => [],
+		getChildren: () => [
+			{
+				id: "behaviour",
+				type: "filtrationObjectCategory",
+				name: "Поведение v0",
+				helpCaption: "Поведение Caption",
+				hasChildren: true,
+				isExpanded: false,
+				onSelect: () => null,
+				toggleExpand: () => null,
+				editorComponent: null,
+				isSelected: false,
+				getChildren: () => null,
+				helpComponent: <div>Хелп к категории "Поведение"</div>
+			},
+			{
+				id: "behaviour",
+				type: "simpleFiltrationObject",
+				name: "Вложенность lvl 3",
+				helpCaption: "Поведение Caption",
+				hasChildren: true,
+				isExpanded: false,
+				onSelect: () => null,
+				toggleExpand: () => null,
+				editorComponent: null,
+				isSelected: false,
+				getChildren: () => [
+					{
+						id: "behaviour",
+						type: "simpleFiltrationObject",
+						name: "Вложенность lvl 4",
+						helpCaption: "Поведение Caption",
+						hasChildren: true,
+						isExpanded: false,
+						onSelect: () => null,
+						toggleExpand: () => null,
+						editorComponent: null,
+						isSelected: false,
+						getChildren: () => null,
+						helpComponent: <div>Хелп к категории "Поведение"</div>
+					}
+				],
+				helpComponent: <div>Хелп к категории "Поведение"</div>
+			}
+		],
 		helpComponent: (
 			<div>
 				Что важно, мы настраиваемся на всю выручку и смотрим все заказы.

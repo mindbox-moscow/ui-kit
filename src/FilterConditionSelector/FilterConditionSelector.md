@@ -132,6 +132,19 @@ const hierarchy = [
 ];
 
 class ExampleComponent extends React.Component {
+	constructor() {
+		super();
+		this.state = { showPopup: false };
+		this.togglePopup = this.togglePopup.bind(this);
+	}
+
+	togglePopup() {
+		console.log("hello");
+		this.setState(state => ({
+			showPopup: !state.showPopup
+		}));
+	}
+
 	render() {
 		return (
 			<>
@@ -146,19 +159,14 @@ class ExampleComponent extends React.Component {
 					<FilterConditionEditorButton
 						label="Добавить фильтр"
 						isOpened={true}
-						toggleOpen={() => null}
+						toggleOpen={this.togglePopup}
 					>
-						<FilterConditionSelector
-							style={{ position: "relative" }}
-							hierarchy={hierarchy}
-							selectedElement={hierarchy[0]}
-						/>
-						<br />
-						<FilterConditionSelector
-							style={{ position: "relative" }}
-							hierarchy={hierarchy}
-							selectedElement={hierarchy[1]}
-						/>
+						{this.state.showPopup && (
+							<FilterConditionSelector
+								hierarchy={hierarchy}
+								selectedElement={hierarchy[0]}
+							/>
+						)}
 					</FilterConditionEditorButton>
 				</FilterWrapper>
 			</>

@@ -1,6 +1,5 @@
 .kit-filter-condition-selector {
-	//position: absolute;
-	position: relative;
+	position: absolute;
 	top: 20px;
 	left: 0;
 	display: flex;
@@ -16,7 +15,6 @@
 
 .kit-filter-condition-selector__hierarchy {
 	margin: 0;
-	//margin-top: 12px;
 	padding: 0;
 	width: 100%;
 	max-width: 382px;

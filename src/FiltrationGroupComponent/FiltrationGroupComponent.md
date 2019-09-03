@@ -249,7 +249,12 @@
 
 	<br />
 	<br />
-	<h2>3.</h2>
+	<h2>
+		3.{" "}
+		<a href="https://github.com/mindbox-moscow/ui-kit/issues/272">
+			https://github.com/mindbox-moscow/ui-kit/issues/272
+		</a>
+	</h2>
 
 	<FiltrationGroupComponent
 		groupType="or"
@@ -402,7 +407,12 @@
 	<br />
 	<br />
 
-	<h2>5.</h2>
+	<h2>
+		5.
+		<a href="https://github.com/mindbox-moscow/ui-kit/issues/276">
+			https://github.com/mindbox-moscow/ui-kit/issues/276
+		</a>
+	</h2>
 
 	<FiltrationGroupComponent
 		groupType="or"
@@ -411,7 +421,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-			groupType="or"
+			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
@@ -432,12 +442,25 @@
 				}
 			/>
 		</FiltrationGroupComponent>
+
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и "
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
 	</FiltrationGroupComponent>
 
 	<br />
 	<br />
 
-	<h2>6.</h2>
+	<h2>
+		6.
+		<a href="https://github.com/mindbox-moscow/ui-kit/issues/273">
+			https://github.com/mindbox-moscow/ui-kit/issues/273
+		</a>
+	</h2>
 
 	<FiltrationGroupComponent
 		groupType="or"
@@ -446,7 +469,29 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-			groupType="or"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Женский</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
+
+		<FiltrationGroupComponent
+			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
@@ -471,7 +516,12 @@
 	<br />
 	<br />
 
-	<h2>7.</h2>
+	<h2>
+		7.
+		<a href="https://github.com/mindbox-moscow/ui-kit/issues/274">
+			https://github.com/mindbox-moscow/ui-kit/issues/274
+		</a>
+	</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"

@@ -24,22 +24,24 @@
 
 .kit-filter-condition-selector__hierarchy-item {
 	position: relative;
-	padding: 7px 0 7px 30px;
+	padding: 7px 0 7px 35px;
 	list-style: none;
 	color: #333333;
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 10px;
-		left: 14px;
-		width: 6px;
-		height: 10px;
-		background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-		background-repeat: no-repeat;
+	.kit-filter-condition-selector__hierarchy-name {
+		&::before {
+			content: "";
+			position: absolute;
+			top: 11px;
+			left: 19px;
+			width: 6px;
+			height: 10px;
+			background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+		}
 	}
 
 	&_selected {
@@ -51,79 +53,86 @@
 			background-repeat: no-repeat;
 		}
 	}
+
+	&_expanded {
+		&::before {
+			transform: rotate(90deg);
+			background-repeat: no-repeat;
+		}
+	}
 }
 
-.kit-filter-condition-selector__hierarchy-selected-item {
+.kit-filter-condition-selector__hierarchy-children {
 	position: relative;
-	padding: 7px 0 7px 45px;
+	padding-left: 0;
 	list-style: none;
 	color: #333333;
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
 
-	&::before {
-		content: "";
-		position: absolute;
-		top: 15px;
-		left: 16px;
-		background-color: #e1eaf1;
-		height: 2px;
-		width: 9px;
-	}
-
-	&::after {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 16px;
-		background-color: #e1eaf1;
-		height: 100%;
-		width: 2px;
-	}
-
-	&:last-child {
-		&::after {
-			height: calc(100% - 15px);
-		}
-	}
-
-	.kit-filter-condition-selector__hierarchy-selected-item {
-		padding-left: 35px;
-
+	li {
 		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
 			left: 3px;
+			background-color: #e1eaf1;
+			height: 100%;
+			width: 2px;
+			transform: rotate(0) !important;
+
+		}
+		&:first-child::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 3px;
+			background-color: #e1eaf1;
+			height: 100%;
+			width: 2px;
+			transform: rotate(0) !important;
+		}
+
+		&:last-child::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 3px;
+			background-color: #e1eaf1;
+			height: 18px;
+			width: 2px;
+			transform: rotate(0) !important;
 		}
 
 		&::after {
-			left: 3px;
-		}
-
-		.kit-filter-condition-selector__hierarchy-name::before {
-			left: 16px;
+			content: "";
+			position: absolute;
+			top: 16px;
+			left: 4px;
+			background-color: #e1eaf1;
+			height: 2px;
+			width: 9px;
 		}
 	}
 }
 
-.kit-filter-condition-selector__hierarchy-name {
-	&::before {
-		content: "";
-		position: absolute;
-		top: 11px;
-		left: 28px;
-		width: 6px;
+.kit-filter-condition-selector__hierarchy-simple-filter {
+	.kit-filter-condition-selector__hierarchy-name::before {
+		left: 19px;
+		top: 10px;
+		background-image: none;
+		background-color: #8aacc2;
+		border-radius: 50%;
+		width: 10px;
 		height: 10px;
-		background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-		background-repeat: no-repeat;
 	}
+}
 
-	&_filtration::before {
-			top: 10px;
-			height: 12px;
-			width: 12px;
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M11.965.68a.36.36 0 0 0-.328-.211H.363a.367.367 0 1 0-.281.598L4.418 6.32v4.848a.363.363 0 0 0 .523.324l2.434-1.207a.359.359 0 0 0 .203-.324l.004-3.64 4.336-5.255a.367.367 0 0 0 .047-.386zM6.938 5.957a.386.386 0 0 0-.083.23l-.003 3.547-1.707.848v-4.39a.388.388 0 0 0-.082-.235L1.136 1.195h9.726zm0 0'/%3E%3C/svg%3E");
-			background-repeat: no-repeat;
-		}
+.kit-filter-condition-selector__hierarchy-name {
+	.kit-filter-condition-selector__hierarchy-simple-filter & {
+		font-weight: 400;
+	}
 }
 
 .kit-filter-condition-selector__helper {

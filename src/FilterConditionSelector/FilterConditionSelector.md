@@ -46,7 +46,7 @@ const expandChild = [
 		name: "Поведение",
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
-		isExpanded: true,
+		isExpanded: false,
 		onSelect: () => null,
 		toggleExpand: () => null,
 		editorComponent: null,

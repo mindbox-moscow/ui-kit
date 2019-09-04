@@ -46,14 +46,15 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 				className={cn("kit-filter-condition-selector__hierarchy-item", {
 					"kit-filter-condition-selector__hierarchy-item_selected":
 						item.isSelected,
-					"kit-filter-condition-selector__hierarchy-item_expanded":
-					item.isExpanded,
 					"kit-filter-condition-selector__hierarchy-simple-filter":
 						item.type === "simpleFiltrationObject"
 				})}
 				onClick={toggleExpand}
 			>
-				<span className="kit-filter-condition-selector__hierarchy-name">
+				<span className={cn("kit-filter-condition-selector__hierarchy-name",
+					{"kit-filter-condition-selector__hierarchy-name_expanded":
+					item.isExpanded,
+					})}>
 					{item.name}
 				</span>
 

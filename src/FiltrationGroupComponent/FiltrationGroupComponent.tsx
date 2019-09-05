@@ -15,7 +15,7 @@ interface Props {
 export class FiltrationGroupComponent extends React.Component<Props> {
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 
-	public getPositionLabel() {
+	public moveLabelAtCenterOfBracket() {
 		const ref = this.kitFiltrationRef.current;
 
 		if (ref) {
@@ -32,7 +32,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	}
 
 	public componentDidMount() {
-		this.getPositionLabel();
+		this.moveLabelAtCenterOfBracket();
+	}
+
+	public componentDidUpdate() {
+		this.moveLabelAtCenterOfBracket();
 	}
 
 	public render() {

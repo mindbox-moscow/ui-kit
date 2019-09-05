@@ -39,7 +39,31 @@ const EditorComponentExample = () => {
 	);
 };
 
-const expandChild = [
+const arrayFirstChild = [
+	{
+		id: "behaviour",
+		type: "filtrationObjectCategory",
+		name: "Ещё простая категория",
+		helpCaption: "Простая категория Caption",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => null,
+		toggleExpand: () => null,
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		getChildren: () => arraySecondChild,
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	}
+];
+
+const arraySecondChild = [
 	{
 		id: "behaviour",
 		type: "filtrationObjectCategory",
@@ -56,7 +80,7 @@ const expandChild = [
 	}
 ];
 
-const child = [
+const childrenData = [
 	{
 		id: "behaviour",
 		type: "simpleFiltrationObject",
@@ -117,31 +141,7 @@ const child = [
 			/>
 		),
 		isSelected: false,
-		getChildren: () => [
-			{
-				id: "behaviour",
-				type: "filtrationObjectCategory",
-				name: "Ещё простая категория",
-				helpCaption: "Простая категория Caption",
-				hasChildren: true,
-				isExpanded: true,
-				onSelect: () => null,
-				toggleExpand: () => null,
-				editorComponent: (
-					<FilterConditionEditorComponent
-						innerEditorComponent={EditorComponentExample()}
-						addFilterButtonCaption="Добавить фильтр"
-						isAddFilterButtonEnabled={false}
-						onAddFilterButtonClick={() =>
-							console.log("фильтр добавлен")
-						}
-					/>
-				),
-				isSelected: false,
-				getChildren: () => expandChild,
-				helpComponent: <div>Хелп к "Простому фильтру"</div>
-			}
-		],
+		getChildren: () => arrayFirstChild,
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	}
 ];
@@ -158,7 +158,7 @@ const hierarchy = [
 		toggleExpand: () => null,
 		editorComponent: null,
 		isSelected: false,
-		getChildren: () => child,
+		getChildren: () => childrenData,
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
 	{
@@ -220,17 +220,15 @@ class ExampleComponent extends React.Component {
 					}}
 				>
 					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						isOpened={true}
-						toggleOpen={this.togglePopup}
-					>
-						{this.state.showPopup && (
-							<FilterConditionSelector
-								hierarchy={hierarchy}
-								selectedElement={hierarchy[0]}
-							/>
-						)}
-					</FilterConditionEditorButton>
+                        label="Добавить фильтр"
+                        isOpened={this.state.showPopup}
+                        toggleOpen={this.togglePopup}
+                    >
+                        <FilterConditionSelector
+                            hierarchy={hierarchy}
+                            selectedElement={hierarchy[0]}
+                        />
+                    </FilterConditionEditorButton>
 				</FilterWrapper>
 			</>
 		);

@@ -4,12 +4,11 @@ import cn from "classnames";
 import "./FilterConditionEditorButton.scss";
 
 interface Props {
-	className?: string;
-	children: React.ReactNode;
-	isActive: boolean;
+	children?: React.ReactNode;
 	toggleOpen: () => void;
 	label: string;
 	isOpened: boolean;
+	className?: string;
 }
 
 export const FilterConditionEditorButton = (props: Props) => {

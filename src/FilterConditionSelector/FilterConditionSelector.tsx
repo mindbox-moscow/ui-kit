@@ -51,10 +51,15 @@ const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
 				})}
 				onClick={toggleExpand}
 			>
-				<span className={cn("kit-filter-condition-selector__hierarchy-name",
-					{"kit-filter-condition-selector__hierarchy-name_expanded":
-					item.isExpanded,
-					})}>
+				<span
+					className={cn(
+						"kit-filter-condition-selector__hierarchy-name",
+						{
+							"kit-filter-condition-selector__hierarchy-name_expanded":
+								item.isExpanded
+						}
+					)}
+				>
 					{item.name}
 				</span>
 

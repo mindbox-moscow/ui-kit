@@ -50,13 +50,27 @@
 		font-size: 14px;
 		line-height: 19px;
 	}
+
+	.kit-filter__btn {
+		position: relative;
+		margin-left: 20px;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 9px;
+			left: -20px;
+			height: 2px;
+			width: 15px;
+			background-color: #dcc6f3;
+		}
+	}
 }
 
 .kit-filtration-group__label {
 	position: absolute;
 	display: block;
-	top: 31%;
-	left: -12px;
+	left: -11px;
 	padding: 2px 3px 0;
 	min-width: 20px;
 	border-radius: 3px;
@@ -70,30 +84,24 @@
 
 	&_and {
 		background-color: #2d597d;
-		top: 31%;
-		left: -11px;
-
-		& + .kit-filtration-condition::before,
-		& + .kit-filtration-condition::after {
+		& ~ .kit-filtration-condition::before,
+		& ~ .kit-filtration-condition::after {
 			background-color: #2d597d;
 		}
 
-		& + .kit-filtration-condition + .kit-filtration-condition:after {
+		& ~ .kit-filtration-condition + .kit-filtration-condition:after {
 			background-color: #2d597d;
 		}
 	}
 
 	&_or {
 		background-color: #dcc6f3;
-		top: 31%;
-		left: -11px;
-
-		& + .kit-filtration-condition::before,
-		& + .kit-filtration-condition::after {
+		& ~ .kit-filtration-condition::before,
+		& ~ .kit-filtration-condition::after {
 			background-color: #dcc6f3;
 		}
 
-		& + .kit-filtration-condition + .kit-filtration-condition:after {
+		& ~ .kit-filtration-condition + .kit-filtration-condition:after {
 			background-color: #dcc6f3;
 		}
 	}

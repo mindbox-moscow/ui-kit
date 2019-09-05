@@ -13,6 +13,32 @@ interface Props {
 }
 
 export class FiltrationGroupComponent extends React.Component<Props> {
+	private kitFiltrationRef = React.createRef<HTMLUListElement>();
+
+	public moveLabelAtCenterOfBracket() {
+		const ref = this.kitFiltrationRef.current;
+
+		if (ref) {
+			const label: HTMLElement | null = ref.querySelector(
+				".kit-filtration-group__label"
+			);
+			if (label && ref.lastElementChild) {
+				label.style.top = `${(ref.offsetHeight -
+					ref.lastElementChild.clientHeight +
+					5) /
+					2}px`;
+			}
+		}
+	}
+
+	public componentDidMount() {
+		this.moveLabelAtCenterOfBracket();
+	}
+
+	public componentDidUpdate() {
+		this.moveLabelAtCenterOfBracket();
+	}
+
 	public render() {
 		const {
 			groupType,
@@ -21,8 +47,9 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			shouldShowLabel,
 			children
 		} = this.props;
+
 		return (
-			<ul className="kit-filtration-group">
+			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
 				{shouldShowLabel && groupType === "or" && (
 					<div className="kit-filtration-group__label kit-filtration-group__label_or">
 						{orLabel}

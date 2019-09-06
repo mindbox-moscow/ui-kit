@@ -1,3 +1,4 @@
+import cn from "classnames";
 import * as React from "react";
 
 import "./FiltrationGroupComponent.scss";
@@ -23,16 +24,25 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				".kit-filtration-group__label"
 			);
 			if (label && ref.lastElementChild) {
-				label.style.top = `${(ref.offsetHeight -
+				let offset = 2;
+				if (
+					ref.lastElementChild.classList.contains(
+						"kit-filtration-group"
+					)
+				) {
+					offset = 33;
+				}
+				label.style.height = `${ref.offsetHeight -
 					ref.lastElementChild.clientHeight +
-					5) /
-					2}px`;
+					offset}px`;
 			}
 		}
 	}
 
 	public componentDidMount() {
-		this.moveLabelAtCenterOfBracket();
+		setTimeout(() => {
+			this.moveLabelAtCenterOfBracket();
+		}, 1);
 	}
 
 	public componentDidUpdate() {
@@ -48,16 +58,25 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			children
 		} = this.props;
 
+		const labelMap = {
+			or: orLabel,
+			and: andLabel
+		};
+
 		return (
-			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
-				{shouldShowLabel && groupType === "or" && (
-					<div className="kit-filtration-group__label kit-filtration-group__label_or">
-						{orLabel}
-					</div>
-				)}
-				{shouldShowLabel && groupType === "and" && (
-					<div className="kit-filtration-group__label kit-filtration-group__label_and">
-						{andLabel}
+			<ul
+				ref={this.kitFiltrationRef}
+				className={cn("kit-filtration-group", {
+					"kit-filtration-group_no-label": !shouldShowLabel
+				})}
+			>
+				{shouldShowLabel && (
+					<div
+						className={`kit-filtration-group__label kit-filtration-group__label_${groupType}`}
+					>
+						<span className="kit-filtration-group__label-text">
+							{labelMap[groupType]}
+						</span>
 					</div>
 				)}
 				{children}

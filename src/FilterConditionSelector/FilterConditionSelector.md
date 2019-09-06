@@ -98,7 +98,7 @@ const childrenData = [
 				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
 			/>
 		),
-		isSelected: true,
+		isSelected: false,
 		getChildren: () => [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
@@ -119,7 +119,7 @@ const childrenData = [
 				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
 			/>
 		),
-		isSelected: false,
+		isSelected: true,
 		getChildren: () => [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},

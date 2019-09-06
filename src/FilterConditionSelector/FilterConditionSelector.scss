@@ -49,6 +49,19 @@
 		background-color: #3875d7;
 		color: #fff;
 
+		.kit-filter-condition-selector__hierarchy-name{
+			&::after {
+				content: "";
+				position: absolute;
+				width: 130%;
+				height: 31px;
+				background-color: #3875d7;
+				top: 0;
+				left: -60px;
+				z-index: -1;
+			}
+		}
+
 		.kit-filter-condition-selector__hierarchy-name_expanded {
 			color: #fff;
 

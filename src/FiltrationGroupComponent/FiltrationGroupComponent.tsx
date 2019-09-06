@@ -31,7 +31,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				) {
 					label.style.height = `${ref.offsetHeight -
 						ref.lastElementChild.clientHeight +
-						32}px`;
+						33}px`;
 				} else {
 					label.style.height = `${ref.offsetHeight -
 						ref.lastElementChild.clientHeight +

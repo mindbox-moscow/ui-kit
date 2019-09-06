@@ -567,7 +567,7 @@
 	</h2>
 
 	<FiltrationGroupComponent
-		groupType="and"
+		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
@@ -576,13 +576,13 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
 				filtrationMethodName="заполнен и "
 				filtrationMethodParametersComponent={
-					<span style={{ fontWeight: "bold" }}>Мужской</span>
+					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
@@ -598,13 +598,13 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
 				filtrationMethodName="заполнен и "
 				filtrationMethodParametersComponent={
-					<span style={{ fontWeight: "bold" }}>Мужской</span>
+					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
@@ -620,13 +620,13 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
 				filtrationMethodName="заполнен и "
 				filtrationMethodParametersComponent={
-					<span style={{ fontWeight: "bold" }}>Мужской</span>
+					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
@@ -634,6 +634,72 @@
 				filtrationMethodName="заполнен и "
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
+				}
+			/>
+		</FiltrationGroupComponent>
+
+		<FiltrationGroupComponent
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и "
+				filtrationMethodParametersComponent={
+					<span style={{ fontWeight: "bold" }}>Женский</span>
+				}
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Розничный заказ"
+				filtrationMethodName="есть такие"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+					>
+						<FiltrationConditionComponent
+							filtrationObjectName="Покупка"
+							filtrationMethodName="нет таких"
+						/>
+						<FiltrationConditionComponent
+							filtrationObjectName="Первое действие"
+							linkedConditionComponent={
+								<FiltrationGroupComponent
+									groupType="and"
+									andLabel="И"
+									orLabel="ИЛИ"
+									shouldShowLabel={false}
+								>
+									<FiltrationConditionComponent
+										filtrationObjectName="Период от текущей даты"
+										filtrationMethodName="до"
+										filtrationMethodParametersComponent={
+											<>
+												<span
+													style={{
+														fontWeight: "bold"
+													}}
+												>
+													14 дней{" "}
+												</span>
+												<span
+													style={{
+														fontWeight: "normal"
+													}}
+												>
+													назад
+												</span>
+											</>
+										}
+									/>
+								</FiltrationGroupComponent>
+							}
+						/>
+					</FiltrationGroupComponent>
 				}
 			/>
 		</FiltrationGroupComponent>

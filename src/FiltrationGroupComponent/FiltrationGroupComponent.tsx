@@ -29,7 +29,9 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						"kit-filtration-group"
 					)
 				) {
-					label.style.height = `${ref.offsetHeight - 18}px`;
+					label.style.height = `${ref.offsetHeight -
+						ref.lastElementChild.clientHeight +
+						32}px`;
 				} else {
 					label.style.height = `${ref.offsetHeight -
 						ref.lastElementChild.clientHeight +

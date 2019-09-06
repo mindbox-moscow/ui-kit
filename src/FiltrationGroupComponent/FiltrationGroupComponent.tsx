@@ -40,7 +40,9 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	}
 
 	public componentDidMount() {
-		this.moveLabelAtCenterOfBracket();
+		setTimeout(() => {
+			this.moveLabelAtCenterOfBracket();
+		}, 1);
 	}
 
 	public componentDidUpdate() {

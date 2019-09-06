@@ -12,6 +12,7 @@ interface Props {
 	applyButtonCaption: string;
 	clearButtonCaption: string;
 	onApply: () => void;
+	onClear: () => void;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
@@ -50,9 +51,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 							</span>
 							<button
 								className="kit-filter__clear-filter-btn"
-								onClick={() => {
-									console.log("clear filter");
-								}}
+								onClick={this.props.onClear}
 							>
 								{clearButtonCaption}
 							</button>

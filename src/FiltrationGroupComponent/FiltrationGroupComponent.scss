@@ -3,21 +3,31 @@
 	padding: 0;
 	position: relative;
 
-	&_no-label {
-		> li:first-child {
-			&::after {
-				top: 10px;
-			}
+	// :not(.kit-filtration-group_no-label) & {
+	// 	&_no-label {
+	// 		> li:first-child {
+	// 			&::after {
+	// 				top: 10px;
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-			.kit-filtration-group {
-				li:first-child {
-					&::after {
-						top: -10px;
-					}
-				}
-			}
-		}
-	}
+	// &_no-label {
+	// 	> li:first-child {
+	// 		&::after {
+	// 			top: 10px;
+	// 		}
+
+	// 		.kit-filtration-group {
+	// 			li:first-child {
+	// 				&::after {
+	// 					top: -10px;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
 	> li {
 		margin-top: 10px;

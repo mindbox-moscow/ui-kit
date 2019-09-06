@@ -62,7 +62,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			<ul
 				ref={this.kitFiltrationRef}
 				className={cn("kit-filtration-group", {
-					"kit-filtration-group_no-label": !groupType
+					"kit-filtration-group_no-label": !shouldShowLabel
 				})}
 			>
 				{shouldShowLabel && groupType === "or" && (

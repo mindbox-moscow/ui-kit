@@ -2,20 +2,20 @@
 <div style={{}}>
 	<h2>1.</h2>
 	<FiltrationGroupComponent
-		groupType=""
+		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
-		shouldShowLabel={true}
+		shouldShowLabel={false}
 	>
 		<FiltrationConditionComponent
 			filtrationObjectName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-					groupType=""
+					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
-					shouldShowLabel={true}
+					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
 						filtrationObjectName="Покупка"

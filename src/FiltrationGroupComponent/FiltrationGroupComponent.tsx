@@ -1,3 +1,4 @@
+import cn from "classnames";
 import * as React from "react";
 
 import "./FiltrationGroupComponent.scss";
@@ -23,10 +24,17 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				".kit-filtration-group__label"
 			);
 			if (label && ref.lastElementChild) {
-				label.style.top = `${(ref.offsetHeight -
-					ref.lastElementChild.clientHeight +
-					5) /
-					2}px`;
+				if (
+					ref.lastElementChild.classList.contains(
+						"kit-filtration-group"
+					)
+				) {
+					label.style.height = `${ref.offsetHeight - 18}px`;
+				} else {
+					label.style.height = `${ref.offsetHeight -
+						ref.lastElementChild.clientHeight +
+						2}px`;
+				}
 			}
 		}
 	}
@@ -49,15 +57,24 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		} = this.props;
 
 		return (
-			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
+			<ul
+				ref={this.kitFiltrationRef}
+				className={cn("kit-filtration-group", {
+					"kit-filtration-group_no-label": !groupType
+				})}
+			>
 				{shouldShowLabel && groupType === "or" && (
 					<div className="kit-filtration-group__label kit-filtration-group__label_or">
-						{orLabel}
+						<span className="kit-filtration-group__label-text">
+							{orLabel}
+						</span>
 					</div>
 				)}
 				{shouldShowLabel && groupType === "and" && (
 					<div className="kit-filtration-group__label kit-filtration-group__label_and">
-						{andLabel}
+						<span className="kit-filtration-group__label-text">
+							{andLabel}
+						</span>
 					</div>
 				)}
 				{children}

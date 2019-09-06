@@ -1,7 +1,22 @@
+// :not(.kit-filtration-condition) > .kit-filtration-group_no-label > li:first-child::after {
+// 	top: 10px;
+// }
+
+
 .kit-filtration-group {
 	margin: 0;
 	padding: 0;
 	position: relative;
+
+	&_no-label {
+		:not(.kit-filtration-condition) > & {
+			> li:first-child {
+				&::after {
+					top: 10px;
+				}
+			}
+		}
+	}
 
 	// :not(.kit-filtration-group_no-label) & {
 	// 	&_no-label {

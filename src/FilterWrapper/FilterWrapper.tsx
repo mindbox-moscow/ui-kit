@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Button } from "../Button";
 
 import "./FilterWrapper.scss";
 
@@ -13,6 +12,7 @@ interface Props {
 	applyButtonCaption: string;
 	clearButtonCaption: string;
 	onApply: () => void;
+	onClear: () => void;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
@@ -35,36 +35,6 @@ export class FilterWrapper extends React.Component<Props, State> {
 				<div className="kit-filter">
 					<ul className="kit-filter__all-wrap">
 						{children}
-
-						<div className="kit-filter__btn-wrap">
-							<Button
-								size={"small"}
-								color={"gray"}
-								className="kit-filter__btn"
-							>
-								Добавить фильтр
-							</Button>
-							<Button
-								size={"small"}
-								color={"gray"}
-								className="kit-filter__btn"
-							>
-								Добавить группу
-							</Button>
-							<Button
-								size={"small"}
-								color={"gray"}
-								className="kit-filter__btn"
-								onClick={() => {
-									this.setState({
-										changeCondition: !this.state
-											.changeCondition
-									});
-								}}
-							>
-								Сменить тип связи «ИЛИ»
-							</Button>
-						</div>
 					</ul>
 					<div className="kit-filter__wrap">
 						<div className="kit-filter__wrap-filter">
@@ -81,9 +51,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 							</span>
 							<button
 								className="kit-filter__clear-filter-btn"
-								onClick={() => {
-									console.log("clear filter");
-								}}
+								onClick={this.props.onClear}
 							>
 								{clearButtonCaption}
 							</button>

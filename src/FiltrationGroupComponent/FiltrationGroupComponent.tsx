@@ -1,3 +1,4 @@
+import cn from "classnames";
 import * as React from "react";
 
 import "./FiltrationGroupComponent.scss";
@@ -13,6 +14,41 @@ interface Props {
 }
 
 export class FiltrationGroupComponent extends React.Component<Props> {
+	private kitFiltrationRef = React.createRef<HTMLUListElement>();
+
+	public moveLabelAtCenterOfBracket() {
+		const ref = this.kitFiltrationRef.current;
+
+		if (ref) {
+			const label: HTMLElement | null = ref.querySelector(
+				".kit-filtration-group__label"
+			);
+			if (label && ref.lastElementChild) {
+				let offset = 2;
+				if (
+					ref.lastElementChild.classList.contains(
+						"kit-filtration-group"
+					)
+				) {
+					offset = 33;
+				}
+				label.style.height = `${ref.clientHeight -
+					ref.lastElementChild.clientHeight +
+					offset}px`;
+			}
+		}
+	}
+
+	public componentDidMount() {
+		setTimeout(() => {
+			this.moveLabelAtCenterOfBracket();
+		}, 1);
+	}
+
+	public componentDidUpdate() {
+		this.moveLabelAtCenterOfBracket();
+	}
+
 	public render() {
 		const {
 			groupType,
@@ -21,18 +57,25 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			shouldShowLabel,
 			children
 		} = this.props;
+
+		const labelMap = {
+			or: orLabel,
+			and: andLabel
+		};
+
 		return (
-			<ul className="kit-filtration-group">
-				{shouldShowLabel && groupType === "or" && (
-					<div className="kit-filtration-group__label kit-filtration-group__label_or">
-						{orLabel}
-					</div>
-				)}
-				{shouldShowLabel && groupType === "and" && (
-					<div className="kit-filtration-group__label kit-filtration-group__label_and">
-						{andLabel}
-					</div>
-				)}
+			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
+				<div
+					className={cn("kit-filtration-group__label", {
+						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+					})}
+				>
+					{shouldShowLabel && (
+						<span className="kit-filtration-group__label-text">
+							{labelMap[groupType]}
+						</span>
+					)}
+				</div>
 				{children}
 			</ul>
 		);

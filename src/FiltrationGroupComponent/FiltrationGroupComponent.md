@@ -394,7 +394,7 @@
 	>
 		<FiltrationConditionComponent
 			filtrationObjectName="Пол"
-			filtrationMethodName="заполнен и "
+			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
@@ -428,7 +428,7 @@
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
@@ -436,7 +436,7 @@
 
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
@@ -445,7 +445,7 @@
 
 		<FiltrationConditionComponent
 			filtrationObjectName="Пол"
-			filtrationMethodName="заполнен и "
+			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
@@ -476,14 +476,14 @@
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
@@ -498,14 +498,14 @@
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
@@ -524,7 +524,7 @@
 	</h2>
 
 	<FiltrationGroupComponent
-		groupType="and"
+		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
@@ -533,18 +533,18 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
 			/>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
@@ -555,18 +555,18 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
 			/>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
@@ -577,18 +577,18 @@
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={false}
+			shouldShowLabel={true}  
 		>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}
 			/>
 			<FiltrationConditionComponent
 				filtrationObjectName="Пол"
-				filtrationMethodName="заполнен и "
+				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
 				}

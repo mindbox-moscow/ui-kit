@@ -498,9 +498,7 @@
 	<br />
 	<br />
 
-	<h2>
-		5.5.1 Инвертированный 5, группа И с лейблом
-	</h2>
+	<h2>5.5.1 Инвертированный 5, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -543,9 +541,7 @@
 	<br />
 	<br />
 
-	<h2>
-		5.5.2 Инвертированный 5, группа И без лейбла
-	</h2>
+	<h2>5.5.2 Инвертированный 5, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -649,9 +645,7 @@
 	<br />
 	<br />
 
-	<h2>
-		6.5.1: Инвертированный 6, группа И с лейблом
-	</h2>
+	<h2>6.5.1: Инвертированный 6, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -707,9 +701,7 @@
 	<br />
 	<br />
 
-	<h2>
-		6.5.2: Инвертированный 6, группа И без лейбла
-	</h2>
+	<h2>6.5.2: Инвертированный 6, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -914,9 +906,7 @@
 	<br />
 	<br />
 
-	<h2>
-		8: Одно простое условие в группе И с лейблом
-	</h2>
+	<h2>8: Одно простое условие в группе И с лейблом</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -934,15 +924,12 @@
 				</span>
 			}
 		/>
-
 	</FiltrationGroupComponent>
 
 	<br />
 	<br />
 
-	<h2>
-		8.1: Одно простое условие в группе И без лейблом
-	</h2>
+	<h2>8.1: Одно простое условие в группе И без лейблом</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -960,15 +947,12 @@
 				</span>
 			}
 		/>
-
 	</FiltrationGroupComponent>
 
 	<br />
 	<br />
 
-	<h2>
-		8.2: Одно простое условие без метода фильтрации в группе И
-	</h2>
+	<h2>8.2: Одно простое условие без метода фильтрации в группе И</h2>
 
 	<FiltrationGroupComponent
 		groupType="and"
@@ -985,8 +969,6 @@
 				</span>
 			}
 		/>
-
 	</FiltrationGroupComponent>
-
 </div>
 ```

@@ -32,7 +32,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				) {
 					offset = 33;
 				}
-				label.style.height = `${ref.offsetHeight -
+				label.style.height = `${ref.clientHeight -
 					ref.lastElementChild.clientHeight +
 					offset}px`;
 			}
@@ -64,21 +64,18 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		};
 
 		return (
-			<ul
-				ref={this.kitFiltrationRef}
-				className={cn("kit-filtration-group", {
-					"kit-filtration-group_no-label": !shouldShowLabel
-				})}
-			>
-				{shouldShowLabel && (
-					<div
-						className={`kit-filtration-group__label kit-filtration-group__label_${groupType}`}
-					>
+			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
+				<div
+					className={cn("kit-filtration-group__label", {
+						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+					})}
+				>
+					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
 							{labelMap[groupType]}
 						</span>
-					</div>
-				)}
+					)}
+				</div>
 				{children}
 			</ul>
 		);

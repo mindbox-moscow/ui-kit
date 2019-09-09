@@ -3,11 +3,19 @@
 	padding: 0;
 	position: relative;
 
-	&_no-label {
+	& {
 		:not(.kit-filtration-condition) > & {
-			> li:first-child {
-				&::after {
-					top: 10px;
+			> li {
+				&:first-of-type {
+					&::after {
+						top: 10px;
+					}
+				}
+
+				&:last-of-type {
+					&::after {
+						content: none;
+					}
 				}
 			}
 		}
@@ -33,7 +41,7 @@
 
 		&::after {
 			top: -10px;
-			height: calc(100% + 10px);
+			height: 100%;
 			border-left: 2px solid;
 		}
 
@@ -62,8 +70,9 @@
 
 	&::before,
 	&::after {
-		position: absolute;
 		content: "";
+		position: absolute;
+		left: 0;
 		display: block;
 		width: 11px;
 		border-top: 2px solid;
@@ -75,6 +84,21 @@
 
 	&::after {
 		bottom: 0;
+	}
+
+	&_and,
+	&_or {
+		& ~ li {
+			&::after {
+				content: none;
+			}
+
+			li {
+				&::after {
+					content: "";
+				}
+			}
+		}
 	}
 
 	&_and {
@@ -101,18 +125,6 @@
 		}
 	}
 
-	& + li {
-		&::after {
-			content: none;
-		}
-
-		.kit-filtration-group > li {
-			&::after {
-				content: "";
-			}
-		}
-	}
-
 	& ~ ul {
 		margin-left: 20px;
 	}
@@ -130,4 +142,5 @@
 	font-weight: 400;
 	line-height: 13px;
 	text-align: center;
+	z-index: 1;
 }

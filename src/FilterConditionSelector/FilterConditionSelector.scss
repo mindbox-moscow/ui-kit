@@ -23,15 +23,6 @@
 }
 
 .kit-filter-condition-selector__hierarchy-item {
-	//position: relative;
-	//margin: 5px 0;
-	//list-style: none;
-	//color: #333333;
-	//font-size: 14px;
-	//font-weight: 600;
-	//line-height: 18px;
-	//padding: 1px 0 1px 20px;
-
 	position: relative;
 	padding: 7px 0 0 20px;
 
@@ -53,11 +44,11 @@
 			&::after {
 				content: "";
 				position: absolute;
-				width: 130%;
+				width: 100vw;
 				height: 31px;
 				background-color: #3875d7;
 				top: 0;
-				left: -60px;
+				right: 0;
 				z-index: -1;
 			}
 		}

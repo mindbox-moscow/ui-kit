@@ -178,7 +178,7 @@ const hierarchy = [
 				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
 			/>
 		),
-		isSelected: true,
+		isSelected: false,
 		getChildren: () => [],
 		helpComponent: (
 			<div>

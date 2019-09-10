@@ -28,8 +28,9 @@ type Props = StateProps & CallbackProps;
 
 export class FiltrationGroupComponent extends React.Component<Props> {
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
+	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 
-	public moveLabelAtCenterOfBracket() {
+	public moveLabelAtCenterOfBracket = () => {
 		const ref = this.kitFiltrationRef.current;
 
 		if (ref) {
@@ -43,19 +44,66 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						"kit-filtration-group"
 					)
 				) {
-					offset = 33;
+					offset = 31;
 				}
 				label.style.height = `${ref.clientHeight -
 					ref.lastElementChild.clientHeight +
 					offset}px`;
 			}
 		}
-	}
+	};
+
+	public handleHoverAddClassLabel = () => {
+		const labelRef = this.kitFiltrationLabelRef.current;
+		if (labelRef) {
+			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
+
+			labelRef.addEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
+			);
+		}
+	};
+
+	public handleHoverRemoveClassLabel = () => {
+		const labelRef = this.kitFiltrationLabelRef.current;
+		if (labelRef) {
+			labelRef.parentElement!.classList.remove(
+				"kit-filtration-group_hover"
+			);
+			labelRef.removeEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
+			);
+		}
+	};
 
 	public componentDidMount() {
 		setTimeout(() => {
 			this.moveLabelAtCenterOfBracket();
 		}, 1);
+
+		const labelRef = this.kitFiltrationLabelRef.current;
+		if (labelRef) {
+			labelRef.addEventListener(
+				"mouseover",
+				this.handleHoverAddClassLabel
+			);
+		}
+	}
+
+	public componentWillUnmount() {
+		const labelRef = this.kitFiltrationLabelRef.current;
+		if (labelRef) {
+			labelRef.removeEventListener(
+				"mouseover",
+				this.handleHoverAddClassLabel
+			);
+			labelRef.removeEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
+			);
+		}
 	}
 
 	public componentDidUpdate() {
@@ -87,10 +135,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				})}
 			>
 				<div
+					ref={this.kitFiltrationLabelRef}
 					className={cn("kit-filtration-group__label", {
 						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
 					})}
 				>
+					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
 							{labelMap[groupType]}

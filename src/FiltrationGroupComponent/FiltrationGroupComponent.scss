@@ -27,6 +27,27 @@
 		}
 	}
 
+	&_hover {
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			margin-left: -17px;
+			padding-left: 17px;
+			background-color: #f5f8fa;
+		}
+
+		> * {
+			z-index: 1;
+		}
+	}
+
 	> li {
 		margin-top: 10px;
 		padding-left: 20px;
@@ -41,7 +62,7 @@
 
 		&::before {
 			top: 10px;
-			width: 14px;
+			width: 13px;
 			border-top: 2px solid;
 		}
 
@@ -66,30 +87,34 @@
 
 .kit-filtration-group__label {
 	position: absolute;
+	top: 0;
+	left: -14px;
 	display: flex;
 	align-items: center;
-	top: 10px;
-	left: 1px;
+	padding: 10px 15px;
 	color: #e3ebf2;
-	border-left: 2px solid;
 	z-index: 1;
+
+	&:hover {
+		z-index: 2;
+	}
 
 	&::before,
 	&::after {
 		content: "";
 		position: absolute;
-		left: 0;
+		left: 16px;
 		display: block;
 		width: 11px;
 		border-top: 2px solid;
 	}
 
 	&::before {
-		top: 0;
+		top: 10px;
 	}
 
 	&::after {
-		bottom: 0;
+		bottom: 10px;
 	}
 
 	&_and,
@@ -114,7 +139,8 @@
 			color: $andColor;
 		}
 
-		.kit-filtration-group__label-text {
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line {
 			background-color: $andColor;
 		}
 	}
@@ -126,7 +152,8 @@
 			color: $orColor;
 		}
 
-		.kit-filtration-group__label-text {
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line {
 			background-color: $orColor;
 		}
 	}
@@ -136,9 +163,15 @@
 	}
 }
 
+.kit-filtration-group__label-line {
+	width: 2px;
+	height: 100%;
+	background-color: #e3ebf2;
+}
+
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: -14px;
+	left: 2px;
 	padding: 2px 3px 0;
 	min-width: 20px;
 	border-radius: 3px;

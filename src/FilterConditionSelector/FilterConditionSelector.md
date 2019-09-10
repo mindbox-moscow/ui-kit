@@ -39,7 +39,31 @@ const EditorComponentExample = () => {
 	);
 };
 
-const hierarchy = [
+const arrayFirstChild = [
+	{
+		id: "behaviour",
+		type: "filtrationObjectCategory",
+		name: "Ещё простая категория",
+		helpCaption: "Простая категория Caption",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		getChildren: () => arraySecondChild,
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	}
+];
+
+const arraySecondChild = [
 	{
 		id: "behaviour",
 		type: "filtrationObjectCategory",
@@ -47,22 +71,106 @@ const hierarchy = [
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
-		getChildren: () => null,
+		getChildren: () => [],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
+	}
+];
+
+const childrenData = [
+	{
+		id: "behaviour",
+		type: "simpleFiltrationObject",
+		name: "Простой фильтр",
+		helpCaption: "Простой фильтр Caption",
+		hasChildren: false,
+		isExpanded: false,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		getChildren: () => [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	{
+		id: "behaviour",
+		type: "simpleFiltrationObject",
+		name: "Простой фильтр",
+		helpCaption: "Простой фильтр Caption",
+		hasChildren: false,
+		isExpanded: false,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: true,
+		getChildren: () => [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	{
+		id: "behaviour",
+		type: "filtrationObjectCategory",
+		name: "Простая категория",
+		helpCaption: "Простая категория Caption",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Простая категория"),
+		toggleExpand: () => console.log("toggleExpand Простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		getChildren: () => arrayFirstChild,
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	}
+];
+
+const hierarchy = [
+	{
+		id: "behaviour",
+		type: "filtrationObjectCategory",
+		name: "Поведение",
+		helpCaption: "Поведение Caption",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		getChildren: () => childrenData,
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
 	{
 		id: "empty",
-		type: "filtrationObjectCategory",
+		type: "simpleFiltrationObject",
 		name: "Пустая тестовая категория",
 		helpCaption: "Ссылка на установку электронной карты",
 		hasChildren: false,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Пустая тестовая категория"),
+		toggleExpand: () =>
+			console.log("toggleExpand Пустая тестовая категория"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -100,24 +208,29 @@ class ExampleComponent extends React.Component {
 			showPopup: !state.showPopup
 		}));
 	}
+
 	render() {
 		return (
 			<>
-				<FilterPanel
-					addAndFilterBtnText="Добавить фильтр"
-					addOrFilterBtnText="ИЛИ"
-					hintText="Добавьте фильтр, чтобы создать выборку клиентов"
-					clientsCountText="Всего клиентов"
-					clientsCount="1 021 318"
-					onAddAndFilter={this.togglePopup}
-					onAddOrFilter={this.togglePopup}
-				/>
-				{this.state.showPopup && (
-					<FilterConditionSelector
-						hierarchy={hierarchy}
-						selectedElement={hierarchy[1]}
-					/>
-				)}
+				<FilterWrapper
+					statisticsDescription="Потребителей найдено"
+					statisticsValue={50248}
+					applyButtonCaption="Применить фильтр"
+					onApply={() => {
+						console.log("apply filter");
+					}}
+				>
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						isOpened={this.state.showPopup}
+						toggleOpen={this.togglePopup}
+					>
+						<FilterConditionSelector
+							hierarchy={hierarchy}
+							selectedElement={hierarchy[0]}
+						/>
+					</FilterConditionEditorButton>
+				</FilterWrapper>
 			</>
 		);
 	}

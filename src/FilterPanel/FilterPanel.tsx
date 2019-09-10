@@ -28,19 +28,16 @@ export const FilterPanel = (props: Props) => {
 		<div className="kit-filter-panel">
 			<div className="kit-filter-panel__btn-wrap">
 				<FilterConditionEditorButton
-					isActive={true}
 					toggleOpen={onAddAndFilter}
-				>
-					{addAndFilterBtnText}
-				</FilterConditionEditorButton>
+					label={addAndFilterBtnText}
+					isOpened={true}
+				/>
 
 				<FilterConditionEditorButton
-					isActive={false}
 					toggleOpen={onAddOrFilter}
-					className="kit-filter-panel__btn-second"
-				>
-					{addOrFilterBtnText}
-				</FilterConditionEditorButton>
+					label={addOrFilterBtnText}
+					isOpened={true}
+				/>
 				<p className="kit-filter-panel__text">{hintText}</p>
 			</div>
 			<div className="kit-filter-panel__info-wrap">

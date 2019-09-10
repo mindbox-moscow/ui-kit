@@ -31,7 +31,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						"kit-filtration-group"
 					)
 				) {
-					offset = 33;
+					offset = 31;
 				}
 				label.style.height = `${ref.clientHeight -
 					ref.lastElementChild.clientHeight +
@@ -85,6 +85,10 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.removeEventListener(
 				"mouseover",
 				this.handleHoverAddClassLabel
+			);
+			labelRef.removeEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
 			);
 		}
 	}

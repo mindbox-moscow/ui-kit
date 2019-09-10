@@ -1,5 +1,5 @@
-import * as React from "react";
 import cn from "classnames";
+import * as React from "react";
 
 import "./FilterConditionSelector.scss";
 
@@ -23,54 +23,66 @@ interface FiltrationObjectHierarchyElement {
 	toggleExpand: () => void;
 }
 
-interface FilterConditionSelectorProps {
+interface Props {
 	hierarchy: FiltrationObjectHierarchyElement[];
 	selectedElement: FiltrationObjectHierarchyElement;
 }
 
-const FilterConditionSelector = (props: FilterConditionSelectorProps) => {
+const FilterConditionSelector = (props: Props) => {
 	const {
 		editorComponent,
 		helpComponent,
-		helpCaption,
-		toggleExpand
+		helpCaption
 	} = props.selectedElement;
 
 	const renderItem = (
 		item: FiltrationObjectHierarchyElement,
 		index: number
-	) => (
-		<>
+	) => {
+		const {
+			isSelected,
+			type,
+			isExpanded,
+			name,
+			hasChildren,
+			getChildren,
+			onSelect,
+			toggleExpand
+		} = item;
+		const isSimpleFiltrationObject = type === "simpleFiltrationObject";
+
+		return (
 			<li
 				key={index}
 				className={cn("kit-filter-condition-selector__hierarchy-item", {
-					"kit-filter-condition-selector__hierarchy-item_selected":
-						item.isSelected,
-					"kit-filter-condition-selector__hierarchy-simple-filter":
-						item.type === "simpleFiltrationObject"
+					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
+					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
+					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFiltrationObject
 				})}
-				onClick={toggleExpand}
 			>
-				<span
-					className={cn(
-						"kit-filter-condition-selector__hierarchy-name",
-						{
-							"kit-filter-condition-selector__hierarchy-name_expanded":
-								item.isExpanded
-						}
-					)}
+				{!isSimpleFiltrationObject && (
+					<button
+						type="button"
+						className="kit-filter-condition-selector__hierarchy-toggle"
+						onClick={toggleExpand}
+					/>
+				)}
+				<button
+					type="button"
+					className="kit-filter-condition-selector__hierarchy-name"
+					onClick={onSelect}
 				>
-					{item.name}
-				</span>
+					{name}
+				</button>
 
-				{item.hasChildren && (
+				{isExpanded && hasChildren && (
 					<ul className="kit-filter-condition-selector__hierarchy-children">
-						{item.getChildren().map(renderItem)}
+						{getChildren().map(renderItem)}
 					</ul>
 				)}
 			</li>
-		</>
-	);
+		);
+	};
 
 	return (
 		<div className="kit-filter-condition-selector">

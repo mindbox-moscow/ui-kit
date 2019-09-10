@@ -24,8 +24,7 @@
 
 .kit-filter-condition-selector__hierarchy-item {
 	position: relative;
-	padding: 7px 0 0 20px;
-
+	padding: 0 0 0 20px;
 	list-style: none;
 	color: #333333;
 	font-size: 14px;
@@ -37,10 +36,9 @@
 	}
 
 	&_selected {
-		background-color: #3875d7;
 		color: #fff;
 
-		.kit-filter-condition-selector__hierarchy-name{
+		.kit-filter-condition-selector__hierarchy-name {
 			&::after {
 				content: "";
 				position: absolute;
@@ -52,37 +50,42 @@
 				z-index: -1;
 			}
 		}
-
-		.kit-filter-condition-selector__hierarchy-name_expanded {
-			color: #fff;
-
-			&::before {
-				background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' class='kit-icon-svg' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23fff' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-				background-repeat: no-repeat;
-			}
-		}
 	}
 
 	.kit-filter-condition-selector__hierarchy-name {
 		margin-left: 5px;
 		display: inline-block;
 		padding-bottom: 6px;
+		background: none;
+		border-radius: 0;
+		border: none;
+		appearance: none;
+		font-size: 14px;
+		font-weight: inherit;
+		color: inherit;
+		outline: none;
+		margin: 0;
+		padding: 0;
+		height: 31px;
+		line-height: 1;
+		width: 100%;
+		text-align: left;
+		box-sizing: border-box;
+		cursor: pointer;
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			width: 6px;
-			height: 10px;
-			background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-			background-repeat: no-repeat;
-		}
+		&:hover,
+		&:focus {
+			color: #fff;
 
-		&_expanded {
-			&::before {
-				transform: rotate(90deg);
-				background-repeat: no-repeat;
+			&::after {
+				content: "";
+				position: absolute;
+				width: 100vw;
+				height: 31px;
+				background-color: #3875d7;
+				top: 0;
+				right: 0;
+				z-index: -1;
 			}
 		}
 	}
@@ -144,6 +147,7 @@
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
 	.kit-filter-condition-selector__hierarchy-name::before {
+		content: "";
 		top: 11px;
 		left: 6px;
 		background-image: none;
@@ -151,9 +155,11 @@
 		border-radius: 50%;
 		width: 10px;
 		height: 10px;
+		position: absolute;
 	}
 
 	&::before {
+		content: "";
 		background-image: none;
 	}
 }
@@ -230,5 +236,27 @@
 
 	.kit-filter-condition-selector__editor-wrapper + & {
 		padding-top: 24px;
+	}
+}
+
+.kit-filter-condition-selector__hierarchy-toggle {
+	cursor: pointer;
+	appearance: none;
+	box-sizing: border-box;
+	border-radius: 0;
+	border: none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 6px;
+	height: 10px;
+	background-color: transparent;
+	background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+
+	.kit-filter-condition-selector__hierarchy-item_expanded > & {
+		transform: rotate(90deg);
 	}
 }

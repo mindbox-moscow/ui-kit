@@ -47,8 +47,8 @@ const arrayFirstChild = [
 		helpCaption: "Простая категория Caption",
 		hasChildren: true,
 		isExpanded: true,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -71,8 +71,8 @@ const arraySecondChild = [
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
 		getChildren: () => [],
@@ -88,8 +88,8 @@ const childrenData = [
 		helpCaption: "Простой фильтр Caption",
 		hasChildren: false,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -109,8 +109,8 @@ const childrenData = [
 		helpCaption: "Простой фильтр Caption",
 		hasChildren: false,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -130,8 +130,8 @@ const childrenData = [
 		helpCaption: "Простая категория Caption",
 		hasChildren: true,
 		isExpanded: true,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Простая категория"),
+		toggleExpand: () => console.log("toggleExpand Простая категория"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -154,8 +154,8 @@ const hierarchy = [
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
 		isExpanded: true,
-		onSelect: () => null,
-		toggleExpand: () => null,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
 		getChildren: () => childrenData,
@@ -168,8 +168,9 @@ const hierarchy = [
 		helpCaption: "Ссылка на установку электронной карты",
 		hasChildren: false,
 		isExpanded: false,
-		onSelect: () => null,
-		toggleExpand: () => console.log("Toogle click"),
+		onSelect: () => console.log("onSelect Пустая тестовая категория"),
+		toggleExpand: () =>
+			console.log("toggleExpand Пустая тестовая категория"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -220,15 +221,15 @@ class ExampleComponent extends React.Component {
 					}}
 				>
 					<FilterConditionEditorButton
-                        label="Добавить фильтр"
-                        isOpened={this.state.showPopup}
-                        toggleOpen={this.togglePopup}
-                    >
-                        <FilterConditionSelector
-                            hierarchy={hierarchy}
-                            selectedElement={hierarchy[0]}
-                        />
-                    </FilterConditionEditorButton>
+						label="Добавить фильтр"
+						isOpened={this.state.showPopup}
+						toggleOpen={this.togglePopup}
+					>
+						<FilterConditionSelector
+							hierarchy={hierarchy}
+							selectedElement={hierarchy[0]}
+						/>
+					</FilterConditionEditorButton>
 				</FilterWrapper>
 			</>
 		);

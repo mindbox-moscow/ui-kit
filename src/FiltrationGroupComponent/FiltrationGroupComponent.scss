@@ -3,6 +3,12 @@
 	padding: 0;
 	position: relative;
 
+	&_edit {
+		.kit-filtration-group__buttons {
+			margin-left: 20px;
+		}
+	}
+
 	& {
 		:not(.kit-filtration-condition) > & {
 			> li {

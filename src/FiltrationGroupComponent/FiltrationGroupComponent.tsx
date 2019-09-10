@@ -1,5 +1,5 @@
-import cn from "classnames";
 import * as React from "react";
+import cn from "classnames";
 
 import "./FiltrationGroupComponent.scss";
 
@@ -80,7 +80,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		};
 
 		return (
-			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
+			<ul
+				ref={this.kitFiltrationRef}
+				className={cn("kit-filtration-group", {
+					"kit-filtration-group_edit": state === "edit"
+				})}
+			>
 				<div
 					className={cn("kit-filtration-group__label", {
 						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
@@ -97,6 +102,15 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						{addSimpleConditionButton}
 						{addGroupConditionButton}
 					</div>
+				)}
+				{state === "edit" && (
+					<>
+						{children}
+						<div className="kit-filtration-group__buttons">
+							{addSimpleConditionButton}
+							{addGroupConditionButton}
+						</div>
+					</>
 				)}
 				{!!children && children}
 			</ul>

@@ -11,6 +11,7 @@ interface Props {
 	orLabel: string; // лейбл для ИЛИ
 	shouldShowLabel?: boolean; // нужно ли отображать лейбл на брекете группы
 	children: React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
+	onClick?: () => void;
 }
 
 export class FiltrationGroupComponent extends React.Component<Props> {
@@ -55,7 +56,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			andLabel,
 			orLabel,
 			shouldShowLabel,
-			children
+			children,
+			// onClick
 		} = this.props;
 
 		const labelMap = {
@@ -69,6 +71,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					className={cn("kit-filtration-group__label", {
 						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
 					})}
+					ref="element"
+					onClick={this.handleClick}
 				>
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
@@ -79,5 +83,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				{children}
 			</ul>
 		);
+	}
+
+	private handleClick = () => {
+		const element = this.refs.element;
+		// @ts-ignore
+		element.classList.add('click-state');
 	}
 }

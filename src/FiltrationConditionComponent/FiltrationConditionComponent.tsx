@@ -20,7 +20,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			linkedConditionComponent
 		} = this.props;
 		return (
-			<li className="kit-filtration-condition">
+			<li className="kit-filtration-condition"
+				ref="element"
+				onClick={this.handleClick}
+			>
 				<span className="kit-filtration-condition__item-text">
 					<b>{filtrationObjectName}</b>
 					{!!filtrationMethodName && <>{filtrationMethodName} </>}
@@ -29,5 +32,11 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				{linkedConditionComponent}
 			</li>
 		);
+	}
+
+	private handleClick = () => {
+		const element = this.refs.element;
+		// @ts-ignore
+		element.classList.add('click-state');
 	}
 }

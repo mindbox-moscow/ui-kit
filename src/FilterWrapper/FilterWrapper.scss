@@ -4,6 +4,29 @@
 	border: 1px solid #d4d4d4;
 	border-radius: 4px;
 	background-color: #ffffff;
+
+	&_short {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #a4a4a4;
+		font-family: "PT Sans";
+		font-size: 14px;
+		letter-spacing: -0.4px;
+		line-height: 19px;
+
+		button {
+			z-index: 1;
+		}
+
+		.kit-filter__all-wrap {
+			display: flex;
+			align-items: center;
+			height: 44px;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
 }
 
 .kit-filter__all-wrap {

@@ -44,6 +44,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
+
+			labelRef.addEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
+			);
 		}
 	};
 
@@ -52,6 +57,10 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		if (labelRef) {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
+			);
+			labelRef.removeEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
 			);
 		}
 	};
@@ -67,10 +76,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				"mouseover",
 				this.handleHoverAddClassLabel
 			);
-			labelRef.addEventListener(
-				"mouseout",
-				this.handleHoverRemoveClassLabel
-			);
 		}
 	}
 
@@ -80,10 +85,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.removeEventListener(
 				"mouseover",
 				this.handleHoverAddClassLabel
-			);
-			labelRef.removeEventListener(
-				"mouseout",
-				this.handleHoverRemoveClassLabel
 			);
 		}
 	}

@@ -27,7 +27,7 @@ interface Props {
 	editorComponent: React.ReactNode;
 }
 
-const FilterConditionSelector = (props: Props) => {
+export const FilterConditionSelector = (props: Props) => {
 	const { editorComponent, helpComponent, helpCaption } = props;
 
 	const renderItem = (
@@ -102,5 +102,3 @@ const FilterConditionSelector = (props: Props) => {
 		</div>
 	);
 };
-
-export { FilterConditionSelector };

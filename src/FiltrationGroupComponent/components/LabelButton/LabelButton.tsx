@@ -8,7 +8,7 @@ type ButtonProps = React.DetailedHTMLProps<
 
 type ButtonCustomProps = {
 	activeType: string;
-	types: any;
+	types: { [key: string]: string };
 };
 
 type Props = Partial<ButtonProps & ButtonCustomProps>;
@@ -23,7 +23,7 @@ export const LabelButton: React.FC<Props> = ({
 		{...props}
 		type="button"
 	>
-		{Object.keys(types).map(type => (
+		{Object.keys(types!).map(type => (
 			<span
 				key={type}
 				className={cn({
@@ -31,7 +31,7 @@ export const LabelButton: React.FC<Props> = ({
 						activeType === type
 				})}
 			>
-				{types[type]}
+				{types![type]}
 			</span>
 		))}
 	</button>

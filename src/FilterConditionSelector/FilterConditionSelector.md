@@ -232,6 +232,7 @@ class ExampleComponent extends React.Component {
 							recentLabel={"Недавние"}
 							savedLabel={"Сохранённые"}
 							examplesLabel={"Примеры"}
+                            onModeChanged={"filter"}
 						/>
 					</FilterConditionEditorButton>
 				</FilterWrapper>

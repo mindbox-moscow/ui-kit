@@ -136,17 +136,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						<span className="kit-filtration-group__label-text">
 							{state !== "edit" && <>{labelMap[groupType]}</>}
 							{state === "edit" && (
-								<>
-									{Object.keys(labelMap).map(type => (
-										<LabelButton
-											key={type}
-											active={type === groupType}
-											onClick={onGroupTypeToggle}
-										>
-											{labelMap[type]}
-										</LabelButton>
-									))}
-								</>
+								<LabelButton
+									onClick={onGroupTypeToggle}
+									types={labelMap}
+									activeType={groupType}
+								/>
 							)}
 						</span>
 					)}

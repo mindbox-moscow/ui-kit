@@ -1,4 +1,4 @@
-$groupHoverMarginTopBottom: 5px;
+$groupHoverMarginTopBottom: 10px;
 
 .kit-filtration-group {
 	margin: 0;
@@ -66,6 +66,7 @@ $groupHoverMarginTopBottom: 5px;
 				color: #d0d0d0;
 				font-size: 12px;
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+				border-radius: 4px 0 0 4px;
 			}
 		}
 	}
@@ -128,7 +129,7 @@ $groupHoverMarginTopBottom: 5px;
 	left: -14px;
 	display: flex;
 	align-items: center;
-	padding: #{$groupHoverMarginTopBottom * 2} 15px;
+	padding: #{$groupHoverMarginTopBottom} 15px;
 	color: #e3ebf2;
 	z-index: 1;
 
@@ -172,7 +173,8 @@ $groupHoverMarginTopBottom: 5px;
 	&_and {
 		$andColor: #2d597d;
 		color: $andColor;
-		& ~ .kit-filtration-condition::before {
+		& ~ .kit-filtration-condition::before,
+		.kit-filtration-group__label-button_active {
 			color: $andColor;
 		}
 
@@ -185,7 +187,8 @@ $groupHoverMarginTopBottom: 5px;
 	&_or {
 		$orColor: #dcc6f3;
 		color: $orColor;
-		& ~ .kit-filtration-condition::before {
+		& ~ .kit-filtration-condition::before,
+		.kit-filtration-group__label-button_active {
 			color: $orColor;
 		}
 
@@ -199,7 +202,7 @@ $groupHoverMarginTopBottom: 5px;
 		margin-left: 30px;
 
 		&.kit-filtration-group_edit {
-			margin-left: 40px;
+			margin-left: 45px;
 		}
 	}
 }
@@ -213,8 +216,9 @@ $groupHoverMarginTopBottom: 5px;
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 2px;
-	padding: 2px 3px 0;
 	min-width: 20px;
+	padding: 2px 3px 0;
+	margin-top: 2px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #ffffff;
@@ -254,12 +258,13 @@ $groupHoverMarginTopBottom: 5px;
 	padding-right: 0;
 	cursor: pointer;
 	outline: none;
+	background-color: transparent;
 
 	&:not(&_active) {
 		color: inherit;
 	}
 
-	&:not(:last-child) {
+	*:not(:last-child) {
 		margin-right: 3px;
 	}
 }

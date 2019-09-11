@@ -7,20 +7,32 @@ type ButtonProps = React.DetailedHTMLProps<
 >;
 
 type ButtonCustomProps = {
-	active: boolean;
+	activeType: string;
+	types: any;
 };
 
 type Props = Partial<ButtonProps & ButtonCustomProps>;
 
-export const LabelButton: React.FC<Props> = ({ active, ...props }) => (
+export const LabelButton: React.FC<Props> = ({
+	activeType,
+	types,
+	...props
+}) => (
 	<button
-		className={cn(
-			"kit-filtration-group__label_and kit-filtration-group__label-button",
-			{
-				"kit-filtration-group__label-button_active": active
-			}
-		)}
+		className="kit-filtration-group__label-button"
 		{...props}
 		type="button"
-	/>
+	>
+		{Object.keys(types).map(type => (
+			<span
+				key={type}
+				className={cn({
+					"kit-filtration-group__label-button_active":
+						activeType === type
+				})}
+			>
+				{types[type]}
+			</span>
+		))}
+	</button>
 );

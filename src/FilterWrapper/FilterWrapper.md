@@ -80,4 +80,32 @@
         />
     </FiltrationGroupComponent>
 </FilterWrapper>
+<br />
+<br />
+<h1>Пример 4 - Закрыл редактирование группы, отображается пустая группа И в группе ИЛИ</h1>
+<FilterWrapper
+    statisticsDescription="Всего клиентов"
+    statisticsValue={1021318}
+    doesContainFilter={true}
+    applyButtonCaption="Применить фильтр"
+	clearButtonCaption="Сбросить фильтр"
+	onApply={() => { console.log("apply filter"); }}
+	onClear={() => { console.log("clear filter"); }}
+>
+    <FiltrationGroupComponent
+        state="view"
+        groupType="or"
+        andLabel="И"
+        orLabel="ИЛИ"
+        shouldShowLabel={true}
+    >
+        <FiltrationGroupComponent
+            state="view"
+            groupType="and"
+            andLabel="И"
+            orLabel="ИЛИ"
+            shouldShowLabel={true}
+        />
+    </FiltrationGroupComponent>
+</FilterWrapper>
 ```

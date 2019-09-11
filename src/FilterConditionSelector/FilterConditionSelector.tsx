@@ -48,7 +48,7 @@ const FilterConditionSelector = (props: Props) => {
 
 	const {
 		// onSearchTermChange,
-		onModeChanged,
+		// onModeChanged,
 		filterLabel,
 		recentLabel,
 		savedLabel,

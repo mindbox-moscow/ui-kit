@@ -267,10 +267,19 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="edit"
 					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
 					shouldShowLabel={true}
+					addSimpleConditionButton={
+						<Button className="kit-filter-editor__btn">
+							Добавить фильтр
+						</Button>
+					}
+					addGroupConditionButton={
+						<Button className="kit-filter-editor__btn">И</Button>
+					}
 				>
 					<FiltrationConditionComponent
 						filtrationObjectName="Покупка"

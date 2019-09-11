@@ -1,28 +1,9 @@
-import * as React from "react";
 import cn from "classnames";
+import * as React from "react";
+import { LabelButton, RemoveButton } from "./components";
+import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
-
-type GroupType = "and" | "or";
-
-type ConditionState = "view" | "edit" | "shaded";
-
-export interface StateProps {
-	groupType: GroupType; // тип группы: И или ИЛИ
-	state: ConditionState;
-	andLabel: string; // лейбл для И
-	orLabel: string; // лейбл для ИЛИ
-	shouldShowLabel?: boolean; // нужно ли отображать лейбл на брекете группы
-	children: React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
-	addSimpleConditionButton?: React.ReactNode;
-	addGroupConditionButton?: React.ReactNode;
-}
-
-export interface CallbackProps {
-	onGroupTypeToggle: () => void;
-	onConditionStateToggle: () => void;
-	onConditionRemove: () => void;
-}
 
 type Props = StateProps & CallbackProps;
 
@@ -119,13 +100,22 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			children,
 			addSimpleConditionButton,
 			addGroupConditionButton,
+			onGroupTypeToggle,
+			onConditionRemove,
 			state
 		} = this.props;
 
 		const labelMap = {
-			or: orLabel,
-			and: andLabel
+			and: andLabel,
+			or: orLabel
 		};
+
+		const GroupButtons = () => (
+			<div className="kit-filtration-group__buttons">
+				{addSimpleConditionButton}
+				{addGroupConditionButton}
+			</div>
+		);
 
 		return (
 			<ul
@@ -143,23 +133,31 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
-							{labelMap[groupType]}
+							{state !== "edit" && <>{labelMap[groupType]}</>}
+							{state === "edit" && (
+								<>
+									{Object.keys(labelMap).map(type => (
+										<>
+											<LabelButton
+												key={type}
+												active={type === groupType}
+												onClick={onGroupTypeToggle}
+											>
+												{labelMap[type]}
+											</LabelButton>
+										</>
+									))}
+								</>
+							)}
 						</span>
 					)}
 				</div>
-				{!!!children && state === "view" && (
-					<div className="kit-filtration-group__buttons">
-						{addSimpleConditionButton}
-						{addGroupConditionButton}
-					</div>
-				)}
+				{!children && state === "view" && <GroupButtons />}
 				{state === "edit" && (
 					<>
+						<RemoveButton onClick={onConditionRemove} />
 						{children}
-						<div className="kit-filtration-group__buttons">
-							{addSimpleConditionButton}
-							{addGroupConditionButton}
-						</div>
+						<GroupButtons />
 					</>
 				)}
 				{!!children && children}

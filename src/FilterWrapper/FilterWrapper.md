@@ -36,13 +36,13 @@
     statisticsValue={1021318}
     doesContainFilter={true}
     applyButtonCaption="Применить фильтр"
-    clearButtonCaption="Сбросить фильтр"
-    onApply={() => { console.log("apply filter"); }}
+	clearButtonCaption="Сбросить фильтр"
+	onApply={() => { console.log("apply filter"); }}
 	onClear={() => { console.log("clear filter"); }}
 >
     <FiltrationGroupComponent
         state="edit"
-        groupType="or"
+        groupType="and"
         andLabel="И"
         orLabel="ИЛИ"
         shouldShowLabel={true}

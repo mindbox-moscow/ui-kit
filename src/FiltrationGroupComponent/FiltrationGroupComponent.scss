@@ -1,12 +1,20 @@
+$groupHoverMarginTopBottom: 5px;
+
 .kit-filtration-group {
 	margin: 0;
 	padding: 0;
 	position: relative;
 
-	&_edit {
-		.kit-filtration-group__buttons {
-			margin-left: 20px;
-		}
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		margin: #{-$groupHoverMarginTopBottom} 0 #{-$groupHoverMarginTopBottom} -17px;
+		padding: $groupHoverMarginTopBottom 0 $groupHoverMarginTopBottom 17px;
+		background-color: #f5f8fa;
 	}
 
 	& {
@@ -27,20 +35,48 @@
 		}
 	}
 
+	// ================
+	// Edit mode
+	// ================
+	&_edit {
+		&::before {
+			content: "";
+		}
+
+		.kit-filtration-group__buttons {
+			margin-left: 40px;
+		}
+
+		> .kit-filtration-group__label_or,
+		> .kit-filtration-group__label_and {
+			z-index: 2;
+
+			.kit-filtration-group__label-text {
+				left: auto;
+				right: calc(100% - 50px);
+				display: flex;
+				align-items: center;
+				min-width: 40px;
+				height: 28px;
+				padding-left: 9px;
+				padding-right: 9px;
+				margin-top: 1px;
+				background-color: #fff;
+				color: #d0d0d0;
+				font-size: 12px;
+				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+
+	// ================
+	// Hover
+	// ================
 	&_hover {
 		cursor: pointer;
 
 		&::before {
 			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: 100%;
-			height: 100%;
-			margin-left: -17px;
-			padding-left: 17px;
-			background-color: #f5f8fa;
 		}
 
 		> * {
@@ -91,7 +127,7 @@
 	left: -14px;
 	display: flex;
 	align-items: center;
-	padding: 10px 15px;
+	padding: #{$groupHoverMarginTopBottom * 2} 15px;
 	color: #e3ebf2;
 	z-index: 1;
 
@@ -160,6 +196,10 @@
 
 	& ~ ul {
 		margin-left: 20px;
+
+		&.kit-filtration-group_edit {
+			margin-left: 40px;
+		}
 	}
 }
 
@@ -190,5 +230,35 @@
 
 	> *:not(:last-child) {
 		margin-right: 5px;
+	}
+}
+
+.kit-filtration-group__remove {
+	position: absolute;
+	top: #{-$groupHoverMarginTopBottom};
+	right: -46px;
+	display: block;
+	width: 44px;
+	height: calc(100% + #{$groupHoverMarginTopBottom * 2});
+	background-color: #ffeeeb;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+
+.kit-filtration-group__label-button {
+	font-weight: 700;
+	border: 0;
+	padding-left: 0;
+	padding-right: 0;
+	cursor: pointer;
+	outline: none;
+
+	&:not(&_active) {
+		color: inherit;
+	}
+
+	&:not(:last-child) {
+		margin-right: 3px;
 	}
 }

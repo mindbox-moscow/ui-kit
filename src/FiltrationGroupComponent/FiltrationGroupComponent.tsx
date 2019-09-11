@@ -155,8 +155,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				{state === "edit" && (
 					<>
 						<RemoveButton onClick={onConditionRemove} />
-						<GroupButtons />
 						{children}
+						<GroupButtons />
 					</>
 				)}
 				{children && children}

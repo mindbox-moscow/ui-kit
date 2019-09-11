@@ -12,6 +12,7 @@ $groupHoverMarginTopBottom: 5px;
 		display: block;
 		width: 100%;
 		height: 100%;
+		min-height: 20px;
 		margin: #{-$groupHoverMarginTopBottom} 0 #{-$groupHoverMarginTopBottom} -17px;
 		padding: $groupHoverMarginTopBottom 0 $groupHoverMarginTopBottom 17px;
 		background-color: #f5f8fa;

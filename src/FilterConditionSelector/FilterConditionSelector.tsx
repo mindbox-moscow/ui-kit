@@ -125,7 +125,7 @@ const FilterConditionSelector = (props: Props) => {
 										"kit-filter-condition-selector__filter-btn_active": onModeChanged
 									}
 								)}
-								onClick={e => {
+								onClick={(e) => {
 									e.preventDefault();
 								}}
 							>
@@ -133,44 +133,20 @@ const FilterConditionSelector = (props: Props) => {
 							</button>
 							<button
 								type="button"
-								className={cn(
-									"kit-filter-condition-selector__filter-btn",
-									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged
-									}
-								)}
-								onClick={e => {
-									e.preventDefault();
-								}}
+								className="kit-filter-condition-selector__filter-btn"
 							>
 								{recentLabel}
 							</button>
 							<button
 								type="button"
-								className={cn(
-									"kit-filter-condition-selector__filter-btn",
-									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged
-									}
-								)}
-								onClick={e => {
-									e.preventDefault();
-								}}
+								className="kit-filter-condition-selector__filter-btn"
 							>
 								{savedLabel}
 							</button>
 						</div>
 						<button
 							type="button"
-							className={cn(
-								"kit-filter-condition-selector__filter-btn",
-								{
-									"kit-filter-condition-selector__filter-btn_active": onModeChanged
-								}
-							)}
-							onClick={e => {
-								e.preventDefault();
-							}}
+							className="kit-filter-condition-selector__filter-btn"
 						>
 							{examplesLabel}
 						</button>

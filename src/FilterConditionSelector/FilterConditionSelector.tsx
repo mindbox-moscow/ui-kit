@@ -127,7 +127,7 @@ const FilterConditionSelector = (props: Props) => {
 									// 	)
 									// }
 								)}
-								onClick={() => onModeChanged("filter")}
+								// onClick={() => onModeChanged("filter")}
 							>
 								{filterLabel}
 							</button>

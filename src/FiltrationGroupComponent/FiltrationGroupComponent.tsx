@@ -23,7 +23,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				if (
 					ref.lastElementChild.classList.contains(
 						"kit-filtration-group"
-					)
+					) &&
+					ref.childElementCount > 2
 				) {
 					offset = 31;
 				}
@@ -137,15 +138,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							{state === "edit" && (
 								<>
 									{Object.keys(labelMap).map(type => (
-										<>
-											<LabelButton
-												key={type}
-												active={type === groupType}
-												onClick={onGroupTypeToggle}
-											>
-												{labelMap[type]}
-											</LabelButton>
-										</>
+										<LabelButton
+											key={type}
+											active={type === groupType}
+											onClick={onGroupTypeToggle}
+										>
+											{labelMap[type]}
+										</LabelButton>
 									))}
 								</>
 							)}
@@ -156,11 +155,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				{state === "edit" && (
 					<>
 						<RemoveButton onClick={onConditionRemove} />
-						{children}
 						<GroupButtons />
+						{children}
 					</>
 				)}
-				{!!children && children}
+				{children && children}
 			</ul>
 		);
 	}

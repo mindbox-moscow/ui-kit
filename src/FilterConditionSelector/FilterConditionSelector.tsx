@@ -3,37 +3,32 @@ import * as React from "react";
 
 import "./FilterConditionSelector.scss";
 
-type ElementType =
+export type ElementType =
 	| "filtrationObjectCategory"
 	| "simpleFiltrationObject"
 	| "filtrationObjectWithLinkedConditions";
 
-interface FiltrationObjectHierarchyElement {
+export interface FiltrationObjectHierarchyElement {
 	id: string;
 	name: string;
-	helpCaption: string;
 	type: ElementType;
 	isSelected: boolean;
 	hasChildren: boolean;
 	getChildren: () => FiltrationObjectHierarchyElement[];
 	isExpanded: boolean;
-	helpComponent: React.ReactNode;
-	editorComponent: React.ReactNode;
 	onSelect: () => void;
 	toggleExpand: () => void;
 }
 
 interface Props {
 	hierarchy: FiltrationObjectHierarchyElement[];
-	selectedElement: FiltrationObjectHierarchyElement;
+	helpCaption: string;
+	helpComponent: React.ReactNode;
+	editorComponent: React.ReactNode;
 }
 
 const FilterConditionSelector = (props: Props) => {
-	const {
-		editorComponent,
-		helpComponent,
-		helpCaption
-	} = props.selectedElement;
+	const { editorComponent, helpComponent, helpCaption } = props;
 
 	const renderItem = (
 		item: FiltrationObjectHierarchyElement,

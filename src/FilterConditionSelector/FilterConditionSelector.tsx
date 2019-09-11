@@ -1,12 +1,16 @@
 import cn from "classnames";
 import * as React from "react";
 
+import { Input } from "../Input";
+
 import "./FilterConditionSelector.scss";
 
 type ElementType =
 	| "filtrationObjectCategory"
 	| "simpleFiltrationObject"
 	| "filtrationObjectWithLinkedConditions";
+
+type MenuMode = "filter" | "recent" | "saved" | "examples";
 
 interface FiltrationObjectHierarchyElement {
 	id: string;
@@ -26,6 +30,13 @@ interface FiltrationObjectHierarchyElement {
 interface Props {
 	hierarchy: FiltrationObjectHierarchyElement[];
 	selectedElement: FiltrationObjectHierarchyElement;
+	searchTerm: string;
+	onSearchTermChange: (changedSearchTerm: string) => void;
+	filterLabel: string;
+	recentLabel: string;
+	savedLabel: string;
+	examplesLabel: string;
+	onModeChanged: (selectedMenuMode: MenuMode) => void;
 }
 
 const FilterConditionSelector = (props: Props) => {
@@ -34,6 +45,15 @@ const FilterConditionSelector = (props: Props) => {
 		helpComponent,
 		helpCaption
 	} = props.selectedElement;
+
+	const {
+		// onSearchTermChange,
+		onModeChanged,
+		filterLabel,
+		recentLabel,
+		savedLabel,
+		examplesLabel
+	} = props;
 
 	const renderItem = (
 		item: FiltrationObjectHierarchyElement,
@@ -86,9 +106,57 @@ const FilterConditionSelector = (props: Props) => {
 
 	return (
 		<div className="kit-filter-condition-selector">
-			<ul className="kit-filter-condition-selector__hierarchy">
-				{props.hierarchy.map(renderItem)}
-			</ul>
+			<div className="kit-filter-condition-selector__wrap">
+				<div className="kit-filter-condition-selector__filter-block">
+					<Input
+						noShadow={true}
+						defaultValue={""}
+						type="search"
+						placeholder="Название акции, группы или кампании"
+						// onChange={onSearchTermChange}
+					/>
+					<div className="kit-filter-condition-selector__filter-btn-block">
+						<div className="kit-filter-condition-selector__filter-btn-wrap">
+							<button
+								type="button"
+								className={cn(
+									"kit-filter-condition-selector__filter-btn",
+									// {
+									// 	"kit-filter-condition-selector__filter-btn_active": onModeChanged(
+									// 		"filter"
+									// 	)
+									// }
+								)}
+								onClick={() => onModeChanged("filter")}
+							>
+								{filterLabel}
+							</button>
+							<button
+								type="button"
+								className="kit-filter-condition-selector__filter-btn"
+							>
+								{recentLabel}
+							</button>
+							<button
+								type="button"
+								className="kit-filter-condition-selector__filter-btn"
+							>
+								{savedLabel}
+							</button>
+						</div>
+						<button
+							type="button"
+							className="kit-filter-condition-selector__filter-btn"
+						>
+							{examplesLabel}
+						</button>
+					</div>
+				</div>
+
+				<ul className="kit-filter-condition-selector__hierarchy">
+					{props.hierarchy.map(renderItem)}
+				</ul>
+			</div>
 			<div className="kit-filter-condition-selector__helper">
 				<h2 className="kit-filter-condition-selector__help-caption-title">
 					{helpCaption}

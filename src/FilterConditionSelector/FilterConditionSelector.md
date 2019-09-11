@@ -228,6 +228,10 @@ class ExampleComponent extends React.Component {
 						<FilterConditionSelector
 							hierarchy={hierarchy}
 							selectedElement={hierarchy[0]}
+							filterLabel={"Фильтры"}
+							recentLabel={"Недавние"}
+							savedLabel={"Сохранённые"}
+							examplesLabel={"Примеры"}
 						/>
 					</FilterConditionEditorButton>
 				</FilterWrapper>

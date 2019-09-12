@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import { StateProps, CallbackProps } from "./types";
 
@@ -153,7 +154,9 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							onClick={onConditionRemove}
 							className="kit-filtration-group__remove"
 							type="button"
-						/>
+						>
+							<IconSvg type="trash" />
+						</button>
 						{children}
 						<GroupButtons />
 					</>

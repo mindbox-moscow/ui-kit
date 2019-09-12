@@ -1,29 +1,23 @@
 import cn from "classnames";
 import * as React from "react";
 
-type ButtonProps = React.DetailedHTMLProps<
-	React.ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
->;
-
-type ButtonCustomProps = {
+interface Props {
 	activeType: string;
 	types: { [key: string]: string };
-};
-
-type Props = Partial<ButtonProps & ButtonCustomProps>;
+	onToggle: () => void;
+}
 
 export const LabelButton: React.FC<Props> = ({
 	activeType,
 	types,
-	...props
+	onToggle
 }) => (
 	<button
 		className="kit-filtration-group__label-button"
-		{...props}
 		type="button"
+		onClick={onToggle}
 	>
-		{Object.keys(types!).map(type => (
+		{Object.keys(types).map(type => (
 			<span
 				key={type}
 				className={cn({
@@ -31,7 +25,7 @@ export const LabelButton: React.FC<Props> = ({
 						activeType === type
 				})}
 			>
-				{types![type]}
+				{types[type]}
 			</span>
 		))}
 	</button>

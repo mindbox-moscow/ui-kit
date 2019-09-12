@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { LabelButton, RemoveButton } from "./components";
+import { LabelButton } from "./components";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
@@ -134,13 +134,14 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
-							{state !== "edit" && <>{labelMap[groupType]}</>}
-							{state === "edit" && (
+							{state === "edit" ? (
 								<LabelButton
-									onClick={onGroupTypeToggle}
+									onToggle={onGroupTypeToggle}
 									types={labelMap}
 									activeType={groupType}
 								/>
+							) : (
+								labelMap[groupType]
 							)}
 						</span>
 					)}
@@ -148,7 +149,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				{!children && state === "view" && <GroupButtons />}
 				{state === "edit" && (
 					<>
-						<RemoveButton onClick={onConditionRemove} />
+						<button
+							onClick={onConditionRemove}
+							className="kit-filtration-group__remove"
+							type="button"
+						/>
 						{children}
 						<GroupButtons />
 					</>

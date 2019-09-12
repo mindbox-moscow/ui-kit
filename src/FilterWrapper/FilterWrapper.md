@@ -71,12 +71,12 @@
     >
         <FiltrationGroupComponent
             state="edit"
-            groupType="or"
+            groupType="and"
             andLabel="И"
             orLabel="ИЛИ"
             shouldShowLabel={true}
             addSimpleConditionButton={<Button className="kit-filter-editor__btn">Добавить фильтр</Button>}
-            addGroupConditionButton={<Button className="kit-filter-editor__btn">И</Button>}
+            addGroupConditionButton={<Button className="kit-filter-editor__btn">ИЛИ</Button>}
         />
     </FiltrationGroupComponent>
 </FilterWrapper>

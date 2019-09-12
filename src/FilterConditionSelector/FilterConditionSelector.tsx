@@ -69,6 +69,7 @@ const FilterConditionSelector = (props: Props) => {
 			onSelect,
 			toggleExpand
 		} = item;
+
 		const isSimpleFiltrationObject = type === "simpleFiltrationObject";
 
 		return (
@@ -122,31 +123,50 @@ const FilterConditionSelector = (props: Props) => {
 								className={cn(
 									"kit-filter-condition-selector__filter-btn",
 									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged
+										"kit-filter-condition-selector__filter-btn_active": onModeChanged("filter")
 									}
 								)}
-								onClick={(e) => {
-									e.preventDefault();
-								}}
+								// onClick={}
+								// onClick={(e) => {
+								// 	e.preventDefault();
+								// 	console.log()
+								// 	//onModeChanged("filter")
+								//
+								// }}
 							>
 								{filterLabel}
 							</button>
 							<button
 								type="button"
-								className="kit-filter-condition-selector__filter-btn"
+								className={cn(
+									"kit-filter-condition-selector__filter-btn",
+									{
+										"kit-filter-condition-selector__filter-btn_active": onModeChanged("filter")
+									}
+								)}
 							>
 								{recentLabel}
 							</button>
 							<button
 								type="button"
-								className="kit-filter-condition-selector__filter-btn"
+								className={cn(
+									"kit-filter-condition-selector__filter-btn",
+									{
+										"kit-filter-condition-selector__filter-btn_active": onModeChanged("saved")
+									}
+								)}
 							>
 								{savedLabel}
 							</button>
 						</div>
 						<button
 							type="button"
-							className="kit-filter-condition-selector__filter-btn"
+							className={cn(
+								"kit-filter-condition-selector__filter-btn",
+								{
+									"kit-filter-condition-selector__filter-btn_active": onModeChanged("examples")
+								}
+							)}
 						>
 							{examplesLabel}
 						</button>

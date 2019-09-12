@@ -5,7 +5,7 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-export type ElementType =
+type ElementType =
 	| "filtrationObjectCategory"
 	| "simpleFiltrationObject"
 	| "filtrationObjectWithLinkedConditions";
@@ -17,9 +17,10 @@ enum MenuMode {
 	Examples = "examples"
 }
 
-export interface FiltrationObjectHierarchyElement {
+interface FiltrationObjectHierarchyElement {
 	id: string;
 	name: string;
+	helpCaption: string;
 	type: ElementType;
 	isSelected: boolean;
 	hasChildren: boolean;
@@ -47,8 +48,6 @@ interface Props {
 type IMenuModeMap = { [key in MenuMode]: string };
 
 export const FilterConditionSelector = (props: Props) => {
-	const { editorComponent, helpComponent, helpCaption } = props;
-
 	const {
 		onSearchTermChange,
 		onModeChanged,
@@ -56,7 +55,11 @@ export const FilterConditionSelector = (props: Props) => {
 		recentLabel,
 		savedLabel,
 		examplesLabel,
-		menuMode
+		menuMode,
+    editorComponent,
+		helpComponent,
+		helpCaption,
+    searchTerm
 	} = props;
 
 	const renderItem = (
@@ -128,7 +131,7 @@ export const FilterConditionSelector = (props: Props) => {
 				<div className="kit-filter-condition-selector__filter-block">
 					<Input
 						noShadow={true}
-						defaultValue={""}
+						defaultValue={searchTerm}
 						type="search"
 						placeholder="Название акции, группы или кампании"
 						onChange={handleSearchChange}
@@ -178,3 +181,5 @@ export const FilterConditionSelector = (props: Props) => {
 		</div>
 	);
 };
+
+export { FilterConditionSelector };

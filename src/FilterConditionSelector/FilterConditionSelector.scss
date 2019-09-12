@@ -197,11 +197,6 @@
 	padding-top: 4px;
 }
 
-.kit-filter-condition-selector__filter-btn-wrap {
-	display: flex;
-	align-items: center;
-}
-
 .kit-filter-condition-selector__filter-btn {
 	display: inline-block;
 	font-family: "PT Sans", sans-serif;
@@ -215,6 +210,10 @@
 
 	&:not(:last-child) {
 		margin-right: 14px;
+	}
+
+	&:last-child {
+		margin-left: auto;
 	}
 
 	&_active {

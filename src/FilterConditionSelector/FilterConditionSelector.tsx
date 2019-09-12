@@ -10,12 +10,14 @@ export type ElementType =
 	| "simpleFiltrationObject"
 	| "filtrationObjectWithLinkedConditions";
 
-
-type MenuMode = "filter" | "recent" | "saved" | "examples";
-
+enum MenuMode {
+	Filter = "filter",
+	Recent = "recent",
+	Saved = "saved",
+	Examples = "examples"
+}
 
 export interface FiltrationObjectHierarchyElement {
-
 	id: string;
 	name: string;
 	type: ElementType;
@@ -29,8 +31,6 @@ export interface FiltrationObjectHierarchyElement {
 
 interface Props {
 	hierarchy: FiltrationObjectHierarchyElement[];
-
-	selectedElement: FiltrationObjectHierarchyElement;
 	searchTerm: string;
 	onSearchTermChange: (changedSearchTerm: string) => void;
 	filterLabel: string;
@@ -38,23 +38,25 @@ interface Props {
 	savedLabel: string;
 	examplesLabel: string;
 	onModeChanged: (selectedMenuMode: MenuMode) => void;
-
+	menuMode: MenuMode;
 	helpCaption: string;
 	helpComponent: React.ReactNode;
 	editorComponent: React.ReactNode;
-
 }
+
+type IMenuModeMap = { [key in MenuMode]: string };
 
 export const FilterConditionSelector = (props: Props) => {
 	const { editorComponent, helpComponent, helpCaption } = props;
 
 	const {
-		// onSearchTermChange,
+		onSearchTermChange,
 		onModeChanged,
 		filterLabel,
 		recentLabel,
 		savedLabel,
-		examplesLabel
+		examplesLabel,
+		menuMode
 	} = props;
 
 	const renderItem = (
@@ -107,6 +109,19 @@ export const FilterConditionSelector = (props: Props) => {
 		);
 	};
 
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onSearchTermChange(e.target.value);
+	};
+
+	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
+
+	const menuModeMap: IMenuModeMap = {
+		[MenuMode.Filter]: filterLabel,
+		[MenuMode.Recent]: recentLabel,
+		[MenuMode.Saved]: savedLabel,
+		[MenuMode.Examples]: examplesLabel
+	};
+
 	return (
 		<div className="kit-filter-condition-selector">
 			<div className="kit-filter-condition-selector__wrap">
@@ -116,62 +131,27 @@ export const FilterConditionSelector = (props: Props) => {
 						defaultValue={""}
 						type="search"
 						placeholder="Название акции, группы или кампании"
-						// onChange={onSearchTermChange}
+						onChange={handleSearchChange}
 					/>
 					<div className="kit-filter-condition-selector__filter-btn-block">
-						<div className="kit-filter-condition-selector__filter-btn-wrap">
-							<button
-								type="button"
-								className={cn(
-									"kit-filter-condition-selector__filter-btn",
-									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged("filter")
-									}
-								)}
-								// onClick={}
-								// onClick={(e) => {
-								// 	e.preventDefault();
-								// 	console.log()
-								// 	//onModeChanged("filter")
-								//
-								// }}
-							>
-								{filterLabel}
-							</button>
-							<button
-								type="button"
-								className={cn(
-									"kit-filter-condition-selector__filter-btn",
-									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged("filter")
-									}
-								)}
-							>
-								{recentLabel}
-							</button>
-							<button
-								type="button"
-								className={cn(
-									"kit-filter-condition-selector__filter-btn",
-									{
-										"kit-filter-condition-selector__filter-btn_active": onModeChanged("saved")
-									}
-								)}
-							>
-								{savedLabel}
-							</button>
-						</div>
-						<button
-							type="button"
-							className={cn(
-								"kit-filter-condition-selector__filter-btn",
-								{
-									"kit-filter-condition-selector__filter-btn_active": onModeChanged("examples")
-								}
-							)}
-						>
-							{examplesLabel}
-						</button>
+						{Object.keys(menuModeMap).map((mode: MenuMode) => {
+							return (
+								<button
+									key={mode}
+									type="button"
+									className={cn(
+										"kit-filter-condition-selector__filter-btn",
+										{
+											"kit-filter-condition-selector__filter-btn_active":
+												menuMode === mode
+										}
+									)}
+									onClick={handleMenuModeChange(mode)}
+								>
+									{menuModeMap[mode]}
+								</button>
+							);
+						})}
 					</div>
 				</div>
 
@@ -179,6 +159,7 @@ export const FilterConditionSelector = (props: Props) => {
 					{props.hierarchy.map(renderItem)}
 				</ul>
 			</div>
+
 			<div className="kit-filter-condition-selector__helper">
 				<h2 className="kit-filter-condition-selector__help-caption-title">
 					{helpCaption}

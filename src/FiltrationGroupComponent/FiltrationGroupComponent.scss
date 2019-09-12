@@ -1,21 +1,23 @@
-$groupHoverMarginTopBottom: 10px;
+$groupHoverMarginTop: 10px;
+$groupHoverMarginLeft: 17px;
 
 .kit-filtration-group {
 	margin: 0;
 	padding: 0;
 	position: relative;
+	box-sizing: border-box;
 
 	&::before {
 		position: absolute;
 		top: 0;
 		left: 0;
 		display: block;
-		width: 100%;
-		height: 100%;
-		min-height: 25px;
-		margin: #{-$groupHoverMarginTopBottom} 0 #{-$groupHoverMarginTopBottom} -17px;
-		padding: $groupHoverMarginTopBottom 0 $groupHoverMarginTopBottom 17px;
+		width: calc(100% + #{$groupHoverMarginLeft});
+		height: calc(100% + #{$groupHoverMarginTop * 2});
+		min-height: 46px;
+		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: #f5f8fa;
+		box-sizing: border-box;
 	}
 
 	& {
@@ -61,7 +63,6 @@ $groupHoverMarginTopBottom: 10px;
 				height: 28px;
 				padding-left: 9px;
 				padding-right: 9px;
-				margin-top: 1px;
 				font-size: 12px;
 				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 				border-radius: 4px 0 0 4px;
@@ -99,6 +100,7 @@ $groupHoverMarginTopBottom: 10px;
 	> li {
 		margin-top: 10px;
 		padding-left: 20px;
+		box-sizing: border-box;
 
 		&::before,
 		&::after {
@@ -106,16 +108,17 @@ $groupHoverMarginTopBottom: 10px;
 			position: absolute;
 			left: 1px;
 			color: #e3ebf2;
+			box-sizing: border-box;
 		}
 
 		&::before {
-			top: 10px;
+			top: 9px;
 			width: 13px;
 			border-top: 2px solid;
 		}
 
 		&::after {
-			top: -10px;
+			top: -11px;
 			height: 100%;
 			border-left: 2px solid;
 		}
@@ -130,18 +133,20 @@ $groupHoverMarginTopBottom: 10px;
 	.kit-filter__btn {
 		position: relative;
 		margin-left: 20px;
+		box-sizing: border-box;
 	}
 }
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 0;
+	top: 9px;
 	left: -14px;
 	display: flex;
 	align-items: center;
-	padding: #{$groupHoverMarginTopBottom} 15px;
+	padding: 0 15px;
 	color: #e3ebf2;
 	z-index: 1;
+	box-sizing: border-box;
 
 	&:hover {
 		z-index: 2;
@@ -155,14 +160,15 @@ $groupHoverMarginTopBottom: 10px;
 		display: block;
 		width: 11px;
 		border-top: 2px solid;
+		box-sizing: border-box;
 	}
 
 	&::before {
-		top: 10px;
+		top: 0;
 	}
 
 	&::after {
-		bottom: 10px;
+		bottom: 0;
 	}
 
 	&_and,
@@ -206,6 +212,12 @@ $groupHoverMarginTopBottom: 10px;
 		}
 	}
 
+	& ~ li {
+		&::before {
+			content: none;
+		}
+	}
+
 	& ~ ul {
 		margin-left: 30px;
 
@@ -219,12 +231,13 @@ $groupHoverMarginTopBottom: 10px;
 	width: 2px;
 	height: 100%;
 	background-color: #e3ebf2;
+	box-sizing: border-box;
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 2px;
-	min-width: 20px;
+	min-width: 26px;
 	padding: 2px 3px 0;
 	margin-top: 2px;
 	border-radius: 3px;
@@ -235,11 +248,13 @@ $groupHoverMarginTopBottom: 10px;
 	line-height: 13px;
 	text-align: center;
 	z-index: 1;
+	box-sizing: border-box;
 }
 
 .kit-filtration-group__buttons {
 	display: flex;
 	margin-right: 20px;
+	box-sizing: border-box;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
@@ -248,16 +263,17 @@ $groupHoverMarginTopBottom: 10px;
 
 .kit-filtration-group__remove {
 	position: absolute;
-	top: #{-$groupHoverMarginTopBottom};
+	top: #{-$groupHoverMarginTop};
 	right: -46px;
 	display: block;
 	width: 44px;
-	height: calc(100% + #{$groupHoverMarginTopBottom * 2});
+	height: calc(100% + #{$groupHoverMarginTop * 2});
 	background-color: #ffeeeb;
 	border: 0;
 	color: #a12e1e;
 	cursor: pointer;
 	outline: none;
+	box-sizing: border-box;
 }
 
 .kit-filtration-group__label-button {
@@ -269,6 +285,7 @@ $groupHoverMarginTopBottom: 10px;
 	outline: none;
 	background-color: transparent;
 	color: rgba(#fff, 0.25);
+	box-sizing: border-box;
 
 	&_active {
 		color: #fff;

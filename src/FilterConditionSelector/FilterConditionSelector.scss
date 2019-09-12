@@ -13,12 +13,16 @@
 	overflow: hidden;
 }
 
+.kit-filter-condition-selector__wrap {
+	max-width: 382px;
+	width: 100%;
+}
+
 .kit-filter-condition-selector__hierarchy {
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	max-width: 382px;
-	border-right: 1px solid #c8d8e2;
 	overflow: scroll;
 }
 
@@ -173,39 +177,49 @@
 .kit-filter-condition-selector__helper {
 	background-color: #fff;
 	width: 602px;
+	border-left: 1px solid #c8d8e2;
 }
 
 .kit-filter-condition-selector__filter-block {
-	padding: 0 10px;
+	padding: 8px 10px;
 	background-color: #e2eaf0;
-	height: 80px;
 	border-bottom: 1px solid #c8d8e2;
 	font-size: 14px;
-
-	.kit-input-field-wrap {
-		margin-top: 1px;
-	}
+	max-height: 71px;
+	height: 54px;
 }
 
 .kit-filter-condition-selector__filter-btn-block {
-	margin-top: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 6px;
 	margin-left: 2px;
+	padding-top: 4px;
 }
 
 .kit-filter-condition-selector__filter-btn {
 	display: inline-block;
 	font-family: "PT Sans", sans-serif;
 	font-size: 12px;
-	font-weight: 600;
-	color: #8aacc2;
+	color: #265378;
 	text-decoration: none;
+	border: 0;
+	background-color: transparent;
+	padding: 0;
+	cursor: pointer;
 
 	&:not(:last-child) {
 		margin-right: 14px;
 	}
 
+	&:last-child {
+		margin-left: auto;
+	}
+
 	&_active {
 		color: #000;
+		font-weight: 600;
 	}
 }
 

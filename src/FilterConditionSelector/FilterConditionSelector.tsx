@@ -5,30 +5,31 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-type ElementType =
+export type ElementType =
 	| "filtrationObjectCategory"
 	| "simpleFiltrationObject"
 	| "filtrationObjectWithLinkedConditions";
 
+
 type MenuMode = "filter" | "recent" | "saved" | "examples";
 
-interface FiltrationObjectHierarchyElement {
+
+export interface FiltrationObjectHierarchyElement {
+
 	id: string;
 	name: string;
-	helpCaption: string;
 	type: ElementType;
 	isSelected: boolean;
 	hasChildren: boolean;
 	getChildren: () => FiltrationObjectHierarchyElement[];
 	isExpanded: boolean;
-	helpComponent: React.ReactNode;
-	editorComponent: React.ReactNode;
 	onSelect: () => void;
 	toggleExpand: () => void;
 }
 
 interface Props {
 	hierarchy: FiltrationObjectHierarchyElement[];
+
 	selectedElement: FiltrationObjectHierarchyElement;
 	searchTerm: string;
 	onSearchTermChange: (changedSearchTerm: string) => void;
@@ -37,14 +38,15 @@ interface Props {
 	savedLabel: string;
 	examplesLabel: string;
 	onModeChanged: (selectedMenuMode: MenuMode) => void;
+
+	helpCaption: string;
+	helpComponent: React.ReactNode;
+	editorComponent: React.ReactNode;
+
 }
 
-const FilterConditionSelector = (props: Props) => {
-	const {
-		editorComponent,
-		helpComponent,
-		helpCaption
-	} = props.selectedElement;
+export const FilterConditionSelector = (props: Props) => {
+	const { editorComponent, helpComponent, helpCaption } = props;
 
 	const {
 		// onSearchTermChange,
@@ -195,5 +197,3 @@ const FilterConditionSelector = (props: Props) => {
 		</div>
 	);
 };
-
-export { FilterConditionSelector };

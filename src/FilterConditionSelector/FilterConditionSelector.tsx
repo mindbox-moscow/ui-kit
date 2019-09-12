@@ -56,10 +56,10 @@ export const FilterConditionSelector = (props: Props) => {
 		savedLabel,
 		examplesLabel,
 		menuMode,
-    editorComponent,
+		editorComponent,
 		helpComponent,
 		helpCaption,
-    searchTerm
+		searchTerm
 	} = props;
 
 	const renderItem = (
@@ -181,5 +181,3 @@ export const FilterConditionSelector = (props: Props) => {
 		</div>
 	);
 };
-
-export { FilterConditionSelector };

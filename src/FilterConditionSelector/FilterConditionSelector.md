@@ -49,7 +49,7 @@ const arrayFirstChild = [
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		isSelected: false,
-		getChildren: () => arraySecondChild,
+		getChildren: () => arraySecondChild
 	}
 ];
 
@@ -63,7 +63,7 @@ const arraySecondChild = [
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		isSelected: false,
-		getChildren: () => [],
+		getChildren: () => []
 	}
 ];
 
@@ -77,7 +77,7 @@ const childrenData = [
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		isSelected: false,
-		getChildren: () => [],
+		getChildren: () => []
 	},
 	{
 		id: "behaviour",
@@ -88,7 +88,7 @@ const childrenData = [
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		isSelected: true,
-		getChildren: () => [],
+		getChildren: () => []
 	},
 	{
 		id: "behaviour",
@@ -99,7 +99,7 @@ const childrenData = [
 		onSelect: () => console.log("onSelect Простая категория"),
 		toggleExpand: () => console.log("toggleExpand Простая категория"),
 		isSelected: false,
-		getChildren: () => arrayFirstChild,
+		getChildren: () => arrayFirstChild
 	}
 ];
 
@@ -113,7 +113,7 @@ const hierarchy = [
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		isSelected: false,
-		getChildren: () => childrenData,
+		getChildren: () => childrenData
 	},
 	{
 		id: "empty",
@@ -125,7 +125,7 @@ const hierarchy = [
 		toggleExpand: () =>
 			console.log("toggleExpand Пустая тестовая категория"),
 		isSelected: false,
-		getChildren: () => [],
+		getChildren: () => []
 	}
 ];
 
@@ -191,6 +191,9 @@ class ExampleComponent extends React.Component {
 							savedLabel="Сохранённые"
 							examplesLabel="Примеры"
 							onModeChanged={mode => console.log(mode)}
+							onSearchTermChange={text =>
+								console.log("onSearchTermChange", text)
+							}
 							menuMode="filter"
 						/>
 					</FilterConditionEditorButton>

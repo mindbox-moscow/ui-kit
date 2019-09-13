@@ -1,24 +1,13 @@
 import cn from "classnames";
 import * as React from "react";
 import { InfoWrapper } from "./components";
+import { StateProps, CallbackProps } from "./types";
 
 import "./FilterWrapper.scss";
 
-interface State {
-	changeCondition: boolean;
-}
+type Props = StateProps & CallbackProps;
 
-interface Props {
-	statisticsValue?: React.ReactNode;
-	statisticsDescription: string;
-	applyButtonCaption: string;
-	clearButtonCaption: string;
-	doesContainFilter: boolean;
-	onApply: () => void;
-	onClear: () => void;
-}
-
-export class FilterWrapper extends React.Component<Props, State> {
+export class FilterWrapper extends React.Component<Props> {
 	public state = {
 		changeCondition: false
 	};

@@ -74,5 +74,9 @@ module.exports = {
 		constants: path.resolve(__dirname, "src/utils/constants.ts")
 	},
 
-	ignore: ["**/IconSvg/icons/**", "**/FiltrationGroupComponent/components/**"]
+	ignore: [
+		"**/IconSvg/icons/**",
+		"**/FiltrationGroupComponent/components/**",
+		"**/FilterWrapper/components/**"
+	]
 };

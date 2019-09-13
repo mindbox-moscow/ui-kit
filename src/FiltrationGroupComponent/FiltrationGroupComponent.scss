@@ -1,10 +1,10 @@
-$groupHoverMarginTop: 10px;
+$groupHoverMarginTop: 5px;
 $groupHoverMarginLeft: 17px;
 
 .kit-filtration-group {
+	position: relative;
 	margin: 0;
 	padding: 0;
-	position: relative;
 	box-sizing: border-box;
 
 	&::before {
@@ -14,7 +14,7 @@ $groupHoverMarginLeft: 17px;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
 		height: calc(100% + #{$groupHoverMarginTop * 2});
-		min-height: 46px;
+		min-height: 35px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: #f5f8fa;
 		box-sizing: border-box;
@@ -25,7 +25,7 @@ $groupHoverMarginLeft: 17px;
 			> li {
 				&:first-of-type {
 					&::after {
-						top: 10px;
+						top: 14px;
 					}
 				}
 
@@ -98,7 +98,8 @@ $groupHoverMarginLeft: 17px;
 	}
 
 	> li {
-		margin-top: 10px;
+		margin: 0;
+		width: 100%;
 		padding-left: 20px;
 		box-sizing: border-box;
 
@@ -107,25 +108,26 @@ $groupHoverMarginLeft: 17px;
 			content: "";
 			position: absolute;
 			left: 1px;
+			display: block;
 			color: #e3ebf2;
 			box-sizing: border-box;
 		}
 
 		&::before {
-			top: 9px;
+			top: 14px;
 			width: 13px;
 			border-top: 2px solid;
 		}
 
 		&::after {
-			top: -10px;
+			top: -4px;
 			height: 100%;
 			border-left: 2px solid;
 		}
 
 		&:last-child {
 			&::after {
-				height: 20px;
+				height: 17px;
 			}
 		}
 	}
@@ -139,7 +141,7 @@ $groupHoverMarginLeft: 17px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 9px;
+	top: 12px;
 	left: -14px;
 	display: flex;
 	align-items: center;

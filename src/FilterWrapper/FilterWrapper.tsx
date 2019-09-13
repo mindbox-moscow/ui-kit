@@ -1,5 +1,6 @@
-import * as React from "react";
 import cn from "classnames";
+import * as React from "react";
+import { InfoWrapper } from "./components";
 
 import "./FilterWrapper.scss";
 
@@ -30,7 +31,8 @@ export class FilterWrapper extends React.Component<Props, State> {
 			applyButtonCaption,
 			clearButtonCaption,
 			doesContainFilter,
-			onApply
+			onApply,
+			onClear
 		} = this.props;
 
 		return (
@@ -41,17 +43,7 @@ export class FilterWrapper extends React.Component<Props, State> {
 					})}
 				>
 					<ul className="kit-filter__all-wrap">{children}</ul>
-					{!doesContainFilter && (
-						<div className="kit-filter__info-wrap">
-							<span className="kit-filter__clients">
-								{statisticsDescription}:{" "}
-								<span className="kit-filter__clients-number">
-									{statisticsValue}
-								</span>
-							</span>
-						</div>
-					)}
-					{doesContainFilter && (
+					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
 								<button
@@ -61,21 +53,23 @@ export class FilterWrapper extends React.Component<Props, State> {
 									{applyButtonCaption}
 								</button>
 							</div>
-							<div className="kit-filter__info-wrap">
-								<span className="kit-filter__clients">
-									{statisticsDescription}:{" "}
-									<span className="kit-filter__clients-number">
-										{statisticsValue}
-									</span>
-								</span>
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+							>
 								<button
 									className="kit-filter__clear-filter-btn"
-									onClick={this.props.onClear}
+									onClick={onClear}
 								>
 									{clearButtonCaption}
 								</button>
-							</div>
+							</InfoWrapper>
 						</div>
+					) : (
+						<InfoWrapper
+							statisticsValue={statisticsValue}
+							statisticsDescription={statisticsDescription}
+						/>
 					)}
 				</div>
 			</>

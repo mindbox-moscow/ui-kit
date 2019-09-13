@@ -4,8 +4,8 @@
 	statisticsValue={50248}
 	applyButtonCaption="Применить фильтр"
 	clearButtonCaption="Сбросить фильтр"
-	onApply={() => { console.log("apply filter"); }}
-	onClear={() => { console.log("clear filter"); }}
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
 	Other components here...
 </FilterWrapper>
@@ -16,6 +16,10 @@
     statisticsDescription="Всего клиентов"
     statisticsValue={1021318}
     doesContainFilter={false}
+    applyButtonCaption="Применить фильтр"
+	clearButtonCaption="Сбросить фильтр"
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
     <FiltrationGroupComponent
         state="view"
@@ -23,8 +27,8 @@
         andLabel="И"
         orLabel="ИЛИ"
         shouldShowLabel={false}
-        addSimpleConditionButton={<Button className="kit-filter-editor__btn">Добавить фильтр</Button>}
-        addGroupConditionButton={<Button className="kit-filter-editor__btn">И</Button>}
+            addSimpleConditionButton={<FilterConditionEditorButton label="Добавить фильтр"/>}
+            addGroupConditionButton={<FilterConditionEditorButton label="И" />}
     />
     <i>Добавьте фильтр, чтобы создать выборку клиентов</i>
 </FilterWrapper>
@@ -37,8 +41,8 @@
     doesContainFilter={true}
     applyButtonCaption="Применить фильтр"
 	clearButtonCaption="Сбросить фильтр"
-	onApply={() => { console.log("apply filter"); }}
-	onClear={() => { console.log("clear filter"); }}
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
     <FiltrationGroupComponent
         state="edit"
@@ -46,8 +50,8 @@
         andLabel="И"
         orLabel="ИЛИ"
         shouldShowLabel={true}
-        addSimpleConditionButton={<Button className="kit-filter-editor__btn">Добавить фильтр</Button>}
-        addGroupConditionButton={<Button className="kit-filter-editor__btn">И</Button>}
+            addSimpleConditionButton={<FilterConditionEditorButton label="Добавить фильтр"/>}
+            addGroupConditionButton={<FilterConditionEditorButton label="И" />}
     />
 </FilterWrapper>
 <br />
@@ -59,8 +63,8 @@
     doesContainFilter={true}
     applyButtonCaption="Применить фильтр"
 	clearButtonCaption="Сбросить фильтр"
-	onApply={() => { console.log("apply filter"); }}
-	onClear={() => { console.log("clear filter"); }}
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
     <FiltrationGroupComponent
         state="view"
@@ -75,8 +79,8 @@
             andLabel="И"
             orLabel="ИЛИ"
             shouldShowLabel={true}
-            addSimpleConditionButton={<Button className="kit-filter-editor__btn">Добавить фильтр</Button>}
-            addGroupConditionButton={<Button className="kit-filter-editor__btn">ИЛИ</Button>}
+            addSimpleConditionButton={<FilterConditionEditorButton label="Добавить фильтр"/>}
+            addGroupConditionButton={<FilterConditionEditorButton label="ИЛИ" />}
         />
     </FiltrationGroupComponent>
 </FilterWrapper>
@@ -89,8 +93,8 @@
     doesContainFilter={true}
     applyButtonCaption="Применить фильтр"
 	clearButtonCaption="Сбросить фильтр"
-	onApply={() => { console.log("apply filter"); }}
-	onClear={() => { console.log("clear filter"); }}
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
     <FiltrationGroupComponent
         state="view"
@@ -117,8 +121,8 @@
     doesContainFilter={true}
     applyButtonCaption="Применить фильтр"
 	clearButtonCaption="Сбросить фильтр"
-	onApply={() => { console.log("apply filter"); }}
-	onClear={() => { console.log("clear filter"); }}
+	onApply={() => console.log("apply filter")}
+	onClear={() => console.log("clear filter")}
 >
     <FiltrationGroupComponent
         state="view"

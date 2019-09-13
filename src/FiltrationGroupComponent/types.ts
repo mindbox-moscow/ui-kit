@@ -8,7 +8,7 @@ export interface StateProps {
 	andLabel: string; // лейбл для И
 	orLabel: string; // лейбл для ИЛИ
 	shouldShowLabel?: boolean; // нужно ли отображать лейбл на брекете группы
-	children: React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
+	children?: React.ReactNode | React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
 	addSimpleConditionButton?: React.ReactNode;
 	addGroupConditionButton?: React.ReactNode;
 }

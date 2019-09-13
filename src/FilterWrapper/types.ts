@@ -1,6 +1,6 @@
 export interface StateProps {
 	changeCondition: boolean;
-	statisticsValue: number;
+	statisticsValue: React.ReactNode;
 	statisticsDescription: string;
 	applyButtonCaption: string;
 	clearButtonCaption: string;

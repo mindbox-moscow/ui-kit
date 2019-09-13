@@ -1,8 +1,8 @@
 import * as React from "react";
 
 interface Props {
-	statisticsValue: React.ReactNode[] | React.ReactNode;
-	statisticsDescription?: string;
+	statisticsValue: number;
+	statisticsDescription: string;
 }
 
 export const InfoWrapper: React.FC<Props> = ({

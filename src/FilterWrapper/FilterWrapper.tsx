@@ -25,43 +25,41 @@ export class FilterWrapper extends React.Component<Props> {
 		} = this.props;
 
 		return (
-			<>
-				<div
-					className={cn("kit-filter", {
-						"kit-filter_short": !doesContainFilter
-					})}
-				>
-					<ul className="kit-filter__all-wrap">{children}</ul>
-					{doesContainFilter ? (
-						<div className="kit-filter__wrap">
-							<div className="kit-filter__wrap-filter">
-								<button
-									className="kit-filter__use-filter"
-									onClick={onApply}
-								>
-									{applyButtonCaption}
-								</button>
-							</div>
-							<InfoWrapper
-								statisticsValue={statisticsValue}
-								statisticsDescription={statisticsDescription}
+			<div
+				className={cn("kit-filter", {
+					"kit-filter_short": !doesContainFilter
+				})}
+			>
+				<ul className="kit-filter__all-wrap">{children}</ul>
+				{doesContainFilter ? (
+					<div className="kit-filter__wrap">
+						<div className="kit-filter__wrap-filter">
+							<button
+								className="kit-filter__use-filter"
+								onClick={onApply}
 							>
-								<button
-									className="kit-filter__clear-filter-btn"
-									onClick={onClear}
-								>
-									{clearButtonCaption}
-								</button>
-							</InfoWrapper>
+								{applyButtonCaption}
+							</button>
 						</div>
-					) : (
 						<InfoWrapper
 							statisticsValue={statisticsValue}
 							statisticsDescription={statisticsDescription}
-						/>
-					)}
-				</div>
-			</>
+						>
+							<button
+								className="kit-filter__clear-filter-btn"
+								onClick={onClear}
+							>
+								{clearButtonCaption}
+							</button>
+						</InfoWrapper>
+					</div>
+				) : (
+					<InfoWrapper
+						statisticsValue={statisticsValue}
+						statisticsDescription={statisticsDescription}
+					/>
+				)}
+			</div>
 		);
 	}
 }

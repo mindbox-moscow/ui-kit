@@ -147,7 +147,10 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{!children && state === "view" && <GroupButtons />}
+				{state === "view" && !children && !shouldShowLabel && (
+					<GroupButtons />
+				)}
+				{state === "view" && children && children}
 				{state === "edit" && (
 					<>
 						<button
@@ -161,7 +164,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						<GroupButtons />
 					</>
 				)}
-				{children && children}
 			</ul>
 		);
 	}

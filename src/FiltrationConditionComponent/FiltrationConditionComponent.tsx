@@ -22,7 +22,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 		return (
 			<li className="kit-filtration-condition">
 				<span className="kit-filtration-condition__item-text">
-					<b>{`${filtrationObjectName} `}</b>
+					<b>{filtrationObjectName}</b>
 					{filtrationMethodName && (
 						<span>{filtrationMethodName}</span>
 					)}

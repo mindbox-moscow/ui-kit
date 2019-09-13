@@ -1,17 +1,12 @@
 import cn from "classnames";
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
+import { LabelButton } from "./components";
+import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
 
-type GroupType = "and" | "or";
-
-interface Props {
-	groupType: GroupType; // тип группы: И или ИЛИ
-	andLabel: string; // лейбл для И
-	orLabel: string; // лейбл для ИЛИ
-	shouldShowLabel?: boolean; // нужно ли отображать лейбл на брекете группы
-	children: React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
-}
+type Props = StateProps & CallbackProps;
 
 export class FiltrationGroupComponent extends React.Component<Props> {
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
@@ -29,7 +24,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				if (
 					ref.lastElementChild.classList.contains(
 						"kit-filtration-group"
-					)
+					) &&
+					ref.childElementCount > 2
 				) {
 					offset = 31;
 				}
@@ -103,16 +99,33 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			andLabel,
 			orLabel,
 			shouldShowLabel,
-			children
+			children,
+			addSimpleConditionButton,
+			addGroupConditionButton,
+			onGroupTypeToggle,
+			onConditionRemove,
+			state
 		} = this.props;
 
 		const labelMap = {
-			or: orLabel,
-			and: andLabel
+			and: andLabel,
+			or: orLabel
 		};
 
+		const GroupButtons = () => (
+			<div className="kit-filtration-group__buttons">
+				{addSimpleConditionButton}
+				{addGroupConditionButton}
+			</div>
+		);
+
 		return (
-			<ul ref={this.kitFiltrationRef} className="kit-filtration-group">
+			<ul
+				ref={this.kitFiltrationRef}
+				className={cn("kit-filtration-group", {
+					"kit-filtration-group_edit": state === "edit"
+				})}
+			>
 				<div
 					ref={this.kitFiltrationLabelRef}
 					className={cn("kit-filtration-group__label", {
@@ -122,11 +135,35 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
-							{labelMap[groupType]}
+							{state === "edit" ? (
+								<LabelButton
+									onToggle={onGroupTypeToggle}
+									types={labelMap}
+									activeType={groupType}
+								/>
+							) : (
+								labelMap[groupType]
+							)}
 						</span>
 					)}
 				</div>
-				{children}
+				{state === "view" && !children && !shouldShowLabel && (
+					<GroupButtons />
+				)}
+				{state === "view" && children && children}
+				{state === "edit" && (
+					<>
+						<button
+							onClick={onConditionRemove}
+							className="kit-filtration-group__remove"
+							type="button"
+						>
+							<IconSvg type="trash" />
+						</button>
+						{children}
+						<GroupButtons />
+					</>
+				)}
 			</ul>
 		);
 	}

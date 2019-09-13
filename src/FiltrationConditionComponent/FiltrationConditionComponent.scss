@@ -1,16 +1,16 @@
 .kit-filtration-condition {
 	position: relative;
-	margin-bottom: 10px;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	list-style: none;
 }
-
 .kit-filtration-condition__item-text {
-	margin: 0;
-	margin-bottom: 5px;
+	display: inline-block;
+	padding-top: 5px;
+	padding-bottom: 5px;
 
+	span,
 	b {
 		margin-right: 5px;
 	}

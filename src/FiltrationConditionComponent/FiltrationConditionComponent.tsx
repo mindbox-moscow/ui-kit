@@ -23,7 +23,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			<li className="kit-filtration-condition">
 				<span className="kit-filtration-condition__item-text">
 					<b>{filtrationObjectName}</b>
-					{!!filtrationMethodName && <>{filtrationMethodName} </>}
+					{filtrationMethodName && (
+						<span>{filtrationMethodName}</span>
+					)}
 				</span>
 				{filtrationMethodParametersComponent}
 				{linkedConditionComponent}

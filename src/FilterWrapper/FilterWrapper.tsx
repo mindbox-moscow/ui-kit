@@ -1,25 +1,13 @@
+import cn from "classnames";
 import * as React from "react";
+import { InfoWrapper } from "./components";
+import { StateProps, CallbackProps } from "./types";
 
 import "./FilterWrapper.scss";
 
-interface State {
-	changeCondition: boolean;
-}
+type Props = StateProps & CallbackProps;
 
-interface Props {
-	statisticsValue?: React.ReactNode;
-	statisticsDescription: string;
-	applyButtonCaption: string;
-	clearButtonCaption: string;
-	onApply: () => void;
-	onClear: () => void;
-}
-
-export class FilterWrapper extends React.Component<Props, State> {
-	public state = {
-		changeCondition: false
-	};
-
+export class FilterWrapper extends React.Component<Props> {
 	public render() {
 		const {
 			children,
@@ -27,38 +15,47 @@ export class FilterWrapper extends React.Component<Props, State> {
 			statisticsDescription,
 			applyButtonCaption,
 			clearButtonCaption,
-			onApply
+			doesContainFilter,
+			onApply,
+			onClear
 		} = this.props;
 
 		return (
-			<>
-				<div className="kit-filter">
-					<ul className="kit-filter__all-wrap">
-						{children}
-					</ul>
+			<div
+				className={cn("kit-filter", {
+					"kit-filter_short": !doesContainFilter
+				})}
+			>
+				<ul className="kit-filter__all-wrap">{children}</ul>
+				{doesContainFilter ? (
 					<div className="kit-filter__wrap">
 						<div className="kit-filter__wrap-filter">
-							<button className="kit-filter__use-filter" onClick={onApply}>
+							<button
+								className="kit-filter__use-filter"
+								onClick={onApply}
+							>
 								{applyButtonCaption}
 							</button>
 						</div>
-						<div className="kit-filter__info-wrap">
-							<span className="kit-filter__clients">
-								{statisticsDescription}:{" "}
-								<span className="kit-filter__clients-number">
-									{statisticsValue}
-								</span>
-							</span>
+						<InfoWrapper
+							statisticsValue={statisticsValue}
+							statisticsDescription={statisticsDescription}
+						>
 							<button
 								className="kit-filter__clear-filter-btn"
-								onClick={this.props.onClear}
+								onClick={onClear}
 							>
 								{clearButtonCaption}
 							</button>
-						</div>
+						</InfoWrapper>
 					</div>
-				</div>
-			</>
+				) : (
+					<InfoWrapper
+						statisticsValue={statisticsValue}
+						statisticsDescription={statisticsDescription}
+					/>
+				)}
+			</div>
 		);
 	}
 }

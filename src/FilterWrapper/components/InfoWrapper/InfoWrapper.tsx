@@ -1,7 +1,7 @@
 import * as React from "react";
 
 interface Props {
-	statisticsValue: number;
+	statisticsValue: React.ReactNode;
 	statisticsDescription: string;
 }
 

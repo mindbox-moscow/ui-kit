@@ -5,11 +5,6 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-type ElementType =
-	| "filtrationObjectCategory"
-	| "simpleFiltrationObject"
-	| "filtrationObjectWithLinkedConditions";
-
 enum MenuMode {
 	Filter = "filter",
 	Recent = "recent",
@@ -17,22 +12,10 @@ enum MenuMode {
 	Examples = "examples"
 }
 
-interface FiltrationObjectHierarchyElement {
-	id: string;
-	name: string;
-	helpCaption: string;
-	type: ElementType;
-	isSelected: boolean;
-	hasChildren: boolean;
-	getChildren: () => FiltrationObjectHierarchyElement[];
-	isExpanded: boolean;
-	onSelect: () => void;
-	toggleExpand: () => void;
-}
-
 interface Props {
-	hierarchy: FiltrationObjectHierarchyElement[];
+	childRenderer: React.ComponentType<{ id: string }>;
 	searchTerm: string;
+	rootIds: string[];
 	onSearchTermChange: (changedSearchTerm: string) => void;
 	filterLabel: string;
 	recentLabel: string;
@@ -56,61 +39,13 @@ export const FilterConditionSelector = (props: Props) => {
 		savedLabel,
 		examplesLabel,
 		menuMode,
+		searchTerm,
 		editorComponent,
 		helpComponent,
-		helpCaption,
-		searchTerm
+		helpCaption
 	} = props;
 
-	const renderItem = (
-		item: FiltrationObjectHierarchyElement,
-		index: number
-	) => {
-		const {
-			isSelected,
-			type,
-			isExpanded,
-			name,
-			hasChildren,
-			getChildren,
-			onSelect,
-			toggleExpand
-		} = item;
-
-		const isSimpleFiltrationObject = type === "simpleFiltrationObject";
-
-		return (
-			<li
-				key={index}
-				className={cn("kit-filter-condition-selector__hierarchy-item", {
-					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
-					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
-					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFiltrationObject
-				})}
-			>
-				{!isSimpleFiltrationObject && (
-					<button
-						type="button"
-						className="kit-filter-condition-selector__hierarchy-toggle"
-						onClick={toggleExpand}
-					/>
-				)}
-				<button
-					type="button"
-					className="kit-filter-condition-selector__hierarchy-name"
-					onClick={onSelect}
-				>
-					{name}
-				</button>
-
-				{isExpanded && hasChildren && (
-					<ul className="kit-filter-condition-selector__hierarchy-children">
-						{getChildren().map(renderItem)}
-					</ul>
-				)}
-			</li>
-		);
-	};
+	const ChildItem = props.childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		onSearchTermChange(e.target.value);
@@ -159,7 +94,9 @@ export const FilterConditionSelector = (props: Props) => {
 				</div>
 
 				<ul className="kit-filter-condition-selector__hierarchy">
-					{props.hierarchy.map(renderItem)}
+					{props.rootIds.map(childId => (
+						<ChildItem key={childId} id={childId} />
+					))}
 				</ul>
 			</div>
 

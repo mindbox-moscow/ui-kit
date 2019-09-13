@@ -39,111 +39,240 @@ const EditorComponentExample = () => {
 	);
 };
 
-const arrayFirstChild = [
-	{
-		id: "behaviour",
+const allElementsDictionary = {
+	secondCategory: {
+		id: "secondCategory",
 		type: "filtrationObjectCategory",
 		name: "Ещё простая категория",
+		helpCaption: "Простая категория Caption",
 		hasChildren: true,
 		isExpanded: true,
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
-		getChildren: () => arraySecondChild
-	}
-];
-
-const arraySecondChild = [
-	{
-		id: "behaviour",
+		childIds: ["thirdCategory"],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	thirdCategory: {
+		id: "thirdCategory",
 		type: "filtrationObjectCategory",
 		name: "Поведение",
+		helpCaption: "Поведение Caption",
 		hasChildren: true,
 		isExpanded: false,
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
 		isSelected: false,
-		getChildren: () => []
-	}
-];
-
-const childrenData = [
-	{
-		id: "behaviour",
-		type: "simpleFiltrationObject",
-		name: "Простой фильтр",
-		hasChildren: false,
-		isExpanded: false,
-		onSelect: () => console.log("onSelect Простой фильтр"),
-		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
-		isSelected: false,
-		getChildren: () => []
+		childIds: [],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
-	{
-		id: "behaviour",
+	caption: {
+		id: "caption",
 		type: "simpleFiltrationObject",
-		name: "Простой фильтр",
+		name: "Простой фильтр Caption",
+		helpCaption: "Простой фильтр Caption",
 		hasChildren: false,
 		isExpanded: false,
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	name: {
+		id: "name",
+		type: "simpleFiltrationObject",
+		name: "Простой фильтр Name",
+		helpCaption: "Простой фильтр Name",
+		hasChildren: false,
+		isExpanded: false,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: true,
-		getChildren: () => []
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
-	{
-		id: "behaviour",
+	firstCategory: {
+		id: "firstCategory",
 		type: "filtrationObjectCategory",
-		name: "Простая категория",
+		name: "Простая категория Caption",
+		helpCaption: "Простая категория Caption",
 		hasChildren: true,
 		isExpanded: true,
 		onSelect: () => console.log("onSelect Простая категория"),
 		toggleExpand: () => console.log("toggleExpand Простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
-		getChildren: () => arrayFirstChild
-	}
-];
-
-const hierarchy = [
-	{
+		childIds: ["secondCategory"],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	behaviour: {
 		id: "behaviour",
 		type: "filtrationObjectCategory",
 		name: "Поведение",
+		helpCaption: "Поведение Caption",
 		hasChildren: true,
 		isExpanded: true,
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
 		isSelected: false,
-		getChildren: () => childrenData
+		childIds: ["caption", "name", "firstCategory"],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
-	{
+	empty: {
 		id: "empty",
 		type: "simpleFiltrationObject",
 		name: "Пустая тестовая категория",
+		helpCaption: "Ссылка на установку электронной карты",
 		hasChildren: false,
 		isExpanded: false,
 		onSelect: () => console.log("onSelect Пустая тестовая категория"),
 		toggleExpand: () =>
 			console.log("toggleExpand Пустая тестовая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
-		getChildren: () => []
+		childIds: [],
+		helpComponent: (
+			<div>
+				Что важно, мы настраиваемся на всю выручку и смотрим все заказы.
+				Т.е. видим чистый добавленный эффект, не искаженный никакими
+				атрибуциями. Если бы мы смотрели на атрибуцию, которая
+				используется, например, в Google Analytics по умолчанию, то
+				попали бы в ловушку. Контроль частоты снижает эффект
+				каннибализации каналов, и очень вероятно мы бы увидели падение
+				выручки в том числе там, где на самом деле ее нет.
+			</div>
+		)
 	}
-];
+};
+
+const createChildRenderer = (
+	onSelectCallback,
+	onToggleExpandCallback,
+	state
+) => {
+	return class ExampleChildRenderer extends React.Component {
+		constructor() {
+			super();
+
+			this.onSelect = this.onSelect.bind(this);
+			this.onToggleExpand = this.onToggleExpand.bind(this);
+		}
+
+		onSelect() {
+			onSelectCallback(this.props.id);
+		}
+		onToggleExpand() {
+			onToggleExpandCallback(this.props.id);
+		}
+
+		render() {
+			const { name, type, childIds } = allElementsDictionary[
+				this.props.id
+			];
+
+			return (
+				<FilterConditionSelectorItem
+					id={this.props.id}
+					name={name}
+					type={type}
+					isSelected={this.props.id === state.selectedId}
+					childIds={childIds}
+					isExpanded={state.expansionState[this.props.id]}
+					childRenderer={ExampleChildRenderer}
+					onSelect={this.onSelect}
+					toggleExpand={this.onToggleExpand}
+				/>
+			);
+		}
+	};
+};
 
 class ExampleComponent extends React.Component {
 	constructor() {
 		super();
-		this.state = { showPopup: false };
+		this.state = {
+			showPopup: false,
+			selectedId: "name",
+			expansionState: {
+				behaviour: true,
+				firstCategory: true,
+				secondCategory: true,
+				thirdCategory: false
+			}
+		};
 		this.togglePopup = this.togglePopup.bind(this);
+		this.onSelect = this.onSelect.bind(this);
+		this.onToggleExpand = this.onToggleExpand.bind(this);
+	}
+
+	onSelect(id) {
+		this.setState({
+			selectedId: id
+		});
+	}
+
+	onToggleExpand(id) {
+		console.log("onToggleExpand", id);
+		this.setState(oldState => ({
+			...oldState,
+			expansionState: {
+				...oldState.expansionState,
+				...{ [id]: !(oldState.expansionState[id] || false) }
+			}
+		}));
 	}
 
 	togglePopup() {
 		console.log("hello");
-		this.setState(state => ({
-			showPopup: !state.showPopup
+		this.setState(oldState => ({
+			...oldState,
+			showPopup: !oldState.showPopup
 		}));
 	}
 
 	render() {
+		console.log(this.state);
 		return (
 			<>
 				<FilterWrapper
@@ -160,41 +289,24 @@ class ExampleComponent extends React.Component {
 						toggleOpen={this.togglePopup}
 					>
 						<FilterConditionSelector
-							hierarchy={hierarchy}
-							helpCaption="Ссылка на установку электронной карты"
+							childRenderer={createChildRenderer(
+								this.onSelect,
+								this.onToggleExpand,
+								this.state
+							)}
+							rootIds={["behaviour", "empty"]}
 							helpComponent={
-								<div>
-									Что важно, мы настраиваемся на всю выручку и
-									смотрим все заказы. Т.е. видим чистый
-									добавленный эффект, не искаженный никакими
-									атрибуциями. Если бы мы смотрели на
-									атрибуцию, которая используется, например, в
-									Google Analytics по умолчанию, то попали бы
-									в ловушку. Контроль частоты снижает эффект
-									каннибализации каналов, и очень вероятно мы
-									бы увидели падение выручки в том числе там,
-									где на самом деле ее нет.
-								</div>
+								allElementsDictionary[this.state.selectedId]
+									.helpComponent
 							}
 							editorComponent={
-								<FilterConditionEditorComponent
-									innerEditorComponent={EditorComponentExample()}
-									addFilterButtonCaption="Добавить фильтр"
-									isAddFilterButtonEnabled={false}
-									onAddFilterButtonClick={() =>
-										console.log("фильтр добавлен")
-									}
-								/>
+								allElementsDictionary[this.state.selectedId]
+									.editorComponent
 							}
-							filterLabel="Фильтры"
-							recentLabel="Недавние"
-							savedLabel="Сохранённые"
-							examplesLabel="Примеры"
-							onModeChanged={mode => console.log(mode)}
-							onSearchTermChange={text =>
-								console.log("onSearchTermChange", text)
+							helpCaption={
+								allElementsDictionary[this.state.selectedId]
+									.helpCaption
 							}
-							menuMode="filter"
 						/>
 					</FilterConditionEditorButton>
 				</FilterWrapper>

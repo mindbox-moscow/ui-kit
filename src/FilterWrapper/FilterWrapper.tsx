@@ -8,10 +8,6 @@ import "./FilterWrapper.scss";
 type Props = StateProps & CallbackProps;
 
 export class FilterWrapper extends React.Component<Props> {
-	public state = {
-		changeCondition: false
-	};
-
 	public render() {
 		const {
 			children,

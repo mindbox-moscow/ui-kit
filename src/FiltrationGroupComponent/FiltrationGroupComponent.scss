@@ -136,7 +136,7 @@ $groupLabelPaddingLeft: 15px;
 
 		&::before {
 			top: 14px;
-			width: 13px;
+			width: 12px;
 			border-top: $borderWidthLine solid;
 		}
 
@@ -233,7 +233,8 @@ $groupLabelPaddingLeft: 15px;
 		}
 	}
 
-	& ~ li {
+	& ~ li:first-of-type,
+	& ~ li:last-child {
 		&::before {
 			content: none;
 		}
@@ -241,10 +242,6 @@ $groupLabelPaddingLeft: 15px;
 
 	& ~ ul {
 		margin-left: 30px;
-
-		&.kit-filtration-group_edit {
-			margin-left: 30px;
-		}
 	}
 }
 

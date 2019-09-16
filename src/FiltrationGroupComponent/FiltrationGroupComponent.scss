@@ -1,5 +1,18 @@
+// Colors
+$braketColor: #e3ebf2;
+$orColor: #dcc6f3;
+$orColorEdit: #9859dc;
+$andColor: #2d597d;
+$andColorEdit: $andColor;
+$removeColorBg: #ffeeeb;
+$removeColor: #a12e1e;
+$hoverColorBg: #f5f8fa;
+
+// Sizing
 $groupHoverMarginTop: 5px;
 $groupHoverMarginLeft: 17px;
+$borderWidthLine: 2px;
+$groupLabelPaddingLeft: 15px;
 
 .kit-filtration-group {
 	position: relative;
@@ -16,7 +29,7 @@ $groupHoverMarginLeft: 17px;
 		height: calc(100% + #{$groupHoverMarginTop * 2});
 		min-height: 35px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-		background-color: #f5f8fa;
+		background-color: $hoverColorBg;
 		box-sizing: border-box;
 	}
 
@@ -47,7 +60,7 @@ $groupHoverMarginLeft: 17px;
 		}
 
 		.kit-filtration-group__buttons {
-			margin-left: 40px;
+			margin-left: 20px;
 		}
 
 		> .kit-filtration-group__label_or,
@@ -56,7 +69,9 @@ $groupHoverMarginLeft: 17px;
 
 			.kit-filtration-group__label-text {
 				left: auto;
-				right: calc(100% - 50px);
+				right: calc(
+					100% - #{$groupLabelPaddingLeft + $borderWidthLine}
+				);
 				display: flex;
 				align-items: center;
 				min-width: 40px;
@@ -70,14 +85,20 @@ $groupHoverMarginLeft: 17px;
 		}
 
 		> .kit-filtration-group__label_or {
-			.kit-filtration-group__label-text {
-				background-color: #9859dc;
+			color: $orColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $orColorEdit;
 			}
 		}
 
 		> .kit-filtration-group__label_and {
-			.kit-filtration-group__label-text {
-				background-color: #2d597d;
+			color: $andColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $andColorEdit;
 			}
 		}
 	}
@@ -109,20 +130,20 @@ $groupHoverMarginLeft: 17px;
 			position: absolute;
 			left: 1px;
 			display: block;
-			color: #e3ebf2;
+			color: $braketColor;
 			box-sizing: border-box;
 		}
 
 		&::before {
 			top: 14px;
 			width: 13px;
-			border-top: 2px solid;
+			border-top: $borderWidthLine solid;
 		}
 
 		&::after {
 			top: -4px;
 			height: 100%;
-			border-left: 2px solid;
+			border-left: $borderWidthLine solid;
 		}
 
 		&:last-child {
@@ -145,8 +166,8 @@ $groupHoverMarginLeft: 17px;
 	left: -14px;
 	display: flex;
 	align-items: center;
-	padding: 0 15px;
-	color: #e3ebf2;
+	padding: 0 $groupLabelPaddingLeft;
+	color: $braketColor;
 	z-index: 1;
 	box-sizing: border-box;
 
@@ -189,7 +210,6 @@ $groupHoverMarginLeft: 17px;
 	}
 
 	&_and {
-		$andColor: #2d597d;
 		color: $andColor;
 		& ~ .kit-filtration-condition::before {
 			color: $andColor;
@@ -202,7 +222,6 @@ $groupHoverMarginLeft: 17px;
 	}
 
 	&_or {
-		$orColor: #dcc6f3;
 		color: $orColor;
 		& ~ .kit-filtration-condition::before {
 			color: $orColor;
@@ -224,15 +243,15 @@ $groupHoverMarginLeft: 17px;
 		margin-left: 30px;
 
 		&.kit-filtration-group_edit {
-			margin-left: 45px;
+			margin-left: 30px;
 		}
 	}
 }
 
 .kit-filtration-group__label-line {
-	width: 2px;
+	width: $borderWidthLine;
 	height: 100%;
-	background-color: #e3ebf2;
+	background-color: $braketColor;
 	box-sizing: border-box;
 }
 
@@ -246,7 +265,7 @@ $groupHoverMarginLeft: 17px;
 	height: 16px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
-	color: #ffffff;
+	color: #fff;
 	font-size: 10px;
 	font-weight: 400;
 	line-height: 1;
@@ -272,9 +291,9 @@ $groupHoverMarginLeft: 17px;
 	display: block;
 	width: 44px;
 	height: calc(100% + #{$groupHoverMarginTop * 2});
-	background-color: #ffeeeb;
+	background-color: $removeColorBg;
 	border: 0;
-	color: #a12e1e;
+	color: $removeColor;
 	cursor: pointer;
 	outline: none;
 	box-sizing: border-box;

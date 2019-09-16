@@ -372,7 +372,7 @@
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
-			state="view"
+			state="shaded"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -429,7 +429,7 @@
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-				state="view"
+				state="shaded"
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"

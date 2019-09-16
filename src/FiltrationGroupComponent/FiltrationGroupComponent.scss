@@ -14,7 +14,16 @@ $groupHoverMarginLeft: 17px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 
+// Mixins
+@mixin opacityBlock($opacity: 1) {
+	.kit-filtration-condition__item-text,
+	.kit-filtration-group__label {
+		opacity: $opacity;
+	}
+}
+
 .kit-filtration-group {
+	$self: &;
 	position: relative;
 	margin: 0;
 	padding: 0;
@@ -51,10 +60,13 @@ $groupLabelPaddingLeft: 15px;
 		}
 	}
 
-	// ================
-	// Edit mode
-	// ================
+	&_shaded {
+		@include opacityBlock(0.3);
+	}
+
 	&_edit {
+		@include opacityBlock();
+
 		&::before {
 			content: "";
 		}
@@ -103,10 +115,22 @@ $groupLabelPaddingLeft: 15px;
 		}
 	}
 
-	// ================
-	// Hover
-	// ================
+	&_not-children {
+		&#{$self}_edit {
+			margin-left: 30px;
+		}
+
+		> .kit-filtration-group__label_or,
+		> .kit-filtration-group__label_and {
+			.kit-filtration-group__label-text {
+				right: calc(100% - 30px);
+			}
+		}
+	}
+
 	&_hover {
+		@include opacityBlock();
+
 		cursor: pointer;
 
 		&::before {
@@ -242,6 +266,10 @@ $groupLabelPaddingLeft: 15px;
 
 	& ~ ul {
 		margin-left: 30px;
+	}
+
+	& ~ .kit-filtration-group_not-children.kit-filtration-group_edit {
+		margin-left: 60px;
 	}
 }
 

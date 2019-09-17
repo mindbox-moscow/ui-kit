@@ -257,7 +257,7 @@
 	</FilterWrapper>
 	<br />
 	<br />
-	<h1>Пример 5 - Редактирование внешней группы</h1>
+	<h1>Пример 6 - Редактирование внешней группы</h1>
 	<FilterWrapper
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -361,7 +361,7 @@
 	</FilterWrapper>
 	<br />
 	<br />
-	<h1>Пример 6 - Редактирование внутренней группы</h1>
+	<h1>Пример 7 - Редактирование внутренней группы</h1>
 	<FilterWrapper
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}

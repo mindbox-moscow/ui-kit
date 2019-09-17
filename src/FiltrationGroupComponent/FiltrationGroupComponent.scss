@@ -136,10 +136,6 @@ $groupLabelPaddingLeft: 15px;
 		&::before {
 			content: "";
 		}
-
-		> * {
-			z-index: 1;
-		}
 	}
 
 	> li {
@@ -302,6 +298,7 @@ $groupLabelPaddingLeft: 15px;
 .kit-filtration-group__buttons {
 	display: flex;
 	margin-right: 20px;
+	margin-bottom: 5px;
 	box-sizing: border-box;
 
 	> *:not(:last-child) {

@@ -123,7 +123,9 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			<ul
 				ref={this.kitFiltrationRef}
 				className={cn("kit-filtration-group", {
-					"kit-filtration-group_edit": state === "edit"
+					"kit-filtration-group_edit": state === "edit",
+					"kit-filtration-group_shaded": state === "shaded",
+					"kit-filtration-group_not-children": children === undefined
 				})}
 			>
 				<div
@@ -147,10 +149,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{state === "view" && !children && !shouldShowLabel && (
-					<GroupButtons />
-				)}
-				{state === "view" && children && children}
+				{(state === "view" || state === "shaded") &&
+					children === undefined &&
+					!shouldShowLabel && <GroupButtons />}
+				{(state === "view" || state === "shaded") &&
+					children !== undefined &&
+					children}
 				{state === "edit" && (
 					<>
 						<button

@@ -1,15 +1,9 @@
 import * as React from "react";
+import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
 
-interface Props {
-	filtrationObjectName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"
-	filtrationMethodName?: string; // способ фильтрации. "есть такие" или "заполнен и". может отсутстовать.
-	filtrationMethodParametersComponent?: React.ReactNode; // компонент настроек для способа фильтрации. тоже может
-	// отсутствовать.
-	linkedConditionComponent?: React.ReactNode; // компонент вложенного условия фильтрации. туда всегда будет
-	// приходить FiltrationGroupComponent.
-}
+type Props = StateProps & CallbackProps;
 
 export class FiltrationConditionComponent extends React.Component<Props> {
 	public render() {
@@ -22,6 +16,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 		return (
 			<li className="kit-filtration-condition">
 				<span className="kit-filtration-condition__item-text">
+					<div className="kit-filtration-condition__drag-adn-drop" />
 					<b>{filtrationObjectName}</b>
 					{filtrationMethodName && (
 						<span>{filtrationMethodName}</span>

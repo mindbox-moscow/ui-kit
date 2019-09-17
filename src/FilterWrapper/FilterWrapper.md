@@ -463,5 +463,115 @@
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
+	<br />
+	<br />
+	<h1>Пример 8 - Ховер над простым фильтром</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						label="Добавить фильтр"
+					/>
+				}
+				addGroupConditionButton={
+					<FilterConditionEditorButton
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						label="ИЛИ"
+					/>
+				}
+			>
+				<FiltrationConditionComponent
+					state="view"
+					filtrationObjectName="Пол"
+					filtrationMethodName="заполнен и мужской"
+					editorComponent={<input />}
+					helpComponent={<span>А тут у нас хелп</span>}
+				/>
+				<FiltrationConditionComponent
+					state="view"
+					filtrationObjectName="Возраст"
+					filtrationMethodName="заполнен и от 18 до 35 лет"
+				/>
+			</FiltrationGroupComponent>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						label="Добавить фильтр"
+					/>
+				}
+				addGroupConditionButton={
+					<FilterConditionEditorButton
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						label="ИЛИ"
+					/>
+				}
+			>
+				<FiltrationConditionComponent
+					state="view"
+					filtrationObjectName="Пол"
+					filtrationMethodName="заполнен и женский"
+				/>
+				<FiltrationConditionComponent
+					state="view"
+					filtrationObjectName="Возраст"
+					filtrationMethodName="заполнен и от 35 до 60 лет"
+				/>
+			</FiltrationGroupComponent>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
 </div>
 ```

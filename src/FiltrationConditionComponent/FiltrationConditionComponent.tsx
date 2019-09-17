@@ -16,7 +16,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 		return (
 			<li className="kit-filtration-condition">
 				<span className="kit-filtration-condition__item-text">
-					<div className="kit-filtration-condition__drag-adn-drop" />
+					<div className="kit-filtration-condition__drag-and-drop" />
 					<b>{filtrationObjectName}</b>
 					{filtrationMethodName && (
 						<span>{filtrationMethodName}</span>

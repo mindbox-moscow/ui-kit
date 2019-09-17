@@ -7,6 +7,7 @@ $andColorEdit: $andColor;
 $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
 $hoverColorBg: #f5f8fa;
+$editColorBg: #e2eaf0;
 
 // Sizing
 $groupHoverMarginTop: 5px;
@@ -39,6 +40,7 @@ $groupLabelPaddingLeft: 15px;
 		min-height: 35px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
+		border-radius: 3px 0 0 3px;
 		box-sizing: border-box;
 	}
 
@@ -69,6 +71,7 @@ $groupLabelPaddingLeft: 15px;
 
 		&::before {
 			content: "";
+			background-color: $editColorBg;
 		}
 
 		.kit-filtration-group__buttons {
@@ -141,7 +144,7 @@ $groupLabelPaddingLeft: 15px;
 	> li {
 		margin: 0;
 		width: 100%;
-		padding-left: 20px;
+		padding-left: 30px;
 		box-sizing: border-box;
 
 		&::before,
@@ -156,7 +159,7 @@ $groupLabelPaddingLeft: 15px;
 
 		&::before {
 			top: 14px;
-			width: 12px;
+			width: 16px;
 			border-top: $borderWidthLine solid;
 		}
 
@@ -201,7 +204,7 @@ $groupLabelPaddingLeft: 15px;
 		position: absolute;
 		left: 16px;
 		display: block;
-		width: 11px;
+		width: 15px;
 		border-top: 2px solid;
 		box-sizing: border-box;
 	}
@@ -315,6 +318,7 @@ $groupLabelPaddingLeft: 15px;
 	height: calc(100% + #{$groupHoverMarginTop * 2});
 	background-color: $removeColorBg;
 	border: 0;
+	border-radius: 0 3px 3px 0;
 	color: $removeColor;
 	cursor: pointer;
 	outline: none;

@@ -28,13 +28,13 @@ $itemHoverBorderRadius: 3px;
 		background-color: $itemHoverColorBg;
 		cursor: pointer;
 
-		.kit-filtration-condition__drag-adn-drop {
+		.kit-filtration-condition__drag-and-drop {
 			display: flex;
 		}
 	}
 }
 
-.kit-filtration-condition__drag-adn-drop {
+.kit-filtration-condition__drag-and-drop {
 	position: absolute;
 	top: 0;
 	right: 100%;

@@ -4,12 +4,36 @@
 	border: 1px solid #d4d4d4;
 	border-radius: 4px;
 	background-color: #ffffff;
+
+	&_short {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #a4a4a4;
+		font-family: "PT Sans";
+		font-size: 14px;
+		letter-spacing: -0.4px;
+		line-height: 19px;
+
+		button {
+			z-index: 1;
+		}
+
+		.kit-filter__all-wrap {
+			display: flex;
+			align-items: center;
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
 }
 
 .kit-filter__all-wrap {
 	margin-bottom: 20px;
 	padding: 0;
 	margin-left: 25px;
+	margin-right: 56px;
+	min-height: 44px;
 }
 
 .kit-filter__btn-wrap {
@@ -85,6 +109,7 @@
 	font-size: 14px;
 	letter-spacing: -0.4px;
 	line-height: 19px;
+	background-color: transparent;
 
 	&::before {
 		content: "";

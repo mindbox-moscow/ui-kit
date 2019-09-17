@@ -2,6 +2,7 @@
 <div style={{}}>
 	<h2>1.</h2>
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -12,6 +13,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -22,6 +24,7 @@
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -43,6 +46,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -78,6 +82,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="and"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -91,6 +96,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -127,6 +133,7 @@
 	<h2>2.</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -137,6 +144,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -147,6 +155,7 @@
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -168,6 +177,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -203,6 +213,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="and"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -216,6 +227,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -257,6 +269,7 @@
 	</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -267,6 +280,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="or"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -277,6 +291,7 @@
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -298,6 +313,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -333,6 +349,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="and"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -346,6 +363,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -381,6 +399,7 @@
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
+					state="view"
 					groupType="and"
 					andLabel="И"
 					orLabel="ИЛИ"
@@ -394,6 +413,7 @@
 						filtrationObjectName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								state="view"
 								groupType="and"
 								andLabel="И"
 								orLabel="ИЛИ"
@@ -430,6 +450,7 @@
 	<h2>4.</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -458,12 +479,14 @@
 	</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -501,12 +524,14 @@
 	<h2>5.5.1 Инвертированный 5, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -544,12 +569,14 @@
 	<h2>5.5.2 Инвертированный 5, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={false}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -592,12 +619,14 @@
 	</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -620,6 +649,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -648,12 +678,14 @@
 	<h2>6.5.1: Инвертированный 6, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -676,6 +708,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -704,12 +737,14 @@
 	<h2>6.5.2: Инвертированный 6, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={false}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -732,6 +767,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -765,12 +801,14 @@
 	</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -793,6 +831,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -815,6 +854,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -837,6 +877,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -854,6 +895,7 @@
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+						state="view"
 						groupType="and"
 						andLabel="И"
 						orLabel="ИЛИ"
@@ -867,6 +909,7 @@
 							filtrationObjectName="Первое действие"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
+									state="view"
 									groupType="and"
 									andLabel="И"
 									orLabel="ИЛИ"
@@ -909,6 +952,7 @@
 	<h2>8: Одно простое условие в группе И с лейблом</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -932,6 +976,7 @@
 	<h2>8.1: Одно простое условие в группе И без лейблом</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"
@@ -955,6 +1000,7 @@
 	<h2>8.2: Одно простое условие без метода фильтрации в группе И</h2>
 
 	<FiltrationGroupComponent
+		state="view"
 		groupType="and"
 		andLabel="И"
 		orLabel="ИЛИ"

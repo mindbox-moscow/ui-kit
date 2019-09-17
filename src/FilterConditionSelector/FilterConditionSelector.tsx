@@ -6,7 +6,7 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-enum MenuMode {
+export enum MenuMode {
 	Filter = "filter",
 	Recent = "recent",
 	Saved = "saved",

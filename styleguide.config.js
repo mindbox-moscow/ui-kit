@@ -33,7 +33,8 @@ module.exports = {
 			links: [
 				{
 					rel: "stylesheet",
-					href: "https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap&subset=cyrillic"
+					href:
+						"https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap&subset=cyrillic"
 				}
 			]
 		}
@@ -73,5 +74,9 @@ module.exports = {
 		constants: path.resolve(__dirname, "src/utils/constants.ts")
 	},
 
-	ignore: ["**/IconSvg/icons/**"]
+	ignore: [
+		"**/IconSvg/icons/**",
+		"**/FiltrationGroupComponent/components/**",
+		"**/FilterWrapper/components/**"
+	]
 };

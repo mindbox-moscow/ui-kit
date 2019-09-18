@@ -133,8 +133,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					className={cn("kit-filtration-group__label", {
 						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
 					})}
-					ref="element"
-					onClick={this.handleClick}
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
@@ -173,10 +171,4 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			</ul>
 		);
 	}
-
-	private handleClick = () => {
-		const element = this.refs.element;
-		// @ts-ignore
-		element.classList.add("click-state");
-	};
 }

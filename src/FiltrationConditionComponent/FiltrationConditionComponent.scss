@@ -13,7 +13,12 @@ $itemHoverBorderRadius: 3px;
 	font-size: 14px;
 	line-height: 19px;
 	list-style: none;
+
+	&_edit {
+		z-index: 18;
+	}
 }
+
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-block;

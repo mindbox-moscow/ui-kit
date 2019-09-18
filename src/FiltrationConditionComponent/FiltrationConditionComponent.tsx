@@ -1,8 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { FilterDetails } from "../FilterDetails";
 import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent";
+import { FilterDetails } from "../FilterDetails";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
@@ -46,6 +46,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 								isAddFilterButtonEnabled={false}
 								onAddFilterButtonClick={onApplyFilter}
 							/>
+							button
 						</>
 					}
 					starred={starred}

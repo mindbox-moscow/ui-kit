@@ -80,4 +80,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			</li>
 		);
 	}
+
+	private handleClick = () => {
+		const element = this.refs.element;
+		// @ts-ignore
+		element.classList.add("click-state");
+	};
 }

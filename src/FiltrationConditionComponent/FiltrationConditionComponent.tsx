@@ -46,7 +46,6 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 								isAddFilterButtonEnabled={false}
 								onAddFilterButtonClick={onApplyFilter}
 							/>
-							button
 						</>
 					}
 					starred={starred}

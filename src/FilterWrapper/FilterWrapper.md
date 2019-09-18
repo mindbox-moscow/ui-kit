@@ -573,5 +573,64 @@
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
+	<br />
+	<br />
+	<h1>Пример 9 - Простой фильтр в режиме редактирования</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="shaded"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		>
+			<FiltrationGroupComponent
+				state="shaded"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+			>
+				<FiltrationConditionComponent
+					state="edit"
+					filtrationObjectName="Пол"
+					filtrationMethodName="заполнен и мужской"
+					editorComponent={<input />}
+					helpComponent={<span>А тут у нас хелп</span>}
+				/>
+				<FiltrationConditionComponent
+					state="shaded"
+					filtrationObjectName="Возраст"
+					filtrationMethodName="заполнен и от 18 до 35 лет"
+				/>
+			</FiltrationGroupComponent>
+			<FiltrationGroupComponent
+				state="shaded"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+			>
+				<FiltrationConditionComponent
+					state="shaded"
+					filtrationObjectName="Пол"
+					filtrationMethodName="заполнен и женский"
+				/>
+				<FiltrationConditionComponent
+					state="shaded"
+					filtrationObjectName="Возраст"
+					filtrationMethodName="заполнен и от 35 до 60 лет"
+				/>
+			</FiltrationGroupComponent>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
 </div>
 ```

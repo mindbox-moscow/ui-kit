@@ -17,7 +17,7 @@ $groupLabelPaddingLeft: 15px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
-	.kit-filtration-condition__item-text,
+	.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
 	}

@@ -60,7 +60,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												90 дней{" "}
+												90 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -110,7 +110,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												14 дней{" "}
+												14 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -191,7 +191,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												90 дней{" "}
+												90 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -241,7 +241,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												14 дней{" "}
+												14 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -262,7 +262,7 @@
 	<br />
 	<br />
 	<h2>
-		3.{" "}
+		3.
 		<a href="https://github.com/mindbox-moscow/ui-kit/issues/272">
 			https://github.com/mindbox-moscow/ui-kit/issues/272
 		</a>
@@ -327,7 +327,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												90 дней{" "}
+												90 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -377,7 +377,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												14 дней{" "}
+												14 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -427,7 +427,7 @@
 											<span
 												style={{ fontWeight: "bold" }}
 											>
-												14 дней{" "}
+												14 дней
 											</span>
 											<span
 												style={{ fontWeight: "normal" }}
@@ -925,7 +925,7 @@
 														fontWeight: "bold"
 													}}
 												>
-													14 дней{" "}
+													14 дней
 												</span>
 												<span
 													style={{
@@ -963,7 +963,7 @@
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span>
-					от <span style={{ fontWeight: "bold" }}>10</span> до{" "}
+					от <span style={{ fontWeight: "bold" }}>10</span> до
 					<span style={{ fontWeight: "bold" }}>20</span>
 				</span>
 			}
@@ -987,7 +987,7 @@
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span>
-					от <span style={{ fontWeight: "bold" }}>10</span> до{" "}
+					от <span style={{ fontWeight: "bold" }}>10</span> до
 					<span style={{ fontWeight: "bold" }}>20</span>
 				</span>
 			}
@@ -1010,7 +1010,7 @@
 			filtrationObjectName="Пол"
 			filtrationMethodParametersComponent={
 				<span>
-					от <span style={{ fontWeight: "bold" }}>10</span> до{" "}
+					от <span style={{ fontWeight: "bold" }}>10</span> до
 					<span style={{ fontWeight: "bold" }}>20</span>
 				</span>
 			}

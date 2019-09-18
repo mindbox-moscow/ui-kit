@@ -21,8 +21,8 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					{filtrationMethodName && (
 						<span>{filtrationMethodName}</span>
 					)}
+					{filtrationMethodParametersComponent}
 				</span>
-				{filtrationMethodParametersComponent}
 				{linkedConditionComponent}
 			</li>
 		);

@@ -144,7 +144,7 @@ $groupLabelPaddingLeft: 15px;
 	> li {
 		margin: 0;
 		width: 100%;
-		padding-left: 30px;
+		padding-left: 20px;
 		box-sizing: border-box;
 
 		&::before,
@@ -158,8 +158,8 @@ $groupLabelPaddingLeft: 15px;
 		}
 
 		&::before {
-			top: 14px;
-			width: 16px;
+			top: 12px;
+			width: 13px;
 			border-top: $borderWidthLine solid;
 		}
 
@@ -204,7 +204,7 @@ $groupLabelPaddingLeft: 15px;
 		position: absolute;
 		left: 16px;
 		display: block;
-		width: 15px;
+		width: 12px;
 		border-top: 2px solid;
 		box-sizing: border-box;
 	}

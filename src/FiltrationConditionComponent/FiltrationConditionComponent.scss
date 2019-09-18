@@ -1,3 +1,9 @@
+// Colors
+$itemHoverColorBg: #f5f8fa;
+
+// Sizes
+$itemHoverBorderRadius: 3px;
+
 .kit-filtration-condition {
 	position: relative;
 	font-family: "PT Sans", sans-serif;
@@ -6,12 +12,37 @@
 	list-style: none;
 }
 .kit-filtration-condition__item-text {
+	position: relative;
 	display: inline-block;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	z-index: 2;
 
 	span,
 	b {
 		margin-right: 5px;
 	}
+
+	&:hover {
+		border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
+		background-color: $itemHoverColorBg;
+		cursor: pointer;
+
+		.kit-filtration-condition__drag-and-drop {
+			display: flex;
+		}
+	}
+}
+
+.kit-filtration-condition__drag-and-drop {
+	position: absolute;
+	top: 0;
+	right: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 5px;
+	height: 100%;
+	background-color: $itemHoverColorBg;
+	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 }

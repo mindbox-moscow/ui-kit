@@ -21,8 +21,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			editorComponent,
 			onConditionStateToggle,
 			starred,
-			toggleStar,
-			viewMode
+			toggleStar
 		} = this.props;
 
 		const editModeContent = (
@@ -39,7 +38,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					editorComponent={editorComponent}
 					starred={starred}
 					toggleStar={toggleStar}
-					viewMode={viewMode}
+					viewMode="edit"
 				/>
 			</>
 		);

@@ -606,7 +606,6 @@
 					onConditionStateToggle={() => console.log("change state")}
 					starred={true}
 					toggleStar={() => console.log("toogle details")}
-					viewMode="edit"
 					editorComponent={
 						<FilterConditionEditorComponent
 							innerEditorComponent={

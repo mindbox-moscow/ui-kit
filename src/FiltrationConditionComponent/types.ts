@@ -1,5 +1,4 @@
 type ConditionState = "view" | "edit" | "shaded";
-type ConditionViewMode = "edit" | "menu";
 
 export interface StateProps {
 	filtrationObjectName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"
@@ -12,7 +11,6 @@ export interface StateProps {
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FiltrationObjectHierarchyElement.editorComponent.
 	helpComponent: React.ReactNode; // компонент хелпа. точно такой же, как в FiltrationObjectHierarchyElement.helpComponent.
 	starred: boolean;
-	viewMode: ConditionViewMode;
 }
 
 export interface CallbackProps {

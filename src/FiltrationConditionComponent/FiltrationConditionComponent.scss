@@ -52,6 +52,7 @@ $itemHoverBorderRadius: 3px;
 		}
 
 		&:hover {
+			border-top-right-radius: 0;
 			background-color: $editModeColorBg;
 		}
 	}

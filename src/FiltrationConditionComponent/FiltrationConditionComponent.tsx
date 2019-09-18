@@ -1,7 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent";
 import { FilterDetails } from "../FilterDetails";
 import { StateProps, CallbackProps } from "./types";
 
@@ -21,9 +20,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
-			onApplyFilter,
 			starred,
-			toggleStar
+			toggleStar,
+			viewMode
 		} = this.props;
 
 		const editModeContent = (
@@ -37,20 +36,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				<FilterDetails
 					helpCaption={filtrationObjectName}
 					helpComponent={helpComponent}
-					editorComponent={
-						<>
-							{editorComponent}
-							<FilterConditionEditorComponent
-								innerEditorComponent={""}
-								addFilterButtonCaption="Применить изменения"
-								isAddFilterButtonEnabled={false}
-								onAddFilterButtonClick={onApplyFilter}
-							/>
-						</>
-					}
+					editorComponent={editorComponent}
 					starred={starred}
 					toggleStar={toggleStar}
-					viewMode="edit"
+					viewMode={viewMode}
 				/>
 			</>
 		);

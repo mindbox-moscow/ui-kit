@@ -604,28 +604,36 @@
 					filtrationObjectName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					onConditionStateToggle={() => console.log("change state")}
-					onApplyFilter={() => console.log("apply filter")}
 					starred={true}
 					toggleStar={() => console.log("toogle details")}
+					viewMode="edit"
 					editorComponent={
-						<>
-							<Select
-								hasDescriptions={true}
-								placeholder="Выберите событие"
-								items={[
-									{
-										title: "Максимальная выгода",
-										description:
-											"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
-									},
-									{
-										title: "Последовательное применение",
-										description:
-											"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
-									}
-								]}
-							/>
-						</>
+						<FilterConditionEditorComponent
+							innerEditorComponent={
+								<Select
+									hasDescriptions={true}
+									placeholder="Выберите событие"
+									items={[
+										{
+											title: "Максимальная выгода",
+											description:
+												"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+										},
+										{
+											title:
+												"Последовательное применение",
+											description:
+												"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+										}
+									]}
+								/>
+							}
+							addFilterButtonCaption="Применить изменения"
+							isAddFilterButtonEnabled={false}
+							onAddFilterButtonClick={() =>
+								console.log("Apply filter")
+							}
+						/>
 					}
 					helpComponent={
 						<div>

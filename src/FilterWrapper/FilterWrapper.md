@@ -627,10 +627,15 @@
 									]}
 								/>
 							}
+							viewMode="edit"
 							addFilterButtonCaption="Применить изменения"
-							isAddFilterButtonEnabled={false}
+							cancelFilterButtonCaption="Отменить"
+							isAddFilterButtonEnabled={true}
 							onAddFilterButtonClick={() =>
 								console.log("Apply filter")
+							}
+							onCancelFilterButtonClick={() =>
+								console.log("Cancel filter")
 							}
 						/>
 					}

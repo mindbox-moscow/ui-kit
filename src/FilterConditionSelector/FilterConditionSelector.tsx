@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import FilterDetails from "../FilterDetails/FilterDetails";
+import { FilterDetails } from "../FilterDetails/FilterDetails";
 
 import { Input } from "../Input";
 
@@ -42,7 +42,7 @@ export const FilterConditionSelector = (props: Props) => {
 		menuMode,
 		searchTerm,
 		editorComponent,
-		// helpComponent,
+		helpComponent,
 		helpCaption
 	} = props;
 
@@ -103,10 +103,12 @@ export const FilterConditionSelector = (props: Props) => {
 
 			<FilterDetails
 				helpCaption={helpCaption}
-				helpComponent={helpCaption}
+				helpComponent={helpComponent}
 				editorComponent={editorComponent}
 				starred={true}
-				toggleStar={() => {console.log('toogle details')}}
+				toggleStar={() => {
+					console.log("toogle details");
+				}}
 				viewMode="menu"
 			/>
 		</div>

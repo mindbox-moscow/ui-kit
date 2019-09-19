@@ -14,7 +14,7 @@ $groupHoverMarginTop: 5px;
 $groupHoverMarginLeft: 17px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
-$widthhorizontalBraket: 12px;
+$widthHorizontalBraket: 12px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -138,14 +138,7 @@ $widthhorizontalBraket: 12px;
 
 				&::before {
 					content: "";
-					position: absolute;
 					left: -19px;
-					display: block;
-					color: $braketColor;
-					box-sizing: border-box;
-					top: -3px;
-					height: 17px;
-					border-left: $borderWidthLine solid;
 				}
 			}
 		}
@@ -179,7 +172,7 @@ $widthhorizontalBraket: 12px;
 
 		&::before {
 			top: 12px;
-			width: #{$widthhorizontalBraket + 1};
+			width: #{$widthHorizontalBraket + 1};
 			border-top: $borderWidthLine solid;
 		}
 
@@ -192,6 +185,15 @@ $widthhorizontalBraket: 12px;
 		&:last-child {
 			&::after {
 				height: 17px;
+			}
+		}
+
+		.kit-filtration-group__buttons {
+			margin-left: 20px;
+
+			&::before {
+				content: "";
+				left: 0;
 			}
 		}
 	}
@@ -224,7 +226,7 @@ $widthhorizontalBraket: 12px;
 		position: absolute;
 		left: 16px;
 		display: block;
-		width: $widthhorizontalBraket;
+		width: $widthHorizontalBraket;
 		border-top: 2px solid;
 		box-sizing: border-box;
 	}
@@ -326,6 +328,16 @@ $widthhorizontalBraket: 12px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
+	}
+
+	&::before {
+		position: absolute;
+		display: block;
+		color: $braketColor;
+		box-sizing: border-box;
+		top: -3px;
+		height: 17px;
+		border-left: $borderWidthLine solid;
 	}
 }
 

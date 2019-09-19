@@ -854,5 +854,82 @@
 			/>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
+	<br />
+	<br />
+	<h1>
+		Пример 12 - В режиме просмотра пустая группа И отображает свои кнопки
+		для условий с вложенными условиями
+	</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и мужской"
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Розничный заказ"
+				filtrationMethodName="есть такие"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								label="Добавить фильтр"
+							/>
+						}
+						addGroupConditionButton={
+							<FilterConditionEditorButton
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								label="ИЛИ"
+							/>
+						}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+					/>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
 </div>
 ```

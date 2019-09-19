@@ -29,8 +29,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				) {
 					offset = 27;
 				}
-				label.style.height = `${ref.clientHeight -
-					ref.lastElementChild.clientHeight +
+				label.style.height = `${ref.getBoundingClientRect().height -
+					ref.lastElementChild.getBoundingClientRect().height +
 					offset}px`;
 			}
 		}

@@ -18,7 +18,8 @@ $widthhorizontalBraket: 12px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
-	.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit),
+	> .kit-filtration-condition
+		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
 	}
@@ -128,6 +129,24 @@ $widthhorizontalBraket: 12px;
 		> .kit-filtration-group__label_and {
 			.kit-filtration-group__label-text {
 				right: calc(100% - 30px);
+			}
+		}
+
+		&#{$self}_shaded {
+			.kit-filtration-group__buttons {
+				position: relative;
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: -19px;
+					display: block;
+					color: $braketColor;
+					box-sizing: border-box;
+					top: -3px;
+					height: 17px;
+					border-left: $borderWidthLine solid;
+				}
 			}
 		}
 	}

@@ -6,6 +6,7 @@
 	overflow: auto;
 	color: #000;
 	box-sizing: border-box;
+	cursor: default;
 
 	&_editor {
 		position: absolute;
@@ -91,7 +92,11 @@
 	}
 
 	&_extended {
-		visibility: hidden;
+		transform: rotate(180deg);
+
+		&::before {
+			display: none;
+		}
 	}
 
 	&_no-extended {

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import FilterDetails from "../FilterDetails/FilterDetails";
+import { FilterDetails } from "../FilterDetails/FilterDetails";
 
 import { Input } from "../Input";
 
@@ -27,6 +27,8 @@ interface Props {
 	helpCaption: string;
 	helpComponent: React.ReactNode;
 	editorComponent: React.ReactNode;
+	starred: boolean;
+	toggleStar: () => void;
 }
 
 type IMenuModeMap = { [key in MenuMode]: string };
@@ -42,8 +44,10 @@ export const FilterConditionSelector = (props: Props) => {
 		menuMode,
 		searchTerm,
 		editorComponent,
-		// helpComponent,
-		helpCaption
+		helpComponent,
+		helpCaption,
+		starred,
+		toggleStar
 	} = props;
 
 	const ChildItem = props.childRenderer;
@@ -103,10 +107,10 @@ export const FilterConditionSelector = (props: Props) => {
 
 			<FilterDetails
 				helpCaption={helpCaption}
-				helpComponent={helpCaption}
+				helpComponent={helpComponent}
 				editorComponent={editorComponent}
-				starred={true}
-				toggleStar={() => {console.log('toogle details')}}
+				starred={starred}
+				toggleStar={toggleStar}
 				viewMode="menu"
 			/>
 		</div>

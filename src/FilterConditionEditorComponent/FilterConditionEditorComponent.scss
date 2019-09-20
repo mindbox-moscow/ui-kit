@@ -6,3 +6,13 @@
 		color: #000;
 	}
 }
+
+.kit-filter-editor-component__buttons {
+	display: flex;
+}
+
+.kit-filter-editor-component__cancel {
+	width: auto;
+	min-width: 113px;
+	margin-left: 10px;
+}

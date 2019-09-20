@@ -6,6 +6,8 @@ import { Dots } from "./Dots";
 import { Magnifier } from "./Magnifier";
 import { PercentRound } from "./PercentRound";
 import { Trash } from "./Trash";
+import { Extended } from "./Extended";
+import { Favorite } from "./Favorite";
 
 interface ISvgProps {
 	className: string;
@@ -19,7 +21,9 @@ type IconType =
 	| "percent-round"
 	| "arrow-right"
 	| "magnifier"
-	| "trash";
+	| "trash"
+	| "extended"
+	| "favorite";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -31,7 +35,9 @@ const icons: Icons = {
 	dots: Dots,
 	magnifier: Magnifier,
 	trash: Trash,
-	"percent-round": PercentRound
+	"percent-round": PercentRound,
+	extended: Extended,
+	favorite: Favorite
 };
 
 export { icons, IconType, ISvgProps };

@@ -11,7 +11,7 @@ $editColorBg: #e2eaf0;
 
 // Sizing
 $groupHoverMarginTop: 5px;
-$groupHoverMarginLeft: 17px;
+$groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 $widthHorizontalBraket: 12px;
@@ -146,6 +146,38 @@ $widthHorizontalBraket: 12px;
 
 	&_hover {
 		@include opacityBlock();
+
+		> .kit-filtration-group__label_hover_or {
+			color: $orColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $orColorEdit;
+			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $orColorEdit;
+				}
+			}
+		}
+
+		> .kit-filtration-group__label_hover_and {
+			color: $andColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $andColorEdit;
+			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $andColorEdit;
+				}
+			}
+		}
 
 		cursor: pointer;
 

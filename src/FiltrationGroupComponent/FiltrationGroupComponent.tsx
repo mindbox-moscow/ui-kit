@@ -41,6 +41,21 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
 
+			const parentElements = labelRef.parentElement!.parentElement!
+				.children;
+
+			Array.from(parentElements).forEach(item => {
+				if (
+					item.classList.contains(
+						"kit-filtration-condition__item-text"
+					)
+				) {
+					item.classList.add(
+						"kit-filtration-condition__item-text_hover"
+					);
+				}
+			});
+
 			labelRef.addEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
@@ -54,6 +69,20 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
 			);
+			const parentElements = labelRef.parentElement!.parentElement!
+				.children;
+
+			Array.from(parentElements).forEach(item => {
+				if (
+					item.classList.contains(
+						"kit-filtration-condition__item-text"
+					)
+				) {
+					item.classList.remove(
+						"kit-filtration-condition__item-text_hover"
+					);
+				}
+			});
 			labelRef.removeEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
@@ -130,9 +159,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			>
 				<div
 					ref={this.kitFiltrationLabelRef}
-					className={cn("kit-filtration-group__label", {
-						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
-					})}
+					className={cn(
+						"kit-filtration-group__label",
+						`kit-filtration-group__label_hover_${groupType}`,
+						{
+							[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+						}
+					)}
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (

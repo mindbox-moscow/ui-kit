@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { FilterDetails } from "../FilterDetails/FilterDetails";
 
 import { Input } from "../Input";
 
@@ -26,6 +27,8 @@ interface Props {
 	helpCaption: string;
 	helpComponent: React.ReactNode;
 	editorComponent: React.ReactNode;
+	starred: boolean;
+	toggleStar: () => void;
 }
 
 type IMenuModeMap = { [key in MenuMode]: string };
@@ -42,7 +45,9 @@ export const FilterConditionSelector = (props: Props) => {
 		searchTerm,
 		editorComponent,
 		helpComponent,
-		helpCaption
+		helpCaption,
+		starred,
+		toggleStar
 	} = props;
 
 	const ChildItem = props.childRenderer;
@@ -100,21 +105,14 @@ export const FilterConditionSelector = (props: Props) => {
 				</ul>
 			</div>
 
-			<div className="kit-filter-condition-selector__helper">
-				<h2 className="kit-filter-condition-selector__help-caption-title">
-					{helpCaption}
-				</h2>
-				{editorComponent && (
-					<div className="kit-filter-condition-selector__editor-wrapper">
-						{editorComponent}
-					</div>
-				)}
-				{helpComponent && (
-					<div className="kit-filter-condition-selector__help-wrapper-text">
-						{helpComponent}
-					</div>
-				)}
-			</div>
+			<FilterDetails
+				helpCaption={helpCaption}
+				helpComponent={helpComponent}
+				editorComponent={editorComponent}
+				starred={starred}
+				toggleStar={toggleStar}
+				viewMode="menu"
+			/>
 		</div>
 	);
 };

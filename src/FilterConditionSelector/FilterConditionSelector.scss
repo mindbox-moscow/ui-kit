@@ -6,7 +6,6 @@
 	width: 982px;
 	height: 740px;
 	background-color: #fff;
-	border: 1px solid #c8d8e2;
 	border-radius: 4px;
 	font-family: "PT Sans", sans-serif;
 	z-index: 20;
@@ -16,6 +15,8 @@
 .kit-filter-condition-selector__wrap {
 	max-width: 382px;
 	width: 100%;
+	border: 1px solid #c8d8e2;
+	border-right: 0;
 }
 
 .kit-filter-condition-selector__hierarchy {
@@ -174,19 +175,13 @@
 	}
 }
 
-.kit-filter-condition-selector__helper {
-	background-color: #fff;
-	width: 602px;
-	border-left: 1px solid #c8d8e2;
-}
-
 .kit-filter-condition-selector__filter-block {
 	padding: 8px 10px;
 	background-color: #e2eaf0;
-	border-bottom: 1px solid #c8d8e2;
 	font-size: 14px;
 	max-height: 71px;
-	height: 54px;
+	height: 53px;
+	border-bottom: 1px solid #c8d8e2;
 }
 
 .kit-filter-condition-selector__filter-btn-block {
@@ -220,36 +215,6 @@
 	&_active {
 		color: #000;
 		font-weight: 600;
-	}
-}
-
-.kit-filter-condition-selector__help-caption-title {
-	margin: 0;
-	padding-top: 32px;
-	padding-left: 26px;
-	padding-bottom: 15px;
-	font-size: 21px;
-	line-height: 23px;
-	font-weight: 400;
-	border-bottom: 1px solid #c8d8e2;
-	letter-spacing: 0.5px;
-	background-color: #fafaf7;
-}
-
-.kit-filter-condition-selector__editor-wrapper {
-	padding: 24px;
-	padding-top: 25px;
-	background-color: #fff;
-	border-bottom: 1px solid #eee;
-	border-top-right-radius: 2px;
-}
-
-.kit-filter-condition-selector__help-wrapper-text {
-	padding: 24px;
-	padding-top: 25px;
-
-	.kit-filter-condition-selector__editor-wrapper + & {
-		padding-top: 24px;
 	}
 }
 

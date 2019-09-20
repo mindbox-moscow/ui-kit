@@ -1,5 +1,8 @@
 // Colors
 $itemHoverColorBg: #f5f8fa;
+$editModeColorBg: #3875d7;
+$removeColorBg: #ffeeeb;
+$removeColor: #a12e1e;
 
 // Sizes
 $itemHoverBorderRadius: 3px;
@@ -10,13 +13,19 @@ $itemHoverBorderRadius: 3px;
 	font-size: 14px;
 	line-height: 19px;
 	list-style: none;
+
+	&_edit {
+		z-index: 18;
+	}
 }
+
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-block;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	z-index: 2;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
 	span,
 	b {
@@ -32,6 +41,21 @@ $itemHoverBorderRadius: 3px;
 			display: flex;
 		}
 	}
+
+	&_edit {
+		background-color: $editModeColorBg;
+		color: #fff;
+
+		.kit-filtration-condition__drag-and-drop {
+			display: flex;
+			background-color: $editModeColorBg;
+		}
+
+		&:hover {
+			border-top-right-radius: 0;
+			background-color: $editModeColorBg;
+		}
+	}
 }
 
 .kit-filtration-condition__drag-and-drop {
@@ -45,4 +69,20 @@ $itemHoverBorderRadius: 3px;
 	height: 100%;
 	background-color: $itemHoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
+}
+
+.kit-filtration-condition__remove {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 44px;
+	height: 100%;
+	margin-left: 1px;
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
+	background-color: $removeColorBg;
+	color: $removeColor;
+	z-index: 1;
 }

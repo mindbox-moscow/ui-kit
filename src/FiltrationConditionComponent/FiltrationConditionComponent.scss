@@ -26,13 +26,7 @@ $groupHoverMarginLeft: 10px;
 	display: inline-block;
 	padding-top: 3px;
 	padding-bottom: 3px;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-
-	span,
-	b {
-		position: relative;
-		margin-right: 5px;
-	}
+	transition: color 0.15s ease-in-out;
 
 	&:hover {
 		border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
@@ -44,20 +38,29 @@ $groupHoverMarginLeft: 10px;
 		}
 	}
 
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: calc(100% + #{$groupHoverMarginLeft});
+		height: calc(100% + #{$groupHoverMarginTop * 2});
+		min-height: 35px;
+		margin: #{-$groupHoverMarginTop + 3} 0 0 #{-$groupHoverMarginLeft};
+		background-color: $hoverColorBg;
+		border-radius: 3px 0 0 3px;
+		box-sizing: border-box;
+	}
+
+	span,
+	b {
+		position: relative;
+		margin-right: 5px;
+	}
+
 	&_hover {
 		&::before {
 			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: calc(100% + #{$groupHoverMarginLeft});
-			height: calc(100% + #{$groupHoverMarginTop * 2});
-			min-height: 35px;
-			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-			background-color: $hoverColorBg;
-			border-radius: 3px 0 0 3px;
-			box-sizing: border-box;
 		}
 	}
 
@@ -73,6 +76,19 @@ $groupHoverMarginLeft: 10px;
 		&:hover {
 			border-top-right-radius: 0;
 			background-color: $editModeColorBg;
+		}
+	}
+
+	&_linked-condition-edit {
+		&::before {
+			content: "";
+			background-color: #fde487;
+		}
+
+		&:hover {
+			.kit-filtration-condition__drag-and-drop {
+				display: none;
+			}
 		}
 	}
 }

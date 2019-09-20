@@ -1053,7 +1053,7 @@
 			<FiltrationConditionComponent
 				filtrationObjectName="Розничный заказ"
 				filtrationMethodName="есть такие"
-				state="linkedConditionEdit"
+				state="view"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
 						state="view"
@@ -1061,6 +1061,98 @@
 						andLabel="И"
 						orLabel="ИЛИ"
 						shouldShowLabel={false}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								label="Добавить фильтр"
+							/>
+						}
+						addGroupConditionButton={
+							<FilterConditionEditorButton
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								label="ИЛИ"
+							/>
+						}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+					>
+						<FiltrationConditionComponent
+							filtrationObjectName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filtrationObjectName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filtrationObjectName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filtrationObjectName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+					</FiltrationGroupComponent>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
+	<h1>Пример 15 - Вложенная группа И в режиме редактирования</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="shaded"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Пол"
+				filtrationMethodName="заполнен и мужской"
+			/>
+			<FiltrationConditionComponent
+				filtrationObjectName="Розничный заказ"
+				filtrationMethodName="есть такие"
+				state="linkedConditionEdit"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						state="edit"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
 								toggleOpen={() => console.log("toggle")}

@@ -19,7 +19,7 @@ $widthHorizontalBraket: 12px;
 // Mixins
 @mixin opacityBlock($opacity: 1) {
 	> .kit-filtration-condition
-		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit),
+		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
 	}
@@ -38,9 +38,9 @@ $widthHorizontalBraket: 12px;
 		left: 0;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
-		height: calc(100% + #{$groupHoverMarginTop * 2});
+		height: calc(100% + #{$groupHoverMarginTop * 2 - 3});
 		min-height: 35px;
-		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
+		margin: #{-$groupHoverMarginTop + 3} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
 		border-radius: 3px 0 0 3px;
 		box-sizing: border-box;
@@ -52,6 +52,7 @@ $widthHorizontalBraket: 12px;
 				&:first-of-type {
 					&::after {
 						top: 14px;
+						opacity: 0;
 					}
 				}
 
@@ -108,6 +109,13 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $orColorEdit;
+				}
+			}
 		}
 
 		> .kit-filtration-group__label_and {
@@ -116,6 +124,13 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
+			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $andColorEdit;
+				}
 			}
 		}
 	}
@@ -155,7 +170,8 @@ $widthHorizontalBraket: 12px;
 				background-color: $orColorEdit;
 			}
 
-			& ~ li {
+			& ~ li,
+			& ~ .kit-filtration-group__buttons {
 				&::before,
 				&::after {
 					color: $orColorEdit;
@@ -171,7 +187,8 @@ $widthHorizontalBraket: 12px;
 				background-color: $andColorEdit;
 			}
 
-			& ~ li {
+			& ~ li,
+			& ~ .kit-filtration-group__buttons {
 				&::before,
 				&::after {
 					color: $andColorEdit;
@@ -225,7 +242,7 @@ $widthHorizontalBraket: 12px;
 
 			&::before {
 				content: "";
-				left: 0;
+				left: -19px;
 			}
 		}
 	}
@@ -274,10 +291,6 @@ $widthHorizontalBraket: 12px;
 	&_and,
 	&_or {
 		& ~ li {
-			&::after {
-				content: none;
-			}
-
 			li {
 				&::after {
 					content: "";
@@ -353,6 +366,7 @@ $widthHorizontalBraket: 12px;
 }
 
 .kit-filtration-group__buttons {
+	position: relative;
 	display: flex;
 	margin-right: 20px;
 	margin-bottom: 5px;
@@ -367,19 +381,19 @@ $widthHorizontalBraket: 12px;
 		display: block;
 		color: $braketColor;
 		box-sizing: border-box;
-		top: -3px;
-		height: 17px;
+		top: -4px;
+		height: 18px;
 		border-left: $borderWidthLine solid;
 	}
 }
 
 .kit-filtration-group__remove {
 	position: absolute;
-	top: #{-$groupHoverMarginTop};
+	top: #{-$groupHoverMarginTop + 3};
 	right: -46px;
 	display: block;
 	width: 44px;
-	height: calc(100% + #{$groupHoverMarginTop * 2});
+	height: calc(100% + #{$groupHoverMarginTop * 2 - 3});
 	background-color: $removeColorBg;
 	border: 0;
 	border-radius: 0 3px 3px 0;

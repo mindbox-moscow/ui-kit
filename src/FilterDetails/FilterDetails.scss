@@ -17,11 +17,10 @@
 
 	&_menu {
 		.kit-filter-details__helper_extended {
-			max-height: 450px;
+			max-height: 423px;
 		}
 
 		.kit-filter-details__show-btn_extended {
-			display: none;
 		}
 	}
 }
@@ -73,8 +72,13 @@
 	align-items: center;
 	justify-content: center;
 	height: 47px;
-	cursor: pointer;
+	width: 100%;
+	background: none;
+	padding: 0;
+	border: 0;
 	box-sizing: border-box;
+	cursor: pointer;
+	outline: none;
 
 	&::before {
 		content: "";

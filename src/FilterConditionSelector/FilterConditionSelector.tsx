@@ -27,6 +27,8 @@ interface Props {
 	helpCaption: string;
 	helpComponent: React.ReactNode;
 	editorComponent: React.ReactNode;
+	starred: boolean;
+	toggleStar: () => void;
 }
 
 type IMenuModeMap = { [key in MenuMode]: string };
@@ -43,7 +45,9 @@ export const FilterConditionSelector = (props: Props) => {
 		searchTerm,
 		editorComponent,
 		helpComponent,
-		helpCaption
+		helpCaption,
+		starred,
+		toggleStar
 	} = props;
 
 	const ChildItem = props.childRenderer;
@@ -105,10 +109,8 @@ export const FilterConditionSelector = (props: Props) => {
 				helpCaption={helpCaption}
 				helpComponent={helpComponent}
 				editorComponent={editorComponent}
-				starred={true}
-				toggleStar={() => {
-					console.log("toogle details");
-				}}
+				starred={starred}
+				toggleStar={toggleStar}
 				viewMode="menu"
 			/>
 		</div>

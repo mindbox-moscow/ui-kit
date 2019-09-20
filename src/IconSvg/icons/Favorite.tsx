@@ -39,10 +39,10 @@ export const Favorite = ({ className }: ISvgProps) => (
 		</defs>
 		<path
 			fill="currentColor"
-			fill-rule="evenodd"
+			fillRule="evenodd"
 			stroke="#C5D6E1"
-			stroke-linecap="round"
-			stroke-linejoin="round"
+			strokeLinecap="round"
+			strokeLinejoin="round"
 			d="M8 0l2.472 5.266 5.528.85-4 4.096.944 5.788L8 13.266 3.056 16 4 10.212 0 6.116l5.528-.85z"
 			filter="url(#a)"
 			transform="translate(11 11)"

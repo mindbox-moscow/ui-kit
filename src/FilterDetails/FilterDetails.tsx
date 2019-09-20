@@ -86,7 +86,8 @@ export class FilterDetails extends React.Component<Props> {
 								{helpComponent}
 							</div>
 						</div>
-						<div
+						<button
+							type="button"
 							className={cn("kit-filter-details__show-btn", {
 								"kit-filter-details__show-btn_extended": helpIsExpanded,
 								"kit-filter-details__show-btn_no-extended": isExpanded
@@ -94,7 +95,7 @@ export class FilterDetails extends React.Component<Props> {
 							onClick={this.handleHelpExtended}
 						>
 							<IconSvg type="extended" />
-						</div>
+						</button>
 					</>
 				)}
 			</div>

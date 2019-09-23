@@ -52,7 +52,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				<span
 					className={cn("kit-filtration-condition__item-text", {
 						"kit-filtration-condition__item-text_edit":
-							state === "edit"
+							state === "edit",
+						"kit-filtration-condition__item-text_linked-condition-edit":
+							state === "linkedConditionEdit"
 					})}
 					onClick={onConditionStateToggle}
 				>
@@ -65,6 +67,15 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					{state === "edit" && editModeContent}
 				</span>
 				{linkedConditionComponent}
+				{state === "linkedConditionEdit" && (
+					<button
+						onClick={onConditionStateToggle}
+						type="button"
+						className="kit-filtration-condition__close"
+					>
+						<IconSvg type="close" />
+					</button>
+				)}
 			</li>
 		);
 	}

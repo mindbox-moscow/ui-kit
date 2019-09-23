@@ -23,8 +23,9 @@
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	height: 100%;
 	max-width: 382px;
-	overflow: scroll;
+	overflow: auto;
 }
 
 .kit-filter-condition-selector__hierarchy-item {
@@ -53,6 +54,21 @@
 				top: 0;
 				right: 0;
 				z-index: -1;
+			}
+		}
+
+		ul {
+			.kit-filter-condition-selector__hierarchy-name {
+				&::after {
+					content: "";
+					position: absolute;
+					width: 100vw;
+					height: 31px;
+					background-color: transparent;
+					top: 0;
+					right: 0;
+					z-index: -1;
+				}
 			}
 		}
 	}

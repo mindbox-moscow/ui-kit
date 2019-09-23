@@ -17,6 +17,7 @@
 	width: 100%;
 	border: 1px solid #c8d8e2;
 	border-right: 0;
+	overflow: auto;
 }
 
 .kit-filter-condition-selector__hierarchy {
@@ -25,7 +26,6 @@
 	width: 100%;
 	height: 100%;
 	max-width: 382px;
-	overflow: auto;
 }
 
 .kit-filter-condition-selector__hierarchy-item {

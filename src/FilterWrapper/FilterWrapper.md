@@ -1151,6 +1151,7 @@
 				filtrationObjectName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				state="linkedConditionEdit"
+				onConditionStateToggle={() => console.log("state toggle")}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
 						state="edit"

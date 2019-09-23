@@ -24,8 +24,7 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-block;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding: 3px 5px 3px 0;
 	transition: color 0.15s ease-in-out;
 
 	&:hover {
@@ -83,6 +82,7 @@ $groupHoverMarginLeft: 10px;
 		&::before {
 			content: "";
 			background-color: #fde487;
+			border-radius: $itemHoverBorderRadius;
 		}
 
 		&:hover {
@@ -120,4 +120,14 @@ $groupHoverMarginLeft: 10px;
 	background-color: $removeColorBg;
 	color: $removeColor;
 	z-index: 1;
+}
+
+.kit-filtration-condition__close {
+	position: absolute;
+	top: 39px;
+	right: 13px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
 }

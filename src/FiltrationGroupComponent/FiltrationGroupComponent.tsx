@@ -41,19 +41,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
 
-			const parentElements = labelRef.parentElement!.parentElement!
-				.children;
+			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
+				".kit-filtration-condition__item-text"
+			);
 
-			Array.from(parentElements).forEach(item => {
-				if (
-					item.classList.contains(
-						"kit-filtration-condition__item-text"
-					)
-				) {
-					item.classList.add(
-						"kit-filtration-condition__item-text_hover"
-					);
-				}
+			parentElements.forEach(item => {
+				item.classList.add("kit-filtration-condition__item-text_hover");
 			});
 
 			labelRef.addEventListener(
@@ -69,20 +62,16 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
 			);
-			const parentElements = labelRef.parentElement!.parentElement!
-				.children;
+			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
+				".kit-filtration-condition__item-text"
+			);
 
-			Array.from(parentElements).forEach(item => {
-				if (
-					item.classList.contains(
-						"kit-filtration-condition__item-text"
-					)
-				) {
-					item.classList.remove(
-						"kit-filtration-condition__item-text_hover"
-					);
-				}
+			parentElements.forEach(item => {
+				item.classList.remove(
+					"kit-filtration-condition__item-text_hover"
+				);
 			});
+
 			labelRef.removeEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
@@ -91,9 +80,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	};
 
 	public componentDidMount() {
-		setTimeout(() => {
-			this.moveLabelAtCenterOfBracket();
-		}, 1);
+		this.moveLabelAtCenterOfBracket();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {

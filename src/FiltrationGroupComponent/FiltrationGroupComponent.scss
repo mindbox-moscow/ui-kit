@@ -10,7 +10,7 @@ $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
 
 // Sizing
-$groupHoverMarginTop: 5px;
+$groupHoverMarginTop: 0px;
 $groupHoverMarginLeft: 17px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
@@ -37,7 +37,7 @@ $groupLabelPaddingLeft: 15px;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
 		height: calc(100% + #{$groupHoverMarginTop * 2});
-		min-height: 35px;
+		min-height: 30px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
 		border-radius: 3px 0 0 3px;
@@ -90,7 +90,7 @@ $groupLabelPaddingLeft: 15px;
 				display: flex;
 				align-items: center;
 				min-width: 40px;
-				height: 28px;
+				height: 20px;
 				padding-left: 9px;
 				padding-right: 9px;
 				font-size: 12px;
@@ -158,7 +158,7 @@ $groupLabelPaddingLeft: 15px;
 		}
 
 		&::before {
-			top: 12px;
+			top: 13px;
 			width: 13px;
 			border-top: $borderWidthLine solid;
 		}
@@ -185,7 +185,7 @@ $groupLabelPaddingLeft: 15px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 12px;
+	top: 13px;
 	left: -14px;
 	display: flex;
 	align-items: center;
@@ -301,7 +301,8 @@ $groupLabelPaddingLeft: 15px;
 .kit-filtration-group__buttons {
 	display: flex;
 	margin-right: 20px;
-	margin-bottom: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 	box-sizing: border-box;
 
 	> *:not(:last-child) {

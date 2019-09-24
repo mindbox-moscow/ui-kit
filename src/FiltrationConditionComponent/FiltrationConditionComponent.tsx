@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
-import { IconSvg } from "../IconSvg";
 import { FilterDetails } from "../FilterDetails";
+import { IconSvg } from "../IconSvg";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
@@ -52,7 +52,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				<span
 					className={cn("kit-filtration-condition__item-text", {
 						"kit-filtration-condition__item-text_edit":
-							state === "edit"
+							state === "edit",
+						"kit-filtration-condition__item-text_linked-condition-edit":
+							state === "linkedConditionEdit"
 					})}
 					onClick={onConditionStateToggle}
 				>

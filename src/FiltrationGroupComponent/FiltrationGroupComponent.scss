@@ -1,5 +1,5 @@
 // Colors
-$braketColor: #e3ebf2;
+$braketColor: #c3d4e1;
 $orColor: #dcc6f3;
 $orColorEdit: #9859dc;
 $andColor: #2d597d;
@@ -11,13 +11,15 @@ $editColorBg: #e2eaf0;
 
 // Sizing
 $groupHoverMarginTop: 0px;
-$groupHoverMarginLeft: 17px;
+$groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
+$widthHorizontalBraket: 12px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
-	.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit),
+	> .kit-filtration-condition
+		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
 	}
@@ -36,12 +38,13 @@ $groupLabelPaddingLeft: 15px;
 		left: 0;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
-		height: calc(100% + #{$groupHoverMarginTop * 2});
-		min-height: 30px;
+		height: calc(100% + #{$groupHoverMarginTop});
+		min-height: 25px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
 		border-radius: 3px 0 0 3px;
 		box-sizing: border-box;
+		cursor: pointer;
 	}
 
 	& {
@@ -50,6 +53,7 @@ $groupLabelPaddingLeft: 15px;
 				&:first-of-type {
 					&::after {
 						top: 14px;
+						opacity: 0;
 					}
 				}
 
@@ -106,6 +110,13 @@ $groupLabelPaddingLeft: 15px;
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $orColorEdit;
+				}
+			}
 		}
 
 		> .kit-filtration-group__label_and {
@@ -114,6 +125,13 @@ $groupLabelPaddingLeft: 15px;
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
+			}
+
+			& ~ li {
+				&::before,
+				&::after {
+					color: $andColorEdit;
+				}
 			}
 		}
 	}
@@ -129,10 +147,55 @@ $groupLabelPaddingLeft: 15px;
 				right: calc(100% - 30px);
 			}
 		}
+
+		&#{$self}_shaded {
+			.kit-filtration-group__buttons {
+				position: relative;
+
+				&::before {
+					content: "";
+					left: -19px;
+				}
+			}
+		}
 	}
 
 	&_hover {
 		@include opacityBlock();
+
+		> .kit-filtration-group__label_hover_or {
+			color: $orColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $orColorEdit;
+			}
+
+			& ~ li,
+			& ~ .kit-filtration-group__buttons {
+				&::before,
+				&::after {
+					color: $orColorEdit;
+				}
+			}
+		}
+
+		> .kit-filtration-group__label_hover_and {
+			color: $andColorEdit;
+
+			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-line {
+				background-color: $andColorEdit;
+			}
+
+			& ~ li,
+			& ~ .kit-filtration-group__buttons {
+				&::before,
+				&::after {
+					color: $andColorEdit;
+				}
+			}
+		}
 
 		cursor: pointer;
 
@@ -159,8 +222,9 @@ $groupLabelPaddingLeft: 15px;
 
 		&::before {
 			top: 13px;
-			width: 13px;
+			width: #{$widthHorizontalBraket + 1};
 			border-top: $borderWidthLine solid;
+			z-index: 1;
 		}
 
 		&::after {
@@ -172,6 +236,15 @@ $groupLabelPaddingLeft: 15px;
 		&:last-child {
 			&::after {
 				height: 17px;
+			}
+		}
+
+		.kit-filtration-group__buttons {
+			margin-left: 20px;
+
+			&::before {
+				content: "";
+				left: -19px;
 			}
 		}
 	}
@@ -204,7 +277,7 @@ $groupLabelPaddingLeft: 15px;
 		position: absolute;
 		left: 16px;
 		display: block;
-		width: 12px;
+		width: $widthHorizontalBraket;
 		border-top: 2px solid;
 		box-sizing: border-box;
 	}
@@ -220,10 +293,6 @@ $groupLabelPaddingLeft: 15px;
 	&_and,
 	&_or {
 		& ~ li {
-			&::after {
-				content: none;
-			}
-
 			li {
 				&::after {
 					content: "";
@@ -299,6 +368,7 @@ $groupLabelPaddingLeft: 15px;
 }
 
 .kit-filtration-group__buttons {
+	position: relative;
 	display: flex;
 	margin-right: 20px;
 	padding-top: 3px;
@@ -307,6 +377,16 @@ $groupLabelPaddingLeft: 15px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
+	}
+
+	&::before {
+		position: absolute;
+		display: block;
+		color: $braketColor;
+		box-sizing: border-box;
+		top: -4px;
+		height: 18px;
+		border-left: $borderWidthLine solid;
 	}
 }
 
@@ -344,4 +424,15 @@ $groupLabelPaddingLeft: 15px;
 	*:not(:last-child) {
 		margin-right: 3px;
 	}
+}
+
+.kit-filtration-group__close {
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	z-index: 1;
 }

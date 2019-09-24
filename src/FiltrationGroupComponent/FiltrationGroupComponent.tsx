@@ -29,8 +29,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				) {
 					offset = 27;
 				}
-				label.style.height = `${ref.clientHeight -
-					ref.lastElementChild.clientHeight +
+				label.style.height = `${ref.getBoundingClientRect().height -
+					ref.lastElementChild.getBoundingClientRect().height +
 					offset}px`;
 			}
 		}
@@ -40,6 +40,15 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
+
+			console.log(labelRef.parentElement!.parentElement!);
+			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
+				".kit-filtration-condition__item-text"
+			);
+
+			parentElements.forEach(item => {
+				item.classList.add("kit-filtration-condition__item-text_hover");
+			});
 
 			labelRef.addEventListener(
 				"mouseout",
@@ -54,6 +63,16 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
 			);
+			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
+				".kit-filtration-condition__item-text"
+			);
+
+			parentElements.forEach(item => {
+				item.classList.remove(
+					"kit-filtration-condition__item-text_hover"
+				);
+			});
+
 			labelRef.removeEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
@@ -62,9 +81,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	};
 
 	public componentDidMount() {
-		setTimeout(() => {
-			this.moveLabelAtCenterOfBracket();
-		}, 1);
+		this.moveLabelAtCenterOfBracket();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -130,9 +147,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			>
 				<div
 					ref={this.kitFiltrationLabelRef}
-					className={cn("kit-filtration-group__label", {
-						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
-					})}
+					className={cn(
+						"kit-filtration-group__label",
+						`kit-filtration-group__label_hover_${groupType}`,
+						{
+							[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+						}
+					)}
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
@@ -163,6 +184,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							type="button"
 						>
 							<IconSvg type="trash" />
+						</button>
+						<button
+							onClick={onGroupTypeToggle}
+							type="button"
+							className="kit-filtration-group__close"
+						>
+							<IconSvg type="close" />
 						</button>
 						{children}
 						<GroupButtons />

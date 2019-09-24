@@ -9,19 +9,23 @@ interface Props {
 	isOpened: boolean;
 }
 
-export const FilterConditionEditorButton = (props: Props) => {
-	const { children, toggleOpen, label, isOpened } = props;
+export const FilterConditionEditorButton = React.forwardRef(
+	(props: Props, ref: React.RefObject<HTMLButtonElement>) => {
+		const { children, toggleOpen, label, isOpened, ...propsButton } = props;
 
-	return (
-		<div className="kit-filter-editor">
-			<button
-				className="kit-filter-editor__btn"
-				type="button"
-				onClick={toggleOpen}
-			>
-				{label}
-			</button>
-			{isOpened && children}
-		</div>
-	);
-};
+		return (
+			<div className="kit-filter-editor">
+				<button
+					ref={ref}
+					className="kit-filter-editor__btn"
+					{...propsButton}
+					type="button"
+					onClick={toggleOpen}
+				>
+					{label}
+				</button>
+				{isOpened && children}
+			</div>
+		);
+	}
+);

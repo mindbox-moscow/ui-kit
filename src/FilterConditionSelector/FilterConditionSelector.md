@@ -261,9 +261,16 @@ class ExampleComponent extends React.Component {
 				thirdCategory: false
 			}
 		};
+		this.refElement = React.createRef();
 		this.togglePopup = this.togglePopup.bind(this);
 		this.onSelect = this.onSelect.bind(this);
 		this.onToggleExpand = this.onToggleExpand.bind(this);
+	}
+
+	componentDidMount() {
+		if (this.refElement && this.refElement.current) {
+			console.log(this.refElement);
+		}
 	}
 
 	onSelect(id) {
@@ -292,7 +299,6 @@ class ExampleComponent extends React.Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<>
 				<FilterWrapper
@@ -307,8 +313,10 @@ class ExampleComponent extends React.Component {
 						label="Добавить фильтр"
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
+						ref={this.refElement}
 					>
 						<FilterConditionSelector
+							parentRef={this.refElement}
 							childRenderer={createChildRenderer(
 								this.onSelect,
 								this.onToggleExpand,

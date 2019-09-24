@@ -331,6 +331,8 @@ class ExampleComponent extends React.Component {
 							recentLabel="Недавние"
 							savedLabel="Сохранённые"
 							examplesLabel="Примеры"
+							onModeChanged={mode => console.log(mode)}
+							menuMode="filter"
 						/>
 					</FilterConditionEditorButton>
 				</FilterWrapper>

@@ -1,11 +1,13 @@
 // Colors
-$itemHoverColorBg: #f5f8fa;
+$hoverColorBg: #f5f8fa;
 $editModeColorBg: #3875d7;
 $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
 
 // Sizes
 $itemHoverBorderRadius: 3px;
+$groupHoverMarginTop: 5px;
+$groupHoverMarginLeft: 10px;
 
 .kit-filtration-condition {
 	position: relative;
@@ -22,23 +24,42 @@ $itemHoverBorderRadius: 3px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-block;
-	padding-top: 3px;
-	padding-bottom: 3px;
-	z-index: 2;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-
-	span,
-	b {
-		margin-right: 5px;
-	}
+	padding: 3px 5px 3px 0;
+	transition: color 0.15s ease-in-out;
 
 	&:hover {
 		border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
-		background-color: $itemHoverColorBg;
+		background-color: $hoverColorBg;
 		cursor: pointer;
 
 		.kit-filtration-condition__drag-and-drop {
 			display: flex;
+		}
+	}
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: block;
+		width: calc(100% + #{$groupHoverMarginLeft});
+		height: calc(100% + #{$groupHoverMarginTop * 2});
+		min-height: 35px;
+		margin: #{-$groupHoverMarginTop + 3} 0 0 #{-$groupHoverMarginLeft};
+		background-color: $hoverColorBg;
+		border-radius: 3px 0 0 3px;
+		box-sizing: border-box;
+	}
+
+	span,
+	b {
+		position: relative;
+		margin-right: 5px;
+	}
+
+	&_hover {
+		&::before {
+			content: "";
 		}
 	}
 
@@ -56,6 +77,20 @@ $itemHoverBorderRadius: 3px;
 			background-color: $editModeColorBg;
 		}
 	}
+
+	&_linked-condition-edit {
+		&::before {
+			content: "";
+			background-color: #fde487;
+			border-radius: $itemHoverBorderRadius;
+		}
+
+		&:hover {
+			.kit-filtration-condition__drag-and-drop {
+				display: none;
+			}
+		}
+	}
 }
 
 .kit-filtration-condition__drag-and-drop {
@@ -67,7 +102,7 @@ $itemHoverBorderRadius: 3px;
 	justify-content: center;
 	width: 5px;
 	height: 100%;
-	background-color: $itemHoverColorBg;
+	background-color: $hoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 }
 
@@ -85,4 +120,14 @@ $itemHoverBorderRadius: 3px;
 	background-color: $removeColorBg;
 	color: $removeColor;
 	z-index: 1;
+}
+
+.kit-filtration-condition__close {
+	position: absolute;
+	top: 39px;
+	right: 13px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
 }

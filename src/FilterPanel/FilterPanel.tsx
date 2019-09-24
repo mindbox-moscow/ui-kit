@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FilterConditionEditorButton } from "../FilterConditionEditorButton";
+// import { FilterConditionEditorButton } from "../FilterConditionEditorButton";
 
 import "./FilterPanel.scss";
 
@@ -16,18 +16,18 @@ interface Props {
 export const FilterPanel = (props: Props) => {
 	const {
 		clientsCount,
-		onAddAndFilter,
-		onAddOrFilter,
+		// onAddAndFilter,
+		// onAddOrFilter,
 		hintText,
-		addAndFilterBtnText,
-		addOrFilterBtnText,
+		// addAndFilterBtnText,
+		// addOrFilterBtnText,
 		clientsCountText
 	} = props;
 
 	return (
 		<div className="kit-filter-panel">
 			<div className="kit-filter-panel__btn-wrap">
-				<FilterConditionEditorButton
+				{/* <FilterConditionEditorButton
 					toggleOpen={onAddAndFilter}
 					label={addAndFilterBtnText}
 					isOpened={true}
@@ -37,7 +37,7 @@ export const FilterPanel = (props: Props) => {
 					toggleOpen={onAddOrFilter}
 					label={addOrFilterBtnText}
 					isOpened={true}
-				/>
+				/> */}
 				<p className="kit-filter-panel__text">{hintText}</p>
 			</div>
 			<div className="kit-filter-panel__info-wrap">

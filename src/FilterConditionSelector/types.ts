@@ -1,5 +1,3 @@
-import { RefObject } from "react";
-
 export interface Props {
 	childRenderer: React.ComponentType<{ id: string }>;
 	searchTerm: string;
@@ -16,7 +14,7 @@ export interface Props {
 	editorComponent: React.ReactNode;
 	starred: boolean;
 	toggleStar: () => void;
-	parentRef: RefObject<HTMLElement>;
+	parentRef: React.RefObject<HTMLElement>;
 }
 
 export interface State {

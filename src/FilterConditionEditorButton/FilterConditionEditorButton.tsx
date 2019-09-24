@@ -1,31 +1,68 @@
 import * as React from "react";
+import {
+	FilterConditionSelector,
+	Props as SelectorProps
+} from "../FilterConditionSelector";
+import { Props as ButtonProps } from "./types";
 
 import "./FilterConditionEditorButton.scss";
 
-interface Props {
-	children?: React.ReactNode;
-	toggleOpen: () => void;
-	label: string;
-	isOpened: boolean;
-}
+type Props = ButtonProps & SelectorProps;
 
-export const FilterConditionEditorButton = React.forwardRef(
-	(props: Props, ref: React.RefObject<HTMLButtonElement>) => {
-		const { children, toggleOpen, label, isOpened, ...propsButton } = props;
+export const FilterConditionEditorButton = (props: Props) => {
+	const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
 
-		return (
-			<div className="kit-filter-editor">
-				<button
-					ref={ref}
-					className="kit-filter-editor__btn"
-					{...propsButton}
-					type="button"
-					onClick={toggleOpen}
-				>
-					{label}
-				</button>
-				{isOpened && children}
-			</div>
-		);
-	}
-);
+	const {
+		toggleOpen,
+		label,
+		isOpened,
+		onSearchTermChange,
+		onModeChanged,
+		filterLabel,
+		recentLabel,
+		savedLabel,
+		examplesLabel,
+		menuMode,
+		searchTerm,
+		editorComponent,
+		helpComponent,
+		helpCaption,
+		starred,
+		toggleStar,
+		childRenderer,
+		rootIds
+	} = props;
+
+	return (
+		<div className="kit-filter-editor">
+			<button
+				ref={ref}
+				className="kit-filter-editor__btn"
+				type="button"
+				onClick={toggleOpen}
+			>
+				{label}
+			</button>
+			{isOpened && (
+				<FilterConditionSelector
+					parentRef={ref}
+					onModeChanged={onModeChanged}
+					onSearchTermChange={onSearchTermChange}
+					filterLabel={filterLabel}
+					recentLabel={recentLabel}
+					savedLabel={savedLabel}
+					editorComponent={editorComponent}
+					examplesLabel={examplesLabel}
+					menuMode={menuMode}
+					searchTerm={searchTerm}
+					helpComponent={helpComponent}
+					helpCaption={helpCaption}
+					starred={starred}
+					toggleStar={toggleStar}
+					childRenderer={childRenderer}
+					rootIds={rootIds}
+				/>
+			)}
+		</div>
+	);
+};

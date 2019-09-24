@@ -327,6 +327,10 @@ class ExampleComponent extends React.Component {
 								allElementsDictionary[this.state.selectedId]
 									.helpCaption
 							}
+							filterLabel="Фильтры"
+							recentLabel="Недавние"
+							savedLabel="Сохранённые"
+							examplesLabel="Примеры"
 						/>
 					</FilterConditionEditorButton>
 				</FilterWrapper>

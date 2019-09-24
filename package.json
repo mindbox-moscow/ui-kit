@@ -35,7 +35,7 @@
         "react-styleguidist": "^8.0.6",
         "sass-loader": "^7.1.0",
         "ts-loader": "^4.3.0",
-        "tslint": "^5.17.0",
+        "tslint": "^5.20.0",
         "tslint-config-prettier": "^1.18.0",
         "tslint-react": "^4.0.0",
         "typescript": "3.1.2",

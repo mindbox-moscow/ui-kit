@@ -18,6 +18,7 @@ $kit-actions-dropdown-padding: 15px;
 	margin: 0;
 	appearance: none;
 	cursor: pointer;
+	outline: none;
 
 	.kit-actions-dropdown_opened & {
 		z-index: 3;
@@ -30,6 +31,7 @@ $kit-actions-dropdown-padding: 15px;
 	height: 16px;
 	margin: auto;
 	fill: #c5d6e1;
+	outline: none;
 
 	.kit-actions-dropdown_opened & {
 		fill: #8aacc2;
@@ -48,6 +50,7 @@ $kit-actions-dropdown-padding: 15px;
 	clip-path: inset(100%);
 	white-space: nowrap;
 	transform: translate(1px, 1px);
+	outline: none;
 }
 
 .kit-actions-dropdown__container {

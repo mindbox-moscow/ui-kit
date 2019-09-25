@@ -79,6 +79,7 @@ $widthHorizontalBraket: 12px;
 
 		.kit-filtration-group__buttons {
 			margin-left: 20px;
+			outline: none;
 		}
 
 		> .kit-filtration-group__label_or,
@@ -150,6 +151,7 @@ $widthHorizontalBraket: 12px;
 		&#{$self}_shaded {
 			.kit-filtration-group__buttons {
 				position: relative;
+				outline: none;
 
 				&::before {
 					content: "";
@@ -239,6 +241,7 @@ $widthHorizontalBraket: 12px;
 
 		.kit-filtration-group__buttons {
 			margin-left: 20px;
+			outline: none;
 
 			&::before {
 				content: "";
@@ -371,6 +374,7 @@ $widthHorizontalBraket: 12px;
 	margin-right: 20px;
 	margin-bottom: 5px;
 	box-sizing: border-box;
+	outline: none;
 
 	> *:not(:last-child) {
 		margin-right: 5px;

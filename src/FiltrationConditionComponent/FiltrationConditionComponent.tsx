@@ -71,15 +71,6 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}
-				{state === "linkedConditionEdit" && (
-					<button
-						onClick={onConditionStateToggle}
-						type="button"
-						className="kit-filtration-condition__close"
-					>
-						<IconSvg type="close" />
-					</button>
-				)}
 			</li>
 		);
 	}

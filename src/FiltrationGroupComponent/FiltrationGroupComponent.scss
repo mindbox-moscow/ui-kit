@@ -10,7 +10,7 @@ $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
 
 // Sizing
-$groupHoverMarginTop: 5px;
+$groupHoverMarginTop: 0px;
 $groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
@@ -38,12 +38,13 @@ $widthHorizontalBraket: 12px;
 		left: 0;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
-		height: calc(100% + #{$groupHoverMarginTop * 2 - 3});
-		min-height: 35px;
-		margin: #{-$groupHoverMarginTop + 3} 0 0 #{-$groupHoverMarginLeft};
+		height: calc(100% + #{$groupHoverMarginTop});
+		min-height: 25px;
+		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
 		border-radius: 3px 0 0 3px;
 		box-sizing: border-box;
+		cursor: pointer;
 	}
 
 	& {
@@ -94,7 +95,7 @@ $widthHorizontalBraket: 12px;
 				display: flex;
 				align-items: center;
 				min-width: 40px;
-				height: 28px;
+				height: 20px;
 				padding-left: 9px;
 				padding-right: 9px;
 				font-size: 12px;
@@ -222,9 +223,10 @@ $widthHorizontalBraket: 12px;
 		}
 
 		&::before {
-			top: 12px;
+			top: 13px;
 			width: #{$widthHorizontalBraket + 1};
 			border-top: $borderWidthLine solid;
+			z-index: 1;
 		}
 
 		&::after {
@@ -259,7 +261,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 12px;
+	top: 13px;
 	left: -14px;
 	display: flex;
 	align-items: center;
@@ -372,7 +374,8 @@ $widthHorizontalBraket: 12px;
 	position: relative;
 	display: flex;
 	margin-right: 20px;
-	margin-bottom: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 	box-sizing: border-box;
 	outline: none;
 
@@ -393,11 +396,11 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__remove {
 	position: absolute;
-	top: #{-$groupHoverMarginTop + 3};
+	top: #{-$groupHoverMarginTop};
 	right: -46px;
 	display: block;
 	width: 44px;
-	height: calc(100% + #{$groupHoverMarginTop * 2 - 3});
+	height: calc(100% + #{$groupHoverMarginTop * 2});
 	background-color: $removeColorBg;
 	border: 0;
 	border-radius: 0 3px 3px 0;
@@ -425,4 +428,16 @@ $widthHorizontalBraket: 12px;
 	*:not(:last-child) {
 		margin-right: 3px;
 	}
+}
+
+.kit-filtration-group__close {
+	position: absolute;
+	top: 9px;
+	right: 13px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+	z-index: 1;
+	outline: none;
 }

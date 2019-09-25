@@ -8,6 +8,7 @@
     border-radius: 3px;
     border: 1px solid transparent;
     cursor: pointer;
+	outline: none;
 
     &:hover:not(:disabled) {
         background-color: #c1d0dc;

@@ -11,14 +11,14 @@ import "./FilterConditionEditorButton.scss";
 type Props = ButtonProps & SelectorProps;
 
 export const FilterConditionEditorButton = (props: Props) => {
-	const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
+	const refButton = React.createRef<HTMLButtonElement>();
 
 	const { toggleOpen, label, isOpened, ...otherProps } = props;
 
 	return (
 		<div className="kit-filter-editor">
 			<button
-				ref={ref}
+				ref={refButton}
 				className="kit-filter-editor__btn"
 				type="button"
 				onClick={toggleOpen}
@@ -26,7 +26,7 @@ export const FilterConditionEditorButton = (props: Props) => {
 				{label}
 			</button>
 			{isOpened && (
-				<FilterConditionPopup parentRef={ref}>
+				<FilterConditionPopup parentRef={refButton}>
 					<FilterConditionSelector {...otherProps} />
 				</FilterConditionPopup>
 			)}

@@ -1,45 +1,13 @@
 import cn from "classnames";
 import * as React from "react";
-import { createPortal } from "react-dom";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
-import { Props, MenuMode, IMenuModeMap, State } from "./types";
+import { Props, MenuMode, IMenuModeMap } from "./types";
 
 import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
 export class FilterConditionSelector extends React.Component<Props> {
-	public state: State = {
-		positionTop: 0,
-		positionLeft: 0
-	};
-	private portal = document.createElement("div");
-
-	public componentDidMount() {
-		const { portal } = this;
-		const { parentRef } = this.props;
-
-		document.body.appendChild(portal);
-		portal.classList.add("filter-condition-selector");
-
-		const ref = parentRef.current;
-		if (parentRef && ref) {
-			const rect = ref.getBoundingClientRect();
-			const positionTop = window.pageYOffset + rect.height + rect.top;
-
-			this.setState({
-				positionTop,
-				positionLeft: rect.left
-			});
-		}
-	}
-
-	public componentWillUnmount() {
-		const { portal } = this;
-
-		document.body.removeChild(portal);
-	}
-
 	public render() {
 		const {
 			onSearchTermChange,
@@ -57,10 +25,6 @@ export class FilterConditionSelector extends React.Component<Props> {
 			toggleStar
 		} = this.props;
 
-		const { portal } = this;
-
-		const { positionLeft, positionTop } = this.state;
-
 		const ChildItem = this.props.childRenderer;
 
 		const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,11 +41,8 @@ export class FilterConditionSelector extends React.Component<Props> {
 			[MenuMode.Examples]: examplesLabel
 		};
 
-		return createPortal(
-			<div
-				className="kit-filter-condition-selector"
-				style={{ left: positionLeft, top: positionTop }}
-			>
+		return (
+			<div className="kit-filter-condition-selector">
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
@@ -128,8 +89,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 					toggleStar={toggleStar}
 					viewMode="menu"
 				/>
-			</div>,
-			portal
+			</div>
 		);
 	}
 }

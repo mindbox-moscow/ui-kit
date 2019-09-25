@@ -1,4 +1,5 @@
 import * as React from "react";
+import { FilterConditionPopup } from "../FilterConditionPopup";
 import {
 	FilterConditionSelector,
 	Props as SelectorProps
@@ -10,33 +11,14 @@ import "./FilterConditionEditorButton.scss";
 type Props = ButtonProps & SelectorProps;
 
 export const FilterConditionEditorButton = (props: Props) => {
-	const ref = React.createRef() as React.RefObject<HTMLButtonElement>;
+	const refButton = React.createRef<HTMLButtonElement>();
 
-	const {
-		toggleOpen,
-		label,
-		isOpened,
-		onSearchTermChange,
-		onModeChanged,
-		filterLabel,
-		recentLabel,
-		savedLabel,
-		examplesLabel,
-		menuMode,
-		searchTerm,
-		editorComponent,
-		helpComponent,
-		helpCaption,
-		starred,
-		toggleStar,
-		childRenderer,
-		rootIds
-	} = props;
+	const { toggleOpen, label, isOpened, ...otherProps } = props;
 
 	return (
 		<div className="kit-filter-editor">
 			<button
-				ref={ref}
+				ref={refButton}
 				className="kit-filter-editor__btn"
 				type="button"
 				onClick={toggleOpen}
@@ -44,24 +26,9 @@ export const FilterConditionEditorButton = (props: Props) => {
 				{label}
 			</button>
 			{isOpened && (
-				<FilterConditionSelector
-					parentRef={ref}
-					onModeChanged={onModeChanged}
-					onSearchTermChange={onSearchTermChange}
-					filterLabel={filterLabel}
-					recentLabel={recentLabel}
-					savedLabel={savedLabel}
-					editorComponent={editorComponent}
-					examplesLabel={examplesLabel}
-					menuMode={menuMode}
-					searchTerm={searchTerm}
-					helpComponent={helpComponent}
-					helpCaption={helpCaption}
-					starred={starred}
-					toggleStar={toggleStar}
-					childRenderer={childRenderer}
-					rootIds={rootIds}
-				/>
+				<FilterConditionPopup parentRef={refButton}>
+					<FilterConditionSelector {...otherProps} />
+				</FilterConditionPopup>
 			)}
 		</div>
 	);

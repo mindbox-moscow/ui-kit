@@ -312,7 +312,6 @@ class ExampleComponent extends React.Component {
 						label="Добавить фильтр"
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
-						parentRef={this.refElement}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,

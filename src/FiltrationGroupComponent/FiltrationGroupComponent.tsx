@@ -93,7 +93,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	};
 
 	public componentDidMount() {
-		this.moveLabelAtCenterOfBracket();
+		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -105,6 +105,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	}
 
 	public componentWillUnmount() {
+		window.removeEventListener("load", this.moveLabelAtCenterOfBracket);
+
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
 			labelRef.removeEventListener(

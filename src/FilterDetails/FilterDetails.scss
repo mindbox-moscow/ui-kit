@@ -9,8 +9,6 @@
 	cursor: default;
 
 	&_editor {
-		position: absolute;
-		left: 0;
 		margin-left: -5px;
 		z-index: 1;
 	}
@@ -121,6 +119,7 @@
 	color: #fff;
 	transition: color 0.15s ease-in-out;
 	cursor: pointer;
+	outline: none;
 
 	&_active {
 		color: #c5d6e1;

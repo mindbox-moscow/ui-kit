@@ -1,6 +1,7 @@
 .kit-filter-editor-component__btn {
 	width: 100%;
 	margin-top: 15px;
+	outline: none;
 
 	.kit-button__text {
 		color: #000;
@@ -9,6 +10,7 @@
 
 .kit-filter-editor-component__buttons {
 	display: flex;
+	outline: none;
 }
 
 .kit-filter-editor-component__cancel {

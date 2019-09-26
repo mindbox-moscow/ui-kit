@@ -37,6 +37,8 @@
     }
 
     &__btn {
+		outline: none;
+
         @media (max-width: $mobile-large) {
             flex-basis: 48%;
             order: 2;
@@ -50,6 +52,8 @@
     }
 
     &__btn-month {
+		outline: none;
+
         @media (max-width: $mobile-large) {
             margin-bottom: 10px;
             order: 1;

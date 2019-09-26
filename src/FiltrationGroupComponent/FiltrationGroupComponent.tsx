@@ -34,6 +34,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					offset}px`;
 			}
 		}
+
+		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
 	};
 
 	public handleHoverAddClassLabel = () => {
@@ -41,12 +43,19 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
 
-			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
-				".kit-filtration-condition__item-text"
-			);
+			const parentElements = labelRef.parentElement!.parentElement!
+				.children;
 
-			parentElements.forEach(item => {
-				item.classList.add("kit-filtration-condition__item-text_hover");
+			Array.from(parentElements).forEach(item => {
+				if (
+					item.classList.contains(
+						"kit-filtration-condition__item-text"
+					)
+				) {
+					item.classList.add(
+						"kit-filtration-condition__item-text_hover"
+					);
+				}
 			});
 
 			labelRef.addEventListener(
@@ -62,14 +71,20 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
 			);
-			const parentElements = labelRef.parentElement!.parentElement!.querySelectorAll(
-				".kit-filtration-condition__item-text"
-			);
 
-			parentElements.forEach(item => {
-				item.classList.remove(
-					"kit-filtration-condition__item-text_hover"
-				);
+			const parentElements = labelRef.parentElement!.parentElement!
+				.children;
+
+			Array.from(parentElements).forEach(item => {
+				if (
+					item.classList.contains(
+						"kit-filtration-condition__item-text"
+					)
+				) {
+					item.classList.remove(
+						"kit-filtration-condition__item-text_hover"
+					);
+				}
 			});
 
 			labelRef.removeEventListener(
@@ -92,6 +107,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	}
 
 	public componentWillUnmount() {
+		window.removeEventListener("load", this.moveLabelAtCenterOfBracket);
+
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
 			labelRef.removeEventListener(
@@ -183,6 +200,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							type="button"
 						>
 							<IconSvg type="trash" />
+						</button>
+						<button
+							onClick={onGroupTypeToggle}
+							type="button"
+							className="kit-filtration-group__close"
+						>
+							<IconSvg type="close" />
 						</button>
 						{children}
 						<GroupButtons />

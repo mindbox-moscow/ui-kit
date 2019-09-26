@@ -29,7 +29,7 @@
 	padding: 0;
 	width: 100%;
 	height: calc(100% - 70px);
-	//max-width: 382px;
+	overflow: auto;
 }
 
 .kit-filter-condition-selector__hierarchy-item {
@@ -250,6 +250,11 @@
 	height: 15px;
 	display: inline-table;
 	width: 100%;
+
+	&:hover,
+	&:focus {
+		background-color: #3875d7;
+	}
 }
 
 .kit-filter-condition-selector__hierarchy-toggle {

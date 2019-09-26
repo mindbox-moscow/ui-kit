@@ -1,6 +1,7 @@
 export interface State {
 	positionLeft: number;
 	positionTop: number;
+	isLoaded: boolean;
 }
 
 export interface Props {

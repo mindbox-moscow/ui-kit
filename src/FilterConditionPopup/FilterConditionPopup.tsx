@@ -18,7 +18,7 @@ export class FilterConditionPopup extends React.Component<Props> {
 
 		document.body.appendChild(portal);
 
-		window.addEventListener("load", this.handleShowPopup);
+		this.handleShowPopup();
 	}
 
 	public componentWillUnmount() {
@@ -27,6 +27,10 @@ export class FilterConditionPopup extends React.Component<Props> {
 		document.body.removeChild(portal);
 		window.removeEventListener("resize", this.handleShowPopup);
 		window.removeEventListener("load", this.handleShowPopup);
+	}
+
+	public componentDidUpdate() {
+		this.handleShowPopup();
 	}
 
 	public handleShowPopup = () => {
@@ -48,6 +52,7 @@ export class FilterConditionPopup extends React.Component<Props> {
 		}
 
 		window.addEventListener("resize", this.handleShowPopup);
+		window.addEventListener("load", this.handleShowPopup);
 	};
 
 	public render() {

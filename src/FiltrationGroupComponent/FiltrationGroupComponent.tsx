@@ -34,6 +34,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					offset}px`;
 			}
 		}
+
+		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
 	};
 
 	public handleHoverAddClassLabel = () => {
@@ -93,7 +95,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	};
 
 	public componentDidMount() {
-		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
+		this.moveLabelAtCenterOfBracket();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {

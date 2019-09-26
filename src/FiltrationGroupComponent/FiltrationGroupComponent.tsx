@@ -135,6 +135,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			children,
 			addSimpleConditionButton,
 			addGroupConditionButton,
+			onConditionStateToggle,
 			onGroupTypeToggle,
 			onConditionRemove,
 			state
@@ -170,6 +171,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
 						}
 					)}
+					onClick={this.handleGroupLabelClick}
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
@@ -202,7 +204,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							<IconSvg type="trash" />
 						</button>
 						<button
-							onClick={onGroupTypeToggle}
+							onClick={onConditionStateToggle}
 							type="button"
 							className="kit-filtration-group__close"
 						>
@@ -214,5 +216,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				)}
 			</ul>
 		);
+	}
+
+	private handleGroupLabelClick() {
+		if (this.props.state === "edit") {
+			return;
+		}
+
+		this.props.onConditionStateToggle();
 	}
 }

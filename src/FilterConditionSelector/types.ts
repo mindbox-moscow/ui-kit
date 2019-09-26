@@ -14,12 +14,6 @@ export interface Props {
 	editorComponent: React.ReactNode;
 	starred: boolean;
 	toggleStar: () => void;
-	parentRef: React.RefObject<HTMLElement>;
-}
-
-export interface State {
-	positionLeft: number;
-	positionTop: number;
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

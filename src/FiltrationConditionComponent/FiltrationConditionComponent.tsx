@@ -1,7 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
-import { IconSvg } from "../IconSvg";
+import { FilterConditionPopup } from "../FilterConditionPopup";
 import { FilterDetails } from "../FilterDetails";
+import { IconSvg } from "../IconSvg";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
@@ -9,6 +10,8 @@ import "./FiltrationConditionComponent.scss";
 type Props = StateProps & CallbackProps;
 
 export class FiltrationConditionComponent extends React.Component<Props> {
+	public refComponent = React.createRef<HTMLElement>();
+
 	public render() {
 		const {
 			filtrationObjectName,
@@ -32,50 +35,43 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				>
 					<IconSvg type="trash" />
 				</div>
-				<FilterDetails
-					helpCaption={filtrationObjectName}
-					helpComponent={helpComponent}
-					editorComponent={editorComponent}
-					starred={starred}
-					toggleStar={toggleStar}
-					viewMode="edit"
-				/>
+				<FilterConditionPopup parentRef={this.refComponent}>
+					<FilterDetails
+						helpCaption={filtrationObjectName}
+						helpComponent={helpComponent}
+						editorComponent={editorComponent}
+						starred={starred}
+						toggleStar={toggleStar}
+						viewMode="edit"
+					/>
+				</FilterConditionPopup>
 			</>
 		);
-
 		return (
 			<li
 				className={cn("kit-filtration-condition", {
 					"kit-filtration-condition_edit": state === "edit"
 				})}
 			>
-				<span
+				<div
 					className={cn("kit-filtration-condition__item-text", {
 						"kit-filtration-condition__item-text_edit":
 							state === "edit",
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit"
 					})}
-					onClick={onConditionStateToggle}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
-					<b>{filtrationObjectName}</b>
-					{filtrationMethodName && (
-						<span>{filtrationMethodName}</span>
-					)}
-					{filtrationMethodParametersComponent}
+					<div onClick={onConditionStateToggle}>
+						<b ref={this.refComponent}>{filtrationObjectName}</b>
+						{filtrationMethodName && (
+							<span>{filtrationMethodName}</span>
+						)}
+						{filtrationMethodParametersComponent}
+					</div>
 					{state === "edit" && editModeContent}
-				</span>
+				</div>
 				{linkedConditionComponent}
-				{state === "linkedConditionEdit" && (
-					<button
-						onClick={onConditionStateToggle}
-						type="button"
-						className="kit-filtration-condition__close"
-					>
-						<IconSvg type="close" />
-					</button>
-				)}
 			</li>
 		);
 	}

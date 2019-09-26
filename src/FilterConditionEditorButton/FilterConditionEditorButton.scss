@@ -4,13 +4,17 @@
 
 .kit-filter-editor__btn {
 	position: relative;
+	display: inline-flex;
+	align-items: center;
+	min-height: 23px;
 	margin: 0;
-	padding: 3px 24px;
+	padding: 0 24px;
 	border-radius: 4px;
 	color: #265378;
 	text-align: center;
 	border: 1px solid #c7d8e2;
 	background-color: #f1f5f8;
+	font-family: "PT Sans", sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	outline: none;

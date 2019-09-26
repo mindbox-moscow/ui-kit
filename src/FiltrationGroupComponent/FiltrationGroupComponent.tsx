@@ -218,11 +218,11 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		);
 	}
 
-	private handleGroupLabelClick() {
+	private handleGroupLabelClick = () => {
 		if (this.props.state === "edit") {
 			return;
 		}
 
 		this.props.onConditionStateToggle();
-	}
+	};
 }

@@ -18,7 +18,6 @@ export class FilterConditionPopup extends React.Component<Props> {
 
 		document.body.appendChild(portal);
 
-		// window.onload = () => this.handleShowPopup();
 		window.addEventListener("load", this.handleShowPopup);
 	}
 

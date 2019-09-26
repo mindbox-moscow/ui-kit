@@ -24,9 +24,11 @@
 .kit-filter-condition-selector__hierarchy {
 	margin: 0;
 	padding: 0;
-	width: 100%;
 	height: calc(100% - 70px);
 	overflow: auto;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 }
 
 .kit-filter-condition-selector__hierarchy-item {
@@ -38,6 +40,9 @@
 	font-weight: 600;
 	line-height: 18px;
 	z-index: 9;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 
 	&:last-of-type {
 		padding-bottom: 0;
@@ -50,7 +55,7 @@
 			&::after {
 				content: "";
 				position: absolute;
-				width: 100vw;
+				width: 1000vw;
 				height: 31px;
 				background-color: #3875d7;
 				top: 0;
@@ -68,7 +73,7 @@
 				&::after {
 					content: "";
 					position: absolute;
-					width: 100vw;
+					width: 1000vw;
 					height: 31px;
 					background-color: transparent;
 					top: 0;
@@ -110,7 +115,7 @@
 			&::after {
 				content: "";
 				position: absolute;
-				width: 100vw;
+				width: 1000vw;
 				height: 31px;
 				background-color: #3875d7;
 				top: 0;
@@ -129,6 +134,9 @@
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 
 	li {
 		&::before {

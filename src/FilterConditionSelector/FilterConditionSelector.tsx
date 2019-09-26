@@ -98,11 +98,13 @@ export const FilterConditionSelector = (props: Props) => {
 					</div>
 				</div>
 
+				<div className="kit-filter-condition-selector__hierarchy-wrap">
 				<ul className="kit-filter-condition-selector__hierarchy">
 					{props.rootIds.map(childId => (
 						<ChildItem key={childId} id={childId} />
 					))}
 				</ul>
+				</div>
 			</div>
 
 			<FilterDetails

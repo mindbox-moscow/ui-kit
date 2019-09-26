@@ -17,6 +17,10 @@
 	width: 100%;
 	border: 1px solid #c8d8e2;
 	border-right: 0;
+}
+
+.kit-filter-condition-selector__hierarchy-wrap {
+	height: 100%;
 	overflow: auto;
 }
 
@@ -25,7 +29,7 @@
 	padding: 0;
 	width: 100%;
 	height: calc(100% - 70px);
-	max-width: 382px;
+	//max-width: 382px;
 }
 
 .kit-filter-condition-selector__hierarchy-item {
@@ -54,6 +58,10 @@
 				top: 0;
 				right: 0;
 				z-index: -1;
+			}
+
+			.kit-filter-condition-selector__filter-span_selected {
+				background-color: #3875d7;
 			}
 		}
 
@@ -235,6 +243,13 @@
 		color: #000;
 		font-weight: 600;
 	}
+}
+
+.kit-filter-condition-selector__filter-span {
+	padding: 8px 0;
+	height: 15px;
+	display: inline-table;
+	width: 100%;
 }
 
 .kit-filter-condition-selector__hierarchy-toggle {

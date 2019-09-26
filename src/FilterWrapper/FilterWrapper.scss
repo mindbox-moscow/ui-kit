@@ -81,6 +81,7 @@
 	text-align: center;
 	border: 0;
 	outline: none;
+	cursor: pointer;
 }
 
 .kit-filter__clients,
@@ -113,6 +114,7 @@
 	line-height: 19px;
 	background-color: transparent;
 	outline: none;
+	cursor: pointer;
 
 	&::before {
 		content: "";

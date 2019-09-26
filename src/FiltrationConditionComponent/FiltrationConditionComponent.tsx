@@ -60,14 +60,15 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit"
 					})}
-					onClick={onConditionStateToggle}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
-					<b ref={this.refComponent}>{filtrationObjectName}</b>
-					{filtrationMethodName && (
-						<span>{filtrationMethodName}</span>
-					)}
-					{filtrationMethodParametersComponent}
+					<div onClick={onConditionStateToggle}>
+						<b ref={this.refComponent}>{filtrationObjectName}</b>
+						{filtrationMethodName && (
+							<span>{filtrationMethodName}</span>
+						)}
+						{filtrationMethodParametersComponent}
+					</div>
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

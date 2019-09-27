@@ -388,6 +388,10 @@ $widthHorizontalBraket: 12px;
 	box-sizing: border-box;
 	outline: none;
 
+	> * {
+		z-index: 2;
+	}
+
 	> *:not(:last-child) {
 		margin-right: 5px;
 	}
@@ -398,7 +402,7 @@ $widthHorizontalBraket: 12px;
 		color: $braketColor;
 		box-sizing: border-box;
 		top: -4px;
-		height: 18px;
+		height: 17px;
 		border-left: $borderWidthLine solid;
 	}
 }

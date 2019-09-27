@@ -5,8 +5,8 @@ import "./Button.scss";
 
 interface Props {
 	children: string;
-	size: "small" | "medium" | "large" | "xs" | "normal";
-	color: "gray" | "lightgray";
+	size: "small" | "medium" | "large" | "xs" | "xxs" | "normal";
+	color: "gray" | "lightgray" | "silver";
 	type?: "button" | "submit" | "reset";
 	className?: string;
 	disabled?: boolean;

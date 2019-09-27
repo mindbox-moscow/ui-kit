@@ -54,7 +54,12 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 					className="kit-filter-condition-selector__hierarchy-name"
 					onClick={this.onSelect}
 				>
-					{name}
+					<span
+						className={cn("kit-filter-condition-selector__filter-span", {
+							"kit-filter-condition-selector__filter-span_selected": isSelected
+						})}>
+						{name}
+					</span>
 				</button>
 
 				{isExpanded && hasChildren && (

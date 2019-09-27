@@ -20,22 +20,40 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				".kit-filtration-group__label"
 			);
 			if (label && ref.lastElementChild) {
-				let offset = 2;
-				if (
-					ref.lastElementChild.classList.contains(
-						"kit-filtration-group"
-					) &&
-					ref.childElementCount > 2
-				) {
-					offset = 27;
+				let height = 0;
+				const childElement = ref.lastElementChild;
+				const childElementRect = childElement.getBoundingClientRect();
+				const parentElementRect = ref.getBoundingClientRect();
+				const lastElement = childElement.classList.contains(
+					"kit-filtration-group"
+				);
+
+				if (lastElement) {
+					const childLabel = childElement.querySelector(
+						".kit-filtration-group__label"
+					);
+					if (childLabel) {
+						const childLabelRect = childLabel.getBoundingClientRect();
+						height =
+							parentElementRect.height -
+							childElementRect.height +
+							childLabelRect.height;
+					}
+				} else {
+					height = parentElementRect.height - childElementRect.height;
 				}
-				label.style.height = `${ref.getBoundingClientRect().height -
-					ref.lastElementChild.getBoundingClientRect().height +
-					offset}px`;
+
+				if (height <= 5) {
+					height = 0;
+					label.classList.add("kit-filtration-group__label_none");
+				}
+
+				label.style.height = `${height}px`;
 			}
 		}
 
 		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
+		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
 	};
 
 	public handleHoverAddClassLabel = () => {
@@ -108,6 +126,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 
 	public componentWillUnmount() {
 		window.removeEventListener("load", this.moveLabelAtCenterOfBracket);
+		window.removeEventListener("resize", this.moveLabelAtCenterOfBracket);
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -133,10 +152,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			orLabel,
 			shouldShowLabel,
 			children,
-			addSimpleConditionButton,
-			addGroupConditionButton,
 			onGroupTypeToggle,
-			onConditionRemove,
 			state
 		} = this.props;
 
@@ -144,13 +160,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			and: andLabel,
 			or: orLabel
 		};
-
-		const GroupButtons = () => (
-			<div className="kit-filtration-group__buttons">
-				{addSimpleConditionButton}
-				{addGroupConditionButton}
-			</div>
-		);
 
 		return (
 			<ul
@@ -170,6 +179,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
 						}
 					)}
+					onClick={this.handleGroupLabelClick}
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
@@ -186,33 +196,70 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{(state === "view" || state === "shaded") &&
-					children === undefined &&
-					!shouldShowLabel && <GroupButtons />}
-				{(state === "view" || state === "shaded") &&
-					children !== undefined &&
-					children}
-				{state === "edit" && (
-					<>
-						<button
-							onClick={onConditionRemove}
-							className="kit-filtration-group__remove"
-							type="button"
-						>
-							<IconSvg type="trash" />
-						</button>
-						<button
-							onClick={onGroupTypeToggle}
-							type="button"
-							className="kit-filtration-group__close"
-						>
-							<IconSvg type="close" />
-						</button>
-						{children}
-						<GroupButtons />
-					</>
-				)}
+				{this.renderInnerComponents()}
 			</ul>
 		);
 	}
+
+	private renderInnerComponents = () => {
+		const {
+			addSimpleConditionButton,
+			addGroupConditionButton,
+			state,
+			children,
+			onConditionRemove,
+			onConditionStateToggle,
+			shouldShowLabel
+		} = this.props;
+
+		const GroupButtons = () => (
+			<div className="kit-filtration-group__buttons">
+				{addSimpleConditionButton}
+				{addGroupConditionButton}
+			</div>
+		);
+
+		if (state === "view" || state === "shaded") {
+			if (React.Children.count(children) === 0) {
+				if (!shouldShowLabel) {
+					return <GroupButtons />;
+				} else {
+					return null;
+				}
+			}
+
+			return <>{children}</>;
+		}
+
+		return (
+			<>
+				<button
+					key="remove"
+					onClick={onConditionRemove}
+					className="kit-filtration-group__remove"
+					type="button"
+				>
+					<IconSvg type="trash" />
+				</button>
+				<button
+					key="toggle"
+					onClick={onConditionStateToggle}
+					type="button"
+					className="kit-filtration-group__close"
+				>
+					<IconSvg type="close" />
+				</button>
+				{children}
+				<GroupButtons />
+			</>
+		);
+	};
+
+	private handleGroupLabelClick = () => {
+		if (this.props.state === "edit") {
+			return;
+		}
+
+		this.props.onConditionStateToggle();
+	};
 }

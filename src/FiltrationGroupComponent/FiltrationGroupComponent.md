@@ -608,6 +608,184 @@
 		/>
 	</FiltrationGroupComponent>
 
+	<h2>5.6.1 Группа И без лейбла с 3мя условиями, одно -- группа без детей</h2>
+
+	<FiltrationGroupComponent
+		state="view"
+		groupType="and"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={false}
+	>
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		/>
+
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+	</FiltrationGroupComponent>
+
+	<br />
+	<br />
+
+	<h2>5.6.2 Группа И с лейблом с 3мя условиями, одно -- группа без детей</h2>
+
+	<FiltrationGroupComponent
+		state="view"
+		groupType="and"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+	>
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		/>
+
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+	</FiltrationGroupComponent>
+
+	<br />
+	<br />
+
+	<h2>5.6.3 Группа ИЛИ с 3мя условиями, одно -- группа без детей</h2>
+
+	<FiltrationGroupComponent
+		state="view"
+		groupType="or"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+	>
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		/>
+
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+	</FiltrationGroupComponent>
+
+	<br />
+	<br />
+
+	<h2>5.6.4 Группа ИЛИ с группой без детей</h2>
+
+	<FiltrationGroupComponent
+		state="view"
+		groupType="or"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+	>
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		/>
+	</FiltrationGroupComponent>
+
+	<br />
+	<br />
+
+	<h2>5.6.5 Группа ИЛИ с группой без детей в режиме редактирования</h2>
+
+	<FiltrationGroupComponent
+		state="edit"
+		groupType="or"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+		addSimpleConditionButton={
+			<FilterConditionEditorButton
+				label="Добавить фильтр"
+				toggleOpen={() => console.log("toggle")}
+				isOpened={false}
+			/>
+		}
+		addGroupConditionButton={
+			<Button color="silver" size="xxs" hasBorder type="button">
+				Добавить группу И
+			</Button>
+		}
+	>
+		<FiltrationConditionComponent
+			filtrationObjectName="Пол"
+			filtrationMethodName="заполнен и"
+			filtrationMethodParametersComponent={
+				<span style={{ fontWeight: "bold" }}>Мужской</span>
+			}
+		/>
+
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+		/>
+	</FiltrationGroupComponent>
+
 	<br />
 	<br />
 

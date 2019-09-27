@@ -138,6 +138,8 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&_not-children {
+		min-height: 25px;
+
 		&#{$self}_edit {
 			margin-left: 30px;
 		}

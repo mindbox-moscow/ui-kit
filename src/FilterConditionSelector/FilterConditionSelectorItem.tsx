@@ -52,6 +52,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 				<button
 					type="button"
 					className="kit-filter-condition-selector__hierarchy-name"
+					onDoubleClick={this.onExpand}
 					onClick={this.onSelect}
 				>
 					<span

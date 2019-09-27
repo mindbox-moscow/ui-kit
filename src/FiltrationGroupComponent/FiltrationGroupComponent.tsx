@@ -20,18 +20,35 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 				".kit-filtration-group__label"
 			);
 			if (label && ref.lastElementChild) {
-				let offset = 2;
-				if (
-					ref.lastElementChild.classList.contains(
-						"kit-filtration-group"
-					) &&
-					ref.childElementCount > 2
-				) {
-					offset = 27;
+				let height = 0;
+				const childElement = ref.lastElementChild;
+				const childElementRect = childElement.getBoundingClientRect();
+				const parentElementRect = ref.getBoundingClientRect();
+				const lastElement = childElement.classList.contains(
+					"kit-filtration-group"
+				);
+
+				if (lastElement) {
+					const childLabel = childElement.querySelector(
+						".kit-filtration-group__label"
+					);
+					if (childLabel) {
+						const childLabelRect = childLabel.getBoundingClientRect();
+						height =
+							parentElementRect.height -
+							childElementRect.height +
+							childLabelRect.height;
+					}
+				} else {
+					height = parentElementRect.height - childElementRect.height;
 				}
-				label.style.height = `${ref.getBoundingClientRect().height -
-					ref.lastElementChild.getBoundingClientRect().height +
-					offset}px`;
+
+				if (height <= 5) {
+					height = 0;
+					label.classList.add("kit-filtration-group__label_none");
+				}
+
+				label.style.height = `${height}px`;
 			}
 		}
 
@@ -172,8 +189,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 									activeType={groupType}
 								/>
 							) : (
-									labelMap[groupType]
-								)}
+								labelMap[groupType]
+							)}
 						</span>
 					)}
 				</div>
@@ -184,7 +201,13 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 
 	private renderInnerComponents = () => {
 		const {
-			addSimpleConditionButton, addGroupConditionButton, state, children, onConditionRemove, onConditionStateToggle, shouldShowLabel
+			addSimpleConditionButton,
+			addGroupConditionButton,
+			state,
+			children,
+			onConditionRemove,
+			onConditionStateToggle,
+			shouldShowLabel
 		} = this.props;
 
 		const GroupButtons = () => (
@@ -206,27 +229,29 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			return <>{children}</>;
 		}
 
-		return <>
-			<button
-				key="remove"
-				onClick={onConditionRemove}
-				className="kit-filtration-group__remove"
-				type="button"
-			>
-				<IconSvg type="trash" />
-			</button>
-			<button
-				key="toggle"
-				onClick={onConditionStateToggle}
-				type="button"
-				className="kit-filtration-group__close"
-			>
-				<IconSvg type="close" />
-			</button>
-			{children}
-			<GroupButtons />
-		</>;
-	}
+		return (
+			<>
+				<button
+					key="remove"
+					onClick={onConditionRemove}
+					className="kit-filtration-group__remove"
+					type="button"
+				>
+					<IconSvg type="trash" />
+				</button>
+				<button
+					key="toggle"
+					onClick={onConditionStateToggle}
+					type="button"
+					className="kit-filtration-group__close"
+				>
+					<IconSvg type="close" />
+				</button>
+				{children}
+				<GroupButtons />
+			</>
+		);
+	};
 
 	private handleGroupLabelClick = () => {
 		if (this.props.state === "edit") {

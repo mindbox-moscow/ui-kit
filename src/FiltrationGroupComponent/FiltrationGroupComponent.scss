@@ -267,6 +267,7 @@ $widthHorizontalBraket: 12px;
 	left: -14px;
 	display: flex;
 	align-items: center;
+	height: 1px;
 	padding: 0 $groupLabelPaddingLeft;
 	color: $braketColor;
 	z-index: 2;
@@ -280,7 +281,7 @@ $widthHorizontalBraket: 12px;
 	&::after {
 		content: "";
 		position: absolute;
-		left: 16px;
+		left: 15px;
 		display: block;
 		width: $widthHorizontalBraket;
 		border-top: 2px solid;
@@ -327,6 +328,12 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $orColor;
+		}
+	}
+
+	&_none {
+		&::after {
+			content: none;
 		}
 	}
 

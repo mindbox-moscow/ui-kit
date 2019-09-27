@@ -19,4 +19,16 @@
 	line-height: 18px;
 	outline: none;
 	cursor: pointer;
+	transition: color 0.15s, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out;
+
+	&:hover:not(:disabled) {
+		background-color: #c1d0dc;
+		border-color: darken($color: #6f99b4, $amount: 8%);
+	}
+
+	&:disabled {
+		cursor: auto;
+		opacity: 0.35;
+	}
 }

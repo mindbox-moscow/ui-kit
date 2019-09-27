@@ -623,7 +623,7 @@
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
-		/>			
+		/>
 
 		<FiltrationGroupComponent
 			state="view"
@@ -660,7 +660,7 @@
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
-		/>			
+		/>
 
 		<FiltrationGroupComponent
 			state="view"
@@ -697,7 +697,7 @@
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
-		/>			
+		/>
 
 		<FiltrationGroupComponent
 			state="view"
@@ -734,7 +734,7 @@
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
-		/>			
+		/>
 
 		<FiltrationGroupComponent
 			state="view"
@@ -764,10 +764,8 @@
 			/>
 		}
 		addGroupConditionButton={
-			<Button
-				color="gray" size="small" type="button"
-			>
-			Добавить группу И
+			<Button color="silver" size="xxs" hasBorder type="button">
+				Добавить группу И
 			</Button>
 		}
 	>
@@ -777,7 +775,7 @@
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
-		/>			
+		/>
 
 		<FiltrationGroupComponent
 			state="view"

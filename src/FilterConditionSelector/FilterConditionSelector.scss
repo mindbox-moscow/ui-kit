@@ -16,12 +16,19 @@
 	border-right: 0;
 }
 
+.kit-filter-condition-selector__hierarchy-wrap {
+	height: 100%;
+	overflow: auto;
+}
+
 .kit-filter-condition-selector__hierarchy {
 	margin: 0;
 	padding: 0;
-	width: 100%;
-	max-width: 382px;
-	overflow: scroll;
+	height: calc(100% - 70px);
+	overflow: auto;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 }
 
 .kit-filter-condition-selector__hierarchy-item {
@@ -32,6 +39,10 @@
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
+	z-index: 9;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 
 	&:last-of-type {
 		padding-bottom: 0;
@@ -44,12 +55,31 @@
 			&::after {
 				content: "";
 				position: absolute;
-				width: 100vw;
+				width: 1000vw;
 				height: 31px;
 				background-color: #3875d7;
 				top: 0;
 				right: 0;
 				z-index: -1;
+			}
+
+			.kit-filter-condition-selector__filter-span_selected {
+				background-color: #3875d7;
+			}
+		}
+
+		ul {
+			.kit-filter-condition-selector__hierarchy-name {
+				&::after {
+					content: "";
+					position: absolute;
+					width: 1000vw;
+					height: 31px;
+					background-color: transparent;
+					top: 0;
+					right: 0;
+					z-index: -1;
+				}
 			}
 		}
 	}
@@ -75,6 +105,9 @@
 		box-sizing: border-box;
 		cursor: pointer;
 
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
 		&:hover,
 		&:focus {
 			color: #fff;
@@ -82,7 +115,7 @@
 			&::after {
 				content: "";
 				position: absolute;
-				width: 100vw;
+				width: 1000vw;
 				height: 31px;
 				background-color: #3875d7;
 				top: 0;
@@ -101,6 +134,9 @@
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 18px;
+	min-width: 100%;
+	width: fit-content;
+	box-sizing: border-box;
 
 	li {
 		&::before {
@@ -112,6 +148,7 @@
 			height: 100%;
 			width: 2px;
 			transform: rotate(0) !important;
+			z-index: 1;
 		}
 		&:first-child::before {
 			content: "";
@@ -122,6 +159,7 @@
 			height: 100%;
 			width: 2px;
 			transform: rotate(0) !important;
+			z-index: 1;
 		}
 
 		&:last-child::before {
@@ -133,6 +171,7 @@
 			height: 17px;
 			width: 2px;
 			transform: rotate(0) !important;
+			z-index: 1;
 		}
 
 		&::after {
@@ -143,6 +182,7 @@
 			background-color: #e1eaf1;
 			height: 2px;
 			width: 9px;
+			z-index: 1;
 		}
 	}
 }
@@ -158,6 +198,7 @@
 		width: 10px;
 		height: 10px;
 		position: absolute;
+		z-index: 1;
 	}
 
 	&::before {
@@ -212,6 +253,18 @@
 	&_active {
 		color: #000;
 		font-weight: 600;
+	}
+}
+
+.kit-filter-condition-selector__filter-span {
+	padding: 8px 0;
+	height: 15px;
+	display: inline-table;
+	width: 100%;
+
+	&:hover,
+	&:focus {
+		background-color: #3875d7;
 	}
 }
 

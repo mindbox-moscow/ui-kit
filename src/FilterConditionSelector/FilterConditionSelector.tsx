@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
-import { Props, MenuMode, IMenuModeMap } from "./types";
+import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
 
@@ -73,12 +73,13 @@ export class FilterConditionSelector extends React.Component<Props> {
 							})}
 						</div>
 					</div>
-
-					<ul className="kit-filter-condition-selector__hierarchy">
-						{this.props.rootIds.map(childId => (
-							<ChildItem key={childId} id={childId} />
-						))}
-					</ul>
+					<div className="kit-filter-condition-selector__hierarchy-wrap">
+						<ul className="kit-filter-condition-selector__hierarchy">
+							{this.props.rootIds.map(childId => (
+								<ChildItem key={childId} id={childId} />
+							))}
+						</ul>
+					</div>
 				</div>
 
 				<FilterDetails

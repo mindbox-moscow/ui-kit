@@ -1,14 +1,25 @@
+import cn from "classnames";
 import * as React from "react";
 import "./Tooltip.scss";
 
-interface IProps {
+type IProps = {
 	title: string;
-}
+} & Partial<DefaultProps>;
 interface IState {
 	isVisible: boolean;
 }
 
+interface DefaultProps {
+	position: "top" | "bottom";
+	textDecoration: boolean;
+}
+
 export class Tooltip extends React.Component<IProps, IState> {
+	static defaultProps: DefaultProps = {
+		position: "bottom",
+		textDecoration: true
+	};
+
 	public state = {
 		isVisible: false
 	};
@@ -35,18 +46,30 @@ export class Tooltip extends React.Component<IProps, IState> {
 	}
 
 	public render() {
-		const { title, children } = this.props;
+		const { textDecoration, position, title, children } = this.props;
 		const { isVisible } = this.state;
 
 		return (
-			<div className="kit-tooltip" ref={this.wrapRef}>
-				<span className="kit-tooltip__title" onClick={this.handleClick}>
+			<span className="kit-tooltip" ref={this.wrapRef}>
+				<span
+					className={cn("kit-tooltip__title", {
+						"kit-tooltip__title_text-transform": textDecoration
+					})}
+					onClick={this.handleClick}
+				>
 					{title}
 				</span>
 				{isVisible && (
-					<div className="kit-tooltip__content">{children}</div>
+					<span
+						className={cn(
+							"kit-tooltip__content",
+							`kit-tooltip__content_${position}`
+						)}
+					>
+						{children}
+					</span>
 				)}
-			</div>
+			</span>
 		);
 	}
 }

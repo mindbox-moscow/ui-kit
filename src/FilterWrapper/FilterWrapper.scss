@@ -22,8 +22,6 @@
 		.kit-filter__all-wrap {
 			display: flex;
 			align-items: center;
-			margin-top: 0;
-			margin-bottom: 0;
 		}
 	}
 }
@@ -34,8 +32,7 @@
 
 .kit-filter__all-wrap {
 	padding: 0;
-	margin-left: 51px;
-	margin-right: 56px;
+	margin: 16px 56px 16px 51px;
 }
 
 .kit-filter__btn-wrap {

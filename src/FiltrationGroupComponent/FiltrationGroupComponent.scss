@@ -28,6 +28,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
+	min-height: 30px;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;

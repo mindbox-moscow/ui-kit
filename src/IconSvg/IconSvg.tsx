@@ -7,6 +7,7 @@ import "./IconSvg.scss";
 interface IProps {
 	type: IconType;
 	className?: string;
+	size?: "default" | "large";
 }
 
 class IconSvg extends React.PureComponent<IProps> {

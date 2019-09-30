@@ -1,4 +1,5 @@
 .kit-tooltip {
+	$self: &;
 	position: relative;
 	display: inline-flex;
 	align-items: center;
@@ -7,6 +8,12 @@
 	font-size: 14px;
 	line-height: 16px;
 	cursor: pointer;
+
+	&:hover {
+		#{ $self }__content {
+			display: block;
+		}
+	}
 }
 
 .kit-tooltip__title {
@@ -20,6 +27,7 @@
 }
 
 .kit-tooltip__content {
+	display: none;
 	box-sizing: border-box;
 	position: absolute;
 	left: 50%;

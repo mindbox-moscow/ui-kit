@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const PercentRound = ({ className }: ISvgProps) => (
+export const PercentRound = ({ className, size }: ISvgProps) => (
 	<svg
-		height={18}
-		width={18}
+		width={size === "large" ? 18 * 1.5 : 18}
+		height={size === "large" ? 18 * 1.5 : 18}
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"
 	>

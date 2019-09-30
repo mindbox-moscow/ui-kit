@@ -2,20 +2,20 @@ import cn from "classnames";
 import * as React from "react";
 
 import { icons, IconType } from "./icons";
+import { IconsProps } from "./types";
 import "./IconSvg.scss";
 
-interface IProps {
+type IconSvgTypes = {
 	type: IconType;
 	className?: string;
-	size?: "default" | "large";
-}
+} & Partial<IconsProps>;
 
-class IconSvg extends React.PureComponent<IProps> {
+class IconSvg extends React.PureComponent<IconSvgTypes> {
 	public render() {
-		const { type, className } = this.props;
+		const { type, className, ...props } = this.props;
 		const Svg = icons[type];
 
-		return <Svg className={cn("kit-icon-svg", className)} />;
+		return <Svg className={cn("kit-icon-svg", className)} {...props} />;
 	}
 }
 

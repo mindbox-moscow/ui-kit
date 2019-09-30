@@ -10,9 +10,11 @@ import { Extended } from "./Extended";
 import { Favorite } from "./Favorite";
 import { Warning } from "./Warning";
 
-interface ISvgProps {
+import { IconsProps } from "../types";
+
+type ISvgProps = {
 	className: string;
-}
+} & Partial<IconsProps>;
 
 type IconType =
 	| "catalog-tree"

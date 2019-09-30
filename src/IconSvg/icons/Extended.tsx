@@ -2,11 +2,11 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const Extended = ({ className }: ISvgProps) => (
+export const Extended = ({ className, size }: ISvgProps) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		width="9"
-		height="10"
+		width={size === "large" ? 9 * 1.5 : 9}
+		height={size === "large" ? 10 * 1.5 : 10}
 		viewBox="0 0 9 10"
 		className={className}
 	>

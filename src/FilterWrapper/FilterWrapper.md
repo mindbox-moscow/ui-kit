@@ -1303,7 +1303,7 @@
 									</GridColumn>
 									<GridColumn>
 										<Tooltip
-											title={<IconSvg type="warning" />}
+											title={<IconSvg type="warning" size="large" />}
 											position="top"
 											textDecoration={false}
 										>

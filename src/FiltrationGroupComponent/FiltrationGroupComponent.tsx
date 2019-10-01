@@ -40,7 +40,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							childLabelRect.height;
 					}
 				} else {
-					height = parentElementRect.height - childElementRect.height;
+					// Сделал так чтобы брекеты при hotload не прыгали
+					height =
+						parentElementRect.height -
+						(childElementRect.height === 1
+							? 24
+							: childElementRect.height);
 				}
 
 				label.style.height = `${height}px`;

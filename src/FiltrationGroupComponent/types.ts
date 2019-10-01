@@ -1,6 +1,6 @@
 type GroupType = "and" | "or";
 
-type ConditionState = "view" | "edit" | "shaded";
+type ConditionState = "view" | "edit" | "shaded" | "linkedConditionEdit";
 
 export interface StateProps {
 	groupType: GroupType; // тип группы: И или ИЛИ

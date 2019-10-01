@@ -49,6 +49,10 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							: childElementRect.height);
 				}
 
+				if (height === 5) {
+					height = 0;
+				}
+
 				label.style.height = `${height}px`;
 			}
 		}

@@ -2,6 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
+import { FiltrationConditionComponent } from "../FiltrationConditionComponent";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
@@ -196,7 +197,20 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{this.renderInnerComponents()}
+				{this.renderInnerComponents() ? (
+					this.renderInnerComponents()
+				) : (
+					<FiltrationConditionComponent
+						filtrationObjectName=""
+						state="view"
+						editorComponent
+						helpComponent
+						starred
+						onConditionStateToggle={() => {}}
+						onConditionRemove={() => {}}
+						toggleStar={() => {}}
+					/>
+				)}
 			</ul>
 		);
 	}

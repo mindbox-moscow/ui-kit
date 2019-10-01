@@ -1067,7 +1067,9 @@
 							console.log("state toggle")
 						}
 						onConditionRemove={() => console.log("remove")}
-					/>
+					>
+						<FiltrationConditionComponent />
+					</FiltrationGroupComponent>
 				}
 			/>
 		</FiltrationGroupComponent>
@@ -1290,7 +1292,9 @@
 							console.log("state toggle")
 						}
 						onConditionRemove={() => console.log("remove")}
-					/>
+					>
+						<FiltrationConditionComponent />
+					</FiltrationGroupComponent>
 				}
 			/>
 			<FiltrationConditionComponent

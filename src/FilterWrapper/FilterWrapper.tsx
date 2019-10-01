@@ -17,7 +17,12 @@ export class FilterWrapper extends React.Component<Props> {
 			clearButtonCaption,
 			doesContainFilter,
 			onApply,
-			onClear
+			onClear,
+			selectedCount,
+			selectedText,
+			selectedCancelText,
+			selectionState,
+			onCancelSelection
 		} = this.props;
 
 		return (
@@ -48,6 +53,22 @@ export class FilterWrapper extends React.Component<Props> {
 								{clearButtonCaption}
 							</button>
 						</InfoWrapper>
+						<div
+							className={cn("kit-filter__count-block", {
+								[`kit-filter__count-block_${selectionState}`]:
+									selectionState && selectedCount > 0
+							})}
+						>
+							<span className="kit-filter__count-block-text">
+								{selectedText}: <b>{selectedCount}</b>
+							</span>
+							<button
+								className="kit-filter__clear-filter-btn"
+								onClick={onCancelSelection}
+							>
+								{selectedCancelText}
+							</button>
+						</div>
 					</div>
 				) : (
 					<InfoWrapper

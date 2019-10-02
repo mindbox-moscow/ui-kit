@@ -62,7 +62,10 @@ export class FilterWrapper extends React.Component<Props> {
 							>
 								<span className="kit-filter__count-block-text">
 									{selectedText}:{" "}
-									<b>{selectedCount ? selectedCount : 0}</b>
+									<b>
+										{selectedCount ? selectedCount : 0}{" "}
+										{selectionState === "all" && "(все)"}
+									</b>
 								</span>
 								<button
 									className="kit-filter__clear-filter-btn"

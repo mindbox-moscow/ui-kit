@@ -134,9 +134,15 @@
 .kit-filter__count-block {
 	align-self: stretch;
 	padding-left: 15px;
+	border: 4px solid transparent;
 
 	&_part {
 		background-color: rgb(229, 237, 212);
+	}
+
+	&_all {
+		background-color: rgb(242, 227, 191);
+		border-color: rgb(230, 180, 82);
 	}
 }
 

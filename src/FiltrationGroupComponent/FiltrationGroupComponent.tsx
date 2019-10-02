@@ -166,7 +166,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			or: orLabel
 		};
 
-		const renderInnder = this.renderInnerComponents();
+		const renderInner = this.renderInnerComponents();
 
 		return (
 			<ul
@@ -203,8 +203,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{renderInnder ? (
-					renderInnder
+				{renderInner ? (
+					renderInner
 				) : (
 					<FiltrationConditionComponent
 						filtrationObjectName=""

@@ -58,7 +58,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						"kit-filtration-condition__item-text_edit":
 							state === "edit",
 						"kit-filtration-condition__item-text_linked-condition-edit":
-							state === "linkedConditionEdit"
+							state === "linkedConditionEdit",
+						"kit-filtration-condition__item-text_shaded":
+							state === "shaded"
 					})}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />

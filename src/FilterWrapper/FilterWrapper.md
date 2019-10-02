@@ -271,6 +271,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -308,6 +313,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="edit"
@@ -412,6 +422,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="shaded"
@@ -516,6 +531,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -626,6 +646,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="shaded"
@@ -756,6 +781,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="edit"
@@ -833,6 +863,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="edit"
@@ -915,6 +950,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -989,6 +1029,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -1068,6 +1113,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -1160,6 +1210,11 @@
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить выбор"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
 			state="shaded"

@@ -33,21 +33,6 @@ $widthHorizontalBraket: 12px;
 	padding: 0;
 	box-sizing: border-box;
 
-	&::before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		display: block;
-		width: calc(100% + #{$groupHoverMarginLeft});
-		height: calc(100% + #{$groupHoverMarginTop});
-		min-height: 25px;
-		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-		background-color: $hoverColorBg;
-		border-radius: 3px 0 0 3px;
-		box-sizing: border-box;
-		cursor: pointer;
-	}
-
 	& {
 		:not(.kit-filtration-condition) > & {
 			> li {
@@ -76,7 +61,18 @@ $widthHorizontalBraket: 12px;
 
 		&::before {
 			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: calc(100% + #{$groupHoverMarginLeft});
+			height: calc(100% + #{$groupHoverMarginTop});
+			min-height: 25px;
+			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 			background-color: $editColorBg;
+			border-radius: 3px 0 0 3px;
+			box-sizing: border-box;
+			cursor: pointer;
 		}
 
 		.kit-filtration-group__buttons {
@@ -90,9 +86,7 @@ $widthHorizontalBraket: 12px;
 
 			.kit-filtration-group__label-text {
 				left: auto;
-				right: calc(
-					100% - #{$groupLabelPaddingLeft + $borderWidthLine}
-				);
+				right: calc(100% - 12px);
 				display: flex;
 				align-items: center;
 				min-width: 40px;
@@ -170,6 +164,7 @@ $widthHorizontalBraket: 12px;
 
 		> .kit-filtration-group__label_hover_or {
 			color: $orColorEdit;
+			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
@@ -187,6 +182,7 @@ $widthHorizontalBraket: 12px;
 
 		> .kit-filtration-group__label_hover_and {
 			color: $andColorEdit;
+			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
@@ -229,7 +225,7 @@ $widthHorizontalBraket: 12px;
 			top: 13px;
 			width: #{$widthHorizontalBraket + 1};
 			border-top: $borderWidthLine solid;
-			z-index: 1;
+			z-index: 2;
 		}
 
 		&::after {
@@ -265,7 +261,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label {
 	position: absolute;
 	top: 0;
-	left: -14px;
+	left: -10px;
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -283,7 +279,7 @@ $widthHorizontalBraket: 12px;
 	&::after {
 		content: "";
 		position: absolute;
-		left: 15px;
+		left: 11px;
 		display: block;
 		width: $widthHorizontalBraket;
 		border-top: 2px solid;
@@ -358,13 +354,14 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-line {
 	width: $borderWidthLine;
 	height: 100%;
+	margin-left: -4px;
 	background-color: $braketColor;
 	box-sizing: border-box;
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: 2px;
+	left: -2px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

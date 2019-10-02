@@ -78,6 +78,10 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__buttons {
 			margin-left: 22px;
 			outline: none;
+
+			&::before {
+				z-index: 1;
+			}
 		}
 
 		> .kit-filtration-group__label_or,
@@ -160,6 +164,7 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&_hover {
+		cursor: pointer;
 		@include opacityBlock();
 
 		> .kit-filtration-group__label_hover_or {
@@ -198,10 +203,10 @@ $widthHorizontalBraket: 12px;
 			}
 		}
 
-		cursor: pointer;
-
-		&::before {
-			content: "";
+		.kit-filtration-group__buttons {
+			&::before {
+				z-index: 2;
+			}
 		}
 	}
 
@@ -260,11 +265,11 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: -2px;
+	top: 0;
 	left: -10px;
 	display: flex;
 	align-items: center;
-	width: 100%;
+	width: calc(100% - 25px);
 	height: 1px;
 	padding: 15px $groupLabelPaddingLeft 10px;
 	color: $braketColor;
@@ -394,8 +399,8 @@ $widthHorizontalBraket: 12px;
 	position: relative;
 	display: flex;
 	margin-right: 20px;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	box-sizing: border-box;
 	outline: none;
 

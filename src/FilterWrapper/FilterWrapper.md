@@ -73,7 +73,7 @@
 			selectionState="part"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить выбор"
-			selectedCount={50}
+			selectedCountDescription="50 (случайно)"
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
@@ -127,7 +127,7 @@
 			selectionState="all"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить выбор"
-			selectedCount={100}
+			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
@@ -206,7 +206,7 @@
 			selectionState="concrete"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить выбор"
-			selectedCount={100}
+			selectedCountDescription="100"
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent

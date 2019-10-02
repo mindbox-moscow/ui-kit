@@ -9,7 +9,7 @@ export interface StateProps {
 	selectionState: SelectionStateType;
 	selectedText: string;
 	selectedCancelText: string;
-	selectedCount: number;
+	selectedCountDescription: string;
 }
 
 export interface CallbackProps {

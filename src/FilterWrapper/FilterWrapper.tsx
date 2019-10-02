@@ -65,6 +65,8 @@ export class FilterWrapper extends React.Component<Props> {
 									<b>
 										{selectedCount ? selectedCount : 0}{" "}
 										{selectionState === "all" && "(все)"}
+										{selectionState === "part" &&
+											"(случайно)"}
 									</b>
 								</span>
 								<button

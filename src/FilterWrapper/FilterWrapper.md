@@ -73,7 +73,7 @@
 			selectionState="part"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить выбор"
-			selectedCount={0}
+			selectedCount={50}
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
@@ -127,7 +127,7 @@
 			selectionState="all"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить выбор"
-			selectedCount={0}
+			selectedCount={100}
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
@@ -181,48 +181,37 @@
 			</FiltrationGroupComponent>
 		</FilterWrapper>
 	</div>
-	<br />
-	<br />
-	<h1>
-		Пример 4 - Закрыл редактирование группы, отображается пустая группа И в
-		группе ИЛИ
-	</h1>
-	<FilterWrapper
-		statisticsDescription="Всего клиентов"
-		statisticsValue={1021318}
-		doesContainFilter={true}
-		applyButtonCaption="Применить фильтр"
-		clearButtonCaption="Сбросить фильтр"
-		onApply={() => console.log("apply filter")}
-		onClear={() => console.log("clear filter")}
+	<div
+		style={{
+			position: "relative",
+			width: "1200px",
+			left: "50%",
+			transform: "translateX(-50%)"
+		}}
 	>
-		<FiltrationGroupComponent
-			state="view"
-			groupType="or"
-			andLabel="И"
-			orLabel="ИЛИ"
-			shouldShowLabel={true}
-			onGroupTypeToggle={() => console.log("type toggle")}
-			onConditionStateToggle={() => console.log("state toggle")}
-			onConditionRemove={() => console.log("remove")}
-			addSimpleConditionButton={
-				<FilterConditionEditorButton
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					label="Добавить фильтр"
-				/>
-			}
-			addGroupConditionButton={
-				<FilterConditionEditorButton
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					label="ИЛИ"
-				/>
-			}
+		<br />
+		<br />
+		<h1>
+			Пример 4 - Закрыл редактирование группы, отображается пустая группа
+			И в группе ИЛИ
+		</h1>
+		<FilterWrapper
+			statisticsDescription="Всего клиентов"
+			statisticsValue={1021318}
+			doesContainFilter={true}
+			applyButtonCaption="Применить фильтр"
+			clearButtonCaption="Сбросить фильтр"
+			onApply={() => console.log("apply filter")}
+			onClear={() => console.log("clear filter")}
+			selectionState="concrete"
+			selectedText="Выбрано"
+			selectedCancelText="Отменить выбор"
+			selectedCount={100}
+			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
 				state="view"
-				groupType="and"
+				groupType="or"
 				andLabel="И"
 				orLabel="ИЛИ"
 				shouldShowLabel={true}
@@ -243,9 +232,34 @@
 						label="ИЛИ"
 					/>
 				}
-			/>
-		</FiltrationGroupComponent>
-	</FilterWrapper>
+			>
+				<FiltrationGroupComponent
+					state="view"
+					groupType="and"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							label="Добавить фильтр"
+						/>
+					}
+					addGroupConditionButton={
+						<FilterConditionEditorButton
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							label="ИЛИ"
+						/>
+					}
+				/>
+			</FiltrationGroupComponent>
+		</FilterWrapper>
+	</div>
 	<br />
 	<br />
 	<h1>Пример 5 - Одна группа ИЛИ, пустая группа ИЛИ </h1>

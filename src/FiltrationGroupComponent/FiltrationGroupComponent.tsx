@@ -40,7 +40,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							childLabelRect.height;
 					}
 				} else {
-					height = parentElementRect.height - childElementRect.height;
+					height =
+						parentElementRect.height - childElementRect.height + 25;
 				}
 
 				if (height <= 5) {

@@ -28,7 +28,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
-	min-height: 30px;
+	min-height: 25px;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -264,12 +264,13 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 13px;
+	top: 0;
 	left: -14px;
 	display: flex;
 	align-items: center;
+	width: 100%;
 	height: 1px;
-	padding: 0 $groupLabelPaddingLeft;
+	padding: 15px $groupLabelPaddingLeft 10px;
 	color: $braketColor;
 	z-index: 2;
 	box-sizing: border-box;
@@ -290,11 +291,11 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&::before {
-		top: 0;
+		top: 15px;
 	}
 
 	&::after {
-		bottom: 0;
+		bottom: 10px;
 	}
 
 	&_and,

@@ -166,6 +166,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			or: orLabel
 		};
 
+		const renderInnder = this.renderInnerComponents();
+
 		return (
 			<ul
 				ref={this.kitFiltrationRef}
@@ -201,15 +203,15 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{this.renderInnerComponents() ? (
-					this.renderInnerComponents()
+				{renderInnder ? (
+					renderInnder
 				) : (
 					<FiltrationConditionComponent
 						filtrationObjectName=""
 						state="view"
-						editorComponent
-						helpComponent
-						starred
+						editorComponent={true}
+						helpComponent={true}
+						starred={true}
 						onConditionStateToggle={() => {}}
 						onConditionRemove={() => {}}
 						toggleStar={() => {}}

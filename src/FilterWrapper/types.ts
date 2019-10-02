@@ -1,4 +1,9 @@
-type SelectionStateType = "none" | "part" | "all" | "concrete";
+export enum SelectionStateType {
+	None = "none",
+	Part = "part",
+	All = "all",
+	Concrete = "concrete"
+}
 
 export interface StateProps {
 	statisticsValue: React.ReactNode;

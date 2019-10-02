@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { InfoWrapper } from "./components";
-import { StateProps, CallbackProps } from "./types";
+import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
 import "./FilterWrapper.scss";
 
@@ -53,7 +53,7 @@ export class FilterWrapper extends React.Component<Props> {
 								{clearButtonCaption}
 							</button>
 						</InfoWrapper>
-						{selectionState !== "none" && (
+						{selectionState !== SelectionStateType.None && (
 							<div
 								className={cn(
 									"kit-filter__count-block",

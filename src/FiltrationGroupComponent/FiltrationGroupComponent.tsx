@@ -49,7 +49,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							: childElementRect.height);
 				}
 
-				if (height < 25) {
+				if (height < 20) {
 					height = 0;
 				}
 

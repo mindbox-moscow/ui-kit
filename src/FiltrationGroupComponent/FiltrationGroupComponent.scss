@@ -76,7 +76,7 @@ $widthHorizontalBraket: 12px;
 		}
 
 		.kit-filtration-group__buttons {
-			margin-left: 20px;
+			margin-left: 22px;
 			outline: none;
 		}
 
@@ -219,18 +219,18 @@ $widthHorizontalBraket: 12px;
 			display: block;
 			color: $braketColor;
 			box-sizing: border-box;
+			z-index: 2;
 		}
 
 		&::before {
 			top: 13px;
 			width: #{$widthHorizontalBraket + 1};
 			border-top: $borderWidthLine solid;
-			z-index: 2;
 		}
 
 		&::after {
 			top: -4px;
-			height: 100%;
+			height: 18px;
 			border-left: $borderWidthLine solid;
 		}
 
@@ -260,7 +260,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 0;
+	top: -2px;
 	left: -10px;
 	display: flex;
 	align-items: center;
@@ -315,6 +315,12 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__label-line {
 			background-color: $andColor;
 		}
+
+		& ~ li:not(:first-of-type) {
+			&::after {
+				content: none;
+			}
+		}
 	}
 
 	&_or {
@@ -326,6 +332,12 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $orColor;
+		}
+
+		& ~ li:not(:first-of-type) {
+			&::after {
+				content: none;
+			}
 		}
 	}
 
@@ -403,6 +415,7 @@ $widthHorizontalBraket: 12px;
 		top: -4px;
 		height: 17px;
 		border-left: $borderWidthLine solid;
+		z-index: 2;
 	}
 }
 

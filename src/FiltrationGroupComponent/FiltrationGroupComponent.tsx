@@ -116,7 +116,24 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		}
 	};
 
-	public handleCountBrackets = () => {
+	public handleCreateVerticalBrackets = () => {
+		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
+			const ref = this.kitFiltrationRef.current;
+			const parentNode = ref.parentNode as HTMLElement;
+
+			if (parentNode.classList.contains("kit-filtration-condition")) {
+				const label = this.kitFiltrationLabelRef.current;
+				const verticalBracket = document.createElement("span");
+
+				verticalBracket.className =
+					"kit-filtration-group__label-vertical-bracket";
+
+				label && label.appendChild(verticalBracket);
+			}
+		}
+	};
+
+	public handleCreateHorizontalBrackets = () => {
 		let countChildElement = 0;
 		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
 			const ref = this.kitFiltrationRef.current;
@@ -124,7 +141,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			ref.childNodes.forEach((item, index) => {
 				const child = item as HTMLElement;
 				const classNames = [
-					// "kit-filtration-group",
 					"kit-filtration-group__label",
 					"kit-filtration-group__remove",
 					"kit-filtration-group__close"
@@ -143,18 +159,18 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							countChildElement === 1 &&
 							child.classList.contains("kit-filtration-group")
 						) {
-							this.handleCreateBraket(child);
+							this.handleHorizontalBracket(child);
 						}
 
 						if (
 							index === ref.childNodes.length - 1 &&
 							child.classList.contains("kit-filtration-group")
 						) {
-							this.handleCreateBraket(child, true);
+							this.handleHorizontalBracket(child, true);
 						}
 
 						if (!child.classList.contains("kit-filtration-group")) {
-							this.handleCreateBraket(child);
+							this.handleHorizontalBracket(child);
 						}
 					}
 				}
@@ -162,34 +178,36 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		}
 	};
 
-	public handleCreateBraket = (
+	public handleHorizontalBracket = (
 		child: HTMLElement,
 		lastChildGroup?: boolean
 	) => {
 		const label = this.kitFiltrationLabelRef.current;
-		const horizontalBraket = document.createElement("span");
+		const horizontalBracket = document.createElement("span");
 
-		horizontalBraket.className =
-			"kit-filtration-group__label-horizontal-braket";
-		horizontalBraket.style.top = `${child.offsetTop}px`;
+		horizontalBracket.className =
+			"kit-filtration-group__label-horizontal-bracket";
+		horizontalBracket.style.top = `${child.offsetTop - 2}px`;
 
 		if (lastChildGroup) {
 			const childLabel: HTMLElement | null = child.querySelector(
 				".kit-filtration-group__label"
 			);
 			if (childLabel) {
-				horizontalBraket.style.top = `${child.offsetTop +
+				horizontalBracket.style.top = `${child.offsetTop +
 					childLabel.clientHeight -
-					25}px`;
+					25 -
+					2}px`;
 			}
 		}
 
-		label && label.appendChild(horizontalBraket);
+		label && label.appendChild(horizontalBracket);
 	};
 
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
-		this.handleCountBrackets();
+		this.handleCreateVerticalBrackets();
+		this.handleCreateHorizontalBrackets();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -219,7 +237,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 
 	public componentDidUpdate() {
 		this.moveLabelAtCenterOfBracket();
-		this.handleCountBrackets();
+		this.handleCreateHorizontalBrackets();
+		this.handleCreateVerticalBrackets();
 	}
 
 	public render() {

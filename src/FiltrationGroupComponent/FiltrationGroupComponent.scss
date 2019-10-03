@@ -178,7 +178,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: -2px;
+	top: 0;
 	left: -10px;
 	display: flex;
 	align-items: center;
@@ -188,10 +188,6 @@ $widthHorizontalBraket: 12px;
 	color: $braketColor;
 	z-index: 2;
 	box-sizing: border-box;
-
-	&:hover {
-		z-index: 2;
-	}
 
 	&_and {
 		color: $andColor;
@@ -224,17 +220,27 @@ $widthHorizontalBraket: 12px;
 	width: $borderWidthLine;
 	height: 100%;
 	margin-left: -4px;
+	margin-top: -4px;
 	background-color: $braketColor;
 	box-sizing: border-box;
 }
 
-.kit-filtration-group__label-horizontal-braket {
+.kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
 	margin-top: 14px;
 	left: 11px;
 	display: inline-block;
 	width: 13px;
 	border-top: 2px solid;
+	color: currentColor;
+}
+
+.kit-filtration-group__label-vertical-bracket {
+	position: absolute;
+	top: -2px;
+	left: 11px;
+	height: 16px;
+	border-left: 2px solid;
 	color: currentColor;
 }
 
@@ -246,7 +252,7 @@ $widthHorizontalBraket: 12px;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
-	margin-top: -1px;
+	margin-top: -3px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;

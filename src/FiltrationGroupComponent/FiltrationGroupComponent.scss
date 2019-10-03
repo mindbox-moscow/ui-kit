@@ -78,10 +78,6 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__buttons {
 			margin-left: 22px;
 			outline: none;
-
-			&::before {
-				z-index: 1;
-			}
 		}
 
 		> .kit-filtration-group__label_or,
@@ -110,19 +106,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
-
-			& ~ li {
-				&::before,
-				&::after {
-					color: $orColorEdit;
-				}
-			}
-
-			& ~ .kit-filtration-group__buttons {
-				&::before {
-					color: $orColorEdit;
-				}
-			}
 		}
 
 		> .kit-filtration-group__label_and {
@@ -131,19 +114,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
-			}
-
-			& ~ li {
-				&::before,
-				&::after {
-					color: $andColorEdit;
-				}
-			}
-
-			& ~ .kit-filtration-group__buttons {
-				&::before {
-					color: $andColorEdit;
-				}
 			}
 		}
 	}
@@ -161,18 +131,6 @@ $widthHorizontalBraket: 12px;
 				right: calc(100% - 30px);
 			}
 		}
-
-		&#{$self}_shaded {
-			.kit-filtration-group__buttons {
-				position: relative;
-				outline: none;
-
-				&::before {
-					content: "";
-					left: -19px;
-				}
-			}
-		}
 	}
 
 	&_hover {
@@ -187,14 +145,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
-
-			& ~ li,
-			& ~ .kit-filtration-group__buttons {
-				&::before,
-				&::after {
-					color: $orColorEdit;
-				}
-			}
 		}
 
 		> .kit-filtration-group__label_hover_and {
@@ -205,20 +155,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
 			}
-
-			& ~ li,
-			& ~ .kit-filtration-group__buttons {
-				&::before,
-				&::after {
-					color: $andColorEdit;
-				}
-			}
-		}
-
-		.kit-filtration-group__buttons {
-			&::before {
-				z-index: 2;
-			}
 		}
 	}
 
@@ -228,43 +164,8 @@ $widthHorizontalBraket: 12px;
 		padding-left: 20px;
 		box-sizing: border-box;
 
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			left: 1px;
-			display: block;
-			color: $braketColor;
-			box-sizing: border-box;
-			z-index: 2;
-		}
-
-		&::before {
-			top: 13px;
-			width: #{$widthHorizontalBraket + 1};
-			border-top: $borderWidthLine solid;
-		}
-
-		&::after {
-			top: -4px;
-			height: 18px;
-			border-left: $borderWidthLine solid;
-		}
-
-		&:last-child {
-			&::after {
-				height: 17px;
-			}
-		}
-
 		.kit-filtration-group__buttons {
 			margin-left: 20px;
-			outline: none;
-
-			&::before {
-				content: "";
-				left: -19px;
-			}
 		}
 	}
 
@@ -277,7 +178,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 0;
+	top: -2px;
 	left: -10px;
 	display: flex;
 	align-items: center;
@@ -292,76 +193,21 @@ $widthHorizontalBraket: 12px;
 		z-index: 2;
 	}
 
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		left: 11px;
-		display: block;
-		width: $widthHorizontalBraket;
-		border-top: 2px solid;
-		box-sizing: border-box;
-	}
-
-	&::before {
-		top: 13px;
-	}
-
-	&::after {
-		bottom: 10px;
-	}
-
-	&_and,
-	&_or {
-		& ~ li {
-			li {
-				&::after {
-					content: "";
-				}
-			}
-		}
-	}
-
 	&_and {
 		color: $andColor;
-		& ~ .kit-filtration-condition::before {
-			color: $andColor;
-		}
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $andColor;
 		}
-
-		& ~ li:not(:first-of-type) {
-			&::after {
-				content: none;
-			}
-		}
 	}
 
 	&_or {
 		color: $orColor;
-		& ~ .kit-filtration-condition::before {
-			color: $orColor;
-		}
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $orColor;
-		}
-
-		& ~ li:not(:first-of-type) {
-			&::after {
-				content: none;
-			}
-		}
-	}
-
-	& ~ li:first-of-type,
-	& ~ li:last-child {
-		&::before {
-			content: none;
 		}
 	}
 
@@ -382,6 +228,16 @@ $widthHorizontalBraket: 12px;
 	box-sizing: border-box;
 }
 
+.kit-filtration-group__label-horizontal-braket {
+	position: absolute;
+	margin-top: 14px;
+	left: 11px;
+	display: inline-block;
+	width: 13px;
+	border-top: 2px solid;
+	color: currentColor;
+}
+
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: -2px;
@@ -390,7 +246,7 @@ $widthHorizontalBraket: 12px;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
-	margin-top: -2px;
+	margin-top: -1px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
@@ -417,17 +273,6 @@ $widthHorizontalBraket: 12px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
-	}
-
-	&::before {
-		position: absolute;
-		display: block;
-		color: $braketColor;
-		box-sizing: border-box;
-		top: -4px;
-		height: 17px;
-		border-left: $borderWidthLine solid;
-		z-index: 2;
 	}
 }
 

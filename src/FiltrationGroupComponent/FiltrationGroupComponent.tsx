@@ -117,8 +117,44 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		}
 	};
 
+	public handleCountBrackets = () => {
+		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
+			const ref = this.kitFiltrationRef.current;
+
+			ref.childNodes.forEach((item, index) => {
+				const child = item as HTMLElement;
+				const classNames = [
+					"kit-filtration-group",
+					"kit-filtration-group__label",
+					"kit-filtration-group__remove",
+					"kit-filtration-group__close"
+				];
+				if (
+					!classNames.some(className =>
+						child.classList.contains(className)
+					)
+				) {
+					if (
+						this.kitFiltrationLabelRef &&
+						this.kitFiltrationLabelRef.current
+					) {
+						const label = this.kitFiltrationLabelRef.current;
+						const horizontalBraket = document.createElement("span");
+
+						horizontalBraket.className =
+							"kit-filtration-group__label-horizontal-braket";
+						horizontalBraket.style.top = `${child.offsetTop}px`;
+
+						label.appendChild(horizontalBraket);
+					}
+				}
+			});
+		}
+	};
+
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
+		this.handleCountBrackets();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -148,6 +184,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 
 	public componentDidUpdate() {
 		this.moveLabelAtCenterOfBracket();
+		this.handleCountBrackets();
 	}
 
 	public render() {

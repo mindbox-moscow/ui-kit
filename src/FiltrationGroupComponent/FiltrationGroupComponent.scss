@@ -117,6 +117,12 @@ $widthHorizontalBraket: 12px;
 					color: $orColorEdit;
 				}
 			}
+
+			& ~ .kit-filtration-group__buttons {
+				&::before {
+					color: $orColorEdit;
+				}
+			}
 		}
 
 		> .kit-filtration-group__label_and {
@@ -130,6 +136,12 @@ $widthHorizontalBraket: 12px;
 			& ~ li {
 				&::before,
 				&::after {
+					color: $andColorEdit;
+				}
+			}
+
+			& ~ .kit-filtration-group__buttons {
+				&::before {
 					color: $andColorEdit;
 				}
 			}
@@ -378,6 +390,7 @@ $widthHorizontalBraket: 12px;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
+	margin-top: -2px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;

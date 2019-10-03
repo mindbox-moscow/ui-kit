@@ -118,13 +118,14 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	};
 
 	public handleCountBrackets = () => {
+		let countChildElement = 0;
 		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
 			const ref = this.kitFiltrationRef.current;
 
 			ref.childNodes.forEach((item, index) => {
 				const child = item as HTMLElement;
 				const classNames = [
-					"kit-filtration-group",
+					// "kit-filtration-group",
 					"kit-filtration-group__label",
 					"kit-filtration-group__remove",
 					"kit-filtration-group__close"
@@ -138,18 +139,53 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						this.kitFiltrationLabelRef &&
 						this.kitFiltrationLabelRef.current
 					) {
-						const label = this.kitFiltrationLabelRef.current;
-						const horizontalBraket = document.createElement("span");
+						countChildElement++;
+						if (
+							countChildElement === 1 &&
+							child.classList.contains("kit-filtration-group")
+						) {
+							this.handleCreateBraket(child);
+						}
 
-						horizontalBraket.className =
-							"kit-filtration-group__label-horizontal-braket";
-						horizontalBraket.style.top = `${child.offsetTop}px`;
+						if (
+							index === ref.childNodes.length - 1 &&
+							child.classList.contains("kit-filtration-group")
+						) {
+							this.handleCreateBraket(child, true);
+						}
 
-						label.appendChild(horizontalBraket);
+						if (!child.classList.contains("kit-filtration-group")) {
+							this.handleCreateBraket(child);
+						}
 					}
 				}
 			});
 		}
+	};
+
+	public handleCreateBraket = (
+		child: HTMLElement,
+		lastChildGroup?: boolean
+	) => {
+		const label = this.kitFiltrationLabelRef.current;
+		const horizontalBraket = document.createElement("span");
+
+		horizontalBraket.className =
+			"kit-filtration-group__label-horizontal-braket";
+		horizontalBraket.style.top = `${child.offsetTop}px`;
+
+		if (lastChildGroup) {
+			const childLabel: HTMLElement | null = child.querySelector(
+				".kit-filtration-group__label"
+			);
+			if (childLabel) {
+				horizontalBraket.style.top = `${child.offsetTop +
+					childLabel.clientHeight -
+					25}px`;
+			}
+		}
+
+		label && label.appendChild(horizontalBraket);
 	};
 
 	public componentDidMount() {

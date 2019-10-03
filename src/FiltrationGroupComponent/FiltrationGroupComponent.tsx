@@ -2,6 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
+import { FiltrationConditionComponent } from "../FiltrationConditionComponent";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
@@ -41,12 +42,15 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					}
 				} else {
 					height =
-						parentElementRect.height - childElementRect.height + 25;
+						parentElementRect.height -
+						(childElementRect.height === 1
+							? 24
+							: childElementRect.height) +
+						25;
 				}
 
-				if (height <= 5) {
+				if (height < 20) {
 					height = 0;
-					label.classList.add("kit-filtration-group__label_none");
 				}
 
 				label.style.height = `${height}px`;
@@ -162,6 +166,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			or: orLabel
 		};
 
+		const renderInner = this.renderInnerComponents();
+
 		return (
 			<ul
 				ref={this.kitFiltrationRef}
@@ -197,7 +203,20 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{this.renderInnerComponents()}
+				{renderInner ? (
+					renderInner
+				) : (
+					<FiltrationConditionComponent
+						filtrationObjectName=""
+						state="view"
+						editorComponent={true}
+						helpComponent={true}
+						starred={true}
+						onConditionStateToggle={() => {}}
+						onConditionRemove={() => {}}
+						toggleStar={() => {}}
+					/>
+				)}
 			</ul>
 		);
 	}

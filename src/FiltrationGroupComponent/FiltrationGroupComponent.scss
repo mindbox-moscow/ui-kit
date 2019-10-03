@@ -346,12 +346,6 @@ $widthHorizontalBraket: 12px;
 		}
 	}
 
-	&_none {
-		&::after {
-			content: none;
-		}
-	}
-
 	& ~ li:first-of-type,
 	& ~ li:last-child {
 		&::before {

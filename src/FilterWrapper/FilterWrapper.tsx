@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { InfoWrapper } from "./components";
-import { StateProps, CallbackProps } from "./types";
+import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
 import "./FilterWrapper.scss";
 
@@ -17,7 +17,12 @@ export class FilterWrapper extends React.Component<Props> {
 			clearButtonCaption,
 			doesContainFilter,
 			onApply,
-			onClear
+			onClear,
+			selectedCountDescription,
+			selectedText,
+			selectedCancelText,
+			selectionState,
+			onCancelSelection
 		} = this.props;
 
 		return (
@@ -37,6 +42,25 @@ export class FilterWrapper extends React.Component<Props> {
 								{applyButtonCaption}
 							</button>
 						</div>
+						{selectionState !== SelectionStateType.None && (
+							<div
+								className={cn(
+									"kit-filter__count-block",
+									`kit-filter__count-block_${selectionState}`
+								)}
+							>
+								<span className="kit-filter__count-block-text">
+									{selectedText}:{" "}
+									<b>{selectedCountDescription}</b>
+								</span>
+								<button
+									className="kit-filter__clear-filter-btn"
+									onClick={onCancelSelection}
+								>
+									{selectedCancelText}
+								</button>
+							</div>
+						)}
 						<InfoWrapper
 							statisticsValue={statisticsValue}
 							statisticsDescription={statisticsDescription}

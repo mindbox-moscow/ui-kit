@@ -1662,7 +1662,537 @@
 	</FilterWrapper>
 	<br />
 	<br />
-	<h1>Пример 16</h1>
+	<h1>Пример 16 - Валидация</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="shaded"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Дата и время"
+				filtrationMethodName="заполнена и"
+				state="edit"
+				onConditionStateToggle={() => console.log("change state")}
+				starred={true}
+				toggleStar={() => console.log("toogle details")}
+				editorComponent={
+					<FilterConditionEditorComponent
+						innerEditorComponent={
+							<GridContainer>
+								<GridRow>
+									<GridColumn col="6">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+								</GridRow>
+								<GridRow alignItems="bottom">
+									<GridColumn>
+										<Wrapper>от</Wrapper>
+										<DateField
+											error={true}
+											defaultDate={new Date(2018, 11, 10)}
+											noShadow={false}
+										/>
+									</GridColumn>
+									<GridColumn>
+										<TimeField
+											error={true}
+											hours={12}
+											minutes={23}
+											noShadow={false}
+										/>
+									</GridColumn>
+									<GridColumn>
+										<Wrapper>до</Wrapper>
+										<DateField
+											defaultDate={new Date(2018, 11, 10)}
+											noShadow={false}
+										/>
+									</GridColumn>
+									<GridColumn>
+										<TimeField
+											error={true}
+											hours={12}
+											minutes={23}
+											noShadow={false}
+										/>
+									</GridColumn>
+									<GridColumn>
+										<Tooltip
+											title={
+												<IconSvg
+													type="warning"
+													size="large"
+												/>
+											}
+											position="top"
+											textDecoration={false}
+										>
+											Левая граница интервала должна быть
+											меньше правой
+										</Tooltip>
+									</GridColumn>
+								</GridRow>
+							</GridContainer>
+						}
+						viewMode="edit"
+						addFilterButtonCaption="Применить изменения"
+						cancelFilterButtonCaption="Отменить"
+						isAddFilterButtonEnabled={true}
+						onAddFilterButtonClick={() =>
+							console.log("Apply filter")
+						}
+						onCancelFilterButtonClick={() =>
+							console.log("Cancel filter")
+						}
+					/>
+				}
+				helpComponent={
+					<div>
+						Разнообразный и богатый опыт новая модель
+						организационной деятельности играет важную роль в
+						формировании существенных финансовых и административных
+						условий. Задача организации, в особенности же укрепление
+						и развитие структуры представляет собой интересный
+						эксперимент проверки направлений прогрессивного
+						развития. Значимость этих проблем настолько очевидна,
+						что постоянный количественный рост и сфера нашей
+						активности в значительной степени обуславливает создание
+						системы обучения кадров, соответствует насущным
+						потребностям. Идейные соображения высшего порядка, а
+						также новая модель организационной деятельности
+						позволяет выполнять важные задания по разработке модели
+						развития. Разнообразный и богатый опыт новая модель
+						организационной деятельности влечет за собой процесс
+						внедрения и модернизации соответствующий условий
+						активизации. Задача организации, в особенности же
+						сложившаяся структура организации позволяет выполнять
+						важные задания по разработке направлений прогрессивного
+						развития.
+					</div>
+				}
+				filtrationMethodParametersComponent={
+					<Wrapper tag="span">
+						<InvalidHighLight>
+							от 02.01.2019 до 01.01.2019
+						</InvalidHighLight>
+						<Tooltip
+							title={<IconSvg type="warning" />}
+							position="top"
+							textDecoration={false}
+						>
+							Левая граница интервала должна быть меньше правой
+						</Tooltip>
+					</Wrapper>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<h1>Пример 17 - без валидации</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="shaded"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Дата и время"
+				filtrationMethodName="заполнена и"
+				state="edit"
+				onConditionStateToggle={() => console.log("change state")}
+				starred={true}
+				toggleStar={() => console.log("toogle details")}
+				editorComponent={
+					<FilterConditionEditorComponent
+						innerEditorComponent={
+							<GridContainer>
+								<GridRow>
+									<GridColumn col="5">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+									<GridColumn col="7">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+									<GridColumn col="12">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+								</GridRow>
+							</GridContainer>
+						}
+						viewMode="edit"
+						addFilterButtonCaption="Применить изменения"
+						cancelFilterButtonCaption="Отменить"
+						isAddFilterButtonEnabled={true}
+						onAddFilterButtonClick={() =>
+							console.log("Apply filter")
+						}
+						onCancelFilterButtonClick={() =>
+							console.log("Cancel filter")
+						}
+					/>
+				}
+				helpComponent={
+					<div>
+						Разнообразный и богатый опыт новая модель
+						организационной деятельности играет важную роль в
+						формировании существенных финансовых и административных
+						условий. Задача организации, в особенности же укрепление
+						и развитие структуры представляет собой интересный
+						эксперимент проверки направлений прогрессивного
+						развития. Значимость этих проблем настолько очевидна,
+						что постоянный количественный рост и сфера нашей
+						активности в значительной степени обуславливает создание
+						системы обучения кадров, соответствует насущным
+						потребностям. Идейные соображения высшего порядка, а
+						также новая модель организационной деятельности
+						позволяет выполнять важные задания по разработке модели
+						развития. Разнообразный и богатый опыт новая модель
+						организационной деятельности влечет за собой процесс
+						внедрения и модернизации соответствующий условий
+						активизации. Задача организации, в особенности же
+						сложившаяся структура организации позволяет выполнять
+						важные задания по разработке направлений прогрессивного
+						развития.
+					</div>
+				}
+				filtrationMethodParametersComponent={
+					<Wrapper tag="span">
+						от 02.01.2019 до 01.01.2019
+						<Tooltip
+							title={<IconSvg type="warning" />}
+							position="top"
+							textDecoration={false}
+						>
+							Левая граница интервала должна быть меньше правой
+						</Tooltip>
+					</Wrapper>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<h1>Пример 18 - валидация, режим просмотра</h1>
+	<FilterWrapper
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="Добавить фильтр"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					label="ИЛИ"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filtrationObjectName="Дата и время"
+				filtrationMethodName="заполнена и"
+				state="view"
+				onConditionStateToggle={() => console.log("change state")}
+				starred={true}
+				toggleStar={() => console.log("toogle details")}
+				editorComponent={
+					<FilterConditionEditorComponent
+						innerEditorComponent={
+							<GridContainer>
+								<GridRow>
+									<GridColumn col="5">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+									<GridColumn col="7">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+									<GridColumn col="12">
+										<Select
+											hasDescriptions={true}
+											placeholder="Выберите событие"
+											items={[
+												{
+													title:
+														"Максимальная выгода",
+													description:
+														"Для нас маркетинговая CRM-система — это центральная база данных по всему клиентскому опыту и соприкосновению бренда с клиентами. Мы накапливаем опыт взаимодействия с каждой покупательницей, чтобы лучше понимать ее потребности."
+												},
+												{
+													title:
+														"Последовательное применение",
+													description:
+														"История работы с Mindbox началась летом 2016 г. Начали с интеграции, затем запустили транзакционные и рекламно-информационные Email и SMS рассылки, зимой добавили модуль программы лояльности, а весной подключили модуль промо-акций."
+												}
+											]}
+										/>
+									</GridColumn>
+								</GridRow>
+							</GridContainer>
+						}
+						viewMode="edit"
+						addFilterButtonCaption="Применить изменения"
+						cancelFilterButtonCaption="Отменить"
+						isAddFilterButtonEnabled={true}
+						onAddFilterButtonClick={() =>
+							console.log("Apply filter")
+						}
+						onCancelFilterButtonClick={() =>
+							console.log("Cancel filter")
+						}
+					/>
+				}
+				helpComponent={
+					<div>
+						Разнообразный и богатый опыт новая модель
+						организационной деятельности играет важную роль в
+						формировании существенных финансовых и административных
+						условий. Задача организации, в особенности же укрепление
+						и развитие структуры представляет собой интересный
+						эксперимент проверки направлений прогрессивного
+						развития. Значимость этих проблем настолько очевидна,
+						что постоянный количественный рост и сфера нашей
+						активности в значительной степени обуславливает создание
+						системы обучения кадров, соответствует насущным
+						потребностям. Идейные соображения высшего порядка, а
+						также новая модель организационной деятельности
+						позволяет выполнять важные задания по разработке модели
+						развития. Разнообразный и богатый опыт новая модель
+						организационной деятельности влечет за собой процесс
+						внедрения и модернизации соответствующий условий
+						активизации. Задача организации, в особенности же
+						сложившаяся структура организации позволяет выполнять
+						важные задания по разработке направлений прогрессивного
+						развития.
+					</div>
+				}
+				filtrationMethodParametersComponent={
+					<Wrapper tag="span">
+						<InvalidHighLight>
+							от 02.01.2019 до 01.01.2019
+						</InvalidHighLight>
+						<Tooltip
+							title={<IconSvg type="warning" />}
+							position="top"
+							textDecoration={false}
+						>
+							Левая граница интервала должна быть меньше правой
+						</Tooltip>
+					</Wrapper>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
+	<h1>Пример 20</h1>
 	<FilterWrapper
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}

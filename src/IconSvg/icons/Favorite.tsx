@@ -2,11 +2,11 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const Favorite = ({ className }: ISvgProps) => (
+export const Favorite = ({ className, size }: ISvgProps) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
-		width="38"
-		height="39"
+		width={size === "large" ? 38 * 1.5 : 38}
+		height={size === "large" ? 39 * 1.5 : 39}
 		viewBox="0 0 38 39"
 		className={className}
 	>

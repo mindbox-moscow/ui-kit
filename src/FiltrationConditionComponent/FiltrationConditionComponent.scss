@@ -54,7 +54,7 @@ $groupHoverMarginLeft: 10px;
 		cursor: pointer;
 	}
 
-	span,
+	.kit-filtration-condition__content > span,
 	b {
 		position: relative;
 		margin-right: 5px;
@@ -120,7 +120,7 @@ $groupHoverMarginLeft: 10px;
 	display: none;
 	align-items: center;
 	justify-content: center;
-	width: 3px;
+	width: 5px;
 	height: 100%;
 	background-color: $hoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;

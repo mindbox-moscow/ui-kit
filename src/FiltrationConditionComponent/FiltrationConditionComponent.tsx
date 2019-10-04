@@ -64,7 +64,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					})}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
-					<div onClick={onConditionStateToggle}>
+					<div
+						className="kit-filtration-condition__content"
+						onClick={onConditionStateToggle}
+					>
 						<b ref={this.refComponent}>{filtrationObjectName}</b>
 						{filtrationMethodName && (
 							<span>{filtrationMethodName}</span>

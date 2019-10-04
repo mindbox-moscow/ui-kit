@@ -3,7 +3,6 @@
 	width: 602px;
 	border: 1px solid #c8d8e2;
 	font-family: "PT Sans", sans-serif;
-	overflow: auto;
 	color: #000;
 	box-sizing: border-box;
 	cursor: default;
@@ -16,9 +15,6 @@
 	&_menu {
 		.kit-filter-details__helper_extended {
 			max-height: 423px;
-		}
-
-		.kit-filter-details__show-btn_extended {
 		}
 	}
 }
@@ -38,8 +34,7 @@
 }
 
 .kit-filter-details__editor-wrapper {
-	padding: 24px;
-	padding-top: 25px;
+	padding: 15px 25px;
 	background-color: #fff;
 	border-bottom: 1px solid #eee;
 	border-top-right-radius: 2px;

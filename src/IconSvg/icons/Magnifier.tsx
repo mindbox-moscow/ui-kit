@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const Magnifier = ({ className }: ISvgProps) => (
+export const Magnifier = ({ className, size }: ISvgProps) => (
 	<svg
-		width={17}
-		height={17}
+		width={size === "large" ? 17 * 1.5 : 17}
+		height={size === "large" ? 17 * 1.5 : 17}
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"
 	>

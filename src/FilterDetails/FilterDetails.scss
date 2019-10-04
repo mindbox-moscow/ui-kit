@@ -24,10 +24,11 @@
 }
 
 .kit-filter-details__title {
+	display: flex;
+	align-items: center;
+	height: 46px;
 	margin: 0;
-	padding-top: 32px;
 	padding-left: 26px;
-	padding-bottom: 14px;
 	font-size: 21px;
 	line-height: 23px;
 	font-weight: 400;
@@ -106,9 +107,9 @@
 	}
 }
 
-.kit-filter-details__favorites {
+.kit-filter-details__close {
 	position: absolute;
-	top: 11px;
+	top: 0px;
 	right: 9px;
 	display: flex;
 	justify-content: center;
@@ -116,12 +117,8 @@
 	padding: 0;
 	background: none;
 	border: none;
-	color: #fff;
+	color: #707070;
 	transition: color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
-
-	&_active {
-		color: #c5d6e1;
-	}
 }

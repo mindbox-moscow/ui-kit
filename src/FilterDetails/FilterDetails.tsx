@@ -46,8 +46,7 @@ export class FilterDetails extends React.Component<Props> {
 			helpComponent,
 			helpCaption,
 			viewMode,
-			starred,
-			toggleStar
+			onClose: toggleStar
 		} = this.props;
 
 		const { helpIsExpanded, isExpanded } = this.state;
@@ -61,12 +60,10 @@ export class FilterDetails extends React.Component<Props> {
 			>
 				<button
 					onClick={toggleStar}
-					className={cn("kit-filter-details__favorites", {
-						"kit-filter-details__favorites_active": starred
-					})}
+					className="kit-filter-details__close"
 					type="button"
 				>
-					<IconSvg type="favorite" />
+					<IconSvg type="close" />
 				</button>
 				<h2 className="kit-filter-details__title">{helpCaption}</h2>
 				{editorComponent && (

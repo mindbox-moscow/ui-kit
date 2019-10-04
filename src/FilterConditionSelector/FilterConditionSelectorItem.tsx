@@ -39,28 +39,33 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 				className={cn("kit-filter-condition-selector__hierarchy-item", {
 					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
 					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
+					"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren,
 					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFiltrationObject
 				})}
 			>
-				{!isSimpleFiltrationObject && (
+				<div
+					className={cn(
+						"kit-filter-condition-selector__hierarchy-button",
+						{
+							"kit-filter-condition-selector__hierarchy-button_selected": isSelected
+						}
+					)}
+				>
+					{!isSimpleFiltrationObject && (
+						<button
+							type="button"
+							className="kit-filter-condition-selector__hierarchy-toggle"
+							onClick={this.onExpand}
+						/>
+					)}
 					<button
 						type="button"
-						className="kit-filter-condition-selector__hierarchy-toggle"
-						onClick={this.onExpand}
-					/>
-				)}
-				<button
-					type="button"
-					className="kit-filter-condition-selector__hierarchy-name"
-					onClick={this.onSelect}
-				>
-					<span
-						className={cn("kit-filter-condition-selector__filter-span", {
-							"kit-filter-condition-selector__filter-span_selected": isSelected
-						})}>
+						className="kit-filter-condition-selector__hierarchy-name"
+						onClick={this.onSelect}
+					>
 						{name}
-					</span>
-				</button>
+					</button>
+				</div>
 
 				{isExpanded && hasChildren && (
 					<ul className="kit-filter-condition-selector__hierarchy-children">
@@ -78,5 +83,5 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 	private onSelect = () => {
 		this.props.onSelect(this.props.id);
 		this.onExpand();
-	}
+	};
 }

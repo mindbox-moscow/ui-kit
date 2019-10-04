@@ -23,7 +23,6 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
-			starred,
 			toggleStar
 		} = this.props;
 
@@ -40,8 +39,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						helpCaption={filtrationObjectName}
 						helpComponent={helpComponent}
 						editorComponent={editorComponent}
-						starred={starred}
-						toggleStar={toggleStar}
+						onClose={toggleStar}
 						viewMode="edit"
 					/>
 				</FilterConditionPopup>

@@ -28,6 +28,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
+	min-height: 30px;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -289,11 +290,11 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&::before {
-		top: 0;
+		top: -1px;
 	}
 
 	&::after {
-		bottom: 0;
+		bottom: -1px;
 	}
 
 	&_and,
@@ -328,12 +329,6 @@ $widthHorizontalBraket: 12px;
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $orColor;
-		}
-	}
-
-	&_none {
-		&::after {
-			content: none;
 		}
 	}
 

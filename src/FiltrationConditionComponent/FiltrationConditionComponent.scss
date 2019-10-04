@@ -106,6 +106,10 @@ $groupHoverMarginLeft: 10px;
 			}
 		}
 	}
+
+	&_shaded {
+		opacity: 0.3;
+	}
 }
 
 .kit-filtration-condition__drag-and-drop {

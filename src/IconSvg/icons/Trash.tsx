@@ -2,12 +2,12 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const Trash = ({ className }: ISvgProps) => (
+export const Trash = ({ className, size }: ISvgProps) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		className={className}
-		width={14}
-		height={16}
+		width={size === "large" ? 14 * 1.5 : 14}
+		height={size === "large" ? 16 * 1.5 : 16}
 	>
 		<path
 			fill="currentColor"

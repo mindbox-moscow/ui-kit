@@ -8,10 +8,13 @@ import { PercentRound } from "./PercentRound";
 import { Trash } from "./Trash";
 import { Extended } from "./Extended";
 import { Favorite } from "./Favorite";
+import { Warning } from "./Warning";
 
-interface ISvgProps {
+import { IconsProps } from "../types";
+
+type ISvgProps = {
 	className: string;
-}
+} & Partial<IconsProps>;
 
 type IconType =
 	| "catalog-tree"
@@ -23,7 +26,8 @@ type IconType =
 	| "magnifier"
 	| "trash"
 	| "extended"
-	| "favorite";
+	| "favorite"
+	| "warning";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -37,7 +41,8 @@ const icons: Icons = {
 	trash: Trash,
 	"percent-round": PercentRound,
 	extended: Extended,
-	favorite: Favorite
+	favorite: Favorite,
+	warning: Warning
 };
 
 export { icons, IconType, ISvgProps };

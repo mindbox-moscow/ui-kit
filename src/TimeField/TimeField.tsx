@@ -28,6 +28,7 @@ interface Props {
 	disabled?: boolean;
 	onChange?: (hours: number, minutes: number) => void;
 	noShadow?: boolean;
+	error?: boolean;
 }
 
 export class TimeField extends React.Component<Props> {
@@ -324,7 +325,7 @@ export class TimeField extends React.Component<Props> {
 
 	public render() {
 		const { hours, minutes, isOpen } = this.state;
-		const { disabled, noShadow } = this.props;
+		const { disabled, noShadow, error } = this.props;
 		return (
 			<div
 				className="kit-time-field__outer"
@@ -340,7 +341,8 @@ export class TimeField extends React.Component<Props> {
 					<div
 						className={cn("kit-time-field", {
 							"kit-time-field_disabled": disabled,
-							"kit-time-field_no-shadow": noShadow
+							"kit-time-field_no-shadow": noShadow,
+							"kit-time-field_error": error
 						})}
 						onWheel={this.handleWheel}
 						onMouseEnter={this.handleMouseEnter}

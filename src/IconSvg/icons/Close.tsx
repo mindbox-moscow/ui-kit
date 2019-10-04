@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const Close = ({ className }: ISvgProps) => (
+export const Close = ({ className, size }: ISvgProps) => (
 	<svg
-		height={12}
-		width={12}
+		width={size === "large" ? 12 * 1.5 : 12}
+		height={size === "large" ? 12 * 1.5 : 12}
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"
 	>

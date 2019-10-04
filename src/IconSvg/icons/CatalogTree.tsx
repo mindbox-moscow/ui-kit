@@ -2,10 +2,10 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const CatalogTree = ({ className }: ISvgProps) => (
+export const CatalogTree = ({ className, size }: ISvgProps) => (
 	<svg
-		height={16}
-		width={11}
+		width={size === "large" ? 11 * 1.5 : 11}
+		height={size === "large" ? 16 * 1.5 : 16}
 		fill="#323232"
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"

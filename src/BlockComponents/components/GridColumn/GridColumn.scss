@@ -1,0 +1,20 @@
+@mixin width() {
+	@for $i from 1 through 12 {
+		&_#{$i} {
+			flex: 0 0 percentage($i / 12);
+		}
+	}
+}
+
+.grid__column {
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 8px;
+	box-sizing: border-box;
+
+	&_auto {
+		flex: 0 0 auto;
+	}
+
+	@include width();
+}

@@ -29,21 +29,21 @@ export const FilterConditionEditorComponent = (props: Props) => {
 			{innerEditorComponent}
 			<div className="kit-filter-editor-component__buttons">
 				<Button
-					color="gray"
+					color="silver"
 					hasBorder={true}
 					disabled={!isAddFilterButtonEnabled}
 					onClick={onAddFilterButtonClick}
-					size="large"
+					size="medium"
 					className="kit-filter-editor-component__btn"
 				>
 					{addFilterButtonCaption}
 				</Button>
 				{viewMode === "edit" && (
 					<Button
-						color="gray"
+						color="silver"
 						hasBorder={true}
 						onClick={onCancelFilterButtonClick}
-						size="large"
+						size="medium"
 						className="kit-filter-editor-component__btn kit-filter-editor-component__cancel"
 					>
 						{cancelFilterButtonCaption}

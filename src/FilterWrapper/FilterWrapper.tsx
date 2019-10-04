@@ -42,17 +42,6 @@ export class FilterWrapper extends React.Component<Props> {
 								{applyButtonCaption}
 							</button>
 						</div>
-						<InfoWrapper
-							statisticsValue={statisticsValue}
-							statisticsDescription={statisticsDescription}
-						>
-							<button
-								className="kit-filter__clear-filter-btn"
-								onClick={onClear}
-							>
-								{clearButtonCaption}
-							</button>
-						</InfoWrapper>
 						{selectionState !== SelectionStateType.None && (
 							<div
 								className={cn(
@@ -72,6 +61,17 @@ export class FilterWrapper extends React.Component<Props> {
 								</button>
 							</div>
 						)}
+						<InfoWrapper
+							statisticsValue={statisticsValue}
+							statisticsDescription={statisticsDescription}
+						>
+							<button
+								className="kit-filter__clear-filter-btn"
+								onClick={onClear}
+							>
+								{clearButtonCaption}
+							</button>
+						</InfoWrapper>
 					</div>
 				) : (
 					<InfoWrapper

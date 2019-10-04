@@ -46,7 +46,7 @@ export class FilterDetails extends React.Component<Props> {
 			helpComponent,
 			helpCaption,
 			viewMode,
-			onClose: toggleStar
+			onClose
 		} = this.props;
 
 		const { helpIsExpanded, isExpanded } = this.state;
@@ -59,11 +59,11 @@ export class FilterDetails extends React.Component<Props> {
 				})}
 			>
 				<button
-					onClick={toggleStar}
+					onClick={onClose}
 					className="kit-filter-details__close"
 					type="button"
 				>
-					<IconSvg type="close" />
+					<IconSvg type="close" size="large" />
 				</button>
 				<h2 className="kit-filter-details__title">{helpCaption}</h2>
 				{editorComponent && (

@@ -13,9 +13,8 @@
 		helpComponent={
 			<div>Разнообразный и богатый опыт новая модель организационной</div>
 		}
-		starred={true}
-		toggleStar={() => {
-			console.log("toogle details");
+		onClose={() => {
+			console.log("close");
 		}}
 		viewMode="edit"
 	/>

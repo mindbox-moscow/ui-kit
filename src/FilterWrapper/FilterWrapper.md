@@ -733,8 +733,7 @@
 					filtrationObjectName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					onConditionStateToggle={() => console.log("change state")}
-					starred={true}
-					toggleStar={() => console.log("toogle details")}
+					onClose={() => console.log("close")}
 					editorComponent={
 						<FilterConditionEditorComponent
 							innerEditorComponent={
@@ -1701,8 +1700,7 @@
 				filtrationMethodName="заполнена и"
 				state="edit"
 				onConditionStateToggle={() => console.log("change state")}
-				starred={true}
-				toggleStar={() => console.log("toogle details")}
+				onClose={() => console.log("close")}
 				editorComponent={
 					<FilterConditionEditorComponent
 						innerEditorComponent={
@@ -1889,8 +1887,7 @@
 				filtrationMethodName="заполнена и"
 				state="edit"
 				onConditionStateToggle={() => console.log("change state")}
-				starred={true}
-				toggleStar={() => console.log("toogle details")}
+				onClose={() => console.log("close")}
 				editorComponent={
 					<FilterConditionEditorComponent
 						innerEditorComponent={
@@ -2067,8 +2064,7 @@
 				filtrationMethodName="заполнена и"
 				state="view"
 				onConditionStateToggle={() => console.log("change state")}
-				starred={true}
-				toggleStar={() => console.log("toogle details")}
+				onClose={() => console.log("close")}
 				editorComponent={
 					<FilterConditionEditorComponent
 						innerEditorComponent={

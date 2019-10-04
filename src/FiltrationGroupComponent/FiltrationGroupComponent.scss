@@ -221,6 +221,7 @@ $widthHorizontalBraket: 12px;
 	width: $borderWidthLine;
 	height: 100%;
 	margin-top: -4px;
+	margin-left: -1px;
 	background-color: $braketColor;
 	box-sizing: border-box;
 }
@@ -228,9 +229,9 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
 	margin-top: 14px;
-	left: 15px;
+	left: 14px;
 	display: inline-block;
-	width: 13px;
+	width: 12px;
 	border-top: 2px solid;
 	color: currentColor;
 }
@@ -238,7 +239,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-vertical-bracket {
 	position: absolute;
 	top: -2px;
-	left: 11px;
+	left: 14px;
 	height: 16px;
 	border-left: 2px solid;
 	color: currentColor;
@@ -246,7 +247,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: 2px;
+	left: 1px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

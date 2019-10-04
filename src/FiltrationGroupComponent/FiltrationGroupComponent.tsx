@@ -9,11 +9,15 @@ import "./FiltrationGroupComponent.scss";
 type Props = StateProps & CallbackProps;
 
 export class FiltrationGroupComponent extends React.Component<Props> {
+	private minHeight = 25;
+	private marginTop = 2;
+	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
 		const ref = this.kitFiltrationRef.current;
+		const { minHeight, rangeOfValues } = this;
 
 		if (ref) {
 			const label: HTMLElement | null = ref.querySelector(
@@ -43,12 +47,12 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					height =
 						parentElementRect.height -
 						(childElementRect.height === 1
-							? 24
+							? minHeight
 							: childElementRect.height) +
-						25;
+						minHeight;
 				}
 
-				if (height < 20) {
+				if (height < minHeight - rangeOfValues) {
 					height = 0;
 				}
 
@@ -183,6 +187,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		lastChildGroup?: boolean
 	) => {
 		const label = this.kitFiltrationLabelRef.current;
+		const { minHeight, marginTop } = this;
+
 		const horizontalBracket = document.createElement("span");
 
 		horizontalBracket.className =
@@ -196,8 +202,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			if (childLabel) {
 				horizontalBracket.style.top = `${child.offsetTop +
 					childLabel.clientHeight -
-					25 -
-					2}px`;
+					minHeight -
+					marginTop}px`;
 			}
 		}
 

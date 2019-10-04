@@ -33,7 +33,7 @@
 
 .kit-filter-condition-selector__hierarchy-item {
 	position: relative;
-	padding: 0 0 0 20px;
+	padding: 0 0 0 26px;
 	list-style: none;
 	color: #333333;
 	font-size: 14px;
@@ -44,28 +44,16 @@
 	width: fit-content;
 	box-sizing: border-box;
 
+	li {
+		padding-left: 16px;
+	}
+
 	&:last-of-type {
 		padding-bottom: 0;
 	}
 
 	&_selected {
-		color: #fff;
-
 		.kit-filter-condition-selector__hierarchy-name {
-			&::after {
-				content: "";
-				position: absolute;
-				width: 1000vw;
-				height: 31px;
-				background-color: #3875d7;
-				top: 0;
-				right: 0;
-				z-index: -1;
-			}
-
-			.kit-filter-condition-selector__filter-span_selected {
-				background-color: #3875d7;
-			}
 		}
 
 		ul {
@@ -74,7 +62,7 @@
 					content: "";
 					position: absolute;
 					width: 1000vw;
-					height: 31px;
+					height: 28px;
 					background-color: transparent;
 					top: 0;
 					right: 0;
@@ -86,19 +74,19 @@
 
 	.kit-filter-condition-selector__hierarchy-name {
 		margin-left: 5px;
-		display: inline-block;
-		padding-bottom: 6px;
+		display: inline-flex;
+		align-items: center;
 		background: none;
 		border-radius: 0;
 		border: none;
 		appearance: none;
-		font-size: 14px;
+		font-size: 12px;
 		font-weight: inherit;
 		color: inherit;
 		outline: none;
 		margin: 0;
 		padding: 0;
-		height: 31px;
+		height: 28px;
 		line-height: 1;
 		width: 100%;
 		text-align: left;
@@ -107,22 +95,6 @@
 
 		text-overflow: ellipsis;
 		white-space: nowrap;
-
-		&:hover,
-		&:focus {
-			color: #fff;
-
-			&::after {
-				content: "";
-				position: absolute;
-				width: 1000vw;
-				height: 31px;
-				background-color: #3875d7;
-				top: 0;
-				right: 0;
-				z-index: -1;
-			}
-		}
 	}
 }
 
@@ -138,12 +110,16 @@
 	width: fit-content;
 	box-sizing: border-box;
 
+	.kit-filter-condition-selector__hierarchy-toggle {
+		left: 11px;
+	}
+
 	li {
 		&::before {
 			content: "";
 			position: absolute;
 			top: 0;
-			left: -9px;
+			left: -12px;
 			background-color: #e1eaf1;
 			height: 100%;
 			width: 2px;
@@ -154,7 +130,7 @@
 			content: "";
 			position: absolute;
 			top: 0;
-			left: -9px;
+			left: -12px;
 			background-color: #e1eaf1;
 			height: 100%;
 			width: 2px;
@@ -166,9 +142,9 @@
 			content: "";
 			position: absolute;
 			top: 0;
-			left: -9px;
+			left: -12px;
 			background-color: #e1eaf1;
-			height: 17px;
+			height: 14px;
 			width: 2px;
 			transform: rotate(0) !important;
 			z-index: 1;
@@ -177,8 +153,8 @@
 		&::after {
 			content: "";
 			position: absolute;
-			top: 15px;
-			left: -7px;
+			top: 12px;
+			left: -11px;
 			background-color: #e1eaf1;
 			height: 2px;
 			width: 9px;
@@ -190,13 +166,13 @@
 .kit-filter-condition-selector__hierarchy-simple-filter {
 	.kit-filter-condition-selector__hierarchy-name::before {
 		content: "";
-		top: 11px;
-		left: 6px;
+		top: 9px;
+		left: 1px;
 		background-image: none;
 		background-color: #8aacc2;
 		border-radius: 50%;
-		width: 10px;
-		height: 10px;
+		width: 9px;
+		height: 9px;
 		position: absolute;
 		z-index: 1;
 	}
@@ -219,6 +195,7 @@
 	font-size: 14px;
 	max-height: 71px;
 	height: 53px;
+	margin-bottom: 8px;
 	border-bottom: 1px solid #c8d8e2;
 }
 
@@ -257,15 +234,8 @@
 }
 
 .kit-filter-condition-selector__filter-span {
-	padding: 8px 0;
-	height: 15px;
 	display: inline-table;
 	width: 100%;
-
-	&:hover,
-	&:focus {
-		background-color: #3875d7;
-	}
 }
 
 .kit-filter-condition-selector__hierarchy-toggle {
@@ -278,7 +248,7 @@
 	padding: 0;
 	position: absolute;
 	top: 10px;
-	left: 10px;
+	left: 12px;
 	width: 6px;
 	height: 10px;
 	background-color: transparent;

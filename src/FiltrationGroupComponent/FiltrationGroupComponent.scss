@@ -185,7 +185,7 @@ $widthHorizontalBraket: 12px;
 	width: calc(100% - 25px);
 	height: 1px;
 	padding: 15px $groupLabelPaddingLeft 10px;
-	border-radius: 3px;
+	border-radius: 3px 0 0 3px;
 	color: $braketColor;
 	z-index: 2;
 	box-sizing: border-box;

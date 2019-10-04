@@ -27,6 +27,7 @@ $groupHoverMarginLeft: 10px;
 	display: inline-block;
 	padding: 3px 5px 3px 0;
 	transition: color 0.15s ease-in-out;
+	z-index: 2;
 
 	&:hover {
 		border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
@@ -119,7 +120,7 @@ $groupHoverMarginLeft: 10px;
 	display: none;
 	align-items: center;
 	justify-content: center;
-	width: 5px;
+	width: 3px;
 	height: 100%;
 	background-color: $hoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;

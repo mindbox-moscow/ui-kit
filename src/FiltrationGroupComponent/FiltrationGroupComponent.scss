@@ -28,25 +28,10 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
-	min-height: 30px;
+	min-height: 25px;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-
-	&::before {
-		position: absolute;
-		top: 0;
-		left: 0;
-		display: block;
-		width: calc(100% + #{$groupHoverMarginLeft});
-		height: calc(100% + #{$groupHoverMarginTop});
-		min-height: 25px;
-		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-		background-color: $hoverColorBg;
-		border-radius: 3px 0 0 3px;
-		box-sizing: border-box;
-		cursor: pointer;
-	}
 
 	& {
 		:not(.kit-filtration-condition) > & {
@@ -76,11 +61,22 @@ $widthHorizontalBraket: 12px;
 
 		&::before {
 			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: calc(100% + #{$groupHoverMarginLeft});
+			height: calc(100% + #{$groupHoverMarginTop});
+			min-height: 25px;
+			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 			background-color: $editColorBg;
+			border-radius: 3px 0 0 3px;
+			box-sizing: border-box;
+			cursor: pointer;
 		}
 
 		.kit-filtration-group__buttons {
-			margin-left: 20px;
+			margin-left: 22px;
 			outline: none;
 		}
 
@@ -90,9 +86,7 @@ $widthHorizontalBraket: 12px;
 
 			.kit-filtration-group__label-text {
 				left: auto;
-				right: calc(
-					100% - #{$groupLabelPaddingLeft + $borderWidthLine}
-				);
+				right: calc(100% - 16px);
 				display: flex;
 				align-items: center;
 				min-width: 40px;
@@ -112,13 +106,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
-
-			& ~ li {
-				&::before,
-				&::after {
-					color: $orColorEdit;
-				}
-			}
 		}
 
 		> .kit-filtration-group__label_and {
@@ -127,13 +114,6 @@ $widthHorizontalBraket: 12px;
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
-			}
-
-			& ~ li {
-				&::before,
-				&::after {
-					color: $andColorEdit;
-				}
 			}
 		}
 	}
@@ -151,61 +131,30 @@ $widthHorizontalBraket: 12px;
 				right: calc(100% - 30px);
 			}
 		}
-
-		&#{$self}_shaded {
-			.kit-filtration-group__buttons {
-				position: relative;
-				outline: none;
-
-				&::before {
-					content: "";
-					left: -19px;
-				}
-			}
-		}
 	}
 
 	&_hover {
+		cursor: pointer;
 		@include opacityBlock();
 
 		> .kit-filtration-group__label_hover_or {
 			color: $orColorEdit;
+			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
-
-			& ~ li,
-			& ~ .kit-filtration-group__buttons {
-				&::before,
-				&::after {
-					color: $orColorEdit;
-				}
-			}
 		}
 
 		> .kit-filtration-group__label_hover_and {
 			color: $andColorEdit;
+			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
 			}
-
-			& ~ li,
-			& ~ .kit-filtration-group__buttons {
-				&::before,
-				&::after {
-					color: $andColorEdit;
-				}
-			}
-		}
-
-		cursor: pointer;
-
-		&::before {
-			content: "";
 		}
 	}
 
@@ -215,43 +164,8 @@ $widthHorizontalBraket: 12px;
 		padding-left: 20px;
 		box-sizing: border-box;
 
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			left: 1px;
-			display: block;
-			color: $braketColor;
-			box-sizing: border-box;
-		}
-
-		&::before {
-			top: 13px;
-			width: #{$widthHorizontalBraket + 1};
-			border-top: $borderWidthLine solid;
-			z-index: 1;
-		}
-
-		&::after {
-			top: -4px;
-			height: 100%;
-			border-left: $borderWidthLine solid;
-		}
-
-		&:last-child {
-			&::after {
-				height: 17px;
-			}
-		}
-
 		.kit-filtration-group__buttons {
 			margin-left: 20px;
-			outline: none;
-
-			&::before {
-				content: "";
-				left: -19px;
-			}
 		}
 	}
 
@@ -264,55 +178,20 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label {
 	position: absolute;
-	top: 13px;
-	left: -14px;
+	top: 0;
+	left: -10px;
 	display: flex;
 	align-items: center;
+	width: calc(100% - 25px);
 	height: 1px;
-	padding: 0 $groupLabelPaddingLeft;
+	padding: 15px $groupLabelPaddingLeft 10px;
+	border-radius: 3px 0 0 3px;
 	color: $braketColor;
 	z-index: 2;
 	box-sizing: border-box;
 
-	&:hover {
-		z-index: 2;
-	}
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		left: 15px;
-		display: block;
-		width: $widthHorizontalBraket;
-		border-top: 2px solid;
-		box-sizing: border-box;
-	}
-
-	&::before {
-		top: -1px;
-	}
-
-	&::after {
-		bottom: -1px;
-	}
-
-	&_and,
-	&_or {
-		& ~ li {
-			li {
-				&::after {
-					content: "";
-				}
-			}
-		}
-	}
-
 	&_and {
 		color: $andColor;
-		& ~ .kit-filtration-condition::before {
-			color: $andColor;
-		}
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
@@ -322,20 +201,10 @@ $widthHorizontalBraket: 12px;
 
 	&_or {
 		color: $orColor;
-		& ~ .kit-filtration-condition::before {
-			color: $orColor;
-		}
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			background-color: $orColor;
-		}
-	}
-
-	& ~ li:first-of-type,
-	& ~ li:last-child {
-		&::before {
-			content: none;
 		}
 	}
 
@@ -351,18 +220,40 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-line {
 	width: $borderWidthLine;
 	height: 100%;
+	margin-top: -4px;
+	margin-left: -1px;
 	background-color: $braketColor;
 	box-sizing: border-box;
 }
 
+.kit-filtration-group__label-horizontal-bracket {
+	position: absolute;
+	margin-top: 14px;
+	left: 14px;
+	display: inline-block;
+	width: 12px;
+	border-top: 2px solid;
+	color: currentColor;
+}
+
+.kit-filtration-group__label-vertical-bracket {
+	position: absolute;
+	top: -2px;
+	left: 14px;
+	height: 16px;
+	border-left: 2px solid;
+	color: currentColor;
+}
+
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: 2px;
+	left: 1px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
+	margin-top: -3px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
@@ -378,8 +269,8 @@ $widthHorizontalBraket: 12px;
 	position: relative;
 	display: flex;
 	margin-right: 20px;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	box-sizing: border-box;
 	outline: none;
 
@@ -389,16 +280,6 @@ $widthHorizontalBraket: 12px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
-	}
-
-	&::before {
-		position: absolute;
-		display: block;
-		color: $braketColor;
-		box-sizing: border-box;
-		top: -4px;
-		height: 17px;
-		border-left: $borderWidthLine solid;
 	}
 }
 

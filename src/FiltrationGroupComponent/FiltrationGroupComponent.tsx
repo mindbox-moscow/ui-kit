@@ -2,7 +2,6 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
-import { FiltrationConditionComponent } from "../FiltrationConditionComponent";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
@@ -10,11 +9,15 @@ import "./FiltrationGroupComponent.scss";
 type Props = StateProps & CallbackProps;
 
 export class FiltrationGroupComponent extends React.Component<Props> {
+	private minHeight = 25;
+	private marginTop = 2;
+	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
 		const ref = this.kitFiltrationRef.current;
+		const { minHeight, rangeOfValues } = this;
 
 		if (ref) {
 			const label: HTMLElement | null = ref.querySelector(
@@ -41,15 +44,15 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							childLabelRect.height;
 					}
 				} else {
-					// Сделал так чтобы брекеты при hotload не прыгали
 					height =
 						parentElementRect.height -
 						(childElementRect.height === 1
-							? 24
-							: childElementRect.height);
+							? minHeight
+							: childElementRect.height) +
+						minHeight;
 				}
 
-				if (height < 20) {
+				if (height < minHeight - rangeOfValues) {
 					height = 0;
 				}
 
@@ -117,8 +120,100 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		}
 	};
 
+	public handleCreateVerticalBrackets = () => {
+		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
+			const ref = this.kitFiltrationRef.current;
+			const parentNode = ref.parentNode as HTMLElement;
+
+			if (parentNode.classList.contains("kit-filtration-condition")) {
+				const label = this.kitFiltrationLabelRef.current;
+				const verticalBracket = document.createElement("span");
+
+				verticalBracket.className =
+					"kit-filtration-group__label-vertical-bracket";
+
+				label && label.appendChild(verticalBracket);
+			}
+		}
+	};
+
+	public handleCreateHorizontalBrackets = () => {
+		let countChildElement = 0;
+		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
+			const ref = this.kitFiltrationRef.current;
+
+			ref.childNodes.forEach((item, index) => {
+				const child = item as HTMLElement;
+				const classNames = [
+					"kit-filtration-group__label",
+					"kit-filtration-group__remove",
+					"kit-filtration-group__close"
+				];
+				if (
+					!classNames.some(className =>
+						child.classList.contains(className)
+					)
+				) {
+					if (
+						this.kitFiltrationLabelRef &&
+						this.kitFiltrationLabelRef.current
+					) {
+						countChildElement++;
+						if (
+							countChildElement === 1 &&
+							child.classList.contains("kit-filtration-group")
+						) {
+							this.handleHorizontalBracket(child);
+						}
+
+						if (
+							index === ref.childNodes.length - 1 &&
+							child.classList.contains("kit-filtration-group")
+						) {
+							this.handleHorizontalBracket(child, true);
+						}
+
+						if (!child.classList.contains("kit-filtration-group")) {
+							this.handleHorizontalBracket(child);
+						}
+					}
+				}
+			});
+		}
+	};
+
+	public handleHorizontalBracket = (
+		child: HTMLElement,
+		lastChildGroup?: boolean
+	) => {
+		const label = this.kitFiltrationLabelRef.current;
+		const { minHeight, marginTop } = this;
+
+		const horizontalBracket = document.createElement("span");
+
+		horizontalBracket.className =
+			"kit-filtration-group__label-horizontal-bracket";
+		horizontalBracket.style.top = `${child.offsetTop - 2}px`;
+
+		if (lastChildGroup) {
+			const childLabel: HTMLElement | null = child.querySelector(
+				".kit-filtration-group__label"
+			);
+			if (childLabel) {
+				horizontalBracket.style.top = `${child.offsetTop +
+					childLabel.clientHeight -
+					minHeight -
+					marginTop}px`;
+			}
+		}
+
+		label && label.appendChild(horizontalBracket);
+	};
+
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
+		this.handleCreateVerticalBrackets();
+		this.handleCreateHorizontalBrackets();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		if (labelRef) {
@@ -148,6 +243,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 
 	public componentDidUpdate() {
 		this.moveLabelAtCenterOfBracket();
+		this.handleCreateHorizontalBrackets();
+		this.handleCreateVerticalBrackets();
 	}
 
 	public render() {
@@ -203,20 +300,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 						</span>
 					)}
 				</div>
-				{renderInner ? (
-					renderInner
-				) : (
-					<FiltrationConditionComponent
-						filtrationObjectName=""
-						state="view"
-						editorComponent={true}
-						helpComponent={true}
-						starred={true}
-						onConditionStateToggle={() => {}}
-						onConditionRemove={() => {}}
-						toggleStar={() => {}}
-					/>
-				)}
+				{renderInner}
 			</ul>
 		);
 	}

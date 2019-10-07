@@ -22,6 +22,10 @@ $widthHorizontalBraket: 12px;
 		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 }
 

@@ -316,8 +316,16 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			shouldShowLabel
 		} = this.props;
 
-		const GroupButtons = () => (
-			<div className="kit-filtration-group__buttons">
+		interface GroupButtonsProps {
+			noChildren?: boolean;
+		}
+
+		const GroupButtons = ({ noChildren }: GroupButtonsProps) => (
+			<div
+				className={cn("kit-filtration-group__buttons", {
+					"kit-filtration-group__buttons_no-children": noChildren
+				})}
+			>
 				{addSimpleConditionButton}
 				{addGroupConditionButton}
 			</div>
@@ -326,7 +334,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		if (state === "view" || state === "shaded") {
 			if (React.Children.count(children) === 0) {
 				if (!shouldShowLabel) {
-					return <GroupButtons />;
+					return <GroupButtons noChildren={true} />;
 				} else {
 					return null;
 				}

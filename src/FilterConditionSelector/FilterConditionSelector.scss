@@ -63,16 +63,7 @@ $selectItemColorBg: #878787;
 
 	&:hover,
 	&_selected {
-		.kit-filter-condition-selector__hierarchy-name {
-			color: #fff;
-			z-index: 2;
-		}
-
-		.kit-filter-condition-selector__hierarchy-toggle {
-			// z-index: 2;
-			// background-color: #fff;
-			// border-color: #fff;
-		}
+		color: #fff;
 	}
 
 	&:hover {
@@ -105,7 +96,7 @@ $selectItemColorBg: #878787;
 		}
 	}
 
-	> * {
+	> .kit-filter-condition-selector__hierarchy-name {
 		height: 100%;
 	}
 }
@@ -120,105 +111,41 @@ $selectItemColorBg: #878787;
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 1.29;
-	color: $itemNameColor;
+	color: currentColor;
 	text-align: left;
 	outline: none;
 	cursor: pointer;
+	z-index: 1;
 }
 
-.kit-filter-condition-selector__hierarchy-item {
-	&_not-child {
+.kit-filter-condition-selector__hierarchy-simple-filter {
+	&_simpleFiltrationObject {
 		.kit-filter-condition-selector__hierarchy-name {
-			padding-left: 6px;
+			padding-left: 12px;
 			font-weight: normal;
-		}
+			position: relative;
 
-		.kit-filter-condition-selector__hierarchy-toggle {
-			width: 8px;
-			height: 8px;
-			border: solid 1px $toggleCircleColor;
-			border-radius: 50%;
-			background-color: $toggleCircleColor;
-			box-sizing: border-box;
+			&::before {
+				content: "";
+				position: absolute;
+				top: calc(50% - 5px);
+				left: 0;
+				display: block;
+				width: 8px;
+				height: 8px;
+				border: solid 1px #c5d6e1;
+				border-radius: 50%;
+				background-color: #c5d6e1;
+				box-sizing: border-box;
+			}
 		}
 	}
-	// 	position: relative;
-	// 	padding: 0 0 0 26px;
-	// 	list-style: none;
-	// 	color: #333333;
-	// 	font-size: 14px;
-	// 	font-weight: 600;
-	// 	line-height: 18px;
-	// 	z-index: 9;
-	// 	min-width: 100%;
-	// 	width: fit-content;
-	// 	box-sizing: border-box;
-
-	// 	li {
-	// 		padding-left: 16px;
-	// 	}
-
-	// 	&:last-of-type {
-	// 		padding-bottom: 0;
-	// 	}
-
-	// 	&_selected {
-	// 		.kit-filter-condition-selector__hierarchy-name {
-	// 		}
-
-	// 		ul {
-	// 			.kit-filter-condition-selector__hierarchy-name {
-	// 				&::after {
-	// 					content: "";
-	// 					position: absolute;
-	// 					width: 1000vw;
-	// 					height: 28px;
-	// 					background-color: transparent;
-	// 					top: 0;
-	// 					right: 0;
-	// 					z-index: -1;
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
-	// .kit-filter-condition-selector__hierarchy-name {
-	// 		margin-left: 5px;
-	// 		display: inline-flex;
-	// 		align-items: center;
-	// 		background: none;
-	// 		border-radius: 0;
-	// 		border: none;
-	// 		appearance: none;
-	// 		font-size: 12px;
-	// 		font-weight: inherit;
-	// 		color: inherit;
-	// 		outline: none;
-	// 		margin: 0;
-	// 		padding: 0;
-	// 		height: 28px;
-	// 		line-height: 1;
-	// 		width: 100%;
-	// 		text-align: left;
-	// 		box-sizing: border-box;
-	// 		cursor: pointer;
-
-	// 		text-overflow: ellipsis;
-	// 		white-space: nowrap;
-	// }
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	// 	position: relative;
 	padding-left: 16px;
 	list-style: none;
-	// 	color: #333333;
-	// 	font-size: 14px;
-	// 	font-weight: 600;
-	// 	line-height: 18px;
-	// 	min-width: 100%;
-	// 	width: fit-content;
-	// 	box-sizing: border-box;
+	box-sizing: border-box;
 
 	.kit-filter-condition-selector__hierarchy-item {
 		position: relative;
@@ -233,13 +160,13 @@ $selectItemColorBg: #878787;
 
 		&::before {
 			top: 0;
-			left: -13px;
+			left: -15px;
 			border-left: 2px solid;
 			height: 100%;
 		}
 
 		&::after {
-			left: -11px;
+			left: -13px;
 			top: 13px;
 			width: 6px;
 			border-bottom: 2px solid;
@@ -251,85 +178,7 @@ $selectItemColorBg: #878787;
 			}
 		}
 	}
-
-	// 	.kit-filter-condition-selector__hierarchy-toggle {
-	// 		left: 11px;
-	// 	}
-
-	// 	li {
-	// 		&::before {
-	// 			content: "";
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: -12px;
-	// 			background-color: #e1eaf1;
-	// 			height: 100%;
-	// 			width: 2px;
-	// 			transform: rotate(0) !important;
-	// 			z-index: 1;
-	// 		}
-	// 		&:first-child::before {
-	// 			content: "";
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: -12px;
-	// 			background-color: #e1eaf1;
-	// 			height: 100%;
-	// 			width: 2px;
-	// 			transform: rotate(0) !important;
-	// 			z-index: 1;
-	// 		}
-
-	// 		&:last-child::before {
-	// 			content: "";
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: -12px;
-	// 			background-color: #e1eaf1;
-	// 			height: 14px;
-	// 			width: 2px;
-	// 			transform: rotate(0) !important;
-	// 			z-index: 1;
-	// 		}
-
-	// 		&::after {
-	// 			content: "";
-	// 			position: absolute;
-	// 			top: 12px;
-	// 			left: -11px;
-	// 			background-color: #e1eaf1;
-	// 			height: 2px;
-	// 			width: 9px;
-	// 			z-index: 1;
-	// 		}
-	// 	}
 }
-
-// .kit-filter-condition-selector__hierarchy-simple-filter {
-// 	.kit-filter-condition-selector__hierarchy-name::before {
-// 		content: "";
-// 		top: 9px;
-// 		left: 1px;
-// 		background-image: none;
-// 		background-color: #8aacc2;
-// 		border-radius: 50%;
-// 		width: 9px;
-// 		height: 9px;
-// 		position: absolute;
-// 		z-index: 1;
-// 	}
-
-// 	&::before {
-// 		content: "";
-// 		background-image: none;
-// 	}
-// }
-
-// .kit-filter-condition-selector__hierarchy-name {
-// 	.kit-filter-condition-selector__hierarchy-simple-filter & {
-// 		font-weight: 400;
-// 	}
-// }
 
 .kit-filter-condition-selector__filter-block {
 	padding: 8px 10px;
@@ -372,30 +221,20 @@ $selectItemColorBg: #878787;
 	}
 }
 
-// .kit-filter-condition-selector__filter-span {
-// 	display: inline-table;
-// 	width: 100%;
-// }
-
 .kit-filter-condition-selector__hierarchy-toggle {
-	cursor: pointer;
-	outline: none;
-	// appearance: none;
-	box-sizing: border-box;
-	// 	border-radius: 0;
-	border: none;
-	// 	margin: 0;
 	padding: 0;
-	// 	position: absolute;
-	// 	top: 10px;
-	// 	left: 12px;
 	width: 6px;
-	// 	height: 10px;
+	border: none;
 	background-color: transparent;
-	// 	background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-	// 	background-repeat: no-repeat;
+	color: inherit;
+	outline: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	z-index: 1;
 
-	// 	.kit-filter-condition-selector__hierarchy-item_expanded > & {
-	// 		transform: rotate(90deg);
-	// 	}
+	.kit-filter-condition-selector__hierarchy-item_expanded
+		> .kit-filter-condition-selector__hierarchy-button
+		& {
+		transform: rotate(90deg);
+	}
 }

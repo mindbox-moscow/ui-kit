@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
 
 import "./FilterConditionSelector.scss";
 
@@ -36,12 +37,15 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 
 		return (
 			<li
-				className={cn("kit-filter-condition-selector__hierarchy-item", {
-					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
-					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
-					"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren,
-					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFiltrationObject
-				})}
+				className={cn(
+					"kit-filter-condition-selector__hierarchy-item",
+					`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
+					{
+						"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
+						"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
+						"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren
+					}
+				)}
 			>
 				<div
 					className={cn(
@@ -56,7 +60,9 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 							type="button"
 							className="kit-filter-condition-selector__hierarchy-toggle"
 							onClick={this.onExpand}
-						/>
+						>
+							<IconSvg type="arrow-right" />
+						</button>
 					)}
 					<button
 						type="button"

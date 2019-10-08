@@ -46,7 +46,7 @@
 			onConditionStateToggle={() => console.log("state toggle")}
 			onConditionRemove={() => console.log("remove")}
 		/>
-		<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
+		<i>Добавьте фильтр, чтобы создатьку клиентов</i>
 	</FilterWrapper>
 	<div
 		style={{
@@ -72,7 +72,7 @@
 			onClear={() => console.log("clear filter")}
 			selectionState="part"
 			selectedText="Выбрано"
-			selectedCancelText="Отменить выбор"
+			selectedCancelText="Отменить"
 			selectedCountDescription="50 (случайно)"
 			onCancelSelection={() => console.log("clear selected")}
 		>
@@ -126,7 +126,7 @@
 			onClear={() => console.log("clear filter")}
 			selectionState="all"
 			selectedText="Выбрано"
-			selectedCancelText="Отменить выбор"
+			selectedCancelText="Отменить"
 			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
@@ -206,7 +206,7 @@
 			onClear={() => console.log("clear filter")}
 			selectionState="concrete"
 			selectedText="Выбрано"
-			selectedCancelText="Отменить выбор"
+			selectedCancelText="Отменить"
 			selectedCountDescription="100"
 			onCancelSelection={() => console.log("clear selected")}
 		>
@@ -336,7 +336,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -378,7 +378,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -487,7 +487,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -596,7 +596,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -711,7 +711,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -846,7 +846,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -928,7 +928,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -1015,7 +1015,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -1395,7 +1395,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -1479,7 +1479,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>
@@ -1576,7 +1576,7 @@
 		onClear={() => console.log("clear filter")}
 		selectionState="none"
 		selectedText="Выбрано"
-		selectedCancelText="Отменить выбор"
+		selectedCancelText="Отменить"
 		selectedCountDescription="100"
 		onCancelSelection={() => console.log("clear selected")}
 	>

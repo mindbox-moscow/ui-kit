@@ -37,6 +37,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 
 .kit-filter-block-filter__list {
 	position: relative;
+	left: -15px;
 	width: 180px;
 	padding: 5px 0 0;
 	margin: 10px 0 0;
@@ -55,7 +56,6 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 		position: absolute;
 		bottom: 100%;
 		left: 50%;
-		box-shadow: 0 0 6px 0 $boxShadowListColor;
 	}
 
 	&::before {

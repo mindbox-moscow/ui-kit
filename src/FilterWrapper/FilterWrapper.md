@@ -46,7 +46,7 @@
 			onConditionStateToggle={() => console.log("state toggle")}
 			onConditionRemove={() => console.log("remove")}
 		/>
-		<i>Добавьте фильтр, чтобы создатьку клиентов</i>
+		<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
 	</FilterWrapper>
 	<div
 		style={{

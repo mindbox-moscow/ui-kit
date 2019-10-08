@@ -1,0 +1,96 @@
+// Colors
+$textColor: #333333;
+$buttonColorBg: #e2eaf0;
+$hoverItemColorBg: #3875d7;
+$borderListColor: #cad9e4;
+$boxShadowListColor: rgba(0, 0, 0, 0.3);
+
+.kit-filter-block-filter {
+	position: relative;
+	display: inline-flex;
+	box-sizing: border-box;
+	font-family: "PTSans", sans-serif;
+}
+
+.kit-filter-block-filter__title {
+	display: inline-flex;
+	align-items: center;
+	height: 16px;
+	padding-left: 9px;
+	padding-right: 10px;
+	background-color: $buttonColorBg;
+	border-radius: 1000px;
+	font-size: 11px;
+	color: $textColor;
+	box-sizing: border-box;
+	cursor: pointer;
+
+	&::after {
+		content: "";
+		display: inline-block;
+		margin-left: 5px;
+		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		border-top: 4px solid;
+	}
+}
+
+.kit-filter-block-filter__list {
+	position: relative;
+	width: 180px;
+	padding: 5px 0 0;
+	margin: 10px 0 0;
+	border: solid 1px $borderListColor;
+	border-radius: 3px;
+	background-color: #fff;
+	font-family: "PTSans", sans-serif;
+	list-style: none;
+	z-index: 10;
+	box-shadow: 0 0 6px 0 $boxShadowListColor;
+	box-sizing: border-box;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		box-shadow: 0 0 6px 0 $boxShadowListColor;
+	}
+
+	&::before {
+		color: #fff;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-bottom: 6px solid;
+		z-index: 2;
+	}
+
+	&::after {
+		color: $borderListColor;
+		border-left: 8px solid transparent;
+		border-right: 8px solid transparent;
+		border-bottom: 8px solid;
+		margin-left: -2px;
+		z-index: 1;
+	}
+}
+
+.kit-filter-block-filter__item {
+	display: flex;
+	align-items: center;
+	min-height: 31px;
+	padding-left: 16px;
+	padding-right: 16px;
+	font-size: 13px;
+	line-height: 1.23;
+	color: #000;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	&:hover {
+		color: #fff;
+		background-color: $hoverItemColorBg;
+	}
+}

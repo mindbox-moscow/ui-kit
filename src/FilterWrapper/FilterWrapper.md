@@ -1,6 +1,7 @@
 ```jsx
 <div style={{}}>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Потребителей найдено"
 		statisticsValue={50248}
 		applyButtonCaption="Применить фильтр"
@@ -14,6 +15,7 @@
 	<br />
 	<h1>Пример 1 - пустой фильтр</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={false}
@@ -63,6 +65,7 @@
 			режиме редактирования
 		</h1>
 		<FilterWrapper
+			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -130,6 +133,23 @@
 			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
+			filterActions={[
+				{
+					key: "save",
+					name: "Сохранить как сегмент",
+					onClick: () => {}
+				},
+				{
+					key: "copy",
+					name: "Копировать фильтр",
+					onClick: () => {}
+				},
+				{
+					key: "insert",
+					name: "Вставить фильтр",
+					onClick: () => {}
+				}
+			]}
 		>
 			<FiltrationGroupComponent
 				state="view"
@@ -197,6 +217,7 @@
 			И в группе ИЛИ
 		</h1>
 		<FilterWrapper
+			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -265,6 +286,7 @@
 	<br />
 	<h1>Пример 4.1</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -327,6 +349,7 @@
 	<br />
 	<h1>Пример 5 - Одна группа ИЛИ, пустая группа ИЛИ </h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -369,6 +392,7 @@
 	<br />
 	<h1>Пример 6 - Редактирование внешней группы</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -478,6 +502,7 @@
 	<br />
 	<h1>Пример 7 - Редактирование внутренней группы</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -587,6 +612,7 @@
 	<br />
 	<h1>Пример 8 - Ховер над простым фильтром</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -702,6 +728,7 @@
 	<br />
 	<h1>Пример 9 - Простой фильтр в режиме редактирования</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -837,6 +864,7 @@
 		кнопками
 	</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -919,6 +947,7 @@
 		во вложенных фильтрах серенькие
 	</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1006,6 +1035,7 @@
 		для условий с вложенными условиями
 	</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1085,6 +1115,7 @@
 	<br />
 	<h1>Пример 12.1</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1159,6 +1190,7 @@
 	<br />
 	<h1>Пример 12.2 - Вложенная группа -- И, без лейбла</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1236,6 +1268,7 @@
 		последнеее
 	</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1312,6 +1345,7 @@
 		Пример 12.4 - Вложенная группа -- ИЛИ, условие с вложенным не последнеее
 	</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1386,6 +1420,7 @@
 	<br />
 	<h1>Пример 13 - Если есть вложенное условие</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1470,6 +1505,7 @@
 	<br />
 	<h1>Пример 14 - Вложенная группа наведение</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1567,6 +1603,7 @@
 	<br />
 	<h1>Пример 15 - Вложенная группа И в режиме редактирования</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1665,6 +1702,7 @@
 	<br />
 	<h1>Пример 16 - Валидация</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1853,6 +1891,7 @@
 	<br />
 	<h1>Пример 17 - без валидации</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2031,6 +2070,7 @@
 	<br />
 	<h1>Пример 18 - валидация, режим просмотра</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2195,6 +2235,7 @@
 	<br />
 	<h1>Пример 20</h1>
 	<FilterWrapper
+		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}

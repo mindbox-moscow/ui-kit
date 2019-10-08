@@ -301,6 +301,7 @@ class ExampleComponent extends React.Component {
 		return (
 			<>
 				<FilterWrapper
+					filterActions={[]}
 					statisticsDescription="Потребителей найдено"
 					statisticsValue={50248}
 					applyButtonCaption="Применить фильтр"

@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { InfoWrapper } from "./components";
+import { InfoWrapper, Filter } from "./components";
 import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
 import "./FilterWrapper.scss";
@@ -9,6 +9,17 @@ import "./FilterWrapper.scss";
 type Props = StateProps & CallbackProps;
 
 export class FilterWrapper extends React.Component<Props> {
+	public state = {
+		isOpenFilter: false
+	};
+
+	public handleClickFilter = () => {
+		const { isOpenFilter } = this.state;
+		this.setState({
+			isOpenFilter: !isOpenFilter
+		});
+	};
+
 	public render() {
 		const {
 			children,
@@ -24,8 +35,11 @@ export class FilterWrapper extends React.Component<Props> {
 			selectedCancelText,
 			selectionState,
 			onCancelSelection,
-			isDataOutdated
+			isDataOutdated,
+			filterActions
 		} = this.props;
+
+		const { isOpenFilter } = this.state;
 
 		return (
 			<div
@@ -33,6 +47,13 @@ export class FilterWrapper extends React.Component<Props> {
 					"kit-filter_short": !doesContainFilter
 				})}
 			>
+				<div className="kit-filter__top-filter">
+					<Filter
+						filterActions={filterActions}
+						isOpen={isOpenFilter}
+						handleOpenFilter={this.handleClickFilter}
+					/>
+				</div>
 				<ul className="kit-filter__all-wrap">{children}</ul>
 				{doesContainFilter ? (
 					<div className="kit-filter__wrap">

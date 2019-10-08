@@ -4,12 +4,14 @@ $clearButtonColor: #a12e1e;
 $clearButtonCountColor: #a4a4a4;
 
 .kit-filter {
+	position: relative;
 	width: 100%;
 	border: 1px solid #d4d4d4;
 	border-radius: 4px;
 	background-color: #ffffff;
 	box-sizing: border-box;
 	overflow: hidden;
+	padding-top: 36px;
 
 	&_short {
 		display: flex;
@@ -189,4 +191,16 @@ $clearButtonCountColor: #a4a4a4;
 	letter-spacing: -0.4px;
 	line-height: 19px;
 	box-sizing: border-box;
+}
+
+.kit-filter__top-filter {
+	position: absolute;
+	top: 11px;
+	right: 11px;
+	display: flex;
+	align-items: center;
+
+	> *:not(:last-child) {
+		margin-right: 8px;
+	}
 }

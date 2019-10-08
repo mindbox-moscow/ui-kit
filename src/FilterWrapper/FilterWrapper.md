@@ -129,6 +129,7 @@
 			selectedCancelText="Отменить выбор"
 			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
+			isDataOutdated={true}
 		>
 			<FiltrationGroupComponent
 				state="view"

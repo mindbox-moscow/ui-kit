@@ -23,7 +23,8 @@ export class FilterWrapper extends React.Component<Props> {
 			selectedText,
 			selectedCancelText,
 			selectionState,
-			onCancelSelection
+			onCancelSelection,
+			isDataOutdated
 		} = this.props;
 
 		return (
@@ -64,6 +65,7 @@ export class FilterWrapper extends React.Component<Props> {
 							</div>
 						)}
 						<InfoWrapper
+							isWarning={isDataOutdated}
 							statisticsValue={statisticsValue}
 							statisticsDescription={statisticsDescription}
 						>

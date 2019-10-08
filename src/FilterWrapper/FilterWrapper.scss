@@ -115,8 +115,18 @@ $clearButtonCountColor: #a4a4a4;
 }
 
 .kit-filter__clients {
-	padding-right: 12px;
+	display: inline-flex;
+	align-items: center;
+	height: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	border: 2px solid transparent;
 	box-sizing: border-box;
+
+	&_warning {
+		background-color: rgb(242, 227, 191);
+		border-color: rgb(230, 180, 82);
+	}
 }
 
 .kit-filter__clients-number {
@@ -147,9 +157,8 @@ $clearButtonCountColor: #a4a4a4;
 }
 
 .kit-filter__count-block {
-	align-self: stretch;
+	height: 100%;
 	padding-left: 15px;
-	margin-right: 15px;
 	border: 2px solid transparent;
 	box-sizing: border-box;
 

@@ -15,6 +15,7 @@ export interface StateProps {
 	selectedText: string;
 	selectedCancelText: string;
 	selectedCountDescription: string;
+	isDataOutdated: boolean;
 }
 
 export interface CallbackProps {

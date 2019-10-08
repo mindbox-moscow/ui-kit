@@ -42,7 +42,7 @@ const EditorComponentExample = () => {
 const allElementsDictionary = {
 	secondCategory: {
 		id: "secondCategory",
-		type: "filtrationObjectCategory",
+		type: "simpleFiltrationObject",
 		name: "Ещё простая категория",
 		helpCaption: "Простая категория Caption",
 		hasChildren: true,
@@ -242,6 +242,7 @@ const createChildRenderer = (
 					childRenderer={ExampleChildRenderer}
 					onSelect={this.onSelect}
 					toggleExpand={this.onToggleExpand}
+					searchTerm="простая"
 				/>
 			);
 		}

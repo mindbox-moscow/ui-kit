@@ -295,8 +295,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 									activeType={groupType}
 								/>
 							) : (
-								labelMap[groupType]
-							)}
+									labelMap[groupType]
+								)}
 						</span>
 					)}
 				</div>
@@ -305,10 +305,20 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		);
 	}
 
-	private renderInnerComponents = () => {
+	private renderGroupButtons = () => {
 		const {
 			addSimpleConditionButton,
 			addGroupConditionButton,
+		} = this.props;
+
+		return <div className="kit-filtration-group__buttons">
+			{addSimpleConditionButton}
+			{addGroupConditionButton}
+		</div>;
+	}
+
+	private renderInnerComponents = () => {
+		const {
 			state,
 			children,
 			onConditionRemove,
@@ -316,17 +326,10 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 			shouldShowLabel
 		} = this.props;
 
-		const GroupButtons = () => (
-			<div className="kit-filtration-group__buttons">
-				{addSimpleConditionButton}
-				{addGroupConditionButton}
-			</div>
-		);
-
 		if (state === "view" || state === "shaded") {
 			if (React.Children.count(children) === 0) {
 				if (!shouldShowLabel) {
-					return <GroupButtons />;
+					return this.renderGroupButtons();
 				} else {
 					return null;
 				}
@@ -354,7 +357,7 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 					<IconSvg type="close" />
 				</button>
 				{children}
-				<GroupButtons />
+				{this.renderGroupButtons()}
 			</>
 		);
 	};

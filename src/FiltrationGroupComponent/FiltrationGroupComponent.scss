@@ -8,6 +8,7 @@ $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
 $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
+$closeColor: #666;
 
 // Sizing
 $groupHoverMarginTop: 0px;
@@ -330,6 +331,7 @@ $widthHorizontalBraket: 12px;
 	padding: 0;
 	border: 0;
 	background: none;
+	color: $closeColor;
 	cursor: pointer;
 	z-index: 1;
 	outline: none;

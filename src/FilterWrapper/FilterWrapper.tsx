@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
 import { InfoWrapper } from "./components";
 import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
@@ -57,6 +58,7 @@ export class FilterWrapper extends React.Component<Props> {
 									className="kit-filter__clear-filter-btn"
 									onClick={onCancelSelection}
 								>
+									<IconSvg type="close" />
 									{selectedCancelText}
 								</button>
 							</div>
@@ -69,6 +71,7 @@ export class FilterWrapper extends React.Component<Props> {
 								className="kit-filter__clear-filter-btn"
 								onClick={onClear}
 							>
+								<IconSvg type="close" />
 								{clearButtonCaption}
 							</button>
 						</InfoWrapper>

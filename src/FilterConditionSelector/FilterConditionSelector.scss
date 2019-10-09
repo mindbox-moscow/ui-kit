@@ -103,7 +103,8 @@ $selectItemColorBg: #878787;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
-	padding: 0 0 0 8px;
+	max-width: 340px;
+	padding: 0 10px 0 8px;
 	margin-top: 2px;
 	border: 0;
 	background-color: transparent;
@@ -113,6 +114,9 @@ $selectItemColorBg: #878787;
 	line-height: 1.29;
 	color: currentColor;
 	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	outline: none;
 	cursor: pointer;
 	z-index: 1;

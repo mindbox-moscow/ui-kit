@@ -22,6 +22,10 @@ $widthHorizontalBraket: 12px;
 		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-group__label {
 		opacity: $opacity;
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 }
 
@@ -280,6 +284,23 @@ $widthHorizontalBraket: 12px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
+	}
+
+	&_no-children {
+		> * {
+			z-index: 3;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			display: block;
+			width: calc(100% + 10px);
+			height: 100%;
+			left: -10px;
+			top: 0;
+			z-index: 3;
+		}
 	}
 }
 

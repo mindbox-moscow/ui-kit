@@ -39,6 +39,7 @@ $selectItemColorBg: #878787;
 	overflow: auto;
 	min-width: 100%;
 	width: fit-content;
+	list-style: none;
 	box-sizing: border-box;
 }
 
@@ -124,23 +125,25 @@ $selectItemColorBg: #878787;
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
 	&_simpleFiltrationObject {
-		.kit-filter-condition-selector__hierarchy-name {
-			padding-left: 12px;
-			font-weight: normal;
-			position: relative;
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-filter-condition-selector__hierarchy-name {
+				padding-left: 12px;
+				font-weight: normal;
+				position: relative;
 
-			&::before {
-				content: "";
-				position: absolute;
-				top: calc(50% - 5px);
-				left: 0;
-				display: block;
-				width: 8px;
-				height: 8px;
-				border: solid 1px #c5d6e1;
-				border-radius: 50%;
-				background-color: #c5d6e1;
-				box-sizing: border-box;
+				&::before {
+					content: "";
+					position: absolute;
+					top: calc(50% - 5px);
+					left: 0;
+					display: block;
+					width: 8px;
+					height: 8px;
+					border: solid 1px #c5d6e1;
+					border-radius: 50%;
+					background-color: #c5d6e1;
+					box-sizing: border-box;
+				}
 			}
 		}
 	}
@@ -241,4 +244,9 @@ $selectItemColorBg: #878787;
 		& {
 		transform: rotate(90deg);
 	}
+}
+
+.kit-filter-condition-selector__high-light-text {
+	background: #fcf9cf;
+	color: #000;
 }

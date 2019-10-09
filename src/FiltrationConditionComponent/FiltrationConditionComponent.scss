@@ -16,10 +16,6 @@ $groupHoverMarginLeft: 10px;
 	font-size: 14px;
 	line-height: 19px;
 	list-style: none;
-
-	&_edit {
-		z-index: 18;
-	}
 }
 
 .kit-filtration-condition__item-text {
@@ -110,6 +106,10 @@ $groupHoverMarginLeft: 10px;
 
 	&_shaded {
 		opacity: 0.3;
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 }
 

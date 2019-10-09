@@ -20,6 +20,7 @@ interface Props {
 	isSelected: boolean;
 	childIds: string[];
 	isExpanded: boolean;
+	searchTerm: string;
 	childRenderer: React.ComponentType<ChildRendererProps>;
 
 	onSelect: (id: string) => void;
@@ -27,8 +28,49 @@ interface Props {
 }
 
 export class FilterConditionSelectorItem extends React.Component<Props> {
+	public handleHighLightText = (text: string, searchText: string) => {
+		const { type } = this.props;
+
+		if (
+			type === "simpleFiltrationObject" ||
+			type === "filtrationObjectWithLinkedConditions"
+		) {
+			const parts = text.split(new RegExp(`(${searchText})`, "gi"));
+
+			return (
+				<span>
+					{parts.map((part, index) => {
+						if (
+							part.toLocaleLowerCase() ===
+							searchText.toLocaleLowerCase()
+						) {
+							return (
+								<span
+									key={index}
+									className="kit-filter-condition-selector__high-light-text"
+								>
+									{part}
+								</span>
+							);
+						} else {
+							return part;
+						}
+					})}
+				</span>
+			);
+		} else {
+			return text;
+		}
+	};
 	public render(): JSX.Element {
-		const { isSelected, type, isExpanded, name, childIds } = this.props;
+		const {
+			isSelected,
+			type,
+			isExpanded,
+			name,
+			childIds,
+			searchTerm
+		} = this.props;
 		const isSimpleFiltrationObject = type === "simpleFiltrationObject";
 
 		const hasChildren = childIds.length > 0;
@@ -69,7 +111,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 						className="kit-filter-condition-selector__hierarchy-name"
 						onClick={this.onSelect}
 					>
-						{name}
+						{this.handleHighLightText(name, searchTerm)}
 					</button>
 				</div>
 

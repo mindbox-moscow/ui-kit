@@ -42,7 +42,7 @@ const EditorComponentExample = () => {
 const allElementsDictionary = {
 	secondCategory: {
 		id: "secondCategory",
-		type: "simpleFiltrationObject",
+		type: "simpleFilterableProperty",
 		name: "Ещё простая категория",
 		helpCaption: "Простая категория Caption",
 		hasChildren: true,
@@ -63,7 +63,7 @@ const allElementsDictionary = {
 	},
 	thirdCategory: {
 		id: "thirdCategory",
-		type: "filtrationObjectCategory",
+		type: "filterablePropertyCategory",
 		name: "Поведение",
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
@@ -77,7 +77,7 @@ const allElementsDictionary = {
 	},
 	caption: {
 		id: "caption",
-		type: "simpleFiltrationObject",
+		type: "simpleFilterableProperty",
 		name: "Простой фильтр Caption",
 		helpCaption: "Простой фильтр Caption",
 		hasChildren: false,
@@ -98,7 +98,7 @@ const allElementsDictionary = {
 	},
 	name: {
 		id: "name",
-		type: "simpleFiltrationObject",
+		type: "simpleFilterableProperty",
 		name: "Простой фильтр Name",
 		helpCaption: "Простой фильтр Name",
 		hasChildren: false,
@@ -139,7 +139,7 @@ const allElementsDictionary = {
 	},
 	firstCategory: {
 		id: "firstCategory",
-		type: "filtrationObjectCategory",
+		type: "filterablePropertyCategory",
 		name: "Простая категория Caption",
 		helpCaption: "Простая категория Caption",
 		hasChildren: true,
@@ -160,7 +160,7 @@ const allElementsDictionary = {
 	},
 	behaviour: {
 		id: "behaviour",
-		type: "filtrationObjectCategory",
+		type: "filterablePropertyCategory",
 		name: "Поведение",
 		helpCaption: "Поведение Caption",
 		hasChildren: true,
@@ -174,7 +174,7 @@ const allElementsDictionary = {
 	},
 	empty: {
 		id: "empty",
-		type: "simpleFiltrationObject",
+		type: "simpleFilterableProperty",
 		name: "Пустая тестовая категория",
 		helpCaption: "Ссылка на установку электронной карты",
 		hasChildren: false,

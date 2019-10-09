@@ -242,7 +242,7 @@ const createChildRenderer = (
 					childRenderer={ExampleChildRenderer}
 					onSelect={this.onSelect}
 					toggleExpand={this.onToggleExpand}
-					searchTerm="простая"
+					searchTerm="ещё"
 				/>
 			);
 		}

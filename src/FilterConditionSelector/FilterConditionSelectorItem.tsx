@@ -39,7 +39,10 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 			return (
 				<span>
 					{parts.map((part, index) => {
-						if (part === searchText) {
+						if (
+							part.toLocaleLowerCase() ===
+							searchText.toLocaleLowerCase()
+						) {
 							return (
 								<span
 									key={index}

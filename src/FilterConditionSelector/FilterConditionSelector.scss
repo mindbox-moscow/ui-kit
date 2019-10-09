@@ -32,6 +32,7 @@ $selectItemColorBg: #878787;
 }
 
 .kit-filter-condition-selector__hierarchy {
+	max-width: 300px;
 	margin: 0;
 	padding: 8px 11px;
 	height: calc(100% - 70px);
@@ -103,7 +104,6 @@ $selectItemColorBg: #878787;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
-	max-width: 340px;
 	padding: 0 10px 0 8px;
 	margin-top: 2px;
 	border: 0;

@@ -274,8 +274,6 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 	}
 
 	public render() {
-		const { verticalBracket, horizontalBracket } = this.state;
-
 		const {
 			groupType,
 			andLabel,
@@ -292,26 +290,8 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 		};
 
 		const renderInner = this.renderInnerComponents();
-
-		const VerticalBracket = () => (
-			<>
-				{verticalBracket && (
-					<span className="kit-filtration-group__label-vertical-bracket" />
-				)}
-			</>
-		);
-
-		const HorizontalBracket = () => (
-			<>
-				{horizontalBracket.map(({ positionTop }: any, index) => (
-					<span
-						key={index + positionTop}
-						className="kit-filtration-group__label-horizontal-bracket"
-						style={{ top: positionTop }}
-					/>
-				))}
-			</>
-		);
+		const horizontalBracket = this.horizontalBracket();
+		const verticalBracket = this.verticalBracket();
 
 		return (
 			<ul
@@ -347,13 +327,41 @@ export class FiltrationGroupComponent extends React.Component<Props> {
 							)}
 						</span>
 					)}
-					<VerticalBracket />
-					<HorizontalBracket />
+					{horizontalBracket}
+					{verticalBracket}
 				</div>
 				{renderInner}
 			</ul>
 		);
 	}
+
+	private verticalBracket = () => {
+		const { verticalBracket } = this.state;
+
+		return (
+			<>
+				{verticalBracket && (
+					<span className="kit-filtration-group__label-vertical-bracket" />
+				)}
+			</>
+		);
+	};
+
+	private horizontalBracket = () => {
+		const { horizontalBracket } = this.state;
+
+		return (
+			<>
+				{horizontalBracket.map(({ positionTop }: any, index) => (
+					<span
+						key={index + positionTop}
+						className="kit-filtration-group__label-horizontal-bracket"
+						style={{ top: positionTop }}
+					/>
+				))}
+			</>
+		);
+	};
 
 	private renderGroupButtons = (noChildren?: boolean) => {
 		const {

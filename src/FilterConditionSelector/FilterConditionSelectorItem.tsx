@@ -4,9 +4,9 @@ import * as React from "react";
 import "./FilterConditionSelector.scss";
 
 type ElementType =
-	| "filtrationObjectCategory"
-	| "simpleFiltrationObject"
-	| "filtrationObjectWithLinkedConditions";
+	| "filterablePropertyCategory"
+	| "simpleFilterableProperty"
+	| "filterablePropertyWithLinkedConditions";
 
 interface ChildRendererProps {
 	id: string;
@@ -31,8 +31,8 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 		const { type } = this.props;
 
 		if (
-			type === "simpleFiltrationObject" ||
-			type === "filtrationObjectWithLinkedConditions"
+			type === "simpleFilterableProperty" ||
+			type === "filterablePropertyWithLinkedConditions"
 		) {
 			const parts = text.split(new RegExp(`(${searchText})`, "gi"));
 
@@ -70,7 +70,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 			childIds,
 			searchTerm
 		} = this.props;
-		const isSimpleFiltrationObject = type === "simpleFiltrationObject";
+		const isSimpleFilterableProperty = type === "simpleFilterableProperty";
 
 		const hasChildren = childIds.length > 0;
 
@@ -81,10 +81,10 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 				className={cn("kit-filter-condition-selector__hierarchy-item", {
 					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
 					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
-					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFiltrationObject
+					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFilterableProperty
 				})}
 			>
-				{!isSimpleFiltrationObject && (
+				{!isSimpleFilterableProperty && (
 					<button
 						type="button"
 						className="kit-filter-condition-selector__hierarchy-toggle"

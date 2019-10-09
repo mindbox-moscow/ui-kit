@@ -8,16 +8,17 @@ import "./FilterWrapper.scss";
 
 type Props = StateProps & CallbackProps;
 
-export class FilterWrapper extends React.Component<Props> {
+interface State {
+	isOpenFilter: boolean;
+}
+
+export class FilterWrapper extends React.Component<Props, State> {
 	public state = {
 		isOpenFilter: false
 	};
 
 	public handleClickFilter = () => {
-		const { isOpenFilter } = this.state;
-		this.setState({
-			isOpenFilter: !isOpenFilter
-		});
+		this.setState(state => ({ isOpenFilter: !state.isOpenFilter }));
 	};
 
 	public render() {

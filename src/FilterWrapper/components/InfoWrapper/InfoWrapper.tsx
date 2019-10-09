@@ -4,7 +4,6 @@ import * as React from "react";
 interface Props {
 	statisticsValue: React.ReactNode;
 	statisticsDescription: string;
-
 	isWarning?: boolean;
 }
 

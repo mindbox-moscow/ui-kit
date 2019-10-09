@@ -24,7 +24,8 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			editorComponent,
 			onConditionStateToggle,
 			starred,
-			toggleStar
+			toggleStar,
+			withAlert
 		} = this.props;
 
 		const editModeContent = (
@@ -70,7 +71,13 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 					>
 						<b ref={this.refComponent}>{filtrationObjectName}</b>
 						{filtrationMethodName && (
-							<span>{filtrationMethodName}</span>
+							<span
+								className={cn({
+									"kit-filtration-condition_with-alert": withAlert
+								})}
+							>
+								{filtrationMethodName}
+							</span>
 						)}
 						{filtrationMethodParametersComponent}
 					</div>

@@ -320,6 +320,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
+									withAlert={true}
 									filtrationObjectName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={

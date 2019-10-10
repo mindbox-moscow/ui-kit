@@ -41,7 +41,7 @@ module.exports = {
 	},
 	theme: {
 		fontFamily: {
-			base: '"PT Sans", sans-serif;'
+			base: '"PT Sans", sans-serif'
 		}
 	},
 

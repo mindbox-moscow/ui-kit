@@ -9,10 +9,6 @@ import "./FilterWrapper.scss";
 type Props = StateProps & CallbackProps;
 
 export class FilterWrapper extends React.Component<Props> {
-	public state = {
-		isFilterActionsPopoverOpened: false
-	};
-
 	public render() {
 		const {
 			children,

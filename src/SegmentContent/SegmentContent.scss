@@ -16,7 +16,7 @@ $mainColor: #999999;
 	color: $mainColor;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 	outline: none;
-	cursor: pointer;
+	cursor: default;
 	box-sizing: border-box;
 }
 

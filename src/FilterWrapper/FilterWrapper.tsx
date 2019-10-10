@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
-import { InfoWrapper } from "./components";
+import { IconSvg } from "../IconSvg";
+import { InfoWrapper, FilterActionsPopover } from "./components";
 import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
 import "./FilterWrapper.scss";
@@ -22,7 +23,10 @@ export class FilterWrapper extends React.Component<Props> {
 			selectedText,
 			selectedCancelText,
 			selectionState,
-			onCancelSelection
+			onCancelSelection,
+			isDataOutdated,
+			filterActions,
+			filterActionsCaption
 		} = this.props;
 
 		return (
@@ -31,6 +35,12 @@ export class FilterWrapper extends React.Component<Props> {
 					"kit-filter_short": !doesContainFilter
 				})}
 			>
+				<div className="kit-filter__top-filter">
+					<FilterActionsPopover
+						filterActionsCaption={filterActionsCaption}
+						filterActions={filterActions}
+					/>
+				</div>
 				<ul className="kit-filter__all-wrap">{children}</ul>
 				{doesContainFilter ? (
 					<div className="kit-filter__wrap">
@@ -57,11 +67,13 @@ export class FilterWrapper extends React.Component<Props> {
 									className="kit-filter__clear-filter-btn"
 									onClick={onCancelSelection}
 								>
+									<IconSvg type="close" />
 									{selectedCancelText}
 								</button>
 							</div>
 						)}
 						<InfoWrapper
+							isWarning={isDataOutdated}
 							statisticsValue={statisticsValue}
 							statisticsDescription={statisticsDescription}
 						>
@@ -69,6 +81,7 @@ export class FilterWrapper extends React.Component<Props> {
 								className="kit-filter__clear-filter-btn"
 								onClick={onClear}
 							>
+								<IconSvg type="close" />
 								{clearButtonCaption}
 							</button>
 						</InfoWrapper>

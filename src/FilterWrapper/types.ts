@@ -5,6 +5,12 @@ export enum SelectionStateType {
 	Concrete = "concrete"
 }
 
+export interface FilterAction {
+	key: string;
+	name: string;
+	onClick: () => void;
+}
+
 export interface StateProps {
 	statisticsValue: React.ReactNode;
 	statisticsDescription: string;
@@ -15,6 +21,9 @@ export interface StateProps {
 	selectedText: string;
 	selectedCancelText: string;
 	selectedCountDescription: string;
+	isDataOutdated: boolean;
+	filterActions: FilterAction[];
+	filterActionsCaption: string;
 }
 
 export interface CallbackProps {

@@ -2,15 +2,19 @@ import * as React from "react";
 import { FilterConditionPopup } from "../../../FilterConditionPopup";
 import { StateProps } from "../../types";
 
-import "./Filter.scss";
+import "./FilterActionsPopover.scss";
 
-type FilterProps = Pick<StateProps, "filterActions"> & {
+type FilterProps = Pick<
+	StateProps,
+	"filterActions" | "filterActionsCaption"
+> & {
 	isOpen: boolean;
 	handleOpenFilter: () => void;
 };
 
-export const Filter: React.FC<FilterProps> = ({
+export const FilterActionsPopover: React.FC<FilterProps> = ({
 	filterActions,
+	filterActionsCaption,
 	isOpen,
 	handleOpenFilter
 }) => {
@@ -19,20 +23,20 @@ export const Filter: React.FC<FilterProps> = ({
 	return (
 		<>
 			{!!filterActions.length && (
-				<div className="kit-filter-block-filter">
+				<div className="kit-filter-actions-popover">
 					<span
 						ref={refElement}
-						className="kit-filter-block-filter__title"
+						className="kit-filter-actions-popover__title"
 						onClick={handleOpenFilter}
 					>
-						Действия с фильтром
+						{filterActionsCaption}
 					</span>
 					{isOpen && (
 						<FilterConditionPopup parentRef={refElement}>
-							<ul className="kit-filter-block-filter__list">
+							<ul className="kit-filter-actions-popover__list">
 								{filterActions.map(({ key, onClick, name }) => (
 									<li
-										className="kit-filter-block-filter__item"
+										className="kit-filter-actions-popover__item"
 										key={key}
 										onClick={onClick}
 									>

@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { InfoWrapper, Filter } from "./components";
+import { InfoWrapper, FilterActionsPopover } from "./components";
 import { StateProps, CallbackProps, SelectionStateType } from "./types";
 
 import "./FilterWrapper.scss";
@@ -9,16 +9,18 @@ import "./FilterWrapper.scss";
 type Props = StateProps & CallbackProps;
 
 interface State {
-	isOpenFilter: boolean;
+	isFilterActionsPopoverOpened: boolean;
 }
 
 export class FilterWrapper extends React.Component<Props, State> {
 	public state = {
-		isOpenFilter: false
+		isFilterActionsPopoverOpened: false
 	};
 
 	public handleClickFilter = () => {
-		this.setState(state => ({ isOpenFilter: !state.isOpenFilter }));
+		this.setState(state => ({
+			isFilterActionsPopoverOpened: !state.isFilterActionsPopoverOpened
+		}));
 	};
 
 	public render() {
@@ -37,10 +39,11 @@ export class FilterWrapper extends React.Component<Props, State> {
 			selectionState,
 			onCancelSelection,
 			isDataOutdated,
-			filterActions
+			filterActions,
+			filterActionsCaption
 		} = this.props;
 
-		const { isOpenFilter } = this.state;
+		const { isFilterActionsPopoverOpened } = this.state;
 
 		return (
 			<div
@@ -49,9 +52,10 @@ export class FilterWrapper extends React.Component<Props, State> {
 				})}
 			>
 				<div className="kit-filter__top-filter">
-					<Filter
+					<FilterActionsPopover
+						filterActionsCaption={filterActionsCaption}
 						filterActions={filterActions}
-						isOpen={isOpenFilter}
+						isOpen={isFilterActionsPopoverOpened}
 						handleOpenFilter={this.handleClickFilter}
 					/>
 				</div>

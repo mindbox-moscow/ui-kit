@@ -133,6 +133,7 @@
 			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
+			filterActionsCaption="Действия с фильтром"
 			filterActions={[
 				{
 					key: "save",

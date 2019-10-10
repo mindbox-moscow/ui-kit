@@ -5,14 +5,14 @@ $hoverItemColorBg: #3875d7;
 $borderListColor: #cad9e4;
 $boxShadowListColor: rgba(0, 0, 0, 0.3);
 
-.kit-filter-block-filter {
+.kit-filter-actions-popover {
 	position: relative;
 	display: inline-flex;
 	box-sizing: border-box;
 	font-family: "PTSans", sans-serif;
 }
 
-.kit-filter-block-filter__title {
+.kit-filter-actions-popover__title {
 	display: inline-flex;
 	align-items: center;
 	height: 16px;
@@ -35,7 +35,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 	}
 }
 
-.kit-filter-block-filter__list {
+.kit-filter-actions-popover__list {
 	position: relative;
 	left: -15px;
 	width: 180px;
@@ -76,7 +76,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 	}
 }
 
-.kit-filter-block-filter__item {
+.kit-filter-actions-popover__item {
 	display: flex;
 	align-items: center;
 	min-height: 31px;

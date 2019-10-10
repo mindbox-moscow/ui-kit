@@ -8,19 +8,9 @@ import "./FilterWrapper.scss";
 
 type Props = StateProps & CallbackProps;
 
-interface State {
-	isFilterActionsPopoverOpened: boolean;
-}
-
-export class FilterWrapper extends React.Component<Props, State> {
+export class FilterWrapper extends React.Component<Props> {
 	public state = {
 		isFilterActionsPopoverOpened: false
-	};
-
-	public handleClickFilter = () => {
-		this.setState(state => ({
-			isFilterActionsPopoverOpened: !state.isFilterActionsPopoverOpened
-		}));
 	};
 
 	public render() {
@@ -43,8 +33,6 @@ export class FilterWrapper extends React.Component<Props, State> {
 			filterActionsCaption
 		} = this.props;
 
-		const { isFilterActionsPopoverOpened } = this.state;
-
 		return (
 			<div
 				className={cn("kit-filter", {
@@ -55,8 +43,6 @@ export class FilterWrapper extends React.Component<Props, State> {
 					<FilterActionsPopover
 						filterActionsCaption={filterActionsCaption}
 						filterActions={filterActions}
-						isOpen={isFilterActionsPopoverOpened}
-						handleOpenFilter={this.handleClickFilter}
 					/>
 				</div>
 				<ul className="kit-filter__all-wrap">{children}</ul>

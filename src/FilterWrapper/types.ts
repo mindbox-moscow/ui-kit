@@ -23,7 +23,6 @@ export interface StateProps {
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
 	filterActions: FilterAction[];
-
 	filterActionsCaption: string;
 }
 

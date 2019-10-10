@@ -9,7 +9,7 @@ import { Trash } from "./Trash";
 import { Extended } from "./Extended";
 import { Favorite } from "./Favorite";
 import { Warning } from "./Warning";
-import { SegmentExtend } from "./SegmentExtend";
+import { SegmentExpand } from "./SegmentExpand";
 import { SegmentEdit } from "./SegmentEdit";
 import { SegmentContent } from "./SegmentContent";
 
@@ -31,7 +31,7 @@ type IconType =
 	| "extended"
 	| "favorite"
 	| "warning"
-	| "segment-extend"
+	| "segment-expand"
 	| "segment-edit"
 	| "segment-content";
 
@@ -49,7 +49,7 @@ const icons: Icons = {
 	extended: Extended,
 	favorite: Favorite,
 	warning: Warning,
-	"segment-extend": SegmentExtend,
+	"segment-expand": SegmentExpand,
 	"segment-edit": SegmentEdit,
 	"segment-content": SegmentContent
 };

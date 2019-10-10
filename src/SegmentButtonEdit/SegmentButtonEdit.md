@@ -1,5 +1,5 @@
 ```jsx
 <div>
-	<SegmentButtonEdit />
+	<SegmentButtonEdit onClick={() => {}} />
 </div>
 ```

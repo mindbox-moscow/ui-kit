@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { ISvgProps } from "./index";
 
-export const SegmentExtend = ({ className, size }: ISvgProps) => (
+export const SegmentExpand = ({ className, size }: ISvgProps) => (
 	<svg
 		width={size === "large" ? 10 * 1.5 : 10}
 		height={size === "large" ? 10 * 1.5 : 10}

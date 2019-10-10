@@ -1,0 +1,30 @@
+$borderColor: #d9e7fe;
+$borderHoverColor: #e2eaf0;
+$mainColor: #999999;
+
+.kit-segment-edit {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 32px;
+	padding-left: 6px;
+	padding-right: 10px;
+	height: 16px;
+	border-radius: 8px;
+	border: solid 1px $borderColor;
+	background-color: transparent;
+	color: $mainColor;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	outline: none;
+	cursor: default;
+	box-sizing: border-box;
+}
+
+.kit-segment-edit__count {
+	margin-left: 5px;
+	color: inherit;
+	font-family: "PT Sans", sans-serif;
+	font-size: 11px;
+	line-height: 1;
+	box-sizing: border-box;
+}

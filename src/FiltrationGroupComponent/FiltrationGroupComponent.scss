@@ -286,6 +286,23 @@ $widthHorizontalBraket: 12px;
 	> *:not(:last-child) {
 		margin-right: 5px;
 	}
+
+	&_no-children {
+		> * {
+			z-index: 3;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			display: block;
+			width: calc(100% + 10px);
+			height: 100%;
+			left: -10px;
+			top: 0;
+			z-index: 3;
+		}
+	}
 }
 
 .kit-filtration-group__remove {
@@ -305,6 +322,7 @@ $widthHorizontalBraket: 12px;
 }
 
 .kit-filtration-group__label-button {
+	font-family: "PT Sans", sans-serif;
 	font-weight: 700;
 	border: 0;
 	padding-left: 0;

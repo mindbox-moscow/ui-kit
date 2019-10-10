@@ -1,11 +1,11 @@
 ```jsx
 <div style={{}}>
 	<FiltrationConditionComponent
-		filtrationObjectName="Цена"
+		filterablePropertyName="Цена"
 		filtrationMethodName="заполнена и"
 	/>
 	<FiltrationConditionComponent
-		filtrationObjectName="Розничный заказ"
+		filterablePropertyName="Розничный заказ"
 		filtrationMethodName="в количестве"
 	/>
 </div>

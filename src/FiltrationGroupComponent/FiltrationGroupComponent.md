@@ -9,7 +9,7 @@
 		shouldShowLabel={false}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -20,7 +20,7 @@
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
@@ -31,7 +31,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Цена"
+									filterablePropertyName="Цена"
 									filtrationMethodName="заполнена и от"
 									filtrationMethodParametersComponent={
 										<span style={{ fontWeight: "bold" }}>
@@ -43,7 +43,7 @@
 						}
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -53,7 +53,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -78,7 +78,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -89,11 +89,11 @@
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="нет таких"
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -103,7 +103,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -140,7 +140,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -151,7 +151,7 @@
 					shouldShowLabel={true}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
@@ -162,7 +162,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Цена"
+									filterablePropertyName="Цена"
 									filtrationMethodName="заполнена и от"
 									filtrationMethodParametersComponent={
 										<span style={{ fontWeight: "bold" }}>
@@ -174,7 +174,7 @@
 						}
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -184,7 +184,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -209,7 +209,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -220,11 +220,11 @@
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="нет таких"
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -234,7 +234,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -276,7 +276,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -287,7 +287,7 @@
 					shouldShowLabel={true}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
@@ -298,7 +298,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Цена"
+									filterablePropertyName="Цена"
 									filtrationMethodName="заполнена и от"
 									filtrationMethodParametersComponent={
 										<span style={{ fontWeight: "bold" }}>
@@ -310,7 +310,7 @@
 						}
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -346,7 +346,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -357,11 +357,11 @@
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="нет таких"
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -371,7 +371,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -396,7 +396,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Розничный заказ"
+			filterablePropertyName="Розничный заказ"
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
@@ -407,11 +407,11 @@
 					shouldShowLabel={false}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Покупка"
+						filterablePropertyName="Покупка"
 						filtrationMethodName="нет таких"
 					/>
 					<FiltrationConditionComponent
-						filtrationObjectName="Первое действие"
+						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
 								state="view"
@@ -421,7 +421,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									filtrationObjectName="Период от текущей даты"
+									filterablePropertyName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={
 										<>
@@ -458,7 +458,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -494,7 +494,7 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -502,7 +502,7 @@
 			/>
 
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
@@ -511,7 +511,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -539,7 +539,7 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -547,7 +547,7 @@
 			/>
 
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
@@ -556,7 +556,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -584,7 +584,7 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -592,7 +592,7 @@
 			/>
 
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
@@ -601,7 +601,7 @@
 		</FiltrationGroupComponent>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -619,7 +619,7 @@
 		shouldShowLabel={false}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -635,7 +635,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -656,7 +656,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -672,7 +672,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -693,7 +693,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -709,7 +709,7 @@
 		/>
 
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -730,7 +730,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -771,7 +771,7 @@
 		}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -812,14 +812,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -835,14 +835,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -871,14 +871,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -894,14 +894,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -930,14 +930,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -953,14 +953,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -994,14 +994,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -1017,14 +1017,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -1040,14 +1040,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Мужской</span>
@@ -1063,14 +1063,14 @@
 			shouldShowLabel={true}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1081,11 +1081,11 @@
 						shouldShowLabel={false}
 					>
 						<FiltrationConditionComponent
-							filtrationObjectName="Покупка"
+							filterablePropertyName="Покупка"
 							filtrationMethodName="нет таких"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Первое действие"
+							filterablePropertyName="Первое действие"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
 									state="view"
@@ -1095,7 +1095,7 @@
 									shouldShowLabel={false}
 								>
 									<FiltrationConditionComponent
-										filtrationObjectName="Период от текущей даты"
+										filterablePropertyName="Период от текущей даты"
 										filtrationMethodName="до"
 										filtrationMethodParametersComponent={
 											<>
@@ -1138,7 +1138,7 @@
 		shouldShowLabel={true}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span>
@@ -1162,7 +1162,7 @@
 		shouldShowLabel={false}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodName="заполнен и"
 			filtrationMethodParametersComponent={
 				<span>
@@ -1186,7 +1186,7 @@
 		shouldShowLabel={false}
 	>
 		<FiltrationConditionComponent
-			filtrationObjectName="Пол"
+			filterablePropertyName="Пол"
 			filtrationMethodParametersComponent={
 				<span>
 					от <span style={{ fontWeight: "bold" }}>10</span> до

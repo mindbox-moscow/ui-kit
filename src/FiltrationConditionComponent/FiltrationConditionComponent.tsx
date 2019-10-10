@@ -14,7 +14,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 
 	public render() {
 		const {
-			filtrationObjectName,
+			filterablePropertyName,
 			filtrationMethodName,
 			filtrationMethodParametersComponent,
 			linkedConditionComponent,
@@ -23,7 +23,6 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
-			starred,
 			toggleStar,
 			withAlert
 		} = this.props;
@@ -38,11 +37,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				</div>
 				<FilterConditionPopup parentRef={this.refComponent}>
 					<FilterDetails
-						helpCaption={filtrationObjectName}
+						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}
 						editorComponent={editorComponent}
-						starred={starred}
-						toggleStar={toggleStar}
+						onClose={toggleStar}
 						viewMode="edit"
 					/>
 				</FilterConditionPopup>
@@ -69,7 +67,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						className="kit-filtration-condition__content"
 						onClick={onConditionStateToggle}
 					>
-						<b ref={this.refComponent}>{filtrationObjectName}</b>
+						<b ref={this.refComponent}>{filterablePropertyName}</b>
 						{filtrationMethodName && (
 							<span
 								className={cn({

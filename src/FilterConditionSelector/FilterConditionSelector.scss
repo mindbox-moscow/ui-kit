@@ -1,3 +1,13 @@
+// Colors
+$borderColor: #c8d8e2;
+$bracketColor: #e1eaf1;
+$toggleCircleColor: #c5d6e1;
+$itemNameColor: #333333;
+$filterBlockColorBg: #e2eaf0;
+$filterButtonColor: #265378;
+$hoverItemColorBg: #3875d7;
+$selectItemColorBg: #878787;
+
 .kit-filter-condition-selector {
 	display: flex;
 	width: 982px;
@@ -10,9 +20,9 @@
 }
 
 .kit-filter-condition-selector__wrap {
-	max-width: 382px;
+	max-width: 378px;
 	width: 100%;
-	border: 1px solid #c8d8e2;
+	border: 1px solid $borderColor;
 	border-right: 0;
 }
 
@@ -22,212 +32,174 @@
 }
 
 .kit-filter-condition-selector__hierarchy {
+	max-width: 300px;
 	margin: 0;
-	padding: 0;
+	padding: 8px 11px;
 	height: calc(100% - 70px);
 	overflow: auto;
 	min-width: 100%;
 	width: fit-content;
+	list-style: none;
 	box-sizing: border-box;
 }
 
-.kit-filter-condition-selector__hierarchy-item {
+.kit-filter-condition-selector__hierarchy-button {
 	position: relative;
-	padding: 0 0 0 20px;
-	list-style: none;
-	color: #333333;
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 18px;
-	z-index: 9;
-	min-width: 100%;
-	width: fit-content;
-	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	height: 28px;
+	cursor: pointer;
 
-	&:last-of-type {
-		padding-bottom: 0;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: -11px;
+		display: block;
+		height: 100%;
+		width: 1000vw;
+		mix-blend-mode: multiply;
+		z-index: 1;
+		box-sizing: border-box;
+	}
+
+	&:hover,
+	&_selected {
+		color: #fff;
+	}
+
+	&:hover {
+		&::before {
+			background-color: $hoverItemColorBg;
+		}
 	}
 
 	&_selected {
-		color: #fff;
-
-		.kit-filter-condition-selector__hierarchy-name {
-			&::after {
-				content: "";
-				position: absolute;
-				width: 1000vw;
-				height: 31px;
-				background-color: #3875d7;
-				top: 0;
-				right: 0;
-				z-index: -1;
-			}
-
-			.kit-filter-condition-selector__filter-span_selected {
-				background-color: #3875d7;
-			}
+		&::before {
+			right: 3px;
+			background-color: $selectItemColorBg;
 		}
 
-		ul {
-			.kit-filter-condition-selector__hierarchy-name {
-				&::after {
-					content: "";
-					position: absolute;
-					width: 1000vw;
-					height: 31px;
-					background-color: transparent;
-					top: 0;
-					right: 0;
-					z-index: -1;
-				}
+		&::after {
+			content: "";
+			position: absolute;
+			right: -11px;
+			top: 0;
+			border-top: 14px solid transparent;
+			border-left: 14px solid $selectItemColorBg;
+			border-bottom: 14px solid transparent;
+			box-sizing: border-box;
+		}
+
+		&:hover {
+			&::before {
+				background-color: $selectItemColorBg;
 			}
 		}
 	}
 
-	.kit-filter-condition-selector__hierarchy-name {
-		margin-left: 5px;
-		display: inline-block;
-		padding-bottom: 6px;
-		background: none;
-		border-radius: 0;
-		border: none;
-		appearance: none;
-		font-size: 14px;
-		font-weight: inherit;
-		color: inherit;
-		outline: none;
-		margin: 0;
-		padding: 0;
-		height: 31px;
-		line-height: 1;
-		width: 100%;
-		text-align: left;
-		box-sizing: border-box;
-		cursor: pointer;
+	> .kit-filter-condition-selector__hierarchy-name {
+		height: 100%;
+	}
+}
 
-		text-overflow: ellipsis;
-		white-space: nowrap;
+.kit-filter-condition-selector__hierarchy-name {
+	flex-grow: 1;
+	padding: 0 10px 0 8px;
+	margin-top: 2px;
+	border: 0;
+	background-color: transparent;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1.29;
+	color: currentColor;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	outline: none;
+	cursor: pointer;
+	z-index: 1;
+}
 
-		&:hover,
-		&:focus {
-			color: #fff;
+.kit-filter-condition-selector__hierarchy-simple-filter {
+	&_simpleFilterableProperty {
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-filter-condition-selector__hierarchy-name {
+				padding-left: 12px;
+				font-weight: normal;
+				position: relative;
 
-			&::after {
-				content: "";
-				position: absolute;
-				width: 1000vw;
-				height: 31px;
-				background-color: #3875d7;
-				top: 0;
-				right: 0;
-				z-index: -1;
+				&::before {
+					content: "";
+					position: absolute;
+					top: calc(50% - 5px);
+					left: 0;
+					display: block;
+					width: 8px;
+					height: 8px;
+					border: solid 1px #c5d6e1;
+					border-radius: 50%;
+					background-color: #c5d6e1;
+					box-sizing: border-box;
+				}
 			}
 		}
 	}
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	position: relative;
-	padding-left: 0;
+	padding-left: 16px;
 	list-style: none;
-	color: #333333;
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 18px;
-	min-width: 100%;
-	width: fit-content;
 	box-sizing: border-box;
 
-	li {
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -9px;
-			background-color: #e1eaf1;
-			height: 100%;
-			width: 2px;
-			transform: rotate(0) !important;
-			z-index: 1;
-		}
-		&:first-child::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -9px;
-			background-color: #e1eaf1;
-			height: 100%;
-			width: 2px;
-			transform: rotate(0) !important;
-			z-index: 1;
-		}
+	.kit-filter-condition-selector__hierarchy-item {
+		position: relative;
 
-		&:last-child::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: -9px;
-			background-color: #e1eaf1;
-			height: 17px;
-			width: 2px;
-			transform: rotate(0) !important;
-			z-index: 1;
-		}
-
+		&::before,
 		&::after {
 			content: "";
 			position: absolute;
-			top: 15px;
-			left: -7px;
-			background-color: #e1eaf1;
-			height: 2px;
-			width: 9px;
-			z-index: 1;
+			display: block;
+			color: $bracketColor;
 		}
-	}
-}
 
-.kit-filter-condition-selector__hierarchy-simple-filter {
-	.kit-filter-condition-selector__hierarchy-name::before {
-		content: "";
-		top: 11px;
-		left: 6px;
-		background-image: none;
-		background-color: #8aacc2;
-		border-radius: 50%;
-		width: 10px;
-		height: 10px;
-		position: absolute;
-		z-index: 1;
-	}
+		&::before {
+			top: 0;
+			left: -15px;
+			border-left: 2px solid;
+			height: 100%;
+		}
 
-	&::before {
-		content: "";
-		background-image: none;
-	}
-}
+		&::after {
+			left: -13px;
+			top: 13px;
+			width: 6px;
+			border-bottom: 2px solid;
+		}
 
-.kit-filter-condition-selector__hierarchy-name {
-	.kit-filter-condition-selector__hierarchy-simple-filter & {
-		font-weight: 400;
+		&:last-child {
+			&::before {
+				height: 15px;
+			}
+		}
 	}
 }
 
 .kit-filter-condition-selector__filter-block {
 	padding: 8px 10px;
-	background-color: #e2eaf0;
+	background-color: $filterBlockColorBg;
 	font-size: 14px;
 	max-height: 71px;
-	height: 53px;
-	border-bottom: 1px solid #c8d8e2;
+	border-bottom: 1px solid $borderColor;
 }
 
 .kit-filter-condition-selector__filter-btn-block {
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: space-between;
 	margin-top: 6px;
-	margin-left: 2px;
 	padding-top: 4px;
 }
 
@@ -235,7 +207,7 @@
 	display: inline-block;
 	font-family: "PT Sans", sans-serif;
 	font-size: 12px;
-	color: #265378;
+	color: $filterButtonColor;
 	text-decoration: none;
 	border: 0;
 	background-color: transparent;
@@ -256,36 +228,20 @@
 	}
 }
 
-.kit-filter-condition-selector__filter-span {
-	padding: 8px 0;
-	height: 15px;
-	display: inline-table;
-	width: 100%;
-
-	&:hover,
-	&:focus {
-		background-color: #3875d7;
-	}
-}
-
 .kit-filter-condition-selector__hierarchy-toggle {
-	cursor: pointer;
-	appearance: none;
-	box-sizing: border-box;
-	border-radius: 0;
-	border: none;
-	margin: 0;
 	padding: 0;
-	position: absolute;
-	top: 10px;
-	left: 10px;
 	width: 6px;
-	height: 10px;
+	border: none;
 	background-color: transparent;
-	background-image: url("data:image/svg+xml,%3Csvg width='6' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l4-4-4-4' stroke='%23333' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-	background-repeat: no-repeat;
+	color: inherit;
+	outline: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	z-index: 1;
 
-	.kit-filter-condition-selector__hierarchy-item_expanded > & {
+	.kit-filter-condition-selector__hierarchy-item_expanded
+		> .kit-filter-condition-selector__hierarchy-button
+		& {
 		transform: rotate(90deg);
 	}
 }

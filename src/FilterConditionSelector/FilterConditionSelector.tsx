@@ -21,7 +21,6 @@ export class FilterConditionSelector extends React.Component<Props> {
 			editorComponent,
 			helpComponent,
 			helpCaption,
-			starred,
 			toggleStar
 		} = this.props;
 
@@ -86,8 +85,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 					helpCaption={helpCaption}
 					helpComponent={helpComponent}
 					editorComponent={editorComponent}
-					starred={starred}
-					toggleStar={toggleStar}
+					onClose={toggleStar}
 					viewMode="menu"
 				/>
 			</div>

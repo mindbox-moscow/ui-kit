@@ -7,7 +7,6 @@ import { Magnifier } from "./Magnifier";
 import { PercentRound } from "./PercentRound";
 import { Trash } from "./Trash";
 import { Extended } from "./Extended";
-import { Favorite } from "./Favorite";
 import { Warning } from "./Warning";
 import { SegmentExpand } from "./SegmentExpand";
 import { SegmentEdit } from "./SegmentEdit";
@@ -29,7 +28,6 @@ type IconType =
 	| "magnifier"
 	| "trash"
 	| "extended"
-	| "favorite"
 	| "warning"
 	| "segment-expand"
 	| "segment-edit"
@@ -47,7 +45,6 @@ const icons: Icons = {
 	trash: Trash,
 	"percent-round": PercentRound,
 	extended: Extended,
-	favorite: Favorite,
 	warning: Warning,
 	"segment-expand": SegmentExpand,
 	"segment-edit": SegmentEdit,

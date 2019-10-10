@@ -5,6 +5,7 @@
 	font-family: "PT Sans", sans-serif;
 	color: #000;
 	box-sizing: border-box;
+
 	cursor: default;
 
 	&_editor {
@@ -20,10 +21,11 @@
 }
 
 .kit-filter-details__title {
+	display: flex;
+	align-items: center;
+	height: 46px;
 	margin: 0;
-	padding-top: 32px;
 	padding-left: 26px;
-	padding-bottom: 14px;
 	font-size: 21px;
 	line-height: 23px;
 	font-weight: 400;
@@ -55,7 +57,7 @@
 	&_extended {
 		height: 100%;
 		max-height: 300px;
-		overflow-y: auto;
+		animation: extended 0.15s ease 0.15s forwards;
 	}
 }
 
@@ -101,9 +103,9 @@
 	}
 }
 
-.kit-filter-details__favorites {
+.kit-filter-details__close {
 	position: absolute;
-	top: 11px;
+	top: 12px;
 	right: 9px;
 	display: flex;
 	justify-content: center;
@@ -111,12 +113,17 @@
 	padding: 0;
 	background: none;
 	border: none;
-	color: #fff;
+	color: #707070;
 	transition: color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
+}
 
-	&_active {
-		color: #c5d6e1;
+@keyframes extended {
+	from {
+		overflow: hidden;
+	}
+	to {
+		overflow: auto;
 	}
 }

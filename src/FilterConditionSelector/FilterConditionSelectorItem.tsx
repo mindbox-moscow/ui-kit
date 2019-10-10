@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { IconSvg } from "../IconSvg";
 
 import "./FilterConditionSelector.scss";
 
@@ -78,35 +79,41 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 
 		return (
 			<li
-				className={cn("kit-filter-condition-selector__hierarchy-item", {
-					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
-					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
-					"kit-filter-condition-selector__hierarchy-simple-filter": isSimpleFilterableProperty
-				})}
+				className={cn(
+					"kit-filter-condition-selector__hierarchy-item",
+					`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
+					{
+						"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
+						"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
+						"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren
+					}
+				)}
 			>
-				{!isSimpleFilterableProperty && (
+				<div
+					className={cn(
+						"kit-filter-condition-selector__hierarchy-button",
+						{
+							"kit-filter-condition-selector__hierarchy-button_selected": isSelected
+						}
+					)}
+				>
+					{!isSimpleFilterableProperty && (
+						<button
+							type="button"
+							className="kit-filter-condition-selector__hierarchy-toggle"
+							onClick={this.onExpand}
+						>
+							<IconSvg type="arrow-right" />
+						</button>
+					)}
 					<button
 						type="button"
-						className="kit-filter-condition-selector__hierarchy-toggle"
-						onClick={this.onExpand}
-					/>
-				)}
-				<button
-					type="button"
-					className="kit-filter-condition-selector__hierarchy-name"
-					onClick={this.onSelect}
-				>
-					<span
-						className={cn(
-							"kit-filter-condition-selector__filter-span",
-							{
-								"kit-filter-condition-selector__filter-span_selected": isSelected
-							}
-						)}
+						className="kit-filter-condition-selector__hierarchy-name"
+						onClick={this.onSelect}
 					>
 						{this.handleHighLightText(name, searchTerm)}
-					</span>
-				</button>
+					</button>
+				</div>
 
 				{isExpanded && hasChildren && (
 					<ul className="kit-filter-condition-selector__hierarchy-children">

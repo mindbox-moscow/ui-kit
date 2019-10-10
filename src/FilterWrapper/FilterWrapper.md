@@ -432,6 +432,7 @@
 				<FiltrationConditionComponent
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
+					withAlert={true}
 				/>
 				<FiltrationConditionComponent
 					filterablePropertyName="Возраст"

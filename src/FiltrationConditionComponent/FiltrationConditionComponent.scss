@@ -16,6 +16,11 @@ $groupHoverMarginLeft: 10px;
 	font-size: 14px;
 	line-height: 19px;
 	list-style: none;
+
+	&_with-alert {
+		color: $removeColor;
+		font-weight: 700;
+	}
 }
 
 .kit-filtration-condition__item-text {

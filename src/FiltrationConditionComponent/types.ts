@@ -11,6 +11,7 @@ export interface StateProps {
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FilterablePropertyHierarchyElement.editorComponent.
 	helpComponent: React.ReactNode; // компонент хелпа. точно такой же, как в FilterablePropertyHierarchyElement.helpComponent.
 	starred: boolean;
+	withAlert: boolean;
 }
 
 export interface CallbackProps {

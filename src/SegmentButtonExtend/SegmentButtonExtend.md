@@ -1,0 +1,5 @@
+```jsx
+<div>
+	<SegmentButtonExtend />
+</div>
+```

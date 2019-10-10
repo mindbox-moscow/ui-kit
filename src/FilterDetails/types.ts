@@ -10,6 +10,5 @@ export interface CallbackProps {
 }
 
 export interface State {
-	isExpanded: boolean;
 	helpIsExpanded: boolean;
 }

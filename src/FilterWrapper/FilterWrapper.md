@@ -430,11 +430,11 @@
 				}
 			>
 				<FiltrationConditionComponent
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 				/>
 				<FiltrationConditionComponent
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 18 до 35 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -463,11 +463,11 @@
 				}
 			>
 				<FiltrationConditionComponent
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и женский"
 				/>
 				<FiltrationConditionComponent
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -539,11 +539,11 @@
 				}
 			>
 				<FiltrationConditionComponent
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 				/>
 				<FiltrationConditionComponent
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 18 до 35 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -572,11 +572,11 @@
 				}
 			>
 				<FiltrationConditionComponent
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и женский"
 				/>
 				<FiltrationConditionComponent
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -649,14 +649,14 @@
 			>
 				<FiltrationConditionComponent
 					state="view"
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					editorComponent={<input />}
 					helpComponent={<span>А тут у нас хелп</span>}
 				/>
 				<FiltrationConditionComponent
 					state="view"
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 18 до 35 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -686,12 +686,12 @@
 			>
 				<FiltrationConditionComponent
 					state="view"
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и женский"
 				/>
 				<FiltrationConditionComponent
 					state="view"
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -730,7 +730,7 @@
 			>
 				<FiltrationConditionComponent
 					state="edit"
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					onConditionStateToggle={() => console.log("change state")}
 					onClose={() => console.log("close")}
@@ -795,7 +795,7 @@
 				/>
 				<FiltrationConditionComponent
 					state="shaded"
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 18 до 35 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -808,12 +808,12 @@
 			>
 				<FiltrationConditionComponent
 					state="shaded"
-					filtrationObjectName="Пол"
+					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и женский"
 				/>
 				<FiltrationConditionComponent
 					state="shaded"
-					filtrationObjectName="Возраст"
+					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
 			</FiltrationGroupComponent>
@@ -873,11 +873,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -955,11 +955,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -989,7 +989,7 @@
 						onConditionRemove={() => console.log("remove")}
 					>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 					</FiltrationGroupComponent>
@@ -1042,11 +1042,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1116,11 +1116,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1190,11 +1190,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1267,7 +1267,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1299,7 +1299,7 @@
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 		</FiltrationGroupComponent>
@@ -1343,7 +1343,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1375,7 +1375,7 @@
 				}
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 		</FiltrationGroupComponent>
@@ -1422,11 +1422,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
@@ -1456,7 +1456,7 @@
 						onConditionRemove={() => console.log("remove")}
 					>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 					</FiltrationGroupComponent>
@@ -1506,11 +1506,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				state="view"
 				linkedConditionComponent={
@@ -1541,19 +1541,19 @@
 						onConditionRemove={() => console.log("remove")}
 					>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 					</FiltrationGroupComponent>
@@ -1603,11 +1603,11 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Пол"
+				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
 			/>
 			<FiltrationConditionComponent
-				filtrationObjectName="Розничный заказ"
+				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				state="linkedConditionEdit"
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -1639,19 +1639,19 @@
 						onConditionRemove={() => console.log("remove")}
 					>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 						<FiltrationConditionComponent
-							filtrationObjectName="Идентификатор в мобильном приложении"
+							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
 						/>
 					</FiltrationGroupComponent>
@@ -1696,7 +1696,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Дата и время"
+				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="edit"
 				onConditionStateToggle={() => console.log("change state")}
@@ -1878,7 +1878,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Дата и время"
+				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="edit"
 				onConditionStateToggle={() => console.log("change state")}
@@ -2055,7 +2055,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Дата и время"
+				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="view"
 				onConditionStateToggle={() => console.log("change state")}
@@ -2218,7 +2218,7 @@
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationConditionComponent
-				filtrationObjectName="Идентификатор в мобильном приложении"
+				filterablePropertyName="Идентификатор в мобильном приложении"
 				filtrationMethodName="заполнен и равен 42"
 			/>
 			<FiltrationGroupComponent
@@ -2247,12 +2247,12 @@
 			>
 				<FiltrationConditionComponent
 					state="shaded"
-					filtrationObjectName="Идентификатор в мобильном приложении"
+					filterablePropertyName="Идентификатор в мобильном приложении"
 					filtrationMethodName="заполнен и равен 42"
 				/>
 				<FiltrationConditionComponent
 					state="shaded"
-					filtrationObjectName="Идентификатор в мобильном приложении"
+					filterablePropertyName="Идентификатор в мобильном приложении"
 					filtrationMethodName="заполнен и равен 42"
 				/>
 				<FiltrationGroupComponent
@@ -2280,7 +2280,7 @@
 					onConditionRemove={() => console.log("remove")}
 				>
 					<FiltrationConditionComponent
-						filtrationObjectName="Идентификатор в мобильном приложении"
+						filterablePropertyName="Идентификатор в мобильном приложении"
 						filtrationMethodName="заполнен и равен 42"
 					/>
 				</FiltrationGroupComponent>

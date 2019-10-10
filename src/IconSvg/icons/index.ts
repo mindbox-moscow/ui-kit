@@ -9,6 +9,9 @@ import { Trash } from "./Trash";
 import { Extended } from "./Extended";
 import { Favorite } from "./Favorite";
 import { Warning } from "./Warning";
+import { SegmentExtend } from "./SegmentExtend";
+import { SegmentEdit } from "./SegmentEdit";
+import { SegmentContent } from "./SegmentContent";
 
 import { IconsProps } from "../types";
 
@@ -27,7 +30,10 @@ type IconType =
 	| "trash"
 	| "extended"
 	| "favorite"
-	| "warning";
+	| "warning"
+	| "segment-extend"
+	| "segment-edit"
+	| "segment-content";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -42,7 +48,10 @@ const icons: Icons = {
 	"percent-round": PercentRound,
 	extended: Extended,
 	favorite: Favorite,
-	warning: Warning
+	warning: Warning,
+	"segment-extend": SegmentExtend,
+	"segment-edit": SegmentEdit,
+	"segment-content": SegmentContent
 };
 
 export { icons, IconType, ISvgProps };

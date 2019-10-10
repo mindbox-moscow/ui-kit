@@ -7,27 +7,31 @@ import "./FilterDetails.scss";
 
 type Props = FilterDetailsProps & CallbackProps;
 
-export class FilterDetails extends React.Component<Props> {
-	public state: State = {
-		helpIsExpanded: false,
-		isExpanded: false
+export class FilterDetails extends React.Component<Props, State> {
+	public state = {
+		helpIsExpanded: false
 	};
 
 	private kitFiltrationHelperRef = React.createRef<HTMLDivElement>();
+	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
 
 	public handleHelpExtended = () => {
-		this.setState({
-			helpIsExpanded: !this.state.helpIsExpanded
-		});
+		this.setState(state => ({ helpIsExpanded: !state.helpIsExpanded }));
 	};
 
 	public handleViewExtended = () => {
 		const helper = this.kitFiltrationHelperRef.current;
-		if (helper && helper.scrollHeight <= 74) {
-			if (this.state.isExpanded === false) {
-				this.setState({
-					isExpanded: !this.state.isExpanded
-				});
+		const buttonExtend = this.kitFiltrationExtendButton.current;
+
+		if (helper && buttonExtend) {
+			if (helper.scrollHeight <= 74) {
+				buttonExtend.classList.add(
+					"kit-filter-details__show-btn_no-extended"
+				);
+			} else {
+				buttonExtend.classList.remove(
+					"kit-filter-details__show-btn_no-extended"
+				);
 			}
 		}
 	};
@@ -36,8 +40,12 @@ export class FilterDetails extends React.Component<Props> {
 		this.handleViewExtended();
 	}
 
-	public componentDidUpdate() {
+	public componentDidUpdate(prevProps: Props, prevState: State) {
 		this.handleViewExtended();
+
+		if (prevState.helpIsExpanded === true) {
+			this.setState({ helpIsExpanded: false });
+		}
 	}
 
 	public render() {
@@ -46,11 +54,10 @@ export class FilterDetails extends React.Component<Props> {
 			helpComponent,
 			helpCaption,
 			viewMode,
-			starred,
-			toggleStar
+			onClose
 		} = this.props;
 
-		const { helpIsExpanded, isExpanded } = this.state;
+		const { helpIsExpanded } = this.state;
 
 		return (
 			<div
@@ -60,13 +67,11 @@ export class FilterDetails extends React.Component<Props> {
 				})}
 			>
 				<button
-					onClick={toggleStar}
-					className={cn("kit-filter-details__favorites", {
-						"kit-filter-details__favorites_active": starred
-					})}
+					onClick={onClose}
+					className="kit-filter-details__close"
 					type="button"
 				>
-					<IconSvg type="favorite" />
+					<IconSvg type="close" size="large" />
 				</button>
 				<h2 className="kit-filter-details__title">{helpCaption}</h2>
 				{editorComponent && (
@@ -87,10 +92,10 @@ export class FilterDetails extends React.Component<Props> {
 							</div>
 						</div>
 						<button
+							ref={this.kitFiltrationExtendButton}
 							type="button"
 							className={cn("kit-filter-details__show-btn", {
-								"kit-filter-details__show-btn_extended": helpIsExpanded,
-								"kit-filter-details__show-btn_no-extended": isExpanded
+								"kit-filter-details__show-btn_extended": helpIsExpanded
 							})}
 							onClick={this.handleHelpExtended}
 						>

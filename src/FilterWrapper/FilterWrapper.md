@@ -677,7 +677,7 @@
 				}
 			>
 				<FiltrationConditionComponent
-					state="view"
+					state="readOnly"
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					editorComponent={<input />}

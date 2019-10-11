@@ -119,6 +119,16 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	&_read-only {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+
+		[class*="kit-segment"] {
+			&:not(:last-child) {
+				margin-right: 10px;
+			}
+		}
+
 		&:hover,
 		.kit-filtration-condition__drag-and-drop {
 			background-color: transparent;
@@ -126,9 +136,15 @@ $groupHoverMarginLeft: 10px;
 		}
 
 		.kit-filtration-condition__drag-and-drop,
+		.kit-filtration-group__label,
 		.kit-filtration-condition__content {
 			pointer-events: none;
 			z-index: 0;
+		}
+
+		.kit-segment-button-expand__popover {
+			order: 1;
+			width: 100%;
 		}
 	}
 }
@@ -162,7 +178,7 @@ $groupHoverMarginLeft: 10px;
 	z-index: 1;
 }
 
-.kit-filtration-condition__item-text__block-read-only {
+.kit-filtration-condition__item-text__block-method-params {
 	display: inline-flex;
 
 	> *:not(:last-child) {

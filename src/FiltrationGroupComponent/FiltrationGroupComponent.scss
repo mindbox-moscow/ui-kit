@@ -187,7 +187,7 @@ $widthHorizontalBraket: 12px;
 	left: -10px;
 	display: flex;
 	align-items: center;
-	width: calc(100% - 25px);
+	width: calc(100% + 10px);
 	height: 1px;
 	padding: 15px $groupLabelPaddingLeft 10px;
 	border-radius: 3px 0 0 3px;
@@ -351,6 +351,6 @@ $widthHorizontalBraket: 12px;
 	background: none;
 	color: $closeColor;
 	cursor: pointer;
-	z-index: 1;
+	z-index: 10;
 	outline: none;
 }

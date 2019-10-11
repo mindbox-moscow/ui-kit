@@ -3,9 +3,6 @@ import * as React from "react";
 import { FilterConditionPopup } from "../FilterConditionPopup";
 import { FilterDetails } from "../FilterDetails";
 import { IconSvg } from "../IconSvg";
-import { SegmentButtonEdit } from "../SegmentButtonEdit";
-import { SegmentButtonExpand } from "../SegmentButtonExpand";
-import { SegmentContent } from "../SegmentContent";
 import { StateProps, CallbackProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
@@ -82,18 +79,8 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 								{filtrationMethodName}
 							</span>
 						)}
-						{filtrationMethodParametersComponent}
 					</div>
-					{state === "readOnly" && (
-						<div className="kit-filtration-condition__item-text__block-read-only">
-							<SegmentButtonExpand
-								onClick={() => {}}
-								isOpen={false}
-							/>
-							<SegmentButtonEdit onClick={() => {}} />
-							<SegmentContent content="~1 469 718" />
-						</div>
-					)}
+					{filtrationMethodParametersComponent}
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

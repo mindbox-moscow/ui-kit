@@ -7,6 +7,8 @@ $filterBlockColorBg: #e2eaf0;
 $filterButtonColor: #265378;
 $hoverItemColorBg: #3875d7;
 $selectItemColorBg: #878787;
+$searchFocusBorderColor: #5897fb;
+$searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector {
 	display: flex;
@@ -17,6 +19,17 @@ $selectItemColorBg: #878787;
 	font-family: "PT Sans", sans-serif;
 	z-index: 20;
 	overflow: hidden;
+
+	.kit-input-field_search {
+		transition: border-color 0.15s ease-in-out,
+			background-color 0.15s ease-in-out;
+
+		&:hover,
+		&:focus {
+			border-color: $searchFocusBorderColor;
+			background-color: $searchFocusBgColor;
+		}
+	}
 }
 
 .kit-filter-condition-selector__wrap {
@@ -139,10 +152,20 @@ $selectItemColorBg: #878787;
 					display: block;
 					width: 8px;
 					height: 8px;
-					border: solid 1px #c5d6e1;
+					border: solid 1px $toggleCircleColor;
 					border-radius: 50%;
-					background-color: #c5d6e1;
+					background-color: $toggleCircleColor;
 					box-sizing: border-box;
+				}
+			}
+
+			&_selected,
+			&:hover {
+				.kit-filter-condition-selector__hierarchy-name {
+					&::before {
+						background-color: #fff;
+						border-color: #fff;
+					}
 				}
 			}
 		}
@@ -231,6 +254,7 @@ $selectItemColorBg: #878787;
 .kit-filter-condition-selector__hierarchy-toggle {
 	padding: 0;
 	width: 6px;
+	margin-top: 1px;
 	border: none;
 	background-color: transparent;
 	color: inherit;

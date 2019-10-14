@@ -1,3 +1,4 @@
+import cn from "classnames";
 import * as React from "react";
 import { FilterConditionPopup } from "../FilterConditionPopup";
 import {
@@ -19,7 +20,9 @@ export const FilterConditionEditorButton = (props: Props) => {
 		<div className="kit-filter-editor">
 			<button
 				ref={refButton}
-				className="kit-filter-editor__btn"
+				className={cn("kit-filter-editor__btn", {
+					"kit-filter-editor__btn_open": isOpened
+				})}
 				type="button"
 				onClick={toggleOpen}
 			>

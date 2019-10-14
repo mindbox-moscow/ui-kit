@@ -1,3 +1,11 @@
+// Colors
+$textColor: #265378;
+$borderColor: #c7d8e2;
+$borderDisableColor: #6f99b4;
+$bgColor: #f1f5f8;
+$bgDisableColor: #c1d0dc;
+$bgColorOpen: #3875d7;
+
 .kit-filter-editor {
 	position: relative;
 }
@@ -10,10 +18,10 @@
 	margin: 0;
 	padding: 0 24px;
 	border-radius: 4px;
-	color: #265378;
+	color: $textColor;
 	text-align: center;
-	border: 1px solid #c7d8e2;
-	background-color: #f1f5f8;
+	border: 1px solid $borderColor;
+	background-color: $bgColor;
 	font-family: "PT Sans", sans-serif;
 	font-size: 13px;
 	line-height: 18px;
@@ -22,9 +30,16 @@
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
 
+	&_open {
+		color: #fff;
+		background-color: $bgColorOpen;
+		border-color: $bgColorOpen;
+	}
+
 	&:hover:not(:disabled) {
-		background-color: #c1d0dc;
-		border-color: darken($color: #6f99b4, $amount: 8%);
+		color: $textColor;
+		background-color: $bgDisableColor;
+		border-color: darken($color: $borderDisableColor, $amount: 8%);
 	}
 
 	&:disabled {

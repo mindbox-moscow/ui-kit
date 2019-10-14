@@ -14,6 +14,7 @@ interface Props {
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
+	autoFocus?: boolean;
 }
 
 interface State {
@@ -32,7 +33,8 @@ export class Input extends React.PureComponent<Props, State> {
 			maxLength,
 			noShadow,
 			size,
-			className
+			className,
+			autoFocus
 		} = this.props;
 
 		return (
@@ -50,6 +52,7 @@ export class Input extends React.PureComponent<Props, State> {
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
+					autoFocus={autoFocus}
 					aria-hidden={true}
 				/>
 				{type === "search" && (

@@ -79,7 +79,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						className="kit-filtration-condition__copy"
 						onClick={onConditionCopy}
 					>
-						<IconSvg type="segment-edit" />
+						<IconSvg type="duplicate" />
 					</button>
 					<button
 						type="button"

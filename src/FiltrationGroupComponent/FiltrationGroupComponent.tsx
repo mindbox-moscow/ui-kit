@@ -343,7 +343,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 												className="kit-filtration-group__copy"
 												type="button"
 											>
-												<IconSvg type="segment-edit" />
+												<IconSvg type="duplicate" />
 											</button>
 											<button
 												key="remove"

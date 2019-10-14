@@ -3,6 +3,8 @@ $hoverColorBg: #f5f8fa;
 $editModeColorBg: #3875d7;
 $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
+$copyColorBg: $hoverColorBg;
+$copyColor: #2d597d;
 $linkedConditionEditModeColorBg: #fde487;
 
 // Sizes
@@ -25,17 +27,21 @@ $groupHoverMarginLeft: 10px;
 
 .kit-filtration-condition__item-text {
 	position: relative;
-	display: inline-block;
-	padding: 3px 5px 3px 0;
+	display: inline-flex;
+	padding: 3px 0 3px 0;
+	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
 	z-index: 2;
 
 	&:hover {
-		border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
-		background-color: $hoverColorBg;
-		cursor: pointer;
+		.kit-filtration-condition__content {
+			background-color: $hoverColorBg;
+			cursor: pointer;
+		}
 
-		.kit-filtration-condition__drag-and-drop {
+		.kit-filtration-condition__drag-and-drop,
+		.kit-filtration-condition__remove,
+		.kit-filtration-condition__copy {
 			display: flex;
 		}
 	}
@@ -50,9 +56,17 @@ $groupHoverMarginLeft: 10px;
 		min-height: 25px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
-		border-radius: 3px 0 0 3px;
+		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
+	}
+
+	.kit-filtration-condition__content {
+		display: inline-flex;
+		align-items: center;
+		height: 25px;
+		margin-top: -3px;
+		margin-bottom: -3px;
 	}
 
 	.kit-filtration-condition__content > span,
@@ -62,11 +76,6 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	&_hover {
-		&::before {
-			content: "";
-			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
-		}
-
 		& + .kit-filtration-group_hover {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
@@ -75,17 +84,27 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	&_edit {
-		background-color: $editModeColorBg;
+		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #fff;
+
+		&:hover {
+			.kit-filtration-condition__content {
+				background-color: $editModeColorBg;
+			}
+		}
+
+		.kit-filtration-condition__content {
+			background-color: $editModeColorBg;
+		}
 
 		.kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
 		}
 
-		&:hover {
-			border-top-right-radius: 0;
-			background-color: $editModeColorBg;
+		.kit-filtration-condition__remove,
+		.kit-filtration-condition__copy {
+			display: inline-flex;
 		}
 	}
 
@@ -97,7 +116,9 @@ $groupHoverMarginLeft: 10px;
 		}
 
 		&:hover {
-			.kit-filtration-condition__drag-and-drop {
+			.kit-filtration-condition__drag-and-drop,
+			.kit-filtration-condition__remove,
+			.kit-filtration-condition__copy {
 				display: none;
 			}
 		}
@@ -131,18 +152,29 @@ $groupHoverMarginLeft: 10px;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 }
 
+.kit-filtration-condition__copy,
 .kit-filtration-condition__remove {
-	position: absolute;
-	top: 0;
-	left: 100%;
-	display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
-	height: 100%;
-	margin-left: 1px;
+	height: 25px;
+	margin-top: -3px;
+	margin-bottom: -3px;
+	margin-left: 2px;
+	border: 0;
+	z-index: 1;
+	cursor: pointer;
+	outline: none;
+}
+
+.kit-filtration-condition__copy {
+	background-color: $copyColorBg;
+	color: $copyColor;
+}
+
+.kit-filtration-condition__remove {
 	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	background-color: $removeColorBg;
 	color: $removeColor;
-	z-index: 1;
 }

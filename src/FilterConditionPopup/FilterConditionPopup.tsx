@@ -1,3 +1,4 @@
+import cn from "classnames";
 import * as React from "react";
 import { createPortal } from "react-dom";
 import { State, Props } from "./types";
@@ -58,11 +59,11 @@ export class FilterConditionPopup extends React.Component<Props> {
 	public render() {
 		const { portal } = this;
 		const { positionLeft, positionTop, isLoaded } = this.state;
-		const { children } = this.props;
+		const { children, className } = this.props;
 
 		return createPortal(
 			<div
-				className="kit-filter-condition-popup"
+				className={cn("kit-filter-condition-popup", className)}
 				style={{ left: positionLeft, top: positionTop }}
 			>
 				{isLoaded && children}

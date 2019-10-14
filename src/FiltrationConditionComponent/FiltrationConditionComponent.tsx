@@ -24,17 +24,12 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			editorComponent,
 			onConditionStateToggle,
 			toggleStar,
-			withAlert
+			withAlert,
+			onConditionCopy
 		} = this.props;
 
 		const editModeContent = (
 			<>
-				<div
-					className="kit-filtration-condition__remove"
-					onClick={onConditionRemove}
-				>
-					<IconSvg type="trash" />
-				</div>
 				<FilterConditionPopup parentRef={this.refComponent}>
 					<FilterDetails
 						helpCaption={filterablePropertyName}
@@ -79,6 +74,20 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						)}
 						{filtrationMethodParametersComponent}
 					</div>
+					<button
+						type="button"
+						className="kit-filtration-condition__copy"
+						onClick={onConditionCopy}
+					>
+						<IconSvg type="segment-edit" />
+					</button>
+					<button
+						type="button"
+						className="kit-filtration-condition__remove"
+						onClick={onConditionRemove}
+					>
+						<IconSvg type="trash" />
+					</button>
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

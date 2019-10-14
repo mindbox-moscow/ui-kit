@@ -7,7 +7,7 @@ $mainColor: #999999;
 	align-items: center;
 	justify-content: center;
 	min-width: 32px;
-	padding-left: 6px;
+	padding-left: 10px;
 	padding-right: 10px;
 	height: 16px;
 	border-radius: 8px;
@@ -21,7 +21,6 @@ $mainColor: #999999;
 }
 
 .kit-segment-edit__count {
-	margin-left: 5px;
 	color: inherit;
 	font-family: "PT Sans", sans-serif;
 	font-size: 11px;

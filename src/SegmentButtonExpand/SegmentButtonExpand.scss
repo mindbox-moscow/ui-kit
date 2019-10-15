@@ -1,3 +1,4 @@
+$textFilterColor: #333;
 $borderColor: #d9e7fe;
 $borderHoverColor: #e2eaf0;
 $mainColor: #3875d7;
@@ -44,6 +45,7 @@ $borderPopoverColor: #dddddc;
 			border-width: 1px 1px 0 1px;
 			border-color: $borderPopoverColor;
 			border-style: solid;
+			z-index: 1;
 		}
 
 		svg {
@@ -53,10 +55,32 @@ $borderPopoverColor: #dddddc;
 }
 
 .kit-segment-button-expand__popover {
-	padding: 20px 14px 14px 21px;
+	position: relative;
+	padding: 10px 14px 12px 18px;
+	margin-top: 1px;
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
 	border: solid 1px $borderPopoverColor;
 	background-color: #fff;
+	box-sizing: border-box;
+}
+
+.kit-segment-button-expand__button-filter {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-flex;
+	align-items: center;
+	height: 16px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	border-radius: 8px;
+	background-color: $borderHoverColor;
+	font-family: "PT Sans", sans-serif;
+	font-size: 11px;
+	line-height: 1;
+	color: $textFilterColor;
+	outline: none;
 	box-sizing: border-box;
 }

@@ -687,6 +687,8 @@
 							<SegmentButtonExpand
 								onClick={() => {}}
 								isOpen={true}
+								filterActionCaption="Использовать как фильтр"
+								filterActionClick={() => {}}
 							>
 								<FiltrationGroupComponent
 									state="view"

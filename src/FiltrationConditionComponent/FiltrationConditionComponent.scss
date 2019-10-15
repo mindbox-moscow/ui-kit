@@ -32,6 +32,7 @@ $groupHoverMarginLeft: 10px;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
 	z-index: 2;
+	cursor: pointer;
 
 	&:hover {
 		.kit-filtration-condition__content {
@@ -39,10 +40,13 @@ $groupHoverMarginLeft: 10px;
 			cursor: pointer;
 		}
 
-		.kit-filtration-condition__drag-and-drop,
+		.kit-filtration-condition__drag-and-drop {
+			display: flex;
+		}
+
 		.kit-filtration-condition__remove,
 		.kit-filtration-condition__copy {
-			display: flex;
+			visibility: visible;
 		}
 	}
 
@@ -65,8 +69,6 @@ $groupHoverMarginLeft: 10px;
 		display: inline-flex;
 		align-items: center;
 		height: 25px;
-		margin-top: -3px;
-		margin-bottom: -3px;
 	}
 
 	.kit-filtration-condition__content > span,
@@ -104,7 +106,7 @@ $groupHoverMarginLeft: 10px;
 
 		.kit-filtration-condition__remove,
 		.kit-filtration-condition__copy {
-			display: inline-flex;
+			visibility: visible;
 		}
 	}
 
@@ -115,10 +117,13 @@ $groupHoverMarginLeft: 10px;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
+		.kit-filtration-condition__remove,
+		.kit-filtration-condition__copy {
+			display: none;
+		}
+
 		&:hover {
-			.kit-filtration-condition__drag-and-drop,
-			.kit-filtration-condition__remove,
-			.kit-filtration-condition__copy {
+			.kit-filtration-condition__drag-and-drop {
 				display: none;
 			}
 		}
@@ -141,31 +146,30 @@ $groupHoverMarginLeft: 10px;
 
 .kit-filtration-condition__drag-and-drop {
 	position: absolute;
-	top: 0;
+	top: 3px;
 	right: 100%;
 	display: none;
 	align-items: center;
 	justify-content: center;
 	width: 5px;
-	height: 100%;
+	height: calc(100% - 6px);
 	background-color: $hoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 }
 
 .kit-filtration-condition__copy,
 .kit-filtration-condition__remove {
-	display: none;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
 	height: 25px;
-	margin-top: -3px;
-	margin-bottom: -3px;
 	margin-left: 2px;
 	border: 0;
 	z-index: 1;
 	cursor: pointer;
 	outline: none;
+	visibility: hidden;
 }
 
 .kit-filtration-condition__copy {

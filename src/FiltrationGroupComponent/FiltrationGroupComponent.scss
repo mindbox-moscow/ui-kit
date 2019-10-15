@@ -18,6 +18,7 @@ $groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 $widthHorizontalBraket: 12px;
+$minHeight: 31px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -35,7 +36,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
-	min-height: 25px;
+	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -74,7 +75,7 @@ $widthHorizontalBraket: 12px;
 			display: block;
 			width: calc(100% + #{$groupHoverMarginLeft});
 			height: calc(100% + #{$groupHoverMarginTop});
-			min-height: 25px;
+			min-height: $minHeight;
 			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 			background-color: $editColorBg;
 			border-radius: 3px 0 0 3px;
@@ -112,7 +113,7 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&_not-children {
-		min-height: 25px;
+		min-height: $minHeight;
 
 		&#{$self}_edit {
 			margin-left: 30px;
@@ -121,7 +122,8 @@ $widthHorizontalBraket: 12px;
 		> .kit-filtration-group__label_or,
 		> .kit-filtration-group__label_and {
 			.kit-filtration-group__label-text-height {
-				margin-right: -21px;
+				margin-right: -22px;
+				margin-top: 4px;
 			}
 		}
 	}
@@ -177,7 +179,7 @@ $widthHorizontalBraket: 12px;
 	align-items: center;
 	width: calc(100% + 10px);
 	height: 1px;
-	padding: 15px $groupLabelPaddingLeft 10px;
+	padding: 16px $groupLabelPaddingLeft 15px;
 	border-radius: 3px 0 0 3px;
 	color: $braketColor;
 	z-index: 2;
@@ -213,7 +215,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-line {
 	width: $borderWidthLine;
 	height: 100%;
-	margin-top: -4px;
+	margin-top: 0;
 	margin-left: -1px;
 	background-color: $braketColor;
 	box-sizing: border-box;
@@ -221,7 +223,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
-	margin-top: 14px;
+	margin-top: 16px;
 	left: 14px;
 	display: inline-block;
 	width: 12px;
@@ -246,7 +248,7 @@ $widthHorizontalBraket: 12px;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
-	margin-top: -3px;
+	margin-top: -1px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
@@ -261,6 +263,8 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__buttons {
 	position: relative;
 	display: flex;
+	align-items: center;
+	min-height: $minHeight;
 	margin-right: 20px;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -356,8 +360,8 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-text-buttons {
 	display: flex;
 	align-items: center;
-	height: 20px;
-	margin-top: -10px;
+	height: 22px;
+	margin-top: -12px;
 	margin-left: 2px;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	background-color: #fff;

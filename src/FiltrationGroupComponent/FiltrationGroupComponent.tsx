@@ -19,7 +19,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		horizontalBracket: [],
 		verticalBracket: false
 	};
-	private minHeight = 25;
+	// Менять только высоту, остальные правки делать в стилях!
+	private minHeight = 31;
 	private marginTop = 2;
 	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();

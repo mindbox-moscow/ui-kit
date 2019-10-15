@@ -57,7 +57,6 @@ $borderPopoverColor: #dddddc;
 .kit-segment-button-expand__popover {
 	position: relative;
 	padding: 10px 14px 12px 18px;
-	margin-top: 1px;
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
 	border: solid 1px $borderPopoverColor;
@@ -67,12 +66,12 @@ $borderPopoverColor: #dddddc;
 
 .kit-segment-button-expand__button-filter {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 15px;
+	right: 3px;
 	display: inline-flex;
 	align-items: center;
 	height: 16px;
-	padding: 0;
+	padding: 0 10px 0 10px;
 	margin: 0;
 	border: 0;
 	border-radius: 8px;
@@ -83,4 +82,10 @@ $borderPopoverColor: #dddddc;
 	color: $textFilterColor;
 	outline: none;
 	box-sizing: border-box;
+	cursor: pointer;
+	z-index: 3;
+
+	svg {
+		margin-right: 6px;
+	}
 }

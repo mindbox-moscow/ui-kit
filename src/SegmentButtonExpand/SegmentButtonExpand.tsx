@@ -15,6 +15,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 				type="button"
 				onClick={filterActionClick}
 			>
+				<IconSvg type="filter" />
 				{filterActionCaption}
 			</button>
 		);

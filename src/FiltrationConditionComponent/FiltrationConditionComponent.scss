@@ -124,7 +124,7 @@ $groupHoverMarginLeft: 10px;
 		width: 100%;
 
 		[class*="kit-segment"] {
-			&:not(:last-child) {
+			&:not(:last-child):not(.kit-segment-button-expand__popover) {
 				margin-right: 10px;
 			}
 		}

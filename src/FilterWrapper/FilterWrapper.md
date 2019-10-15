@@ -725,6 +725,7 @@
 									}
 								>
 									<FiltrationConditionComponent
+										state="readOnly"
 										filterablePropertyName="Пол"
 										filtrationMethodName="заполнен и мужской"
 									/>
@@ -919,6 +920,8 @@
 							<SegmentButtonExpand
 								onClick={() => {}}
 								isOpen={true}
+								filterActionCaption="Использовать как фильтр"
+								filterActionClick={() => {}}
 							>
 								<FiltrationGroupComponent
 									state="view"
@@ -1011,6 +1014,8 @@
 															<SegmentButtonExpand
 																onClick={() => {}}
 																isOpen={true}
+																filterActionCaption="Использовать как фильтр"
+																filterActionClick={() => {}}
 															>
 																<FiltrationGroupComponent
 																	state="view"

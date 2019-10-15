@@ -119,11 +119,12 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	&_read-only {
-		display: flex;
 		flex-wrap: wrap;
+		align-items: flex-start;
 		width: 100%;
 
 		[class*="kit-segment"] {
+			margin-top: 2px;
 			&:not(:last-child):not(.kit-segment-button-expand__popover) {
 				margin-right: 10px;
 			}

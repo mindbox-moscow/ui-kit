@@ -74,6 +74,7 @@ $searchFocusBgColor: #fffde5;
 		mix-blend-mode: multiply;
 		z-index: 1;
 		box-sizing: border-box;
+		margin-bottom: 1px;
 	}
 
 	&:hover,
@@ -119,7 +120,6 @@ $searchFocusBgColor: #fffde5;
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
 	padding: 0 10px 0 8px;
-	margin-top: 2px;
 	border: 0;
 	background-color: transparent;
 	font-family: "PT Sans", sans-serif;
@@ -173,7 +173,7 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	padding-left: 16px;
+	padding-left: 14px;
 	list-style: none;
 	box-sizing: border-box;
 
@@ -190,13 +190,13 @@ $searchFocusBgColor: #fffde5;
 
 		&::before {
 			top: 0;
-			left: -15px;
+			left: -13px;
 			border-left: 2px solid;
 			height: 100%;
 		}
 
 		&::after {
-			left: -13px;
+			left: -11px;
 			top: 13px;
 			width: 6px;
 			border-bottom: 2px solid;
@@ -267,6 +267,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button
 		& {
 		transform: rotate(90deg);
+		margin-bottom: 2px;
 	}
 }
 

@@ -48,7 +48,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 							noShadow={true}
 							defaultValue={searchTerm}
 							type="search"
-							placeholder="Название акции, группы или кампании"
+							placeholder="Название фильтра"
 							onChange={handleSearchChange}
 							autoFocus={true}
 						/>

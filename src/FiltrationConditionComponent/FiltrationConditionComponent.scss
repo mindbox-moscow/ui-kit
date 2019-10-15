@@ -167,6 +167,7 @@ $groupHoverMarginLeft: 10px;
 	margin-left: 2px;
 	border: 0;
 	z-index: 1;
+	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
 	visibility: hidden;
@@ -175,10 +176,18 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__copy {
 	background-color: $copyColorBg;
 	color: $copyColor;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
 }
 
 .kit-filtration-condition__remove {
 	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	background-color: $removeColorBg;
 	color: $removeColor;
+
+	&:hover {
+		background-color: darken($removeColorBg, 10%);
+	}
 }

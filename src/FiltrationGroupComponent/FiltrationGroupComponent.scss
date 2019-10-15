@@ -305,6 +305,7 @@ $minHeight: 31px;
 	height: 100%;
 	padding: 0;
 	border: 0;
+	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
 	box-sizing: border-box;
@@ -314,12 +315,20 @@ $minHeight: 31px;
 	width: 34px;
 	background-color: $removeColorBg;
 	color: $removeColor;
+
+	&:hover {
+		background-color: darken($removeColorBg, 10%);
+	}
 }
 
 .kit-filtration-group__copy {
 	width: 36px;
 	background-color: $copyColorBg;
 	color: $copyColor;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
 }
 
 .kit-filtration-group__label-button {

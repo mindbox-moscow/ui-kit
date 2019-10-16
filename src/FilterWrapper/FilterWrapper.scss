@@ -11,7 +11,10 @@ $clearButtonCountColor: #a4a4a4;
 	background-color: #ffffff;
 	box-sizing: border-box;
 	overflow: hidden;
-	padding-top: 36px;
+
+	&_with-filter-action {
+		padding-top: 22px;
+	}
 
 	&_short {
 		display: flex;

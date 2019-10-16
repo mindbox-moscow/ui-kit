@@ -32,7 +32,9 @@ export class FilterWrapper extends React.Component<Props> {
 		return (
 			<div
 				className={cn("kit-filter", {
-					"kit-filter_short": !doesContainFilter
+					"kit-filter_short": !doesContainFilter,
+					"kit-filter_with-filter-action":
+						filterActions && filterActionsCaption
 				})}
 			>
 				<div className="kit-filter__top-filter">

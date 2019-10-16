@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { FilterConditionPopup } from "../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FilterDetails } from "../FilterDetails";
 import { IconSvg } from "../IconSvg";
 import { StateProps, CallbackProps } from "./types";
@@ -24,18 +24,13 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			editorComponent,
 			onConditionStateToggle,
 			toggleStar,
-			withAlert
+			withAlert,
+			onConditionCopy
 		} = this.props;
 
 		const editModeContent = (
 			<>
-				<div
-					className="kit-filtration-condition__remove"
-					onClick={onConditionRemove}
-				>
-					<IconSvg type="trash" />
-				</div>
-				<FilterConditionPopup parentRef={this.refComponent}>
+				<OverflowVisibleContainer parentRef={this.refComponent}>
 					<FilterDetails
 						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}
@@ -43,7 +38,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						onClose={toggleStar}
 						viewMode="edit"
 					/>
-				</FilterConditionPopup>
+				</OverflowVisibleContainer>
 			</>
 		);
 		return (
@@ -61,7 +56,9 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						"kit-filtration-condition__item-text_shaded":
 							state === "shaded",
 						"kit-filtration-condition__item-text_read-only":
-							state === "readOnly"
+							state === "readOnly",
+						"kit-filtration-condition__item-text_view":
+							state === "view"
 					})}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
@@ -79,8 +76,22 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 								{filtrationMethodName}
 							</span>
 						)}
+						{filtrationMethodParametersComponent}
+						<button
+							type="button"
+							className="kit-filtration-condition__copy"
+							onClick={onConditionCopy}
+						>
+							<IconSvg type="duplicate" />
+						</button>
+						<button
+							type="button"
+							className="kit-filtration-condition__remove"
+							onClick={onConditionRemove}
+						>
+							<IconSvg type="trash" />
+						</button>
 					</div>
-					{filtrationMethodParametersComponent}
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

@@ -1,6 +1,11 @@
 type GroupType = "and" | "or";
 
-type ConditionState = "view" | "edit" | "shaded" | "linkedConditionEdit";
+type ConditionState =
+	| "view"
+	| "edit"
+	| "shaded"
+	| "linkedConditionEdit"
+	| "readOnly";
 
 export interface StateProps {
 	groupType: GroupType; // тип группы: И или ИЛИ
@@ -17,4 +22,5 @@ export interface CallbackProps {
 	onGroupTypeToggle: () => void;
 	onConditionStateToggle: () => void;
 	onConditionRemove: () => void;
+	onConditionCopy: () => void;
 }

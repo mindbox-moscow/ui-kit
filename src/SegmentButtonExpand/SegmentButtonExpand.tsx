@@ -22,7 +22,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 	};
 
 	public render() {
-		const { children, onClick, isOpen } = this.props;
+		const { children, onClick, isOpen, filterActionShow } = this.props;
 
 		return (
 			<>
@@ -37,7 +37,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 				</button>
 				{isOpen && (
 					<div className="kit-segment-button-expand__popover">
-						{this.filterAction()}
+						{filterActionShow && this.filterAction()}
 						{children}
 					</div>
 				)}

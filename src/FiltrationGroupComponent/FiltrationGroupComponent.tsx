@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { LabelButton } from "./components";
 import { StateProps, CallbackProps } from "./types";
 
@@ -18,11 +19,13 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		horizontalBracket: [],
 		verticalBracket: false
 	};
-	private minHeight = 25;
+	// Менять только высоту, остальные правки делать в стилях!
+	private minHeight = 31;
 	private marginTop = 2;
 	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
+	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
 		const ref = this.kitFiltrationRef.current;
@@ -278,7 +281,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			shouldShowLabel,
 			children,
 			onGroupTypeToggle,
-			state
+			state,
+			onConditionRemove,
+			onConditionCopy
 		} = this.props;
 
 		const labelMap = {
@@ -296,6 +301,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				className={cn("kit-filtration-group", {
 					"kit-filtration-group_edit": state === "edit",
 					"kit-filtration-group_shaded": state === "shaded",
+					"kit-filtration-group_read-only": state === "readOnly",
 					"kit-filtration-group_not-children": children === undefined
 				})}
 			>
@@ -312,17 +318,55 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				>
 					<div className="kit-filtration-group__label-line" />
 					{shouldShowLabel && (
-						<span className="kit-filtration-group__label-text">
-							{state === "edit" ? (
-								<LabelButton
-									onToggle={onGroupTypeToggle}
-									types={labelMap}
-									activeType={groupType}
-								/>
-							) : (
-								labelMap[groupType]
-							)}
-						</span>
+						<>
+							<span className="kit-filtration-group__label-text">
+								{state === "edit" ? (
+									<>
+										<div
+											className="kit-filtration-group__label-text-height"
+											ref={
+												this
+													.kitFiltrationLabelButtonsRef
+											}
+										/>
+										<OverflowVisibleContainer
+											className={cn(
+												"kit-filtration-group__label-text-buttons",
+												`kit-filtration-group__label-text-buttons_${groupType}`
+											)}
+											parentRef={
+												this
+													.kitFiltrationLabelButtonsRef
+											}
+										>
+											<button
+												key="copy"
+												onClick={onConditionCopy}
+												className="kit-filtration-group__copy"
+												type="button"
+											>
+												<IconSvg type="duplicate" />
+											</button>
+											<button
+												key="remove"
+												onClick={onConditionRemove}
+												className="kit-filtration-group__remove"
+												type="button"
+											>
+												<IconSvg type="trash" />
+											</button>
+											<LabelButton
+												onToggle={onGroupTypeToggle}
+												types={labelMap}
+												activeType={groupType}
+											/>
+										</OverflowVisibleContainer>
+									</>
+								) : (
+									labelMap[groupType]
+								)}
+							</span>
+						</>
 					)}
 					{horizontalBracket}
 					{verticalBracket}
@@ -382,12 +426,11 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		const {
 			state,
 			children,
-			onConditionRemove,
 			onConditionStateToggle,
 			shouldShowLabel
 		} = this.props;
 
-		if (state === "view" || state === "shaded") {
+		if (state === "view" || state === "shaded" || state === "readOnly") {
 			if (React.Children.count(children) === 0) {
 				if (!shouldShowLabel) {
 					return this.renderGroupButtons(true);
@@ -401,14 +444,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 		return (
 			<>
-				<button
-					key="remove"
-					onClick={onConditionRemove}
-					className="kit-filtration-group__remove"
-					type="button"
-				>
-					<IconSvg type="trash" />
-				</button>
 				<button
 					key="toggle"
 					onClick={onConditionStateToggle}

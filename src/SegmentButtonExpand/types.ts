@@ -3,4 +3,6 @@ export interface SegmentButtonExpandProps {
 	isOpen: boolean;
 	filterActionCaption: string;
 	filterActionClick: () => void;
+
+	filterActionShow: boolean;
 }

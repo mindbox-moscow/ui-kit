@@ -677,7 +677,7 @@
 				}
 			>
 				<FiltrationConditionComponent
-					state="readOnly"
+					state="view"
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					editorComponent={<input />}
@@ -689,9 +689,10 @@
 								isOpen={true}
 								filterActionCaption="Использовать как фильтр"
 								filterActionClick={() => {}}
+								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
-									state="view"
+									state="readOnly"
 									groupType="and"
 									andLabel="И"
 									orLabel="ИЛИ"
@@ -897,7 +898,7 @@
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
 						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
+						isOpened={true}
 						label="Добавить фильтр"
 					/>
 				}
@@ -910,7 +911,7 @@
 				}
 			>
 				<FiltrationConditionComponent
-					state="readOnly"
+					state="view"
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					editorComponent={<input />}
@@ -922,9 +923,10 @@
 								isOpen={true}
 								filterActionCaption="Использовать как фильтр"
 								filterActionClick={() => {}}
+								filterActionShow={true}
 							>
 								<FiltrationGroupComponent
-									state="view"
+									state="readOnly"
 									groupType="and"
 									andLabel="И"
 									orLabel="ИЛИ"
@@ -1016,6 +1018,9 @@
 																isOpen={true}
 																filterActionCaption="Использовать как фильтр"
 																filterActionClick={() => {}}
+																filterActionShow={
+																	false
+																}
 															>
 																<FiltrationGroupComponent
 																	state="view"
@@ -1227,7 +1232,7 @@
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
-		<br />
+	<br />
 	<br />
 	<h1>Пример 8.2</h1>
 	<FilterWrapper
@@ -1294,7 +1299,7 @@
 				}
 			>
 				<FiltrationConditionComponent
-					state="readOnly"
+					state="view"
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
 					editorComponent={<input />}
@@ -1306,9 +1311,10 @@
 								isOpen={false}
 								filterActionCaption="Использовать как фильтр"
 								filterActionClick={() => {}}
+								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
-									state="view"
+									state="readOnly"
 									groupType="and"
 									andLabel="И"
 									orLabel="ИЛИ"

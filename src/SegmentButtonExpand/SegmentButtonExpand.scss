@@ -27,6 +27,7 @@ $borderPopoverColor: #dddddc;
 
 	&_open {
 		border-color: transparent;
+		margin: 1px 0 0;
 
 		svg {
 			transform: rotate(180deg);
@@ -35,7 +36,7 @@ $borderPopoverColor: #dddddc;
 		&::before {
 			content: "";
 			position: absolute;
-			top: -5px;
+			top: -4px;
 			left: -2px;
 			display: block;
 			width: 32px;
@@ -67,7 +68,7 @@ $borderPopoverColor: #dddddc;
 .kit-segment-button-expand__button-filter {
 	position: absolute;
 	top: 15px;
-	right: 3px;
+	right: 17px;
 	display: inline-flex;
 	align-items: center;
 	height: 16px;

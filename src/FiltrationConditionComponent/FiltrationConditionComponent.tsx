@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { FilterConditionPopup } from "../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FilterDetails } from "../FilterDetails";
 import { IconSvg } from "../IconSvg";
 import { StateProps, CallbackProps } from "./types";
@@ -24,18 +24,13 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			editorComponent,
 			onConditionStateToggle,
 			toggleStar,
-			withAlert
+			withAlert,
+			onConditionCopy
 		} = this.props;
 
 		const editModeContent = (
 			<>
-				<div
-					className="kit-filtration-condition__remove"
-					onClick={onConditionRemove}
-				>
-					<IconSvg type="trash" />
-				</div>
-				<FilterConditionPopup parentRef={this.refComponent}>
+				<OverflowVisibleContainer parentRef={this.refComponent}>
 					<FilterDetails
 						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}
@@ -43,7 +38,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						onClose={toggleStar}
 						viewMode="edit"
 					/>
-				</FilterConditionPopup>
+				</OverflowVisibleContainer>
 			</>
 		);
 		return (
@@ -79,6 +74,20 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						)}
 						{filtrationMethodParametersComponent}
 					</div>
+					<button
+						type="button"
+						className="kit-filtration-condition__copy"
+						onClick={onConditionCopy}
+					>
+						<IconSvg type="duplicate" />
+					</button>
+					<button
+						type="button"
+						className="kit-filtration-condition__remove"
+						onClick={onConditionRemove}
+					>
+						<IconSvg type="trash" />
+					</button>
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

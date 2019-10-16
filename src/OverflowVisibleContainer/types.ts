@@ -6,4 +6,5 @@ export interface State {
 
 export interface Props {
 	parentRef: React.RefObject<HTMLElement>;
+	className?: string;
 }

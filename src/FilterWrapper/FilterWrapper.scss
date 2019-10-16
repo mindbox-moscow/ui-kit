@@ -11,7 +11,10 @@ $clearButtonCountColor: #a4a4a4;
 	background-color: #ffffff;
 	box-sizing: border-box;
 	overflow: hidden;
-	padding-top: 36px;
+
+	&_with-filter-action {
+		padding-top: 22px;
+	}
 
 	&_short {
 		display: flex;
@@ -43,7 +46,7 @@ $clearButtonCountColor: #a4a4a4;
 
 .kit-filter__all-wrap {
 	padding: 0;
-	margin: 16px 56px 16px 53px;
+	margin: 11px 11px 11px 22px;
 	box-sizing: border-box;
 }
 
@@ -174,13 +177,9 @@ $clearButtonCountColor: #a4a4a4;
 	}
 
 	&_part,
-	&_concrete {
-		background-color: rgb(229, 237, 212);
-	}
-
+	&_concrete,
 	&_all {
-		background-color: rgb(242, 227, 191);
-		border-color: rgb(230, 180, 82);
+		background-color: rgb(229, 237, 212);
 	}
 }
 

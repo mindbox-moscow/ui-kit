@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FilterConditionPopup } from "../../../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { FilterAction } from "../../types";
 
 import "./FilterActionsPopover.scss";
@@ -42,7 +42,7 @@ export class FilterActionsPopover extends React.Component<
 					{filterActionsCaption}
 				</span>
 				{isOpen && (
-					<FilterConditionPopup parentRef={this.refElement}>
+					<OverflowVisibleContainer parentRef={this.refElement}>
 						<ul className="kit-filter-actions-popover__list">
 							{filterActions.map(({ key, onClick, name }) => (
 								<li
@@ -54,7 +54,7 @@ export class FilterActionsPopover extends React.Component<
 								</li>
 							))}
 						</ul>
-					</FilterConditionPopup>
+					</OverflowVisibleContainer>
 				)}
 			</div>
 		) : null;

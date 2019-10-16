@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FilterConditionPopup } from "../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import {
 	FilterConditionSelector,
 	Props as SelectorProps
@@ -26,9 +26,9 @@ export const FilterConditionEditorButton = (props: Props) => {
 				{label}
 			</button>
 			{isOpened && (
-				<FilterConditionPopup parentRef={refButton}>
+				<OverflowVisibleContainer parentRef={refButton}>
 					<FilterConditionSelector {...otherProps} />
-				</FilterConditionPopup>
+				</OverflowVisibleContainer>
 			)}
 		</div>
 	);

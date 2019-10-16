@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { FilterConditionPopup } from "../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { LabelButton } from "./components";
 import { StateProps, CallbackProps } from "./types";
 
@@ -328,7 +328,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 													.kitFiltrationLabelButtonsRef
 											}
 										/>
-										<FilterConditionPopup
+										<OverflowVisibleContainer
 											className={cn(
 												"kit-filtration-group__label-text-buttons",
 												`kit-filtration-group__label-text-buttons_${groupType}`
@@ -359,7 +359,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 												types={labelMap}
 												activeType={groupType}
 											/>
-										</FilterConditionPopup>
+										</OverflowVisibleContainer>
 									</>
 								) : (
 									labelMap[groupType]

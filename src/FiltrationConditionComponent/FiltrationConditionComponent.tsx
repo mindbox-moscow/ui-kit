@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { FilterConditionPopup } from "../FilterConditionPopup";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FilterDetails } from "../FilterDetails";
 import { IconSvg } from "../IconSvg";
 import { StateProps, CallbackProps } from "./types";
@@ -30,7 +30,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 
 		const editModeContent = (
 			<>
-				<FilterConditionPopup parentRef={this.refComponent}>
+				<OverflowVisibleContainer parentRef={this.refComponent}>
 					<FilterDetails
 						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}
@@ -38,7 +38,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						onClose={toggleStar}
 						viewMode="edit"
 					/>
-				</FilterConditionPopup>
+				</OverflowVisibleContainer>
 			</>
 		);
 		return (

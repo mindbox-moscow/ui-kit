@@ -1,10 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import {
 	FilterConditionSelector,
 	Props as SelectorProps
 } from "../FilterConditionSelector";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { Props as ButtonProps } from "./types";
 
 import "./FilterConditionEditorButton.scss";

@@ -75,11 +75,53 @@ const allElementsDictionary = {
 		childIds: [],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
-	caption: {
-		id: "caption",
+	baseHitSource: {
+		id: "baseHitSource",
 		type: "simpleFilterableProperty",
-		name: "Простой фильтр Caption",
-		helpCaption: "Простой фильтр Caption",
+		name: "Источник попадания в базу",
+		helpCaption: "Источник попадания в базу",
+		hasChildren: false,
+		isExpanded: false,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	clickRate: {
+		id: "clickRate",
+		type: "simpleFilterableProperty",
+		name: "Процент открытий и кликов",
+		helpCaption: "Процент открытий и кликов",
+		hasChildren: false,
+		isExpanded: false,
+		onSelect: () => console.log("onSelect Простой фильтр"),
+		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	electronicCard: {
+		id: "electronicCard",
+		type: "simpleFilterableProperty",
+		name: "Ссылка на установку электронной карты",
+		helpCaption: "Ссылка на установку электронной карты",
 		hasChildren: false,
 		isExpanded: false,
 		onSelect: () => console.log("onSelect Простой фильтр"),
@@ -137,15 +179,15 @@ const allElementsDictionary = {
 			</div>
 		)
 	},
-	firstCategory: {
-		id: "firstCategory",
+	personalData: {
+		id: "personalData",
 		type: "filterablePropertyCategory",
-		name: "Простая категория Caption",
-		helpCaption: "Простая категория Caption",
+		name: "Персональные данные",
+		helpCaption: "Персональные данные",
 		hasChildren: true,
 		isExpanded: true,
-		onSelect: () => console.log("onSelect Простая категория"),
-		toggleExpand: () => console.log("toggleExpand Простая категория"),
+		onSelect: () => console.log("onSelect Персональные данные"),
+		toggleExpand: () => console.log("toggleExpand Персональные данные"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -158,30 +200,15 @@ const allElementsDictionary = {
 		childIds: ["secondCategory"],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
-	behaviour: {
-		id: "behaviour",
+	additionalFields: {
+		id: "additionalFields",
 		type: "filterablePropertyCategory",
-		name: "Поведение",
-		helpCaption: "Поведение Caption",
+		name: "Дополнительные поля",
+		helpCaption: "Дополнительные поля",
 		hasChildren: true,
 		isExpanded: true,
-		onSelect: () => console.log("onSelect Поведение"),
-		toggleExpand: () => console.log("toggleExpand Поведение"),
-		editorComponent: null,
-		isSelected: false,
-		childIds: ["caption", "name", "firstCategory"],
-		helpComponent: <div>Хелп к категории "Поведение"</div>
-	},
-	empty: {
-		id: "empty",
-		type: "simpleFilterableProperty",
-		name: "Пустая тестовая категория",
-		helpCaption: "Ссылка на установку электронной карты",
-		hasChildren: false,
-		isExpanded: false,
-		onSelect: () => console.log("onSelect Пустая тестовая категория"),
-		toggleExpand: () =>
-			console.log("toggleExpand Пустая тестовая категория"),
+		onSelect: () => console.log("onSelect Дополнительные поля"),
+		toggleExpand: () => console.log("toggleExpand Дополнительные поля"),
 		editorComponent: (
 			<FilterConditionEditorComponent
 				innerEditorComponent={EditorComponentExample()}
@@ -191,18 +218,160 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: [],
-		helpComponent: (
-			<div>
-				Что важно, мы настраиваемся на всю выручку и смотрим все заказы.
-				Т.е. видим чистый добавленный эффект, не искаженный никакими
-				атрибуциями. Если бы мы смотрели на атрибуцию, которая
-				используется, например, в Google Analytics по умолчанию, то
-				попали бы в ловушку. Контроль частоты снижает эффект
-				каннибализации каналов, и очень вероятно мы бы увидели падение
-				выручки в том числе там, где на самом деле ее нет.
-			</div>
-		)
+		childIds: ["secondCategory"],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	organization: {
+		id: "organization",
+		type: "filterablePropertyCategory",
+		name: "Устройство",
+		helpCaption: "Устройство",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Устройство"),
+		toggleExpand: () => console.log("toggleExpand Устройство"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: ["secondCategory"],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	tech: {
+		id: "tech",
+		type: "filterablePropertyCategory",
+		name: "Техническое",
+		helpCaption: "Техническое",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Техническое"),
+		toggleExpand: () => console.log("toggleExpand Техническое"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: ["secondCategory"],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	customerFeatures: {
+		id: "customerFeatures",
+		type: "filterablePropertyCategory",
+		name: "Характеристики клиента",
+		helpCaption: "Характеристики клиента",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		childIds: [
+			"baseHitSource",
+			"electronicCard",
+			"clickRate",
+			"personalData",
+			"additionalFields",
+			"organization",
+			"tech"
+		],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
+	},
+	newsletters: {
+		id: "newsletters",
+		type: "filterablePropertyCategory",
+		name: "Рассылки",
+		helpCaption: "Рассылки",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		childIds: [
+			"baseHitSource",
+			"electronicCard",
+			"clickRate",
+			"personalData",
+			"additionalFields",
+			"organization",
+			"tech"
+		],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
+	},
+	shopping: {
+		id: "shopping",
+		type: "filterablePropertyCategory",
+		name: "Покупки",
+		helpCaption: "Покупки",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		childIds: [
+			"baseHitSource",
+			"electronicCard",
+			"clickRate",
+			"personalData",
+			"additionalFields",
+			"organization",
+			"tech"
+		],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
+	},
+	loyaltyProgram: {
+		id: "loyaltyProgram",
+		type: "filterablePropertyCategory",
+		name: "Программа лояльности",
+		helpCaption: "Программа лояльности",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		childIds: [
+			"baseHitSource",
+			"electronicCard",
+			"clickRate",
+			"personalData",
+			"additionalFields",
+			"organization",
+			"tech"
+		],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
+	},
+	behaviour: {
+		id: "behaviour",
+		type: "filterablePropertyCategory",
+		name: "Поведение",
+		helpCaption: "Поведение",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Поведение"),
+		toggleExpand: () => console.log("toggleExpand Поведение"),
+		editorComponent: null,
+		isSelected: false,
+		childIds: [
+			"baseHitSource",
+			"electronicCard",
+			"clickRate",
+			"personalData",
+			"additionalFields",
+			"organization",
+			"tech"
+		],
+		helpComponent: <div>Хелп к категории "Поведение"</div>
 	}
 };
 
@@ -257,7 +426,7 @@ class ExampleComponent extends React.Component {
 			selectedId: "name",
 			expansionState: {
 				behaviour: true,
-				firstCategory: true,
+				personalData: true,
 				secondCategory: true,
 				thirdCategory: false
 			}
@@ -319,7 +488,13 @@ class ExampleComponent extends React.Component {
 							this.onToggleExpand,
 							this.state
 						)}
-						rootIds={["behaviour", "empty"]}
+						rootIds={[
+							"customerFeatures",
+							"behaviour",
+							"newsletters",
+							"shopping",
+							"loyaltyProgram"
+						]}
 						helpComponent={
 							allElementsDictionary[this.state.selectedId]
 								.helpComponent

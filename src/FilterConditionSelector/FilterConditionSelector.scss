@@ -60,7 +60,6 @@ $searchFocusBgColor: #fffde5;
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 28px;
 	cursor: pointer;
 
 	&::before {
@@ -119,7 +118,7 @@ $searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
-	padding: 0 10px 0 8px;
+	padding: 4px 10px 5px 8px;
 	border: 0;
 	background-color: transparent;
 	font-family: "PT Sans", sans-serif;
@@ -140,7 +139,7 @@ $searchFocusBgColor: #fffde5;
 	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
-				padding-left: 12px;
+				padding-left: 15px;
 				font-weight: normal;
 				position: relative;
 
@@ -173,7 +172,7 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	padding-left: 14px;
+	padding-left: 15px;
 	list-style: none;
 	box-sizing: border-box;
 
@@ -196,15 +195,15 @@ $searchFocusBgColor: #fffde5;
 		}
 
 		&::after {
-			left: -11px;
-			top: 13px;
+			left: -12px;
+			top: 11px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
 
 		&:last-child {
 			&::before {
-				height: 15px;
+				height: 13px;
 			}
 		}
 	}
@@ -254,7 +253,7 @@ $searchFocusBgColor: #fffde5;
 .kit-filter-condition-selector__hierarchy-toggle {
 	padding: 0;
 	width: 6px;
-	margin-top: 1px;
+	margin-top: -1px;
 	border: none;
 	background-color: transparent;
 	color: inherit;

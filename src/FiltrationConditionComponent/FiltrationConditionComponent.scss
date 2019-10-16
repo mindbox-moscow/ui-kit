@@ -28,25 +28,25 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-flex;
+	align-items: center;
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
 	z-index: 2;
-	cursor: pointer;
 
-	&:hover {
-		.kit-filtration-condition__content {
+	&:hover:not(&_read-only) {
+		> .kit-filtration-condition__content {
 			background-color: $hoverColorBg;
 			cursor: pointer;
+
+			> .kit-filtration-condition__remove,
+			> .kit-filtration-condition__copy {
+				visibility: visible;
+			}
 		}
 
-		.kit-filtration-condition__drag-and-drop {
+		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
-		}
-
-		.kit-filtration-condition__remove,
-		.kit-filtration-condition__copy {
-			visibility: visible;
 		}
 	}
 
@@ -66,9 +66,10 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	.kit-filtration-condition__content {
+		flex-wrap: wrap;
 		display: inline-flex;
 		align-items: center;
-		height: 25px;
+		min-height: 25px;
 	}
 
 	.kit-filtration-condition__content > span,
@@ -89,7 +90,7 @@ $groupHoverMarginLeft: 10px;
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #fff;
 
-		&:hover {
+		&:hover:not(&_read-only) {
 			.kit-filtration-condition__content {
 				background-color: $editModeColorBg;
 			}
@@ -122,7 +123,7 @@ $groupHoverMarginLeft: 10px;
 			display: none;
 		}
 
-		&:hover {
+		&:hover:not(&_read-only) {
 			.kit-filtration-condition__drag-and-drop {
 				display: none;
 			}
@@ -140,6 +141,31 @@ $groupHoverMarginLeft: 10px;
 
 		&:hover {
 			opacity: 1;
+		}
+	}
+
+	> .kit-filtration-condition__content {
+		> [class*="kit-segment"] {
+			&:not(:last-of-type):not(.kit-segment-button-expand__popover) {
+				margin-right: 10px;
+			}
+		}
+	}
+
+	.kit-segment-button-expand__popover {
+		order: 1;
+		width: 100%;
+		margin-top: 0;
+		cursor: default;
+	}
+
+	&_read-only {
+		> .kit-filtration-condition__drag-and-drop,
+		> .kit-filtration-condition__content > span,
+		> .kit-filtration-condition__content > b {
+			cursor: default;
+			pointer-events: none;
+			z-index: 0;
 		}
 	}
 }
@@ -189,5 +215,13 @@ $groupHoverMarginLeft: 10px;
 
 	&:hover {
 		background-color: darken($removeColorBg, 10%);
+	}
+}
+
+.kit-filtration-condition__item-text__block-method-params {
+	display: inline-flex;
+
+	> *:not(:last-child) {
+		margin-right: 10px;
 	}
 }

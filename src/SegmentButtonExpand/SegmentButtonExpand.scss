@@ -1,8 +1,11 @@
+$textFilterColor: #333;
 $borderColor: #d9e7fe;
 $borderHoverColor: #e2eaf0;
 $mainColor: #3875d7;
+$borderPopoverColor: #dddddc;
 
 .kit-segment-button-expand {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -20,5 +23,70 @@ $mainColor: #3875d7;
 	&:hover {
 		border-color: $borderHoverColor;
 		background-color: $borderHoverColor;
+	}
+
+	&_open {
+		border-color: transparent;
+		margin: 1px 0 0;
+
+		svg {
+			transform: rotate(180deg);
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: -4px;
+			left: -2px;
+			display: block;
+			width: 32px;
+			height: 23px;
+			background-color: #fff;
+			border-radius: 10px 10px 0 0;
+			border-width: 1px 1px 0 1px;
+			border-color: $borderPopoverColor;
+			border-style: solid;
+			z-index: 1;
+		}
+
+		svg {
+			z-index: 1;
+		}
+	}
+}
+
+.kit-segment-button-expand__popover {
+	position: relative;
+	padding: 10px 14px 12px 18px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
+	border: solid 1px $borderPopoverColor;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+
+.kit-segment-button-expand__button-filter {
+	position: absolute;
+	top: 15px;
+	right: 17px;
+	display: inline-flex;
+	align-items: center;
+	height: 16px;
+	padding: 0 10px 0 10px;
+	margin: 0;
+	border: 0;
+	border-radius: 8px;
+	background-color: $borderHoverColor;
+	font-family: "PT Sans", sans-serif;
+	font-size: 11px;
+	line-height: 1;
+	color: $textFilterColor;
+	outline: none;
+	box-sizing: border-box;
+	cursor: pointer;
+	z-index: 3;
+
+	svg {
+		margin-right: 6px;
 	}
 }

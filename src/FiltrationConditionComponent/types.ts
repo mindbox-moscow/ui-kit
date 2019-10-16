@@ -1,4 +1,9 @@
-type ConditionState = "view" | "edit" | "shaded" | "linkedConditionEdit";
+type ConditionState =
+	| "view"
+	| "edit"
+	| "shaded"
+	| "linkedConditionEdit"
+	| "readOnly";
 
 export interface StateProps {
 	filterablePropertyName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"

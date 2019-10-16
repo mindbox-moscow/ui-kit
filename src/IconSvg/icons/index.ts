@@ -10,7 +10,7 @@ import { Extended } from "./Extended";
 import { Warning } from "./Warning";
 import { SegmentExpand } from "./SegmentExpand";
 import { SegmentEdit } from "./SegmentEdit";
-import { SegmentContent } from "./SegmentContent";
+import { Filter } from "./Filter";
 import { Duplicate } from "./Duplicate";
 
 import { IconsProps } from "../types";
@@ -32,7 +32,7 @@ type IconType =
 	| "warning"
 	| "segment-expand"
 	| "segment-edit"
-	| "segment-content"
+	| "filter"
 	| "duplicate";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
@@ -50,7 +50,7 @@ const icons: Icons = {
 	warning: Warning,
 	"segment-expand": SegmentExpand,
 	"segment-edit": SegmentEdit,
-	"segment-content": SegmentContent,
+	filter: Filter,
 	duplicate: Duplicate
 };
 

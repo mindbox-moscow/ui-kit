@@ -54,7 +54,11 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit",
 						"kit-filtration-condition__item-text_shaded":
-							state === "shaded"
+							state === "shaded",
+						"kit-filtration-condition__item-text_read-only":
+							state === "readOnly",
+						"kit-filtration-condition__item-text_view":
+							state === "view"
 					})}
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
@@ -73,21 +77,21 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 							</span>
 						)}
 						{filtrationMethodParametersComponent}
+						<button
+							type="button"
+							className="kit-filtration-condition__copy"
+							onClick={onConditionCopy}
+						>
+							<IconSvg type="duplicate" />
+						</button>
+						<button
+							type="button"
+							className="kit-filtration-condition__remove"
+							onClick={onConditionRemove}
+						>
+							<IconSvg type="trash" />
+						</button>
 					</div>
-					<button
-						type="button"
-						className="kit-filtration-condition__copy"
-						onClick={onConditionCopy}
-					>
-						<IconSvg type="duplicate" />
-					</button>
-					<button
-						type="button"
-						className="kit-filtration-condition__remove"
-						onClick={onConditionRemove}
-					>
-						<IconSvg type="trash" />
-					</button>
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}

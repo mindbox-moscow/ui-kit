@@ -17,4 +17,5 @@ export interface CallbackProps {
 	onGroupTypeToggle: () => void;
 	onConditionStateToggle: () => void;
 	onConditionRemove: () => void;
+	onConditionCopy: () => void;
 }

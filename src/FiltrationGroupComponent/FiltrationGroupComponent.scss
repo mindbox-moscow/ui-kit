@@ -9,6 +9,8 @@ $removeColor: #a12e1e;
 $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
 $closeColor: #666;
+$copyColorBg: $hoverColorBg;
+$copyColor: $andColor;
 
 // Sizing
 $groupHoverMarginTop: 0px;
@@ -16,6 +18,7 @@ $groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 $widthHorizontalBraket: 12px;
+$minHeight: 31px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -33,7 +36,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group {
 	$self: &;
 	position: relative;
-	min-height: 25px;
+	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -72,7 +75,7 @@ $widthHorizontalBraket: 12px;
 			display: block;
 			width: calc(100% + #{$groupHoverMarginLeft});
 			height: calc(100% + #{$groupHoverMarginTop});
-			min-height: 25px;
+			min-height: $minHeight;
 			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 			background-color: $editColorBg;
 			border-radius: 3px 0 0 3px;
@@ -81,33 +84,20 @@ $widthHorizontalBraket: 12px;
 		}
 
 		.kit-filtration-group__buttons {
-			margin-left: 22px;
+			margin-left: 20px;
 			outline: none;
 		}
 
 		> .kit-filtration-group__label_or,
 		> .kit-filtration-group__label_and {
-			z-index: 2;
-
 			.kit-filtration-group__label-text {
-				left: auto;
-				right: calc(100% - 16px);
-				display: flex;
-				align-items: center;
-				min-width: 40px;
-				height: 20px;
-				padding-left: 9px;
-				padding-right: 9px;
-				font-size: 12px;
-				box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-				border-radius: 4px 0 0 4px;
+				visibility: hidden;
 			}
 		}
 
 		> .kit-filtration-group__label_or {
 			color: $orColorEdit;
 
-			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
@@ -116,7 +106,6 @@ $widthHorizontalBraket: 12px;
 		> .kit-filtration-group__label_and {
 			color: $andColorEdit;
 
-			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
 			}
@@ -124,7 +113,7 @@ $widthHorizontalBraket: 12px;
 	}
 
 	&_not-children {
-		min-height: 25px;
+		min-height: $minHeight;
 
 		&#{$self}_edit {
 			margin-left: 30px;
@@ -132,8 +121,9 @@ $widthHorizontalBraket: 12px;
 
 		> .kit-filtration-group__label_or,
 		> .kit-filtration-group__label_and {
-			.kit-filtration-group__label-text {
-				right: calc(100% - 30px);
+			.kit-filtration-group__label-text-height {
+				margin-right: -22px;
+				margin-top: 4px;
 			}
 		}
 	}
@@ -156,7 +146,7 @@ $widthHorizontalBraket: 12px;
 			color: $andColorEdit;
 			background-color: $hoverColorBg;
 
-			.kit-filtration-group__label-text,
+			.kit-filtration-group__label-button,
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
 			}
@@ -187,9 +177,9 @@ $widthHorizontalBraket: 12px;
 	left: -10px;
 	display: flex;
 	align-items: center;
-	width: calc(100% - 25px);
+	width: calc(100% + 10px);
 	height: 1px;
-	padding: 15px $groupLabelPaddingLeft 10px;
+	padding: 16px $groupLabelPaddingLeft 15px;
 	border-radius: 3px 0 0 3px;
 	color: $braketColor;
 	z-index: 2;
@@ -225,7 +215,7 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__label-line {
 	width: $borderWidthLine;
 	height: 100%;
-	margin-top: -4px;
+	margin-top: 0;
 	margin-left: -1px;
 	background-color: $braketColor;
 	box-sizing: border-box;
@@ -233,7 +223,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
-	margin-top: 14px;
+	margin-top: 16px;
 	left: 14px;
 	display: inline-block;
 	width: 12px;
@@ -258,7 +248,7 @@ $widthHorizontalBraket: 12px;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
-	margin-top: -3px;
+	margin-top: -1px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
@@ -273,6 +263,8 @@ $widthHorizontalBraket: 12px;
 .kit-filtration-group__buttons {
 	position: relative;
 	display: flex;
+	align-items: center;
+	min-height: $minHeight;
 	margin-right: 20px;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -305,20 +297,38 @@ $widthHorizontalBraket: 12px;
 	}
 }
 
-.kit-filtration-group__remove {
-	position: absolute;
-	top: #{-$groupHoverMarginTop};
-	right: -46px;
-	display: block;
-	width: 44px;
-	height: calc(100% + #{$groupHoverMarginTop * 2});
-	background-color: $removeColorBg;
+.kit-filtration-group__remove,
+.kit-filtration-group__copy {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 0;
 	border: 0;
-	border-radius: 0 3px 3px 0;
-	color: $removeColor;
+	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
 	box-sizing: border-box;
+}
+
+.kit-filtration-group__remove {
+	width: 34px;
+	background-color: $removeColorBg;
+	color: $removeColor;
+
+	&:hover {
+		background-color: darken($removeColorBg, 10%);
+	}
+}
+
+.kit-filtration-group__copy {
+	width: 36px;
+	background-color: $copyColorBg;
+	color: $copyColor;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
 }
 
 .kit-filtration-group__label-button {
@@ -346,7 +356,7 @@ $widthHorizontalBraket: 12px;
 
 .kit-filtration-group__close {
 	position: absolute;
-	top: 9px;
+	top: 7px;
 	right: 13px;
 	padding: 0;
 	border: 0;
@@ -355,4 +365,44 @@ $widthHorizontalBraket: 12px;
 	cursor: pointer;
 	z-index: 1;
 	outline: none;
+}
+
+.kit-filtration-group__label-text-buttons {
+	display: flex;
+	align-items: center;
+	height: 22px;
+	margin-top: -12px;
+	margin-left: 2px;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
+	background-color: #fff;
+	transform: translateX(-100%);
+	border-radius: 4px 0 0 4px;
+	box-sizing: border-box;
+
+	&_or {
+		.kit-filtration-group__label-button {
+			background-color: $orColorEdit;
+		}
+	}
+
+	&_and {
+		.kit-filtration-group__label-button {
+			background-color: $andColorEdit;
+		}
+	}
+
+	> *:not(:first-child) {
+		margin-left: 1px;
+	}
+
+	> *:first-child {
+		border-radius: 4px 0 0 4px;
+	}
+
+	.kit-filtration-group__label-button {
+		padding: 0 9px;
+		height: 100%;
+		margin-right: 0;
+		font-size: 12px;
+	}
 }

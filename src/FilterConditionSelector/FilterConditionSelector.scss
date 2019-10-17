@@ -61,6 +61,7 @@ $searchFocusBgColor: #fffde5;
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	color: $itemNameColor;
 
 	&::before {
 		content: "";
@@ -73,7 +74,6 @@ $searchFocusBgColor: #fffde5;
 		mix-blend-mode: multiply;
 		z-index: 1;
 		box-sizing: border-box;
-		margin-bottom: 1px;
 	}
 
 	&:hover,
@@ -89,7 +89,7 @@ $searchFocusBgColor: #fffde5;
 
 	&_selected {
 		&::before {
-			right: 3px;
+			right: 1px;
 			background-color: $selectItemColorBg;
 		}
 
@@ -98,8 +98,8 @@ $searchFocusBgColor: #fffde5;
 			position: absolute;
 			right: -11px;
 			top: 0;
-			border-top: 14px solid transparent;
-			border-left: 14px solid $selectItemColorBg;
+			border-top: 13px solid transparent;
+			border-left: 12px solid $selectItemColorBg;
 			border-bottom: 14px solid transparent;
 			box-sizing: border-box;
 		}
@@ -124,7 +124,7 @@ $searchFocusBgColor: #fffde5;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	font-weight: bold;
-	line-height: 1.29;
+	line-height: 18px;
 	color: currentColor;
 	text-align: left;
 	white-space: nowrap;
@@ -133,6 +133,11 @@ $searchFocusBgColor: #fffde5;
 	outline: none;
 	cursor: pointer;
 	z-index: 1;
+
+	> span {
+		display: inline-block;
+		height: 18px;
+	}
 }
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
@@ -151,7 +156,6 @@ $searchFocusBgColor: #fffde5;
 					display: block;
 					width: 8px;
 					height: 8px;
-					border: solid 1px $toggleCircleColor;
 					border-radius: 50%;
 					background-color: $toggleCircleColor;
 					box-sizing: border-box;
@@ -163,7 +167,6 @@ $searchFocusBgColor: #fffde5;
 				.kit-filter-condition-selector__hierarchy-name {
 					&::before {
 						background-color: #fff;
-						border-color: #fff;
 					}
 				}
 			}

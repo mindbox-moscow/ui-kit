@@ -218,7 +218,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["secondCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	organization: {
@@ -239,7 +239,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["secondCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	tech: {
@@ -260,7 +260,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["secondCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	customerFeatures: {
@@ -296,15 +296,7 @@ const allElementsDictionary = {
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
-		childIds: [
-			"baseHitSource",
-			"electronicCard",
-			"clickRate",
-			"personalData",
-			"additionalFields",
-			"organization",
-			"tech"
-		],
+		childIds: [],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
 	shopping: {
@@ -318,15 +310,7 @@ const allElementsDictionary = {
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
-		childIds: [
-			"baseHitSource",
-			"electronicCard",
-			"clickRate",
-			"personalData",
-			"additionalFields",
-			"organization",
-			"tech"
-		],
+		childIds: [],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
 	loyaltyProgram: {
@@ -340,15 +324,7 @@ const allElementsDictionary = {
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
-		childIds: [
-			"baseHitSource",
-			"electronicCard",
-			"clickRate",
-			"personalData",
-			"additionalFields",
-			"organization",
-			"tech"
-		],
+		childIds: [],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	},
 	behaviour: {
@@ -362,15 +338,7 @@ const allElementsDictionary = {
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: null,
 		isSelected: false,
-		childIds: [
-			"baseHitSource",
-			"electronicCard",
-			"clickRate",
-			"personalData",
-			"additionalFields",
-			"organization",
-			"tech"
-		],
+		childIds: [],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
 	}
 };

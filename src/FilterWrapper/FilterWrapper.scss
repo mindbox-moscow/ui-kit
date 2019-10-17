@@ -19,12 +19,15 @@ $clearButtonCountColor: #a4a4a4;
 	&_short {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		// justify-content: space-between;
+		height: 46px;
+		padding: 0;
 		color: #a4a4a4;
 		font-family: "PT Sans";
 		font-size: 14px;
 		letter-spacing: -0.4px;
 		line-height: 19px;
+		box-sizing: border-box;
 
 		button {
 			z-index: 1;
@@ -39,9 +42,14 @@ $clearButtonCountColor: #a4a4a4;
 	}
 }
 
-.kit-filter_short {
-	padding: 10px 0;
-	box-sizing: border-box;
+.kit-filter__short-wrap-filter {
+	display: flex;
+	margin-left: auto;
+	height: 100%;
+
+	> * {
+		height: 100%;
+	}
 }
 
 .kit-filter__all-wrap {

@@ -79,6 +79,11 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	&_hover {
+		&::before {
+			content: "";
+			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
+		}
+
 		& + .kit-filtration-group_hover {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
@@ -98,6 +103,7 @@ $groupHoverMarginLeft: 10px;
 
 		.kit-filtration-condition__content {
 			background-color: $editModeColorBg;
+			border-radius: 0 $itemHoverBorderRadius + 2 0 0;
 		}
 
 		.kit-filtration-condition__drag-and-drop {

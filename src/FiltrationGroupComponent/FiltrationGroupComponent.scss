@@ -192,6 +192,13 @@ $minHeight: 31px;
 	z-index: 2;
 	box-sizing: border-box;
 
+	& ~ .kit-filtration-group,
+	& ~ .kit-filtration-condition {
+		.kit-filtration-group__label {
+			border-radius: 0 0 0 3px;
+		}
+	}
+
 	&_and {
 		color: $andColor;
 

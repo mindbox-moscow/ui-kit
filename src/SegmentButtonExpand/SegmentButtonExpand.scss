@@ -27,19 +27,30 @@ $borderPopoverColor: #dddddc;
 
 	&_open {
 		border-color: transparent;
-		margin: 1px 0 0;
 
 		svg {
 			transform: rotate(180deg);
 		}
 
+		&::after,
 		&::before {
 			content: "";
 			position: absolute;
+			width: 32px;
+		}
+
+		&::after {
+			left: -1px;
+			top: 100%;
+			height: 10px;
+			background-color: #fff;
+			z-index: 1;
+		}
+
+		&::before {
 			top: -4px;
 			left: -2px;
 			display: block;
-			width: 32px;
 			height: 23px;
 			background-color: #fff;
 			border-radius: 10px 10px 0 0;

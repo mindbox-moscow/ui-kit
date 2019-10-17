@@ -13,7 +13,7 @@ export interface Props {
 	helpComponent: React.ReactNode;
 	editorComponent: React.ReactNode;
 	starred: boolean;
-	toggleStar: () => void;
+	onConditionStateToggle: () => void;
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

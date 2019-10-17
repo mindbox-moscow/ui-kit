@@ -15,7 +15,6 @@ export interface StateProps {
 	state: ConditionState; // состояние условия фильтрации. то же самое, что в группах.
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FilterablePropertyHierarchyElement.editorComponent.
 	helpComponent: React.ReactNode; // компонент хелпа. точно такой же, как в FilterablePropertyHierarchyElement.helpComponent.
-	starred: boolean;
 	withAlert: boolean;
 }
 
@@ -23,5 +22,4 @@ export interface CallbackProps {
 	onConditionStateToggle: () => void; // вызывается, когда мы кликаем в режиме просмотра на условие. если мы уже в режиме редактирования, то повторный клик его снимает.
 	onConditionRemove: () => void; // вызывается при клике на корзинку
 	onConditionCopy: () => void;
-	toggleStar: () => void;
 }

@@ -14,6 +14,7 @@ interface Props {
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
+	autoFocus?: boolean;
 }
 
 interface State {
@@ -22,6 +23,15 @@ interface State {
 
 export class Input extends React.PureComponent<Props, State> {
 	public state = { filter: "" };
+	private refInput = React.createRef<HTMLInputElement>();
+
+	public focus() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.focus();
+		}
+	}
 
 	public render() {
 		const {
@@ -32,12 +42,15 @@ export class Input extends React.PureComponent<Props, State> {
 			maxLength,
 			noShadow,
 			size,
-			className
+			className,
+			autoFocus = false
 		} = this.props;
 
 		return (
 			<div className="kit-input-field-wrap">
 				<input
+					ref={this.refInput}
+					autoFocus={autoFocus}
 					onChange={onChange}
 					type={type || "text"}
 					className={cn(

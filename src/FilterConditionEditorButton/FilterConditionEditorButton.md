@@ -314,6 +314,9 @@ class ExampleComponent extends React.Component {
 						label="Добавить фильтр"
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
+						onPreviousSelected={() => true}
+						onNextSelected={() => {}}
+						onExpandCurrent={() => {}}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,

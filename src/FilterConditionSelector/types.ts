@@ -14,6 +14,9 @@ export interface Props {
 	editorComponent: React.ReactNode;
 	starred: boolean;
 	onConditionStateToggle: () => void;
+	onPreviousSelected: () => boolean;
+	onNextSelected: () => void;
+	onExpandCurrent: () => void;
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

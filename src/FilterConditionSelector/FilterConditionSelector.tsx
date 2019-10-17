@@ -7,7 +7,50 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-export class FilterConditionSelector extends React.Component<Props> {
+interface State {
+	autoFocus: boolean;
+}
+
+enum ArrowKeysCodes {
+	Up = 38,
+	Right = 39,
+	Down = 40
+}
+
+export class FilterConditionSelector extends React.Component<Props, State> {
+	public searchRef = React.createRef<Input>();
+
+	public componentDidMount() {
+		const {
+			onPreviousSelected,
+			onExpandCurrent,
+			onNextSelected
+		} = this.props;
+
+		document.addEventListener("keydown", (e: KeyboardEvent) => {
+			switch (e.keyCode) {
+				case ArrowKeysCodes.Up:
+					e.preventDefault();
+					console.log("onPreviousSelected");
+					const autoFocus = !onPreviousSelected();
+					if (autoFocus && this.searchRef) {
+						this.searchRef.current!.focus();
+					}
+					break;
+				case ArrowKeysCodes.Right:
+					e.preventDefault();
+					console.log("onNextSelected()");
+					onExpandCurrent();
+					break;
+				case ArrowKeysCodes.Down:
+					e.preventDefault();
+					onNextSelected();
+					console.log("onNextSelected()");
+					break;
+			}
+		});
+	}
+
 	public render() {
 		const {
 			onSearchTermChange,
@@ -45,6 +88,8 @@ export class FilterConditionSelector extends React.Component<Props> {
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
+							ref={this.searchRef}
+							autoFocus={true}
 							noShadow={true}
 							defaultValue={searchTerm}
 							type="search"

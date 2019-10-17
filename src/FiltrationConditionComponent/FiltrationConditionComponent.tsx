@@ -23,7 +23,6 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
-			toggleStar,
 			withAlert,
 			onConditionCopy
 		} = this.props;
@@ -35,7 +34,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}
 						editorComponent={editorComponent}
-						onClose={toggleStar}
+						onClose={onConditionStateToggle}
 						viewMode="edit"
 					/>
 				</OverflowVisibleContainer>

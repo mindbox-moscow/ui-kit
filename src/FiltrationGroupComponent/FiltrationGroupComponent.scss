@@ -372,6 +372,11 @@ $minHeight: 31px;
 	cursor: pointer;
 	z-index: 10;
 	outline: none;
+	transition: color 0.15s ease-in-out;
+
+	&:hover {
+		color: $andColor;
+	}
 }
 
 .kit-filtration-group__label-text-buttons {

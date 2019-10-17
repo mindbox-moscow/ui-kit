@@ -24,6 +24,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private marginTop = 2;
 	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
+	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
 
@@ -242,8 +243,17 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		this.handleCreateHorizontalBrackets();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
+		const closeRef = this.kitFiltrationCloseRef.current;
+
 		if (labelRef) {
 			labelRef.addEventListener(
+				"mouseover",
+				this.handleHoverAddClassLabel
+			);
+		}
+
+		if (closeRef) {
+			closeRef.addEventListener(
 				"mouseover",
 				this.handleHoverAddClassLabel
 			);
@@ -255,12 +265,25 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		window.removeEventListener("resize", this.moveLabelAtCenterOfBracket);
 
 		const labelRef = this.kitFiltrationLabelRef.current;
+		const closeRef = this.kitFiltrationCloseRef.current;
+
 		if (labelRef) {
 			labelRef.removeEventListener(
 				"mouseover",
 				this.handleHoverAddClassLabel
 			);
 			labelRef.removeEventListener(
+				"mouseout",
+				this.handleHoverRemoveClassLabel
+			);
+		}
+
+		if (closeRef) {
+			closeRef.removeEventListener(
+				"mouseover",
+				this.handleHoverAddClassLabel
+			);
+			closeRef.removeEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
 			);
@@ -445,6 +468,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		return (
 			<>
 				<button
+					ref={this.kitFiltrationCloseRef}
 					key="toggle"
 					onClick={onConditionStateToggle}
 					type="button"

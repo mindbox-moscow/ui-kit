@@ -393,9 +393,9 @@ class ExampleComponent extends React.Component {
 			showPopup: false,
 			selectedId: "name",
 			expansionState: {
-				behaviour: true,
-				personalData: true,
-				secondCategory: true,
+				behaviour: false,
+				personalData: false,
+				secondCategory: false,
 				thirdCategory: false
 			}
 		};

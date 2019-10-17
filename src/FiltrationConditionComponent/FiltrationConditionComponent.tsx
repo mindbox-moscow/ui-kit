@@ -10,6 +10,16 @@ import "./FiltrationConditionComponent.scss";
 type Props = StateProps & CallbackProps;
 
 export class FiltrationConditionComponent extends React.Component<Props> {
+	private onConditionCopy = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		this.props.onConditionCopy();
+	}
+
+	private onConditionRemove = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		this.props.onConditionRemove();
+	}
+
 	public refComponent = React.createRef<HTMLElement>();
 
 	public render() {
@@ -18,13 +28,11 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			filtrationMethodName,
 			filtrationMethodParametersComponent,
 			linkedConditionComponent,
-			onConditionRemove,
 			state,
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
 			withAlert,
-			onConditionCopy
 		} = this.props;
 
 		const editModeContent = (
@@ -79,14 +87,14 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 						<button
 							type="button"
 							className="kit-filtration-condition__copy"
-							onClick={onConditionCopy}
+							onClick={this.onConditionCopy}
 						>
 							<IconSvg type="duplicate" />
 						</button>
 						<button
 							type="button"
 							className="kit-filtration-condition__remove"
-							onClick={onConditionRemove}
+							onClick={this.onConditionRemove}
 						>
 							<IconSvg type="trash" />
 						</button>

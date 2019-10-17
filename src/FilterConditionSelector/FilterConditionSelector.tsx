@@ -21,7 +21,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 			editorComponent,
 			helpComponent,
 			helpCaption,
-			toggleStar
+			onConditionStateToggle
 		} = this.props;
 
 		const ChildItem = this.props.childRenderer;
@@ -85,7 +85,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 					helpCaption={helpCaption}
 					helpComponent={helpComponent}
 					editorComponent={editorComponent}
-					onClose={toggleStar}
+					onClose={onConditionStateToggle}
 					viewMode="menu"
 				/>
 			</div>

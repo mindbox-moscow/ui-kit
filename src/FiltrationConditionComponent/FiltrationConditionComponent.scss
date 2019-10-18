@@ -173,6 +173,11 @@ $groupHoverMarginLeft: 10px;
 			pointer-events: none;
 			z-index: 0;
 		}
+
+		.kit-filtration-condition__remove,
+		.kit-filtration-condition__copy {
+			display: none;
+		}
 	}
 }
 

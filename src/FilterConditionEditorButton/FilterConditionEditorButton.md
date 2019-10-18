@@ -1,9 +1,9 @@
 ```jsx
 const EditorComponentExample = () => {
 	return (
-		<div>
-			<div style={{ display: "flex", marginBottom: "12px" }}>
-				<div style={{ marginRight: "10px", width: "190px" }}>
+		<GridContainer>
+			<GridRow>
+				<GridColumn col={4}>
 					<Select
 						hasDescriptions={true}
 						placeholder="Выберите"
@@ -17,8 +17,8 @@ const EditorComponentExample = () => {
 						]}
 						defaultValue="Заполнено и"
 					/>
-				</div>
-				<div style={{ width: "190px" }}>
+				</GridColumn>
+				<GridColumn col={4}>
 					<Select
 						hasDescriptions={true}
 						placeholder="Выберите"
@@ -32,14 +32,278 @@ const EditorComponentExample = () => {
 						]}
 						defaultValue="равна"
 					/>
-				</div>
-			</div>
-			<Input noShadow />
-		</div>
+				</GridColumn>
+			</GridRow>
+			<GridRow>
+				<GridColumn col={12}>
+					<Input noShadow />
+				</GridColumn>
+			</GridRow>
+		</GridContainer>
 	);
 };
 
+const segmentViewHistory = () => (
+	<GridContainer>
+		<GridRow alignItems="center">
+			<GridColumn col={4}>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Сегмент"
+						}
+					]}
+					defaultValue="Сегмент"
+				/>
+			</GridColumn>
+			<GridColumn col={1} />
+			<GridColumn>Дата:</GridColumn>
+			<GridColumn>
+				<DateField
+					defaultDate={new Date(2019, 11, 9)}
+					noShadow={true}
+				/>
+			</GridColumn>
+			<GridColumn>
+				<TimeField hours={7} minutes={0} noShadow={true} />
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Wrapper>Сегментация</Wrapper>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Подписан на рекламные рассылки"
+						}
+					]}
+					defaultValue="Подписан на рекламные рассылки"
+				/>
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Popover buttonCaption="Свернуть состав сегмента">
+					<FiltrationConditionComponent
+						state="readOnly"
+						filterablePropertyName="Подписка Подписан на что-нибудь"
+						filtrationMethodName="без учета брендов, каналов и тематик"
+						linkedConditionComponent={
+							<FiltrationGroupComponent
+								state="readOnly"
+								groupType="or"
+								andLabel="И"
+								orLabel="ИЛИ"
+								shouldShowLabel={true}
+							>
+								<FiltrationConditionComponent
+									state="readOnly"
+									filterablePropertyName="Email: заполнен и валидный"
+								/>
+								<FiltrationConditionComponent
+									state="readOnly"
+									filterablePropertyName="Мобильный телефон: заполнен и валидный"
+								/>
+							</FiltrationGroupComponent>
+						}
+					/>
+				</Popover>
+			</GridColumn>
+		</GridRow>
+	</GridContainer>
+);
+
+const segmentView = () => (
+	<GridContainer>
+		<GridRow>
+			<GridColumn col={4}>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Сегмент"
+						}
+					]}
+					defaultValue="Сегмент"
+				/>
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Wrapper>Сегментация</Wrapper>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Подписан на рекламные рассылки"
+						}
+					]}
+					defaultValue="Подписан на рекламные рассылки"
+				/>
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Popover buttonCaption="Свернуть состав сегмента">
+					<FiltrationConditionComponent
+						state="readOnly"
+						filterablePropertyName="Подписка Подписан на что-нибудь"
+						filtrationMethodName="без учета брендов, каналов и тематик"
+						linkedConditionComponent={
+							<FiltrationGroupComponent
+								state="readOnly"
+								groupType="or"
+								andLabel="И"
+								orLabel="ИЛИ"
+								shouldShowLabel={true}
+							>
+								<FiltrationConditionComponent
+									state="readOnly"
+									filterablePropertyName="Email: заполнен и валидный"
+								/>
+								<FiltrationConditionComponent
+									state="readOnly"
+									filterablePropertyName="Мобильный телефон: заполнен и валидный"
+								/>
+							</FiltrationGroupComponent>
+						}
+					/>
+				</Popover>
+			</GridColumn>
+		</GridRow>
+	</GridContainer>
+);
+
+const segmentHistory = () => (
+	<GridContainer>
+		<GridRow alignItems="center">
+			<GridColumn col={4}>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Сегмент"
+						}
+					]}
+					defaultValue="Сегмент"
+				/>
+			</GridColumn>
+			<GridColumn col={1} />
+			<GridColumn>Дата:</GridColumn>
+			<GridColumn>
+				<DateField
+					defaultDate={new Date(2019, 11, 9)}
+					noShadow={true}
+				/>
+			</GridColumn>
+			<GridColumn>
+				<TimeField hours={7} minutes={0} noShadow={true} />
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Wrapper>Сегментация</Wrapper>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Подписан на рекламные рассылки"
+						}
+					]}
+					defaultValue="Подписан на рекламные рассылки"
+				/>
+			</GridColumn>
+		</GridRow>
+		<GridRow>
+			<GridColumn col={12}>
+				<Wrapper>Сегмент</Wrapper>
+				<Select
+					hasDescriptions={true}
+					placeholder="Выберите"
+					items={[
+						{
+							title: "Подписан на рекламные рассылки"
+						}
+					]}
+					defaultValue="Подписан на рекламные рассылки"
+				/>
+			</GridColumn>
+		</GridRow>
+	</GridContainer>
+);
+
 const allElementsDictionary = {
+	segmentViewHistory: {
+		id: "segmentViewHistory",
+		type: "simpleFilterableProperty",
+		name: "Сегмент - просмотр + режим по истории",
+		helpCaption: "Сегмент - просмотр + режим по истории",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={segmentViewHistory()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	segmentView: {
+		id: "segmentView",
+		type: "simpleFilterableProperty",
+		name: "Сегмент - просмотр",
+		helpCaption: "Сегмент - просмотр",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={segmentView()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
+	segmentHistory: {
+		id: "segmentHistory",
+		type: "simpleFilterableProperty",
+		name: "Сегмент - без просмотра с историей",
+		helpCaption: "Сегмент - без просмотра с историей",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={segmentHistory()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
 	secondCategory: {
 		id: "secondCategory",
 		type: "simpleFilterableProperty",
@@ -275,6 +539,9 @@ const allElementsDictionary = {
 		editorComponent: null,
 		isSelected: false,
 		childIds: [
+			"segmentViewHistory",
+			"segmentView",
+			"segmentHistory",
 			"baseHitSource",
 			"electronicCard",
 			"clickRate",

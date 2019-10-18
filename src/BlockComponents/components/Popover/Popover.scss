@@ -1,0 +1,25 @@
+// Colors
+$buttonTextColor: #255277;
+$contentBorderColor: #dddddc;
+$contentBgColor: #fafaf7;
+
+.kit-popover__content {
+	padding: 5px 12px;
+	border-radius: 3px;
+	border: solid 1px $contentBorderColor;
+	background-color: $contentBgColor;
+	box-sizing: border-box;
+}
+
+.kit-popover__button {
+	padding: 0;
+	margin: 8px 0 0;
+	border: 0;
+	background-color: transparent;
+	font-family: "PT Sans", sans-serif;
+	font-size: 13px;
+	color: $buttonTextColor;
+	outline: none;
+	cursor: pointer;
+	box-sizing: border-box;
+}

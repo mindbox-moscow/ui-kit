@@ -87,7 +87,10 @@ const segmentViewHistory = () => (
 		</GridRow>
 		<GridRow>
 			<GridColumn col={12}>
-				<Popover buttonCaption="Свернуть состав сегмента">
+				<Popover
+					buttonCaptionOpen="Развернуть состав сегмента"
+					buttonCaptionClose="Свернуть состав сегмента"
+				>
 					<FiltrationConditionComponent
 						state="readOnly"
 						filterablePropertyName="Подписка Подписан на что-нибудь"
@@ -150,7 +153,10 @@ const segmentView = () => (
 		</GridRow>
 		<GridRow>
 			<GridColumn col={12}>
-				<Popover buttonCaption="Свернуть состав сегмента">
+				<Popover
+					buttonCaptionOpen="Развернуть состав сегмента"
+					buttonCaptionClose="Свернуть состав сегмента"
+				>
 					<FiltrationConditionComponent
 						state="readOnly"
 						filterablePropertyName="Подписка Подписан на что-нибудь"

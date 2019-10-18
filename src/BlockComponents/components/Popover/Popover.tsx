@@ -7,7 +7,8 @@ interface State {
 }
 
 interface Props {
-	buttonCaption: string;
+	buttonCaptionOpen: string;
+	buttonCaptionClose: string;
 }
 
 export class Popover extends React.Component<Props, State> {
@@ -21,7 +22,7 @@ export class Popover extends React.Component<Props, State> {
 
 	public render() {
 		const { isOpen } = this.state;
-		const { buttonCaption, children } = this.props;
+		const { buttonCaptionOpen, buttonCaptionClose, children } = this.props;
 
 		return (
 			<div className="kit-popover">
@@ -34,7 +35,7 @@ export class Popover extends React.Component<Props, State> {
 					type="button"
 					onClick={this.handleOpenPopover}
 				>
-					{buttonCaption}
+					{isOpen ? buttonCaptionClose : buttonCaptionOpen}
 				</button>
 			</div>
 		);

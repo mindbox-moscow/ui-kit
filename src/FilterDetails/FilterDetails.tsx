@@ -26,11 +26,9 @@ export class FilterDetails extends React.Component<Props, State> {
 	public handleKeyDown = (e: KeyboardEvent) => {
 		const { onClose } = this.props;
 
-		switch (e.keyCode) {
-			case 27:
-				e.preventDefault();
-				onClose();
-				break;
+		if (e.keyCode === 27) {
+			e.preventDefault();
+			onClose();
 		}
 	};
 

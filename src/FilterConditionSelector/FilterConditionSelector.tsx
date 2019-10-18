@@ -102,9 +102,8 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 						<div className="kit-filter-condition-selector__filter-btn-block">
 							{Object.keys(menuModeMap).map((mode: MenuMode) => {
 								return (
-									<button
+									<div
 										key={mode}
-										type="button"
 										className={cn(
 											"kit-filter-condition-selector__filter-btn",
 											{
@@ -115,7 +114,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 										onClick={handleMenuModeChange(mode)}
 									>
 										{menuModeMap[mode]}
-									</button>
+									</div>
 								);
 							})}
 						</div>

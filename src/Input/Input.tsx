@@ -63,6 +63,7 @@ export class Input extends React.PureComponent<Props, State> {
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
+					autoFocus={autoFocus}
 					aria-hidden={true}
 				/>
 				{type === "search" && (

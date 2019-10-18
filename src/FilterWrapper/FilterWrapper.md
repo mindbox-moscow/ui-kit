@@ -1,55 +1,81 @@
 ```jsx
-<div style={{}}>
-	<FilterWrapper
-		filterActions={[]}
-		statisticsDescription="Потребителей найдено"
-		statisticsValue={50248}
-		applyButtonCaption="Применить фильтр"
-		clearButtonCaption="Сбросить фильтр"
-		onApply={() => console.log("apply filter")}
-		onClear={() => console.log("clear filter")}
-	>
-		Other components here...
-	</FilterWrapper>
+<div
+	style={{
+		position: "relative",
+		width: "1200px",
+		left: "50%",
+		transform: "translateX(-50%)"
+	}}
+>
+	<div style={{}}>
+		<FilterWrapper
+			filterActions={[]}
+			statisticsDescription="Потребителей найдено"
+			statisticsValue={50248}
+			selectionState="none"
+			selectedText="Выбрано"
+			selectedCancelText="Отменить"
+			selectedCountDescription="100 (все)"
+			applyButtonCaption="Применить фильтр"
+			clearButtonCaption="Сбросить фильтр"
+			onApply={() => console.log("apply filter")}
+			onClear={() => console.log("clear filter")}
+		>
+			Other components here...
+		</FilterWrapper>
+	</div>
 	<br />
 	<br />
 	<h1>Пример 1 - пустой фильтр</h1>
-	<FilterWrapper
-		filterActions={[]}
-		statisticsDescription="Всего клиентов"
-		statisticsValue={1021318}
-		doesContainFilter={false}
-		applyButtonCaption="Применить фильтр"
-		clearButtonCaption="Сбросить фильтр"
-		onApply={() => console.log("apply filter")}
-		onClear={() => console.log("clear filter")}
+	<div
+		style={{
+			position: "relative",
+			width: "1200px",
+			left: "50%",
+			transform: "translateX(-50%)"
+		}}
 	>
-		<FiltrationGroupComponent
-			state="view"
-			groupType="or"
-			andLabel="И"
-			orLabel="ИЛИ"
-			shouldShowLabel={false}
-			addSimpleConditionButton={
-				<FilterConditionEditorButton
-					label="Добавить фильтр"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-				/>
-			}
-			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-				/>
-			}
-			onGroupTypeToggle={() => console.log("type toggle")}
-			onConditionStateToggle={() => console.log("state toggle")}
-			onConditionRemove={() => console.log("remove")}
-		/>
-		<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
-	</FilterWrapper>
+		<FilterWrapper
+			filterActions={[]}
+			statisticsDescription="Всего клиентов"
+			statisticsValue={1021318}
+			doesContainFilter={false}
+			selectionState="all"
+			selectedText="Выбрано"
+			selectedCancelText="Отменить"
+			selectedCountDescription="100 (все)"
+			applyButtonCaption="Применить фильтр"
+			clearButtonCaption="Сбросить фильтр"
+			onApply={() => console.log("apply filter")}
+			onClear={() => console.log("clear filter")}
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={false}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+					/>
+				}
+				addGroupConditionButton={
+					<FilterConditionEditorButton
+						label="И"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+					/>
+				}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+			/>
+			<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
+		</FilterWrapper>
+	</div>
 	<div
 		style={{
 			position: "relative",

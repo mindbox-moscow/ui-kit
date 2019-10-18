@@ -3,10 +3,12 @@ $borderColor: #c8d8e2;
 $bracketColor: #e1eaf1;
 $toggleCircleColor: #c5d6e1;
 $itemNameColor: #333333;
-$filterBlockColorBg: #e2eaf0;
+$filterBlockColorBg: #f1f5f8;
 $filterButtonColor: #265378;
 $hoverItemColorBg: #3875d7;
 $selectItemColorBg: #878787;
+$searchFocusBorderColor: #5897fb;
+$searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector {
 	display: flex;
@@ -17,6 +19,17 @@ $selectItemColorBg: #878787;
 	font-family: "PT Sans", sans-serif;
 	z-index: 20;
 	overflow: hidden;
+
+	.kit-input-field_search {
+		transition: border-color 0.15s ease-in-out,
+			background-color 0.15s ease-in-out;
+
+		&:hover,
+		&:focus {
+			border-color: $searchFocusBorderColor;
+			background-color: $searchFocusBgColor;
+		}
+	}
 }
 
 .kit-filter-condition-selector__wrap {
@@ -47,8 +60,8 @@ $selectItemColorBg: #878787;
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 28px;
 	cursor: pointer;
+	color: $itemNameColor;
 
 	&::before {
 		content: "";
@@ -76,7 +89,7 @@ $selectItemColorBg: #878787;
 
 	&_selected {
 		&::before {
-			right: 3px;
+			right: 1px;
 			background-color: $selectItemColorBg;
 		}
 
@@ -85,8 +98,8 @@ $selectItemColorBg: #878787;
 			position: absolute;
 			right: -11px;
 			top: 0;
-			border-top: 14px solid transparent;
-			border-left: 14px solid $selectItemColorBg;
+			border-top: 13px solid transparent;
+			border-left: 12px solid $selectItemColorBg;
 			border-bottom: 14px solid transparent;
 			box-sizing: border-box;
 		}
@@ -105,14 +118,13 @@ $selectItemColorBg: #878787;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
-	padding: 0 10px 0 8px;
-	margin-top: 2px;
+	padding: 4px 10px 5px 8px;
 	border: 0;
 	background-color: transparent;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	font-weight: bold;
-	line-height: 1.29;
+	line-height: 18px;
 	color: currentColor;
 	text-align: left;
 	white-space: nowrap;
@@ -121,13 +133,18 @@ $selectItemColorBg: #878787;
 	outline: none;
 	cursor: pointer;
 	z-index: 1;
+
+	> span {
+		display: inline-block;
+		height: 18px;
+	}
 }
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
 	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
-				padding-left: 12px;
+				padding-left: 15px;
 				font-weight: normal;
 				position: relative;
 
@@ -139,10 +156,18 @@ $selectItemColorBg: #878787;
 					display: block;
 					width: 8px;
 					height: 8px;
-					border: solid 1px #c5d6e1;
 					border-radius: 50%;
-					background-color: #c5d6e1;
+					background-color: $toggleCircleColor;
 					box-sizing: border-box;
+				}
+			}
+
+			&_selected,
+			&:hover {
+				.kit-filter-condition-selector__hierarchy-name {
+					&::before {
+						background-color: #fff;
+					}
 				}
 			}
 		}
@@ -150,7 +175,7 @@ $selectItemColorBg: #878787;
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	padding-left: 16px;
+	padding-left: 15px;
 	list-style: none;
 	box-sizing: border-box;
 
@@ -167,21 +192,21 @@ $selectItemColorBg: #878787;
 
 		&::before {
 			top: 0;
-			left: -15px;
+			left: -13px;
 			border-left: 2px solid;
 			height: 100%;
 		}
 
 		&::after {
-			left: -13px;
-			top: 13px;
+			left: -12px;
+			top: 11px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
 
 		&:last-child {
 			&::before {
-				height: 15px;
+				height: 13px;
 			}
 		}
 	}
@@ -231,6 +256,7 @@ $selectItemColorBg: #878787;
 .kit-filter-condition-selector__hierarchy-toggle {
 	padding: 0;
 	width: 6px;
+	margin-top: -1px;
 	border: none;
 	background-color: transparent;
 	color: inherit;
@@ -243,6 +269,7 @@ $selectItemColorBg: #878787;
 		> .kit-filter-condition-selector__hierarchy-button
 		& {
 		transform: rotate(90deg);
+		margin-bottom: 2px;
 	}
 }
 

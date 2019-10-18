@@ -98,7 +98,6 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							type="search"
 							placeholder="Название фильтра"
 							onChange={handleSearchChange}
-							autoFocus={true}
 						/>
 						<div className="kit-filter-condition-selector__filter-btn-block">
 							{Object.keys(menuModeMap).map((mode: MenuMode) => {

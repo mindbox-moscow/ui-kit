@@ -315,8 +315,8 @@ class ExampleComponent extends React.Component {
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
 						onPreviousSelected={() => true}
-						onNextSelected={() => {}}
-						onExpandCurrent={() => {}}
+						onNextSelected={() => console.log("down")}
+						onExpandCurrent={() => console.log("right")}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,

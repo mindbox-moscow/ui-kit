@@ -27,7 +27,10 @@ export const FilterConditionEditorButton = (props: Props) => {
 			</button>
 			{isOpened && (
 				<OverflowVisibleContainer parentRef={refButton}>
-					<FilterConditionSelector {...otherProps} />
+					<FilterConditionSelector
+						{...otherProps}
+						onConditionStateToggle={toggleOpen}
+					/>
 				</OverflowVisibleContainer>
 			)}
 		</div>

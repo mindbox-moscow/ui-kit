@@ -15,6 +15,25 @@ export class FilterDetails extends React.Component<Props, State> {
 	private kitFiltrationHelperRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
 
+	public componentWillMount() {
+		document.addEventListener("keydown", this.handleKeyDown);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("keydown", this.handleKeyDown);
+	}
+
+	public handleKeyDown = (e: KeyboardEvent) => {
+		const { onClose } = this.props;
+
+		switch (e.keyCode) {
+			case 27:
+				e.preventDefault();
+				onClose();
+				break;
+		}
+	};
+
 	public handleHelpExtended = () => {
 		this.setState(state => ({ helpIsExpanded: !state.helpIsExpanded }));
 	};

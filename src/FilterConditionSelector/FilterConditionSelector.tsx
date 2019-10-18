@@ -21,35 +21,38 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 	public searchRef = React.createRef<Input>();
 
 	public componentDidMount() {
+		document.addEventListener("keydown", this.handleKeyDown);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("keydown", this.handleKeyDown);
+	}
+
+	public handleKeyDown = (e: KeyboardEvent) => {
 		const {
 			onPreviousSelected,
 			onExpandCurrent,
 			onNextSelected
 		} = this.props;
 
-		document.addEventListener("keydown", (e: KeyboardEvent) => {
-			switch (e.keyCode) {
-				case ArrowKeysCodes.Up:
-					e.preventDefault();
-					console.log("onPreviousSelected");
-					const autoFocus = !onPreviousSelected();
-					if (autoFocus && this.searchRef) {
-						this.searchRef.current!.focus();
-					}
-					break;
-				case ArrowKeysCodes.Right:
-					e.preventDefault();
-					console.log("onNextSelected()");
-					onExpandCurrent();
-					break;
-				case ArrowKeysCodes.Down:
-					e.preventDefault();
-					onNextSelected();
-					console.log("onNextSelected()");
-					break;
-			}
-		});
-	}
+		switch (e.keyCode) {
+			case ArrowKeysCodes.Up:
+				e.preventDefault();
+				const autoFocus = !onPreviousSelected();
+				if (autoFocus && this.searchRef) {
+					this.searchRef.current!.focus();
+				}
+				break;
+			case ArrowKeysCodes.Right:
+				e.preventDefault();
+				onExpandCurrent();
+				break;
+			case ArrowKeysCodes.Down:
+				e.preventDefault();
+				onNextSelected();
+				break;
+		}
+	};
 
 	public render() {
 		const {

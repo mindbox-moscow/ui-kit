@@ -1432,7 +1432,14 @@ class ExampleComponent extends React.Component {
 				personalData: false,
 				secondCategory: false,
 				thirdCategory: false
-			}
+			},
+			rootIds: [
+				"customerFeatures",
+				"behaviour",
+				"newsletters",
+				"shopping",
+				"loyaltyProgram"
+			]
 		};
 		this.togglePopup = this.togglePopup.bind(this);
 		this.onSelect = this.onSelect.bind(this);
@@ -1470,6 +1477,49 @@ class ExampleComponent extends React.Component {
 		}));
 	}
 
+	onNextSelected(id) {
+		const { selectedId, rootIds } = this.state;
+
+		if (selectedId === "name") {
+			this.setState({
+				selectedId: rootIds[0]
+			});
+		} else {
+			rootIds.map((key, index) => {
+				if (key === id && index + 1 < rootIds.length) {
+					this.setState({
+						selectedId: rootIds[index + 1]
+					});
+				}
+			});
+		}
+	}
+
+	onPreviousSelected(id) {
+		const { selectedId, rootIds } = this.state;
+
+		if (selectedId === "name") {
+			return false;
+		} else {
+			rootIds.map((key, index) => {
+				if (key === id) {
+					if (index !== 0) {
+						this.setState({
+							selectedId: rootIds[index - 1]
+						});
+						return true;
+					} else {
+						this.setState({
+							selectedId: "name"
+						});
+
+						return false;
+					}
+				}
+			});
+		}
+	}
+
 	render() {
 		return (
 			<>
@@ -1486,21 +1536,19 @@ class ExampleComponent extends React.Component {
 						label="Добавить фильтр"
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
-						onPreviousSelected={() => true}
-						onNextSelected={() => console.log("down")}
-						onExpandCurrent={() => console.log("right")}
+						onPreviousSelected={() =>
+							this.onPreviousSelected(this.state.selectedId)
+						}
+						onNextSelected={() =>
+							this.onNextSelected(this.state.selectedId)
+						}
+						onExpandCurrent={() => this.onToggleExpand(this.state.selectedId)}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,
 							this.state
 						)}
-						rootIds={[
-							"customerFeatures",
-							"behaviour",
-							"newsletters",
-							"shopping",
-							"loyaltyProgram"
-						]}
+						rootIds={this.state.rootIds}
 						helpComponent={
 							allElementsDictionary[this.state.selectedId]
 								.helpComponent

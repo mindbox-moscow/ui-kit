@@ -1,5 +1,5 @@
 // Colors
-$braketColor: #e2eaf0;
+$braketColor: #c3d4e1;
 $orColor: #dcc6f3;
 $orColorEdit: #9859dc;
 $andColor: $braketColor;
@@ -10,7 +10,7 @@ $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
 $closeColor: #666;
 $copyColorBg: $hoverColorBg;
-$copyColor: $andColor;
+$copyColor: $andColorEdit;
 
 // Sizing
 $groupHoverMarginTop: 0px;
@@ -154,8 +154,13 @@ $minHeight: 31px;
 			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-button,
-			.kit-filtration-group__label-line {
+			.kit-filtration-group__label-line,
+			.kit-filtration-group__label-text {
 				background-color: $andColorEdit;
+			}
+
+			.kit-filtration-group__label-text {
+				color: #fff;
 			}
 		}
 	}

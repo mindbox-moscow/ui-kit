@@ -7,7 +7,7 @@ import "./FilterDetails.scss";
 
 type Props = FilterDetailsProps & CallbackProps;
 
-const escKey = 27;
+const ESC_KEY = 27;
 
 export class FilterDetails extends React.Component<Props, State> {
 	public state = {
@@ -28,7 +28,7 @@ export class FilterDetails extends React.Component<Props, State> {
 	public handleKeyDown = (e: KeyboardEvent) => {
 		const { onClose } = this.props;
 
-		if (e.keyCode === escKey) {
+		if (e.keyCode === ESC_KEY) {
 			e.preventDefault();
 			onClose();
 		}

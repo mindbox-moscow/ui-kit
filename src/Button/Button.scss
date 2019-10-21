@@ -124,7 +124,8 @@
 		border-color: #a12e1e;
 		background-color: rgba(255, 240, 238, 0.5);
 
-		&:hover:not(:disabled) &:focus:not(:disabled) {
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
 			border-color: darken($color: #a12e1e, $amount: 18%);
 			color: darken($color: #a12e1e, $amount: 18%);
 			background-color: darken(

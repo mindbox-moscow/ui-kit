@@ -1,9 +1,9 @@
 // Colors
-$braketColor: #c3d4e1;
+$braketColor: #e2eaf0;
 $orColor: #dcc6f3;
 $orColorEdit: #9859dc;
-$andColor: #2d597d;
-$andColorEdit: $andColor;
+$andColor: $braketColor;
+$andColorEdit: #2d597d;
 $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
 $hoverColorBg: #f5f8fa;
@@ -204,6 +204,7 @@ $minHeight: 31px;
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
+			color: $andColorEdit;
 			background-color: $andColor;
 		}
 	}
@@ -267,7 +268,7 @@ $minHeight: 31px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
 	font-size: 10px;
-	font-weight: 400;
+	font-weight: bold;
 	line-height: 1;
 	text-align: center;
 	z-index: 1;

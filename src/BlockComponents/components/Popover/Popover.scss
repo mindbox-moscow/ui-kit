@@ -4,11 +4,18 @@ $contentBorderColor: #dddddc;
 $contentBgColor: #fafaf7;
 
 .kit-popover__content {
+	max-width: 550px;
 	padding: 5px 12px;
 	border-radius: 3px;
 	border: solid 1px $contentBorderColor;
 	background-color: $contentBgColor;
 	box-sizing: border-box;
+	overflow: auto;
+
+	.kit-filtration-condition__item-text .kit-filtration-condition__content {
+		flex-wrap: nowrap;
+		white-space: nowrap;
+	}
 }
 
 .kit-popover__button {

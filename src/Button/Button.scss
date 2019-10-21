@@ -13,7 +13,8 @@
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
 
-	&:hover:not(:disabled) {
+	&:hover:not(:disabled),
+	&:focus:not(:disabled) {
 		background-color: #c1d0dc;
 	}
 
@@ -35,7 +36,8 @@
 		background-color: #f2f2f2;
 		color: #265378;
 
-		&:hover:not(:disabled) {
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
 			background-color: darken($color: #f2f2f2, $amount: 8%);
 			color: darken($color: #265378, $amount: 18%);
 		}
@@ -107,7 +109,8 @@
 	&_hasBorder {
 		border-color: #8aacc2;
 
-		&:hover:not(:disabled) {
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
 			border-color: darken($color: #8aacc2, $amount: 8%);
 		}
 
@@ -121,7 +124,7 @@
 		border-color: #a12e1e;
 		background-color: rgba(255, 240, 238, 0.5);
 
-		&:hover:not(:disabled) {
+		&:hover:not(:disabled) &:focus:not(:disabled) {
 			border-color: darken($color: #a12e1e, $amount: 18%);
 			color: darken($color: #a12e1e, $amount: 18%);
 			background-color: darken(
@@ -183,7 +186,8 @@
 		color: #265378;
 		background-color: transparent;
 
-		&:hover:not(:disabled) {
+		&:hover:not(:disabled),
+		&:focus:not(:disabled) {
 			background-color: transparent;
 		}
 	}

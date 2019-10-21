@@ -38,9 +38,9 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 		switch (e.keyCode) {
 			case ArrowKeysCodes.Up:
 				e.preventDefault();
-				const autoFocus = !onPreviousSelected();
-				if (autoFocus && this.searchRef) {
-					this.searchRef.current!.focus();
+				const focus = !onPreviousSelected();
+				if (focus && this.searchRef.current) {
+					this.searchRef.current.focus();
 				}
 				break;
 			case ArrowKeysCodes.Right:

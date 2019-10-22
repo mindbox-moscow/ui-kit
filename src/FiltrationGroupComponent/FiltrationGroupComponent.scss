@@ -233,6 +233,9 @@ $minHeight: 31px;
 }
 
 .kit-filtration-group__label-line {
+	position: absolute;
+	top: 0;
+	left: $groupLabelPaddingLeft;
 	width: $borderWidthLine;
 	height: 100%;
 	margin-top: 0;
@@ -241,24 +244,24 @@ $minHeight: 31px;
 	box-sizing: border-box;
 }
 
-.kit-filtration-group__label-horizontal-bracket {
-	position: absolute;
-	margin-top: 16px;
-	left: 14px;
-	display: inline-block;
-	width: 12px;
-	border-top: 2px solid;
-	color: currentColor;
-}
+// .kit-filtration-group__label-horizontal-bracket {
+// 	position: absolute;
+// 	margin-top: 16px;
+// 	left: 14px;
+// 	display: inline-block;
+// 	width: 12px;
+// 	border-top: 2px solid;
+// 	color: currentColor;
+// }
 
-.kit-filtration-group__label-vertical-bracket {
-	position: absolute;
-	top: -2px;
-	left: 14px;
-	height: 16px;
-	border-left: 2px solid;
-	color: currentColor;
-}
+// .kit-filtration-group__label-vertical-bracket {
+// 	position: absolute;
+// 	top: -2px;
+// 	left: 14px;
+// 	height: 16px;
+// 	border-left: 2px solid;
+// 	color: currentColor;
+// }
 
 .kit-filtration-group__label-text {
 	position: absolute;

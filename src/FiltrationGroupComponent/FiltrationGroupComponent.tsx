@@ -14,67 +14,156 @@ interface State {
 	verticalBracket: boolean;
 }
 
+type SERACH_ELEMENT = "first" | "last";
+
+enum SEARCH_CLASSES {
+	KitFiltrationGroup = "kit-filtration-group",
+	KitFiltrationCondition = "kit-filtration-condition",
+	KitFiltrationGroupButtons = "kit-filtration-group__buttons"
+}
+
+// Менять только высоту, остальные правки делать в стилях!
+const MIN_HEIGHT = 31;
+const MARGIN_TOP = 2;
+// В зависимости от того какой отступ сверху kit-filtration-group__label
+const PADDING_TOP = 16;
+
 export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public state = {
 		horizontalBracket: [],
 		verticalBracket: false
 	};
-	// Менять только высоту, остальные правки делать в стилях!
-	private minHeight = 31;
-	private marginTop = 2;
-	private rangeOfValues = 2;
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
+	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
-		const ref = this.kitFiltrationRef.current;
-		const { minHeight, rangeOfValues } = this;
+		let heightGroup = 0;
+		let heightLine = 0;
+		let positionTop = PADDING_TOP;
+		const groupRef = this.kitFiltrationRef.current;
+		const labelRef = this.kitFiltrationLabelRef.current;
+		const labelLineRef = this.kitFiltrationLabelLineRef.current;
 
-		if (ref) {
-			const label: HTMLElement | null = ref.querySelector(
-				".kit-filtration-group__label"
+		const searchClasses = Object.keys(SEARCH_CLASSES).map(
+			key => SEARCH_CLASSES[key]
+		);
+
+		if (groupRef && labelRef && labelLineRef) {
+			const firstChildElement: HTMLElement | null = this.searchFirstLastElement(
+				groupRef,
+				searchClasses,
+				"first"
 			);
-			if (label && ref.lastElementChild) {
-				let height = 0;
-				const childElement = ref.lastElementChild;
-				const childElementRect = childElement.getBoundingClientRect();
-				const parentElementRect = ref.getBoundingClientRect();
-				const lastElement = childElement.classList.contains(
-					"kit-filtration-group"
-				);
 
-				if (lastElement) {
-					const childLabel = childElement.querySelector(
-						".kit-filtration-group__label"
-					);
-					if (childLabel) {
-						const childLabelRect = childLabel.getBoundingClientRect();
-						height =
-							parentElementRect.height -
-							childElementRect.height +
-							childLabelRect.height;
-					}
-				} else {
-					height =
-						parentElementRect.height -
-						(childElementRect.height === 1
-							? minHeight
-							: childElementRect.height) +
-						minHeight;
+			const lastChildElement: HTMLElement | null = this.searchFirstLastElement(
+				groupRef,
+				searchClasses,
+				"last"
+			);
+
+			if (firstChildElement) {
+				if (
+					firstChildElement.classList.contains(
+						SEARCH_CLASSES.KitFiltrationGroup
+					)
+				) {
+					positionTop +=
+						firstChildElement.getBoundingClientRect().height / 2 -
+						PADDING_TOP;
 				}
-
-				if (height < minHeight - rangeOfValues) {
-					height = 0;
-				}
-
-				label.style.height = `${height}px`;
 			}
+
+			if (lastChildElement) {
+				if (
+					lastChildElement.classList.contains(
+						SEARCH_CLASSES.KitFiltrationGroup
+					)
+				) {
+					const items: HTMLElement[] = [];
+					lastChildElement.childNodes.forEach((item: HTMLElement) => {
+						if (
+							searchClasses.some(className =>
+								item.classList.contains(className)
+							)
+						) {
+							items.push(item);
+						}
+					});
+
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						items.length * MIN_HEIGHT;
+
+					heightLine += lastChildElement.getBoundingClientRect()
+						.height;
+				}
+
+				if (
+					lastChildElement.classList.contains(
+						SEARCH_CLASSES.KitFiltrationCondition
+					)
+				) {
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						MIN_HEIGHT;
+					heightLine += lastChildElement.getBoundingClientRect()
+						.height;
+				}
+
+				if (
+					lastChildElement.classList.contains(
+						SEARCH_CLASSES.KitFiltrationGroupButtons
+					)
+				) {
+					heightLine += lastChildElement.getBoundingClientRect()
+						.height;
+				}
+			}
+
+			if (lastChildElement && firstChildElement) {
+				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
+					.height - heightLine}px`;
+			} else {
+				labelLineRef.style.height = `${heightLine}px`;
+			}
+
+			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
+				heightGroup}px`;
+			labelLineRef.style.top = `${positionTop}px`;
 		}
 
 		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
 		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
+	};
+
+	public searchFirstLastElement = (
+		searchableElement: HTMLElement,
+		searchClasses: string[],
+		search: SERACH_ELEMENT
+	) => {
+		const items: HTMLElement[] = [];
+		searchableElement.childNodes.forEach((item: HTMLElement) => {
+			if (
+				searchClasses.some(className =>
+					item.classList.contains(className)
+				)
+			) {
+				items.push(item);
+			}
+		});
+
+		if (items.length) {
+			if (search === "first") {
+				return items[0];
+			} else {
+				return items[items.length - 1];
+			}
+		} else {
+			return null;
+		}
 	};
 
 	public handleHoverAddClassLabel = () => {
@@ -217,8 +306,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		child: HTMLElement,
 		lastChildGroup?: boolean
 	) => {
-		const { minHeight, marginTop } = this;
-
 		let positionTop = child.offsetTop - 2;
 
 		if (lastChildGroup) {
@@ -229,8 +316,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				positionTop =
 					child.offsetTop +
 					childLabel.clientHeight -
-					minHeight -
-					marginTop;
+					MIN_HEIGHT -
+					MARGIN_TOP;
 			}
 		}
 
@@ -339,7 +426,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					)}
 					onClick={this.handleGroupLabelClick}
 				>
-					<div className="kit-filtration-group__label-line" />
+					<div
+						ref={this.kitFiltrationLabelLineRef}
+						className="kit-filtration-group__label-line"
+					/>
 					{shouldShowLabel && (
 						<>
 							<span className="kit-filtration-group__label-text">

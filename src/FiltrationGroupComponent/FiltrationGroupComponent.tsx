@@ -16,6 +16,11 @@ interface State {
 
 type SERACH_ELEMENT = "first" | "last";
 
+type ItemsRootElement = {
+	element: HTMLElement;
+	height: number;
+};
+
 enum SEARCH_CLASSES {
 	KitFiltrationGroup = "kit-filtration-group",
 	KitFiltrationCondition = "kit-filtration-condition",
@@ -25,8 +30,6 @@ enum SEARCH_CLASSES {
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 31;
 const MARGIN_TOP = 2;
-// В зависимости от того какой отступ сверху kit-filtration-group__label
-const PADDING_TOP = 16;
 
 export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public state = {
@@ -42,7 +45,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public moveLabelAtCenterOfBracket = () => {
 		let heightGroup = 0;
 		let heightLine = 0;
-		let positionTop = PADDING_TOP;
+		let positionTop = 0;
 		const groupRef = this.kitFiltrationRef.current;
 		const labelRef = this.kitFiltrationLabelRef.current;
 		const labelLineRef = this.kitFiltrationLabelLineRef.current;
@@ -65,40 +68,72 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			);
 
 			if (firstChildElement) {
+				const items: ItemsRootElement[] = [];
+				firstChildElement.childNodes.forEach((item: HTMLElement) => {
+					if (
+						searchClasses.some(className =>
+							item.classList.contains(className)
+						)
+					) {
+						items.push({
+							element: item,
+							height: item.getBoundingClientRect().height
+						});
+					}
+				});
+
+				let height = 0;
+				items.forEach(item => {
+					height += item.height;
+				});
+
 				if (
 					firstChildElement.classList.contains(
 						SEARCH_CLASSES.KitFiltrationGroup
 					)
 				) {
-					positionTop +=
-						firstChildElement.getBoundingClientRect().height / 2 -
-						PADDING_TOP;
+					heightLine += items.length ? height / 2 : MIN_HEIGHT / 2;
+
+					positionTop = items.length ? height / 2 : MIN_HEIGHT / 2;
+				}
+
+				if (
+					firstChildElement.classList.contains(
+						SEARCH_CLASSES.KitFiltrationCondition
+					)
+				) {
+					positionTop = MIN_HEIGHT / 2;
+
+					heightLine += MIN_HEIGHT / 2;
 				}
 			}
 
 			if (lastChildElement) {
+				const items: ItemsRootElement[] = [];
+				lastChildElement.childNodes.forEach((item: HTMLElement) => {
+					if (
+						searchClasses.some(className =>
+							item.classList.contains(className)
+						)
+					) {
+						items.push({
+							element: item,
+							height: item.getBoundingClientRect().height
+						});
+					}
+				});
+
 				if (
 					lastChildElement.classList.contains(
 						SEARCH_CLASSES.KitFiltrationGroup
 					)
 				) {
-					const items: HTMLElement[] = [];
-					lastChildElement.childNodes.forEach((item: HTMLElement) => {
-						if (
-							searchClasses.some(className =>
-								item.classList.contains(className)
-							)
-						) {
-							items.push(item);
-						}
-					});
+					heightLine += (items.length * MIN_HEIGHT) / 2;
 
-					heightGroup +=
-						lastChildElement.getBoundingClientRect().height -
-						items.length * MIN_HEIGHT;
-
-					heightLine += lastChildElement.getBoundingClientRect()
-						.height;
+					heightGroup += items.length
+						? lastChildElement.getBoundingClientRect().height -
+						  items.length * MIN_HEIGHT
+						: MIN_HEIGHT / 2;
 				}
 
 				if (
@@ -106,11 +141,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SEARCH_CLASSES.KitFiltrationCondition
 					)
 				) {
-					heightGroup +=
+					heightLine +=
 						lastChildElement.getBoundingClientRect().height -
-						MIN_HEIGHT;
-					heightLine += lastChildElement.getBoundingClientRect()
-						.height;
+						MIN_HEIGHT / 2;
 				}
 
 				if (
@@ -118,20 +151,20 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SEARCH_CLASSES.KitFiltrationGroupButtons
 					)
 				) {
-					heightLine += lastChildElement.getBoundingClientRect()
-						.height;
+					heightLine += MIN_HEIGHT / 2;
 				}
 			}
 
+			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
+				heightGroup}px`;
+
 			if (lastChildElement && firstChildElement) {
-				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
+				labelLineRef.style.height = `${labelRef.getBoundingClientRect()
 					.height - heightLine}px`;
 			} else {
 				labelLineRef.style.height = `${heightLine}px`;
 			}
 
-			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
-				heightGroup}px`;
 			labelLineRef.style.top = `${positionTop}px`;
 		}
 

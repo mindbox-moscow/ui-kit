@@ -133,6 +133,10 @@ $minHeight: 31px;
 				margin-top: 4px;
 			}
 		}
+
+		.kit-filtration-group__label-line {
+			height: 0 !important;
+		}
 	}
 
 	&_hover {
@@ -234,9 +238,8 @@ $minHeight: 31px;
 
 .kit-filtration-group__label-line {
 	position: absolute;
-	top: 0;
-	left: $groupLabelPaddingLeft;
 	width: $borderWidthLine;
+	left: $groupLabelPaddingLeft;
 	height: 100%;
 	margin-top: 0;
 	margin-left: -1px;

@@ -119,6 +119,8 @@ $searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
+	display: flex;
+	align-items: center;
 	padding: 4px 10px 5px 8px;
 	border: 0;
 	background-color: transparent;
@@ -152,7 +154,6 @@ $searchFocusBgColor: #fffde5;
 				&::before {
 					content: "";
 					position: absolute;
-					top: calc(50% - 6px);
 					left: 0;
 					display: block;
 					width: 8px;
@@ -200,7 +201,7 @@ $searchFocusBgColor: #fffde5;
 
 		&::after {
 			left: -12px;
-			top: 11px;
+			top: 12px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
@@ -258,6 +259,7 @@ $searchFocusBgColor: #fffde5;
 	padding: 0;
 	width: 6px;
 	margin-top: -3px;
+	margin-left: 1px;
 	border: none;
 	background-color: transparent;
 	color: inherit;
@@ -270,8 +272,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button
 		& {
 		transform: rotate(90deg);
-		margin-top: -1px;
-		margin-left: 1px;
+		margin-top: -2px;
 	}
 }
 

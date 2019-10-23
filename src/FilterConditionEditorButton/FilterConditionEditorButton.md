@@ -176,6 +176,145 @@ const segmentView = () => (
 								<FiltrationConditionComponent
 									state="readOnly"
 									filterablePropertyName="Мобильный телефон: заполнен и валидный"
+									linkedConditionComponent={
+										<FiltrationGroupComponent
+											state="readOnly"
+											groupType="and"
+											andLabel="И"
+											orLabel="ИЛИ"
+											shouldShowLabel={true}
+											addSimpleConditionButton={
+												<FilterConditionEditorButton
+													toggleOpen={() =>
+														console.log("toggle")
+													}
+													isOpened={false}
+													label="Добавить фильтр"
+												/>
+											}
+											addGroupConditionButton={
+												<FilterConditionEditorButton
+													toggleOpen={() =>
+														console.log("toggle")
+													}
+													isOpened={false}
+													label="ИЛИ"
+												/>
+											}
+											onGroupTypeToggle={() =>
+												console.log("type toggle")
+											}
+											onConditionStateToggle={() =>
+												console.log("state toggle")
+											}
+											onConditionRemove={() =>
+												console.log("remove")
+											}
+										>
+											<FiltrationConditionComponent
+												state="readOnly"
+												filterablePropertyName="Подписка Подписан на что-нибудь"
+												filtrationMethodName="без учета брендов, каналов и тематик"
+											/>
+											<FiltrationGroupComponent
+												state="readOnly"
+												groupType="or"
+												andLabel="И"
+												orLabel="ИЛИ"
+												shouldShowLabel={true}
+												addSimpleConditionButton={
+													<FilterConditionEditorButton
+														toggleOpen={() =>
+															console.log(
+																"toggle"
+															)
+														}
+														isOpened={false}
+														label="Добавить фильтр"
+													/>
+												}
+												addGroupConditionButton={
+													<FilterConditionEditorButton
+														toggleOpen={() =>
+															console.log(
+																"toggle"
+															)
+														}
+														isOpened={false}
+														label="ИЛИ"
+													/>
+												}
+												onGroupTypeToggle={() =>
+													console.log("type toggle")
+												}
+												onConditionStateToggle={() =>
+													console.log("state toggle")
+												}
+												onConditionRemove={() =>
+													console.log("remove")
+												}
+											>
+												<FiltrationConditionComponent
+													state="readOnly"
+													filterablePropertyName="Подписка Подписан на что-нибудь"
+													filtrationMethodName="без учета брендов, каналов и тематик"
+												/>
+												<FiltrationConditionComponent
+													state="readOnly"
+													filterablePropertyName="Подписка Подписан на что-нибудь"
+													filtrationMethodName="без учета брендов, каналов и тематик"
+												/>
+												<FiltrationGroupComponent
+													state="readOnly"
+													groupType="and"
+													andLabel="И"
+													orLabel="ИЛИ"
+													shouldShowLabel={true}
+													addSimpleConditionButton={
+														<FilterConditionEditorButton
+															toggleOpen={() =>
+																console.log(
+																	"toggle"
+																)
+															}
+															isOpened={false}
+															label="Добавить фильтр"
+														/>
+													}
+													addGroupConditionButton={
+														<FilterConditionEditorButton
+															toggleOpen={() =>
+																console.log(
+																	"toggle"
+																)
+															}
+															isOpened={false}
+															label="ИЛИ"
+														/>
+													}
+													onGroupTypeToggle={() =>
+														console.log(
+															"type toggle"
+														)
+													}
+													onConditionStateToggle={() =>
+														console.log(
+															"state toggle"
+														)
+													}
+													onConditionRemove={() =>
+														console.log("remove")
+													}
+												>
+													<FiltrationConditionComponent
+														state="readOnly"
+														filterablePropertyName="Подписка Подписан на что-нибудь"
+														filtrationMethodName="без учета брендов, каналов и тематик"
+													/>
+												</FiltrationGroupComponent>
+											</FiltrationGroupComponent>
+										</FiltrationGroupComponent>
+									}
 								/>
 							</FiltrationGroupComponent>
 						}

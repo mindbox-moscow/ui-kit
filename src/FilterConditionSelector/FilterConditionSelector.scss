@@ -45,7 +45,6 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy {
-	max-width: 300px;
 	margin: 0;
 	padding: 8px 11px;
 	height: calc(100% - 70px);
@@ -60,7 +59,6 @@ $searchFocusBgColor: #fffde5;
 	position: relative;
 	display: flex;
 	align-items: center;
-	min-width: 341px;
 	cursor: pointer;
 	color: $itemNameColor;
 

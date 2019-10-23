@@ -7,7 +7,53 @@ import { Input } from "../Input";
 
 import "./FilterConditionSelector.scss";
 
-export class FilterConditionSelector extends React.Component<Props> {
+interface State {
+	autoFocus: boolean;
+}
+
+enum ArrowKeysCodes {
+	Up = 38,
+	Right = 39,
+	Down = 40
+}
+
+export class FilterConditionSelector extends React.Component<Props, State> {
+	public searchRef = React.createRef<Input>();
+
+	public componentDidMount() {
+		document.addEventListener("keydown", this.handleKeyDown);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("keydown", this.handleKeyDown);
+	}
+
+	public handleKeyDown = (e: KeyboardEvent) => {
+		const {
+			onPreviousSelected,
+			onExpandCurrent,
+			onNextSelected
+		} = this.props;
+
+		switch (e.keyCode) {
+			case ArrowKeysCodes.Up:
+				e.preventDefault();
+				const focus = !onPreviousSelected();
+				if (focus && this.searchRef.current) {
+					this.searchRef.current.focus();
+				}
+				break;
+			case ArrowKeysCodes.Right:
+				e.preventDefault();
+				onExpandCurrent();
+				break;
+			case ArrowKeysCodes.Down:
+				e.preventDefault();
+				onNextSelected();
+				break;
+		}
+	};
+
 	public render() {
 		const {
 			onSearchTermChange,
@@ -45,19 +91,19 @@ export class FilterConditionSelector extends React.Component<Props> {
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
+							ref={this.searchRef}
+							autoFocus={true}
 							noShadow={true}
 							defaultValue={searchTerm}
 							type="search"
 							placeholder="Название фильтра"
 							onChange={handleSearchChange}
-							autoFocus={true}
 						/>
 						<div className="kit-filter-condition-selector__filter-btn-block">
 							{Object.keys(menuModeMap).map((mode: MenuMode) => {
 								return (
-									<button
+									<div
 										key={mode}
-										type="button"
 										className={cn(
 											"kit-filter-condition-selector__filter-btn",
 											{
@@ -68,7 +114,7 @@ export class FilterConditionSelector extends React.Component<Props> {
 										onClick={handleMenuModeChange(mode)}
 									>
 										{menuModeMap[mode]}
-									</button>
+									</div>
 								);
 							})}
 						</div>

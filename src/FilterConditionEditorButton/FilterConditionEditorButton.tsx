@@ -19,6 +19,7 @@ export const FilterConditionEditorButton = (props: Props) => {
 	return (
 		<div className="kit-filter-editor">
 			<button
+				autoFocus={true}
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {
 					"kit-filter-editor__btn_open": isOpened
@@ -30,7 +31,10 @@ export const FilterConditionEditorButton = (props: Props) => {
 			</button>
 			{isOpened && (
 				<OverflowVisibleContainer parentRef={refButton}>
-					<FilterConditionSelector {...otherProps} />
+					<FilterConditionSelector
+						{...otherProps}
+						onConditionStateToggle={toggleOpen}
+					/>
 				</OverflowVisibleContainer>
 			)}
 		</div>

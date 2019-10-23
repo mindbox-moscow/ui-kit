@@ -23,6 +23,15 @@ interface State {
 
 export class Input extends React.PureComponent<Props, State> {
 	public state = { filter: "" };
+	private refInput = React.createRef<HTMLInputElement>();
+
+	public focus() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.focus();
+		}
+	}
 
 	public render() {
 		const {
@@ -34,12 +43,14 @@ export class Input extends React.PureComponent<Props, State> {
 			noShadow,
 			size,
 			className,
-			autoFocus
+			autoFocus = false
 		} = this.props;
 
 		return (
 			<div className="kit-input-field-wrap">
 				<input
+					ref={this.refInput}
+					autoFocus={autoFocus}
 					onChange={onChange}
 					type={type || "text"}
 					className={cn(
@@ -52,7 +63,6 @@ export class Input extends React.PureComponent<Props, State> {
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
-					autoFocus={autoFocus}
 					aria-hidden={true}
 				/>
 				{type === "search" && (

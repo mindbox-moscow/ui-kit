@@ -121,11 +121,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 							  2
 							: MIN_HEIGHT / 2;
 
-					heightGroup +=
-						lastChildChildrenElements.length > 1
-							? lastChildElement.getBoundingClientRect().height -
-							  lastChildChildrenElements.length * MIN_HEIGHT
-							: MIN_HEIGHT / 2;
+					heightGroup += lastChildChildrenElements.length
+						? lastChildElement.getBoundingClientRect().height -
+						  lastChildChildrenElements.length * MIN_HEIGHT
+						: 0;
 				}
 
 				if (

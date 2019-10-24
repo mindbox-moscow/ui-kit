@@ -67,23 +67,16 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				"last"
 			);
 
+			const groupItems = this.getChildElements(groupRef, searchClasses);
+
 			if (firstChildElement) {
-				const items: ItemsRootElement[] = [];
-				firstChildElement.childNodes.forEach((item: HTMLElement) => {
-					if (
-						searchClasses.some(className =>
-							item.classList.contains(className)
-						)
-					) {
-						items.push({
-							element: item,
-							height: item.getBoundingClientRect().height
-						});
-					}
-				});
+				const firstChildChildrenElements = this.getChildElements(
+					firstChildElement,
+					searchClasses
+				);
 
 				let height = 0;
-				items.forEach(item => {
+				firstChildChildrenElements.forEach(item => {
 					height += item.height;
 				});
 
@@ -92,9 +85,13 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SEARCH_CLASSES.KitFiltrationGroup
 					)
 				) {
-					heightLine += items.length ? height / 2 : MIN_HEIGHT / 2;
+					heightLine += firstChildChildrenElements.length
+						? height / 2
+						: MIN_HEIGHT / 2;
 
-					positionTop = items.length ? height / 2 : MIN_HEIGHT / 2;
+					positionTop = firstChildChildrenElements.length
+						? height / 2
+						: MIN_HEIGHT / 2;
 				}
 
 				if (
@@ -109,31 +106,27 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			}
 
 			if (lastChildElement) {
-				const items: ItemsRootElement[] = [];
-				lastChildElement.childNodes.forEach((item: HTMLElement) => {
-					if (
-						searchClasses.some(className =>
-							item.classList.contains(className)
-						)
-					) {
-						items.push({
-							element: item,
-							height: item.getBoundingClientRect().height
-						});
-					}
-				});
+				const lastChildChildrenElements = this.getChildElements(
+					lastChildElement,
+					searchClasses
+				);
 
 				if (
 					lastChildElement.classList.contains(
 						SEARCH_CLASSES.KitFiltrationGroup
 					)
 				) {
-					heightLine += (items.length * MIN_HEIGHT) / 2;
+					heightLine +=
+						lastChildChildrenElements.length > 1
+							? (lastChildChildrenElements.length * MIN_HEIGHT) /
+							  2
+							: MIN_HEIGHT / 2;
 
-					heightGroup += items.length
-						? lastChildElement.getBoundingClientRect().height -
-						  items.length * MIN_HEIGHT
-						: MIN_HEIGHT / 2;
+					heightGroup +=
+						lastChildChildrenElements.length > 1
+							? lastChildElement.getBoundingClientRect().height -
+							  lastChildChildrenElements.length * MIN_HEIGHT
+							: MIN_HEIGHT / 2;
 				}
 
 				if (
@@ -151,7 +144,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SEARCH_CLASSES.KitFiltrationGroupButtons
 					)
 				) {
-					heightLine += MIN_HEIGHT / 2;
+					heightLine +=
+						groupItems.length > 1 ? MIN_HEIGHT / 2 : MIN_HEIGHT;
 				}
 			}
 
@@ -170,6 +164,27 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
 		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
+	};
+
+	public getChildElements = (
+		rootElement: HTMLElement,
+		searchClasses: string[]
+	) => {
+		const items: ItemsRootElement[] = [];
+		rootElement.childNodes.forEach((item: HTMLElement) => {
+			if (
+				searchClasses.some(className =>
+					item.classList.contains(className)
+				)
+			) {
+				items.push({
+					element: item,
+					height: item.getBoundingClientRect().height
+				});
+			}
+		});
+
+		return items;
 	};
 
 	public searchFirstLastElement = (

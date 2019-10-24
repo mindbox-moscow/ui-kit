@@ -1497,27 +1497,28 @@ class ExampleComponent extends React.Component {
 
 	onPreviousSelected(id) {
 		const { selectedId, rootIds } = this.state;
+		let callBack = null;
 
 		if (selectedId === "name") {
-			return false;
+			callBack = false;
 		} else {
-			rootIds.map((key, index) => {
+			rootIds.forEach((key, index) => {
 				if (key === id) {
 					if (index !== 0) {
 						this.setState({
 							selectedId: rootIds[index - 1]
 						});
-						return true;
+						callBack = true;
 					} else {
 						this.setState({
 							selectedId: "name"
 						});
-
-						return false;
+						callBack = false;
 					}
 				}
 			});
 		}
+		return callBack;
 	}
 
 	render() {
@@ -1542,7 +1543,9 @@ class ExampleComponent extends React.Component {
 						onNextSelected={() =>
 							this.onNextSelected(this.state.selectedId)
 						}
-						onExpandCurrent={() => this.onToggleExpand(this.state.selectedId)}
+						onExpandCurrent={() =>
+							this.onToggleExpand(this.state.selectedId)
+						}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,
@@ -1560,6 +1563,9 @@ class ExampleComponent extends React.Component {
 						helpCaption={
 							allElementsDictionary[this.state.selectedId]
 								.helpCaption
+						}
+						onSearchTermChange={() =>
+							console.log("onSearchTermChange")
 						}
 						filterLabel="Фильтры"
 						recentLabel="Недавние"

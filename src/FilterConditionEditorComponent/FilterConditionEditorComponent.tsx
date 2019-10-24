@@ -16,15 +16,7 @@ interface Props {
 const ENTER_KEY = 13;
 
 export class FilterConditionEditorComponent extends React.Component<Props> {
-	public componentDidMount() {
-		document.addEventListener("keydown", this.handleKeyDown);
-	}
-
-	public componentWillUnmount() {
-		document.removeEventListener("keydown", this.handleKeyDown);
-	}
-
-	public handleKeyDown = (e: KeyboardEvent) => {
+	public handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
 		const { onAddFilterButtonClick, isAddFilterButtonEnabled } = this.props;
 
 		if (e.keyCode === ENTER_KEY && isAddFilterButtonEnabled) {
@@ -54,6 +46,7 @@ export class FilterConditionEditorComponent extends React.Component<Props> {
 						onClick={onAddFilterButtonClick}
 						size="medium"
 						className="kit-filter-editor-component__btn"
+						onKeyDown={this.handleKeyDown}
 					>
 						{addFilterButtonCaption}
 					</Button>

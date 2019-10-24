@@ -16,6 +16,7 @@ export class FilterDetails extends React.Component<Props, State> {
 
 	private kitFiltrationHelperRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
+	private kitFiltrationRef = React.createRef<HTMLDivElement>();
 
 	public componentWillMount() {
 		document.addEventListener("keydown", this.handleKeyDown);
@@ -27,10 +28,11 @@ export class FilterDetails extends React.Component<Props, State> {
 
 	public handleKeyDown = (e: KeyboardEvent) => {
 		const { onClose } = this.props;
-
-		if (e.keyCode === ESC_KEY) {
-			e.preventDefault();
-			onClose();
+		if (document.activeElement === this.kitFiltrationRef.current) {
+			if (e.keyCode === ESC_KEY) {
+				e.preventDefault();
+				onClose();
+			}
 		}
 	};
 
@@ -80,6 +82,8 @@ export class FilterDetails extends React.Component<Props, State> {
 
 		return (
 			<div
+				ref={this.kitFiltrationRef}
+				tabIndex={0}
 				className={cn("kit-filter-details", {
 					"kit-filter-details_editor": viewMode === "edit",
 					"kit-filter-details_menu": viewMode === "menu"

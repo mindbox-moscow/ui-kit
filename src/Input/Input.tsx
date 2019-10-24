@@ -15,6 +15,7 @@ interface Props {
 	size?: SizeTypes;
 	className?: string;
 	autoFocus?: boolean;
+	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 interface State {
@@ -33,6 +34,14 @@ export class Input extends React.PureComponent<Props, State> {
 		}
 	}
 
+	public blur() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.blur();
+		}
+	}
+
 	public render() {
 		const {
 			defaultValue,
@@ -43,7 +52,8 @@ export class Input extends React.PureComponent<Props, State> {
 			noShadow,
 			size,
 			className,
-			autoFocus = false
+			autoFocus = false,
+			onKeyDown
 		} = this.props;
 
 		return (
@@ -64,6 +74,7 @@ export class Input extends React.PureComponent<Props, State> {
 					maxLength={maxLength}
 					placeholder={placeholder}
 					aria-hidden={true}
+					onKeyDown={onKeyDown}
 				/>
 				{type === "search" && (
 					<IconSvg

@@ -14,11 +14,14 @@ interface State {
 enum ArrowKeysCodes {
 	Up = 38,
 	Right = 39,
-	Down = 40
+	Down = 40,
+	Enter = 13,
+	Esc = 27
 }
 
 export class FilterConditionSelector extends React.Component<Props, State> {
 	public searchRef = React.createRef<Input>();
+	public listRef = React.createRef<HTMLUListElement>();
 
 	public componentDidMount() {
 		document.addEventListener("keydown", this.handleKeyDown);
@@ -35,20 +38,51 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 			onNextSelected
 		} = this.props;
 
+		if (document.activeElement === this.listRef.current) {
+			switch (e.keyCode) {
+				case ArrowKeysCodes.Up:
+					e.preventDefault();
+
+					const focus = !onPreviousSelected();
+					if (focus && this.searchRef.current) {
+						this.searchRef.current.focus();
+					}
+					break;
+				case ArrowKeysCodes.Esc:
+					if (this.searchRef.current) {
+						window.blur();
+						this.searchRef.current.focus();
+					}
+					break;
+				case ArrowKeysCodes.Right:
+				case ArrowKeysCodes.Enter:
+					e.preventDefault();
+					onExpandCurrent();
+					break;
+				case ArrowKeysCodes.Down:
+					e.preventDefault();
+					if (this.searchRef.current) {
+						this.searchRef.current.blur();
+					}
+					onNextSelected();
+					break;
+			}
+		}
+	};
+
+	public handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		const { onNextSelected } = this.props;
+
 		switch (e.keyCode) {
-			case ArrowKeysCodes.Up:
-				e.preventDefault();
-				const focus = !onPreviousSelected();
-				if (focus && this.searchRef.current) {
-					this.searchRef.current.focus();
-				}
-				break;
-			case ArrowKeysCodes.Right:
-				e.preventDefault();
-				onExpandCurrent();
-				break;
 			case ArrowKeysCodes.Down:
+			case ArrowKeysCodes.Enter:
 				e.preventDefault();
+
+				if (this.searchRef.current && this.listRef.current) {
+					this.searchRef.current!.blur();
+					this.listRef.current.focus();
+				}
+
 				onNextSelected();
 				break;
 		}
@@ -98,6 +132,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							type="search"
 							placeholder="Название фильтра"
 							onChange={handleSearchChange}
+							onKeyDown={this.handleKeyDownSearch}
 						/>
 						<div className="kit-filter-condition-selector__filter-btn-block">
 							{Object.keys(menuModeMap).map((mode: MenuMode) => {
@@ -120,7 +155,11 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 						</div>
 					</div>
 					<div className="kit-filter-condition-selector__hierarchy-wrap">
-						<ul className="kit-filter-condition-selector__hierarchy">
+						<ul
+							ref={this.listRef}
+							className="kit-filter-condition-selector__hierarchy"
+							tabIndex={0}
+						>
 							{this.props.rootIds.map(childId => (
 								<ChildItem key={childId} id={childId} />
 							))}

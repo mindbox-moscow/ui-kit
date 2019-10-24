@@ -28,6 +28,7 @@ interface Props {
 }
 
 export class FilterConditionSelectorItem extends React.Component<Props> {
+	// public buttonRef = React.createRef<HTMLDivElement>();
 	public handleHighLightText = (text: string, searchText: string) => {
 		const { type } = this.props;
 

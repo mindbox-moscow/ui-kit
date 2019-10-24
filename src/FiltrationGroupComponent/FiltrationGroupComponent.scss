@@ -234,6 +234,8 @@ $minHeight: 31px;
 
 .kit-filtration-group__label-line {
 	position: absolute;
+	display: inline-flex;
+	align-items: center;
 	width: $borderWidthLine;
 	left: $groupLabelPaddingLeft;
 	height: 100%;
@@ -243,28 +245,28 @@ $minHeight: 31px;
 	box-sizing: border-box;
 }
 
-// .kit-filtration-group__label-horizontal-bracket {
-// 	position: absolute;
-// 	margin-top: 16px;
-// 	left: 14px;
-// 	display: inline-block;
-// 	width: 12px;
-// 	border-top: 2px solid;
-// 	color: currentColor;
-// }
+.kit-filtration-group__label-horizontal-bracket {
+	position: absolute;
+	// margin-top: 16px;
+	// left: 14px;
+	// display: inline-block;
+	// width: 12px;
+	// border-top: 2px solid;
+	// color: currentColor;
+}
 
-// .kit-filtration-group__label-vertical-bracket {
-// 	position: absolute;
-// 	top: -2px;
-// 	left: 14px;
-// 	height: 16px;
-// 	border-left: 2px solid;
-// 	color: currentColor;
-// }
+.kit-filtration-group__label-vertical-bracket {
+	position: absolute;
+	// top: -2px;
+	// left: 14px;
+	// height: 16px;
+	// border-left: 2px solid;
+	// color: currentColor;
+}
 
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: 1px;
+	left: 0;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -278,6 +280,7 @@ $minHeight: 31px;
 	font-weight: bold;
 	line-height: 1;
 	text-align: center;
+	transform: translateX(-50%);
 	z-index: 1;
 	box-sizing: border-box;
 }

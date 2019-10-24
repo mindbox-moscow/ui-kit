@@ -159,7 +159,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				labelLineRef.style.height = `${heightLine}px`;
 			}
 
-			labelLineRef.style.top = `${positionTop}px`;
+			if (positionTop >= MIN_HEIGHT) {
+				labelLineRef.style.top = `${positionTop}px`;
+			}
 		}
 
 		window.addEventListener("load", this.moveLabelAtCenterOfBracket);
@@ -477,58 +479,59 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					<div
 						ref={this.kitFiltrationLabelLineRef}
 						className="kit-filtration-group__label-line"
-					/>
-					{shouldShowLabel && (
-						<>
-							<span className="kit-filtration-group__label-text">
-								{state === "edit" ? (
-									<>
-										<div
-											className="kit-filtration-group__label-text-height"
-											ref={
-												this
-													.kitFiltrationLabelButtonsRef
-											}
-										/>
-										<OverflowVisibleContainer
-											className={cn(
-												"kit-filtration-group__label-text-buttons",
-												`kit-filtration-group__label-text-buttons_${groupType}`
-											)}
-											parentRef={
-												this
-													.kitFiltrationLabelButtonsRef
-											}
-										>
-											<button
-												key="copy"
-												onClick={onConditionCopy}
-												className="kit-filtration-group__copy"
-												type="button"
-											>
-												<IconSvg type="duplicate" />
-											</button>
-											<button
-												key="remove"
-												onClick={onConditionRemove}
-												className="kit-filtration-group__remove"
-												type="button"
-											>
-												<IconSvg type="trash" />
-											</button>
-											<LabelButton
-												onToggle={onGroupTypeToggle}
-												types={labelMap}
-												activeType={groupType}
+					>
+						{shouldShowLabel && (
+							<>
+								<span className="kit-filtration-group__label-text">
+									{state === "edit" ? (
+										<>
+											<div
+												ref={
+													this
+														.kitFiltrationLabelButtonsRef
+												}
+												className="kit-filtration-group__label-text-height"
 											/>
-										</OverflowVisibleContainer>
-									</>
-								) : (
-									labelMap[groupType]
-								)}
-							</span>
-						</>
-					)}
+											<OverflowVisibleContainer
+												className={cn(
+													"kit-filtration-group__label-text-buttons",
+													`kit-filtration-group__label-text-buttons_${groupType}`
+												)}
+												parentRef={
+													this
+														.kitFiltrationLabelButtonsRef
+												}
+											>
+												<button
+													key="copy"
+													onClick={onConditionCopy}
+													className="kit-filtration-group__copy"
+													type="button"
+												>
+													<IconSvg type="duplicate" />
+												</button>
+												<button
+													key="remove"
+													onClick={onConditionRemove}
+													className="kit-filtration-group__remove"
+													type="button"
+												>
+													<IconSvg type="trash" />
+												</button>
+												<LabelButton
+													onToggle={onGroupTypeToggle}
+													types={labelMap}
+													activeType={groupType}
+												/>
+											</OverflowVisibleContainer>
+										</>
+									) : (
+										labelMap[groupType]
+									)}
+								</span>
+							</>
+						)}
+					</div>
 					{horizontalBracket}
 					{verticalBracket}
 				</div>

@@ -247,21 +247,20 @@ $minHeight: 31px;
 
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
-	// margin-top: 16px;
 	// left: 14px;
-	// display: inline-block;
-	// width: 12px;
-	// border-top: 2px solid;
-	// color: currentColor;
+	display: inline-block;
+	width: 12px;
+	border-top: 2px solid;
+	color: currentColor;
 }
 
 .kit-filtration-group__label-vertical-bracket {
 	position: absolute;
-	// top: -2px;
-	// left: 14px;
-	// height: 16px;
-	// border-left: 2px solid;
-	// color: currentColor;
+	top: -2px;
+	left: 14px;
+	height: 20px;
+	border-left: 2px solid;
+	color: currentColor;
 }
 
 .kit-filtration-group__label-text {

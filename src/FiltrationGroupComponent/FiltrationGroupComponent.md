@@ -1068,6 +1068,55 @@
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Покупка"
+							filtrationMethodName="нет таких"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Первое действие"
+							linkedConditionComponent={
+								<FiltrationGroupComponent
+									state="view"
+									groupType="and"
+									andLabel="И"
+									orLabel="ИЛИ"
+									shouldShowLabel={false}
+								>
+									<FiltrationConditionComponent
+										filterablePropertyName="Период от текущей даты"
+										filtrationMethodName="до"
+										filtrationMethodParametersComponent={
+											<>
+												<span
+													style={{
+														fontWeight: "bold"
+													}}
+												>
+													14 дней
+												</span>
+												<span
+													style={{
+														fontWeight: "normal"
+													}}
+												>
+													назад
+												</span>
+											</>
+										}
+									/>
+								</FiltrationGroupComponent>
+							}
+						/>
+					</FiltrationGroupComponent>
+				}
 			/>
 			<FiltrationConditionComponent
 				filterablePropertyName="Розничный заказ"

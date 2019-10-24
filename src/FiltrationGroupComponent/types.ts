@@ -24,3 +24,9 @@ export interface CallbackProps {
 	onConditionRemove: () => void;
 	onConditionCopy: () => void;
 }
+
+export enum SearchClasses {
+	KitFiltrationGroup = "kit-filtration-group",
+	KitFiltrationCondition = "kit-filtration-condition",
+	KitFiltrationGroupButtons = "kit-filtration-group__buttons"
+}

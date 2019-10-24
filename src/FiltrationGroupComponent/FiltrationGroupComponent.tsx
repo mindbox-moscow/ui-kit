@@ -89,9 +89,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						? height / 2
 						: MIN_HEIGHT / 2;
 
-					positionTop = firstChildChildrenElements.length
-						? height / 2
-						: MIN_HEIGHT / 2;
+					positionTop =
+						firstChildChildrenElements.length > 1 ? height / 2 : 0;
 				}
 
 				if (
@@ -159,7 +158,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				labelLineRef.style.height = `${heightLine}px`;
 			}
 
-			if (positionTop >= MIN_HEIGHT) {
+			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop}px`;
 			}
 		}

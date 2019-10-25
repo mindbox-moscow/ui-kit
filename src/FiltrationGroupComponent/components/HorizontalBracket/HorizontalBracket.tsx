@@ -19,7 +19,7 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 	let positionTop = 0;
 	let height = -widthBracket;
 
-	const classes = Object.keys(SearchClasses).map(key => SearchClasses[key]);
+	const classes = Object.values(SearchClasses);
 
 	return (
 		<>

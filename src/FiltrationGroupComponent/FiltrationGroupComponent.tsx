@@ -23,13 +23,14 @@ type SERACH_ELEMENT = "first" | "last";
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 31;
+const WIDTH_BRACKET = 2;
 
 export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public state = {
 		horizontalBracket: [],
 		verticalBracket: false
 	};
-	private classes = Object.keys(SearchClasses).map(key => SearchClasses[key]);
+	private classes = Object.values(SearchClasses);
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
@@ -160,13 +161,15 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 			if (firstChildElement && lastChildElement) {
 				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
-					.height - heightLine}px`;
+					.height -
+					heightLine +
+					WIDTH_BRACKET}px`;
 			} else {
 				labelLineRef.style.height = "0px";
 			}
 
 			if (positionTop !== 0) {
-				labelLineRef.style.top = `${positionTop}px`;
+				labelLineRef.style.top = `${positionTop - WIDTH_BRACKET}px`;
 			}
 		}
 
@@ -478,6 +481,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					<HorizontalBracket
 						brackets={horizontalBracket}
 						minHeight={MIN_HEIGHT}
+						widthBracket={WIDTH_BRACKET}
 					/>
 					{verticalBracket}
 				</div>

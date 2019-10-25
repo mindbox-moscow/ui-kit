@@ -9,13 +9,15 @@ type ItemsRootElement = {
 interface HorizontalBracketProps {
 	minHeight: number;
 	brackets: ItemsRootElement[];
+	widthBracket: number;
 }
 export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 	brackets,
-	minHeight
+	minHeight,
+	widthBracket
 }) => {
 	let positionTop = 0;
-	let height = -2;
+	let height = -widthBracket;
 
 	const classes = Object.keys(SearchClasses).map(key => SearchClasses[key]);
 
@@ -33,14 +35,14 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 									SearchClasses.KitFiltrationGroupButtons
 								)
 							) {
-								positionTop = minHeight / 2;
+								positionTop = height + minHeight / 2;
 							}
 							if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								positionTop = item.height / 2;
+								positionTop = height + item.height / 2;
 							}
 							break;
 

@@ -28,11 +28,12 @@ export class FilterDetails extends React.Component<Props, State> {
 
 	public handleKeyDown = (e: KeyboardEvent) => {
 		const { onClose } = this.props;
-		if (document.activeElement === this.kitFiltrationRef.current) {
-			if (e.keyCode === ESC_KEY) {
-				e.preventDefault();
-				onClose();
-			}
+		if (
+			document.activeElement === this.kitFiltrationRef.current &&
+			e.keyCode === ESC_KEY
+		) {
+			e.preventDefault();
+			onClose();
 		}
 	};
 

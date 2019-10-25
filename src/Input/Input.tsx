@@ -10,12 +10,12 @@ interface Props {
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
 	autoFocus?: boolean;
-	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 	error?: boolean;
 }
 

@@ -14,12 +14,12 @@ type Props = ButtonProps & SelectorProps;
 export const FilterConditionEditorButton = (props: Props) => {
 	const refButton = React.createRef<HTMLButtonElement>();
 
-	const { toggleOpen, label, isOpened, ...otherProps } = props;
+	const { toggleOpen, label, isOpened, autoFocus, ...otherProps } = props;
 
 	return (
 		<div className="kit-filter-editor">
 			<button
-				// autoFocus={true}
+				autoFocus={autoFocus}
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {
 					"kit-filter-editor__btn_open": isOpened

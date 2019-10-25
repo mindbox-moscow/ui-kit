@@ -49,6 +49,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 					}
 					break;
 				case ArrowKeysCodes.Esc:
+					e.preventDefault();
 					if (this.searchRef.current) {
 						window.blur();
 						this.searchRef.current.focus();
@@ -79,7 +80,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 				e.preventDefault();
 
 				if (this.searchRef.current && this.listRef.current) {
-					this.searchRef.current!.blur();
+					this.searchRef.current.blur();
 					this.listRef.current.focus();
 				}
 

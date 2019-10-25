@@ -58,7 +58,7 @@ const segmentViewHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -340,7 +340,7 @@ const segmentHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -1681,7 +1681,9 @@ class ExampleComponent extends React.Component {
 						onNextSelected={() =>
 							this.onNextSelected(this.state.selectedId)
 						}
-						onExpandCurrent={() => this.onToggleExpand(this.state.selectedId)}
+						onExpandCurrent={() =>
+							this.onToggleExpand(this.state.selectedId)
+						}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,

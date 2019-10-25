@@ -1,25 +1,15 @@
 import cn from "classnames";
 import * as React from "react";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FilterDetails } from "../FilterDetails";
 import { IconSvg } from "../IconSvg";
-import { StateProps, CallbackProps } from "./types";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
+import { CallbackProps, StateProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
 
 type Props = StateProps & CallbackProps;
 
 export class FiltrationConditionComponent extends React.Component<Props> {
-	private onConditionCopy = (e: React.MouseEvent) => {
-		e.stopPropagation();
-		this.props.onConditionCopy();
-	}
-
-	private onConditionRemove = (e: React.MouseEvent) => {
-		e.stopPropagation();
-		this.props.onConditionRemove();
-	}
-
 	public refComponent = React.createRef<HTMLElement>();
 
 	public render() {
@@ -32,7 +22,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 			helpComponent,
 			editorComponent,
 			onConditionStateToggle,
-			withAlert,
+			withAlert
 		} = this.props;
 
 		const editModeContent = (
@@ -84,25 +74,34 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 							</span>
 						)}
 						{filtrationMethodParametersComponent}
-						<button
-							type="button"
-							className="kit-filtration-condition__copy"
-							onClick={this.onConditionCopy}
-						>
-							<IconSvg type="duplicate" />
-						</button>
-						<button
-							type="button"
-							className="kit-filtration-condition__remove"
-							onClick={this.onConditionRemove}
-						>
-							<IconSvg type="trash" />
-						</button>
 					</div>
+					<button
+						type="button"
+						className="kit-filtration-condition__copy"
+						onClick={this.onConditionCopy}
+					>
+						<IconSvg type="duplicate" />
+					</button>
+					<button
+						type="button"
+						className="kit-filtration-condition__remove"
+						onClick={this.onConditionRemove}
+					>
+						<IconSvg type="trash" />
+					</button>
 					{state === "edit" && editModeContent}
 				</div>
 				{linkedConditionComponent}
 			</li>
 		);
 	}
+	private onConditionCopy = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		this.props.onConditionCopy();
+	};
+
+	private onConditionRemove = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		this.props.onConditionRemove();
+	};
 }

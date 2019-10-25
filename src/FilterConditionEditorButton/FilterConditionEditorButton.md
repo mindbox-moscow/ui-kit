@@ -467,7 +467,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory2: {
@@ -488,7 +488,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory3: {
@@ -509,7 +509,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory4: {
@@ -530,7 +530,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory5: {
@@ -551,7 +551,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory6: {
@@ -572,7 +572,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory7: {
@@ -593,7 +593,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory8: {
@@ -614,7 +614,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory9: {
@@ -635,7 +635,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory10: {
@@ -656,7 +656,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory11: {
@@ -677,7 +677,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory12: {
@@ -698,7 +698,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	thirdCategory: {

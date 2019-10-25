@@ -45,7 +45,6 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy {
-	max-width: 300px;
 	margin: 0;
 	padding: 8px 11px;
 	height: calc(100% - 70px);
@@ -60,7 +59,6 @@ $searchFocusBgColor: #fffde5;
 	position: relative;
 	display: flex;
 	align-items: center;
-	min-width: 341px;
 	cursor: pointer;
 	color: $itemNameColor;
 
@@ -119,6 +117,8 @@ $searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector__hierarchy-name {
 	flex-grow: 1;
+	display: flex;
+	align-items: center;
 	padding: 4px 10px 5px 8px;
 	border: 0;
 	background-color: transparent;
@@ -152,7 +152,6 @@ $searchFocusBgColor: #fffde5;
 				&::before {
 					content: "";
 					position: absolute;
-					top: calc(50% - 6px);
 					left: 0;
 					display: block;
 					width: 8px;
@@ -200,7 +199,7 @@ $searchFocusBgColor: #fffde5;
 
 		&::after {
 			left: -12px;
-			top: 11px;
+			top: 12px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
@@ -258,6 +257,7 @@ $searchFocusBgColor: #fffde5;
 	padding: 0;
 	width: 6px;
 	margin-top: -3px;
+	margin-left: 1px;
 	border: none;
 	background-color: transparent;
 	color: inherit;
@@ -271,7 +271,6 @@ $searchFocusBgColor: #fffde5;
 		& {
 		transform: rotate(90deg);
 		margin-top: -1px;
-		margin-left: 1px;
 	}
 }
 

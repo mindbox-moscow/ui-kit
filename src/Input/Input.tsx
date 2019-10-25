@@ -16,6 +16,7 @@ interface Props {
 	className?: string;
 	autoFocus?: boolean;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+	error?: boolean;
 }
 
 interface State {
@@ -53,7 +54,8 @@ export class Input extends React.PureComponent<Props, State> {
 			size,
 			className,
 			autoFocus = false,
-			onKeyDown
+			onKeyDown,
+			error
 		} = this.props;
 
 		return (
@@ -68,6 +70,7 @@ export class Input extends React.PureComponent<Props, State> {
 						type === "search" && "kit-input-field_search",
 						noShadow && "kit-input-field_no-shadow",
 						size && `kit-input-field_size_${size}`,
+						error && "kit-input-field_error",
 						className
 					)}
 					defaultValue={defaultValue}

@@ -50,6 +50,11 @@
 	&_search#{&}_size_small {
 		padding-right: 27px;
 	}
+
+	&_error {
+		background-color: #ffeeeb;
+		border-color: #ddaaa2;
+	}
 }
 
 .kit-input-field__icon {

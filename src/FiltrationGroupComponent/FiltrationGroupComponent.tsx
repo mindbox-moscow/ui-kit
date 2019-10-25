@@ -305,6 +305,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public handleCreateHorizontalBrackets = () => {
 		const groupRef = this.kitFiltrationRef.current;
 		const { horizontalBracket } = this.state;
+		let repeater = true;
 
 		const searchClasses = this.classes;
 
@@ -314,6 +315,17 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			if (horizontalBracket.length !== groupItems.length) {
 				this.setState({
 					horizontalBracket: groupItems
+				});
+			} else {
+				horizontalBracket.map((item: ItemsRootElement, index) => {
+					if (repeater) {
+						if (item.height !== groupItems[index].height) {
+							this.setState({
+								horizontalBracket: groupItems
+							});
+							repeater = false;
+						}
+					}
 				});
 			}
 		}

@@ -490,18 +490,21 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private renderGroupButtons = (noChildren?: boolean) => {
 		const {
 			addSimpleConditionButton,
-			addGroupConditionButton
+			addGroupConditionButton,
+			shouldShowButtons
 		} = this.props;
 
 		return (
-			<div
-				className={cn("kit-filtration-group__buttons", {
-					"kit-filtration-group__buttons_no-children": noChildren
-				})}
-			>
-				{addSimpleConditionButton}
-				{addGroupConditionButton}
-			</div>
+			shouldShowButtons && (
+				<div
+					className={cn("kit-filtration-group__buttons", {
+						"kit-filtration-group__buttons_no-children": noChildren
+					})}
+				>
+					{addSimpleConditionButton}
+					{addGroupConditionButton}
+				</div>
+			)
 		);
 	};
 

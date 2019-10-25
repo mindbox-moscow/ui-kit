@@ -60,6 +60,7 @@
 						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
@@ -67,6 +68,7 @@
 						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
+						iconType="cross-arrows"
 					/>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
@@ -111,11 +113,13 @@
 				andLabel="И"
 				orLabel="ИЛИ"
 				shouldShowLabel={true}
+				shouldShowButtons={true}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
 						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
@@ -123,6 +127,7 @@
 						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
+						iconType="cross-arrows"
 					/>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
@@ -186,16 +191,18 @@
 				shouldShowLabel={true}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
@@ -208,18 +215,21 @@
 					andLabel="И"
 					orLabel="ИЛИ"
 					shouldShowLabel={true}
+					shouldShowButtons={true}
 					addSimpleConditionButton={
 						<FilterConditionEditorButton
+							label="Добавить фильтр"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="Добавить фильтр"
+							iconType="filter"
 						/>
 					}
 					addGroupConditionButton={
 						<FilterConditionEditorButton
+							label="И"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="ИЛИ"
+							iconType="cross-arrows"
 						/>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}
@@ -269,16 +279,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -293,16 +305,18 @@
 					onConditionRemove={() => console.log("remove")}
 					addSimpleConditionButton={
 						<FilterConditionEditorButton
+							label="Добавить фильтр"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="Добавить фильтр"
+							iconType="filter"
 						/>
 					}
 					addGroupConditionButton={
 						<FilterConditionEditorButton
+							label="И"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="ИЛИ"
+							iconType="cross-arrows"
 						/>
 					}
 				/>
@@ -328,21 +342,24 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
+			shouldShowButtons={true}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -357,16 +374,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			/>
@@ -401,16 +420,18 @@
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		/>
@@ -439,21 +460,24 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
+			shouldShowButtons={true}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -468,16 +492,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -502,16 +528,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -555,16 +583,18 @@
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -574,21 +604,24 @@
 				andLabel="И"
 				orLabel="ИЛИ"
 				shouldShowLabel={true}
+				shouldShowButtons={true}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -612,16 +645,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -665,16 +700,18 @@
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -689,16 +726,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -725,20 +764,22 @@
 									shouldShowLabel={false}
 									addSimpleConditionButton={
 										<FilterConditionEditorButton
+											label="Добавить фильтр"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="Добавить фильтр"
+											iconType="filter"
 										/>
 									}
 									addGroupConditionButton={
 										<FilterConditionEditorButton
+											label="И"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="ИЛИ"
+											iconType="cross-arrows"
 										/>
 									}
 									onGroupTypeToggle={() =>
@@ -769,24 +810,26 @@
 												shouldShowLabel={false}
 												addSimpleConditionButton={
 													<FilterConditionEditorButton
+														label="Добавить фильтр"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="Добавить фильтр"
+														iconType="filter"
 													/>
 												}
 												addGroupConditionButton={
 													<FilterConditionEditorButton
+														label="И"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="ИЛИ"
+														iconType="cross-arrows"
 													/>
 												}
 												onGroupTypeToggle={() =>
@@ -846,16 +889,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -899,16 +944,18 @@
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -923,16 +970,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
-						toggleOpen={() => console.log("toggle")}
-						isOpened={true}
 						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -959,20 +1008,22 @@
 									shouldShowLabel={false}
 									addSimpleConditionButton={
 										<FilterConditionEditorButton
+											label="Добавить фильтр"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="Добавить фильтр"
+											iconType="filter"
 										/>
 									}
 									addGroupConditionButton={
 										<FilterConditionEditorButton
+											label="И"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="ИЛИ"
+											iconType="cross-arrows"
 										/>
 									}
 									onGroupTypeToggle={() =>
@@ -1003,24 +1054,26 @@
 												shouldShowLabel={false}
 												addSimpleConditionButton={
 													<FilterConditionEditorButton
+														label="Добавить фильтр"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="Добавить фильтр"
+														iconType="filter"
 													/>
 												}
 												addGroupConditionButton={
 													<FilterConditionEditorButton
+														label="И"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="ИЛИ"
+														iconType="cross-arrows"
 													/>
 												}
 												onGroupTypeToggle={() =>
@@ -1058,6 +1111,7 @@
 																	}
 																	addSimpleConditionButton={
 																		<FilterConditionEditorButton
+																			label="Добавить фильтр"
 																			toggleOpen={() =>
 																				console.log(
 																					"toggle"
@@ -1066,11 +1120,12 @@
 																			isOpened={
 																				false
 																			}
-																			label="Добавить фильтр"
+																			iconType="filter"
 																		/>
 																	}
 																	addGroupConditionButton={
 																		<FilterConditionEditorButton
+																			label="И"
 																			toggleOpen={() =>
 																				console.log(
 																					"toggle"
@@ -1079,7 +1134,7 @@
 																			isOpened={
 																				false
 																			}
-																			label="ИЛИ"
+																			iconType="cross-arrows"
 																		/>
 																	}
 																	onGroupTypeToggle={() =>
@@ -1118,6 +1173,7 @@
 																				}
 																				addSimpleConditionButton={
 																					<FilterConditionEditorButton
+																						label="Добавить фильтр"
 																						toggleOpen={() =>
 																							console.log(
 																								"toggle"
@@ -1126,11 +1182,12 @@
 																						isOpened={
 																							false
 																						}
-																						label="Добавить фильтр"
+																						iconType="filter"
 																					/>
 																				}
 																				addGroupConditionButton={
 																					<FilterConditionEditorButton
+																						label="И"
 																						toggleOpen={() =>
 																							console.log(
 																								"toggle"
@@ -1139,7 +1196,7 @@
 																						isOpened={
 																							false
 																						}
-																						label="ИЛИ"
+																						iconType="cross-arrows"
 																					/>
 																				}
 																				onGroupTypeToggle={() =>
@@ -1232,16 +1289,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -1287,16 +1346,18 @@
 			onConditionRemove={() => console.log("remove")}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 		>
@@ -1311,16 +1372,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -1347,20 +1410,22 @@
 									shouldShowLabel={false}
 									addSimpleConditionButton={
 										<FilterConditionEditorButton
+											label="Добавить фильтр"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="Добавить фильтр"
+											iconType="filter"
 										/>
 									}
 									addGroupConditionButton={
 										<FilterConditionEditorButton
+											label="И"
 											toggleOpen={() =>
 												console.log("toggle")
 											}
 											isOpened={false}
-											label="ИЛИ"
+											iconType="cross-arrows"
 										/>
 									}
 									onGroupTypeToggle={() =>
@@ -1391,24 +1456,26 @@
 												shouldShowLabel={false}
 												addSimpleConditionButton={
 													<FilterConditionEditorButton
+														label="Добавить фильтр"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="Добавить фильтр"
+														iconType="filter"
 													/>
 												}
 												addGroupConditionButton={
 													<FilterConditionEditorButton
+														label="И"
 														toggleOpen={() =>
 															console.log(
 																"toggle"
 															)
 														}
 														isOpened={false}
-														label="ИЛИ"
+														iconType="cross-arrows"
 													/>
 												}
 												onGroupTypeToggle={() =>
@@ -1468,16 +1535,18 @@
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 			>
@@ -1653,18 +1722,21 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
+			shouldShowButtons={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -1685,18 +1757,21 @@
 						andLabel="И"
 						orLabel="ИЛИ"
 						shouldShowLabel={false}
+						shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -1736,18 +1811,21 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
+			shouldShowButtons={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -1770,16 +1848,18 @@
 						shouldShowLabel={false}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -1826,16 +1906,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -1856,18 +1938,21 @@
 						andLabel="И"
 						orLabel="ИЛИ"
 						shouldShowLabel={false}
+						shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -1901,16 +1986,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -1936,6 +2023,7 @@
 								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
@@ -1943,6 +2031,7 @@
 								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -1976,16 +2065,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2005,12 +2096,14 @@
 						groupType="and"
 						andLabel="И"
 						orLabel="ИЛИ"
-						shouldShowLabel={false}
+            shouldShowLabel={false}
+            shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
 								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
@@ -2018,6 +2111,7 @@
 								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2054,16 +2148,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2079,12 +2175,14 @@
 						groupType="and"
 						andLabel="И"
 						orLabel="ИЛИ"
-						shouldShowLabel={false}
+            shouldShowLabel={false}
+            shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
 								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
@@ -2092,6 +2190,7 @@
 								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2131,16 +2230,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2162,6 +2263,7 @@
 								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
@@ -2169,6 +2271,7 @@
 								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2211,16 +2314,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2243,16 +2348,18 @@
 						shouldShowLabel={false}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2296,16 +2403,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2329,16 +2438,18 @@
 						shouldShowLabel={false}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2394,16 +2505,18 @@
 			shouldShowLabel={false}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2426,18 +2539,21 @@
 						andLabel="И"
 						orLabel="ИЛИ"
 						shouldShowLabel={true}
+						shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
+								label="Добавить фильтр"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="Добавить фильтр"
+								iconType="filter"
 							/>
 						}
 						addGroupConditionButton={
 							<FilterConditionEditorButton
+								label="И"
 								toggleOpen={() => console.log("toggle")}
 								isOpened={false}
-								label="ИЛИ"
+								iconType="cross-arrows"
 							/>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
@@ -2488,16 +2604,18 @@
 			shouldShowLabel={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2671,16 +2789,18 @@
 			shouldShowLabel={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -2849,16 +2969,18 @@
 			shouldShowLabel={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -3011,18 +3133,21 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
+			shouldShowButtons={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
+					label="Добавить фильтр"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="Добавить фильтр"
+					iconType="filter"
 				/>
 			}
 			addGroupConditionButton={
 				<FilterConditionEditorButton
+					label="И"
 					toggleOpen={() => console.log("toggle")}
 					isOpened={false}
-					label="ИЛИ"
+					iconType="cross-arrows"
 				/>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
@@ -3041,16 +3166,18 @@
 				shouldShowLabel={true}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
+						label="Добавить фильтр"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="Добавить фильтр"
+						iconType="filter"
 					/>
 				}
 				addGroupConditionButton={
 					<FilterConditionEditorButton
+						label="И"
 						toggleOpen={() => console.log("toggle")}
 						isOpened={false}
-						label="ИЛИ"
+						iconType="cross-arrows"
 					/>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
@@ -3075,16 +3202,18 @@
 					shouldShowLabel={true}
 					addSimpleConditionButton={
 						<FilterConditionEditorButton
+							label="Добавить фильтр"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="Добавить фильтр"
+							iconType="filter"
 						/>
 					}
 					addGroupConditionButton={
 						<FilterConditionEditorButton
+							label="И"
 							toggleOpen={() => console.log("toggle")}
 							isOpened={false}
-							label="ИЛИ"
+							iconType="cross-arrows"
 						/>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}

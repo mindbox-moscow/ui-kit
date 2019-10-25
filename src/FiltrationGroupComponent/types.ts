@@ -16,6 +16,7 @@ export interface StateProps {
 	children?: React.ReactNode | React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
 	addSimpleConditionButton?: React.ReactNode;
 	addGroupConditionButton?: React.ReactNode;
+	shouldShowButtons: boolean;
 }
 
 export interface CallbackProps {

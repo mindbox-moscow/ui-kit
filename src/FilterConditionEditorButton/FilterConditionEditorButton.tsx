@@ -4,17 +4,21 @@ import {
 	FilterConditionSelector,
 	Props as SelectorProps
 } from "../FilterConditionSelector";
+import { IconSvg, IconSvgTypes } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { Props as ButtonProps } from "./types";
 
 import "./FilterConditionEditorButton.scss";
 
-type Props = ButtonProps & SelectorProps;
+type Props = ButtonProps &
+	SelectorProps & {
+		iconType?: IconSvgTypes;
+	};
 
 export const FilterConditionEditorButton = (props: Props) => {
 	const refButton = React.createRef<HTMLButtonElement>();
 
-	const { toggleOpen, label, isOpened, ...otherProps } = props;
+	const { toggleOpen, label, isOpened, iconType, ...otherProps } = props;
 
 	return (
 		<div className="kit-filter-editor">
@@ -26,6 +30,7 @@ export const FilterConditionEditorButton = (props: Props) => {
 				type="button"
 				onClick={toggleOpen}
 			>
+				{iconType && <IconSvg type={iconType} />}
 				{label}
 			</button>
 			{isOpened && (

@@ -90,9 +90,13 @@ $minHeight: 31px;
 			cursor: pointer;
 		}
 
-		.kit-filtration-group__buttons {
+		> .kit-filtration-group__buttons {
 			margin-left: 20px;
 			outline: none;
+
+			.kit-filter-editor__btn {
+				opacity: 1;
+			}
 		}
 
 		> .kit-filtration-group__label_or,
@@ -161,6 +165,12 @@ $minHeight: 31px;
 
 			.kit-filtration-group__label-text {
 				color: #fff;
+			}
+		}
+
+		> .kit-filtration-group__buttons {
+			.kit-filter-editor__btn {
+				opacity: 1;
 			}
 		}
 	}

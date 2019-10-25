@@ -2,8 +2,10 @@
 $textColor: #265378;
 $borderColor: #c7d8e2;
 $borderDisableColor: #6f99b4;
+$borderHoverColor: #5897fb;
 $bgColor: #f1f5f8;
 $bgDisableColor: #c1d0dc;
+$bgHoverColor: #e2eaf0;
 $bgColorOpen: #3875d7;
 
 .kit-filter-editor {
@@ -14,9 +16,9 @@ $bgColorOpen: #3875d7;
 	position: relative;
 	display: inline-flex;
 	align-items: center;
-	min-height: 21px;
+	min-height: 22px;
 	margin: 0;
-	padding: 0 24px;
+	padding: 0 23px;
 	border-radius: 4px;
 	color: $textColor;
 	text-align: center;
@@ -24,11 +26,12 @@ $bgColorOpen: #3875d7;
 	background-color: $bgColor;
 	font-family: "PT Sans", sans-serif;
 	font-size: 13px;
-	line-height: 18px;
+	line-height: 22px;
 	outline: none;
 	cursor: pointer;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	opacity: 0.5;
 
 	&_open {
 		color: #fff;
@@ -38,12 +41,17 @@ $bgColorOpen: #3875d7;
 
 	&:hover:not(:disabled) {
 		color: $textColor;
-		background-color: $bgDisableColor;
-		border-color: darken($color: $borderDisableColor, $amount: 8%);
+		background-color: $bgHoverColor;
+		border-color: $borderHoverColor;
+		opacity: 1;
 	}
 
 	&:disabled {
 		cursor: auto;
 		opacity: 0.35;
+	}
+
+	svg {
+		margin-right: 5px;
 	}
 }

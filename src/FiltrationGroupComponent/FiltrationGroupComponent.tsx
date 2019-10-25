@@ -37,7 +37,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
-		// let heightGroup = 0;
+		let heightGroup = 0;
 		let heightLine = 0;
 		let positionTop = 0;
 		const groupRef = this.kitFiltrationRef.current;
@@ -122,6 +122,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						}
 					);
 
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						heightLastChild;
+
 					heightLine +=
 						lastChildElement.getBoundingClientRect().height -
 						heightLastChild +
@@ -133,6 +137,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SearchClasses.KitFiltrationCondition
 					)
 				) {
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						MIN_HEIGHT;
+
 					heightLine +=
 						lastChildElement.getBoundingClientRect().height -
 						MIN_HEIGHT / 2;
@@ -146,6 +154,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					heightLine += MIN_HEIGHT / 2;
 				}
 			}
+
+			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
+				heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
 				labelLineRef.style.height = `${groupRef.getBoundingClientRect()

@@ -296,7 +296,7 @@ $minHeight: 31px;
 
 .kit-filtration-group__buttons {
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
 	margin-right: 20px;
@@ -304,6 +304,7 @@ $minHeight: 31px;
 	padding-bottom: 2px;
 	box-sizing: border-box;
 	outline: none;
+	z-index: 3;
 
 	> * {
 		z-index: 2;

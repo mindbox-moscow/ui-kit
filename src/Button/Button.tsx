@@ -18,7 +18,7 @@ interface Props {
 	hasBorder?: boolean;
 	test?: (value: string) => void;
 	onClick?: (e: React.MouseEvent) => void;
-	onKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 export class Button extends React.Component<Props> {

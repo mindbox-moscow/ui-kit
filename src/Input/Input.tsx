@@ -10,11 +10,12 @@ interface Props {
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
 	autoFocus?: boolean;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 	error?: boolean;
 }
 
@@ -34,6 +35,14 @@ export class Input extends React.PureComponent<Props, State> {
 		}
 	}
 
+	public blur() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.blur();
+		}
+	}
+
 	public render() {
 		const {
 			defaultValue,
@@ -45,6 +54,7 @@ export class Input extends React.PureComponent<Props, State> {
 			size,
 			className,
 			autoFocus = false,
+			onKeyDown,
 			error
 		} = this.props;
 
@@ -67,6 +77,7 @@ export class Input extends React.PureComponent<Props, State> {
 					maxLength={maxLength}
 					placeholder={placeholder}
 					aria-hidden={true}
+					onKeyDown={onKeyDown}
 				/>
 				{type === "search" && (
 					<IconSvg

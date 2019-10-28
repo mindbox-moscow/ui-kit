@@ -76,11 +76,13 @@ $searchFocusBgColor: #fffde5;
 	}
 
 	&:hover,
+	&:focus,
 	&_selected {
 		color: #fff;
 	}
 
-	&:hover {
+	&:hover,
+	&:focus {
 		&::before {
 			background-color: $hoverItemColorBg;
 		}

@@ -11,6 +11,35 @@ type Props = StateProps & CallbackProps;
 
 export class FiltrationConditionComponent extends React.Component<Props> {
 	public refComponent = React.createRef<HTMLElement>();
+	public refContent = React.createRef<HTMLDivElement>();
+
+	public componentDidMount() {
+		this.handleMoveUpParentPopupSergment();
+	}
+
+	public handleMoveUpParentPopupSergment = () => {
+		const refContent = this.refContent.current;
+
+		if (refContent) {
+			let popoverElement: HTMLElement = document.createElement("div");
+			refContent.childNodes.forEach((item: HTMLElement) => {
+				if (
+					item.classList.contains(
+						"kit-segment-button-expand__popover"
+					)
+				) {
+					popoverElement = item;
+					item.remove();
+				}
+			});
+
+			if (refContent.parentElement) {
+				refContent.parentElement.parentElement!.appendChild(
+					popoverElement
+				);
+			}
+		}
+	};
 
 	public render() {
 		const {
@@ -60,6 +89,7 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 				>
 					<div className="kit-filtration-condition__drag-and-drop" />
 					<div
+						ref={this.refContent}
 						className="kit-filtration-condition__content"
 						onClick={onConditionStateToggle}
 					>

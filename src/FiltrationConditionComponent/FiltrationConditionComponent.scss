@@ -28,11 +28,12 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-flex;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
-	z-index: 2;
+	z-index: 3;
 
 	&:hover:not(&_read-only) {
 		> .kit-filtration-condition__content {
@@ -146,7 +147,7 @@ $groupHoverMarginLeft: 10px;
 
 	> .kit-filtration-condition__content {
 		> [class*="kit-segment"] {
-			&:not(:last-of-type):not(.kit-segment-button-expand__popover) {
+			&:not(.kit-segment-button-expand__popover) {
 				margin-right: 10px;
 			}
 		}

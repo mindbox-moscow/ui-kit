@@ -94,7 +94,7 @@ $minHeight: 31px;
 			margin-left: 20px;
 			outline: none;
 
-			.kit-filter-editor__btn {
+			button {
 				opacity: 1;
 			}
 		}
@@ -169,7 +169,7 @@ $minHeight: 31px;
 		}
 
 		> .kit-filtration-group__buttons {
-			.kit-filter-editor__btn {
+			button {
 				opacity: 1;
 			}
 		}
@@ -303,6 +303,14 @@ $minHeight: 31px;
 	box-sizing: border-box;
 	outline: none;
 	z-index: 3;
+
+	button {
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
 
 	> * {
 		z-index: 2;

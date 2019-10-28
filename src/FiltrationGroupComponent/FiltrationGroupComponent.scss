@@ -2,15 +2,15 @@
 $braketColor: #c3d4e1;
 $orColor: #dcc6f3;
 $orColorEdit: #9859dc;
-$andColor: #2d597d;
-$andColorEdit: $andColor;
+$andColor: $braketColor;
+$andColorEdit: #2d597d;
 $removeColorBg: #ffeeeb;
 $removeColor: #a12e1e;
 $hoverColorBg: #f5f8fa;
 $editColorBg: #e2eaf0;
 $closeColor: #666;
 $copyColorBg: $hoverColorBg;
-$copyColor: $andColor;
+$copyColor: $andColorEdit;
 
 // Sizing
 $groupHoverMarginTop: 0px;
@@ -90,9 +90,13 @@ $minHeight: 31px;
 			cursor: pointer;
 		}
 
-		.kit-filtration-group__buttons {
+		> .kit-filtration-group__buttons {
 			margin-left: 20px;
 			outline: none;
+
+			.kit-filter-editor__btn {
+				opacity: 1;
+			}
 		}
 
 		> .kit-filtration-group__label_or,
@@ -154,8 +158,19 @@ $minHeight: 31px;
 			background-color: $hoverColorBg;
 
 			.kit-filtration-group__label-button,
-			.kit-filtration-group__label-line {
+			.kit-filtration-group__label-line,
+			.kit-filtration-group__label-text {
 				background-color: $andColorEdit;
+			}
+
+			.kit-filtration-group__label-text {
+				color: #fff;
+			}
+		}
+
+		> .kit-filtration-group__buttons {
+			.kit-filter-editor__btn {
+				opacity: 1;
 			}
 		}
 	}
@@ -204,6 +219,7 @@ $minHeight: 31px;
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
+			color: $andColorEdit;
 			background-color: $andColor;
 		}
 	}
@@ -227,7 +243,11 @@ $minHeight: 31px;
 }
 
 .kit-filtration-group__label-line {
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
 	width: $borderWidthLine;
+	left: $groupLabelPaddingLeft;
 	height: 100%;
 	margin-top: 0;
 	margin-left: -1px;
@@ -237,10 +257,8 @@ $minHeight: 31px;
 
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
-	margin-top: 16px;
-	left: 14px;
 	display: inline-block;
-	width: 12px;
+	width: 11px;
 	border-top: 2px solid;
 	color: currentColor;
 }
@@ -249,34 +267,34 @@ $minHeight: 31px;
 	position: absolute;
 	top: -2px;
 	left: 14px;
-	height: 16px;
+	height: 17px;
 	border-left: 2px solid;
 	color: currentColor;
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
-	left: 1px;
+	left: 0;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	min-width: 26px;
 	height: 16px;
-	margin-top: -1px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
 	font-size: 10px;
-	font-weight: 400;
+	font-weight: bold;
 	line-height: 1;
 	text-align: center;
+	transform: translateX(-50%);
 	z-index: 1;
 	box-sizing: border-box;
 }
 
 .kit-filtration-group__buttons {
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
 	margin-right: 20px;
@@ -284,6 +302,7 @@ $minHeight: 31px;
 	padding-bottom: 2px;
 	box-sizing: border-box;
 	outline: none;
+	z-index: 3;
 
 	> * {
 		z-index: 2;
@@ -291,6 +310,10 @@ $minHeight: 31px;
 
 	> *:not(:last-child) {
 		margin-right: 5px;
+	}
+
+	&:not(&_no-children) {
+		margin-left: 20px;
 	}
 
 	&_no-children {
@@ -307,6 +330,10 @@ $minHeight: 31px;
 			left: -10px;
 			top: 0;
 			z-index: 3;
+		}
+
+		.kit-filter-editor__btn {
+			opacity: 1;
 		}
 	}
 }

@@ -4,7 +4,7 @@ import * as React from "react";
 import "./GridRow.scss";
 
 export interface GridRowProps {
-	alignItems: "top" | "center" | "end";
+	alignItems: "top" | "center" | "bottom";
 }
 
 export const GridRow: React.FC<GridRowProps> = ({ alignItems, ...props }) => (

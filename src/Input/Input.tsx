@@ -10,11 +10,13 @@ interface Props {
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	noShadow?: boolean;
 	size?: SizeTypes;
 	className?: string;
 	autoFocus?: boolean;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+	error?: boolean;
 }
 
 interface State {
@@ -23,6 +25,23 @@ interface State {
 
 export class Input extends React.PureComponent<Props, State> {
 	public state = { filter: "" };
+	private refInput = React.createRef<HTMLInputElement>();
+
+	public focus() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.focus();
+		}
+	}
+
+	public blur() {
+		const node = this.refInput.current;
+
+		if (node) {
+			node.blur();
+		}
+	}
 
 	public render() {
 		const {
@@ -34,12 +53,16 @@ export class Input extends React.PureComponent<Props, State> {
 			noShadow,
 			size,
 			className,
-			autoFocus
+			autoFocus = false,
+			onKeyDown,
+			error
 		} = this.props;
 
 		return (
 			<div className="kit-input-field-wrap">
 				<input
+					ref={this.refInput}
+					autoFocus={autoFocus}
 					onChange={onChange}
 					type={type || "text"}
 					className={cn(
@@ -47,13 +70,14 @@ export class Input extends React.PureComponent<Props, State> {
 						type === "search" && "kit-input-field_search",
 						noShadow && "kit-input-field_no-shadow",
 						size && `kit-input-field_size_${size}`,
+						error && "kit-input-field_error",
 						className
 					)}
 					defaultValue={defaultValue}
 					maxLength={maxLength}
 					placeholder={placeholder}
-					autoFocus={autoFocus}
 					aria-hidden={true}
+					onKeyDown={onKeyDown}
 				/>
 				{type === "search" && (
 					<IconSvg

@@ -7,6 +7,8 @@ import "./FilterDetails.scss";
 
 type Props = FilterDetailsProps & CallbackProps;
 
+const ESC_KEY = 27;
+
 export class FilterDetails extends React.Component<Props, State> {
 	public state = {
 		helpIsExpanded: false
@@ -14,6 +16,26 @@ export class FilterDetails extends React.Component<Props, State> {
 
 	private kitFiltrationHelperRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
+	private kitFiltrationRef = React.createRef<HTMLDivElement>();
+
+	public componentWillMount() {
+		document.addEventListener("keydown", this.handleKeyDown);
+	}
+
+	public componentWillUnmount() {
+		document.removeEventListener("keydown", this.handleKeyDown);
+	}
+
+	public handleKeyDown = (e: KeyboardEvent) => {
+		const { onClose } = this.props;
+		if (
+			document.activeElement === this.kitFiltrationRef.current &&
+			e.keyCode === ESC_KEY
+		) {
+			e.preventDefault();
+			onClose();
+		}
+	};
 
 	public handleHelpExtended = () => {
 		this.setState(state => ({ helpIsExpanded: !state.helpIsExpanded }));
@@ -61,6 +83,8 @@ export class FilterDetails extends React.Component<Props, State> {
 
 		return (
 			<div
+				ref={this.kitFiltrationRef}
+				tabIndex={0}
 				className={cn("kit-filter-details", {
 					"kit-filter-details_editor": viewMode === "edit",
 					"kit-filter-details_menu": viewMode === "menu"

@@ -98,21 +98,19 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 					)}
 				>
 					{!isSimpleFilterableProperty && (
-						<button
-							type="button"
+						<div
 							className="kit-filter-condition-selector__hierarchy-toggle"
 							onClick={this.onExpand}
 						>
 							<IconSvg type="arrow-right" />
-						</button>
+						</div>
 					)}
-					<button
-						type="button"
+					<div
 						className="kit-filter-condition-selector__hierarchy-name"
 						onClick={this.onSelect}
 					>
 						{this.handleHighLightText(name, searchTerm)}
-					</button>
+					</div>
 				</div>
 
 				{isExpanded && hasChildren && (

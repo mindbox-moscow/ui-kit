@@ -18,6 +18,7 @@ interface Props {
 	hasBorder?: boolean;
 	test?: (value: string) => void;
 	onClick?: (e: React.MouseEvent) => void;
+	onKeyDown?: (e: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 export class Button extends React.Component<Props> {
@@ -35,7 +36,8 @@ export class Button extends React.Component<Props> {
 			hasUnderline,
 			hasBorder,
 			inheritFont,
-			onClick = () => {}
+			onClick = () => {},
+			onKeyDown
 		} = this.props;
 		return (
 			<button
@@ -52,6 +54,7 @@ export class Button extends React.Component<Props> {
 				})}
 				type={type}
 				disabled={disabled}
+				onKeyDown={onKeyDown}
 			>
 				{icon && <Icon className="kit-button__icon" icon={icon} />}
 				<span

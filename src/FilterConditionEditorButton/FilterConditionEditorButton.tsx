@@ -18,11 +18,19 @@ type Props = ButtonProps &
 export const FilterConditionEditorButton = (props: Props) => {
 	const refButton = React.createRef<HTMLButtonElement>();
 
-	const { toggleOpen, label, isOpened, iconType, ...otherProps } = props;
+	const {
+		toggleOpen,
+		label,
+		isOpened,
+		iconType,
+		autoFocus,
+		...otherProps
+	} = props;
 
 	return (
 		<div className="kit-filter-editor">
 			<button
+				autoFocus={autoFocus}
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {
 					"kit-filter-editor__btn_open": isOpened
@@ -35,7 +43,10 @@ export const FilterConditionEditorButton = (props: Props) => {
 			</button>
 			{isOpened && (
 				<OverflowVisibleContainer parentRef={refButton}>
-					<FilterConditionSelector {...otherProps} />
+					<FilterConditionSelector
+						{...otherProps}
+						onConditionStateToggle={toggleOpen}
+					/>
 				</OverflowVisibleContainer>
 			)}
 		</div>

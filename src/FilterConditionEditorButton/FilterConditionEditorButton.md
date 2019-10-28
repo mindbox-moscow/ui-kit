@@ -58,7 +58,7 @@ const segmentViewHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -176,6 +176,145 @@ const segmentView = () => (
 								<FiltrationConditionComponent
 									state="readOnly"
 									filterablePropertyName="Мобильный телефон: заполнен и валидный"
+									linkedConditionComponent={
+										<FiltrationGroupComponent
+											state="readOnly"
+											groupType="and"
+											andLabel="И"
+											orLabel="ИЛИ"
+											shouldShowLabel={true}
+											addSimpleConditionButton={
+												<FilterConditionEditorButton
+													toggleOpen={() =>
+														console.log("toggle")
+													}
+													isOpened={false}
+													label="Добавить фильтр"
+												/>
+											}
+											addGroupConditionButton={
+												<FilterConditionEditorButton
+													toggleOpen={() =>
+														console.log("toggle")
+													}
+													isOpened={false}
+													label="ИЛИ"
+												/>
+											}
+											onGroupTypeToggle={() =>
+												console.log("type toggle")
+											}
+											onConditionStateToggle={() =>
+												console.log("state toggle")
+											}
+											onConditionRemove={() =>
+												console.log("remove")
+											}
+										>
+											<FiltrationConditionComponent
+												state="readOnly"
+												filterablePropertyName="Подписка Подписан на что-нибудь"
+												filtrationMethodName="без учета брендов, каналов и тематик"
+											/>
+											<FiltrationGroupComponent
+												state="readOnly"
+												groupType="or"
+												andLabel="И"
+												orLabel="ИЛИ"
+												shouldShowLabel={true}
+												addSimpleConditionButton={
+													<FilterConditionEditorButton
+														toggleOpen={() =>
+															console.log(
+																"toggle"
+															)
+														}
+														isOpened={false}
+														label="Добавить фильтр"
+													/>
+												}
+												addGroupConditionButton={
+													<FilterConditionEditorButton
+														toggleOpen={() =>
+															console.log(
+																"toggle"
+															)
+														}
+														isOpened={false}
+														label="ИЛИ"
+													/>
+												}
+												onGroupTypeToggle={() =>
+													console.log("type toggle")
+												}
+												onConditionStateToggle={() =>
+													console.log("state toggle")
+												}
+												onConditionRemove={() =>
+													console.log("remove")
+												}
+											>
+												<FiltrationConditionComponent
+													state="readOnly"
+													filterablePropertyName="Подписка Подписан на что-нибудь"
+													filtrationMethodName="без учета брендов, каналов и тематик"
+												/>
+												<FiltrationConditionComponent
+													state="readOnly"
+													filterablePropertyName="Подписка Подписан на что-нибудь"
+													filtrationMethodName="без учета брендов, каналов и тематик"
+												/>
+												<FiltrationGroupComponent
+													state="readOnly"
+													groupType="and"
+													andLabel="И"
+													orLabel="ИЛИ"
+													shouldShowLabel={true}
+													addSimpleConditionButton={
+														<FilterConditionEditorButton
+															toggleOpen={() =>
+																console.log(
+																	"toggle"
+																)
+															}
+															isOpened={false}
+															label="Добавить фильтр"
+														/>
+													}
+													addGroupConditionButton={
+														<FilterConditionEditorButton
+															toggleOpen={() =>
+																console.log(
+																	"toggle"
+																)
+															}
+															isOpened={false}
+															label="ИЛИ"
+														/>
+													}
+													onGroupTypeToggle={() =>
+														console.log(
+															"type toggle"
+														)
+													}
+													onConditionStateToggle={() =>
+														console.log(
+															"state toggle"
+														)
+													}
+													onConditionRemove={() =>
+														console.log("remove")
+													}
+												>
+													<FiltrationConditionComponent
+														state="readOnly"
+														filterablePropertyName="Подписка Подписан на что-нибудь"
+														filtrationMethodName="без учета брендов, каналов и тематик"
+													/>
+												</FiltrationGroupComponent>
+											</FiltrationGroupComponent>
+										</FiltrationGroupComponent>
+									}
 								/>
 							</FiltrationGroupComponent>
 						}
@@ -201,7 +340,7 @@ const segmentHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -328,7 +467,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory2: {
@@ -349,7 +488,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory3: {
@@ -370,7 +509,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory4: {
@@ -391,7 +530,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory5: {
@@ -412,7 +551,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory6: {
@@ -433,7 +572,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory7: {
@@ -454,7 +593,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory8: {
@@ -475,7 +614,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory9: {
@@ -496,7 +635,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory10: {
@@ -517,7 +656,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory11: {
@@ -538,7 +677,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory12: {
@@ -559,7 +698,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	thirdCategory: {
@@ -1432,7 +1571,14 @@ class ExampleComponent extends React.Component {
 				personalData: false,
 				secondCategory: false,
 				thirdCategory: false
-			}
+			},
+			rootIds: [
+				"customerFeatures",
+				"behaviour",
+				"newsletters",
+				"shopping",
+				"loyaltyProgram"
+			]
 		};
 		this.togglePopup = this.togglePopup.bind(this);
 		this.onSelect = this.onSelect.bind(this);
@@ -1470,6 +1616,50 @@ class ExampleComponent extends React.Component {
 		}));
 	}
 
+	onNextSelected(id) {
+		const { selectedId, rootIds } = this.state;
+
+		if (selectedId === "name") {
+			this.setState({
+				selectedId: rootIds[0]
+			});
+		} else {
+			rootIds.map((key, index) => {
+				if (key === id && index + 1 < rootIds.length) {
+					this.setState({
+						selectedId: rootIds[index + 1]
+					});
+				}
+			});
+		}
+	}
+
+	onPreviousSelected(id) {
+		const { selectedId, rootIds } = this.state;
+		let callBack = null;
+
+		if (selectedId === "name") {
+			callBack = false;
+		} else {
+			rootIds.forEach((key, index) => {
+				if (key === id) {
+					if (index !== 0) {
+						this.setState({
+							selectedId: rootIds[index - 1]
+						});
+						callBack = true;
+					} else {
+						this.setState({
+							selectedId: "name"
+						});
+						callBack = false;
+					}
+				}
+			});
+		}
+		return callBack;
+	}
+
 	render() {
 		return (
 			<>
@@ -1486,18 +1676,21 @@ class ExampleComponent extends React.Component {
 						label="Добавить фильтр"
 						isOpened={this.state.showPopup}
 						toggleOpen={this.togglePopup}
+						onPreviousSelected={() =>
+							this.onPreviousSelected(this.state.selectedId)
+						}
+						onNextSelected={() =>
+							this.onNextSelected(this.state.selectedId)
+						}
+						onExpandCurrent={() =>
+							this.onToggleExpand(this.state.selectedId)
+						}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,
 							this.state
 						)}
-						rootIds={[
-							"customerFeatures",
-							"behaviour",
-							"newsletters",
-							"shopping",
-							"loyaltyProgram"
-						]}
+						rootIds={this.state.rootIds}
 						helpComponent={
 							allElementsDictionary[this.state.selectedId]
 								.helpComponent
@@ -1509,6 +1702,9 @@ class ExampleComponent extends React.Component {
 						helpCaption={
 							allElementsDictionary[this.state.selectedId]
 								.helpCaption
+						}
+						onSearchTermChange={() =>
+							console.log("onSearchTermChange")
 						}
 						filterLabel="Фильтры"
 						recentLabel="Недавние"

@@ -13,43 +13,56 @@ interface Props {
 	onCancelFilterButtonClick: () => void;
 }
 
-export const FilterConditionEditorComponent = (props: Props) => {
-	const {
-		innerEditorComponent,
-		addFilterButtonCaption,
-		isAddFilterButtonEnabled,
-		onAddFilterButtonClick,
-		cancelFilterButtonCaption,
-		onCancelFilterButtonClick,
-		viewMode
-	} = props;
+const ENTER_KEY = 13;
 
-	return (
-		<div className="kit-filter-editor-component">
-			{innerEditorComponent}
-			<div className="kit-filter-editor-component__buttons">
-				<Button
-					color="silver"
-					hasBorder={true}
-					disabled={!isAddFilterButtonEnabled}
-					onClick={onAddFilterButtonClick}
-					size="medium"
-					className="kit-filter-editor-component__btn"
-				>
-					{addFilterButtonCaption}
-				</Button>
-				{viewMode === "edit" && (
+export class FilterConditionEditorComponent extends React.Component<Props> {
+	public handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+		const { onAddFilterButtonClick, isAddFilterButtonEnabled } = this.props;
+
+		if (e.keyCode === ENTER_KEY && isAddFilterButtonEnabled) {
+			onAddFilterButtonClick();
+		}
+	};
+
+	public render() {
+		const {
+			innerEditorComponent,
+			addFilterButtonCaption,
+			isAddFilterButtonEnabled,
+			onAddFilterButtonClick,
+			cancelFilterButtonCaption,
+			onCancelFilterButtonClick,
+			viewMode
+		} = this.props;
+
+		return (
+			<div className="kit-filter-editor-component">
+				{innerEditorComponent}
+				<div className="kit-filter-editor-component__buttons">
 					<Button
 						color="silver"
 						hasBorder={true}
-						onClick={onCancelFilterButtonClick}
+						disabled={!isAddFilterButtonEnabled}
+						onClick={onAddFilterButtonClick}
 						size="medium"
-						className="kit-filter-editor-component__btn kit-filter-editor-component__cancel"
+						className="kit-filter-editor-component__btn"
+						onKeyDown={this.handleKeyDown}
 					>
-						{cancelFilterButtonCaption}
+						{addFilterButtonCaption}
 					</Button>
-				)}
+					{viewMode === "edit" && (
+						<Button
+							color="silver"
+							hasBorder={true}
+							onClick={onCancelFilterButtonClick}
+							size="medium"
+							className="kit-filter-editor-component__btn kit-filter-editor-component__cancel"
+						>
+							{cancelFilterButtonCaption}
+						</Button>
+					)}
+				</div>
 			</div>
-		</div>
-	);
-};
+		);
+	}
+}

@@ -451,11 +451,18 @@
 	<h2>4.</h2>
 
 	<FiltrationGroupComponent
-		state="view"
+		state="edit"
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
 		shouldShowLabel={true}
+		addSimpleConditionButton={
+			<FilterConditionEditorButton
+				toggleOpen={() => console.log("toggle")}
+				isOpened={false}
+				label="Добавить фильтр"
+			/>
+		}
 	>
 		<FiltrationConditionComponent
 			filterablePropertyName="Пол"
@@ -464,9 +471,6 @@
 				<span style={{ fontWeight: "bold" }}>Мужской</span>
 			}
 		/>
-		<Button size={"small"} color={"gray"} className="kit-filter__btn">
-			Добавить группу
-		</Button>
 	</FiltrationGroupComponent>
 
 	<br />
@@ -999,6 +1003,87 @@
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
 				}
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Покупка"
+							filtrationMethodName="нет таких"
+							linkedConditionComponent={
+								<FiltrationGroupComponent
+									state="view"
+									groupType="and"
+									andLabel="И"
+									orLabel="ИЛИ"
+									shouldShowLabel={false}
+								>
+									<FiltrationConditionComponent
+										filterablePropertyName="Период от текущей даты"
+										filtrationMethodName="до"
+										filtrationMethodParametersComponent={
+											<>
+												<span
+													style={{
+														fontWeight: "bold"
+													}}
+												>
+													14 дней
+												</span>
+												<span
+													style={{
+														fontWeight: "normal"
+													}}
+												>
+													назад
+												</span>
+											</>
+										}
+									/>
+								</FiltrationGroupComponent>
+							}
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Первое действие"
+							linkedConditionComponent={
+								<FiltrationGroupComponent
+									state="view"
+									groupType="and"
+									andLabel="И"
+									orLabel="ИЛИ"
+									shouldShowLabel={false}
+								>
+									<FiltrationConditionComponent
+										filterablePropertyName="Период от текущей даты"
+										filtrationMethodName="до"
+										filtrationMethodParametersComponent={
+											<>
+												<span
+													style={{
+														fontWeight: "bold"
+													}}
+												>
+													14 дней
+												</span>
+												<span
+													style={{
+														fontWeight: "normal"
+													}}
+												>
+													назад
+												</span>
+											</>
+										}
+									/>
+								</FiltrationGroupComponent>
+							}
+						/>
+					</FiltrationGroupComponent>
+				}
 			/>
 			<FiltrationConditionComponent
 				filterablePropertyName="Пол"
@@ -1067,6 +1152,55 @@
 				filtrationMethodName="заполнен и"
 				filtrationMethodParametersComponent={
 					<span style={{ fontWeight: "bold" }}>Женский</span>
+				}
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Покупка"
+							filtrationMethodName="нет таких"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Первое действие"
+							linkedConditionComponent={
+								<FiltrationGroupComponent
+									state="view"
+									groupType="and"
+									andLabel="И"
+									orLabel="ИЛИ"
+									shouldShowLabel={false}
+								>
+									<FiltrationConditionComponent
+										filterablePropertyName="Период от текущей даты"
+										filtrationMethodName="до"
+										filtrationMethodParametersComponent={
+											<>
+												<span
+													style={{
+														fontWeight: "bold"
+													}}
+												>
+													14 дней
+												</span>
+												<span
+													style={{
+														fontWeight: "normal"
+													}}
+												>
+													назад
+												</span>
+											</>
+										}
+									/>
+								</FiltrationGroupComponent>
+							}
+						/>
+					</FiltrationGroupComponent>
 				}
 			/>
 			<FiltrationConditionComponent

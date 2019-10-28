@@ -12,6 +12,7 @@ import { SegmentExpand } from "./SegmentExpand";
 import { SegmentEdit } from "./SegmentEdit";
 import { Filter } from "./Filter";
 import { Duplicate } from "./Duplicate";
+import { CrossArrows } from "./CrossArrows";
 
 import { IconsProps } from "../types";
 
@@ -33,7 +34,8 @@ type IconType =
 	| "segment-expand"
 	| "segment-edit"
 	| "filter"
-	| "duplicate";
+	| "duplicate"
+	| "cross-arrows";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -51,7 +53,8 @@ const icons: Icons = {
 	"segment-expand": SegmentExpand,
 	"segment-edit": SegmentEdit,
 	filter: Filter,
-	duplicate: Duplicate
+	duplicate: Duplicate,
+	"cross-arrows": CrossArrows
 };
 
 export { icons, IconType, ISvgProps };

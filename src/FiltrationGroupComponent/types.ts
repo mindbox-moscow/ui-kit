@@ -16,6 +16,7 @@ export interface StateProps {
 	children?: React.ReactNode | React.ReactNode[]; // условия фильтрации внутри группы. могут быть FiltrationGroupComponent или FiltrationConditionComponent
 	addSimpleConditionButton?: React.ReactNode;
 	addGroupConditionButton?: React.ReactNode;
+	shouldShowButtons: boolean;
 }
 
 export interface CallbackProps {
@@ -23,4 +24,10 @@ export interface CallbackProps {
 	onConditionStateToggle: () => void;
 	onConditionRemove: () => void;
 	onConditionCopy: () => void;
+}
+
+export enum SearchClasses {
+	KitFiltrationGroup = "kit-filtration-group",
+	KitFiltrationCondition = "kit-filtration-condition",
+	KitFiltrationGroupButtons = "kit-filtration-group__buttons"
 }

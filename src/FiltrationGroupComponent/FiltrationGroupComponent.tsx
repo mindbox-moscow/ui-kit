@@ -2,74 +2,174 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
-import { LabelButton } from "./components";
-import { StateProps, CallbackProps } from "./types";
+import { LabelButton, HorizontalBracket } from "./components";
+import { StateProps, CallbackProps, SearchClasses } from "./types";
 
 import "./FiltrationGroupComponent.scss";
 
 type Props = StateProps & CallbackProps;
 
+type ItemsRootElement = {
+	element: HTMLElement;
+	height: number;
+};
+
 interface State {
-	horizontalBracket: number[];
+	horizontalBracket: ItemsRootElement[];
 	verticalBracket: boolean;
 }
+
+type SERACH_ELEMENT = "first" | "last";
+
+// Менять только высоту, остальные правки делать в стилях!
+const MIN_HEIGHT = 31;
+const WIDTH_BRACKET = 2;
 
 export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public state = {
 		horizontalBracket: [],
 		verticalBracket: false
 	};
-	// Менять только высоту, остальные правки делать в стилях!
-	private minHeight = 31;
-	private marginTop = 2;
-	private rangeOfValues = 2;
+	private classes = Object.values(SearchClasses);
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
+	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
-		const ref = this.kitFiltrationRef.current;
-		const { minHeight, rangeOfValues } = this;
+		let heightGroup = 0;
+		let heightLine = 0;
+		let positionTop = 0;
+		const groupRef = this.kitFiltrationRef.current;
+		const labelRef = this.kitFiltrationLabelRef.current;
+		const labelLineRef = this.kitFiltrationLabelLineRef.current;
 
-		if (ref) {
-			const label: HTMLElement | null = ref.querySelector(
-				".kit-filtration-group__label"
+		const searchClasses = this.classes;
+
+		if (groupRef && labelRef && labelLineRef) {
+			const firstChildElement: HTMLElement | null = this.searchFirstLastElement(
+				groupRef,
+				searchClasses,
+				"first"
 			);
-			if (label && ref.lastElementChild) {
-				let height = 0;
-				const childElement = ref.lastElementChild;
-				const childElementRect = childElement.getBoundingClientRect();
-				const parentElementRect = ref.getBoundingClientRect();
-				const lastElement = childElement.classList.contains(
-					"kit-filtration-group"
+
+			const lastChildElement: HTMLElement | null = this.searchFirstLastElement(
+				groupRef,
+				searchClasses,
+				"last"
+			);
+
+			const groupItems = this.getChildElements(groupRef, searchClasses);
+
+			if (firstChildElement) {
+				if (
+					firstChildElement.classList.contains(
+						SearchClasses.KitFiltrationGroup
+					)
+				) {
+					heightLine +=
+						firstChildElement.getBoundingClientRect().height / 2;
+
+					positionTop =
+						groupItems.length > 1
+							? firstChildElement.getBoundingClientRect().height /
+							  2
+							: 0;
+				}
+
+				if (
+					firstChildElement.classList.contains(
+						SearchClasses.KitFiltrationCondition
+					)
+				) {
+					heightLine += MIN_HEIGHT / 2;
+
+					positionTop = MIN_HEIGHT / 2;
+				}
+
+				if (
+					firstChildElement.classList.contains(
+						SearchClasses.KitFiltrationGroupButtons
+					)
+				) {
+					heightLine += MIN_HEIGHT / 2;
+
+					positionTop = MIN_HEIGHT / 2;
+				}
+			}
+
+			if (lastChildElement) {
+				const lastChildChildrenElements: ItemsRootElement[] = this.getChildElements(
+					lastChildElement,
+					searchClasses
 				);
 
-				if (lastElement) {
-					const childLabel = childElement.querySelector(
-						".kit-filtration-group__label"
+				if (
+					lastChildElement.classList.contains(
+						SearchClasses.KitFiltrationGroup
+					)
+				) {
+					let heightLastChild = MIN_HEIGHT;
+					lastChildChildrenElements.map(
+						(child: ItemsRootElement, index) => {
+							if (
+								index !==
+								lastChildChildrenElements.length - 1
+							) {
+								heightLastChild += child.element.getBoundingClientRect()
+									.height;
+							}
+						}
 					);
-					if (childLabel) {
-						const childLabelRect = childLabel.getBoundingClientRect();
-						height =
-							parentElementRect.height -
-							childElementRect.height +
-							childLabelRect.height;
-					}
-				} else {
-					height =
-						parentElementRect.height -
-						(childElementRect.height === 1
-							? minHeight
-							: childElementRect.height) +
-						minHeight;
+
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						heightLastChild;
+
+					heightLine +=
+						lastChildElement.getBoundingClientRect().height -
+						heightLastChild +
+						heightLastChild / 2;
 				}
 
-				if (height < minHeight - rangeOfValues) {
-					height = 0;
+				if (
+					lastChildElement.classList.contains(
+						SearchClasses.KitFiltrationCondition
+					)
+				) {
+					heightGroup +=
+						lastChildElement.getBoundingClientRect().height -
+						MIN_HEIGHT;
+
+					heightLine +=
+						lastChildElement.getBoundingClientRect().height -
+						MIN_HEIGHT / 2;
 				}
 
-				label.style.height = `${height}px`;
+				if (
+					lastChildElement.classList.contains(
+						SearchClasses.KitFiltrationGroupButtons
+					)
+				) {
+					heightLine += MIN_HEIGHT / 2;
+				}
+			}
+
+			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
+				heightGroup}px`;
+
+			if (firstChildElement && lastChildElement) {
+				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
+					.height -
+					heightLine +
+					WIDTH_BRACKET}px`;
+			} else {
+				labelLineRef.style.height = "0px";
+			}
+
+			if (positionTop !== 0) {
+				labelLineRef.style.top = `${positionTop - WIDTH_BRACKET}px`;
 			}
 		}
 
@@ -77,8 +177,58 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
 	};
 
+	public getChildElements = (
+		rootElement: HTMLElement,
+		searchClasses: string[]
+	) => {
+		const items: ItemsRootElement[] = [];
+		rootElement.childNodes.forEach((item: HTMLElement) => {
+			if (
+				searchClasses.some(className =>
+					item.classList.contains(className)
+				)
+			) {
+				items.push({
+					element: item,
+					height: item.getBoundingClientRect().height
+				});
+			}
+		});
+
+		return items;
+	};
+
+	public searchFirstLastElement = (
+		searchableElement: HTMLElement,
+		searchClasses: string[],
+		search: SERACH_ELEMENT
+	) => {
+		const items: HTMLElement[] = [];
+		searchableElement.childNodes.forEach((item: HTMLElement) => {
+			if (
+				searchClasses.some(className =>
+					item.classList.contains(className)
+				)
+			) {
+				items.push(item);
+			}
+		});
+
+		if (items.length) {
+			if (search === "first") {
+				return items[0];
+			} else {
+				return items[items.length - 1];
+			}
+		} else {
+			return null;
+		}
+	};
+
 	public handleHoverAddClassLabel = () => {
 		const labelRef = this.kitFiltrationLabelRef.current;
+		const closeRef = this.kitFiltrationCloseRef.current;
+
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
 
@@ -97,6 +247,13 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				}
 			});
 
+			if (closeRef) {
+				closeRef.addEventListener(
+					"mouseout",
+					this.handleHoverRemoveClassLabel
+				);
+			}
+
 			labelRef.addEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
@@ -106,6 +263,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 	public handleHoverRemoveClassLabel = () => {
 		const labelRef = this.kitFiltrationLabelRef.current;
+		const closeRef = this.kitFiltrationCloseRef.current;
+
 		if (labelRef) {
 			labelRef.parentElement!.classList.remove(
 				"kit-filtration-group_hover"
@@ -125,6 +284,13 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					);
 				}
 			});
+
+			if (closeRef) {
+				closeRef.removeEventListener(
+					"mouseout",
+					this.handleHoverRemoveClassLabel
+				);
+			}
 
 			labelRef.removeEventListener(
 				"mouseout",
@@ -155,86 +321,32 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	};
 
 	public handleCreateHorizontalBrackets = () => {
+		const groupRef = this.kitFiltrationRef.current;
 		const { horizontalBracket } = this.state;
-		let horizontalBrackets: number[] = [];
-		let countChildElement = 0;
-		if (this.kitFiltrationRef && this.kitFiltrationRef.current) {
-			const ref = this.kitFiltrationRef.current;
+		let repeater = true;
 
-			ref.childNodes.forEach((item, index) => {
-				const child = item as HTMLElement;
-				const classNames = [
-					"kit-filtration-group__label",
-					"kit-filtration-group__remove",
-					"kit-filtration-group__close"
-				];
-				if (
-					!classNames.some(className =>
-						child.classList.contains(className)
-					)
-				) {
-					if (
-						this.kitFiltrationLabelRef &&
-						this.kitFiltrationLabelRef.current
-					) {
-						countChildElement++;
-						if (
-							countChildElement === 1 &&
-							child.classList.contains("kit-filtration-group")
-						) {
-							horizontalBrackets.push(
-								this.handleHorizontalBracket(child)
-							);
-						}
+		const searchClasses = this.classes;
 
-						if (
-							index === ref.childNodes.length - 1 &&
-							child.classList.contains("kit-filtration-group")
-						) {
-							horizontalBrackets.push(
-								this.handleHorizontalBracket(child, true)
-							);
-						}
+		if (groupRef) {
+			const groupItems = this.getChildElements(groupRef, searchClasses);
 
-						if (!child.classList.contains("kit-filtration-group")) {
-							horizontalBrackets.push(
-								this.handleHorizontalBracket(child)
-							);
+			if (horizontalBracket.length !== groupItems.length) {
+				this.setState({
+					horizontalBracket: groupItems
+				});
+			} else {
+				horizontalBracket.map((item: ItemsRootElement, index) => {
+					if (repeater) {
+						if (item.height !== groupItems[index].height) {
+							this.setState({
+								horizontalBracket: groupItems
+							});
+							repeater = false;
 						}
 					}
-				}
-			});
-		}
-
-		if (horizontalBracket.length !== horizontalBrackets.length) {
-			this.setState({
-				horizontalBracket: horizontalBrackets
-			});
-		}
-	};
-
-	public handleHorizontalBracket = (
-		child: HTMLElement,
-		lastChildGroup?: boolean
-	) => {
-		const { minHeight, marginTop } = this;
-
-		let positionTop = child.offsetTop - 2;
-
-		if (lastChildGroup) {
-			const childLabel: HTMLElement | null = child.querySelector(
-				".kit-filtration-group__label"
-			);
-			if (childLabel) {
-				positionTop =
-					child.offsetTop +
-					childLabel.clientHeight -
-					minHeight -
-					marginTop;
+				});
 			}
 		}
-
-		return positionTop;
 	};
 
 	public componentDidMount() {
@@ -309,13 +421,14 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			onConditionCopy
 		} = this.props;
 
+		const { horizontalBracket } = this.state;
+
 		const labelMap = {
 			and: andLabel,
 			or: orLabel
 		};
 
 		const renderInner = this.renderInnerComponents();
-		const horizontalBracket = this.horizontalBracket();
 		const verticalBracket = this.verticalBracket();
 
 		return (
@@ -339,59 +452,67 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					)}
 					onClick={this.handleGroupLabelClick}
 				>
-					<div className="kit-filtration-group__label-line" />
-					{shouldShowLabel && (
-						<>
-							<span className="kit-filtration-group__label-text">
-								{state === "edit" ? (
-									<>
-										<div
-											className="kit-filtration-group__label-text-height"
-											ref={
-												this
-													.kitFiltrationLabelButtonsRef
-											}
-										/>
-										<OverflowVisibleContainer
-											className={cn(
-												"kit-filtration-group__label-text-buttons",
-												`kit-filtration-group__label-text-buttons_${groupType}`
-											)}
-											parentRef={
-												this
-													.kitFiltrationLabelButtonsRef
-											}
-										>
-											<button
-												key="copy"
-												onClick={onConditionCopy}
-												className="kit-filtration-group__copy"
-												type="button"
-											>
-												<IconSvg type="duplicate" />
-											</button>
-											<button
-												key="remove"
-												onClick={onConditionRemove}
-												className="kit-filtration-group__remove"
-												type="button"
-											>
-												<IconSvg type="trash" />
-											</button>
-											<LabelButton
-												onToggle={onGroupTypeToggle}
-												types={labelMap}
-												activeType={groupType}
+					<div
+						ref={this.kitFiltrationLabelLineRef}
+						className="kit-filtration-group__label-line"
+					>
+						{shouldShowLabel && (
+							<>
+								<span className="kit-filtration-group__label-text">
+									{state === "edit" ? (
+										<>
+											<div
+												ref={
+													this
+														.kitFiltrationLabelButtonsRef
+												}
+												className="kit-filtration-group__label-text-height"
 											/>
-										</OverflowVisibleContainer>
-									</>
-								) : (
-									labelMap[groupType]
-								)}
-							</span>
-						</>
-					)}
-					{horizontalBracket}
+											<OverflowVisibleContainer
+												className={cn(
+													"kit-filtration-group__label-text-buttons",
+													`kit-filtration-group__label-text-buttons_${groupType}`
+												)}
+												parentRef={
+													this
+														.kitFiltrationLabelButtonsRef
+												}
+											>
+												<button
+													key="copy"
+													onClick={onConditionCopy}
+													className="kit-filtration-group__copy"
+													type="button"
+												>
+													<IconSvg type="duplicate" />
+												</button>
+												<button
+													key="remove"
+													onClick={onConditionRemove}
+													className="kit-filtration-group__remove"
+													type="button"
+												>
+													<IconSvg type="trash" />
+												</button>
+												<LabelButton
+													onToggle={onGroupTypeToggle}
+													types={labelMap}
+													activeType={groupType}
+												/>
+											</OverflowVisibleContainer>
+										</>
+									) : (
+										labelMap[groupType]
+									)}
+								</span>
+							</>
+						)}
+					</div>
+					<HorizontalBracket
+						brackets={horizontalBracket}
+						minHeight={MIN_HEIGHT}
+						widthBracket={WIDTH_BRACKET}
+					/>
 					{verticalBracket}
 				</div>
 				{renderInner}
@@ -411,37 +532,24 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		);
 	};
 
-	private horizontalBracket = () => {
-		const { horizontalBracket } = this.state;
-
-		return (
-			<>
-				{horizontalBracket.map((positionTopBracket, index) => (
-					<span
-						key={index + positionTopBracket}
-						className="kit-filtration-group__label-horizontal-bracket"
-						style={{ top: positionTopBracket }}
-					/>
-				))}
-			</>
-		);
-	};
-
 	private renderGroupButtons = (noChildren?: boolean) => {
 		const {
 			addSimpleConditionButton,
-			addGroupConditionButton
+			addGroupConditionButton,
+			shouldShowButtons
 		} = this.props;
 
 		return (
-			<div
-				className={cn("kit-filtration-group__buttons", {
-					"kit-filtration-group__buttons_no-children": noChildren
-				})}
-			>
-				{addSimpleConditionButton}
-				{addGroupConditionButton}
-			</div>
+			shouldShowButtons && (
+				<div
+					className={cn("kit-filtration-group__buttons", {
+						"kit-filtration-group__buttons_no-children": noChildren
+					})}
+				>
+					{addSimpleConditionButton}
+					{addGroupConditionButton}
+				</div>
+			)
 		);
 	};
 
@@ -462,7 +570,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				}
 			}
 
-			return <>{children}</>;
+			return (
+				<>
+					{children}
+					{this.renderGroupButtons()}
+				</>
+			);
 		}
 
 		return (

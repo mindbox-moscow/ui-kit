@@ -58,7 +58,7 @@ const segmentViewHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -340,7 +340,7 @@ const segmentHistory = () => (
 					defaultValue="Сегмент"
 				/>
 			</GridColumn>
-			<GridColumn col={1} />
+			<GridColumn />
 			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
 				<DateField
@@ -467,7 +467,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory2: {
@@ -488,7 +488,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory3: {
@@ -509,7 +509,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory4: {
@@ -530,7 +530,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory5: {
@@ -551,7 +551,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory6: {
@@ -572,7 +572,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory7: {
@@ -593,7 +593,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory8: {
@@ -614,7 +614,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory9: {
@@ -635,7 +635,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory10: {
@@ -656,7 +656,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory11: {
@@ -677,7 +677,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	secondCategory12: {
@@ -698,7 +698,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: ["thirdCategory"],
+		childIds: [],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	thirdCategory: {
@@ -1636,27 +1636,28 @@ class ExampleComponent extends React.Component {
 
 	onPreviousSelected(id) {
 		const { selectedId, rootIds } = this.state;
+		let callBack = null;
 
 		if (selectedId === "name") {
-			return false;
+			callBack = false;
 		} else {
-			rootIds.map((key, index) => {
+			rootIds.forEach((key, index) => {
 				if (key === id) {
 					if (index !== 0) {
 						this.setState({
 							selectedId: rootIds[index - 1]
 						});
-						return true;
+						callBack = true;
 					} else {
 						this.setState({
 							selectedId: "name"
 						});
-
-						return false;
+						callBack = false;
 					}
 				}
 			});
 		}
+		return callBack;
 	}
 
 	render() {
@@ -1681,7 +1682,9 @@ class ExampleComponent extends React.Component {
 						onNextSelected={() =>
 							this.onNextSelected(this.state.selectedId)
 						}
-						onExpandCurrent={() => this.onToggleExpand(this.state.selectedId)}
+						onExpandCurrent={() =>
+							this.onToggleExpand(this.state.selectedId)
+						}
 						childRenderer={createChildRenderer(
 							this.onSelect,
 							this.onToggleExpand,
@@ -1699,6 +1702,9 @@ class ExampleComponent extends React.Component {
 						helpCaption={
 							allElementsDictionary[this.state.selectedId]
 								.helpCaption
+						}
+						onSearchTermChange={() =>
+							console.log("onSearchTermChange")
 						}
 						filterLabel="Фильтры"
 						recentLabel="Недавние"

@@ -23,7 +23,7 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 
 	return (
 		<>
-			{brackets.length &&
+			{!!brackets.length &&
 				brackets.map((item, index) => {
 					switch (index) {
 						case 0:

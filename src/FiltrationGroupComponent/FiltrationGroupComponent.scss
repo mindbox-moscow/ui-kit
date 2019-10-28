@@ -258,7 +258,7 @@ $minHeight: 31px;
 .kit-filtration-group__label-horizontal-bracket {
 	position: absolute;
 	display: inline-block;
-	width: 12px;
+	width: 11px;
 	border-top: 2px solid;
 	color: currentColor;
 }
@@ -312,6 +312,10 @@ $minHeight: 31px;
 		margin-right: 5px;
 	}
 
+	&:not(&_no-children) {
+		margin-left: 20px;
+	}
+
 	&_no-children {
 		> * {
 			z-index: 3;
@@ -326,6 +330,10 @@ $minHeight: 31px;
 			left: -10px;
 			top: 0;
 			z-index: 3;
+		}
+
+		.kit-filter-editor__btn {
+			opacity: 1;
 		}
 	}
 }

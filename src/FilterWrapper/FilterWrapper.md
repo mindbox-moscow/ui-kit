@@ -55,6 +55,7 @@
 				andLabel="И"
 				orLabel="ИЛИ"
 				shouldShowLabel={false}
+				shouldShowButtons={true}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
 						label="Добавить фильтр"
@@ -2096,8 +2097,8 @@
 						groupType="and"
 						andLabel="И"
 						orLabel="ИЛИ"
-            shouldShowLabel={false}
-            shouldShowButtons={true}
+						shouldShowLabel={false}
+						shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
 								label="Добавить фильтр"
@@ -2175,8 +2176,8 @@
 						groupType="and"
 						andLabel="И"
 						orLabel="ИЛИ"
-            shouldShowLabel={false}
-            shouldShowButtons={true}
+						shouldShowLabel={false}
+						shouldShowButtons={true}
 						addSimpleConditionButton={
 							<FilterConditionEditorButton
 								label="Добавить фильтр"
@@ -3128,7 +3129,7 @@
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
-			state="edit"
+			state="view"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -3164,6 +3165,7 @@
 				andLabel="И"
 				orLabel="ИЛИ"
 				shouldShowLabel={true}
+				shouldShowButtons={false}
 				addSimpleConditionButton={
 					<FilterConditionEditorButton
 						label="Добавить фильтр"

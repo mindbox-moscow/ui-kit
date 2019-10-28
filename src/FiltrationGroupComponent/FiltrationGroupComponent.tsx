@@ -337,17 +337,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		this.handleCreateHorizontalBrackets();
 
 		const labelRef = this.kitFiltrationLabelRef.current;
-		const closeRef = this.kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.addEventListener(
-				"mouseover",
-				this.handleHoverAddClassLabel
-			);
-		}
-
-		if (closeRef) {
-			closeRef.addEventListener(
 				"mouseover",
 				this.handleHoverAddClassLabel
 			);
@@ -359,7 +351,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		window.removeEventListener("resize", this.moveLabelAtCenterOfBracket);
 
 		const labelRef = this.kitFiltrationLabelRef.current;
-		const closeRef = this.kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.removeEventListener(
@@ -367,17 +358,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				this.handleHoverAddClassLabel
 			);
 			labelRef.removeEventListener(
-				"mouseout",
-				this.handleHoverRemoveClassLabel
-			);
-		}
-
-		if (closeRef) {
-			closeRef.removeEventListener(
-				"mouseover",
-				this.handleHoverAddClassLabel
-			);
-			closeRef.removeEventListener(
 				"mouseout",
 				this.handleHoverRemoveClassLabel
 			);
@@ -552,7 +532,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				}
 			}
 
-			return <>{children}</>;
+			return (
+				<>
+					{children}
+					{this.renderGroupButtons()}
+				</>
+			);
 		}
 
 		return (

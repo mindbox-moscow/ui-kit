@@ -20,8 +20,6 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 	private portal = document.createElement("div");
 
-	private containerRef = React.createRef<HTMLDivElement>();
-
 	public componentDidMount() {
 		const { portal } = this;
 
@@ -29,8 +27,9 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		this.handleShowPopup();
 
-		// setTimeout предотвращает обработку любого click послужившого причиной 
-		// cоздания данного компонента
+		// setTimeout предотвращает обработку 
+		// любого click по window
+		// послужившого причиной cоздания данного компонента
 		setTimeout(() => window.addEventListener("click", this.onWindowClick));
 	}
 
@@ -70,32 +69,27 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		window.addEventListener("load", this.handleShowPopup);
 	};
 
-	private clickInContainerRect(x: number, y: number): boolean {
-		const { positionLeft, positionTop } = this.state;
+	private onWindowClick = (event: Event) => {
 
-		const container = this.containerRef.current as HTMLDivElement;
-		const width = container.clientWidth;
-		const height = container.clientHeight;
+		console.log("event:", event, event.composedPath());
 
-		const res =
-			x >= positionLeft
-			&& x <= positionLeft + width
-			&& y >= positionTop
-			&& y <= positionTop + height;
+		// TODO: delete when used new SelectedElement (using portal div#dropdown-overlay)
+		const dropdownDivElement =
+			document.getElementById("dropdown-overlay") as HTMLDivElement;
 
-		console.log(x, y, positionLeft, width, positionTop, height, res, this.containerRef)
+		const isClickInsideDropdownOverlay =
+			event.composedPath().find(eventTarget => eventTarget == dropdownDivElement) != undefined;
 
-		return res;
-	}
+		if (isClickInsideDropdownOverlay) return
 
-	private onWindowClick = (event: MouseEvent) => {
 		const targetNode = event.target as Node;
 		const { onOutZoneClick } = this.props;
 
 		if (
-			!this.portal.contains(targetNode)
-			&& !this.clickInContainerRect(event.clientX, event.clientY)
-			&& onOutZoneClick != null) {
+			onOutZoneClick != null
+			&& !this.portal.contains(targetNode)
+		) {
+			console.log("call onOutZoneClick()");
 			onOutZoneClick();
 		}
 	}
@@ -107,7 +101,6 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		return createPortal(
 			<div
-				ref={this.containerRef}
 				className={cn("kit-overflow-visiblecontainer", className)}
 				style={{ left: positionLeft, top: positionTop }}
 			>

@@ -28,21 +28,22 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-flex;
-	align-items: center;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
-	z-index: 2;
+	z-index: 3;
 
 	&:hover:not(&_read-only) {
 		> .kit-filtration-condition__content {
 			background-color: $hoverColorBg;
 			cursor: pointer;
+		}
 
-			> .kit-filtration-condition__remove,
-			> .kit-filtration-condition__copy {
-				visibility: visible;
-			}
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove {
+			visibility: visible;
 		}
 
 		> .kit-filtration-condition__drag-and-drop {
@@ -103,17 +104,11 @@ $groupHoverMarginLeft: 10px;
 
 		.kit-filtration-condition__content {
 			background-color: $editModeColorBg;
-			border-radius: 0 $itemHoverBorderRadius + 2 0 0;
 		}
 
 		.kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
-		}
-
-		.kit-filtration-condition__remove,
-		.kit-filtration-condition__copy {
-			visibility: visible;
 		}
 	}
 
@@ -124,8 +119,8 @@ $groupHoverMarginLeft: 10px;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
-		.kit-filtration-condition__remove,
-		.kit-filtration-condition__copy {
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove {
 			display: none;
 		}
 
@@ -152,7 +147,7 @@ $groupHoverMarginLeft: 10px;
 
 	> .kit-filtration-condition__content {
 		> [class*="kit-segment"] {
-			&:not(:last-of-type):not(.kit-segment-button-expand__popover) {
+			&:not(.kit-segment-button-expand__popover) {
 				margin-right: 10px;
 			}
 		}
@@ -161,7 +156,6 @@ $groupHoverMarginLeft: 10px;
 	.kit-segment-button-expand__popover {
 		order: 1;
 		width: 100%;
-		margin-top: 0;
 		cursor: default;
 	}
 
@@ -172,11 +166,6 @@ $groupHoverMarginLeft: 10px;
 			cursor: default;
 			pointer-events: none;
 			z-index: 0;
-		}
-
-		.kit-filtration-condition__remove,
-		.kit-filtration-condition__copy {
-			display: none;
 		}
 	}
 }

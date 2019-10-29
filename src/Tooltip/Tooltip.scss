@@ -8,12 +8,6 @@
 	font-size: 14px;
 	line-height: 16px;
 	cursor: pointer;
-
-	&:hover {
-		#{ $self }__content {
-			display: block;
-		}
-	}
 }
 
 .kit-tooltip__title {
@@ -26,8 +20,12 @@
 	}
 }
 
+.kit-tooltip__popup {
+	margin-left: 5px;
+}
+
 .kit-tooltip__content {
-	display: none;
+	display: block;
 	box-sizing: border-box;
 	position: absolute;
 	left: 50%;
@@ -39,6 +37,7 @@
 	border-radius: 4px;
 	width: 284px;
 	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.35);
+	visibility: hidden;
 
 	&::before,
 	&::after {
@@ -94,5 +93,9 @@
 		&::after {
 			border-top-color: #fff;
 		}
+	}
+
+	&_show {
+		visibility: visible;
 	}
 }

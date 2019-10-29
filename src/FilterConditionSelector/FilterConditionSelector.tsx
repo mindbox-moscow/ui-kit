@@ -72,7 +72,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 	};
 
 	public handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		const { onNextSelected } = this.props;
+		const { onNextSelected, onConditionStateToggle } = this.props;
 
 		switch (e.keyCode) {
 			case ArrowKeysCodes.Down:
@@ -86,6 +86,15 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				onNextSelected();
 				break;
+			case ArrowKeysCodes.Esc:
+				e.preventDefault();
+
+				if (this.searchRef.current && this.listRef.current) {
+					this.searchRef.current.blur();
+					this.listRef.current.focus();
+				}
+
+				onConditionStateToggle();
 		}
 	};
 

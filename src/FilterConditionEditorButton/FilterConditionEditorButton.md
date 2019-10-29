@@ -45,7 +45,7 @@ const EditorComponentExample = () => {
 
 const segmentViewHistory = () => (
 	<GridContainer>
-		<GridRow alignItems="center">
+		<GridRow>
 			<GridColumn col={4}>
 				<Select
 					hasDescriptions={true}
@@ -59,15 +59,18 @@ const segmentViewHistory = () => (
 				/>
 			</GridColumn>
 			<GridColumn />
-			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
-				<DateField
-					defaultDate={new Date(2019, 11, 9)}
-					noShadow={true}
-				/>
-			</GridColumn>
-			<GridColumn>
-				<TimeField hours={7} minutes={0} noShadow={true} />
+				<Form>
+					<FormField label="Дата:">
+						<DateField
+							defaultDate={new Date(2019, 11, 9)}
+							noShadow={true}
+						/>
+					</FormField>
+					<FormField>
+						<TimeField hours={7} minutes={0} noShadow={true} />
+					</FormField>
+				</Form>
 			</GridColumn>
 		</GridRow>
 		<GridRow>
@@ -341,15 +344,18 @@ const segmentHistory = () => (
 				/>
 			</GridColumn>
 			<GridColumn />
-			<GridColumn>Дата:</GridColumn>
 			<GridColumn>
-				<DateField
-					defaultDate={new Date(2019, 11, 9)}
-					noShadow={true}
-				/>
-			</GridColumn>
-			<GridColumn>
-				<TimeField hours={7} minutes={0} noShadow={true} />
+				<Form>
+					<FormField label="Дата:">
+						<DateField
+							defaultDate={new Date(2019, 11, 9)}
+							noShadow={true}
+						/>
+					</FormField>
+					<FormField>
+						<TimeField hours={7} minutes={0} noShadow={true} />
+					</FormField>
+				</Form>
 			</GridColumn>
 		</GridRow>
 		<GridRow>

@@ -52,6 +52,12 @@ $clearButtonCountColor: #a4a4a4;
 	padding: 0;
 	margin: 11px 11px 11px 22px;
 	box-sizing: border-box;
+
+	> .kit-filtration-group_not-children {
+		.kit-filtration-group__label {
+			pointer-events: none;
+		}
+	}
 }
 
 .kit-filter__wrap-filter {

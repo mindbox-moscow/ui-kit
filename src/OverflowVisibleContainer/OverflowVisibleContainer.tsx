@@ -73,7 +73,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		console.log("event:", event, event.composedPath());
 
-		// TODO: delete when used new SelectedElement (using portal div#dropdown-overlay)
+		// TODO: delete when to be reused Dropdown (now using with portal div#dropdown-overlay)
 		const dropdownDivElement =
 			document.getElementById("dropdown-overlay") as HTMLDivElement;
 
@@ -81,6 +81,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 			event.composedPath().find(eventTarget => eventTarget == dropdownDivElement) != undefined;
 
 		if (isClickInsideDropdownOverlay) return
+		// ENDTODO
 
 		const targetNode = event.target as Node;
 		const { onOutZoneClick } = this.props;

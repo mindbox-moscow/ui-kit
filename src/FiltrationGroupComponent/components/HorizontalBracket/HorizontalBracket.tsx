@@ -105,7 +105,21 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								positionTop = height + item.height / 2;
+								const lineElement = item.element.querySelector(
+									".kit-filtration-group__label-line"
+								);
+								let lineHeight = 0;
+								if (lineElement) {
+									lineHeight =
+										(item.height -
+											minHeight -
+											lineElement.getBoundingClientRect()
+												.height) /
+											2 +
+										widthBracket / 2;
+								}
+								positionTop =
+									height + item.height / 2 + lineHeight;
 							}
 							break;
 					}

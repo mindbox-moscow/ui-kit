@@ -23,15 +23,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 	public searchRef = React.createRef<Input>();
 	public listRef = React.createRef<HTMLUListElement>();
 
-	public componentDidMount() {
-		document.addEventListener("keydown", this.handleKeyDown);
-	}
-
-	public componentWillUnmount() {
-		document.removeEventListener("keydown", this.handleKeyDown);
-	}
-
-	public handleKeyDown = (e: KeyboardEvent) => {
+	public handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		const {
 			onPreviousSelected,
 			onExpandCurrent,
@@ -72,7 +64,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 	};
 
 	public handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		const { onNextSelected } = this.props;
+		const { onNextSelected, onConditionStateToggle } = this.props;
 
 		switch (e.keyCode) {
 			case ArrowKeysCodes.Down:
@@ -86,6 +78,15 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				onNextSelected();
 				break;
+			case ArrowKeysCodes.Esc:
+				e.preventDefault();
+
+				if (this.searchRef.current && this.listRef.current) {
+					this.searchRef.current.blur();
+					this.listRef.current.focus();
+				}
+
+				onConditionStateToggle();
 		}
 	};
 
@@ -160,6 +161,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							ref={this.listRef}
 							className="kit-filter-condition-selector__hierarchy"
 							tabIndex={0}
+							onKeyDown={this.handleKeyDown}
 						>
 							{this.props.rootIds.map(childId => (
 								<ChildItem key={childId} id={childId} />

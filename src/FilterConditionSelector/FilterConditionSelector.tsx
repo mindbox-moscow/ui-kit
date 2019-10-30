@@ -23,15 +23,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 	public searchRef = React.createRef<Input>();
 	public listRef = React.createRef<HTMLUListElement>();
 
-	public componentDidMount() {
-		document.addEventListener("keydown", this.handleKeyDown);
-	}
-
-	public componentWillUnmount() {
-		document.removeEventListener("keydown", this.handleKeyDown);
-	}
-
-	public handleKeyDown = (e: KeyboardEvent) => {
+	public handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		const {
 			onPreviousSelected,
 			onExpandCurrent,
@@ -169,6 +161,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							ref={this.listRef}
 							className="kit-filter-condition-selector__hierarchy"
 							tabIndex={0}
+							onKeyDown={this.handleKeyDown}
 						>
 							{this.props.rootIds.map(childId => (
 								<ChildItem key={childId} id={childId} />

@@ -2,7 +2,7 @@ $borderColor: #d9e7fe;
 $borderHoverColor: #e2eaf0;
 $mainColor: #999999;
 
-.kit-segment-edit {
+.kit-segment-content {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -20,7 +20,7 @@ $mainColor: #999999;
 	box-sizing: border-box;
 }
 
-.kit-segment-edit__count {
+.kit-segment-content__count {
 	color: inherit;
 	font-family: "PT Sans", sans-serif;
 	font-size: 11px;

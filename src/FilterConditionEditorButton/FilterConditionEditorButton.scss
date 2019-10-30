@@ -31,7 +31,6 @@ $bgColorOpen: #3875d7;
 	cursor: pointer;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
-	opacity: 0.5;
 
 	&_open {
 		color: #fff;
@@ -44,7 +43,6 @@ $bgColorOpen: #3875d7;
 		color: $textColor;
 		background-color: $bgHoverColor;
 		border-color: $borderHoverColor;
-		opacity: 1;
 	}
 
 	&:disabled {

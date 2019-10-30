@@ -419,7 +419,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			state,
 			onConditionRemove,
 			onConditionCopy,
-			shouldShowDuplicateButton
+			onConditionStateToggle,
+      shouldShowDuplicateButton
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -478,6 +479,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 													this
 														.kitFiltrationLabelButtonsRef
 												}
+												onNeutralZoneClick={onConditionStateToggle}
 											>
 												<button
 													key="copy"

@@ -94,7 +94,7 @@ $minHeight: 31px;
 			margin-left: 20px;
 			outline: none;
 
-			.kit-filter-editor__btn {
+			button {
 				opacity: 1;
 			}
 		}
@@ -169,7 +169,7 @@ $minHeight: 31px;
 		}
 
 		> .kit-filtration-group__buttons {
-			.kit-filter-editor__btn {
+			button {
 				opacity: 1;
 			}
 		}
@@ -296,13 +296,21 @@ $minHeight: 31px;
 	position: relative;
 	display: inline-flex;
 	align-items: center;
-	min-height: $minHeight;
+	height: $minHeight;
 	margin-right: 20px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	box-sizing: border-box;
 	outline: none;
 	z-index: 3;
+
+	button {
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
 
 	> * {
 		z-index: 2;
@@ -332,7 +340,8 @@ $minHeight: 31px;
 			z-index: 3;
 		}
 
-		.kit-filter-editor__btn {
+		.kit-filter-editor__btn,
+		.kit-button {
 			opacity: 1;
 		}
 	}

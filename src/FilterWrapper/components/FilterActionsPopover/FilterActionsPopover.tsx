@@ -42,7 +42,7 @@ export class FilterActionsPopover extends React.Component<
 					{filterActionsCaption}
 				</span>
 				{isOpen && (
-					<OverflowVisibleContainer parentRef={this.refElement}>
+					<OverflowVisibleContainer parentRef={this.refElement} onNeutralZoneClick={null}>
 						<ul className="kit-filter-actions-popover__list">
 							{filterActions.map(({ key, onClick, name }) => (
 								<li

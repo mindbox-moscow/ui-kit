@@ -1,0 +1,16 @@
+.kit-form {
+	display: flex;
+
+	> *:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&_label-top {
+		align-items: flex-end;
+
+		.kit-form-field__label {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

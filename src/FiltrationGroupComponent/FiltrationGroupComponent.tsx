@@ -418,9 +418,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			onGroupTypeToggle,
 			state,
 			onConditionRemove,
-			onConditionCopy,
 			onConditionStateToggle,
-			shouldShowDuplicateButton
 		} = this.props;
 
 		const { horizontalBracket } = this.state;

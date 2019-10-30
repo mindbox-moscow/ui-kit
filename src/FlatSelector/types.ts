@@ -5,7 +5,7 @@ export interface SelectorItem {
 
 export interface FlatSelectorProps {
 	value: string | string[];
-	onChange: (value: string | string[]) => void;
+	onChange: (value: string | string[] | null) => void;
 	allowMultiple: boolean;
 	items: SelectorItem[];
 }

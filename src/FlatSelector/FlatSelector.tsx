@@ -26,7 +26,7 @@ export const FlatSelector: React.FC<FlatSelectorProps> = ({
 
 			onChange(values);
 		} else {
-			newValue === value ? onChange("") : onChange(newValue);
+			newValue === value ? onChange(null) : onChange(newValue);
 		}
 	};
 
@@ -37,7 +37,7 @@ export const FlatSelector: React.FC<FlatSelectorProps> = ({
 
 		return (
 			<button
-				key={item.key + item.text}
+				key={item.key}
 				onClick={handleSelect(item.key)}
 				className={cn("kit-flat-selector__item", {
 					"kit-flat-selector__item_selected": selected

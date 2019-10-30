@@ -338,6 +338,10 @@ $minHeight: 31px;
 	}
 }
 
+.kit-filtration-group__hidden {
+	display: none;
+}
+
 .kit-filtration-group__remove,
 .kit-filtration-group__copy {
 	display: inline-flex;

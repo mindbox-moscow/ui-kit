@@ -17,6 +17,7 @@ export interface StateProps {
 	addSimpleConditionButton?: React.ReactNode;
 	addGroupConditionButton?: React.ReactNode;
 	shouldShowButtons: boolean;
+	shouldShowDuplicateButton: boolean;
 }
 
 export interface CallbackProps {

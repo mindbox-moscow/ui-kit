@@ -481,7 +481,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 												}
 												onNeutralZoneClick={onConditionStateToggle}
 											>
-												{this.renderCopyButton(shouldShowDuplicateButton, onConditionCopy())}
+												{this.renderCopyButton()}
 												<button
 													key="remove"
 													onClick={onConditionRemove}
@@ -516,12 +516,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		);
 	}
 
-	private renderCopyButton = (shouldShowDuplicateButton: boolean, onConditionCopy: any) => {
-		if (!shouldShowDuplicateButton) return null;
+	private renderCopyButton = () => {
+		if (!this.props.shouldShowDuplicateButton) return null;
 		return (
 			<button
 				key="copy"
-				onClick={onConditionCopy}
+				onClick={this.props.onConditionCopy}
 				className="kit-filtration-group__copy"
 				type="button">
 				<IconSvg type="duplicate"/>

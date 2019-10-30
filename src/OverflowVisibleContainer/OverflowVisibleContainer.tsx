@@ -73,7 +73,8 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 	private onWindowClick = (event: Event) => {
 		// TODO: delete when there will be no unsupported Elements
-		const notNeutralZoneElements = Array.from(document.getElementsByClassName("kit-overflow-isnt-neutral-zone-marker"));
+		const notNeutralZoneElements =
+			Array.from(document.getElementsByClassName("kit-overflow-isnt-neutral-zone-marker"));
 		const fromEventPathElements = event.composedPath();
 
 		const isClickInsideNotNeutralZone =

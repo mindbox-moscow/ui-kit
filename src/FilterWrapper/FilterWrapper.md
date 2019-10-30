@@ -65,12 +65,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -124,12 +121,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -199,12 +193,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -226,12 +217,9 @@
 						/>
 					}
 					addGroupConditionButton={
-						<FilterConditionEditorButton
-							label="И"
-							toggleOpen={() => console.log("toggle")}
-							isOpened={false}
-							iconType="cross-arrows"
-						/>
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}
 					onConditionStateToggle={() => console.log("state toggle")}
@@ -287,12 +275,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationGroupComponent
@@ -313,12 +298,9 @@
 						/>
 					}
 					addGroupConditionButton={
-						<FilterConditionEditorButton
-							label="И"
-							toggleOpen={() => console.log("toggle")}
-							isOpened={false}
-							iconType="cross-arrows"
-						/>
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
 					}
 				/>
 			</FiltrationGroupComponent>
@@ -356,12 +338,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -382,12 +361,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			/>
 		</FiltrationGroupComponent>
@@ -428,12 +404,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		/>
 	</FilterWrapper>
@@ -474,12 +447,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -500,12 +470,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -536,12 +503,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -591,12 +555,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -618,12 +579,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -653,12 +611,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -708,12 +663,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -734,12 +686,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -774,14 +723,13 @@
 										/>
 									}
 									addGroupConditionButton={
-										<FilterConditionEditorButton
-											label="И"
-											toggleOpen={() =>
-												console.log("toggle")
-											}
-											isOpened={false}
-											iconType="cross-arrows"
-										/>
+										<Button
+											color="silver"
+											size="small"
+											hasBorder="true"
+										>
+											<IconSvg type="cross-arrows" />И
+										</Button>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -822,16 +770,14 @@
 													/>
 												}
 												addGroupConditionButton={
-													<FilterConditionEditorButton
-														label="И"
-														toggleOpen={() =>
-															console.log(
-																"toggle"
-															)
-														}
-														isOpened={false}
-														iconType="cross-arrows"
-													/>
+													<Button
+														color="silver"
+														size="small"
+														hasBorder="true"
+													>
+														<IconSvg type="cross-arrows" />
+														И
+													</Button>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -897,12 +843,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -952,12 +895,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -978,12 +918,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -1018,14 +955,13 @@
 										/>
 									}
 									addGroupConditionButton={
-										<FilterConditionEditorButton
-											label="И"
-											toggleOpen={() =>
-												console.log("toggle")
-											}
-											isOpened={false}
-											iconType="cross-arrows"
-										/>
+										<Button
+											color="silver"
+											size="small"
+											hasBorder="true"
+										>
+											<IconSvg type="cross-arrows" />И
+										</Button>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -1066,16 +1002,14 @@
 													/>
 												}
 												addGroupConditionButton={
-													<FilterConditionEditorButton
-														label="И"
-														toggleOpen={() =>
-															console.log(
-																"toggle"
-															)
-														}
-														isOpened={false}
-														iconType="cross-arrows"
-													/>
+													<Button
+														color="silver"
+														size="small"
+														hasBorder="true"
+													>
+														<IconSvg type="cross-arrows" />
+														И
+													</Button>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -1125,18 +1059,14 @@
 																		/>
 																	}
 																	addGroupConditionButton={
-																		<FilterConditionEditorButton
-																			label="И"
-																			toggleOpen={() =>
-																				console.log(
-																					"toggle"
-																				)
-																			}
-																			isOpened={
-																				false
-																			}
-																			iconType="cross-arrows"
-																		/>
+																		<Button
+																			color="silver"
+																			size="small"
+																			hasBorder="true"
+																		>
+																			<IconSvg type="cross-arrows" />
+																			И
+																		</Button>
 																	}
 																	onGroupTypeToggle={() =>
 																		console.log(
@@ -1187,18 +1117,14 @@
 																					/>
 																				}
 																				addGroupConditionButton={
-																					<FilterConditionEditorButton
-																						label="И"
-																						toggleOpen={() =>
-																							console.log(
-																								"toggle"
-																							)
-																						}
-																						isOpened={
-																							false
-																						}
-																						iconType="cross-arrows"
-																					/>
+																					<Button
+																						color="silver"
+																						size="small"
+																						hasBorder="true"
+																					>
+																						<IconSvg type="cross-arrows" />
+																						И
+																					</Button>
 																				}
 																				onGroupTypeToggle={() =>
 																					console.log(
@@ -1297,12 +1223,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -1354,12 +1277,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 		>
 			<FiltrationGroupComponent
@@ -1380,12 +1300,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -1420,14 +1337,13 @@
 										/>
 									}
 									addGroupConditionButton={
-										<FilterConditionEditorButton
-											label="И"
-											toggleOpen={() =>
-												console.log("toggle")
-											}
-											isOpened={false}
-											iconType="cross-arrows"
-										/>
+										<Button
+											color="silver"
+											size="small"
+											hasBorder="true"
+										>
+											<IconSvg type="cross-arrows" />И
+										</Button>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -1468,16 +1384,14 @@
 													/>
 												}
 												addGroupConditionButton={
-													<FilterConditionEditorButton
-														label="И"
-														toggleOpen={() =>
-															console.log(
-																"toggle"
-															)
-														}
-														isOpened={false}
-														iconType="cross-arrows"
-													/>
+													<Button
+														color="silver"
+														size="small"
+														hasBorder="true"
+													>
+														<IconSvg type="cross-arrows" />
+														И
+													</Button>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -1543,12 +1457,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 			>
 				<FiltrationConditionComponent
@@ -1733,12 +1644,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -1768,12 +1676,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -1822,12 +1731,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -1856,12 +1762,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -1914,12 +1821,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -1949,12 +1853,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -1994,12 +1899,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2028,12 +1930,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2073,12 +1976,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2108,12 +2008,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2156,12 +2057,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2187,12 +2085,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2238,12 +2137,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2268,12 +2164,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2322,12 +2219,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2356,12 +2250,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2411,12 +2306,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2446,12 +2338,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2513,12 +2406,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2550,12 +2440,13 @@
 							/>
 						}
 						addGroupConditionButton={
-							<FilterConditionEditorButton
-								label="И"
-								toggleOpen={() => console.log("toggle")}
-								isOpened={false}
-								iconType="cross-arrows"
-							/>
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -2612,12 +2503,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2797,12 +2685,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -2977,12 +2862,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -3144,12 +3026,9 @@
 				/>
 			}
 			addGroupConditionButton={
-				<FilterConditionEditorButton
-					label="И"
-					toggleOpen={() => console.log("toggle")}
-					isOpened={false}
-					iconType="cross-arrows"
-				/>
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -3175,12 +3054,9 @@
 					/>
 				}
 				addGroupConditionButton={
-					<FilterConditionEditorButton
-						label="И"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="cross-arrows"
-					/>
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -3211,12 +3087,9 @@
 						/>
 					}
 					addGroupConditionButton={
-						<FilterConditionEditorButton
-							label="И"
-							toggleOpen={() => console.log("toggle")}
-							isOpened={false}
-							iconType="cross-arrows"
-						/>
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}
 					onConditionStateToggle={() => console.log("state toggle")}

@@ -478,7 +478,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 													this
 														.kitFiltrationLabelButtonsRef
 												}
-												onOutZoneClick={onConditionStateToggle}
+												onNeutralZoneClick={onConditionStateToggle}
 											>
 												<button
 													key="copy"

@@ -42,7 +42,7 @@ export const FilterConditionEditorButton = (props: Props) => {
 				{label}
 			</button>
 			{isOpened && (
-				<OverflowVisibleContainer parentRef={refButton} onOutZoneClick={toggleOpen}>
+				<OverflowVisibleContainer parentRef={refButton} onNeutralZoneClick={toggleOpen}>
 					<FilterConditionSelector
 						{...otherProps}
 						onConditionStateToggle={toggleOpen}

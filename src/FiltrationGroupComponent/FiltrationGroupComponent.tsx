@@ -418,7 +418,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			onGroupTypeToggle,
 			state,
 			onConditionRemove,
-			onConditionCopy
+			onConditionCopy,
+			onConditionStateToggle
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -477,6 +478,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 													this
 														.kitFiltrationLabelButtonsRef
 												}
+												onNeutralZoneClick={onConditionStateToggle}
 											>
 												<button
 													key="copy"

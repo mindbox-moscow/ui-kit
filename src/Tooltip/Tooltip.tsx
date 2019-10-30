@@ -12,26 +12,30 @@ interface DefaultProps {
 	textDecoration: boolean;
 }
 
+interface State {
+	isShow: boolean;
+}
+
 type ToolTipProps = IProps;
 
-export class Tooltip extends React.Component<ToolTipProps> {
+export class Tooltip extends React.Component<ToolTipProps, State> {
 	static defaultProps: DefaultProps = {
 		position: "bottom",
 		textDecoration: true
 	};
 
+	public state = {
+		isShow: false
+	};
+
 	public refTitle = React.createRef<HTMLSpanElement>();
-	public refContent = React.createRef<HTMLSpanElement>();
 
 	public handleHoverTitle = () => {
-		const refContent = this.refContent.current;
-
-		if (refContent) {
-			refContent.classList.toggle("kit-tooltip__content_show");
-		}
+		this.setState(state => ({ isShow: !state.isShow }));
 	};
 
 	public render() {
+		const { isShow } = this.state;
 		const { textDecoration, position, title, children } = this.props;
 		return (
 			<span className="kit-tooltip">
@@ -50,10 +54,12 @@ export class Tooltip extends React.Component<ToolTipProps> {
 					className="kit-tooltip__popup"
 				>
 					<span
-						ref={this.refContent}
 						className={cn(
 							"kit-tooltip__content",
-							`kit-tooltip__content_${position}`
+							`kit-tooltip__content_${position}`,
+							{
+								"kit-tooltip__content_show": isShow
+							}
 						)}
 					>
 						{children}

@@ -10,16 +10,18 @@ export const FlatSelector: React.FC<FlatSelectorProps> = ({
 	value,
 	onChange
 }) => {
-	const handleSelect = (newValue: string) => {
+	const handleSelect = (newValue: string) => () => {
 		if (allowMultiple) {
-			const values = value as string[];
+			let values = value as string[];
+			const index = values.indexOf(newValue);
 
-			if (values.indexOf(newValue) >= 0 && values.length > 0) {
-				values.splice(values.indexOf(newValue), 1);
-			} else {
-				if (values.indexOf(newValue) < 0) {
-					values.push(newValue);
-				}
+			if (index >= 0 && values.length > 0) {
+				values = [
+					...values.slice(0, index),
+					...values.slice(index + 1)
+				];
+			} else if (index < 0) {
+				values = [...values, newValue];
 			}
 
 			onChange(values);
@@ -29,17 +31,14 @@ export const FlatSelector: React.FC<FlatSelectorProps> = ({
 	};
 
 	const buttons = items.map((item: SelectorItem) => {
-		let selected = false;
-		if (allowMultiple) {
-			selected = value.indexOf(item.key) >= 0;
-		} else {
-			selected = item.key === value;
-		}
+		const selected = allowMultiple
+			? value.includes(item.key)
+			: item.key === value;
 
 		return (
 			<button
 				key={item.key + item.text}
-				onClick={() => handleSelect(item.key)}
+				onClick={handleSelect(item.key)}
 				className={cn("kit-flat-selector__item", {
 					"kit-flat-selector__item_selected": selected
 				})}

@@ -23,24 +23,6 @@ export class Tooltip extends React.Component<ToolTipProps> {
 	public refTitle = React.createRef<HTMLSpanElement>();
 	public refContent = React.createRef<HTMLSpanElement>();
 
-	public componentDidMount() {
-		const refTitle = this.refTitle.current;
-
-		if (refTitle) {
-			refTitle.addEventListener("mouseover", this.handleHoverTitle);
-			refTitle.addEventListener("mouseout", this.handleHoverTitle);
-		}
-	}
-
-	public componentWillUnmount() {
-		const refTitle = this.refTitle.current;
-
-		if (refTitle) {
-			refTitle.removeEventListener("mouseover", this.handleHoverTitle);
-			refTitle.removeEventListener("mouseout", this.handleHoverTitle);
-		}
-	}
-
 	public handleHoverTitle = () => {
 		const refContent = this.refContent.current;
 
@@ -55,6 +37,8 @@ export class Tooltip extends React.Component<ToolTipProps> {
 			<span className="kit-tooltip">
 				<span
 					ref={this.refTitle}
+					onMouseOver={this.handleHoverTitle}
+					onMouseOut={this.handleHoverTitle}
 					className={cn("kit-tooltip__title", {
 						"kit-tooltip__title_text-transform": textDecoration
 					})}

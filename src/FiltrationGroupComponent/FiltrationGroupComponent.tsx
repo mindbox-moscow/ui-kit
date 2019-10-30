@@ -418,8 +418,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			onGroupTypeToggle,
 			state,
 			onConditionRemove,
-			onConditionCopy,
-			onConditionStateToggle
+			onConditionStateToggle,
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -459,8 +458,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					>
 						{shouldShowLabel && (
 							<>
-								<span className="kit-filtration-group__label-text">
-									{state === "edit" ? (
+<span className="kit-filtration-group__label-text">
+	{state === "edit" ? (
 										<>
 											<div
 												ref={
@@ -480,14 +479,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 												}
 												onNeutralZoneClick={onConditionStateToggle}
 											>
-												<button
-													key="copy"
-													onClick={onConditionCopy}
-													className="kit-filtration-group__copy"
-													type="button"
-												>
-													<IconSvg type="duplicate" />
-												</button>
+												{this.renderCopyButton()}
 												<button
 													key="remove"
 													onClick={onConditionRemove}
@@ -506,8 +498,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 									) : (
 										labelMap[groupType]
 									)}
-								</span>
-							</>
+</span>
+</>
 						)}
 					</div>
 					<HorizontalBracket
@@ -521,6 +513,19 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			</ul>
 		);
 	}
+
+	private renderCopyButton = () => {
+		if (!this.props.shouldShowDuplicateButton) return null;
+		return (
+			<button
+				key="copy"
+				onClick={this.props.onConditionCopy}
+				className="kit-filtration-group__copy"
+				type="button">
+				<IconSvg type="duplicate"/>
+			</button>
+		);
+	};
 
 	private verticalBracket = () => {
 		const { verticalBracket } = this.state;

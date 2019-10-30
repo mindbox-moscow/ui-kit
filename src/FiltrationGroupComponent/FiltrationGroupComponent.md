@@ -1329,5 +1329,231 @@
 			}
 		/>
 	</FiltrationGroupComponent>
+
+	<h2>8.3</h2>
+	<FiltrationGroupComponent
+		state="view"
+		groupType="or"
+		andLabel="И"
+		orLabel="ИЛИ"
+		shouldShowLabel={true}
+		shouldShowButtons={true}
+		addSimpleConditionButton={
+			<FilterConditionEditorButton
+				label="Добавить фильтр"
+				toggleOpen={() => console.log("toggle")}
+				isOpened={false}
+				iconType="filter"
+			/>
+		}
+		addGroupConditionButton={
+			<FilterConditionEditorButton
+				label="И"
+				toggleOpen={() => console.log("toggle")}
+				isOpened={false}
+				iconType="cross-arrows"
+			/>
+		}
+		onGroupTypeToggle={() => console.log("type toggle")}
+		onConditionStateToggle={() => console.log("state toggle")}
+		onConditionRemove={() => console.log("remove")}
+	>
+		<FiltrationConditionComponent
+			state="view"
+			filterablePropertyName="Идентификатор в мобильном приложении"
+			filtrationMethodName="заполнен и равен 42"
+		/>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			shouldShowButtons={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					label="И"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="cross-arrows"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		/>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			shouldShowButtons={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					label="И"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="cross-arrows"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		/>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			shouldShowButtons={true}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<FilterConditionEditorButton
+					label="И"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="cross-arrows"
+				/>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<FilterConditionEditorButton
+						label="И"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="cross-arrows"
+					/>
+				}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+			>
+				<FiltrationGroupComponent
+					state="view"
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					shouldShowButtons={true}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<FilterConditionEditorButton
+							label="И"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="cross-arrows"
+						/>
+					}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+				/>
+				<FiltrationGroupComponent
+					state="view"
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					shouldShowButtons={true}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<FilterConditionEditorButton
+							label="И"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="cross-arrows"
+						/>
+					}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+				/>
+			</FiltrationGroupComponent>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<FilterConditionEditorButton
+						label="И"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="cross-arrows"
+					/>
+				}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+			/>
+		</FiltrationGroupComponent>
+	</FiltrationGroupComponent>
 </div>
 ```

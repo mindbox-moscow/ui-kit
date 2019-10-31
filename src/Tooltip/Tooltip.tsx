@@ -30,8 +30,13 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 
 	public refTitle = React.createRef<HTMLSpanElement>();
 
-	public handleHoverTitle = () => {
-		this.setState(state => ({ isShow: !state.isShow }));
+	public componentDidUpdate(prevProps: ToolTipProps, prevState: State) {}
+
+	public handleShowTooltip = () => {
+		this.setState({ isShow: true });
+	};
+	public handleHideTooltip = () => {
+		this.setState({ isShow: false });
 	};
 
 	public render() {
@@ -40,13 +45,19 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 		return (
 			<span className="kit-tooltip">
 				<span
+					onMouseEnter={this.handleShowTooltip}
+					onMouseLeave={this.handleHideTooltip}
 					ref={this.refTitle}
-					onMouseOver={this.handleHoverTitle}
-					onMouseOut={this.handleHoverTitle}
 					className={cn("kit-tooltip__title", {
 						"kit-tooltip__title_text-transform": textDecoration
 					})}
 				>
+					<span
+						className={cn(
+							"kit-tooltip__road",
+							`kit-tooltip__road_${position}`
+						)}
+					/>
 					{title}
 				</span>
 				<OverflowVisibleContainer
@@ -54,6 +65,8 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 					className="kit-tooltip__popup"
 				>
 					<span
+						onMouseEnter={this.handleShowTooltip}
+						onMouseLeave={this.handleHideTooltip}
 						className={cn(
 							"kit-tooltip__content",
 							`kit-tooltip__content_${position}`,

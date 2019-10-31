@@ -11,6 +11,7 @@
 }
 
 .kit-tooltip__title {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	color: #999999;
@@ -63,7 +64,7 @@
 	}
 
 	&_bottom {
-		top: 22px;
+		top: 15px;
 
 		&::before,
 		&::after {
@@ -98,5 +99,22 @@
 
 	&_show {
 		visibility: visible;
+	}
+}
+
+.kit-tooltip__road {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	right: 0;
+
+	&_top {
+		bottom: 100%;
+	}
+
+	&_bottom {
+		top: 100%;
 	}
 }

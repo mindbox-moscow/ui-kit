@@ -61,6 +61,7 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 				<OverflowVisibleContainer
 					parentRef={this.refTitle}
 					className="kit-tooltip__popup"
+					onNeutralZoneClick={null}
 				>
 					<span
 						onMouseEnter={this.handleShowTooltip}

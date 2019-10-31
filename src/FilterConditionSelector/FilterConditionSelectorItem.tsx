@@ -118,7 +118,10 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 							<ChildItem
 								key={childId}
 								id={childId}
-								pathFromRoot={[...pathFromRoot, childId]}
+								pathFromRoot={[
+									...(pathFromRoot || []),
+									childId
+								]}
 							/>
 						))}
 					</ul>

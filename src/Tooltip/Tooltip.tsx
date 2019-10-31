@@ -30,8 +30,6 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 
 	public refTitle = React.createRef<HTMLSpanElement>();
 
-	public componentDidUpdate(prevProps: ToolTipProps, prevState: State) {}
-
 	public handleShowTooltip = () => {
 		this.setState({ isShow: true });
 	};

@@ -164,7 +164,11 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							onKeyDown={this.handleKeyDown}
 						>
 							{this.props.rootIds.map(childId => (
-								<ChildItem key={childId} id={childId} />
+								<ChildItem
+									key={childId}
+									id={childId}
+									pathFromRoot={[childId]}
+								/>
 							))}
 						</ul>
 					</div>

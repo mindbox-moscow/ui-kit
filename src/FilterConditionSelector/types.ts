@@ -1,5 +1,5 @@
 export interface Props {
-	childRenderer: React.ComponentType<{ id: string }>;
+	childRenderer: React.ComponentType<ChildRendererProps>;
 	searchTerm: string;
 	rootIds: string[];
 	onSearchTermChange: (changedSearchTerm: string) => void;
@@ -17,6 +17,11 @@ export interface Props {
 	onPreviousSelected: () => boolean;
 	onNextSelected: () => void;
 	onExpandCurrent: () => void;
+}
+
+export interface ChildRendererProps {
+	id: string;
+	pathFromRoot?: string[];
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

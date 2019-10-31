@@ -1,7 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { LabelButton, HorizontalBracket } from "./components";
 import { StateProps, CallbackProps, SearchClasses } from "./types";
 
@@ -34,7 +33,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
-	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
@@ -456,49 +454,33 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						className="kit-filtration-group__label-line"
 					>
 						{shouldShowLabel && (
-							<>
-								<span className="kit-filtration-group__label-text">
-									{state === "edit" ? (
-										<>
-											<div
-												ref={
-													this
-														.kitFiltrationLabelButtonsRef
-												}
-												className="kit-filtration-group__label-text-height"
-											/>
-											<OverflowVisibleContainer
-												className={cn(
-													"kit-filtration-group__label-text-buttons",
-													`kit-filtration-group__label-text-buttons_${groupType}`
-												)}
-												parentRef={
-													this
-														.kitFiltrationLabelButtonsRef
-												}
-												onNeutralZoneClick={null}
-											>
-												{this.renderCopyButton()}
-												<button
-													key="remove"
-													onClick={onConditionRemove}
-													className="kit-filtration-group__remove"
-													type="button"
-												>
-													<IconSvg type="trash" />
-												</button>
-												<LabelButton
-													onToggle={onGroupTypeToggle}
-													types={labelMap}
-													activeType={groupType}
-												/>
-											</OverflowVisibleContainer>
-										</>
-									) : (
-										labelMap[groupType]
-									)}
-</span>
-</>
+							<span className="kit-filtration-group__label-text">
+								{state === "edit" ? (
+									<div
+										className={cn(
+											"kit-filtration-group__label-text-buttons",
+											`kit-filtration-group__label-text-buttons_${groupType}`
+										)}
+									>
+										{this.renderCopyButton()}
+										<button
+											key="remove"
+											onClick={onConditionRemove}
+											className="kit-filtration-group__remove"
+											type="button"
+										>
+											<IconSvg type="trash" />
+										</button>
+										<LabelButton
+											onToggle={onGroupTypeToggle}
+											types={labelMap}
+											activeType={groupType}
+										/>
+									</div>
+								) : (
+									labelMap[groupType]
+								)}
+							</span>
 						)}
 					</div>
 					<HorizontalBracket
@@ -520,7 +502,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				key="copy"
 				onClick={this.props.onConditionCopy}
 				className="kit-filtration-group__copy"
-				type="button">
+				type="button"
+			>
 				<IconSvg type="duplicate" />
 			</button>
 		);

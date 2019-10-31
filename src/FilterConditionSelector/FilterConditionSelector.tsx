@@ -122,7 +122,11 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 					<div className="kit-filter-condition-selector__hierarchy-wrap">
 						<ul className="kit-filter-condition-selector__hierarchy">
 							{this.props.rootIds.map(childId => (
-								<ChildItem key={childId} id={childId} />
+								<ChildItem
+									key={childId}
+									id={childId}
+									pathFromRoot={[childId]}
+								/>
 							))}
 						</ul>
 					</div>

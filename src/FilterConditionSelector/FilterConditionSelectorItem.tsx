@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
+import { ChildRendererProps } from "./types";
 
 import "./FilterConditionSelector.scss";
 
@@ -9,12 +10,9 @@ type ElementType =
 	| "simpleFilterableProperty"
 	| "filterablePropertyWithLinkedConditions";
 
-interface ChildRendererProps {
-	id: string;
-}
-
 interface Props {
 	id: string;
+	pathFromRoot?: string[];
 	name: string;
 	type: ElementType;
 	isSelected: boolean;
@@ -64,6 +62,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 	};
 	public render(): JSX.Element {
 		const {
+			pathFromRoot,
 			isSelected,
 			type,
 			isExpanded,
@@ -116,7 +115,11 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 				{isExpanded && hasChildren && (
 					<ul className="kit-filter-condition-selector__hierarchy-children">
 						{this.props.childIds.map(childId => (
-							<ChildItem key={childId} id={childId} />
+							<ChildItem
+								key={childId}
+								id={childId}
+								pathFromRoot={[...pathFromRoot, childId]}
+							/>
 						))}
 					</ul>
 				)}

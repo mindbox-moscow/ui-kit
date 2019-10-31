@@ -417,8 +417,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			children,
 			onGroupTypeToggle,
 			state,
-			onConditionRemove,
-			onConditionStateToggle,
+			onConditionRemove
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -458,8 +457,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					>
 						{shouldShowLabel && (
 							<>
-<span className="kit-filtration-group__label-text">
-	{state === "edit" ? (
+								<span className="kit-filtration-group__label-text">
+									{state === "edit" ? (
 										<>
 											<div
 												ref={
@@ -477,7 +476,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 													this
 														.kitFiltrationLabelButtonsRef
 												}
-												onNeutralZoneClick={onConditionStateToggle}
+												onNeutralZoneClick={null}
 											>
 												{this.renderCopyButton()}
 												<button
@@ -522,7 +521,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				onClick={this.props.onConditionCopy}
 				className="kit-filtration-group__copy"
 				type="button">
-				<IconSvg type="duplicate"/>
+				<IconSvg type="duplicate" />
 			</button>
 		);
 	};

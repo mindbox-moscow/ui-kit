@@ -13,14 +13,13 @@ import "./FilterConditionEditorButton.scss";
 type Props = ButtonProps &
 	SelectorProps & {
 		iconType?: IconSvgTypes;
-		setButtonRef: (button: HTMLButtonElement) => void
 	};
 
 export class FilterConditionEditorButton extends React.Component<Props> {
 	private refButton = React.createRef<HTMLButtonElement>();
 
-	public componentDidMount = () => {
-		this.props.setButtonRef(this.refButton.current as HTMLButtonElement);
+	public focus = () => {
+		(this.refButton.current as HTMLButtonElement).focus()
 	}
 
 	public render() {

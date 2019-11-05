@@ -167,6 +167,11 @@ $groupHoverMarginLeft: 10px;
 			pointer-events: none;
 			z-index: 0;
 		}
+
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove {
+			display: none;
+		}
 	}
 }
 

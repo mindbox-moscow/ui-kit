@@ -31,10 +31,6 @@ export class FiltrationConditionComponent extends React.Component<
 		this.handleMoveUpParentPopupSegment();
 	}
 
-	public componentDidUpdate() {
-		window.addEventListener("scroll", this.scrollWindowsHeight);
-	}
-
 	public componentWillUnmount() {
 		window.removeEventListener("scroll", this.scrollWindowsHeight);
 	}
@@ -45,21 +41,21 @@ export class FiltrationConditionComponent extends React.Component<
 		const refContent = this.refContent.current;
 
 		if (refContent) {
-			const rect = refContent.getBoundingClientRect();
+			const { top } = refContent.getBoundingClientRect();
 			if (offsetTop === 0) {
 				this.setState({
-					offsetTop: rect.top
+					offsetTop: top
 				});
 			}
 
-			if (rect.top > 0 && window.innerHeight >= rect.top) {
-				if (
-					offsetTop - RANGE_OFFSET_TOP > rect.top &&
-					onConditionStateToggle &&
-					state === "edit"
-				) {
-					onConditionStateToggle();
-				}
+			if (
+				top > 0 &&
+				window.innerHeight >= top &&
+				offsetTop - RANGE_OFFSET_TOP > top &&
+				onConditionStateToggle &&
+				state === "edit"
+			) {
+				onConditionStateToggle();
 			}
 		}
 	};

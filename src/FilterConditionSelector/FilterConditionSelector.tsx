@@ -100,6 +100,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 			examplesLabel,
 			menuMode,
 			searchTerm,
+			notFoundMessage,
 			editorComponent,
 			helpComponent,
 			helpCaption,
@@ -130,7 +131,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							ref={this.searchRef}
 							autoFocus={true}
 							noShadow={true}
-							defaultValue={searchTerm}
+							value={searchTerm}
 							type="search"
 							placeholder="Название фильтра"
 							onChange={handleSearchChange}
@@ -163,13 +164,16 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 							tabIndex={0}
 							onKeyDown={this.handleKeyDown}
 						>
-							{this.props.rootIds.map(childId => (
-								<ChildItem
-									key={childId}
-									id={childId}
-									pathFromRoot={[childId]}
-								/>
-							))}
+							{this.props.rootIds.length === 0 &&
+							this.props.searchTerm !== ""
+								? notFoundMessage
+								: this.props.rootIds.map(childId => (
+										<ChildItem
+											key={childId}
+											id={childId}
+											pathFromRoot={[childId]}
+										/>
+								  ))}
 						</ul>
 					</div>
 				</div>

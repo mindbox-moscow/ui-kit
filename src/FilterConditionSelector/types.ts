@@ -1,6 +1,7 @@
 export interface Props {
 	childRenderer: React.ComponentType<ChildRendererProps>;
 	searchTerm: string;
+	notFoundMessage?: string;
 	rootIds: string[];
 	onSearchTermChange: (changedSearchTerm: string) => void;
 	filterLabel: string;

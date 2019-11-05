@@ -100,7 +100,7 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 							<legend>{labels.titleField}</legend>
 							<Input
 								type="text"
-								defaultValue={title!}
+								value={title!}
 								onChange={this.handleTitleChange}
 							/>
 						</fieldset>
@@ -155,7 +155,7 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 								<Input
 									className="kit-promotion-group-edit__max-discount-input"
 									type="text"
-									defaultValue={`${maxDiscount}`}
+									value={`${maxDiscount}`}
 									onChange={this.handleMaxDiscountChange}
 								/>
 								&#37;

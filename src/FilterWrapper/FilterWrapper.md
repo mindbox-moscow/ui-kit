@@ -1498,14 +1498,16 @@
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
-			shouldShowLabel={true}
+      shouldShowLabel={true}
+      onConditionStateToggle={() => console.log("state toggle")}
 		>
 			<FiltrationGroupComponent
 				state="shaded"
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-				shouldShowLabel={true}
+        shouldShowLabel={true}
+        onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="edit"
@@ -1583,7 +1585,8 @@
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-				shouldShowLabel={true}
+        shouldShowLabel={true}
+        onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="shaded"

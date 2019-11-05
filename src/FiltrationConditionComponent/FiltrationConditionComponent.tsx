@@ -9,15 +9,58 @@ import "./FiltrationConditionComponent.scss";
 
 type Props = StateProps & CallbackProps;
 
-export class FiltrationConditionComponent extends React.Component<Props> {
+interface State {
+	offsetTop: number;
+}
+
+const RANGE_OFFSET_TOP = 30;
+
+export class FiltrationConditionComponent extends React.Component<
+	Props,
+	State
+> {
 	public refComponent = React.createRef<HTMLElement>();
 	public refContent = React.createRef<HTMLDivElement>();
 
+	public state = {
+		offsetTop: 0
+	};
+
 	public componentDidMount() {
-		this.handleMoveUpParentPopupSergment();
+		window.addEventListener("scroll", this.scrollWindowsHeight);
+		this.handleMoveUpParentPopupSegment();
 	}
 
-	public handleMoveUpParentPopupSergment = () => {
+	public componentWillUnmount() {
+		window.removeEventListener("scroll", this.scrollWindowsHeight);
+	}
+
+	public scrollWindowsHeight = () => {
+		const { offsetTop } = this.state;
+		const { onConditionStateToggle, state } = this.props;
+		const refContent = this.refContent.current;
+
+		if (refContent) {
+			const { top } = refContent.getBoundingClientRect();
+			if (offsetTop === 0) {
+				this.setState({
+					offsetTop: top
+				});
+			}
+
+			if (
+				top > 0 &&
+				window.innerHeight >= top &&
+				offsetTop - RANGE_OFFSET_TOP > top &&
+				onConditionStateToggle &&
+				state === "edit"
+			) {
+				onConditionStateToggle();
+			}
+		}
+	};
+
+	public handleMoveUpParentPopupSegment = () => {
 		const refContent = this.refContent.current;
 
 		if (refContent) {
@@ -56,7 +99,10 @@ export class FiltrationConditionComponent extends React.Component<Props> {
 
 		const editModeContent = (
 			<>
-				<OverflowVisibleContainer parentRef={this.refComponent} onNeutralZoneClick={onConditionStateToggle}>
+				<OverflowVisibleContainer
+					parentRef={this.refComponent}
+					onNeutralZoneClick={onConditionStateToggle}
+				>
 					<FilterDetails
 						helpCaption={filterablePropertyName}
 						helpComponent={helpComponent}

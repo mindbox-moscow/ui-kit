@@ -19,7 +19,7 @@ interface State {
 	verticalBracket: boolean;
 }
 
-type SERACH_ELEMENT = "first" | "last";
+type SearchElementType = "first" | "last";
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 31;
@@ -68,33 +68,36 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					heightLine +=
-						firstChildElement.getBoundingClientRect().height / 2;
+					// const countEmptyGroup = this.getCountEmptyGroup(
+					// 	firstChildElement,
+					// 	searchClasses
+					// );
+					// console.log(firstChildElement, countEmptyGroup);
+					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
+						.height;
 
-					positionTop =
-						groupItems.length > 1
-							? firstChildElement.getBoundingClientRect().height /
-							  2
-							: 0;
-				}
-
-				if (
+					if (firstChildElementHeight > 90) {
+						heightLine +=
+							(firstChildElementHeight / MIN_HEIGHT) * 3;
+						positionTop +=
+							(firstChildElementHeight / MIN_HEIGHT) * 3;
+					}
+					heightLine += firstChildElementHeight / 2;
+					positionTop +=
+						groupItems.length > 1 ? firstChildElementHeight / 2 : 0;
+				} else if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationCondition
 					)
 				) {
 					heightLine += MIN_HEIGHT / 2;
-
 					positionTop = MIN_HEIGHT / 2;
-				}
-
-				if (
+				} else if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroupButtons
 					)
 				) {
 					heightLine += MIN_HEIGHT / 2;
-
 					positionTop = MIN_HEIGHT / 2;
 				}
 			}
@@ -131,9 +134,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						lastChildElement.getBoundingClientRect().height -
 						heightLastChild +
 						heightLastChild / 2;
-				}
-
-				if (
+				} else if (
 					lastChildElement.classList.contains(
 						SearchClasses.KitFiltrationCondition
 					)
@@ -145,9 +146,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					heightLine +=
 						lastChildElement.getBoundingClientRect().height -
 						MIN_HEIGHT / 2;
-				}
-
-				if (
+				} else if (
 					lastChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroupButtons
 					)
@@ -177,6 +176,31 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
 	};
 
+	public getCountEmptyGroup: any = (
+		rootElement: HTMLElement,
+		searchClasses: string[],
+		count: number = 0
+	) => {
+		const childElements = this.getChildElements(rootElement, searchClasses);
+
+		if (
+			childElements.length > 0 &&
+			childElements.length <= 2 &&
+			childElements[0].element.classList.contains(
+				SearchClasses.KitFiltrationGroup
+			)
+		) {
+			count++;
+			return this.getCountEmptyGroup(
+				childElements[0].element,
+				searchClasses,
+				count
+			);
+		} else {
+			return count;
+		}
+	};
+
 	public getChildElements = (
 		rootElement: HTMLElement,
 		searchClasses: string[]
@@ -201,28 +225,23 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public searchFirstLastElement = (
 		searchableElement: HTMLElement,
 		searchClasses: string[],
-		search: SERACH_ELEMENT
-	) => {
-		const items: HTMLElement[] = [];
-		searchableElement.childNodes.forEach((item: HTMLElement) => {
-			if (
-				searchClasses.some(className =>
-					item.classList.contains(className)
-				)
-			) {
-				items.push(item);
-			}
-		});
+		search: SearchElementType
+	): HTMLElement | null => {
+		const children = Array.from(
+			searchableElement.children
+		) as HTMLElement[];
 
-		if (items.length) {
-			if (search === "first") {
-				return items[0];
-			} else {
-				return items[items.length - 1];
-			}
-		} else {
-			return null;
+		if (search === "last") {
+			children.reverse();
 		}
+
+		return (
+			children.find((item: HTMLElement) => {
+				return searchClasses.some(className =>
+					item.classList.contains(className)
+				);
+			}) || null
+		);
 	};
 
 	public handleHoverAddClassLabel = () => {
@@ -497,8 +516,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 									) : (
 										labelMap[groupType]
 									)}
-</span>
-</>
+								</span>
+							</>
 						)}
 					</div>
 					<HorizontalBracket
@@ -520,7 +539,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				key="copy"
 				onClick={this.props.onConditionCopy}
 				className="kit-filtration-group__copy"
-				type="button">
+				type="button"
+			>
 				<IconSvg type="duplicate" />
 			</button>
 		);

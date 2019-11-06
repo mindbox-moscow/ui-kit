@@ -113,7 +113,7 @@
 					</Button>
 				}
       >
-      			<FiltrationGroupComponent
+      <FiltrationGroupComponent
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -137,56 +137,6 @@
 					</Button>
 				}
       >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
       </FiltrationGroupComponent>
       </FiltrationGroupComponent>
       </FiltrationGroupComponent>

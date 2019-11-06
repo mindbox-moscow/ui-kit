@@ -75,8 +75,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 					positionTop =
 						groupItems.length > 1
-							? firstChildElement.getBoundingClientRect().height /
-							2
+							? firstChildElement.getBoundingClientRect().height / 2
 							: 0;
 				}
 

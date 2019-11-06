@@ -43,7 +43,8 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		window.removeEventListener("resize", this.handleShowPopup);
 		window.removeEventListener("load", this.handleShowPopup);
 
-		this.windowClickListener.stop();
+		if (this.windowClickListener != null)
+			this.windowClickListener.stop();
 	}
 
 	public componentDidUpdate() {

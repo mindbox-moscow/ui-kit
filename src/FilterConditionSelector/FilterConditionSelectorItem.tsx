@@ -12,7 +12,7 @@ type ElementType =
 
 interface Props {
 	id: string;
-	pathFromRoot?: string[];
+	pathFromRoot: string[];
 	name: string;
 	type: ElementType;
 	isSelected: boolean;
@@ -118,10 +118,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 							<ChildItem
 								key={childId}
 								id={childId}
-								pathFromRoot={[
-									...(pathFromRoot || []),
-									childId
-								]}
+								pathFromRoot={[...pathFromRoot, childId]}
 							/>
 						))}
 					</ul>

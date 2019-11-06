@@ -2,17 +2,17 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
-import { LabelButton, HorizontalBracket } from "./components";
-import { StateProps, CallbackProps, SearchClasses } from "./types";
+import { HorizontalBracket, LabelButton } from "./components";
+import { CallbackProps, SearchClasses, StateProps } from "./types";
 
 import "./FiltrationGroupComponent.scss";
 
 type Props = StateProps & CallbackProps;
 
-type ItemsRootElement = {
+interface ItemsRootElement {
 	element: HTMLElement;
 	height: number;
-};
+}
 
 interface State {
 	horizontalBracket: ItemsRootElement[];
@@ -60,7 +60,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				"last"
 			);
 
-			const groupItems = this.getChildElements(groupRef, searchClasses);
+			// const groupItems = this.getChildElements(groupRef, searchClasses);
 
 			if (firstChildElement) {
 				if (
@@ -73,18 +73,21 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					// 	searchClasses
 					// );
 					// console.log(firstChildElement, countEmptyGroup);
+
 					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
 						.height;
 
-					if (firstChildElementHeight > 90) {
-						heightLine +=
-							(firstChildElementHeight / MIN_HEIGHT) * 3;
-						positionTop +=
-							(firstChildElementHeight / MIN_HEIGHT) * 3;
-					}
-					heightLine += firstChildElementHeight / 2;
-					positionTop +=
-						groupItems.length > 1 ? firstChildElementHeight / 2 : 0;
+					const theLine = firstChildElement.querySelector(
+						".kit-filtration-group__label-line"
+					) as HTMLDivElement;
+					const theMiddle =
+						theLine.offsetTop + theLine.offsetHeight / 2;
+
+					heightLine +=
+						firstChildElementHeight / 2 -
+						(firstChildElementHeight / 2 - theMiddle);
+
+					positionTop = theMiddle;
 				} else if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationCondition
@@ -533,7 +536,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	}
 
 	private renderCopyButton = () => {
-		if (!this.props.shouldShowDuplicateButton) return null;
+		if (!this.props.shouldShowDuplicateButton) {
+			return null;
+		}
 		return (
 			<button
 				key="copy"

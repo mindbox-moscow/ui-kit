@@ -6,8 +6,7 @@ import "./Input.scss";
 type SizeTypes = "small";
 
 interface Props {
-	defaultValue?: string;
-	value?: string;
+	value: string;
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;

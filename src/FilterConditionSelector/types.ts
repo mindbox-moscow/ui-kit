@@ -22,7 +22,7 @@ export interface Props {
 
 export interface ChildRendererProps {
 	id: string;
-	pathFromRoot?: string[];
+	pathFromRoot: string[];
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

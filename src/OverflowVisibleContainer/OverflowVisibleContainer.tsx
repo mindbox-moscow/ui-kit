@@ -112,7 +112,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		return createPortal(
 			<div
 				ref={this.containerRef}
-				className={cn("kit-overflow-visiblecontainer", className)}
+				className={cn("kit-overflow-visiblecontainer", "kit-overflow-isnt-neutral-zone-marker", className)}
 				style={{ left: positionLeft, top: positionTop }}
 			>
 				{isLoaded && children}

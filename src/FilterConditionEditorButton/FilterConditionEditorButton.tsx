@@ -15,40 +15,46 @@ type Props = ButtonProps &
 		iconType?: IconSvgTypes;
 	};
 
-export const FilterConditionEditorButton = (props: Props) => {
-	const refButton = React.createRef<HTMLButtonElement>();
+export class FilterConditionEditorButton extends React.Component<Props> {
+	private refButton = React.createRef<HTMLButtonElement>();
 
-	const {
-		toggleOpen,
-		label,
-		isOpened,
-		iconType,
-		autoFocus,
-		...otherProps
-	} = props;
+	public focus = () => {
+		(this.refButton.current as HTMLButtonElement).focus()
+	}
 
-	return (
-		<div className="kit-filter-editor">
-			<button
-				autoFocus={autoFocus}
-				ref={refButton}
-				className={cn("kit-filter-editor__btn", {
-					"kit-filter-editor__btn_open": isOpened
-				})}
-				type="button"
-				onClick={toggleOpen}
-			>
-				{iconType && <IconSvg type={iconType} />}
-				{label}
-			</button>
-			{isOpened && (
-				<OverflowVisibleContainer parentRef={refButton} onNeutralZoneClick={toggleOpen}>
-					<FilterConditionSelector
-						{...otherProps}
-						onConditionStateToggle={toggleOpen}
-					/>
-				</OverflowVisibleContainer>
-			)}
-		</div>
-	);
-};
+	public render() {
+		const {
+			toggleOpen,
+			label,
+			isOpened,
+			iconType,
+			autoFocus,
+			...otherProps
+		} = this.props;
+
+		return (
+			<div className="kit-filter-editor">
+				<button
+					autoFocus={autoFocus}
+					ref={this.refButton}
+					className={cn("kit-filter-editor__btn", {
+						"kit-filter-editor__btn_open": isOpened
+					})}
+					type="button"
+					onClick={toggleOpen}
+				>
+					{iconType && <IconSvg type={iconType} />}
+					{label}
+				</button>
+				{isOpened && (
+					<OverflowVisibleContainer parentRef={this.refButton} onNeutralZoneClick={toggleOpen}>
+						<FilterConditionSelector
+							{...otherProps}
+							onConditionStateToggle={toggleOpen}
+						/>
+					</OverflowVisibleContainer>
+				)}
+			</div>
+		);
+	}
+}

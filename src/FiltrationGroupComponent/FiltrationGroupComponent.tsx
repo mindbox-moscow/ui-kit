@@ -1,9 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
-import { HorizontalBracket, LabelButton } from "./components";
-import { CallbackProps, SearchClasses, StateProps } from "./types";
+import { LabelButton, HorizontalBracket } from "./components";
+import { StateProps, CallbackProps, SearchClasses } from "./types";
 
 import "./FiltrationGroupComponent.scss";
 
@@ -34,7 +33,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
-	private kitFiltrationLabelButtonsRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
 
 	public moveLabelAtCenterOfBracket = () => {
@@ -165,7 +163,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop - WIDTH_BRACKET}px`;
 			} else {
-				labelLineRef.style.removeProperty('top');
+				labelLineRef.style.removeProperty("top");
 			}
 		}
 
@@ -330,7 +328,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			} else {
 				horizontalBracket.map((item: ItemsRootElement, index) => {
 					if (repeater) {
-						if (item.height !== groupItems[index].height || item.element !== groupItems[index].element) {
+						if (
+							item.height !== groupItems[index].height ||
+							item.element !== groupItems[index].element
+						) {
 							this.setState({
 								horizontalBracket: groupItems
 							});
@@ -449,49 +450,33 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 						className="kit-filtration-group__label-line"
 					>
 						{shouldShowLabel && (
-							<>
-								<span className="kit-filtration-group__label-text">
-									{state === "edit" ? (
-										<>
-											<div
-												ref={
-													this
-														.kitFiltrationLabelButtonsRef
-												}
-												className="kit-filtration-group__label-text-height"
-											/>
-											<OverflowVisibleContainer
-												className={cn(
-													"kit-filtration-group__label-text-buttons",
-													`kit-filtration-group__label-text-buttons_${groupType}`
-												)}
-												parentRef={
-													this
-														.kitFiltrationLabelButtonsRef
-												}
-												onNeutralZoneClick={null}
-											>
-												{this.renderCopyButton()}
-												<button
-													key="remove"
-													onClick={onConditionRemove}
-													className="kit-filtration-group__remove"
-													type="button"
-												>
-													<IconSvg type="trash" />
-												</button>
-												<LabelButton
-													onToggle={onGroupTypeToggle}
-													types={labelMap}
-													activeType={groupType}
-												/>
-											</OverflowVisibleContainer>
-										</>
-									) : (
-										labelMap[groupType]
-									)}
-								</span>
-							</>
+							<span className="kit-filtration-group__label-text">
+								{state === "edit" ? (
+									<div
+										className={cn(
+											"kit-filtration-group__label-text-buttons",
+											`kit-filtration-group__label-text-buttons_${groupType}`
+										)}
+									>
+										{this.renderCopyButton()}
+										<button
+											key="remove"
+											onClick={onConditionRemove}
+											className="kit-filtration-group__remove"
+											type="button"
+										>
+											<IconSvg type="trash" />
+										</button>
+										<LabelButton
+											onToggle={onGroupTypeToggle}
+											types={labelMap}
+											activeType={groupType}
+										/>
+									</div>
+								) : (
+									labelMap[groupType]
+								)}
+							</span>
 						)}
 					</div>
 					<HorizontalBracket

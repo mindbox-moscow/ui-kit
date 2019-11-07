@@ -6,7 +6,7 @@ import "./Input.scss";
 type SizeTypes = "small";
 
 interface Props {
-	defaultValue: string;
+	value: string;
 	type?: string;
 	placeholder?: string;
 	maxLength?: number;
@@ -45,7 +45,7 @@ export class Input extends React.PureComponent<Props, State> {
 
 	public render() {
 		const {
-			defaultValue,
+			value,
 			type,
 			placeholder,
 			onChange,
@@ -73,7 +73,7 @@ export class Input extends React.PureComponent<Props, State> {
 						error && "kit-input-field_error",
 						className
 					)}
-					defaultValue={defaultValue}
+					value={value}
 					maxLength={maxLength}
 					placeholder={placeholder}
 					aria-hidden={true}

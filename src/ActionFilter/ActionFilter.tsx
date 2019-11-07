@@ -44,7 +44,7 @@ export class ActionFilter extends React.Component<Props> {
 					<div className="kit-action-filter__name">
 						<div className="kit-action-filter__title">Название</div>
 						<Input
-							defaultValue={name}
+							value={name}
 							onChange={onChangeName}
 							type="text"
 						/>

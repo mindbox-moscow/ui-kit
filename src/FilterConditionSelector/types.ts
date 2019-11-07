@@ -1,6 +1,7 @@
 export interface Props {
 	childRenderer: React.ComponentType<ChildRendererProps>;
 	searchTerm: string;
+	notFoundMessage?: string;
 	rootIds: string[];
 	onSearchTermChange: (changedSearchTerm: string) => void;
 	filterLabel: string;
@@ -21,7 +22,7 @@ export interface Props {
 
 export interface ChildRendererProps {
 	id: string;
-	pathFromRoot?: string[];
+	pathFromRoot: string[];
 }
 
 export type IMenuModeMap = { [key in MenuMode]: string };

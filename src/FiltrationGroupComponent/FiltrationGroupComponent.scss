@@ -102,7 +102,13 @@ $minHeight: 31px;
 		> .kit-filtration-group__label_or,
 		> .kit-filtration-group__label_and {
 			.kit-filtration-group__label-text {
-				visibility: hidden;
+				transform: translateX(-100%);
+				background-color: transparent;
+				margin-left: 2px;
+
+				&:hover {
+					background-color: transparent;
+				}
 			}
 		}
 
@@ -135,6 +141,10 @@ $minHeight: 31px;
 			.kit-filtration-group__label-text-height {
 				margin-right: -22px;
 				margin-top: 4px;
+			}
+
+			.kit-filtration-group__label-text-buttons {
+				margin-right: -11px;
 			}
 		}
 	}
@@ -279,7 +289,7 @@ $minHeight: 31px;
 	align-items: center;
 	justify-content: center;
 	min-width: 26px;
-	height: 16px;
+	min-height: 16px;
 	border-radius: 3px;
 	font-family: "PT Sans", sans-serif;
 	color: #fff;
@@ -336,11 +346,6 @@ $minHeight: 31px;
 			left: -10px;
 			top: 0;
 			z-index: 3;
-		}
-
-		.kit-filter-editor__btn,
-		.kit-button {
-			opacity: 1;
 		}
 	}
 }
@@ -424,11 +429,8 @@ $minHeight: 31px;
 	display: flex;
 	align-items: center;
 	height: 22px;
-	margin-top: -12px;
-	margin-left: 2px;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	background-color: #fff;
-	transform: translateX(-100%);
 	border-radius: 4px 0 0 4px;
 	box-sizing: border-box;
 

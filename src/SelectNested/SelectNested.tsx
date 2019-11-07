@@ -101,7 +101,7 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 				<Input
 					type="search"
 					size="small"
-					defaultValue={this.state.filter}
+					value={this.state.filter}
 					onChange={this.handleFilter}
 				/>
 			</div>

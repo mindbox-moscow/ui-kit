@@ -22,7 +22,7 @@ type SearchElementType = "first" | "last";
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 31;
-const WIDTH_BRACKET = 2;
+const BRACKET_WIDTH = 2;
 
 export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public state = {
@@ -67,17 +67,17 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
 						.height;
 
-					const theLine = firstChildElement.querySelector(
+					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
-					const theMiddle =
-						theLine.offsetTop + theLine.offsetHeight / 2;
+					const labelLineMiddle =
+						labelLine.offsetTop + labelLine.offsetHeight / 2;
 
 					heightLine +=
 						firstChildElementHeight / 2 -
-						(firstChildElementHeight / 2 - theMiddle);
+						(firstChildElementHeight / 2 - labelLineMiddle);
 
-					positionTop = theMiddle;
+					positionTop = labelLineMiddle;
 				} else if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationCondition
@@ -155,13 +155,13 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
 					.height -
 					heightLine +
-					WIDTH_BRACKET}px`;
+					BRACKET_WIDTH}px`;
 			} else {
 				labelLineRef.style.height = "0px";
 			}
 
 			if (positionTop !== 0) {
-				labelLineRef.style.top = `${positionTop - WIDTH_BRACKET}px`;
+				labelLineRef.style.top = `${positionTop - BRACKET_WIDTH}px`;
 			} else {
 				labelLineRef.style.removeProperty("top");
 			}
@@ -174,24 +174,21 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	public getChildElements = (
 		rootElement: HTMLElement,
 		searchClasses: string[]
-	) => {
+	): ItemsRootElement[] | [] => {
 		const children = Array.from(rootElement.childNodes);
-		const items: ItemsRootElement[] = [];
 
-		children.map((item: HTMLElement) => {
-			if (
-				searchClasses.some(className =>
+		return children
+			.filter((item: HTMLElement) => {
+				return searchClasses.some(className =>
 					item.classList.contains(className)
-				)
-			) {
-				items.push({
+				);
+			})
+			.map((item: HTMLElement) => {
+				return {
 					element: item,
 					height: item.getBoundingClientRect().height
-				});
-			}
-		});
-
-		return items;
+				} as ItemsRootElement;
+			});
 	};
 
 	public searchFirstLastElement = (
@@ -482,7 +479,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					<HorizontalBracket
 						brackets={horizontalBracket}
 						minHeight={MIN_HEIGHT}
-						widthBracket={WIDTH_BRACKET}
+						bracketWidth={BRACKET_WIDTH}
 					/>
 					{verticalBracket}
 				</div>

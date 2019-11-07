@@ -4,7 +4,11 @@ type Handler = () => void;
 
 export const IsntNeutralZoneMarker: string = "kit-overflow-isnt-neutral-zone-marker";
 
-export const WindowClickListener = function (handler: Handler, ...excludingTargetElements: HTMLElement[]) {
+export interface IWindowClickListener {
+    stop: () => void;
+}
+
+export const CreateWindowClickListener = function (handler: Handler, ...excludingTargetElements: HTMLElement[]): IWindowClickListener {
 
     const fromIsntNeutralZoneEvent = (event: Event) => {
         const isClickInsideNotNeutralZone = event.composedPath().some(
@@ -31,7 +35,7 @@ export const WindowClickListener = function (handler: Handler, ...excludingTarge
         );
     }
 
-    const clickOnWindow = (event: Event) => {
+    const onClickInWindow = (event: Event) => {
         if (
             event.isTrusted
             && !fromIsntNeutralZoneEvent(event)
@@ -41,11 +45,11 @@ export const WindowClickListener = function (handler: Handler, ...excludingTarge
         }
     }
 
-    setTimeout(() => window.addEventListener("click", clickOnWindow));
+    window.addEventListener("click", onClickInWindow);
 
     return {
         stop: function () {
-            window.removeEventListener("click", clickOnWindow);
+            window.removeEventListener("click", onClickInWindow);
         }
     }
 }

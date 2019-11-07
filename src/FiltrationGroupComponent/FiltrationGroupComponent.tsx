@@ -7,7 +7,8 @@ import { StateProps, CallbackProps, SearchClasses } from "./types";
 import "./FiltrationGroupComponent.scss";
 import {
 	IsntNeutralZoneMarker,
-	WindowClickListener
+	IWindowClickListener,
+	CreateWindowClickListener
 } from "../WindowClickListener";
 
 type Props = StateProps & CallbackProps;
@@ -350,7 +351,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		}
 	};
 
-	private windowClickListener: any;
+	private windowClickListener: IWindowClickListener;
 
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
@@ -377,7 +378,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		const { onNeutralZoneClick } = this.props;
 		if (onNeutralZoneClick != null) {
 			this.windowClickListener =
-				WindowClickListener(onNeutralZoneClick, this.kitFiltrationRef.current as HTMLElement);
+				CreateWindowClickListener(onNeutralZoneClick, this.kitFiltrationRef.current as HTMLElement);
 		}
 	}
 

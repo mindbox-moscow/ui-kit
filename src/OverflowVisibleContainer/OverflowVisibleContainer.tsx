@@ -3,12 +3,12 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { State, Props } from "./types";
 
-import {
-	WindowClickListener,
-	IsntNeutralZoneMarker
-} from "../WindowClickListener";
-
 import "./OverflowVisibleContainer.scss";
+import {
+	IsntNeutralZoneMarker,
+	IWindowClickListener,
+	CreateWindowClickListener
+} from "../WindowClickListener";
 
 export class OverflowVisibleContainer extends React.Component<Props> {
 	public state: State = {
@@ -17,11 +17,11 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		isLoaded: false
 	};
 
+	private windowClickListener: IWindowClickListener
+
 	private portal = document.createElement("div");
 
 	private containerRef = React.createRef<HTMLDivElement>();
-
-	public windowClickListener: any;
 
 	public componentDidMount() {
 		const { portal } = this;
@@ -30,10 +30,18 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		this.handleShowPopup();
 
-		const { onNeutralZoneClick } = this.props;
-		if (onNeutralZoneClick != null) {
-			this.windowClickListener = WindowClickListener(onNeutralZoneClick, this.containerRef.current as HTMLElement);
-		}
+
+		// setTimeout предотвращает обработку 
+		// любого click по window
+		// послужившого причиной cоздания данного компонента
+		setTimeout(() => {
+			if (this.containerRef.current != null && this.props.onNeutralZoneClick != null) {
+				this.windowClickListener = CreateWindowClickListener(
+					this.props.onNeutralZoneClick,
+					this.containerRef.current as HTMLElement
+				)
+			}
+		})
 	}
 
 	public componentWillUnmount() {
@@ -43,8 +51,12 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		window.removeEventListener("resize", this.handleShowPopup);
 		window.removeEventListener("load", this.handleShowPopup);
 
-		if (this.windowClickListener != null)
-			this.windowClickListener.stop();
+		// Так как windowClickListener создаётся через setTimeout, то и его стопинг реализуется также
+		setTimeout(() => {
+			if (this.windowClickListener != undefined) {
+				this.windowClickListener.stop();
+			}
+		})
 	}
 
 	public componentDidUpdate() {

@@ -37,7 +37,6 @@ export const WindowClickListener = function (handler: Handler, ...excludingTarge
             && !fromIsntNeutralZoneEvent(event)
             && !fromExcludingTargetElementsEvent(event)
         ) {
-            console.warn("WindowClickListener.clickOnWindow");
             handler();
         }
     }

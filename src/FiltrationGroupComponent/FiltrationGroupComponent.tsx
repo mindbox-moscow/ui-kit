@@ -60,20 +60,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				"last"
 			);
 
-			// const groupItems = this.getChildElements(groupRef, searchClasses);
-
 			if (firstChildElement) {
 				if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					// const countEmptyGroup = this.getCountEmptyGroup(
-					// 	firstChildElement,
-					// 	searchClasses
-					// );
-					// console.log(firstChildElement, countEmptyGroup);
-
 					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
 						.height;
 
@@ -172,6 +164,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop - WIDTH_BRACKET}px`;
+			} else {
+				labelLineRef.style.removeProperty('top');
 			}
 		}
 
@@ -179,37 +173,14 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		window.addEventListener("resize", this.moveLabelAtCenterOfBracket);
 	};
 
-	public getCountEmptyGroup: any = (
-		rootElement: HTMLElement,
-		searchClasses: string[],
-		count: number = 0
-	) => {
-		const childElements = this.getChildElements(rootElement, searchClasses);
-
-		if (
-			childElements.length > 0 &&
-			childElements.length <= 2 &&
-			childElements[0].element.classList.contains(
-				SearchClasses.KitFiltrationGroup
-			)
-		) {
-			count++;
-			return this.getCountEmptyGroup(
-				childElements[0].element,
-				searchClasses,
-				count
-			);
-		} else {
-			return count;
-		}
-	};
-
 	public getChildElements = (
 		rootElement: HTMLElement,
 		searchClasses: string[]
 	) => {
+		const children = Array.from(rootElement.childNodes);
 		const items: ItemsRootElement[] = [];
-		rootElement.childNodes.forEach((item: HTMLElement) => {
+
+		children.map((item: HTMLElement) => {
 			if (
 				searchClasses.some(className =>
 					item.classList.contains(className)
@@ -359,7 +330,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			} else {
 				horizontalBracket.map((item: ItemsRootElement, index) => {
 					if (repeater) {
-						if (item.height !== groupItems[index].height) {
+						if (item.height !== groupItems[index].height || item.element !== groupItems[index].element) {
 							this.setState({
 								horizontalBracket: groupItems
 							});

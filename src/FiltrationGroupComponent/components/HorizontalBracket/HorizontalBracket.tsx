@@ -36,13 +36,17 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								positionTop = height + item.height / 2;
+								const theLine = item.element.querySelector(
+									".kit-filtration-group__label-line"
+								) as HTMLDivElement;
+
+								positionTop = theLine.offsetTop +
+									theLine.offsetHeight / 2 - widthBracket;
 							}
 							break;
 
@@ -56,9 +60,7 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
@@ -98,9 +100,7 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)

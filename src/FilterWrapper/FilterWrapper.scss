@@ -58,6 +58,10 @@ $clearButtonCountColor: #a4a4a4;
 			pointer-events: none;
 		}
 	}
+
+	~ .kit-filtration-group__label-line {
+		padding-top: 2px;
+	}
 }
 
 .kit-filter__wrap-filter {

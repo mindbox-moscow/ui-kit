@@ -154,7 +154,7 @@ $searchFocusBgColor: #fffde5;
 				&::before {
 					content: "";
 					position: absolute;
-					left: 0;
+					left: 1px;
 					display: block;
 					width: 8px;
 					height: 8px;
@@ -169,6 +169,39 @@ $searchFocusBgColor: #fffde5;
 				.kit-filter-condition-selector__hierarchy-name {
 					&::before {
 						background-color: #fff;
+					}
+				}
+			}
+		}
+
+		&:not(.kit-filter-condition-selector__hierarchy-item_not-child) {
+			> .kit-filter-condition-selector__hierarchy-button {
+				.kit-filter-condition-selector__hierarchy-name {
+					&::before {
+						border-top: 5px solid transparent;
+						border-bottom: 5px solid transparent;
+						border-left: 7px solid $toggleCircleColor;
+						background-color: transparent;
+						border-radius: 0;
+					}
+				}
+
+				&_selected,
+				&:hover {
+					.kit-filter-condition-selector__hierarchy-name {
+						&::before {
+							border-left-color: #fff;
+						}
+					}
+				}
+			}
+
+			&.kit-filter-condition-selector__hierarchy-item_expanded {
+				> .kit-filter-condition-selector__hierarchy-button {
+					.kit-filter-condition-selector__hierarchy-name {
+						&::before {
+							transform: rotate(90deg);
+						}
 					}
 				}
 			}
@@ -208,7 +241,7 @@ $searchFocusBgColor: #fffde5;
 
 		&:last-child {
 			&::before {
-				height: 13px;
+				height: 14px;
 			}
 		}
 	}

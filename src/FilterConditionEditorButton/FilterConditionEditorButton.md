@@ -392,6 +392,27 @@ const segmentHistory = () => (
 );
 
 const allElementsDictionary = {
+	contents: {
+		id: "contents",
+		type: "simpleFilterableProperty",
+		name: "Содержание",
+		helpCaption: "Содержание",
+		hasChildren: true,
+		isExpanded: true,
+		onSelect: () => console.log("onSelect Ещё простая категория"),
+		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={segmentViewHistory()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
+		isSelected: false,
+		childIds: [],
+		helpComponent: <div>Хелп к "Простому фильтру"</div>
+	},
 	segmentViewHistory: {
 		id: "segmentViewHistory",
 		type: "simpleFilterableProperty",
@@ -760,7 +781,7 @@ const allElementsDictionary = {
 			/>
 		),
 		isSelected: false,
-		childIds: [],
+		childIds: ["contents"],
 		helpComponent: <div>Хелп к "Простому фильтру"</div>
 	},
 	electronicCard: {
@@ -1560,6 +1581,7 @@ const createChildRenderer = (
 					onSelect={this.onSelect}
 					toggleExpand={this.onToggleExpand}
 					searchTerm="ещё"
+					pathFromRoot={this.props.pathFromRoot}
 				/>
 			);
 		}

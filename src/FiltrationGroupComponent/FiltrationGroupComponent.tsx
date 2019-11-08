@@ -5,6 +5,11 @@ import { LabelButton, HorizontalBracket } from "./components";
 import { StateProps, CallbackProps, SearchClasses } from "./types";
 
 import "./FiltrationGroupComponent.scss";
+import {
+	IsntNeutralZoneMarker,
+	IWindowClickListener,
+	CreateWindowClickListener
+} from "../WindowClickListener";
 
 type Props = StateProps & CallbackProps;
 
@@ -340,6 +345,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		}
 	};
 
+	private windowClickListener: IWindowClickListener;
+
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
 		this.handleCreateVerticalBrackets();
@@ -360,6 +367,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				"mouseover",
 				this.handleHoverAddClassLabel
 			);
+		}
+
+		const { onNeutralZoneClick } = this.props;
+		if (onNeutralZoneClick != null) {
+			this.windowClickListener =
+				CreateWindowClickListener(onNeutralZoneClick, this.kitFiltrationRef.current as HTMLElement);
 		}
 	}
 
@@ -391,6 +404,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				this.handleHoverRemoveClassLabel
 			);
 		}
+
+		if (this.windowClickListener != null)
+			this.windowClickListener.stop();
 	}
 
 	public componentDidUpdate() {
@@ -424,7 +440,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		return (
 			<ul
 				ref={this.kitFiltrationRef}
-				className={cn("kit-filtration-group", {
+				className={cn("kit-filtration-group", IsntNeutralZoneMarker, {
 					"kit-filtration-group_edit": state === "edit",
 					"kit-filtration-group_shaded": state === "shaded",
 					"kit-filtration-group_read-only": state === "readOnly",
@@ -471,8 +487,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 										/>
 									</div>
 								) : (
-									labelMap[groupType]
-								)}
+										labelMap[groupType]
+									)}
 							</span>
 						)}
 					</div>

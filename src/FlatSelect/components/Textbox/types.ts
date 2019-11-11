@@ -1,5 +1,6 @@
 import { Height, InputType, Width } from "../../modules";
 
+// tslint:disable-next-line: interface-name
 export interface TextboxProps {
 	onChange: (changedValue: string | number) => void;
 	onEnterFinished?: (changedValue: string | number) => void;
@@ -21,4 +22,9 @@ export interface TextboxProps {
 	isValid?: boolean;
 	title?: string;
 	precision?: number;
+}
+
+// tslint:disable-next-line: interface-name
+export interface ClassDictionary {
+	[id: string]: boolean | undefined | null;
 }

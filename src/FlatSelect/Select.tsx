@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
+import { Height, Width } from "./modules";
 import { SelectedItemKey, SelectItem, SelectProps, SelectState } from "./types";
-import { Height, Width } from "./utils";
 
 export class Select<TValue> extends React.Component<
 	SelectProps<TValue>,

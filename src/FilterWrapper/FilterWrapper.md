@@ -45,6 +45,144 @@ class ExampleFlatSelectorSimple extends React.Component {
 		transform: "translateX(-50%)"
 	}}
 >
+	<FilterWrapper
+		filterActions={[]}
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+	>
+		<FiltrationGroupComponent
+			state="view"
+			groupType="or"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={true}
+			shouldShowButtons={true}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
+			}
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+      >
+      			<FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+      >
+      			<FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+      >
+      <FiltrationGroupComponent
+				state="view"
+				groupType="and"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+      >
+      </FiltrationGroupComponent>
+      </FiltrationGroupComponent>
+      </FiltrationGroupComponent>
+      </FiltrationGroupComponent>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
 	<div style={{}}>
 		<FilterWrapper
 			filterActions={[]}

@@ -1,4 +1,4 @@
-import { Height, Width } from "../../types";
+import { Height, Width } from "../../modules";
 
 // tslint:disable-next-line:interface-name
 export interface DropdownProps {
@@ -24,4 +24,9 @@ export interface DropdownState {
 	show: boolean;
 	isInBottomOfScreen: boolean;
 	dropdownId: string;
+}
+
+// tslint:disable-next-line: interface-name
+export interface DropdownClientRect extends ClientRect {
+	widthOverride?: number;
 }

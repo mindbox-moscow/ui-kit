@@ -165,10 +165,7 @@ export class SelectMulti extends React.PureComponent<IProps, IState> {
 		return selectedOptions.length === 0 ||
 			selectedOptions.length === options.length
 			? placeholder
-			: selectedOptions.reduce(
-					(acc, { title }, i) => `${acc}${i > 0 ? ";" : ""} ${title}`,
-					""
-			  );
+			: selectedOptions.map(opt => opt.title).join("; ");
 	};
 
 	public componentDidMount() {

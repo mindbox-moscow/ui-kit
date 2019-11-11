@@ -4,7 +4,7 @@ export interface PanelProps {
 	isNested?: boolean;
 	boundingRectangle: DropdownClientRect;
 	className?: string;
-	clickOutsideEventHandler: (event: JQueryEventObject) => void;
+	clickOutsideEventHandler: (event: PanelEventObject) => void;
 	allowedClickTargetClasses?: string[];
 }
 
@@ -13,13 +13,15 @@ export interface DropdownClientRect extends ClientRect {
 	widthOverride?: number;
 }
 
-interface JQueryEventObject
-	extends BaseJQueryEventObject,
-		JQueryInputEventObject,
-		JQueryMouseEventObject,
-		JQueryKeyEventObject {}
+// tslint:disable-next-line: interface-name
+export interface PanelEventObject
+	extends BasePanelEventObject,
+		PanelInputEventObject,
+		PanelMouseEventObject,
+		PanelKeyEventObject {}
 
-interface BaseJQueryEventObject extends Event {
+// tslint:disable-next-line: interface-name
+export interface BasePanelEventObject extends Event {
 	data: any;
 	delegateTarget: Element;
 	namespace: string;
@@ -39,14 +41,16 @@ interface BaseJQueryEventObject extends Event {
 	stopPropagation(): void;
 }
 
-interface JQueryInputEventObject extends BaseJQueryEventObject {
+// tslint:disable-next-line: interface-name
+export interface PanelInputEventObject extends BasePanelEventObject {
 	altKey: boolean;
 	ctrlKey: boolean;
 	metaKey: boolean;
 	shiftKey: boolean;
 }
 
-interface JQueryMouseEventObject extends JQueryInputEventObject {
+// tslint:disable-next-line: interface-name
+export interface PanelMouseEventObject extends PanelInputEventObject {
 	button: number;
 	clientX: number;
 	clientY: number;
@@ -58,7 +62,8 @@ interface JQueryMouseEventObject extends JQueryInputEventObject {
 	screenY: number;
 }
 
-interface JQueryKeyEventObject extends JQueryInputEventObject {
+// tslint:disable-next-line: interface-name
+export interface PanelKeyEventObject extends PanelInputEventObject {
 	char: any;
 	charCode: number;
 	key: any;

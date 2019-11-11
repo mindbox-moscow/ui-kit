@@ -45,12 +45,10 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 			return null;
 		};
 
-		const liClasses = _.reduce<string, string>(
-			liClassesArray,
+		const liClasses = liClassesArray.reduce(
 			(curr, next) => curr + " " + next
 		);
-		const divClasses = _.reduce<string, string>(
-			divClassesArray,
+		const divClasses = divClassesArray.reduce(
 			(curr, next) => curr + " " + next
 		);
 
@@ -80,6 +78,7 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 			return;
 		}
 
+		// tslint:disable-next-line: no-unused-expression
 		onClickHandler && onClickHandler(event);
 	};
 }

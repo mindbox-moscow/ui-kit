@@ -1,5 +1,5 @@
 // tslint:disable-next-line:interface-name
-export interface SearchRowProps {
+export interface SelectSearchRowProps {
 	text: string | JSX.Element;
 	title?: string | JSX.Element;
 
@@ -11,5 +11,5 @@ export interface SearchRowProps {
 	hasNested?: boolean;
 	className?: string;
 
-	onClickHandler: React.MouseEventHandler<{}>;
+	onClickHandler?: React.MouseEventHandler<{}>;
 }

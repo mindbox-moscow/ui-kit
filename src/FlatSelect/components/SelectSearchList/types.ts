@@ -1,5 +1,4 @@
-// tslint:disable-next-line:interface-name
-export interface SearchListProps {
+export interface SelectSearchListProps {
 	onInputChange: (changedValue: string) => void;
 	className?: string;
 	searchTextValue: string;
@@ -11,8 +10,7 @@ export interface SearchListProps {
 	makeSelectedComponents?: () => JSX.Element[];
 }
 
-// tslint:disable-next-line:interface-name
-export interface SearchListState {
+export interface SelectSearchListState {
 	minimized: boolean;
 }
 

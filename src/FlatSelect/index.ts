@@ -1,2 +1,2 @@
-export * from './FlatSelect'
-export * from './types'
+export * from "./Select";
+export * from "./types";

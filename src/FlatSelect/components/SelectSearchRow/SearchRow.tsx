@@ -1,18 +1,24 @@
-import * as React from 'react'
-import { renderToStaticMarkup } from 'react-dom/server'
-import { SearchRowProps } from './types'
+import * as React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { SelectSearchRowProps } from "./types";
 
-export class SearchRow extends React.Component<SearchRowProps> {
+export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 	public render() {
 		const liClassesArray = ["selectR-result"];
 
 		if (this.props.className != null) {
 			liClassesArray.push(this.props.className);
-		} else if (this.props.unselectable) {
+		}
+
+		if (this.props.unselectable) {
 			liClassesArray.push("selectR-unselectable");
-		} else if (this.props.disabled) {
+		}
+
+		if (this.props.disabled) {
 			liClassesArray.push("selectR-disabled");
-		} else if (this.props.isSelected) {
+		}
+
+		if (this.props.isSelected) {
 			liClassesArray.push(
 				this.props.isForMultiSelect
 					? "selectR-selected-multi"
@@ -25,23 +31,26 @@ export class SearchRow extends React.Component<SearchRowProps> {
 			divClassesArray.push("selectR-request-item");
 		}
 
-		const Children = () => {
+		const children = (): JSX.Element | null => {
 			if (this.props.hasNested) {
 				liClassesArray.push("selectR-nesting");
+
 				return (
 					<ul className="selectR-results selectR-results-default">
 						{this.props.children}
 					</ul>
 				);
-			} else {
-				return null
 			}
+
+			return null;
 		};
 
-		const liClasses = liClassesArray.reduce(
+		const liClasses = _.reduce<string, string>(
+			liClassesArray,
 			(curr, next) => curr + " " + next
 		);
-		const divClasses = divClassesArray.reduce(
+		const divClasses = _.reduce<string, string>(
+			divClassesArray,
 			(curr, next) => curr + " " + next
 		);
 
@@ -59,14 +68,18 @@ export class SearchRow extends React.Component<SearchRowProps> {
 				>
 					{this.props.text}
 				</div>
-				<Children />
+				{children}
 			</li>
 		);
 	}
 
 	private onClick: React.MouseEventHandler<{}> = event => {
-		if (this.props.disabled) { return; }
+		const { disabled, onClickHandler } = this.props;
 
-		this.props.onClickHandler(event);
+		if (disabled) {
+			return;
+		}
+
+		onClickHandler && onClickHandler(event);
 	};
 }

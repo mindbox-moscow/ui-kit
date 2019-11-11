@@ -1,24 +1,23 @@
 import * as React from "react";
-import { Dropdown, SearchList, SearchRow } from "./components";
-import {
-	getClass,
-	Height,
-	SelectedItemKey,
-	SelectItem,
-	SelectProps,
-	SelectState,
-	Width
-} from "./types";
+import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
+import { SelectedItemKey, SelectItem, SelectProps, SelectState } from "./types";
+import { Height, Width } from "./utils";
 
-export class FlatSelect<TValue> extends React.Component<
+export class Select<TValue> extends React.Component<
 	SelectProps<TValue>,
 	SelectState
 > {
-	public state = {
-		searchTerm: ""
-	};
+	private dropdownRef: React.RefObject<Dropdown>;
 
-	private dropdownRef = React.createRef<Dropdown>();
+	constructor(props: SelectProps<TValue>) {
+		super(props);
+
+		this.dropdownRef = React.createRef<Dropdown>();
+
+		this.state = {
+			searchTerm: ""
+		};
+	}
 
 	public hide = () => {
 		this.dropdownRef.current!.hide();
@@ -28,9 +27,9 @@ export class FlatSelect<TValue> extends React.Component<
 		this.setState({ searchTerm: "" });
 	};
 
-	public render() {
-		let selectedItemKey: SelectedItemKey | null;
-		let selectedItemText: string | JSX.Element | null;
+	public render(): JSX.Element {
+		let selectedItemKey: SelectedItemKey;
+		let selectedItemText: string | JSX.Element;
 
 		const selectedValue: TValue | TValue[] = this.props.selectedValue;
 
@@ -47,8 +46,8 @@ export class FlatSelect<TValue> extends React.Component<
 					? this.props.selectedItemFormatter(selectedValue)
 					: this.defaultSelectedValueFormatter(selectedValue);
 		} else {
-			selectedItemKey = null;
-			selectedItemText = null;
+			selectedItemKey = "";
+			selectedItemText = "";
 		}
 
 		return (
@@ -58,9 +57,9 @@ export class FlatSelect<TValue> extends React.Component<
 				headerInfo={selectedItemText}
 				placeholder={this.props.placeholder}
 				disabled={this.props.disabled}
-				className={`${getClass(this.props.width || Width.Normal)} ${
-					this.props.className
-				}`}
+				className={`${Width.getClass(
+					this.props.width || Width.Normal
+				)} ${this.props.className}`}
 				openedClassName="form-control select2-container-active select2-dropdown-open"
 				height={this.props.height || Height.Small}
 				onSelectionClear={
@@ -69,13 +68,13 @@ export class FlatSelect<TValue> extends React.Component<
 						: null
 				}
 			>
-				<SearchList
+				<SelectSearchList
 					onInputChange={this.searchTermChanged}
 					searchTextValue={this.state.searchTerm}
 					headerInfo={this.props.headerInfo}
 				>
 					{this.renderRows(selectedItemKey)}
-				</SearchList>
+				</SelectSearchList>
 			</Dropdown>
 		);
 	}
@@ -84,7 +83,7 @@ export class FlatSelect<TValue> extends React.Component<
 		this.setState({ searchTerm: newSearchTerm });
 	};
 
-	private onChange = (newSelectedValue: TValue) => () => {
+	private onChange = (newSelectedValue: TValue) => {
 		// Для моновыпадалки есть смысл закрывать выпадашку после выбора.
 		if (!(this.props.selectedValue instanceof Array)) {
 			this.hide();
@@ -94,7 +93,7 @@ export class FlatSelect<TValue> extends React.Component<
 
 	private defaultSelectedValueFormatter = (
 		selectedValue: TValue | TValue[]
-	): string | null => {
+	): string => {
 		if (selectedValue instanceof Array) {
 			const selectedItems = selectedValue.map(value =>
 				this.props.itemFormatter(value)
@@ -102,19 +101,23 @@ export class FlatSelect<TValue> extends React.Component<
 			const selectedItemsCount = selectedItems.length;
 
 			if (selectedItemsCount === 0) {
-				return null;
-			} else if (selectedItemsCount === 1) {
+				return "";
+			}
+
+			if (selectedItemsCount === 1) {
 				return selectedItems[0].text;
-			} else if (this.props.isLoading) {
-				return this.props.selectElementCaption(
-					{ selectedItemsCount }
-				);
+			}
+
+			if (this.props.isLoading) {
+				return this.props.selectElementCaption({ selectedItemsCount });
 			}
 
 			const itemsCount = this.props.items.length;
-			return this.props.selectElementCaption(
-				{ selectedItemsCount, itemsCount }
-			);
+			return this.props.selectElementCaption({
+				selectedItemsCount,
+				// tslint:disable-next-line: object-literal-sort-keys
+				itemsCount
+			});
 		} else {
 			const selectedItem = this.props.itemFormatter(selectedValue);
 			return selectedItem.text;
@@ -125,7 +128,7 @@ export class FlatSelect<TValue> extends React.Component<
 		return (
 			!this.props.disabled &&
 			this.props.allowNull != null &&
-			this.props.allowNull &&
+			!!this.props.allowNull &&
 			this.props.selectedValue !== null
 		);
 	};
@@ -133,7 +136,7 @@ export class FlatSelect<TValue> extends React.Component<
 	private renderRows = (selectedItemKey: SelectedItemKey) => {
 		if (this.props.isLoading) {
 			return [
-				<SearchRow
+				<SelectSearchRow
 					key="_loading"
 					text={this.props.loadListCaption}
 					unselectable={true}
@@ -176,7 +179,7 @@ export class FlatSelect<TValue> extends React.Component<
 				return null;
 			}
 
-			const children: Array<SelectItem<TValue>> = [];
+			const children: any = [];
 			node.children.forEach(c => {
 				const cn = this.rebuildTreeForSearchTerm(c);
 				if (cn != null) {
@@ -203,7 +206,7 @@ export class FlatSelect<TValue> extends React.Component<
 		}
 
 		return filteredItems.map(item => (
-			<SearchRow
+			<SelectSearchRow
 				hasNested={typeof item.children !== "undefined"}
 				key={item.key}
 				text={item.text}
@@ -211,14 +214,15 @@ export class FlatSelect<TValue> extends React.Component<
 				disabled={item.disabled || false}
 				isForMultiSelect={selectedItemKey instanceof Array}
 				isSelected={this.isSelected(item, selectedItemKey)}
-				onClickHandler={this.onChange(item.value)}
+				// tslint:disable-next-line: jsx-no-lambda
+				onClickHandler={() => this.onChange(item.value)}
 				className={item.className}
 			>
 				{this.renderSelectSearchRows(
-					item.children as Array<SelectItem<TValue>>,
+					item.children || [],
 					selectedItemKey
 				)}
-			</SearchRow>
+			</SelectSearchRow>
 		));
 	};
 
@@ -227,7 +231,11 @@ export class FlatSelect<TValue> extends React.Component<
 			return false;
 		}
 
-		return this.props.items.length >= 21;
+		if (this.props.items.length < 21) {
+			return false;
+		}
+
+		return true;
 	};
 
 	private sortItems = (
@@ -238,20 +246,17 @@ export class FlatSelect<TValue> extends React.Component<
 			return item.disabled || false
 				? 3
 				: this.isSelected(item, selectedItemKey)
-					? 1
-					: 2;
+				? 1
+				: 2;
 		});
 	};
+
 	private isSelected = (
 		item: SelectItem<TValue>,
 		selectedItemKey: SelectedItemKey
 	): boolean => {
 		return selectedItemKey instanceof Array
-			?
-			// tslint:disable-next-line:no-shadowed-variable
-			selectedItemKey.some(selectedItemKey => item.key === selectedItemKey)
-			:
-			item.key === selectedItemKey;
+			? selectedItemKey.some(key => item.key === key)
+			: item.key === selectedItemKey;
 	};
-
 }

@@ -4,13 +4,13 @@ export interface SelectSearchListProps {
 	className?: string;
 	searchTextValue: string;
 	shouldSearchTextBeSelected?: boolean;
-	onScroll: (element: Element) => () => void;
+	onScroll?: (element: Element) => () => void;
 	selectionMode?: SelectionMode;
 	headerInfo?: string | JSX.Element;
 	clearFilterHandler?: React.MouseEventHandler<{}>;
 	makeSelectedComponents?: () => JSX.Element[];
-	resetFilterCaption: string;
-	closeCaption: string;
+	resetFilterCaption?: string;
+	closeCaption?: string;
 }
 
 // tslint:disable-next-line: interface-name

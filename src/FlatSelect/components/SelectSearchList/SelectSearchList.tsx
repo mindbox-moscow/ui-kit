@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Utils } from "src/FlatSelect/modules";
 import { SelectDropMain, Textbox } from "..";
+import { Utils } from "../../modules";
 import {
 	SelectionMode,
 	SelectSearchListProps,

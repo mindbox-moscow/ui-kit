@@ -1,3 +1,3 @@
 export interface SelectDropMainProps {
-	onScroll: (element: Element) => () => void;
+	onScroll?: (element: Element) => () => void;
 }

@@ -3,7 +3,7 @@ import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 import { Height, Width } from "./modules";
 import { SelectedItemKey, SelectItem, SelectProps, SelectState } from "./types";
 
-export class Select<TValue> extends React.Component<
+export class FlatSelect<TValue> extends React.Component<
 	SelectProps<TValue>,
 	SelectState
 > {

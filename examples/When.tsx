@@ -608,7 +608,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div style={{ width: "40px" }}>
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -764,7 +764,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -873,7 +873,7 @@ class When extends React.Component<{}> {
                             items={[{ title: "через" }]}
                         />
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -890,7 +890,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -974,7 +974,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1040,7 +1040,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждую">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1056,7 +1056,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1117,7 +1117,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждую">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1147,7 +1147,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1208,7 +1208,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1277,7 +1277,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1341,7 +1341,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1392,7 +1392,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1454,7 +1454,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1541,7 +1541,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"
@@ -1603,7 +1603,7 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row isEdit isControl title="Повторять запуск каждый">
                         <div className="kit-row__input">
-                            <Input defaultValue="1" maxLength={2} />
+                            <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
@@ -1672,7 +1672,7 @@ class When extends React.Component<{}> {
                         Допускается запоздание срабатывания триггера не более,
                         чем на
                         <div className="kit-row__input">
-                            <Input defaultValue="10" maxLength={2} />
+                            <Input value="10" maxLength={2} />
                         </div>
                         <Select
                             placeholder="Выберите"

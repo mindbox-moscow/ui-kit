@@ -25,6 +25,7 @@ export interface CallbackProps {
 	onConditionStateToggle: () => void;
 	onConditionRemove: () => void;
 	onConditionCopy: () => void;
+	onNeutralZoneClick: (() => void) | null;
 }
 
 export enum SearchClasses {

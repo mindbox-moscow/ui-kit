@@ -105,7 +105,7 @@ export class Panel extends React.Component<PanelProps> {
 		const width = position.widthOverride || position.width;
 		const scrollTop = window.pageYOffset;
 		const classesArray = [
-			"selectR-drop",
+			"kit-selectR-drop",
 			"kit-overflow-isnt-neutral-zone-marker"
 		];
 
@@ -123,7 +123,7 @@ export class Panel extends React.Component<PanelProps> {
 			styles.top = "auto";
 			styles.bottom =
 				document.body.offsetHeight - scrollTop - position.top;
-			classesArray.push("selectR-above");
+			classesArray.push("kit-selectR-above");
 		} else {
 			styles.top = position.bottom + scrollTop;
 		}
@@ -157,7 +157,7 @@ export class Panel extends React.Component<PanelProps> {
 		if (cutMaxHeight < 0) {
 			// Ищем SelectDropMain и меняем максимальную высоту, минимум 100
 			const selectList = panel.querySelector(
-				".selectR-drop-main"
+				".kit-selectR-drop-main"
 			) as HTMLElement;
 
 			const maxHeight = getComputedStyle(selectList).maxHeight;

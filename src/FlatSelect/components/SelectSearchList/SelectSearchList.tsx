@@ -23,7 +23,7 @@ export class SelectSearchList extends React.Component<
 			if (this.props.clearFilterHandler) {
 				clearFilter = (
 					<span
-						className="selectR-module-reset link-action link-action_grey"
+						className="kit-selectR-module-reset link-action link-action_grey"
 						onClick={this.props.clearFilterHandler}
 					>
 						<span className="icon_close" />
@@ -32,8 +32,8 @@ export class SelectSearchList extends React.Component<
 				);
 			}
 			headerAddition = (
-				<div className="selectR-drop-module">
-					<span className="selectR-module-state">
+				<div className="kit-selectR-drop-module">
+					<span className="kit-selectR-module-state">
 						{this.props.headerInfo}
 					</span>
 					{clearFilter}
@@ -50,21 +50,21 @@ export class SelectSearchList extends React.Component<
 		) {
 			const selectedChildren = this.props.makeSelectedComponents();
 			if (selectedChildren.length !== 0) {
-				let choisesClasses = "selectR-choices selectR-choices-inline";
+				let choisesClasses = "kit-selectR-choices kit-selectR-choices-inline";
 				if (this.state.minimized) {
 					choisesClasses =
-						choisesClasses + " selectR-choices-inline-minimized";
+						choisesClasses + " kit-selectR-choices-inline-minimized";
 				}
 				const minimizeButtonClasses =
-					"selectR-horizontal-extension-image " +
+					"kit-selectR-horizontal-extension-image " +
 					(this.state.minimized
-						? "selectR-horizontal-extension-image-open"
-						: "selectR-horizontal-extension-image-close");
+						? "kit-selectR-horizontal-extension-image-open"
+						: "kit-selectR-horizontal-extension-image-close");
 				selectedComponents = (
-					<div className="selectR-drop-module selectR-drop-module-items">
+					<div className="kit-selectR-drop-module kit-selectR-drop-module-items">
 						<ul className={choisesClasses}>{selectedChildren}</ul>
 						<div
-							className="selectR-horizontal-extension-button"
+							className="kit-selectR-horizontal-extension-button"
 							onClick={this.onToggleChoices}
 						>
 							<div className={minimizeButtonClasses} />
@@ -72,7 +72,7 @@ export class SelectSearchList extends React.Component<
 					</div>
 				);
 				applyButton = (
-					<div className="selectR-drop-module">
+					<div className="kit-selectR-drop-module">
 						<button
 							type="button"
 							className="button button_blue button_middle button_primary"
@@ -87,9 +87,9 @@ export class SelectSearchList extends React.Component<
 
 		return (
 			<div className={this.props.className}>
-				<div className="selectR-drop-header">
-					<div className="selectR-search">
-						<span className="selectR-input">
+				<div className="kit-selectR-drop-header">
+					<div className="kit-selectR-search">
+						<span className="kit-selectR-input">
 							<Textbox
 								notFormControl={true}
 								value={this.props.searchTextValue}

@@ -4,39 +4,39 @@ import { SelectSearchRowProps } from "./types";
 
 export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 	public render() {
-		const liClassesArray = ["selectR-result"];
+		const liClassesArray = ["kit-selectR-result"];
 
 		if (this.props.className != null) {
 			liClassesArray.push(this.props.className);
 		}
 
 		if (this.props.unselectable) {
-			liClassesArray.push("selectR-unselectable");
+			liClassesArray.push("kit-selectR-unselectable");
 		}
 
 		if (this.props.disabled) {
-			liClassesArray.push("selectR-disabled");
+			liClassesArray.push("kit-selectR-disabled");
 		}
 
 		if (this.props.isSelected) {
 			liClassesArray.push(
 				this.props.isForMultiSelect
-					? "selectR-selected-multi"
-					: "selectR-selected"
+					? "kit-selectR-selected-multi"
+					: "kit-selectR-selected"
 			);
 		}
 
-		const divClassesArray = ["selectR-label "];
+		const divClassesArray = ["kit-selectR-label "];
 		if (this.props.isLoader) {
-			divClassesArray.push("selectR-request-item");
+			divClassesArray.push("kit-selectR-request-item");
 		}
 
-		const children = (): JSX.Element | null => {
+		const Сhildren = (): JSX.Element | null => {
 			if (this.props.hasNested) {
-				liClassesArray.push("selectR-nesting");
+				liClassesArray.push("kit-selectR-nesting");
 
 				return (
-					<ul className="selectR-results selectR-results-default">
+					<ul className="kit-selectR-results kit-selectR-results-default">
 						{this.props.children}
 					</ul>
 				);
@@ -66,7 +66,7 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 				>
 					{this.props.text}
 				</div>
-				{children}
+				<Сhildren />
 			</li>
 		);
 	}

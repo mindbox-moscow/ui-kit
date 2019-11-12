@@ -69,16 +69,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		const classesArray = [
 			this.props.className || "",
 			"form-control",
-			"selectR",
-			"selectR-container"
+			"kit-selectR",
+			"kit-selectR-container"
 		];
 
 		if (this.state.show) {
-			classesArray.push("selectR-open");
+			classesArray.push("kit-selectR-open");
 			classesArray.push(this.props.openedClassName || "");
 
 			if (this.state.isInBottomOfScreen) {
-				classesArray.push("selectR-above");
+				classesArray.push("kit-selectR-above");
 			}
 		} else {
 			classesArray.push(this.props.closedClassName || "");
@@ -93,19 +93,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 
 		if (!this.props.headerInfo) {
-			classesArray.push("selectR-placeholder");
+			classesArray.push("kit-selectR-placeholder");
 		}
 
 		if (this.props.disabled) {
-			classesArray.push("selectR-disabled");
+			classesArray.push("kit-selectR-disabled");
 		}
 
 		const classes = classesArray.reduce((curr, next) => curr + " " + next);
 
 		const placeholder = this.props.headerInfo ? (
-			<span className="selectR-chosen">{this.props.headerInfo}</span>
+			<span className="kit-selectR-chosen">{this.props.headerInfo}</span>
 		) : (
-			<span className="selectR-chosen">{this.props.placeholder}</span>
+			<span className="kit-selectR-chosen">{this.props.placeholder}</span>
 		);
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
@@ -117,7 +117,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				style={style}
 				ref={this.dropdownRef}
 			>
-				<span className="selectR-choice">
+				<span className="kit-selectR-choice">
 					{placeholder}
 					{this.clearSelectionSection()}
 				</span>

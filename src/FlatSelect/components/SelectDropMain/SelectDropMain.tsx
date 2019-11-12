@@ -31,8 +31,8 @@ export class SelectDropMain extends React.Component<SelectDropMainProps> {
 
 	public render() {
 		return (
-			<div className="selectR-drop-main" ref={this.selectRef}>
-				<ul className="selectR-results selectR-results-default">
+			<div className="kit-selectR-drop-main" ref={this.selectRef}>
+				<ul className="kit-selectR-results kit-selectR-results-default">
 					{this.props.children}
 				</ul>
 			</div>

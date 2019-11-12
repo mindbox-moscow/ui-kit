@@ -2477,6 +2477,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={false}
+			shouldShowButtons={true}
 			addSimpleConditionButton={
 				<FilterConditionEditorButton
 					label="Добавить фильтр"

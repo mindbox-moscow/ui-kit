@@ -1,5 +1,4 @@
 ```jsx
-
 class ExampleFlatSelectorSimple extends React.Component {
 	constructor() {
 		super();
@@ -102,83 +101,94 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<IconSvg type="cross-arrows" />И
 					</Button>
 				}
-      >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      <FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
+			>
+				<FiltrationGroupComponent
+					state="view"
+					groupType="and"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					shouldShowButtons={true}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
+					}
+				>
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={true}
+						shouldShowButtons={true}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+					>
+						<FiltrationGroupComponent
+							state="view"
+							groupType="and"
+							andLabel="И"
+							orLabel="ИЛИ"
+							shouldShowLabel={true}
+							shouldShowButtons={true}
+							onGroupTypeToggle={() => console.log("type toggle")}
+							onConditionStateToggle={() =>
+								console.log("state toggle")
+							}
+							onConditionRemove={() => console.log("remove")}
+							addSimpleConditionButton={
+								<FilterConditionEditorButton
+									label="Добавить фильтр"
+									toggleOpen={() => console.log("toggle")}
+									isOpened={false}
+									iconType="filter"
+								/>
+							}
+							addGroupConditionButton={
+								<Button
+									color="silver"
+									size="small"
+									hasBorder="true"
+								>
+									<IconSvg type="cross-arrows" />И
+								</Button>
+							}
+						></FiltrationGroupComponent>
+					</FiltrationGroupComponent>
+				</FiltrationGroupComponent>
+			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
 	<br />
@@ -1675,16 +1685,16 @@ class ExampleFlatSelectorSimple extends React.Component {
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
-      shouldShowLabel={true}
-      onConditionStateToggle={() => console.log("state toggle")}
+			shouldShowLabel={true}
+			onConditionStateToggle={() => console.log("state toggle")}
 		>
 			<FiltrationGroupComponent
 				state="shaded"
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-        shouldShowLabel={true}
-        onConditionStateToggle={() => console.log("state toggle")}
+				shouldShowLabel={true}
+				onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="edit"
@@ -1762,8 +1772,8 @@ class ExampleFlatSelectorSimple extends React.Component {
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-        shouldShowLabel={true}
-        onConditionStateToggle={() => console.log("state toggle")}
+				shouldShowLabel={true}
+				onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="shaded"
@@ -2493,6 +2503,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
 			onConditionRemove={() => console.log("remove")}
+			shouldShowButtons={true}
 		>
 			<FiltrationConditionComponent
 				filterablePropertyName="Пол"
@@ -3081,9 +3092,9 @@ class ExampleFlatSelectorSimple extends React.Component {
 											]}
 										/>
 									</GridColumn>
-                  <GridColumn col="7" >
-                    <ExampleFlatSelectorSimple />
-                  </GridColumn>
+									<GridColumn col="7">
+										<ExampleFlatSelectorSimple />
+									</GridColumn>
 								</GridRow>
 							</GridContainer>
 						}
@@ -3423,5 +3434,5 @@ class ExampleFlatSelectorSimple extends React.Component {
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
-</div>
+</div>;
 ```

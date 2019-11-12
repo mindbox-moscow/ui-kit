@@ -16,8 +16,8 @@ export class SelectSearchList extends React.Component<
 	};
 
 	public render() {
-		let clearFilter: JSX.Element = React.createElement("");
-		let headerAddition: JSX.Element = React.createElement("");
+		let clearFilter: JSX.Element = React.createElement("div");
+		let headerAddition: JSX.Element = React.createElement("div");
 
 		if (this.props.headerInfo) {
 			if (this.props.clearFilterHandler) {
@@ -41,8 +41,8 @@ export class SelectSearchList extends React.Component<
 			);
 		}
 
-		let selectedComponents: JSX.Element = React.createElement("");
-		let applyButton: JSX.Element = React.createElement("");
+		let selectedComponents: JSX.Element = React.createElement("div");
+		let applyButton: JSX.Element = React.createElement("div");
 
 		if (
 			this.props.selectionMode === SelectionMode.Multiple &&

@@ -103,22 +103,19 @@ export class Panel extends React.Component<PanelProps> {
 		const show = this.props.show;
 		const position = this.props.boundingRectangle;
 		const width = position.widthOverride || position.width;
-		const scrollTop =
-			window.pageYOffset ||
-			document.documentElement.scrollTop ||
-			document.body.scrollTop;
+		const scrollTop = window.pageYOffset;
 		const classesArray = [
 			"selectR-drop",
 			"kit-overflow-isnt-neutral-zone-marker"
 		];
 
 		const styles: React.CSSProperties = {
-			position: "absolute",
+			bottom: (null as unknown) as string | number,
 			display: show ? "block" : "none",
 			left: position.left,
-			width,
+			position: "absolute",
 			top: (null as unknown) as string | number,
-			bottom: (null as unknown) as string | number
+			width
 		};
 
 		// Если элемент отрисован в нижней половине экрана

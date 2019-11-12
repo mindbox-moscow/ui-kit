@@ -1,0 +1,626 @@
+.selectR-offscreen,
+.selectR-offscreen:focus {
+	clip: rect(0 0 0 0) !important;
+	width: 1px !important;
+	height: 1px !important;
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	outline: 0 !important;
+	left: 0 !important;
+	top: 0 !important;
+}
+
+/*.selectR-single,.selectR-multi*/
+.selectR-container {
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+	box-sizing: border-box;
+}
+.selectR-container,
+.selectR-choice,
+.selectR-drop,
+.selectR-search,
+.selectR-input {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.selectR-choice {
+	position: relative;
+	display: block;
+	height: 29px;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #b0b2b5;
+	white-space: nowrap;
+	font-size: 14px;
+	line-height: 27px;
+	color: #000;
+	text-decoration: none;
+	border-radius: 2px;
+	background-clip: padding-box;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: #fdfdfd;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(#fdfdfd),
+		to(#f5f5f5)
+	);
+	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+	background-image: -moz-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#fdfdfd', endColorstr = '#f5f5f5', GradientType = 0);
+	background-image: -ms-linear-gradient(#fdfdfd, #f5f5f5);
+	background-image: linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+}
+.selectR-choice:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	width: 22px;
+	height: 100%;
+	background: url(./images/selectR.png) no-repeat 3px 49%;
+}
+.selectR-chosen {
+	display: block;
+	margin: 0 26px 0 7px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	float: none;
+	width: auto;
+}
+.selectR-clear {
+	position: absolute;
+	top: 50%;
+	right: 19px;
+	display: none;
+	width: 21px;
+	height: 21px;
+	margin-top: -11px;
+	font-size: 0;
+	outline: none;
+	background: url(./images/selectR.png) -54px 50% no-repeat;
+	cursor: pointer;
+}
+.selectR-clear:hover {
+	background-position: -84px 50%;
+}
+
+.selectR-drop {
+	display: none;
+	position: absolute;
+	top: 0;
+	z-index: 9997;
+	width: 100%;
+	margin-top: -1px;
+	background: #fff;
+	color: #000;
+	border: 1px solid #b0b2b5;
+	border-top: 0;
+	border-radius: 0 0 2px 2px;
+}
+
+.selectR-drop-header {
+	background: #f5f5f5;
+}
+
+.selectR-drop-module {
+	padding: 10px 15px 10px;
+}
+.selectR-drop-module + .selectR-drop-module {
+	border-top: 1px solid #dfdfdf;
+}
+.selectR-search + .selectR-drop-module {
+	padding-top: 0;
+}
+.selectR-drop-module-items {
+	padding-bottom: 0;
+	max-height: 150px;
+	overflow-y: scroll;
+}
+
+.selectR-drop-footer {
+	display: table;
+	width: 100%;
+	border-top: 1px solid #d9d9d9;
+	background: #f5f5f5;
+}
+.selectR-drop-footer-left {
+	display: table-cell;
+	padding: 10px 0 10px 15px;
+}
+.selectR-drop-footer-left .button {
+	margin-right: 10px;
+}
+.selectR-drop-footer-right {
+	display: table-cell;
+	padding: 10px 15px 10px 0;
+	text-align: right;
+}
+
+.selectR-request-item {
+	padding-left: 24px !important;
+	padding-right: 5px;
+	font-style: italic;
+	border-radius: 2px;
+	background: #fff7d7 url(./images/selectR-preloader-input.gif) no-repeat 0
+		40%;
+}
+
+.selectR-search {
+	padding: 0 8px 8px;
+}
+.selectR-input {
+	position: relative;
+	display: block;
+}
+.selectR-input input {
+	display: block;
+	width: 100%;
+	height: auto !important;
+	min-height: 19px;
+	padding: 4px 20px 4px 6px;
+	margin: 0;
+	outline: 0;
+	font-size: 13px;
+	border: 1px solid #b0b2b5;
+	border-radius: 2px;
+	box-shadow: inset 0 1px 1px #ddd;
+	background: #fff url(./images/selectR.png) no-repeat 100% -53px;
+	box-sizing: border-box;
+}
+.selectR-input.selectR-request input {
+	background: #fff url(./images/selectR-preloader-input.gif) no-repeat 100%
+		50%;
+}
+.selectR-input.selectR-filled .selectR-input-clear {
+	display: block;
+}
+.selectR-input-clear {
+	display: none;
+	position: absolute;
+	top: 1px;
+	bottom: 1px;
+	right: 22px;
+	width: 23px;
+	cursor: pointer;
+	background: url(./images/selectR.png) no-repeat -205px 50%;
+}
+.selectR-input-clear:hover {
+	background-position: -235px 50%;
+}
+
+.selectR-drop-main {
+	max-height: 450px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-top: 1px dashed #929393;
+}
+
+.selectR-results {
+	position: relative;
+	padding: 4px 0;
+	margin: 0;
+	background: #fff;
+}
+.selectR-results .selectR-results {
+	padding: 0;
+}
+
+.selectR-result.selectR-disabled.selectR-readonly > .selectR-label {
+	background: #fff !important;
+	opacity: 1 !important;
+	color: #000 !important;
+	font-weight: bolder !important;
+}
+.selectR-result {
+	position: relative;
+	list-style: none;
+	display: block;
+	background-image: none;
+}
+.selectR-result.selectR-disabled > .selectR-label {
+	color: #000 !important;
+	opacity: 0.3;
+	cursor: default;
+}
+.selectR-result > .selectR-label:hover {
+	background: #3875d7;
+	color: #fff;
+}
+.selectR-label {
+	position: relative;
+	margin: 0;
+	padding: 3px 15px 4px;
+	min-height: 1em;
+	color: #000;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.selectR-results-default .selectR-nesting + .selectR-nesting {
+	margin: 12px 0 0;
+	padding: 10px 0 0;
+	border-top: 1px solid #d9d9d9;
+}
+.selectR-results-default .selectR-nesting .selectR-nesting + .selectR-nesting {
+	margin: 0;
+	padding: 0;
+	border-top: 0;
+}
+.selectR-results-default .selectR-nesting > .selectR-label {
+	font-weight: bold;
+}
+.selectR-results-default .selectR-nesting .selectR-nesting .selectR-label {
+	font-weight: normal;
+}
+
+.selectR-results-default .selectR-results-default .selectR-label {
+	padding-left: 43px;
+} /*+28*/
+.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-label {
+	padding-left: 71px;
+}
+.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-label {
+	padding-left: 99px;
+}
+.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-results-default
+	.selectR-label {
+	padding-left: 128px;
+}
+
+.selectR-results-default .selectR-selected > .selectR-label {
+	background-color: #ddd;
+}
+.selectR-results-default .selectR-selected-multi > .selectR-label {
+	color: #7f7f7f;
+}
+.selectR-results-default .selectR-selected-multi:after {
+	content: "";
+	width: 6px;
+	height: 6px;
+	position: absolute;
+	left: 4px;
+	top: 9px;
+	background: url(./images/selectR.png) no-repeat -150px -33px;
+}
+.selectR-results-default .selectR-selected-multi.selectR-highlighted:after {
+	background-position: -180px -33px;
+}
+.selectR-results-default .selectR-unselectable > .selectR-label {
+	cursor: default;
+}
+.selectR-results-default .selectR-highlighted > .selectR-label {
+	background: #3875d7;
+	color: #fff;
+}
+
+.selectR-overlay {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
+	min-height: 100%;
+	min-width: 100%;
+	height: auto;
+	width: auto;
+	opacity: 0;
+	z-index: 9998;
+	background-color: #fff;
+	filter: alpha(opacity=0);
+}
+
+/* MULTI */
+.selectR-multi {
+	.selectR-choice:after {
+		background-position: -120px 50%;
+	}
+	.selectR-input {
+		margin-right: 26px;
+	}
+	.selectR-input input {
+		height: 100%;
+		min-height: 27px;
+		border: 0;
+		background: transparent none;
+		box-shadow: none;
+		cursor: pointer;
+	}
+}
+
+.selectR-choices {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	list-style: none;
+}
+.selectR-choices-result {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 10px;
+	background-color: #e8e9eb;
+	border-radius: 2px;
+	cursor: default;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.selectR-choices-result .selectR-clear {
+	display: block;
+	right: 2px;
+	height: 100%;
+}
+.selectR-choices-label {
+	display: inline-block;
+	padding: 3px 24px 3px 6px;
+	vertical-align: middle;
+	font-size: 13px;
+	line-height: 1.16;
+}
+.selectR-choices-default .selectR-choices-result {
+	display: block;
+}
+.selectR-choices-inline .selectR-choices-result {
+	margin-right: 10px;
+}
+.selectR-choices-inline-minimized {
+	height: 31px;
+	overflow: hidden;
+}
+
+/* ABOVE */
+.selectR-container.selectR-above .selectR-choice {
+	border-top-color: transparent;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		from(#fff),
+		to(#f5f5f5)
+	);
+	background-image: -webkit-linear-gradient(top, #fff 0%, #f5f5f5 100%);
+	background-image: -moz-linear-gradient(top, #fff 0%, #f5f5f5 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#f5f5f5', GradientType = 0);
+	background-image: -ms-linear-gradient(#fff, #f5f5f5);
+	background-image: linear-gradient(top, #fff 0%, #f5f5f5 100%);
+}
+.selectR-above .selectR-search {
+	padding-top: 8px;
+}
+.selectR-drop.selectR-above {
+	margin-bottom: -1px;
+	border-bottom: 0;
+	border-top: 1px solid #b0b2b5;
+	border-radius: 2px 2px 0 0;
+}
+.selectR-drop.selectR-above .selectR-drop-footer {
+	border-bottom: 1px solid #d9d9d9;
+}
+
+/* STATUS */
+.selectR-placeholder .selectR-chosen {
+	color: #767676;
+	font-style: italic;
+}
+.selectR-allowclear .selectR-chosen {
+	margin-right: 42px;
+}
+.selectR-allowclear .selectR-clear {
+	display: block;
+}
+/* active */
+.selectR-focus .selectR-choice {
+	border-color: #5897fb;
+}
+/* open */
+.selectR-open .selectR-choice:after {
+	background-position: -27px 50%;
+}
+/* disabled */
+.selectR-container.selectR-disabled .selectR-choice {
+	background: #f5f5f5 none;
+	border: 1px solid #eaeaea;
+	color: #8a8a8a;
+	cursor: default;
+}
+.selectR-container.selectR-disabled .selectR-clear {
+	display: none;
+}
+.selectR-container.selectR-disabled .selectR-choice:after {
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+
+/* SIZE */
+.form-control_small .selectR-choice {
+	height: 21px;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+/* CUSTOM */
+.selectR-horizontal-extension-button {
+	width: 100%;
+	margin-top: 4px;
+	padding: 2px 0;
+	cursor: pointer;
+}
+.selectR-horizontal-extension-button:hover {
+	background-color: #e8e9eb;
+}
+.selectR-horizontal-extension-image {
+	width: 8px;
+	height: 8px;
+	display: block;
+	margin: 0 auto;
+}
+.selectR-horizontal-extension-image-open {
+	background: url(./images/selectR.png) no-repeat 0px -33px;
+}
+.selectR-horizontal-extension-image-close {
+	background: url(./images/selectR.png) no-repeat -30px -33px;
+}
+
+.selectR-drop-footer .button_primary {
+	min-width: 106px;
+}
+.selectR-drop-footer-info {
+	font-size: 11px;
+	font-style: italic;
+}
+.selectR-drop-footer-info-item {
+	white-space: nowrap;
+	margin-left: 2px;
+}
+
+.selectR-checkbox {
+	position: absolute;
+	top: 4px;
+	left: 3px;
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: url(./images/selectR.png) no-repeat -300px -29px;
+}
+.selectR-checkbox:hover {
+	background-position: -390px -29px;
+}
+.selectR-disabled > .selectR-label .selectR-checkbox {
+	background-position: -300px -29px;
+}
+.selectR-checkbox-checked,
+.selectR-checkbox-checked:hover,
+.selectR-disabled > .selectR-label .selectR-checkbox-checked {
+	background-position: -360px -29px;
+}
+.selectR-checkbox-part,
+.selectR-checkbox-part:hover,
+.selectR-disabled > .selectR-label .selectR-checkbox-part {
+	background-position: -330px -29px;
+}
+
+.selectR-results.tree {
+	margin-left: 15px;
+}
+.selectR-results .tree__label {
+	display: block;
+}
+.selectR-results .tree__item_nesting.state-disabled > .tree__label:hover {
+	color: inherit;
+}
+.selectR-results .tree__item_nesting > .tree__label:hover {
+	color: #3875d7;
+}
+
+.selectR-module-state {
+	font-style: italic;
+}
+.selectR-module-reset {
+	margin-left: 20px;
+	font-style: italic;
+	white-space: nowrap;
+}
+.selectR-module-label {
+	padding-bottom: 6px;
+	font-weight: bold;
+}
+
+.selectR-cpa-control {
+	position: relative;
+}
+.selectR-cpa-control .selectR-container + .selectR-container {
+	z-index: 2;
+}
+.selectR-drop-right {
+	width: 60%;
+	float: right;
+}
+.selectR-drop-right:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 1px;
+	height: 100%;
+	z-index: 1;
+	background: #dfdfdf;
+}
+.selectR-drop-main_filter {
+	width: 40%;
+	float: left;
+}
+.selectR-choices-result-categories {
+	background: none !important;
+}
+.selectR-choices-result-categories .selectR-choices-label {
+	font-size: 14px;
+}
+.selectR-choices-result_action {
+	cursor: pointer;
+}
+.selectR-choices-result_action:hover {
+	background-color: #ddd;
+}
+
+/* RETINA - SKOTINA */
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+	.selectR-choice:after,
+	.selectR-clear,
+	.selectR-input input,
+	.selectR-input-clear,
+	.selectR-checkbox,
+	.selectR-results-tree .selectR-nesting:after {
+		background-image: url(./images/selectR@2x.png);
+		background-size: 450px 72px;
+	}
+	.selectR-request-item {
+		background-image: url(./images/selectR-preloader-input@2x.gif);
+		background-size: 24px 18px;
+	}
+}
+
+/* для фиксированной ширины, например .w50 = 50px */
+@each $fixed-width in 50, 60, 70, 80, 90, 100, 110, 120, 130, 150, 170, 180, 200,
+	230, 260, 300, 330, 400, 470, 500, 750
+{
+	.w#{$fixed-width} {
+		width: #{$fixed-width}px;
+	}
+}

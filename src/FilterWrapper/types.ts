@@ -5,6 +5,8 @@ export enum SelectionStateType {
 	Concrete = "concrete"
 }
 
+export type ScrollState = "full" | "minfied";
+
 export interface FilterAction {
 	key: string;
 	name: string;
@@ -24,6 +26,7 @@ export interface StateProps {
 	isDataOutdated: boolean;
 	filterActions: FilterAction[];
 	filterActionsCaption: string;
+	scrollState: ScrollState;
 }
 
 export interface CallbackProps {

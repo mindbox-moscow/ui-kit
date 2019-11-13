@@ -1,10 +1,10 @@
 import * as React from "react";
 import { SearchClasses } from "../../types";
 
-type ItemsRootElement = {
+interface ItemsRootElement {
 	element: HTMLElement;
 	height: number;
-};
+}
 
 interface HorizontalBracketProps {
 	minHeight: number;
@@ -107,21 +107,14 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								const lineElement = item.element.querySelector(
+								const labelLine = item.element.querySelector(
 									".kit-filtration-group__label-line"
-								);
-								let lineHeight = 0;
-								if (lineElement) {
-									lineHeight =
-										(item.height -
-											minHeight -
-											lineElement.getBoundingClientRect()
-												.height) /
-											2 +
-										bracketWidth / 2;
-								}
+								) as HTMLDivElement;
+
 								positionTop =
-									height + item.height / 2 + lineHeight;
+									labelLine.offsetTop +
+									labelLine.offsetHeight / 2 +
+									height;
 							}
 							break;
 					}

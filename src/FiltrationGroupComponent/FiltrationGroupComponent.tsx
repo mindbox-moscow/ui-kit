@@ -1,15 +1,15 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { LabelButton, HorizontalBracket } from "./components";
-import { StateProps, CallbackProps, SearchClasses } from "./types";
+import { HorizontalBracket, LabelButton } from "./components";
+import { CallbackProps, SearchClasses, StateProps } from "./types";
 
-import "./FiltrationGroupComponent.scss";
 import {
+	CreateWindowClickListener,
 	IsntNeutralZoneMarker,
-	IWindowClickListener,
-	CreateWindowClickListener
+	IWindowClickListener
 } from "../WindowClickListener";
+import "./FiltrationGroupComponent.scss";
 
 type Props = StateProps & CallbackProps;
 
@@ -39,6 +39,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
+
+	private windowClickListener: IWindowClickListener;
 
 	public moveLabelAtCenterOfBracket = () => {
 		let heightGroup = 0;
@@ -168,7 +170,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop - BRACKET_WIDTH}px`;
 			} else {
-				labelLineRef.style.removeProperty("top");
+				labelLineRef.style.top = `${MIN_HEIGHT / 2 - BRACKET_WIDTH}px`;
+				// labelLineRef.style.removeProperty("top");
 			}
 		}
 
@@ -345,8 +348,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		}
 	};
 
-	private windowClickListener: IWindowClickListener;
-
 	public componentDidMount() {
 		this.moveLabelAtCenterOfBracket();
 		this.handleCreateVerticalBrackets();
@@ -371,8 +372,10 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 
 		const { onNeutralZoneClick } = this.props;
 		if (onNeutralZoneClick != null) {
-			this.windowClickListener =
-				CreateWindowClickListener(onNeutralZoneClick, this.kitFiltrationRef.current as HTMLElement);
+			this.windowClickListener = CreateWindowClickListener(
+				onNeutralZoneClick,
+				this.kitFiltrationRef.current as HTMLElement
+			);
 		}
 	}
 
@@ -405,8 +408,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			);
 		}
 
-		if (this.windowClickListener != null)
+		if (this.windowClickListener != null) {
 			this.windowClickListener.stop();
+		}
 	}
 
 	public componentDidUpdate() {
@@ -487,8 +491,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 										/>
 									</div>
 								) : (
-										labelMap[groupType]
-									)}
+									labelMap[groupType]
+								)}
 							</span>
 						)}
 					</div>

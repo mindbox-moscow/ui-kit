@@ -8,21 +8,17 @@ export interface IWindowClickListener {
     stop: () => void;
 }
 
-export const CreateWindowClickListener = function (handler: Handler, ...excludingTargetElements: HTMLElement[]): IWindowClickListener {
+const fromElementWithClassEvent = (event: Event, elementClass: string): boolean => {
+    return event.composedPath().some(
+        pathEvent => {
+            const elementPath = pathEvent as HTMLElement;
+            return elementPath.classList != null
+                && elementPath.classList.contains(elementClass);
+        }
+    )
+}
 
-    const fromIsntNeutralZoneEvent = (event: Event) => {
-        const isClickInsideNotNeutralZone = event.composedPath().some(
-            pathEvent => {
-                const element = (pathEvent as HTMLElement);
-                return element.classList == null
-                    ? false
-                    : element
-                        .classList
-                        .contains(IsntNeutralZoneMarker);
-            }
-        );
-        return isClickInsideNotNeutralZone;
-    }
+export const CreateWindowClickListener = function (handler: Handler, ...excludingTargetElements: HTMLElement[]): IWindowClickListener {
 
     const fromExcludingTargetElementsEvent = (event: Event) => {
         if (excludingTargetElements == null) {
@@ -38,7 +34,9 @@ export const CreateWindowClickListener = function (handler: Handler, ...excludin
     const onClickInWindow = (event: Event) => {
         if (
             event.isTrusted
-            && !fromIsntNeutralZoneEvent(event)
+            && !fromElementWithClassEvent(event, IsntNeutralZoneMarker)
+            // TODO: delete when unused legacy datapicker by jQuery
+            && !fromElementWithClassEvent(event, "ui-datepicker")
             && !fromExcludingTargetElementsEvent(event)
         ) {
             handler();

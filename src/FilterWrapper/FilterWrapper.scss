@@ -57,7 +57,7 @@ $clearButtonCountColor: #a4a4a4;
 			opacity: 1;
 		}
 
-		.kit-filtration-group__label {
+		.kit-filtration-group__label:not(:last-child) {
 			pointer-events: none;
 		}
 	}

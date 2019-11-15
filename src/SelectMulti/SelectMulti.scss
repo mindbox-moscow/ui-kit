@@ -14,6 +14,10 @@ $kit-select-multi-border-radius: 3px;
 	& * {
 		box-sizing: border-box;
 	}
+
+	&_show_dropdown {
+		z-index: 2;
+	}
 }
 
 .kit-select-multi__label {
@@ -27,6 +31,7 @@ $kit-select-multi-border-radius: 3px;
 	padding: 4px 30px 4px 10px;
 	cursor: pointer;
 	text-align: left;
+	outline: none;
 
 	.kit-select-multi_show_dropdown & {
 		border-color: transparent;

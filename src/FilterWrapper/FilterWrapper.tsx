@@ -1,8 +1,8 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { InfoWrapper, FilterActionsPopover } from "./components";
-import { StateProps, CallbackProps, SelectionStateType } from "./types";
+import { FilterActionsPopover, InfoWrapper } from "./components";
+import { CallbackProps, SelectionStateType, StateProps } from "./types";
 
 import "./FilterWrapper.scss";
 
@@ -52,7 +52,8 @@ export class FilterWrapper extends React.Component<Props> {
 			selectionState,
 			isDataOutdated,
 			filterActions,
-			filterActionsCaption
+			filterActionsCaption,
+			scrollState
 		} = this.props;
 
 		return (
@@ -72,12 +73,14 @@ export class FilterWrapper extends React.Component<Props> {
 				{doesContainFilter ? (
 					<div className="kit-filter__wrap">
 						<div className="kit-filter__wrap-filter">
-							<button
-								className="kit-filter__use-filter"
-								onClick={onApply}
-							>
-								{applyButtonCaption}
-							</button>
+							{scrollState !== "minfied" && (
+								<button
+									className="kit-filter__use-filter"
+									onClick={onApply}
+								>
+									{applyButtonCaption}
+								</button>
+							)}
 						</div>
 						{selectionState !== SelectionStateType.None &&
 							this.countSelectedItems()}

@@ -244,6 +244,30 @@ $searchFocusBgColor: #fffde5;
 				height: 14px;
 			}
 		}
+
+		.kit-icon-svg {
+			margin-bottom: 0;
+			margin-left: 2px;
+		}
+
+		&_expanded {
+			.kit-icon-svg {
+				margin-bottom: 2px;
+				margin-left: 0;
+			}
+		}
+
+		> .kit-filter-condition-selector__hierarchy-children {
+			.kit-filter-condition-selector__hierarchy-item {
+				&::before {
+					left: -11px;
+				}
+
+				&::after {
+					left: -9px;
+				}
+			}
+		}
 	}
 }
 

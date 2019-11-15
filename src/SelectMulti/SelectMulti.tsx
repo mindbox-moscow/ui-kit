@@ -10,12 +10,19 @@ interface IOption {
 	disabled?: boolean;
 }
 
+interface ITextKeys {
+	all: string;
+	except: string;
+	and: string;
+}
+
 interface IProps {
 	options: IOption[];
 	name: string;
 	placeholder?: string;
 	onChange?: (options: IOption[]) => void;
 	className?: string;
+	textKeys?: ITextKeys;
 }
 
 interface IState {
@@ -129,6 +136,38 @@ export class SelectMulti extends React.PureComponent<IProps, IState> {
 		}
 	};
 
+	public getSelectedOptionsText = () => {
+		const { options, textKeys, placeholder } = this.props;
+		const { selectedOptions } = this.state;
+
+		if (textKeys) {
+			if (selectedOptions.length + 1 === options.length) {
+				const except = options.find(
+					({ value }) =>
+						!selectedOptions.some(opt => opt.value === value)
+				);
+
+				return `${textKeys.all} ${textKeys.except} ${except!.title}`;
+			}
+
+			if (selectedOptions.length + 2 === options.length) {
+				const [except1, except2] = options.filter(
+					({ value }) =>
+						!selectedOptions.some(opt => opt.value === value)
+				);
+
+				return `${textKeys.all} ${textKeys.except} ${except1.title} ${
+					textKeys.and
+				} ${except2.title}`;
+			}
+		}
+
+		return selectedOptions.length === 0 ||
+			selectedOptions.length === options.length
+			? placeholder
+			: selectedOptions.map(opt => opt.title).join("; ");
+	};
+
 	public componentDidMount() {
 		document.addEventListener("click", this.handleClickOutside);
 	}
@@ -138,8 +177,8 @@ export class SelectMulti extends React.PureComponent<IProps, IState> {
 	}
 
 	public render() {
-		const { options, placeholder } = this.props;
-		const { isOpen, selectedOptions } = this.state;
+		const { options } = this.props;
+		const { isOpen } = this.state;
 
 		return (
 			<div
@@ -155,13 +194,7 @@ export class SelectMulti extends React.PureComponent<IProps, IState> {
 					onClick={this.handleToggle}
 				>
 					<div className="kit-select-multi__label-title">
-						{selectedOptions.length
-							? selectedOptions.reduce(
-									(acc, { title }, i) =>
-										`${acc}${i > 0 ? ";" : ""} ${title}`,
-									""
-							  )
-							: placeholder}
+						{this.getSelectedOptionsText()}
 					</div>
 				</button>
 				{isOpen && this.renderDropdownList(options)}

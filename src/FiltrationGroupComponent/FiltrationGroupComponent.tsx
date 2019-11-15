@@ -441,6 +441,8 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		const renderInner = this.renderInnerComponents();
 		const verticalBracket = this.verticalBracket();
 
+		const anyChildren = React.Children.toArray(children).length > 0;
+
 		return (
 			<ul
 				ref={this.kitFiltrationRef}
@@ -448,7 +450,7 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					"kit-filtration-group_edit": state === "edit",
 					"kit-filtration-group_shaded": state === "shaded",
 					"kit-filtration-group_read-only": state === "readOnly",
-					"kit-filtration-group_not-children": children === undefined
+					"kit-filtration-group_not-children": !anyChildren
 				})}
 			>
 				<div

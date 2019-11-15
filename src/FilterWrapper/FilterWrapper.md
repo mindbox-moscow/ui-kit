@@ -1,5 +1,4 @@
 ```jsx
-
 class ExampleFlatSelectorSimple extends React.Component {
 	constructor() {
 		super();
@@ -46,6 +45,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	}}
 >
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -102,89 +102,101 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<IconSvg type="cross-arrows" />И
 					</Button>
 				}
-      >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      			<FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      <FiltrationGroupComponent
-				state="view"
-				groupType="and"
-				andLabel="И"
-				orLabel="ИЛИ"
-				shouldShowLabel={true}
-				shouldShowButtons={true}
-				onGroupTypeToggle={() => console.log("type toggle")}
-				onConditionStateToggle={() => console.log("state toggle")}
-				onConditionRemove={() => console.log("remove")}
-				addSimpleConditionButton={
-					<FilterConditionEditorButton
-						label="Добавить фильтр"
-						toggleOpen={() => console.log("toggle")}
-						isOpened={false}
-						iconType="filter"
-					/>
-				}
-				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
-				}
-      >
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
-      </FiltrationGroupComponent>
+			>
+				<FiltrationGroupComponent
+					state="view"
+					groupType="and"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					shouldShowButtons={true}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
+					}
+				>
+					<FiltrationGroupComponent
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={true}
+						shouldShowButtons={true}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+					>
+						<FiltrationGroupComponent
+							state="view"
+							groupType="and"
+							andLabel="И"
+							orLabel="ИЛИ"
+							shouldShowLabel={true}
+							shouldShowButtons={true}
+							onGroupTypeToggle={() => console.log("type toggle")}
+							onConditionStateToggle={() =>
+								console.log("state toggle")
+							}
+							onConditionRemove={() => console.log("remove")}
+							addSimpleConditionButton={
+								<FilterConditionEditorButton
+									label="Добавить фильтр"
+									toggleOpen={() => console.log("toggle")}
+									isOpened={false}
+									iconType="filter"
+								/>
+							}
+							addGroupConditionButton={
+								<Button
+									color="silver"
+									size="small"
+									hasBorder="true"
+								>
+									<IconSvg type="cross-arrows" />И
+								</Button>
+							}
+						/>
+					</FiltrationGroupComponent>
+				</FiltrationGroupComponent>
+			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
 	<br />
 	<br />
 	<div style={{}}>
 		<FilterWrapper
+			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Потребителей найдено"
 			statisticsValue={50248}
@@ -212,6 +224,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		}}
 	>
 		<FilterWrapper
+			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
@@ -267,6 +280,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			режиме редактирования
 		</h1>
 		<FilterWrapper
+			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
@@ -307,6 +321,50 @@ class ExampleFlatSelectorSimple extends React.Component {
 			/>
 		</FilterWrapper>
 	</div>
+	<div>
+		<h1>Пример 2.1 - Скрытая кнопка "Применить фильтр"</h1>
+		<FilterWrapper
+			scrollState="minfied"
+			filterActions={[]}
+			statisticsDescription="Всего клиентов"
+			statisticsValue={1021318}
+			doesContainFilter={true}
+			applyButtonCaption="Применить фильтр"
+			clearButtonCaption="Сбросить фильтр"
+			onApply={() => console.log("apply filter")}
+			onClear={() => console.log("clear filter")}
+			selectionState="part"
+			selectedText="Выбрано"
+			selectedCancelText="Отменить"
+			selectedCountDescription="50 (случайно)"
+			onCancelSelection={() => console.log("clear selected")}
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+			/>
+		</FilterWrapper>
+	</div>
 	<div
 		style={{
 			position: "relative",
@@ -322,6 +380,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			ИЛИредактирования
 		</h1>
 		<FilterWrapper
+			scrollState="full"
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -419,6 +478,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			И в группе ИЛИ
 		</h1>
 		<FilterWrapper
+			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
@@ -486,6 +546,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 4.1</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -548,6 +609,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 5 - Одна группа ИЛИ, пустая группа ИЛИ </h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -590,6 +652,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 6 - Редактирование внешней группы</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -699,6 +762,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 7 - Редактирование внутренней группы</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -807,6 +871,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 8 - Ховер над простым фильтром</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1039,6 +1104,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</FilterWrapper>
 	<h1>Пример 8.1</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1422,6 +1488,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 8.2</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1656,6 +1723,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 9 - Простой фильтр в режиме редактирования</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1675,16 +1743,16 @@ class ExampleFlatSelectorSimple extends React.Component {
 			groupType="or"
 			andLabel="И"
 			orLabel="ИЛИ"
-      shouldShowLabel={true}
-      onConditionStateToggle={() => console.log("state toggle")}
+			shouldShowLabel={true}
+			onConditionStateToggle={() => console.log("state toggle")}
 		>
 			<FiltrationGroupComponent
 				state="shaded"
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-        shouldShowLabel={true}
-        onConditionStateToggle={() => console.log("state toggle")}
+				shouldShowLabel={true}
+				onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="edit"
@@ -1762,8 +1830,8 @@ class ExampleFlatSelectorSimple extends React.Component {
 				groupType="and"
 				andLabel="И"
 				orLabel="ИЛИ"
-        shouldShowLabel={true}
-        onConditionStateToggle={() => console.log("state toggle")}
+				shouldShowLabel={true}
+				onConditionStateToggle={() => console.log("state toggle")}
 			>
 				<FiltrationConditionComponent
 					state="shaded"
@@ -1794,6 +1862,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		кнопками
 	</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1881,6 +1950,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		во вложенных фильтрах серенькие
 	</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -1972,6 +2042,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		для условий с вложенными условиями
 	</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2055,6 +2126,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 12.1</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2132,6 +2204,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 12.2 - Вложенная группа -- И, без лейбла</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2213,6 +2286,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		последнеее
 	</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2293,6 +2367,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		Пример 12.4 - Вложенная группа -- ИЛИ, условие с вложенным не последнеее
 	</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2370,6 +2445,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 13 - Если есть вложенное условие</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2457,6 +2533,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 14 - Вложенная группа наведение</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2557,6 +2634,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 15 - Вложенная группа И в режиме редактирования</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2659,6 +2737,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 16 - Валидация</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -2841,6 +2920,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 17 - без валидации</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -3018,6 +3098,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 17.1</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -3081,9 +3162,9 @@ class ExampleFlatSelectorSimple extends React.Component {
 											]}
 										/>
 									</GridColumn>
-                  <GridColumn col="7" >
-                    <ExampleFlatSelectorSimple />
-                  </GridColumn>
+									<GridColumn col="7">
+										<ExampleFlatSelectorSimple />
+									</GridColumn>
 								</GridRow>
 							</GridContainer>
 						}
@@ -3158,6 +3239,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 18 - валидация, режим просмотра</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -3321,6 +3403,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<h1>Пример 20</h1>
 	<FilterWrapper
+		scrollState="full"
 		filterActions={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
@@ -3423,5 +3506,5 @@ class ExampleFlatSelectorSimple extends React.Component {
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
-</div>
+</div>;
 ```

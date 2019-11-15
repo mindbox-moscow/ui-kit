@@ -46,9 +46,10 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								) as HTMLDivElement;
 
 								positionTop =
+									labelLine &&
 									labelLine.offsetTop +
-									labelLine.offsetHeight / 2 -
-									bracketWidth;
+										labelLine.offsetHeight / 2 -
+										bracketWidth;
 							}
 							break;
 
@@ -112,9 +113,10 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								) as HTMLDivElement;
 
 								positionTop =
+									labelLine &&
 									labelLine.offsetTop +
-									labelLine.offsetHeight / 2 +
-									height;
+										labelLine.offsetHeight / 2 +
+										height;
 							}
 							break;
 					}

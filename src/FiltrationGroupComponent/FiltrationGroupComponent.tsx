@@ -77,8 +77,9 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
-					const labelLineMiddle =
-						labelLine.offsetTop + labelLine.offsetHeight / 2;
+					const labelLineMiddle = labelLine
+						? labelLine.offsetTop + labelLine.offsetHeight / 2
+						: 0;
 
 					heightLine +=
 						firstChildElementHeight / 2 -
@@ -171,7 +172,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				labelLineRef.style.top = `${positionTop - BRACKET_WIDTH}px`;
 			} else {
 				labelLineRef.style.top = `${MIN_HEIGHT / 2 - BRACKET_WIDTH}px`;
-				// labelLineRef.style.removeProperty("top");
 			}
 		}
 

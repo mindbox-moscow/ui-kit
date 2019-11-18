@@ -25,6 +25,7 @@ export class FiltrationConditionComponent extends React.Component<
 	public state = {
 		offsetTop: 0
 	};
+	private popoverElement: Element = document.createElement("div");
 
 	public componentDidMount() {
 		window.addEventListener("scroll", this.scrollWindowsHeight);
@@ -32,7 +33,18 @@ export class FiltrationConditionComponent extends React.Component<
 	}
 
 	public componentWillUnmount() {
+		const refContent = this.refContent.current;
+
 		window.removeEventListener("scroll", this.scrollWindowsHeight);
+		window.removeEventListener("load", this.handleMoveUpParentPopupSegment);
+
+		if (refContent) {
+			if (refContent.parentElement) {
+				refContent.parentElement.parentElement!.removeChild(
+					this.popoverElement
+				);
+			}
+		}
 	}
 
 	public scrollWindowsHeight = () => {
@@ -64,24 +76,23 @@ export class FiltrationConditionComponent extends React.Component<
 		const refContent = this.refContent.current;
 
 		if (refContent) {
-			let popoverElement: HTMLElement = document.createElement("div");
-			refContent.childNodes.forEach((item: HTMLElement) => {
-				if (
-					item.classList.contains(
-						"kit-segment-button-expand__popover"
-					)
-				) {
-					popoverElement = item;
-					item.remove();
-				}
-			});
+			const popover = refContent.querySelector(
+				".kit-segment-button-expand__popover"
+			);
+
+			if (popover) {
+				this.popoverElement = popover;
+				popover.remove();
+			}
 
 			if (refContent.parentElement) {
 				refContent.parentElement.parentElement!.appendChild(
-					popoverElement
+					this.popoverElement
 				);
 			}
 		}
+
+		window.addEventListener("load", this.handleMoveUpParentPopupSegment);
 	};
 
 	public render() {

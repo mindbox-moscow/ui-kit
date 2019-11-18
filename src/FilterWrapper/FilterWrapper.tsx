@@ -2,31 +2,36 @@ import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
-import {
-	CallbackProps,
-	Context,
-	SelectionStateType,
-	StateProps
-} from "./types";
+import { CallbackProps, SelectionStateType, StateProps } from "./types";
 
 import "./FilterWrapper.scss";
 import { FilterWrapperContext } from "./FilterWrapperContext";
 
 type Props = StateProps & CallbackProps;
 
-export class FilterWrapper extends React.Component<Props> {
-	private refFilterWrapper = React.createRef<HTMLDivElement>();
-	private refBreackPoint = React.createRef<HTMLDivElement>();
+export const FilterWrapper: React.FC<Props> = ({
+	selectionState,
+	selectedText,
+	selectedCountDescription,
+	onCancelSelection,
+	selectedCancelText,
+	children,
+	statisticsValue,
+	statisticsDescription,
+	applyButtonCaption,
+	clearButtonCaption,
+	doesContainFilter,
+	onApply,
+	onClear,
+	isDataOutdated,
+	filterActions,
+	filterActionsCaption,
+	scrollState
+}) => {
+	const refFilterWrapper = React.createRef<HTMLDivElement>();
+	const refBreackPoint = React.createRef<HTMLDivElement>();
 
-	public countSelectedItems = () => {
-		const {
-			selectionState,
-			selectedText,
-			selectedCountDescription,
-			onCancelSelection,
-			selectedCancelText
-		} = this.props;
-
+	const countSelectedItems = () => {
 		return (
 			<div
 				className={cn(
@@ -48,94 +53,64 @@ export class FilterWrapper extends React.Component<Props> {
 		);
 	};
 
-	public render() {
-		const {
-			children,
-			statisticsValue,
-			statisticsDescription,
-			applyButtonCaption,
-			clearButtonCaption,
-			doesContainFilter,
-			onApply,
-			onClear,
-			selectionState,
-			isDataOutdated,
-			filterActions,
-			filterActionsCaption,
-			scrollState
-		} = this.props;
-
-		const contextValue: Context = {
-			refFilterWrapper: this.refBreackPoint
-		};
-
-		return (
-			<>
+	return (
+		<>
+			<div ref={refBreackPoint} className="kit-filter__breackpoint" />
+			<FilterWrapperContext.Provider value={refBreackPoint.current}>
 				<div
-					ref={this.refBreackPoint}
-					className="kit-filter__breackpoint"
-				/>
-				<FilterWrapperContext.Provider value={contextValue}>
-					<div
-						ref={this.refFilterWrapper}
-						className={cn("kit-filter", {
-							"kit-filter_short": !doesContainFilter,
-							"kit-filter_with-filter-action":
-								filterActions.length
-						})}
-					>
-						<div className="kit-filter__top-filter">
-							<FilterActionsPopover
-								filterActionsCaption={filterActionsCaption}
-								filterActions={filterActions}
+					ref={refFilterWrapper}
+					className={cn("kit-filter", {
+						"kit-filter_short": !doesContainFilter,
+						"kit-filter_with-filter-action": filterActions.length
+					})}
+				>
+					<div className="kit-filter__top-filter">
+						<FilterActionsPopover
+							filterActionsCaption={filterActionsCaption}
+							filterActions={filterActions}
+						/>
+					</div>
+					<ul className="kit-filter__all-wrap">{children}</ul>
+					{doesContainFilter ? (
+						<div className="kit-filter__wrap">
+							<div className="kit-filter__wrap-filter">
+								{scrollState !== "minfied" && (
+									<button
+										className="kit-filter__use-filter"
+										onClick={onApply}
+									>
+										{applyButtonCaption}
+									</button>
+								)}
+							</div>
+							{selectionState !== SelectionStateType.None &&
+								countSelectedItems()}
+							<InfoWrapper
+								isWarning={isDataOutdated}
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+							>
+								<button
+									className="kit-filter__clear-filter-btn"
+									onClick={onClear}
+								>
+									<IconSvg type="close" />
+									{clearButtonCaption}
+								</button>
+							</InfoWrapper>
+						</div>
+					) : (
+						<div className="kit-filter__short-wrap-filter">
+							{selectionState !== SelectionStateType.None &&
+								countSelectedItems()}
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
 							/>
 						</div>
-						<ul className="kit-filter__all-wrap">{children}</ul>
-						{doesContainFilter ? (
-							<div className="kit-filter__wrap">
-								<div className="kit-filter__wrap-filter">
-									{scrollState !== "minfied" && (
-										<button
-											className="kit-filter__use-filter"
-											onClick={onApply}
-										>
-											{applyButtonCaption}
-										</button>
-									)}
-								</div>
-								{selectionState !== SelectionStateType.None &&
-									this.countSelectedItems()}
-								<InfoWrapper
-									isWarning={isDataOutdated}
-									statisticsValue={statisticsValue}
-									statisticsDescription={
-										statisticsDescription
-									}
-								>
-									<button
-										className="kit-filter__clear-filter-btn"
-										onClick={onClear}
-									>
-										<IconSvg type="close" />
-										{clearButtonCaption}
-									</button>
-								</InfoWrapper>
-							</div>
-						) : (
-							<div className="kit-filter__short-wrap-filter">
-								{selectionState !== SelectionStateType.None &&
-									this.countSelectedItems()}
-								<InfoWrapper
-									statisticsValue={statisticsValue}
-									statisticsDescription={
-										statisticsDescription
-									}
-								/>
-							</div>
-						)}
-					</div>
-				</FilterWrapperContext.Provider>
-			</>
-		);
-	}
-}
+					)}
+				</div>
+			</FilterWrapperContext.Provider>
+		</>
+	);
+};

@@ -4,7 +4,7 @@ import {
 	FilterConditionSelector,
 	Props as SelectorProps
 } from "../FilterConditionSelector";
-import { Context, FilterWrapperContext } from "../FilterWrapper";
+import { FilterWrapperContext } from "../FilterWrapper";
 import { IconSvg, IconSvgTypes } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./FilterConditionEditorButton.scss";
@@ -18,23 +18,20 @@ type Props = ButtonProps &
 export class FilterConditionEditorButton extends React.Component<Props> {
 	public headerOffsetTop: number = 0;
 	private refButton = React.createRef<HTMLButtonElement>();
-	private refBreackPoint = React.createRef<HTMLDivElement>();
+	private refBreakPoint = React.createRef<HTMLDivElement>();
 	private observer: IntersectionObserver;
 
 	public componentDidMount() {
-		const context: Context = this.context;
-		const refFilterWrapper = context.refFilterWrapper
-			? context.refFilterWrapper.current
-			: null;
+		const refFilterWrapper = this.context;
 		const refButton = this.refButton.current;
-		const refBreackPoint = this.refBreackPoint.current;
+		const refBreakPoint = this.refBreakPoint.current;
 
-		if (refButton && refBreackPoint && refFilterWrapper) {
+		if (refButton && refBreakPoint && refFilterWrapper) {
 			const { height } = refButton.getBoundingClientRect();
 			const { top } = refFilterWrapper.getBoundingClientRect();
 
 			this.headerOffsetTop = top;
-			refBreackPoint.style.top = `${height}px`;
+			refBreakPoint.style.top = `${height}px`;
 		}
 
 		const observOptions = {
@@ -42,29 +39,41 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 			threshold: 1.0
 		};
 
-		if (refBreackPoint) {
+		if (refBreakPoint) {
 			this.observer = new IntersectionObserver(
 				this.checkCollapsed,
 				observOptions
 			);
-			this.observer.observe(refBreackPoint);
+			this.observer.observe(refBreakPoint);
 		}
+	}
+
+	public componentWillUnmount() {
+		this.observer.disconnect();
 	}
 
 	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {
 		const { isOpened, toggleOpen } = this.props;
-		const refBreackPoint = this.refBreackPoint.current;
+		const refBreackPoint = this.refBreakPoint.current;
 
-		const { isIntersecting } = entries.find(
+		const entrie = entries.find(
 			({ target }) => target === refBreackPoint
 		) as IntersectionObserverEntry;
 
-		!isIntersecting && isOpened ? toggleOpen() : null;
-		console.log(isIntersecting);
+		if (entrie) {
+			const { isIntersecting } = entrie;
+
+			if (!isIntersecting && isOpened) {
+				toggleOpen();
+			}
+		}
 	};
 
 	public focus = () => {
-		(this.refButton.current as HTMLButtonElement).focus();
+		const refButton = this.refButton.current;
+		if (refButton) {
+			refButton.focus();
+		}
 	};
 
 	public render() {
@@ -80,8 +89,8 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 		return (
 			<div className="kit-filter-editor">
 				<div
-					ref={this.refBreackPoint}
-					className="kit-filter-editor__breackpoint"
+					ref={this.refBreakPoint}
+					className="kit-filter-editor__breakpoint"
 				/>
 				<button
 					autoFocus={autoFocus}

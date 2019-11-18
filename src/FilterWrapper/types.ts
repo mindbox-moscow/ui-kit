@@ -34,7 +34,3 @@ export interface CallbackProps {
 	onClear: () => void;
 	onCancelSelection: () => void;
 }
-
-export interface Context {
-	refFilterWrapper: React.RefObject<HTMLDivElement>;
-}

@@ -3,6 +3,8 @@ import * as React from "react";
 import { Height, InputType, Utils, Width } from "../../modules";
 import { ClassDictionary, TextboxProps } from "./types";
 
+const ENTER_KEY = 13;
+
 export class Textbox extends React.Component<TextboxProps> {
 	private refTextbox = React.createRef<HTMLInputElement>();
 
@@ -22,8 +24,8 @@ export class Textbox extends React.Component<TextboxProps> {
 		this._focusTextIfRequired();
 	}
 
-	public onChange = (e: React.FormEvent<{}>) => {
-		const newValue = (e.target as any).value as string;
+	public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newValue = e.target.value;
 
 		if (
 			newValue != null &&
@@ -35,10 +37,8 @@ export class Textbox extends React.Component<TextboxProps> {
 				if (!this.isValidDecimal(whitespaceFreeNumber)) {
 					return;
 				}
-			} else {
-				if (!this.isValidInteger(whitespaceFreeNumber)) {
-					return;
-				}
+			} else if (!this.isValidInteger(whitespaceFreeNumber)) {
+				return;
 			}
 
 			if (newValue !== "-" && !this.inputIsInProcess(newValue)) {
@@ -73,8 +73,8 @@ export class Textbox extends React.Component<TextboxProps> {
 	};
 
 	// tslint:disable-next-line: variable-name
-	public _handleKeyUp = (e: React.KeyboardEvent<{}>) => {
-		if (e.keyCode === 13 && this.props.onEnterFinished) {
+	public _handleKeyUp = (e: React.KeyboardEvent) => {
+		if (e.keyCode === ENTER_KEY && this.props.onEnterFinished) {
 			this.props.onEnterFinished(this.props.value);
 		}
 	};
@@ -99,11 +99,21 @@ export class Textbox extends React.Component<TextboxProps> {
 	};
 
 	public render() {
-		const height = this.props.height || Height.Normal;
-		const width = this.props.width || Width.Normal;
+		const {
+			width = Width.Normal,
+			height = Height.Normal,
+			notFormControl,
+			additionalClasses,
+			style,
+			disabled,
+			id,
+			placeholder,
+			onBlur,
+			title
+		} = this.props;
 
 		const classNamesObject: ClassDictionary = {
-			"form-control": !this.props.notFormControl,
+			"form-control": !notFormControl,
 			"form-control_error":
 				!Utils.Instance.getIsValid(this.context) ||
 				!Utils.Instance.getIsValid(this.props)
@@ -120,7 +130,7 @@ export class Textbox extends React.Component<TextboxProps> {
 		const className = classNames(
 			classNamesObject,
 			Height.getClass(height),
-			this.props.additionalClasses
+			additionalClasses
 		);
 
 		const effectiveValue = this.getEffectiveValue();
@@ -129,15 +139,15 @@ export class Textbox extends React.Component<TextboxProps> {
 			<input
 				ref={this.refTextbox}
 				type={InputType.Text}
-				style={this.props.style}
-				disabled={this.props.disabled || false}
-				id={this.props.id}
-				placeholder={this.props.placeholder}
+				style={style}
+				disabled={disabled || false}
+				id={id}
+				placeholder={placeholder}
 				className={className}
 				onChange={this.onChange}
 				onKeyUp={this._handleKeyUp}
-				onBlur={this.props.onBlur}
-				title={this.props.title}
+				onBlur={onBlur}
+				title={title}
 				value={effectiveValue}
 			/>
 		);
@@ -181,13 +191,13 @@ export class Textbox extends React.Component<TextboxProps> {
 	};
 
 	private getEffectiveValue = () => {
-		const { value, precision } = this.props;
+		const { value, precision, type } = this.props;
 
 		if (value == null || value === "") {
 			return "";
 		}
 
-		if (this.props.type === InputType.Number) {
+		if (type === InputType.Number) {
 			if (value === "-") {
 				return "-";
 			}
@@ -206,7 +216,7 @@ export class Textbox extends React.Component<TextboxProps> {
 			}
 
 			if (typeof value === "number") {
-				const numberValue = 0 + (value as number);
+				const numberValue = 0 + value;
 				return new Intl.NumberFormat("ru-RU", {
 					minimumFractionDigits: 0,
 					// tslint:disable-next-line: object-literal-sort-keys

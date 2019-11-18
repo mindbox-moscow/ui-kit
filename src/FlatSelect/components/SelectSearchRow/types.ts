@@ -11,5 +11,5 @@ export interface SelectSearchRowProps {
 	hasNested?: boolean;
 	className?: string;
 
-	onClickHandler?: React.MouseEventHandler<{}>;
+	onClickHandler?: React.MouseEventHandler;
 }

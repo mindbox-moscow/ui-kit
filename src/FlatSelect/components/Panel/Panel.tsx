@@ -88,11 +88,9 @@ export class Panel extends React.Component<PanelProps> {
 			});
 
 		const target = event.target as HTMLElement;
-		this.defaultExternalInnerElementClasses.forEach(
-			c =>
-				(clickedInPanel =
-					clickedInPanel || target.classList.contains(c))
-		);
+		this.defaultExternalInnerElementClasses.forEach(c => {
+			clickedInPanel = clickedInPanel || target.classList.contains(c);
+		});
 
 		if (!clickedInPanel && !clickedInHeader) {
 			this.props.clickOutsideEventHandler(event);
@@ -161,7 +159,7 @@ export class Panel extends React.Component<PanelProps> {
 			) as HTMLElement;
 
 			const maxHeight = getComputedStyle(selectList).maxHeight;
-			const maxHeightStyle = maxHeight && parseInt(maxHeight);
+			const maxHeightStyle = maxHeight && parseInt(maxHeight, 10);
 			if (maxHeightStyle && !isNaN(maxHeightStyle)) {
 				selectList.style.maxHeight =
 					Math.max(cutMaxHeight + maxHeightStyle - 10, 100) + "px";

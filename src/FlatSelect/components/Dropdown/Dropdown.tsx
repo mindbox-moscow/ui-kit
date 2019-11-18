@@ -35,7 +35,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		Dropdown.DropdownIdentifier++;
 		this.setState(state => {
 			const newState = {
-				...state,
 				dropdownId: "react-dropdown-" + Dropdown.DropdownIdentifier
 			};
 
@@ -134,7 +133,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		);
 	};
 
-	private onSelectionClear = (e: React.SyntheticEvent<{}>) => {
+	private onSelectionClear = (e: React.MouseEvent) => {
 		const { onSelectionClear } = this.props;
 		e.stopPropagation();
 
@@ -173,7 +172,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			};
 		}
 
-		const dropdownPanel = render<Panel>(
+		const dropdownPanel = render(
 			<Panel
 				show={show}
 				isNested={this.props.isNested}

@@ -18,6 +18,8 @@ export class SelectSearchList extends React.Component<
 	public render() {
 		let clearFilter: JSX.Element = React.createElement("div");
 		let headerAddition: JSX.Element = React.createElement("div");
+		let selectedComponents: JSX.Element = React.createElement("div");
+		let applyButton: JSX.Element = React.createElement("div");
 
 		if (this.props.headerInfo) {
 			if (this.props.clearFilterHandler) {
@@ -41,19 +43,18 @@ export class SelectSearchList extends React.Component<
 			);
 		}
 
-		let selectedComponents: JSX.Element = React.createElement("div");
-		let applyButton: JSX.Element = React.createElement("div");
-
 		if (
 			this.props.selectionMode === SelectionMode.Multiple &&
 			this.props.makeSelectedComponents
 		) {
 			const selectedChildren = this.props.makeSelectedComponents();
 			if (selectedChildren.length !== 0) {
-				let choisesClasses = "kit-selectR-choices kit-selectR-choices-inline";
+				let choisesClasses =
+					"kit-selectR-choices kit-selectR-choices-inline";
 				if (this.state.minimized) {
 					choisesClasses =
-						choisesClasses + " kit-selectR-choices-inline-minimized";
+						choisesClasses +
+						" kit-selectR-choices-inline-minimized";
 				}
 				const minimizeButtonClasses =
 					"kit-selectR-horizontal-extension-image " +

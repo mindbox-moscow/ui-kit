@@ -45,12 +45,8 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 			return null;
 		};
 
-		const liClasses = liClassesArray.reduce(
-			(curr, next) => curr + " " + next
-		);
-		const divClasses = divClassesArray.reduce(
-			(curr, next) => curr + " " + next
-		);
+		const liClasses = liClassesArray.join(" ");
+		const divClasses = divClassesArray.join(" ");
 
 		const title =
 			this.props.title == null || typeof this.props.title === "string"
@@ -71,7 +67,7 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 		);
 	}
 
-	private onClick: React.MouseEventHandler<{}> = event => {
+	private onClick = (e: React.MouseEvent) => {
 		const { disabled, onClickHandler } = this.props;
 
 		if (disabled) {
@@ -79,6 +75,6 @@ export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 		}
 
 		// tslint:disable-next-line: no-unused-expression
-		onClickHandler && onClickHandler(event);
+		onClickHandler && onClickHandler(e);
 	};
 }

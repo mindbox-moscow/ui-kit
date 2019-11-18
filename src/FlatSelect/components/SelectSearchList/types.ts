@@ -7,7 +7,7 @@ export interface SelectSearchListProps {
 	onScroll?: (element: Element) => () => void;
 	selectionMode?: SelectionMode;
 	headerInfo?: string | JSX.Element;
-	clearFilterHandler?: React.MouseEventHandler<{}>;
+	clearFilterHandler?: React.MouseEventHandler;
 	makeSelectedComponents?: () => JSX.Element[];
 	resetFilterCaption?: string;
 	closeCaption?: string;

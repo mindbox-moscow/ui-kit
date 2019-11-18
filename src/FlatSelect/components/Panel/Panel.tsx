@@ -14,11 +14,6 @@ export class Panel extends React.Component<PanelProps> {
 
 	private allowedTargetClickIds: string[] = ["ui-datepicker-div"];
 
-	// Грязный хак от select2
-	public componentDidMount() {
-		document.addEventListener("select2-open", this.handleVisibleSelect);
-	}
-
 	public componentDidUpdate(prevProps: PanelProps) {
 		if (!prevProps.show) {
 			this.panelHeightOverride();

@@ -1,3 +1,3 @@
 export interface SegmentButtonEditProps {
-	onClick: () => void;
+	onClick: React.MouseEventHandler<HTMLButtonElement>;
 }

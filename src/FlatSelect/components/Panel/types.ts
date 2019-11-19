@@ -1,8 +1,6 @@
 // tslint:disable-next-line: interface-name
 export interface PanelProps {
-	show: boolean;
 	isNested?: boolean;
-	boundingRectangle: DropdownClientRect;
 	className?: string;
 	clickOutsideEventHandler: (event: PanelEventObject) => void;
 	allowedClickTargetClasses?: string[];

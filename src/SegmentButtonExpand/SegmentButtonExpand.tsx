@@ -32,7 +32,10 @@ export class SegmentButtonExpand extends React.Component<Props> {
 			<button
 				className="kit-segment-button-expand__button-filter"
 				type="button"
-				onClick={filterActionClick}
+				onClick={e => {
+					e.stopPropagation();
+					filterActionClick();
+				}}
 			>
 				<IconSvg type="filter" />
 				{filterActionCaption}
@@ -50,7 +53,10 @@ export class SegmentButtonExpand extends React.Component<Props> {
 						"kit-segment-button-expand_open": isOpen
 					})}
 					type="button"
-					onClick={onClick}
+					onClick={e => {
+						e.stopPropagation();
+						onClick();
+					}}
 				>
 					<IconSvg type="segment-expand" />
 				</button>

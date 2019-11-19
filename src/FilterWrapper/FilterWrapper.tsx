@@ -29,7 +29,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	scrollState
 }) => {
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
-	const refBreackPoint = React.createRef<HTMLDivElement>();
+	const refBreakPoint = React.createRef<HTMLDivElement>();
 
 	const countSelectedItems = () => {
 		return (
@@ -55,8 +55,8 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	return (
 		<>
-			<div ref={refBreackPoint} className="kit-filter__breackpoint" />
-			<FilterWrapperContext.Provider value={refBreackPoint.current}>
+			<div ref={refBreakPoint} className="kit-filter__breackpoint" />
+			<FilterWrapperContext.Provider value={refBreakPoint.current}>
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {

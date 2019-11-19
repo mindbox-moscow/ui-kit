@@ -56,16 +56,12 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 		const { isOpened, toggleOpen } = this.props;
 		const refBreackPoint = this.refBreakPoint.current;
 
-		const entrie = entries.find(
+		const entry = entries.find(
 			({ target }) => target === refBreackPoint
 		) as IntersectionObserverEntry;
 
-		if (entrie) {
-			const { isIntersecting } = entrie;
-
-			if (!isIntersecting && isOpened) {
-				toggleOpen();
-			}
+		if (entry && !entry.isIntersecting && isOpened) {
+			toggleOpen();
 		}
 	};
 

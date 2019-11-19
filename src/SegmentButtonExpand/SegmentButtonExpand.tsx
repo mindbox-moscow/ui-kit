@@ -35,12 +35,14 @@ export class SegmentButtonExpand extends React.Component<Props> {
 				>
 					<IconSvg type="segment-expand" />
 				</button>
-				{isOpen && (
-					<div className="kit-segment-button-expand__popover">
-						{filterActionShow && this.filterAction()}
-						{children}
-					</div>
-				)}
+				<div
+					className={cn("kit-segment-button-expand__popover", {
+						"kit-segment-button-expand__popover_show": isOpen
+					})}
+				>
+					{filterActionShow && this.filterAction()}
+					{children}
+				</div>
 			</>
 		);
 	}

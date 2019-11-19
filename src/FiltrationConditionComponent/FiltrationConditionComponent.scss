@@ -110,6 +110,12 @@ $groupHoverMarginLeft: 10px;
 			display: flex;
 			background-color: $editModeColorBg;
 		}
+
+		[class*="kit-segment"] {
+			&:not(.kit-segment-button-expand__popover) {
+				background-color: #fff;
+			}
+		}
 	}
 
 	&_linked-condition-edit {
@@ -146,9 +152,9 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	> .kit-filtration-condition__content {
-		> [class*="kit-segment"] {
+		[class*="kit-segment"] {
 			&:not(.kit-segment-button-expand__popover) {
-				margin-right: 10px;
+				margin-left: 10px;
 			}
 		}
 	}

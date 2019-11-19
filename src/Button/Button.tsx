@@ -4,7 +4,6 @@ import { Icon } from "../Icon/Icon";
 import "./Button.scss";
 
 interface Props {
-	children: string;
 	size: "small" | "medium" | "large" | "xs" | "xxs" | "normal";
 	color: "gray" | "lightgray" | "silver";
 	type?: "button" | "submit" | "reset";
@@ -36,7 +35,7 @@ export class Button extends React.Component<Props> {
 			hasUnderline,
 			hasBorder,
 			inheritFont,
-			onClick = () => {},
+			onClick = () => { },
 			onKeyDown
 		} = this.props;
 		return (

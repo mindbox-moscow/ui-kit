@@ -20,7 +20,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 	public componentDidUpdate(prevProps: Props) {
 		const { isOpen, children } = this.props;
 
-		if (isOpen && isOpen !== prevProps.isOpen) {
+		if (isOpen !== prevProps.isOpen) {
 			this.context(children);
 		}
 	}

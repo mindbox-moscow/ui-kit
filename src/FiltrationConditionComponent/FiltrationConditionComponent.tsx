@@ -24,49 +24,67 @@ export class FiltrationConditionComponent extends React.Component<
 > {
 	public refComponent = React.createRef<HTMLElement>();
 	public refContent = React.createRef<HTMLDivElement>();
+	public refCondition = React.createRef<HTMLLIElement>();
+	public headerOffsetTop: number = 0;
 
 	public state = {
 		offsetTop: 0,
 		showPopover: false,
 		popoversChildren: []
 	};
+	private observer: IntersectionObserver;
 
 	public componentDidMount() {
-		window.addEventListener("scroll", this.scrollWindowsHeight);
+		window.addEventListener("load", this.observerScroll);
 	}
 
 	public componentWillUnmount() {
-		window.removeEventListener("scroll", this.scrollWindowsHeight);
+		const refCondition = this.refCondition.current;
+
+		if (refCondition) {
+			this.observer.disconnect();
+		}
+
+		window.removeEventListener("load", this.observerScroll);
 	}
 
-	public scrollWindowsHeight = () => {
-		const { offsetTop } = this.state;
+	public observerScroll = () => {
+		const refCondition = this.refCondition.current;
+
+		if (refCondition) {
+			const { top } = refCondition.getBoundingClientRect();
+
+			this.headerOffsetTop = top - RANGE_OFFSET_TOP;
+
+			const observerOptions = {
+				rootMargin: `-${Math.abs(this.headerOffsetTop)}px 0px 0px 0px`,
+				threshold: 1.0
+			};
+
+			this.observer = new IntersectionObserver(
+				this.checkCollapsed,
+				observerOptions
+			);
+			this.observer.observe(refCondition);
+		}
+	};
+
+	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {
+		const refCondition = this.refCondition.current;
 		const { onConditionStateToggle, state } = this.props;
-		const refContent = this.refContent.current;
 
-		if (refContent) {
-			const { top } = refContent.getBoundingClientRect();
-			if (offsetTop === 0) {
-				this.setState({
-					offsetTop: top
-				});
-			}
+		const entry = entries.find(
+			({ target }) => target === refCondition
+		) as IntersectionObserverEntry;
 
-			if (
-				top > 0 &&
-				window.innerHeight >= top &&
-				offsetTop - RANGE_OFFSET_TOP > top &&
-				onConditionStateToggle &&
-				state === "edit"
-			) {
-				onConditionStateToggle();
-			}
+		if (entry && state === "edit" && !entry.isIntersecting) {
+			onConditionStateToggle();
 		}
 	};
 
 	public renderPopover = (children: React.ReactNode) => {
 		this.setState({
-			showPopover: true,
+			showPopover: !this.state.showPopover,
 			popoversChildren: children
 		});
 	};
@@ -106,6 +124,7 @@ export class FiltrationConditionComponent extends React.Component<
 				value={this.renderPopover}
 			>
 				<li
+					ref={this.refCondition}
 					className={cn("kit-filtration-condition", {
 						"kit-filtration-condition_edit": state === "edit"
 					})}

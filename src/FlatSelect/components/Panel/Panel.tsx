@@ -1,5 +1,6 @@
+import cn from "classnames";
 import * as React from "react";
-import { Utils } from "../../modules";
+import { Utils, Width } from "../../modules";
 import { PanelEventObject, PanelProps } from "./types";
 
 export class Panel extends React.Component<PanelProps> {
@@ -55,19 +56,18 @@ export class Panel extends React.Component<PanelProps> {
 	};
 
 	public render() {
-		const classesArray = [
-			"kit-selectR-drop",
-			"kit-overflow-isnt-neutral-zone-marker"
-		];
-
-		if (this.props.className) {
-			classesArray.push(this.props.className);
-		}
-
-		const classes = classesArray.join(" ");
+		const { className, width } = this.props;
 
 		return (
-			<div className={classes} ref={this.panelRef}>
+			<div
+				className={cn(
+					"kit-selectR-drop",
+					"kit-overflow-isnt-neutral-zone-marker",
+					className,
+					`${String(width && Width.getClass(width))}`
+				)}
+				ref={this.panelRef}
+			>
 				{this.props.children}
 			</div>
 		);

@@ -98,6 +98,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						onNeutralZoneClick={() => {}}
 					>
 						<Panel
+							width={width || Width.Normal}
 							className={panelClass}
 							clickOutsideEventHandler={this.hide}
 						>

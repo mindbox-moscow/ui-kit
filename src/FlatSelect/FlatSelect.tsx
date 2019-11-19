@@ -71,9 +71,8 @@ export class FlatSelect<TValue> extends React.Component<
 				headerInfo={selectedItemText}
 				placeholder={placeholder}
 				disabled={disabled}
-				className={`${Width.getClass(
-					width || Width.Normal
-				)} ${className}`}
+				className={className}
+				width={width || Width.Normal}
 				openedClassName="form-control select2-container-active select2-dropdown-open"
 				height={height || Height.Small}
 				onSelectionClear={

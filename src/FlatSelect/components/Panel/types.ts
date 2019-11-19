@@ -1,7 +1,10 @@
+import { Width } from "../../modules";
+
 // tslint:disable-next-line: interface-name
 export interface PanelProps {
 	isNested?: boolean;
 	className?: string;
+	width: Width;
 	clickOutsideEventHandler: (event: PanelEventObject) => void;
 	allowedClickTargetClasses?: string[];
 }

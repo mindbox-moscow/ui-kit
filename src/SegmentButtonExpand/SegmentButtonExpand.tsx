@@ -1,11 +1,30 @@
 import cn from "classnames";
 import * as React from "react";
+import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent/FiltrationConditionComponentContext";
 import { IconSvg } from "../IconSvg";
 import { SegmentButtonExpandProps as Props } from "./types";
 
 import "./SegmentButtonExpand.scss";
 
 export class SegmentButtonExpand extends React.Component<Props> {
+	public static context: ((children: React.ReactNode) => void) | null;
+
+	public componentDidMount() {
+		const { isOpen, children } = this.props;
+
+		if (isOpen) {
+			this.context(children);
+		}
+	}
+
+	public componentDidUpdate(prevProps: Props) {
+		const { isOpen, children } = this.props;
+
+		if (isOpen && isOpen !== prevProps.isOpen) {
+			this.context(children);
+		}
+	}
+
 	public filterAction = () => {
 		const { filterActionCaption, filterActionClick } = this.props;
 
@@ -22,7 +41,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 	};
 
 	public render() {
-		const { children, onClick, isOpen, filterActionShow } = this.props;
+		const { onClick, isOpen } = this.props;
 
 		return (
 			<>
@@ -35,15 +54,9 @@ export class SegmentButtonExpand extends React.Component<Props> {
 				>
 					<IconSvg type="segment-expand" />
 				</button>
-				<div
-					className={cn("kit-segment-button-expand__popover", {
-						"kit-segment-button-expand__popover_show": isOpen
-					})}
-				>
-					{filterActionShow && this.filterAction()}
-					{children}
-				</div>
 			</>
 		);
 	}
 }
+
+SegmentButtonExpand.contextType = FiltrationConditionComponentContext;

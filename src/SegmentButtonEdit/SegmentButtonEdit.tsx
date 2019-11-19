@@ -10,7 +10,7 @@ export const SegmentButtonEdit: React.FC<Props> = ({ onClick }) => {
 			className="kit-segment-button-edit"
 			type="button"
 			onClick={e => {
-				e.preventDefault();
+				e.stopPropagation();
 				onClick();
 			}}
 		>

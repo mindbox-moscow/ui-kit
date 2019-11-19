@@ -151,7 +151,7 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	> .kit-filtration-condition__content {
-		[class*="kit-segment"] {
+		[class*="kit-segment"]:not(.kit-segment-content__count) {
 			margin-left: 10px;
 		}
 	}

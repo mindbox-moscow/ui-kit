@@ -14,6 +14,7 @@ interface State {
 	offsetTop: number;
 	showPopover: boolean;
 	popoversChildren: React.ReactNode;
+	popoverFilterAction: React.ReactNode;
 }
 
 const RANGE_OFFSET_TOP = 30;
@@ -30,12 +31,34 @@ export class FiltrationConditionComponent extends React.Component<
 	public state = {
 		offsetTop: 0,
 		showPopover: false,
-		popoversChildren: []
+		popoversChildren: [],
+		popoverFilterAction: false
 	};
 	private observer: IntersectionObserver;
 
 	public componentDidMount() {
-		window.addEventListener("load", this.observerScroll);
+		const refCondition = this.refCondition.current;
+
+		if (refCondition) {
+			requestAnimationFrame(() => {
+				const { top } = refCondition.getBoundingClientRect();
+
+				this.headerOffsetTop = top - RANGE_OFFSET_TOP;
+
+				const observerOptions = {
+					rootMargin: `-${Math.abs(
+						this.headerOffsetTop
+					)}px 0px 0px 0px`,
+					threshold: 1.0
+				};
+
+				this.observer = new IntersectionObserver(
+					this.checkCollapsed,
+					observerOptions
+				);
+				this.observer.observe(refCondition);
+			});
+		}
 	}
 
 	public componentWillUnmount() {
@@ -44,30 +67,7 @@ export class FiltrationConditionComponent extends React.Component<
 		if (refCondition) {
 			this.observer.disconnect();
 		}
-
-		window.removeEventListener("load", this.observerScroll);
 	}
-
-	public observerScroll = () => {
-		const refCondition = this.refCondition.current;
-
-		if (refCondition) {
-			const { top } = refCondition.getBoundingClientRect();
-
-			this.headerOffsetTop = top - RANGE_OFFSET_TOP;
-
-			const observerOptions = {
-				rootMargin: `-${Math.abs(this.headerOffsetTop)}px 0px 0px 0px`,
-				threshold: 1.0
-			};
-
-			this.observer = new IntersectionObserver(
-				this.checkCollapsed,
-				observerOptions
-			);
-			this.observer.observe(refCondition);
-		}
-	};
 
 	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {
 		const refCondition = this.refCondition.current;
@@ -82,15 +82,23 @@ export class FiltrationConditionComponent extends React.Component<
 		}
 	};
 
-	public renderPopover = (children: React.ReactNode) => {
+	public renderPopover = (
+		children: React.ReactNode,
+		filterAction: JSX.Element
+	) => {
 		this.setState({
 			showPopover: !this.state.showPopover,
-			popoversChildren: children
+			popoversChildren: children,
+			popoverFilterAction: filterAction
 		});
 	};
 
 	public render() {
-		const { showPopover, popoversChildren } = this.state;
+		const {
+			showPopover,
+			popoversChildren,
+			popoverFilterAction
+		} = this.state;
 		const {
 			filterablePropertyName,
 			filtrationMethodName,
@@ -181,6 +189,7 @@ export class FiltrationConditionComponent extends React.Component<
 					</div>
 					{showPopover && (
 						<div className="kit-filtration-condition__popover">
+							{popoverFilterAction}
 							{popoversChildren}
 						</div>
 					)}

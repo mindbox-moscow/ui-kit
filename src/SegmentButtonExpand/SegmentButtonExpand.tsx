@@ -8,7 +8,7 @@ import "./SegmentButtonExpand.scss";
 
 export class SegmentButtonExpand extends React.Component<Props> {
 	public static context:
-		| ((children: React.ReactNode, filterAction: JSX.Element) => void)
+		| ((children: React.ReactNode, filterAction: React.ReactNode) => void)
 		| null;
 
 	public componentDidMount() {

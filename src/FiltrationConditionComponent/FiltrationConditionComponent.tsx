@@ -31,8 +31,8 @@ export class FiltrationConditionComponent extends React.Component<
 	public state = {
 		offsetTop: 0,
 		showPopover: false,
-		popoversChildren: [],
-		popoverFilterAction: false
+		popoversChildren: null,
+		popoverFilterAction: null
 	};
 	private observer: IntersectionObserver;
 
@@ -62,20 +62,14 @@ export class FiltrationConditionComponent extends React.Component<
 	}
 
 	public componentWillUnmount() {
-		const refCondition = this.refCondition.current;
-
-		if (refCondition) {
-			this.observer.disconnect();
-		}
+		this.observer.disconnect();
 	}
 
 	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {
 		const refCondition = this.refCondition.current;
 		const { onConditionStateToggle, state } = this.props;
 
-		const entry = entries.find(
-			({ target }) => target === refCondition
-		) as IntersectionObserverEntry;
+		const entry = entries.find(({ target }) => target === refCondition);
 
 		if (entry && state === "edit" && !entry.isIntersecting) {
 			onConditionStateToggle();
@@ -84,13 +78,13 @@ export class FiltrationConditionComponent extends React.Component<
 
 	public renderPopover = (
 		children: React.ReactNode,
-		filterAction: JSX.Element
+		filterAction: React.ReactNode
 	) => {
-		this.setState({
-			showPopover: !this.state.showPopover,
+		this.setState(state => ({
+			showPopover: !state.showPopover,
 			popoversChildren: children,
 			popoverFilterAction: filterAction
-		});
+		}));
 	};
 
 	public render() {
@@ -112,20 +106,18 @@ export class FiltrationConditionComponent extends React.Component<
 		} = this.props;
 
 		const editModeContent = (
-			<>
-				<OverflowVisibleContainer
-					parentRef={this.refComponent}
-					onNeutralZoneClick={onConditionStateToggle}
-				>
-					<FilterDetails
-						helpCaption={filterablePropertyName}
-						helpComponent={helpComponent}
-						editorComponent={editorComponent}
-						onClose={onConditionStateToggle}
-						viewMode="edit"
-					/>
-				</OverflowVisibleContainer>
-			</>
+			<OverflowVisibleContainer
+				parentRef={this.refComponent}
+				onNeutralZoneClick={onConditionStateToggle}
+			>
+				<FilterDetails
+					helpCaption={filterablePropertyName}
+					helpComponent={helpComponent}
+					editorComponent={editorComponent}
+					onClose={onConditionStateToggle}
+					viewMode="edit"
+				/>
+			</OverflowVisibleContainer>
 		);
 		return (
 			<FiltrationConditionComponentContext.Provider

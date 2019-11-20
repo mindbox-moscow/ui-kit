@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import * as React from "react";
-import { Height, InputType, Utils, Width } from "../../modules";
+import { Utils } from "../FlatSelect/modules";
+import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
 
 const ENTER_KEY = 13;

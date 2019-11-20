@@ -1,7 +1,7 @@
 import * as React from "react";
+import { Height, Width } from "../utils";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 import "./FlatSelect.scss";
-import { Height, Width } from "./modules";
 import { SelectedItemKey, SelectItem, SelectProps, SelectState } from "./types";
 
 export class FlatSelect<TValue> extends React.Component<

@@ -1,5 +1,6 @@
 import * as React from "react";
-import { SelectDropMain, Textbox } from "..";
+import { SelectDropMain } from "..";
+import { Textbox } from "../../../Textbox";
 import { Utils } from "../../modules";
 import {
 	SelectionMode,

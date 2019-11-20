@@ -1,4 +1,4 @@
-import { Height, InputType, Width } from "../../modules";
+import { Height, InputType, Width } from "../utils";
 
 // tslint:disable-next-line: interface-name
 export interface TextboxProps {

@@ -2,7 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { unmountComponentAtNode } from "react-dom";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
-import { Height, Width } from "../../modules";
+import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
 import { DropdownProps, DropdownState } from "./types";
 
@@ -17,7 +17,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	private dropdownRef = React.createRef<HTMLDivElement>();
 
-	public componentWillMount() {
+	public componentDidMount() {
 		Dropdown.DropdownIdentifier++;
 		this.setState(state => {
 			const newState = {
@@ -116,7 +116,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	private clearSelectionSection = (): JSX.Element | null => {
 		return this.props.onSelectionClear == null ? null : (
-			<abbr
+			<span
 				className="select2-search-choice-close"
 				onClick={this.onSelectionClear}
 			/>

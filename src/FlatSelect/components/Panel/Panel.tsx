@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
-import { Utils, Width } from "../../modules";
+import { Width } from "../../../utils";
+import { Utils } from "../../modules";
 import { PanelEventObject, PanelProps } from "./types";
 
 export class Panel extends React.Component<PanelProps> {

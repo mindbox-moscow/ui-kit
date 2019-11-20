@@ -1,4 +1,4 @@
-import { Height, Width } from "./modules";
+import { Height, Width } from "../utils";
 
 export type SelectedItemKey = string | number | Array<string | number>;
 

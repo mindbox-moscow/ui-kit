@@ -1,4 +1,4 @@
-import { Height, Width } from "../../modules";
+import { Height, Width } from "../../../utils";
 
 // tslint:disable-next-line:interface-name
 export interface DropdownProps {

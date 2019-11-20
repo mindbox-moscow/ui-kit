@@ -1,4 +1,3 @@
-import { Preloader } from "..";
 import {
 	DirectCrmError,
 	IDictionary,
@@ -231,8 +230,6 @@ export class Utils {
 		state: {},
 		error: string
 	) => {
-		Preloader.hide();
-
 		const reloginUrl = xhr.getResponseHeader("Authorization-Required");
 		if (reloginUrl) {
 			window.location.href =

@@ -1,4 +1,4 @@
-import { Width } from "../../modules";
+import { Width } from "../../../utils";
 
 // tslint:disable-next-line: interface-name
 export interface PanelProps {

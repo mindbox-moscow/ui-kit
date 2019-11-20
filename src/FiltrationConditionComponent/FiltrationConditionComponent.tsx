@@ -44,21 +44,19 @@ export class FiltrationConditionComponent extends React.Component<
 				const { top } = refCondition.getBoundingClientRect();
 
 				this.headerOffsetTop = top - RANGE_OFFSET_TOP;
-
-				const observerOptions = {
-					rootMargin: `-${Math.abs(
-						this.headerOffsetTop
-					)}px 0px 0px 0px`,
-					threshold: 1.0
-				};
-
-				this.observer = new IntersectionObserver(
-					this.checkCollapsed,
-					observerOptions
-				);
-				this.observer.observe(refCondition);
 			});
 		}
+
+		const observerOptions = {
+			rootMargin: `-${Math.abs(this.headerOffsetTop)}px 0px 0px 0px`,
+			threshold: 1.0
+		};
+
+		this.observer = new IntersectionObserver(
+			this.checkCollapsed,
+			observerOptions
+		);
+		this.observer.observe(refCondition!);
 	}
 
 	public componentWillUnmount() {

@@ -5,7 +5,7 @@ import { FilterAction } from "../../types";
 import "./FilterActionsPopover.scss";
 
 interface FilterActionsPopoverProps {
-	filterActionItems: (FilterAction | any)[];
+	filterActions: (FilterAction | any)[];
 	filterActionsCaption: string;
 }
 
@@ -34,26 +34,16 @@ export class FilterActionsPopover extends React.Component<
 		this.setState(state => ({ isOpen: !state.isOpen }));
 	};
 
-	public hideList = () => {
-		console.warn("hideList")
+	public hideListPopover = () => {
 		this.setState(state => ({ ...state, isOpen: false }));
 	}
 
-	public getClickOnItem = (callback: () => void) => {
-		const that = this;
-		return () => {
-			console.warn("clickOnItem.callback")
-			that.hideList();
-			callback();
-		}
-	}
-
 	public render() {
-		const { filterActionItems, filterActionsCaption } = this.props;
+		const { filterActions, filterActionsCaption } = this.props;
 
 		const { isOpen } = this.state;
 
-		return filterActionItems && filterActionItems.length ? (
+		return filterActions && filterActions.length ? (
 			<div className="kit-filter-actions-popover">
 				<span
 					ref={this.refElement}
@@ -63,19 +53,10 @@ export class FilterActionsPopover extends React.Component<
 					{filterActionsCaption}
 				</span>
 				{isOpen && (
-					<OverflowVisibleContainer parentRef={this.refElement} onNeutralZoneClick={this.hideList}>
+					<OverflowVisibleContainer parentRef={this.refElement} onNeutralZoneClick={this.hideListPopover}>
 						<ul className="kit-filter-actions-popover__list">
-							{/* {filterActions.map(({ key, onClick, name }) => (
-								<li
-									className="kit-filter-actions-popover__item"
-									key={key}
-									onClick={onClick}
-								>
-									{name}
-								</li>
-							))} */}
 							{
-								filterActionItems.map((item, index) => {
+								filterActions.map((item, index) => {
 									if (isFilterAction(item)) {
 										const { key, onClick, name } = item as FilterAction;
 										return (
@@ -83,8 +64,8 @@ export class FilterActionsPopover extends React.Component<
 												className="kit-filter-actions-popover__item"
 												key={key}
 												onClick={() => {
-													this.hideList();
-													onClick()
+													this.hideListPopover();
+													onClick();
 												}}
 											>
 												{name}
@@ -95,7 +76,7 @@ export class FilterActionsPopover extends React.Component<
 										<li
 											className="kit-filter-actions-popover__item"
 											key={`kit-filter-actions-popover__item-key-${index}`}
-											onClick={this.hideList}
+											onClick={() => setTimeout(this.hideListPopover, 150)}
 										>
 											{item}
 										</li>

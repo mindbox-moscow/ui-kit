@@ -24,7 +24,7 @@ export interface StateProps {
 	selectedCancelText: string;
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
-	filterActions: FilterAction[];
+	filterActionItems: (FilterAction | any)[];
 	filterActionsCaption: string;
 	scrollState: ScrollState;
 }

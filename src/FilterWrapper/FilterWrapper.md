@@ -46,7 +46,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 >
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -197,7 +197,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<div style={{}}>
 		<FilterWrapper
 			scrollState="full"
-			filterActions={[]}
+			filterActionItems={[]}
 			statisticsDescription="Потребителей найдено"
 			statisticsValue={50248}
 			selectionState="none"
@@ -225,7 +225,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	>
 		<FilterWrapper
 			scrollState="full"
-			filterActions={[]}
+			filterActionItems={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={false}
@@ -281,7 +281,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		</h1>
 		<FilterWrapper
 			scrollState="full"
-			filterActions={[]}
+			filterActionItems={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -325,7 +325,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		<h1>Пример 2.1 - Скрытая кнопка "Применить фильтр"</h1>
 		<FilterWrapper
 			scrollState="minfied"
-			filterActions={[]}
+			filterActionItems={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -395,21 +395,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
 			filterActionsCaption="Действия с фильтром"
-			filterActions={[
-				{
-					key: "save",
-					name: "Сохранить как сегмент",
-					onClick: () => {}
-				},
-				{
-					key: "copy",
-					name: "Копировать фильтр",
-					onClick: () => {}
-				},
+			filterActionItems={[
+				"Сохранить как сегмент",
+				(<>Копировать фильтр</>),
 				{
 					key: "insert",
 					name: "Вставить фильтр",
-					onClick: () => {}
+					onClick: () => { console.log("This onClick by FilterAction")}
 				}
 			]}
 		>
@@ -479,7 +471,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		</h1>
 		<FilterWrapper
 			scrollState="full"
-			filterActions={[]}
+			filterActionItems={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
@@ -547,7 +539,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 4.1</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -610,7 +602,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 5 - Одна группа ИЛИ, пустая группа ИЛИ </h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -653,7 +645,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 6 - Редактирование внешней группы</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -763,7 +755,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 7 - Редактирование внутренней группы</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -872,7 +864,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 8 - Ховер над простым фильтром</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1105,7 +1097,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 8.1</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1489,7 +1481,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 8.2</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1724,7 +1716,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 9 - Простой фильтр в режиме редактирования</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1863,7 +1855,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -1951,7 +1943,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2043,7 +2035,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2127,7 +2119,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 12.1</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2205,7 +2197,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 12.2 - Вложенная группа -- И, без лейбла</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2287,7 +2279,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2368,7 +2360,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2446,7 +2438,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 13 - Если есть вложенное условие</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2534,7 +2526,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 14 - Вложенная группа наведение</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2635,7 +2627,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 15 - Вложенная группа И в режиме редактирования</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2738,7 +2730,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 16 - Валидация</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -2921,7 +2913,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 17 - без валидации</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -3099,7 +3091,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 17.1</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -3240,7 +3232,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 18 - валидация, режим просмотра</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}
@@ -3404,7 +3396,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<h1>Пример 20</h1>
 	<FilterWrapper
 		scrollState="full"
-		filterActions={[]}
+		filterActionItems={[]}
 		statisticsDescription="Всего клиентов"
 		statisticsValue={1021318}
 		doesContainFilter={true}

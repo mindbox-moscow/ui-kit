@@ -1692,7 +1692,7 @@ class ExampleComponent extends React.Component {
 		return (
 			<>
 				<FilterWrapper
-					filterActions={[]}
+					filterActionItems={[]}
 					statisticsDescription="Потребителей найдено"
 					statisticsValue={50248}
 					applyButtonCaption="Применить фильтр"

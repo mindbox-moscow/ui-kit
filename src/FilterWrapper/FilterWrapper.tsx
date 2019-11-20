@@ -51,7 +51,7 @@ export class FilterWrapper extends React.Component<Props> {
 			onClear,
 			selectionState,
 			isDataOutdated,
-			filterActions,
+			filterActionItems,
 			filterActionsCaption,
 			scrollState
 		} = this.props;
@@ -60,13 +60,13 @@ export class FilterWrapper extends React.Component<Props> {
 			<div
 				className={cn("kit-filter", {
 					"kit-filter_short": !doesContainFilter,
-					"kit-filter_with-filter-action": filterActions.length
+					"kit-filter_with-filter-action": filterActionItems && filterActionItems.length
 				})}
 			>
 				<div className="kit-filter__top-filter">
 					<FilterActionsPopover
 						filterActionsCaption={filterActionsCaption}
-						filterActions={filterActions}
+						filterActionItems={filterActionItems}
 					/>
 				</div>
 				<ul className="kit-filter__all-wrap">{children}</ul>
@@ -99,15 +99,15 @@ export class FilterWrapper extends React.Component<Props> {
 						</InfoWrapper>
 					</div>
 				) : (
-					<div className="kit-filter__short-wrap-filter">
-						{selectionState !== SelectionStateType.None &&
-							this.countSelectedItems()}
-						<InfoWrapper
-							statisticsValue={statisticsValue}
-							statisticsDescription={statisticsDescription}
-						/>
-					</div>
-				)}
+						<div className="kit-filter__short-wrap-filter">
+							{selectionState !== SelectionStateType.None &&
+								this.countSelectedItems()}
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+							/>
+						</div>
+					)}
 			</div>
 		);
 	}

@@ -62,7 +62,9 @@ export class FiltrationConditionComponent extends React.Component<
 	}
 
 	public componentWillUnmount() {
-		this.observer.disconnect();
+		if (this.observer instanceof IntersectionObserver) {
+			this.observer.disconnect();
+		}
 	}
 
 	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {

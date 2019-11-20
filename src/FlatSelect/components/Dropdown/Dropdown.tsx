@@ -100,7 +100,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						<Panel
 							width={width || Width.Normal}
 							className={panelClass}
-							clickOutsideEventHandler={this.hide}
 						>
 							{children}
 						</Panel>

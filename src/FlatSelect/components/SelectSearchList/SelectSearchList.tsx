@@ -1,7 +1,6 @@
 import * as React from "react";
 import { SelectDropMain } from "..";
 import { Textbox } from "../../../Textbox";
-import { Utils } from "../../modules";
 import {
 	SelectionMode,
 	SelectSearchListProps,
@@ -78,7 +77,6 @@ export class SelectSearchList extends React.Component<
 						<button
 							type="button"
 							className="button button_blue button_middle button_primary"
-							onClick={this.onApply}
 						>
 							{this.props.closeCaption}
 						</button>
@@ -112,10 +110,6 @@ export class SelectSearchList extends React.Component<
 			</div>
 		);
 	}
-
-	private onApply = () => {
-		Utils.Instance.triggerEvent(document.body, "click");
-	};
 
 	private onToggleChoices = () => {
 		this.setState({ minimized: !this.state.minimized });

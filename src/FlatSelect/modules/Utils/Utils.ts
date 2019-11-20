@@ -1,4 +1,4 @@
-import { IDictionary, UtilsEvent } from "./types";
+import { UtilsEvent } from "./types";
 
 export class Utils {
 	public static get Instance(): Utils {
@@ -30,31 +30,6 @@ export class Utils {
 			node = node.parentNode;
 		}
 		return false;
-	};
-
-	public preventDefault = (e: Event) => {
-		e = e || window.event;
-
-		const target: IDictionary<any> | null = e.target;
-
-		if (this.scrollableElements.length > 0) {
-			if (
-				this.scrollableElements.some(el =>
-					this.isDescendant(el, e.target as Node)
-				) ||
-				(target!.attributes.class &&
-					target!.attributes.class.value.indexOf(
-						"select2-result-label"
-					) !== -1)
-			) {
-				return;
-			}
-		}
-
-		if (e.preventDefault) {
-			e.preventDefault();
-		}
-		e.returnValue = false;
 	};
 
 	public triggerEvent = (element: HTMLElement, eventName: string) => {

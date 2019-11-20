@@ -56,10 +56,6 @@ $clearButtonCountColor: #a4a4a4;
 		.kit-button {
 			opacity: 1;
 		}
-
-		.kit-filtration-group__label:not(:last-child) {
-			pointer-events: none;
-		}
 	}
 
 	~ .kit-filtration-group__label-line {

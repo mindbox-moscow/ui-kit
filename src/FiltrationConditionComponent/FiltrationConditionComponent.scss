@@ -6,6 +6,7 @@ $removeColor: #a12e1e;
 $copyColorBg: $hoverColorBg;
 $copyColor: #2d597d;
 $linkedConditionEditModeColorBg: #fde487;
+$borderPopoverColor: #dddddc;
 
 // Sizes
 $itemHoverBorderRadius: 3px;
@@ -112,9 +113,7 @@ $groupHoverMarginLeft: 10px;
 		}
 
 		[class*="kit-segment"] {
-			&:not(.kit-segment-button-expand__popover) {
-				background-color: #fff;
-			}
+			background-color: #fff;
 		}
 	}
 
@@ -152,17 +151,9 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	> .kit-filtration-condition__content {
-		[class*="kit-segment"] {
-			&:not(.kit-segment-button-expand__popover) {
-				margin-left: 10px;
-			}
+		[class*="kit-segment"]:not(.kit-segment-content__count) {
+			margin-left: 10px;
 		}
-	}
-
-	.kit-segment-button-expand__popover {
-		order: 1;
-		width: 100%;
-		cursor: default;
 	}
 
 	&_read-only {
@@ -235,4 +226,16 @@ $groupHoverMarginLeft: 10px;
 	> *:not(:last-child) {
 		margin-right: 10px;
 	}
+}
+
+.kit-filtration-condition__popover {
+	position: relative;
+	padding: 10px 14px 12px 18px;
+	margin-top: -3px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
+	border: solid 1px $borderPopoverColor;
+	background-color: #fff;
+	box-sizing: border-box;
+	z-index: 2;
 }

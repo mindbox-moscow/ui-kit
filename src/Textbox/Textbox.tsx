@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import * as React from "react";
-import { Utils } from "../FlatSelect/modules";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
 
@@ -115,9 +114,7 @@ export class Textbox extends React.Component<TextboxProps> {
 
 		const classNamesObject: ClassDictionary = {
 			"form-control": !notFormControl,
-			"form-control_error":
-				!Utils.Instance.getIsValid(this.context) ||
-				!Utils.Instance.getIsValid(this.props)
+			"form-control_error": !this.context || !this.props
 		};
 
 		if (width === Width.Full) {

@@ -4,14 +4,16 @@ import { SegmentButtonEditProps as Props } from "./types";
 
 import "./SegmentButtonEdit.scss";
 
-export const SegmentButtonEdit: React.FC<Props> = ({ onClick }) => {
+export const SegmentButtonEdit: React.FC<Props> = ({ onClick, disabled }) => {
 	return (
 		<button
 			className="kit-segment-button-edit"
 			type="button"
 			onClick={e => {
-				e.stopPropagation();
-				onClick();
+				if (!disabled) {
+					e.stopPropagation();
+					onClick();
+				}
 			}}
 		>
 			<IconSvg type="segment-edit" />

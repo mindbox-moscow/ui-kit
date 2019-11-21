@@ -29,9 +29,13 @@ export class SegmentButtonExpand extends React.Component<Props> {
 		}
 	}
 
-	public handleClick = (onClick: () => void) => (e: React.MouseEvent) => {
-		e.stopPropagation();
-		onClick();
+	public handleClick = (onClick: () => void, disabled?: boolean) => (
+		e: React.MouseEvent
+	) => {
+		if (!disabled) {
+			e.stopPropagation();
+			onClick();
+		}
 	};
 
 	public filterAction = () => {
@@ -56,7 +60,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 	};
 
 	public render() {
-		const { onClick, isOpen } = this.props;
+		const { onClick, isOpen, disabled } = this.props;
 
 		return (
 			<>
@@ -65,7 +69,7 @@ export class SegmentButtonExpand extends React.Component<Props> {
 						"kit-segment-button-expand_open": isOpen
 					})}
 					type="button"
-					onClick={this.handleClick(onClick)}
+					onClick={this.handleClick(onClick, disabled)}
 				>
 					<IconSvg type="segment-expand" />
 				</button>

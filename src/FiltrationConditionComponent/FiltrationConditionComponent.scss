@@ -158,7 +158,6 @@ $groupHoverMarginLeft: 10px;
 
 	&_read-only {
 		> .kit-filtration-condition__drag-and-drop,
-		> .kit-filtration-condition__content > span,
 		> .kit-filtration-condition__content > b {
 			cursor: default;
 			pointer-events: none;

@@ -396,20 +396,12 @@ class ExampleFlatSelectorSimple extends React.Component {
 			isDataOutdated={true}
 			filterActionsCaption="Действия с фильтром"
 			filterActions={[
-				{
-					key: "save",
-					name: "Сохранить как сегмент",
-					onClick: () => {}
-				},
-				{
-					key: "copy",
-					name: "Копировать фильтр",
-					onClick: () => {}
-				},
+				"Сохранить как сегмент",
+				(<>Копировать фильтр</>),
 				{
 					key: "insert",
 					name: "Вставить фильтр",
-					onClick: () => {}
+					onClick: () => { console.log("This onClick by FilterAction")}
 				}
 			]}
 		>

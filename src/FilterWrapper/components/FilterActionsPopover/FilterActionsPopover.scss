@@ -34,6 +34,9 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 		border-top: 4px solid;
 	}
 }
+.kit-filter-actions-popover__list_hide {
+	display: none;
+}
 
 .kit-filter-actions-popover__list {
 	position: relative;

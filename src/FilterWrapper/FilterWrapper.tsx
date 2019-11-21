@@ -61,7 +61,7 @@ export const FilterWrapper: React.FC<Props> = ({
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
 						"kit-filter_short": !doesContainFilter,
-						"kit-filter_with-filter-action": filterActions.length
+						"kit-filter_with-filter-action": filterActions && filterActions.length
 					})}
 				>
 					<div className="kit-filter__top-filter">
@@ -100,15 +100,15 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-						<div className="kit-filter__short-wrap-filter">
-							{selectionState !== SelectionStateType.None &&
-								countSelectedItems()}
-							<InfoWrapper
-								statisticsValue={statisticsValue}
-								statisticsDescription={statisticsDescription}
-							/>
-						</div>
-					)}
+							<div className="kit-filter__short-wrap-filter">
+								{selectionState !== SelectionStateType.None &&
+									countSelectedItems()}
+								<InfoWrapper
+									statisticsValue={statisticsValue}
+									statisticsDescription={statisticsDescription}
+								/>
+							</div>
+						)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

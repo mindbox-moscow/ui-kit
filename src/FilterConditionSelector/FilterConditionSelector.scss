@@ -144,13 +144,20 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
-	&_filterablePropertyWithLinkedConditions {
+	&_filterablePropertyWithLinkedConditions,
+	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				padding-left: 15px;
 				font-weight: normal;
 				position: relative;
+			}
+		}
+	}
 
+	&_filterablePropertyWithLinkedConditions {
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
 					content: "";
 					position: absolute;
@@ -187,10 +194,6 @@ $searchFocusBgColor: #fffde5;
 	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
-				padding-left: 15px;
-				font-weight: normal;
-				position: relative;
-
 				&::before {
 					content: "";
 					position: absolute;

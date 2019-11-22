@@ -144,13 +144,56 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
+	&_filterablePropertyWithLinkedConditions,
 	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				padding-left: 15px;
 				font-weight: normal;
 				position: relative;
+			}
+		}
+	}
 
+	&_filterablePropertyWithLinkedConditions {
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-filter-condition-selector__hierarchy-name {
+				&::before {
+					content: "";
+					position: absolute;
+					left: 2px;
+					display: block;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-left: 6px solid $toggleCircleColor;
+					background-color: transparent;
+				}
+			}
+
+			&_selected,
+			&:hover {
+				.kit-filter-condition-selector__hierarchy-name {
+					&::before {
+						border-left-color: #fff;
+					}
+				}
+			}
+		}
+
+		&.kit-filter-condition-selector__hierarchy-item_expanded {
+			> .kit-filter-condition-selector__hierarchy-button {
+				.kit-filter-condition-selector__hierarchy-name {
+					&::before {
+						transform: rotate(90deg);
+					}
+				}
+			}
+		}
+	}
+
+	&_simpleFilterableProperty {
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
 					content: "";
 					position: absolute;
@@ -169,39 +212,6 @@ $searchFocusBgColor: #fffde5;
 				.kit-filter-condition-selector__hierarchy-name {
 					&::before {
 						background-color: #fff;
-					}
-				}
-			}
-		}
-
-		&:not(.kit-filter-condition-selector__hierarchy-item_not-child) {
-			> .kit-filter-condition-selector__hierarchy-button {
-				.kit-filter-condition-selector__hierarchy-name {
-					&::before {
-						border-top: 5px solid transparent;
-						border-bottom: 5px solid transparent;
-						border-left: 6px solid $toggleCircleColor;
-						background-color: transparent;
-						border-radius: 0;
-					}
-				}
-
-				&_selected,
-				&:hover {
-					.kit-filter-condition-selector__hierarchy-name {
-						&::before {
-							border-left-color: #fff;
-						}
-					}
-				}
-			}
-
-			&.kit-filter-condition-selector__hierarchy-item_expanded {
-				> .kit-filter-condition-selector__hierarchy-button {
-					.kit-filter-condition-selector__hierarchy-name {
-						&::before {
-							transform: rotate(90deg);
-						}
 					}
 				}
 			}

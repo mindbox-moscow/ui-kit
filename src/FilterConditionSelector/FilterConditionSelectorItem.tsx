@@ -71,6 +71,8 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 			searchTerm
 		} = this.props;
 		const isSimpleFilterableProperty = type === "simpleFilterableProperty";
+		const isfilterablePropertyWithLinkedConditions =
+			type === "filterablePropertyWithLinkedConditions";
 
 		const hasChildren = childIds.length > 0;
 
@@ -96,14 +98,15 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 						}
 					)}
 				>
-					{!isSimpleFilterableProperty && (
-						<div
-							className="kit-filter-condition-selector__hierarchy-toggle"
-							onClick={this.onExpand}
-						>
-							<IconSvg type="arrow-right" />
-						</div>
-					)}
+					{!isSimpleFilterableProperty &&
+						!isfilterablePropertyWithLinkedConditions && (
+							<div
+								className="kit-filter-condition-selector__hierarchy-toggle"
+								onClick={this.onExpand}
+							>
+								<IconSvg type="arrow-right" />
+							</div>
+						)}
 					<div
 						className="kit-filter-condition-selector__hierarchy-name"
 						onClick={this.onSelect}

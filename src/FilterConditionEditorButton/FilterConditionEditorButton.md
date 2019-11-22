@@ -765,7 +765,7 @@ const allElementsDictionary = {
 	},
 	clickRate: {
 		id: "clickRate",
-		type: "simpleFilterableProperty",
+		type: "filterablePropertyWithLinkedConditions",
 		name: "Процент открытий и кликов",
 		helpCaption: "Процент открытий и кликов",
 		hasChildren: false,

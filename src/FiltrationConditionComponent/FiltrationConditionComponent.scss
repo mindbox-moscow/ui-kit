@@ -115,6 +115,11 @@ $groupHoverMarginLeft: 10px;
 		[class*="kit-segment"] {
 			background-color: #fff;
 		}
+
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove {
+			visibility: visible;
+		}
 	}
 
 	&_linked-condition-edit {

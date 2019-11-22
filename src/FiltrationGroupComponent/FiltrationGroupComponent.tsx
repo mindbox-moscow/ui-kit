@@ -10,6 +10,7 @@ import {
 	IWindowClickListener
 } from "../WindowClickListener";
 import "./FiltrationGroupComponent.scss";
+import { FiltrationGroupComponentContext } from "./FiltrationGroupComponentContext";
 
 type Props = StateProps & CallbackProps;
 
@@ -21,6 +22,7 @@ interface ItemsRootElement {
 interface State {
 	horizontalBracket: ItemsRootElement[];
 	verticalBracket: boolean;
+	updateBrackets: boolean;
 }
 
 type SearchElementType = "first" | "last";
@@ -30,9 +32,11 @@ const MIN_HEIGHT = 31;
 const BRACKET_WIDTH = 2;
 
 export class FiltrationGroupComponent extends React.Component<Props, State> {
+	public static context: (() => void) | null;
 	public state = {
 		horizontalBracket: [],
-		verticalBracket: false
+		verticalBracket: false,
+		updateBrackets: false
 	};
 	private classes = Object.values(SearchClasses);
 	private kitFiltrationRef = React.createRef<HTMLUListElement>();
@@ -349,9 +353,15 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	};
 
 	public componentDidMount() {
+		const rerenderBrackets = this.context;
+
 		this.moveLabelAtCenterOfBracket();
 		this.handleCreateVerticalBrackets();
 		this.handleCreateHorizontalBrackets();
+
+		if (rerenderBrackets) {
+			rerenderBrackets();
+		}
 
 		const labelRef = this.kitFiltrationLabelRef.current;
 		const closeRef = this.kitFiltrationCloseRef.current;
@@ -414,10 +424,22 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	}
 
 	public componentDidUpdate() {
+		const rerenderBrackets = this.context;
+
 		this.moveLabelAtCenterOfBracket();
 		this.handleCreateHorizontalBrackets();
 		this.handleCreateVerticalBrackets();
+
+		if (rerenderBrackets) {
+			rerenderBrackets();
+		}
 	}
+
+	public renderBrackets = () => {
+		this.setState({
+			updateBrackets: true
+		});
+	};
 
 	public render() {
 		const {
@@ -444,69 +466,78 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		const anyChildren = React.Children.toArray(children).length > 0;
 
 		return (
-			<ul
-				ref={this.kitFiltrationRef}
-				className={cn("kit-filtration-group", IsntNeutralZoneMarker, {
-					"kit-filtration-group_edit": state === "edit",
-					"kit-filtration-group_shaded": state === "shaded",
-					"kit-filtration-group_read-only": state === "readOnly",
-					"kit-filtration-group_not-children": !anyChildren
-				})}
+			<FiltrationGroupComponentContext.Provider
+				value={this.renderBrackets}
 			>
-				<div
-					ref={this.kitFiltrationLabelRef}
+				<ul
+					ref={this.kitFiltrationRef}
 					className={cn(
-						"kit-filtration-group__label",
-						`kit-filtration-group__label_hover_${groupType}`,
+						"kit-filtration-group",
+						IsntNeutralZoneMarker,
 						{
-							[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+							"kit-filtration-group_edit": state === "edit",
+							"kit-filtration-group_shaded": state === "shaded",
+							"kit-filtration-group_read-only":
+								state === "readOnly",
+							"kit-filtration-group_not-children": !anyChildren
 						}
 					)}
-					onClick={this.handleGroupLabelClick}
 				>
 					<div
-						ref={this.kitFiltrationLabelLineRef}
-						className="kit-filtration-group__label-line"
-					>
-						{shouldShowLabel && (
-							<span className="kit-filtration-group__label-text">
-								{state === "edit" ? (
-									<div
-										className={cn(
-											"kit-filtration-group__label-text-buttons",
-											`kit-filtration-group__label-text-buttons_${groupType}`
-										)}
-									>
-										{this.renderCopyButton()}
-										<button
-											key="remove"
-											onClick={onConditionRemove}
-											className="kit-filtration-group__remove"
-											type="button"
-										>
-											<IconSvg type="trash" />
-										</button>
-										<LabelButton
-											onToggle={onGroupTypeToggle}
-											types={labelMap}
-											activeType={groupType}
-										/>
-									</div>
-								) : (
-									labelMap[groupType]
-								)}
-							</span>
+						ref={this.kitFiltrationLabelRef}
+						className={cn(
+							"kit-filtration-group__label",
+							`kit-filtration-group__label_hover_${groupType}`,
+							{
+								[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
+							}
 						)}
+						onClick={this.handleGroupLabelClick}
+					>
+						<div
+							ref={this.kitFiltrationLabelLineRef}
+							className="kit-filtration-group__label-line"
+						>
+							{shouldShowLabel && (
+								<span className="kit-filtration-group__label-text">
+									{state === "edit" ? (
+										<div
+											className={cn(
+												"kit-filtration-group__label-text-buttons",
+												`kit-filtration-group__label-text-buttons_${groupType}`
+											)}
+										>
+											{this.renderCopyButton()}
+											<button
+												key="remove"
+												onClick={onConditionRemove}
+												className="kit-filtration-group__remove"
+												type="button"
+											>
+												<IconSvg type="trash" />
+											</button>
+											<LabelButton
+												onToggle={onGroupTypeToggle}
+												types={labelMap}
+												activeType={groupType}
+											/>
+										</div>
+									) : (
+										labelMap[groupType]
+									)}
+								</span>
+							)}
+						</div>
+						<HorizontalBracket
+							brackets={horizontalBracket}
+							minHeight={MIN_HEIGHT}
+							bracketWidth={BRACKET_WIDTH}
+						/>
+						{verticalBracket}
 					</div>
-					<HorizontalBracket
-						brackets={horizontalBracket}
-						minHeight={MIN_HEIGHT}
-						bracketWidth={BRACKET_WIDTH}
-					/>
-					{verticalBracket}
-				</div>
-				{renderInner}
-			</ul>
+					{renderInner}
+				</ul>
+			</FiltrationGroupComponentContext.Provider>
 		);
 	}
 
@@ -609,3 +640,5 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		this.props.onConditionStateToggle();
 	};
 }
+
+FiltrationGroupComponent.contextType = FiltrationGroupComponentContext;

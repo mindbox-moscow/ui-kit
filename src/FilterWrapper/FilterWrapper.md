@@ -1,4 +1,38 @@
 ```jsx
+class ExampleSegmentButtonExpand extends React.Component {
+	constructor() {
+		super();
+		this.state = {
+			isShow: false
+		};
+
+		this.handleShowPopover = this.handleShowPopover.bind(this);
+	}
+
+	handleShowPopover() {
+		this.setState({
+			isShow: !this.state.isShow
+		});
+	}
+
+	render() {
+		const { isShow } = this.state;
+		const { children } = this.props;
+
+		return (
+			<SegmentButtonExpand
+				onClick={this.handleShowPopover}
+				isOpen={isShow}
+				filterActionCaption="Использовать как фильтр"
+				filterActionClick={() => {}}
+				filterActionShow={false}
+			>
+				{children}
+			</SegmentButtonExpand>
+		);
+	}
+}
+
 class ExampleFlatSelectorSimple extends React.Component {
 	constructor() {
 		super();
@@ -940,7 +974,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 					helpComponent={<span>А тут у нас хелп</span>}
 					filtrationMethodParametersComponent={
 						<>
-							<SegmentButtonExpand
+							<ExampleSegmentButtonExpand
 								onClick={() => {}}
 								isOpen={true}
 								filterActionCaption="Использовать как фильтр"
@@ -1054,7 +1088,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 										}
 									/>
 								</FiltrationGroupComponent>
-							</SegmentButtonExpand>
+							</ExampleSegmentButtonExpand>
 							<SegmentButtonEdit onClick={() => {}} />
 							<SegmentContent content="~1 469 718" />
 						</>

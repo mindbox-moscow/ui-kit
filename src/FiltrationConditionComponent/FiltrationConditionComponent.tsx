@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails";
+import { FiltrationGroupComponentContext } from "../FiltrationGroupComponent";
 import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
@@ -23,6 +24,7 @@ export class FiltrationConditionComponent extends React.Component<
 	Props,
 	State
 > {
+	public static context: (() => void) | null;
 	public refComponent = React.createRef<HTMLElement>();
 	public refContent = React.createRef<HTMLDivElement>();
 	public refCondition = React.createRef<HTMLLIElement>();
@@ -38,6 +40,11 @@ export class FiltrationConditionComponent extends React.Component<
 
 	public componentDidMount() {
 		const refCondition = this.refCondition.current;
+		const rerenderBrackets = this.context;
+
+		if (rerenderBrackets) {
+			rerenderBrackets();
+		}
 
 		if (refCondition) {
 			requestAnimationFrame(() => {
@@ -58,6 +65,14 @@ export class FiltrationConditionComponent extends React.Component<
 				);
 				this.observer.observe(refCondition);
 			});
+		}
+	}
+
+	public componentDidUpdate() {
+		const rerenderBrackets = this.context;
+
+		if (rerenderBrackets) {
+			rerenderBrackets();
 		}
 	}
 
@@ -202,3 +217,5 @@ export class FiltrationConditionComponent extends React.Component<
 		this.props.onConditionRemove();
 	};
 }
+
+FiltrationConditionComponent.contextType = FiltrationGroupComponentContext;

@@ -24,7 +24,7 @@ export interface StateProps {
 	selectedCancelText: string;
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
-	filterActions: Array<FilterAction | any>;
+	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
 	scrollState: ScrollState;
 	buttonUpCaption: string;

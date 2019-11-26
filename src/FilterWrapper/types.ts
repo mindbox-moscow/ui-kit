@@ -24,9 +24,10 @@ export interface StateProps {
 	selectedCancelText: string;
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
-	filterActions: (FilterAction | any)[];
+	filterActions: Array<FilterAction | any>;
 	filterActionsCaption: string;
 	scrollState: ScrollState;
+	buttonUpCaption: string;
 }
 
 export interface CallbackProps {

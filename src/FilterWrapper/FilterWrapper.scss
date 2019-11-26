@@ -64,8 +64,14 @@ $clearButtonCountColor: #a4a4a4;
 }
 
 .kit-filter__wrap-filter {
+	display: flex;
+	align-items: center;
 	flex-grow: 1;
 	box-sizing: border-box;
+
+	.kit-button {
+		margin-left: 22px;
+	}
 }
 
 .kit-filter__btn-wrap {

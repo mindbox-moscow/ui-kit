@@ -88,6 +88,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -242,6 +243,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
 		>
 			Other components here...
 		</FilterWrapper>
@@ -271,6 +273,62 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
+		>
+			<FiltrationGroupComponent
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={false}
+				shouldShowButtons={true}
+				addSimpleConditionButton={
+					<FilterConditionEditorButton
+						label="Добавить фильтр"
+						toggleOpen={() => console.log("toggle")}
+						isOpened={false}
+						iconType="filter"
+					/>
+				}
+				addGroupConditionButton={
+					<Button color="silver" size="small" hasBorder="true">
+						<IconSvg type="cross-arrows" />И
+					</Button>
+				}
+				onGroupTypeToggle={() => console.log("type toggle")}
+				onConditionStateToggle={() => console.log("state toggle")}
+				onConditionRemove={() => console.log("remove")}
+			/>
+			<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
+		</FilterWrapper>
+	</div>
+	<br />
+	<br />
+	<h1>Пример 1.2 - проскроленный</h1>
+	<div
+		style={{
+			position: "relative",
+			width: "1200px",
+			left: "50%",
+			transform: "translateX(-50%)"
+		}}
+	>
+		<FilterWrapper
+			scrollState="full"
+			filterActions={[]}
+			statisticsDescription="Всего клиентов"
+			statisticsValue={1021318}
+			doesContainFilter={false}
+			selectionState="all"
+			selectedText="Выбрано"
+			selectedCancelText="Отменить"
+			selectedCountDescription="100 (все)"
+			applyButtonCaption="Применить фильтр"
+			clearButtonCaption="Сбросить фильтр"
+			onApply={() => console.log("apply filter")}
+			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
+			scrollState="minfied"
 		>
 			<FiltrationGroupComponent
 				state="view"
@@ -323,6 +381,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
 			selectionState="part"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить"
@@ -367,6 +426,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
 			selectionState="part"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить"
@@ -422,6 +482,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
 			selectionState="all"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить"
@@ -431,11 +492,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 			filterActionsCaption="Действия с фильтром"
 			filterActions={[
 				"Сохранить как сегмент",
-				(<>Копировать фильтр</>),
+				<>Копировать фильтр</>,
 				{
 					key: "insert",
 					name: "Вставить фильтр",
-					onClick: () => { console.log("This onClick by FilterAction")}
+					onClick: () => {
+						console.log("This onClick by FilterAction");
+					}
 				}
 			]}
 		>
@@ -513,6 +576,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
+			buttonUpCaption="Вверх"
 			selectionState="concrete"
 			selectedText="Выбрано"
 			selectedCancelText="Отменить"
@@ -581,6 +645,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="edit"
@@ -644,6 +709,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -687,6 +753,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -797,6 +864,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -906,6 +974,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -1139,6 +1208,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -1523,6 +1593,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -1758,6 +1829,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -1897,6 +1969,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -1985,6 +2058,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -2077,6 +2151,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -2161,6 +2236,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -2239,6 +2315,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -2321,6 +2398,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -2402,6 +2480,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -2480,6 +2559,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -2568,6 +2648,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -2669,6 +2750,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 		selectionState="none"
 		selectedText="Выбрано"
 		selectedCancelText="Отменить"
@@ -2772,6 +2854,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="shaded"
@@ -2955,6 +3038,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="shaded"
@@ -3133,6 +3217,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="shaded"
@@ -3274,6 +3359,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"
@@ -3438,6 +3524,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		clearButtonCaption="Сбросить фильтр"
 		onApply={() => console.log("apply filter")}
 		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
 			state="view"

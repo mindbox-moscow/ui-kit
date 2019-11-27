@@ -100,6 +100,7 @@ const segmentViewHistory = () => (
 						filtrationMethodName="без учета брендов, каналов и тематик"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								onClickOutside={() => {}}
 								state="readOnly"
 								groupType="or"
 								andLabel="И"
@@ -166,6 +167,7 @@ const segmentView = () => (
 						filtrationMethodName="без учета брендов, каналов и тематик"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
+								onClickOutside={() => {}}
 								state="readOnly"
 								groupType="or"
 								andLabel="И"
@@ -181,6 +183,7 @@ const segmentView = () => (
 									filterablePropertyName="Мобильный телефон: заполнен и валидный"
 									linkedConditionComponent={
 										<FiltrationGroupComponent
+											onClickOutside={() => {}}
 											state="readOnly"
 											groupType="and"
 											andLabel="И"
@@ -220,6 +223,7 @@ const segmentView = () => (
 												filtrationMethodName="без учета брендов, каналов и тематик"
 											/>
 											<FiltrationGroupComponent
+												onClickOutside={() => {}}
 												state="readOnly"
 												groupType="or"
 												andLabel="И"
@@ -268,6 +272,7 @@ const segmentView = () => (
 													filtrationMethodName="без учета брендов, каналов и тематик"
 												/>
 												<FiltrationGroupComponent
+													onClickOutside={() => {}}
 													state="readOnly"
 													groupType="and"
 													andLabel="И"
@@ -1637,11 +1642,14 @@ class ExampleComponent extends React.Component {
 	}
 
 	togglePopup() {
+		console.log(this.state.showPopup)
 		console.log("hello");
 		this.setState(oldState => ({
 			...oldState,
 			showPopup: !oldState.showPopup
 		}));
+
+		console.log(this.state.showPopup)
 	}
 
 	onNextSelected(id) {

@@ -125,7 +125,7 @@ export class FiltrationConditionComponent extends React.Component<
 		const editModeContent = (
 			<OverflowVisibleContainer
 				parentRef={this.refComponent}
-				onNeutralZoneClick={onConditionStateToggle}
+				onClickOutside={onConditionStateToggle}
 			>
 				<FilterDetails
 					helpCaption={filterablePropertyName}

@@ -90,6 +90,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -114,6 +115,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -138,6 +140,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				}
 			>
 				<FiltrationGroupComponent
+onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -162,6 +165,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 					}
 				>
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -192,6 +196,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 						}
 					>
 						<FiltrationGroupComponent
+onClickOutside={() => {}}
 							state="view"
 							groupType="and"
 							andLabel="И"
@@ -273,6 +278,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onClear={() => console.log("clear filter")}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -330,6 +336,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="edit"
 				groupType="or"
 				andLabel="И"
@@ -374,6 +381,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -440,6 +448,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			]}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -463,6 +472,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionRemove={() => console.log("remove")}
 			>
 				<FiltrationGroupComponent
+onClickOutside={() => {}}
 					state="edit"
 					groupType="and"
 					andLabel="И"
@@ -520,6 +530,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -543,6 +554,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				}
 			>
 				<FiltrationGroupComponent
+onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -583,6 +595,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="edit"
 			groupType="or"
 			andLabel="И"
@@ -607,6 +620,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -651,6 +665,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -694,6 +709,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="edit"
 			groupType="or"
 			andLabel="И"
@@ -718,6 +734,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -751,6 +768,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -804,6 +822,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="or"
 			andLabel="И"
@@ -827,6 +846,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="edit"
 				groupType="and"
 				andLabel="И"
@@ -860,6 +880,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -913,6 +934,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -936,6 +958,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -974,6 +997,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
+onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1019,6 +1043,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
+onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1093,6 +1118,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1146,6 +1172,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1169,6 +1196,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1207,6 +1235,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 								filterActionShow={true}
 							>
 								<FiltrationGroupComponent
+onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1252,6 +1281,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
+onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1305,6 +1335,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 																}
 															>
 																<FiltrationGroupComponent
+onClickOutside={() => {}}
 																	state="view"
 																	groupType="and"
 																	andLabel="И"
@@ -1363,6 +1394,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 																		state="readOnly"
 																		linkedConditionComponent={
 																			<FiltrationGroupComponent
+onClickOutside={() => {}}
 																				state="view"
 																				groupType="and"
 																				andLabel="И"
@@ -1475,6 +1507,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1530,6 +1563,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1553,6 +1587,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1591,6 +1626,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
+onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1636,6 +1672,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
+onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1710,6 +1747,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1765,6 +1803,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="or"
 			andLabel="И"
@@ -1773,6 +1812,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onConditionStateToggle={() => console.log("state toggle")}
 		>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -1852,6 +1892,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -1904,6 +1945,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="edit"
 			groupType="and"
 			andLabel="И"
@@ -1936,6 +1978,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="shaded"
 						groupType="and"
 						andLabel="И"
@@ -1992,6 +2035,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="edit"
 			groupType="and"
 			andLabel="И"
@@ -2024,6 +2068,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="shaded"
 						groupType="and"
 						andLabel="И"
@@ -2084,6 +2129,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2115,6 +2161,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2163,6 +2210,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2194,6 +2242,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="or"
 						andLabel="И"
@@ -2241,6 +2290,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2272,6 +2322,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2323,6 +2374,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2350,6 +2402,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2404,6 +2457,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2431,6 +2485,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="or"
 						andLabel="И"
@@ -2487,6 +2542,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2518,6 +2574,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2575,6 +2632,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2607,6 +2665,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				state="view"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2676,6 +2735,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -2709,6 +2769,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionStateToggle={() => console.log("state toggle")}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
+onClickOutside={() => {}}
 						state="edit"
 						groupType="and"
 						andLabel="И"
@@ -2774,6 +2835,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -2957,6 +3019,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -3135,6 +3198,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -3276,6 +3340,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -3440,6 +3505,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		onClear={() => console.log("clear filter")}
 	>
 		<FiltrationGroupComponent
+onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -3468,6 +3534,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="заполнен и равен 42"
 			/>
 			<FiltrationGroupComponent
+onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -3502,6 +3569,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 					filtrationMethodName="заполнен и равен 42"
 				/>
 				<FiltrationGroupComponent
+onClickOutside={() => {}}
 					state="shaded"
 					groupType="and"
 					andLabel="И"

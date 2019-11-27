@@ -1,16 +1,11 @@
 import cn from "classnames";
 import * as React from "react";
+import { withOutsideClick, WithOusideProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { HorizontalBracket, LabelButton } from "./components";
-import { CallbackProps, SearchClasses, StateProps } from "./types";
-
-import {
-	CreateWindowClickListener,
-	IsntNeutralZoneMarker,
-	IWindowClickListener
-} from "../WindowClickListener";
 import "./FiltrationGroupComponent.scss";
 import { FiltrationGroupComponentContext } from "./FiltrationGroupComponentContext";
+import { CallbackProps, SearchClasses, StateProps } from "./types";
 
 type Props = StateProps & CallbackProps;
 
@@ -31,7 +26,10 @@ type SearchElementType = "first" | "last";
 const MIN_HEIGHT = 31;
 const BRACKET_WIDTH = 2;
 
-export class FiltrationGroupComponent extends React.Component<Props, State> {
+class FiltrationGroupComponent extends React.Component<
+	Props & WithOusideProps,
+	State
+> {
 	public static context: (() => void) | null;
 	public state = {
 		horizontalBracket: [],
@@ -43,8 +41,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 	private kitFiltrationCloseRef = React.createRef<HTMLButtonElement>();
 	private kitFiltrationLabelRef = React.createRef<HTMLDivElement>();
 	private kitFiltrationLabelLineRef = React.createRef<HTMLDivElement>();
-
-	private windowClickListener: IWindowClickListener;
 
 	public moveLabelAtCenterOfBracket = () => {
 		let heightGroup = 0;
@@ -379,14 +375,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				this.handleHoverAddClassLabel
 			);
 		}
-
-		const { onNeutralZoneClick } = this.props;
-		if (onNeutralZoneClick != null) {
-			this.windowClickListener = CreateWindowClickListener(
-				onNeutralZoneClick,
-				this.kitFiltrationRef.current as HTMLElement
-			);
-		}
 	}
 
 	public componentWillUnmount() {
@@ -416,10 +404,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 				"mouseout",
 				this.handleHoverRemoveClassLabel
 			);
-		}
-
-		if (this.windowClickListener != null) {
-			this.windowClickListener.stop();
 		}
 	}
 
@@ -471,17 +455,12 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 			>
 				<ul
 					ref={this.kitFiltrationRef}
-					className={cn(
-						"kit-filtration-group",
-						IsntNeutralZoneMarker,
-						{
-							"kit-filtration-group_edit": state === "edit",
-							"kit-filtration-group_shaded": state === "shaded",
-							"kit-filtration-group_read-only":
-								state === "readOnly",
-							"kit-filtration-group_not-children": !anyChildren
-						}
-					)}
+					className={cn("kit-filtration-group", {
+						"kit-filtration-group_edit": state === "edit",
+						"kit-filtration-group_shaded": state === "shaded",
+						"kit-filtration-group_read-only": state === "readOnly",
+						"kit-filtration-group_not-children": !anyChildren
+					})}
 				>
 					<div
 						ref={this.kitFiltrationLabelRef}
@@ -640,5 +619,6 @@ export class FiltrationGroupComponent extends React.Component<Props, State> {
 		this.props.onConditionStateToggle();
 	};
 }
-
 FiltrationGroupComponent.contextType = FiltrationGroupComponentContext;
+
+export default withOutsideClick(FiltrationGroupComponent);

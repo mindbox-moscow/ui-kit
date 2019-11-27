@@ -95,7 +95,7 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 						"kit-filter-editor__btn_open": isOpened
 					})}
 					type="button"
-					onClick={toggleOpen}
+					onMouseDown={toggleOpen}
 				>
 					{iconType && <IconSvg type={iconType} />}
 					{label}
@@ -103,7 +103,7 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 				{isOpened && (
 					<OverflowVisibleContainer
 						parentRef={this.refButton}
-						onNeutralZoneClick={toggleOpen}
+						onClickOutside={toggleOpen}
 					>
 						<FilterConditionSelector
 							{...otherProps}

@@ -3,11 +3,11 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { Props, State } from "./types";
 
-import { WithOusideProps, withOutsideClick } from "../HOCs";
+import { WithOusideClickProps, withOutsideClick } from "../HOCs";
 import "./OverflowVisibleContainer.scss";
 
 class OverflowVisibleContainer extends React.Component<
-	Props & WithOusideProps
+	Props & WithOusideClickProps
 > {
 	public state: State = {
 		positionTop: 0,

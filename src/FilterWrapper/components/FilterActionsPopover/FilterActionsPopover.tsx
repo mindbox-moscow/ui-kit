@@ -6,7 +6,7 @@ import { FilterAction } from "../../types";
 import "./FilterActionsPopover.scss";
 
 interface FilterActionsPopoverProps {
-	filterActions: Array<FilterAction | any>;
+	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
 }
 
@@ -38,7 +38,7 @@ export class FilterActionsPopover extends React.Component<
 	};
 
 	public hideListPopover = () => {
-		this.setState(state => ({ ...state, isOpen: false }));
+		this.setState({ isOpen: false });
 	};
 
 	public render() {
@@ -87,7 +87,7 @@ export class FilterActionsPopover extends React.Component<
 							return (
 								<li
 									className="kit-filter-actions-popover__item"
-									key={`kit-filter-actions-popover__item-key-${index}`}
+									key={index}
 									onClick={this.hideListPopover}
 								>
 									{item}

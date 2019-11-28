@@ -91,7 +91,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -116,7 +116,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -141,7 +141,7 @@ onClickOutside={() => {}}
 				}
 			>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -166,7 +166,7 @@ onClickOutside={() => {}}
 					}
 				>
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -197,7 +197,7 @@ onClickOutside={() => {}}
 						}
 					>
 						<FiltrationGroupComponent
-onClickOutside={() => {}}
+							onClickOutside={() => {}}
 							state="view"
 							groupType="and"
 							andLabel="И"
@@ -281,6 +281,7 @@ onClickOutside={() => {}}
 			buttonUpCaption="Вверх"
 		>
 			<FiltrationGroupComponent
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -336,7 +337,7 @@ onClickOutside={() => {}}
 			scrollState="minfied"
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -395,7 +396,7 @@ onClickOutside={() => {}}
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="edit"
 				groupType="or"
 				andLabel="И"
@@ -441,7 +442,7 @@ onClickOutside={() => {}}
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -511,7 +512,7 @@ onClickOutside={() => {}}
 			]}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -535,7 +536,7 @@ onClickOutside={() => {}}
 				onConditionRemove={() => console.log("remove")}
 			>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="edit"
 					groupType="and"
 					andLabel="И"
@@ -594,7 +595,7 @@ onClickOutside={() => {}}
 			onCancelSelection={() => console.log("clear selected")}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -618,7 +619,7 @@ onClickOutside={() => {}}
 				}
 			>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -660,7 +661,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="edit"
 			groupType="or"
 			andLabel="И"
@@ -685,7 +686,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -731,7 +732,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -776,7 +777,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="edit"
 			groupType="or"
 			andLabel="И"
@@ -801,7 +802,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -835,7 +836,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -890,7 +891,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="or"
 			andLabel="И"
@@ -914,7 +915,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="edit"
 				groupType="and"
 				andLabel="И"
@@ -948,7 +949,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -1003,7 +1004,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1027,7 +1028,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1066,7 +1067,7 @@ onClickOutside={() => {}}
 								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1112,7 +1113,7 @@ onClickOutside={() => {}}
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
-onClickOutside={() => {}}
+												onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1187,7 +1188,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1242,7 +1243,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1266,7 +1267,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1305,7 +1306,7 @@ onClickOutside={() => {}}
 								filterActionShow={true}
 							>
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1351,7 +1352,7 @@ onClickOutside={() => {}}
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
-onClickOutside={() => {}}
+												onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1405,7 +1406,7 @@ onClickOutside={() => {}}
 																}
 															>
 																<FiltrationGroupComponent
-onClickOutside={() => {}}
+																	onClickOutside={() => {}}
 																	state="view"
 																	groupType="and"
 																	andLabel="И"
@@ -1464,7 +1465,7 @@ onClickOutside={() => {}}
 																		state="readOnly"
 																		linkedConditionComponent={
 																			<FiltrationGroupComponent
-onClickOutside={() => {}}
+																				onClickOutside={() => {}}
 																				state="view"
 																				groupType="and"
 																				andLabel="И"
@@ -1577,7 +1578,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1634,7 +1635,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1658,7 +1659,7 @@ onClickOutside={() => {}}
 			}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1697,7 +1698,7 @@ onClickOutside={() => {}}
 								filterActionShow={false}
 							>
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="readOnly"
 									groupType="and"
 									andLabel="И"
@@ -1743,7 +1744,7 @@ onClickOutside={() => {}}
 										state="readOnly"
 										linkedConditionComponent={
 											<FiltrationGroupComponent
-onClickOutside={() => {}}
+												onClickOutside={() => {}}
 												state="view"
 												groupType="and"
 												andLabel="И"
@@ -1818,7 +1819,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="and"
 				andLabel="И"
@@ -1875,7 +1876,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="or"
 			andLabel="И"
@@ -1884,7 +1885,7 @@ onClickOutside={() => {}}
 			onConditionStateToggle={() => console.log("state toggle")}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -1964,7 +1965,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="shaded"
 				groupType="and"
 				andLabel="И"
@@ -2018,7 +2019,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="edit"
 			groupType="and"
 			andLabel="И"
@@ -2051,7 +2052,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="shaded"
 						groupType="and"
 						andLabel="И"
@@ -2109,7 +2110,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="edit"
 			groupType="and"
 			andLabel="И"
@@ -2142,7 +2143,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="shaded"
 						groupType="and"
 						andLabel="И"
@@ -2204,7 +2205,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2236,7 +2237,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2286,7 +2287,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2318,7 +2319,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="or"
 						andLabel="И"
@@ -2367,7 +2368,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2399,7 +2400,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2452,7 +2453,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2480,7 +2481,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2536,7 +2537,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2564,7 +2565,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="заполнен и мужской"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="or"
 						andLabel="И"
@@ -2622,7 +2623,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2654,7 +2655,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2713,7 +2714,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -2746,7 +2747,7 @@ onClickOutside={() => {}}
 				state="view"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -2817,7 +2818,7 @@ onClickOutside={() => {}}
 		onCancelSelection={() => console.log("clear selected")}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -2851,7 +2852,7 @@ onClickOutside={() => {}}
 				onConditionStateToggle={() => console.log("state toggle")}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="edit"
 						groupType="and"
 						andLabel="И"
@@ -2918,7 +2919,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -3103,7 +3104,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -3283,7 +3284,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="shaded"
 			groupType="and"
 			andLabel="И"
@@ -3426,7 +3427,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -3592,7 +3593,7 @@ onClickOutside={() => {}}
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -3621,7 +3622,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="заполнен и равен 42"
 			/>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -3656,7 +3657,7 @@ onClickOutside={() => {}}
 					filtrationMethodName="заполнен и равен 42"
 				/>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="shaded"
 					groupType="and"
 					andLabel="И"

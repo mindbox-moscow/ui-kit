@@ -1,39 +1,37 @@
 import * as React from "react";
 
-export interface WithOusideProps {
+export interface WithOusideClickProps {
 	onClickOutside: () => void;
 	clickOutsideRef?: React.RefObject<HTMLDivElement>;
 }
 
 export const withOutsideClick = <T extends {}>(
-	Wrapper: React.ComponentType<T>
+	Wrapped: React.ComponentType<T>
 ) => {
-	return class extends React.PureComponent<T & WithOusideProps> {
-		public refWrapper = React.createRef<HTMLElement>();
+	return (props: WithOusideClickProps & T & React.ReactNode) => {
+		const refWrapper = React.useRef<HTMLElement>();
 
-		public componentDidMount() {
-			document.addEventListener("mousedown", this.handleOutsideClick);
-		}
+		React.useEffect(() => {
+			document.addEventListener("mousedown", handleOutsideClick);
 
-		public componentWillUnmount() {
-			document.removeEventListener("mousedown", this.handleOutsideClick);
-		}
+			return () => {
+				document.removeEventListener("mousedown", handleOutsideClick);
+			};
+		}, []);
 
-		public handleOutsideClick = (e: MouseEvent) => {
-			const refWrapper = this.refWrapper.current;
-			const { onClickOutside } = this.props;
+		const handleOutsideClick = (e: MouseEvent) => {
+			const { onClickOutside } = props;
 
-			if (!(refWrapper && refWrapper.contains(e.target as Node))) {
+			if (
+				!(
+					refWrapper.current &&
+					refWrapper.current.contains(e.target as Node)
+				)
+			) {
 				onClickOutside();
-			} else {
-				return;
 			}
 		};
 
-		public render() {
-			return (
-				<Wrapper {...this.props} clickOutsideRef={this.refWrapper} />
-			);
-		}
+		return <Wrapped {...props} clickOutsideRef={refWrapper} />;
 	};
 };

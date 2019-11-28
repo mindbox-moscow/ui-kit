@@ -2,7 +2,7 @@
 <div style={{}}>
 	<h2>1.</h2>
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -14,7 +14,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="or"
 					andLabel="И"
@@ -26,7 +26,7 @@ onClickOutside={() => {}}
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -49,7 +49,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -86,7 +86,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -101,7 +101,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -139,7 +139,7 @@ onClickOutside={() => {}}
 	<h2>2.</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -151,7 +151,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="or"
 					andLabel="И"
@@ -163,7 +163,7 @@ onClickOutside={() => {}}
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -186,7 +186,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -223,7 +223,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -238,7 +238,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -281,7 +281,7 @@ onClickOutside={() => {}}
 	</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -293,7 +293,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="or"
 					andLabel="И"
@@ -305,7 +305,7 @@ onClickOutside={() => {}}
 						filtrationMethodName="есть такие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -328,7 +328,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -366,7 +366,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -381,7 +381,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -418,7 +418,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="есть такие"
 			linkedConditionComponent={
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="and"
 					andLabel="И"
@@ -433,7 +433,7 @@ onClickOutside={() => {}}
 						filterablePropertyName="Первое действие"
 						linkedConditionComponent={
 							<FiltrationGroupComponent
-onClickOutside={() => {}}
+								onClickOutside={() => {}}
 								state="view"
 								groupType="and"
 								andLabel="И"
@@ -471,7 +471,7 @@ onClickOutside={() => {}}
 	<h2>4.</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="edit"
 		groupType="or"
 		andLabel="И"
@@ -505,7 +505,7 @@ onClickOutside={() => {}}
 	</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -513,7 +513,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -552,7 +552,7 @@ onClickOutside={() => {}}
 	<h2>5.5.1 Инвертированный 5, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -560,7 +560,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -599,7 +599,7 @@ onClickOutside={() => {}}
 	<h2>5.5.2 Инвертированный 5, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -607,7 +607,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={false}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -643,7 +643,7 @@ onClickOutside={() => {}}
 	<h2>5.6.1 Группа И без лейбла с 3мя условиями, одно -- группа без детей</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -659,7 +659,7 @@ onClickOutside={() => {}}
 		/>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -682,7 +682,7 @@ onClickOutside={() => {}}
 	<h2>5.6.2 Группа И с лейблом с 3мя условиями, одно -- группа без детей</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -698,7 +698,7 @@ onClickOutside={() => {}}
 		/>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -721,7 +721,7 @@ onClickOutside={() => {}}
 	<h2>5.6.3 Группа ИЛИ с 3мя условиями, одно -- группа без детей</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -737,7 +737,7 @@ onClickOutside={() => {}}
 		/>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -760,7 +760,7 @@ onClickOutside={() => {}}
 	<h2>5.6.4 Группа ИЛИ с группой без детей</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -776,7 +776,7 @@ onClickOutside={() => {}}
 		/>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -791,7 +791,7 @@ onClickOutside={() => {}}
 	<h2>5.6.5 Группа ИЛИ с группой без детей в режиме редактирования</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="edit"
 		groupType="or"
 		andLabel="И"
@@ -819,7 +819,7 @@ onClickOutside={() => {}}
 		/>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -839,7 +839,7 @@ onClickOutside={() => {}}
 	</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -847,7 +847,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -871,7 +871,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -901,7 +901,7 @@ onClickOutside={() => {}}
 	<h2>6.5.1: Инвертированный 6, группа И с лейблом</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -909,7 +909,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -933,7 +933,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -963,7 +963,7 @@ onClickOutside={() => {}}
 	<h2>6.5.2: Инвертированный 6, группа И без лейбла</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -971,7 +971,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={false}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -995,7 +995,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1030,7 +1030,7 @@ onClickOutside={() => {}}
 	</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -1038,7 +1038,7 @@ onClickOutside={() => {}}
 		shouldShowLabel={true}
 	>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -1053,7 +1053,7 @@ onClickOutside={() => {}}
 				}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -1065,7 +1065,7 @@ onClickOutside={() => {}}
 							filtrationMethodName="нет таких"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="view"
 									groupType="and"
 									andLabel="И"
@@ -1101,7 +1101,7 @@ onClickOutside={() => {}}
 							filterablePropertyName="Первое действие"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="view"
 									groupType="and"
 									andLabel="И"
@@ -1146,7 +1146,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -1170,7 +1170,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -1194,7 +1194,7 @@ onClickOutside={() => {}}
 		</FiltrationGroupComponent>
 
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="and"
 			andLabel="И"
@@ -1209,7 +1209,7 @@ onClickOutside={() => {}}
 				}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -1224,7 +1224,7 @@ onClickOutside={() => {}}
 							filterablePropertyName="Первое действие"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="view"
 									groupType="and"
 									andLabel="И"
@@ -1264,7 +1264,7 @@ onClickOutside={() => {}}
 				filtrationMethodName="есть такие"
 				linkedConditionComponent={
 					<FiltrationGroupComponent
-onClickOutside={() => {}}
+						onClickOutside={() => {}}
 						state="view"
 						groupType="and"
 						andLabel="И"
@@ -1279,7 +1279,7 @@ onClickOutside={() => {}}
 							filterablePropertyName="Первое действие"
 							linkedConditionComponent={
 								<FiltrationGroupComponent
-onClickOutside={() => {}}
+									onClickOutside={() => {}}
 									state="view"
 									groupType="and"
 									andLabel="И"
@@ -1323,7 +1323,7 @@ onClickOutside={() => {}}
 	<h2>8: Одно простое условие в группе И с лейблом</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -1348,7 +1348,7 @@ onClickOutside={() => {}}
 	<h2>8.1: Одно простое условие в группе И без лейблом</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -1373,7 +1373,7 @@ onClickOutside={() => {}}
 	<h2>8.2: Одно простое условие без метода фильтрации в группе И</h2>
 
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="and"
 		andLabel="И"
@@ -1393,7 +1393,7 @@ onClickOutside={() => {}}
 
 	<h2>8.3</h2>
 	<FiltrationGroupComponent
-onClickOutside={() => {}}
+		onClickOutside={() => {}}
 		state="view"
 		groupType="or"
 		andLabel="И"
@@ -1426,7 +1426,7 @@ onClickOutside={() => {}}
 			filtrationMethodName="заполнен и равен 42"
 		/>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1454,7 +1454,7 @@ onClickOutside={() => {}}
 			onConditionRemove={() => console.log("remove")}
 		/>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1482,7 +1482,7 @@ onClickOutside={() => {}}
 			onConditionRemove={() => console.log("remove")}
 		/>
 		<FiltrationGroupComponent
-onClickOutside={() => {}}
+			onClickOutside={() => {}}
 			state="view"
 			groupType="or"
 			andLabel="И"
@@ -1510,7 +1510,7 @@ onClickOutside={() => {}}
 			onConditionRemove={() => console.log("remove")}
 		>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"
@@ -1538,7 +1538,7 @@ onClickOutside={() => {}}
 				onConditionRemove={() => console.log("remove")}
 			>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="or"
 					andLabel="И"
@@ -1566,7 +1566,7 @@ onClickOutside={() => {}}
 					onConditionRemove={() => console.log("remove")}
 				/>
 				<FiltrationGroupComponent
-onClickOutside={() => {}}
+					onClickOutside={() => {}}
 					state="view"
 					groupType="or"
 					andLabel="И"
@@ -1595,7 +1595,7 @@ onClickOutside={() => {}}
 				/>
 			</FiltrationGroupComponent>
 			<FiltrationGroupComponent
-onClickOutside={() => {}}
+				onClickOutside={() => {}}
 				state="view"
 				groupType="or"
 				andLabel="И"

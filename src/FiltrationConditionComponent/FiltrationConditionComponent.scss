@@ -24,6 +24,13 @@ $groupHoverMarginLeft: 10px;
 		color: $removeColor;
 		font-weight: 700;
 	}
+
+	.kit-filter-details {
+		position: absolute;
+		top: calc(100% - 5px);
+		left: 0;
+		z-index: 20;
+	}
 }
 
 .kit-filtration-condition__item-text {
@@ -96,6 +103,7 @@ $groupHoverMarginLeft: 10px;
 	&_edit {
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #fff;
+		z-index: 5;
 
 		&:hover:not(&_read-only) {
 			.kit-filtration-condition__content {

@@ -130,13 +130,19 @@ $minHeight: 31px;
 
 		> .kit-filtration-group {
 			> .kit-filtration-group__label_hover_or {
+				color: $orColorEdit;
+
+				.kit-filtration-group__label-line,
 				.kit-filtration-group__label-text {
 					background-color: $orColorEdit;
 				}
 			}
 
 			> .kit-filtration-group__label_hover_and {
+				color: $andColorEdit;
+
 				.kit-filtration-group__label-button,
+				.kit-filtration-group__label-line,
 				.kit-filtration-group__label-text {
 					background-color: $andColorEdit;
 				}

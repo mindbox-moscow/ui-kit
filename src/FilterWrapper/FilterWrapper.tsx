@@ -4,6 +4,7 @@ import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
 import { CallbackProps, SelectionStateType, StateProps } from "./types";
 
+import { Button } from "../Button";
 import "./FilterWrapper.scss";
 import { FilterWrapperContext } from "./FilterWrapperContext";
 
@@ -26,7 +27,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	isDataOutdated,
 	filterActions,
 	filterActionsCaption,
-	scrollState
+	scrollState = "full",
+	buttonUpCaption
 }) => {
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
 	const refBreakPoint = React.createRef<HTMLDivElement>();
@@ -53,6 +55,24 @@ export const FilterWrapper: React.FC<Props> = ({
 		);
 	};
 
+	const handleScrollUp = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	};
+
+	const ButtonUp = () => (
+		<Button
+			onClick={handleScrollUp}
+			size="small"
+			color="silver"
+			hasBorder={true}
+		>
+			{buttonUpCaption}
+		</Button>
+	);
+
 	return (
 		<>
 			<div ref={refBreakPoint} className="kit-filter__breackpoint" />
@@ -61,7 +81,8 @@ export const FilterWrapper: React.FC<Props> = ({
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
 						"kit-filter_short": !doesContainFilter,
-						"kit-filter_with-filter-action": filterActions && filterActions.length
+						"kit-filter_with-filter-action":
+							filterActions && filterActions.length
 					})}
 				>
 					<div className="kit-filter__top-filter">
@@ -70,17 +91,25 @@ export const FilterWrapper: React.FC<Props> = ({
 							filterActions={filterActions}
 						/>
 					</div>
-					<ul className="kit-filter__all-wrap">{children}</ul>
+					<ul className="kit-filter__all-wrap">
+						{!doesContainFilter && scrollState === "minfied" ? (
+							<ButtonUp />
+						) : (
+							children
+						)}
+					</ul>
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{scrollState !== "minfied" && (
+								{scrollState !== "minfied" ? (
 									<button
 										className="kit-filter__use-filter"
 										onClick={onApply}
 									>
 										{applyButtonCaption}
 									</button>
+								) : (
+									<ButtonUp />
 								)}
 							</div>
 							{selectionState !== SelectionStateType.None &&
@@ -100,15 +129,15 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-							<div className="kit-filter__short-wrap-filter">
-								{selectionState !== SelectionStateType.None &&
-									countSelectedItems()}
-								<InfoWrapper
-									statisticsValue={statisticsValue}
-									statisticsDescription={statisticsDescription}
-								/>
-							</div>
-						)}
+						<div className="kit-filter__short-wrap-filter">
+							{selectionState !== SelectionStateType.None &&
+								countSelectedItems()}
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+							/>
+						</div>
+					)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

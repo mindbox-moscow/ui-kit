@@ -79,6 +79,15 @@
 	padding: 0 70px;
 }
 
+.ui-kit-header_ribbon {
+	position: relative;
+	z-index: 10;
+}
+
+.ui-kit-header_rubber {
+	overflow: auto;
+}
+
 *::-webkit-scrollbar-track {
 	border-radius: 100px;
 	background-color: transparent;

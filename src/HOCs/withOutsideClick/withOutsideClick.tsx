@@ -4,12 +4,13 @@ import { createRef, useEffect } from "react";
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
 	clickOutsideRef?: React.RefObject<HTMLDivElement>;
+	children?: React.ReactNode;
 }
 
 export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
 ) => {
-	return (props: T & WithOutsideClickProps & React.ReactNode) => {
+	return (props: T & WithOutsideClickProps) => {
 		const refWrapper = createRef<HTMLElement>();
 
 		useEffect(() => {

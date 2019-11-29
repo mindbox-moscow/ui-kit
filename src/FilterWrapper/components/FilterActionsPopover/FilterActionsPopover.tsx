@@ -7,16 +7,15 @@ import "./FilterActionsPopover.scss";
 import { IsntNeutralZoneMarker } from "../../../WindowClickListener";
 
 interface FilterActionsPopoverProps {
-	filterActions: Array<FilterAction | any>;
+	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
 }
 
-const isFilterAction = (object: any): boolean => {
-	const filterAction = object as FilterAction;
+const isFilterAction = (object: FilterAction): boolean => {
 	return (
-		filterAction.key !== undefined &&
-		filterAction.onClick !== undefined &&
-		filterAction.name !== undefined
+		object.key !== undefined &&
+		object.onClick !== undefined &&
+		object.name !== undefined
 	);
 };
 
@@ -27,14 +26,14 @@ export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const handleClickFilter = () => {
-		setIsOpen(!isOpen);
+		setIsOpen(prevIsOpen => !prevIsOpen);
 	};
 
 	const hideListPopover = () => {
 		setIsOpen(false);
 	};
 
-	return filterActions && filterActions.length ? (
+	return filterActions.length ? (
 		<div
 			className={cn("kit-filter-actions-popover", IsntNeutralZoneMarker)}
 		>
@@ -50,7 +49,7 @@ export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
 				})}
 			>
 				{filterActions.map((item, index) => {
-					if (isFilterAction(item)) {
+					if (isFilterAction(item as FilterAction)) {
 						const { key, onClick, name } = item as FilterAction;
 
 						const handleClickItem = () => {
@@ -71,7 +70,7 @@ export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
 					return (
 						<li
 							className="kit-filter-actions-popover__item"
-							key={`kit-filter-actions-popover__item-key-${index}`}
+							key={index}
 							onClick={hideListPopover}
 						>
 							{item}

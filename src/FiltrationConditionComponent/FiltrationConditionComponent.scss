@@ -29,8 +29,6 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
@@ -68,10 +66,11 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	.kit-filtration-condition__content {
-		flex-wrap: wrap;
-		display: inline-flex;
-		align-items: center;
 		min-height: 25px;
+
+		> * {
+			vertical-align: sub;
+		}
 	}
 
 	.kit-filtration-condition__content > span,
@@ -195,7 +194,7 @@ $groupHoverMarginLeft: 10px;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
-	height: 25px;
+	min-height: 25px;
 	margin-left: 2px;
 	border: 0;
 	z-index: 1;
@@ -235,7 +234,6 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__popover {
 	position: relative;
 	padding: 10px 14px 12px 18px;
-	margin-top: -3px;
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
 	border: solid 1px $borderPopoverColor;

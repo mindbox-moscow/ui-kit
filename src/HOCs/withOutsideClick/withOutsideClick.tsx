@@ -1,6 +1,7 @@
 import * as React from "react";
+import { createRef, useEffect } from "react";
 
-export interface WithOusideClickProps {
+export interface WithOutsideClickProps {
 	onClickOutside: () => void;
 	clickOutsideRef?: React.RefObject<HTMLDivElement>;
 }
@@ -8,10 +9,10 @@ export interface WithOusideClickProps {
 export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
 ) => {
-	return (props: WithOusideClickProps & T & React.ReactNode) => {
-		const refWrapper = React.useRef<HTMLElement>();
+	return (props: T & WithOutsideClickProps & React.ReactNode) => {
+		const refWrapper = createRef<HTMLElement>();
 
-		React.useEffect(() => {
+		useEffect(() => {
 			document.addEventListener("mousedown", handleOutsideClick);
 
 			return () => {

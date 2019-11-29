@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { WithOusideClickProps, withOutsideClick } from "../HOCs";
+import { WithOutsideClickProps, withOutsideClick } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { HorizontalBracket, LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -27,7 +27,7 @@ const MIN_HEIGHT = 31;
 const BRACKET_WIDTH = 2;
 
 class FiltrationGroupComponent extends React.Component<
-	Props & WithOusideClickProps,
+	Props & WithOutsideClickProps,
 	State
 > {
 	public static context: (() => void) | null;

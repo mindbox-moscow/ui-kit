@@ -23,11 +23,15 @@ export const withOutsideClick = <T extends {}>(
 
 		const handleOutsideClick = (e: MouseEvent) => {
 			const { onClickOutside } = props;
+			const target = e.target as HTMLElement;
 
 			if (
 				!(
-					refWrapper.current &&
-					refWrapper.current.contains(e.target as Node)
+					(refWrapper.current &&
+						refWrapper.current.contains(target)) ||
+					target.classList.contains(
+						"kit-overflow-isnt-neutral-zone-marker"
+					)
 				)
 			) {
 				onClickOutside();

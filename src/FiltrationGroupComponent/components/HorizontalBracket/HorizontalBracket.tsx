@@ -1,23 +1,23 @@
 import * as React from "react";
 import { SearchClasses } from "../../types";
 
-type ItemsRootElement = {
+interface ItemsRootElement {
 	element: HTMLElement;
 	height: number;
-};
+}
 
 interface HorizontalBracketProps {
 	minHeight: number;
 	brackets: ItemsRootElement[];
-	widthBracket: number;
+	bracketWidth: number;
 }
 export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 	brackets,
 	minHeight,
-	widthBracket
+	bracketWidth
 }) => {
 	let positionTop = 0;
-	let height = -widthBracket;
+	let height = -bracketWidth;
 
 	const classes = Object.values(SearchClasses);
 
@@ -36,13 +36,20 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								positionTop = height + item.height / 2;
+								const labelLine = item.element.querySelector(
+									".kit-filtration-group__label-line"
+								) as HTMLDivElement;
+
+								positionTop =
+									labelLine &&
+									labelLine.offsetTop +
+										labelLine.offsetHeight / 2 -
+										bracketWidth;
 							}
 							break;
 
@@ -56,9 +63,7 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
@@ -98,28 +103,20 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 								)
 							) {
 								positionTop = height + minHeight / 2;
-							}
-
-							if (
+							} else if (
 								item.element.classList.contains(
 									SearchClasses.KitFiltrationGroup
 								)
 							) {
-								const lineElement = item.element.querySelector(
+								const labelLine = item.element.querySelector(
 									".kit-filtration-group__label-line"
-								);
-								let lineHeight = 0;
-								if (lineElement) {
-									lineHeight =
-										(item.height -
-											minHeight -
-											lineElement.getBoundingClientRect()
-												.height) /
-											2 +
-										widthBracket / 2;
-								}
+								) as HTMLDivElement;
+
 								positionTop =
-									height + item.height / 2 + lineHeight;
+									labelLine &&
+									labelLine.offsetTop +
+										labelLine.offsetHeight / 2 +
+										height;
 							}
 							break;
 					}

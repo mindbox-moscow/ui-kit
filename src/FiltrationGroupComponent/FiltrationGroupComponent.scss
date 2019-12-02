@@ -127,6 +127,31 @@ $minHeight: 31px;
 				background-color: $andColorEdit;
 			}
 		}
+
+		> .kit-filtration-group {
+			> .kit-filtration-group__label_hover_or {
+				color: $orColorEdit;
+
+				.kit-filtration-group__label-line,
+				.kit-filtration-group__label-text {
+					background-color: $orColorEdit;
+				}
+			}
+
+			> .kit-filtration-group__label_hover_and {
+				color: $andColorEdit;
+
+				.kit-filtration-group__label-button,
+				.kit-filtration-group__label-line,
+				.kit-filtration-group__label-text {
+					background-color: $andColorEdit;
+				}
+
+				.kit-filtration-group__label-text {
+					color: #fff;
+				}
+			}
+		}
 	}
 
 	&_not-children {
@@ -277,7 +302,7 @@ $minHeight: 31px;
 	position: absolute;
 	top: -2px;
 	left: 14px;
-	height: 17px;
+	height: calc(100% - #{$minHeight / 2});
 	border-left: 2px solid;
 	color: currentColor;
 }
@@ -306,10 +331,8 @@ $minHeight: 31px;
 	position: relative;
 	display: inline-flex;
 	align-items: center;
-	height: $minHeight;
-	margin-right: 20px;
-	padding-top: 2px;
-	padding-bottom: 2px;
+	min-height: $minHeight;
+	padding-right: 20px;
 	box-sizing: border-box;
 	outline: none;
 	z-index: 3;

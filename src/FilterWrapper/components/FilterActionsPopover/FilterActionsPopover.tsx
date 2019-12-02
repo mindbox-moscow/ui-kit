@@ -1,62 +1,83 @@
+import cn from "classnames";
 import * as React from "react";
-import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { FilterAction } from "../../types";
 
 import "./FilterActionsPopover.scss";
 
+import { IsntNeutralZoneMarker } from "../../../WindowClickListener";
+
 interface FilterActionsPopoverProps {
-	filterActions: FilterAction[];
+	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
 }
 
-interface State {
-	isOpen: boolean;
-}
+const isFilterAction = (object: FilterAction): boolean => {
+	return (
+		object.key !== undefined &&
+		object.onClick !== undefined &&
+		object.name !== undefined
+	);
+};
 
-export class FilterActionsPopover extends React.Component<
-	FilterActionsPopoverProps,
-	State
-> {
-	public refElement = React.createRef<HTMLElement>();
+export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
+	filterActions,
+	filterActionsCaption
+}) => {
+	const [isOpen, setIsOpen] = React.useState(false);
 
-	public state = {
-		isOpen: false
+	const handleClickFilter = () => {
+		setIsOpen(prevIsOpen => !prevIsOpen);
 	};
 
-	public handleClickFilter = () => {
-		this.setState(state => ({ isOpen: !state.isOpen }));
+	const hideListPopover = () => {
+		setIsOpen(false);
 	};
 
-	public render() {
-		const { filterActions, filterActionsCaption } = this.props;
+	return filterActions.length ? (
+		<div
+			className={cn("kit-filter-actions-popover", IsntNeutralZoneMarker)}
+		>
+			<span
+				className="kit-filter-actions-popover__title"
+				onClick={handleClickFilter}
+			>
+				{filterActionsCaption}
+			</span>
+			<ul
+				className={cn("kit-filter-actions-popover__list", {
+					"kit-filter-actions-popover__list_hide": !isOpen
+				})}
+			>
+				{filterActions.map((item, index) => {
+					if (isFilterAction(item as FilterAction)) {
+						const { key, onClick, name } = item as FilterAction;
 
-		const { isOpen } = this.state;
+						const handleClickItem = () => {
+							hideListPopover();
+							onClick();
+						};
 
-		return !!filterActions.length ? (
-			<div className="kit-filter-actions-popover">
-				<span
-					ref={this.refElement}
-					className="kit-filter-actions-popover__title"
-					onClick={this.handleClickFilter}
-				>
-					{filterActionsCaption}
-				</span>
-				{isOpen && (
-					<OverflowVisibleContainer parentRef={this.refElement} onNeutralZoneClick={null}>
-						<ul className="kit-filter-actions-popover__list">
-							{filterActions.map(({ key, onClick, name }) => (
-								<li
-									className="kit-filter-actions-popover__item"
-									key={key}
-									onClick={onClick}
-								>
-									{name}
-								</li>
-							))}
-						</ul>
-					</OverflowVisibleContainer>
-				)}
-			</div>
-		) : null;
-	}
-}
+						return (
+							<li
+								className="kit-filter-actions-popover__item"
+								key={key}
+								onClick={handleClickItem}
+							>
+								{name}
+							</li>
+						);
+					}
+					return (
+						<li
+							className="kit-filter-actions-popover__item"
+							key={index}
+							onClick={hideListPopover}
+						>
+							{item}
+						</li>
+					);
+				})}
+			</ul>
+		</div>
+	) : null;
+};

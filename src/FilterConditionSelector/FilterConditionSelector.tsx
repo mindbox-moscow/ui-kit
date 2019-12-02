@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
+import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
 import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
@@ -18,6 +19,11 @@ enum ArrowKeysCodes {
 	Enter = 13,
 	Esc = 27
 }
+
+const HEADER_SEARCH_HEIGHT = 55;
+// Height + PaddingTop + PaddingBottom
+const MIN_HEIGHT_ELEMENT = 37;
+const PADDING_PARENT = 16;
 
 export class FilterConditionSelector extends React.Component<Props, State> {
 	public searchRef = React.createRef<Input>();
@@ -39,6 +45,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 					if (focus && this.searchRef.current) {
 						this.searchRef.current.focus();
 					}
+
 					break;
 				case ArrowKeysCodes.Esc:
 					e.preventDefault();
@@ -73,7 +80,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				if (this.searchRef.current && this.listRef.current) {
 					this.searchRef.current.blur();
-					this.listRef.current.focus();
+					this.listRef.current.focus({ preventScroll: false });
 				}
 
 				onNextSelected();
@@ -83,10 +90,31 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				if (this.searchRef.current && this.listRef.current) {
 					this.searchRef.current.blur();
-					this.listRef.current.focus();
+					this.listRef.current.focus({ preventScroll: false });
 				}
 
 				onConditionStateToggle();
+		}
+	};
+
+	public scrollHierarchyOnKeyDown = (selectElement: HTMLLIElement): void => {
+		const refHierarchy = this.listRef.current;
+		const selectOffsetTop = selectElement.offsetTop - HEADER_SEARCH_HEIGHT;
+
+		if (refHierarchy) {
+			if (selectOffsetTop <= refHierarchy.scrollTop) {
+				refHierarchy.scrollTop = selectOffsetTop;
+			} else if (
+				refHierarchy.clientHeight -
+					PADDING_PARENT +
+					refHierarchy.scrollTop <
+				selectOffsetTop + MIN_HEIGHT_ELEMENT
+			) {
+				refHierarchy.scrollTop =
+					selectOffsetTop +
+					MIN_HEIGHT_ELEMENT -
+					refHierarchy.clientHeight;
+			}
 		}
 	};
 
@@ -158,23 +186,27 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 						</div>
 					</div>
 					<div className="kit-filter-condition-selector__hierarchy-wrap">
-						<ul
-							ref={this.listRef}
-							className="kit-filter-condition-selector__hierarchy"
-							tabIndex={0}
-							onKeyDown={this.handleKeyDown}
+						<FilterConditionSelectorContext.Provider
+							value={this.scrollHierarchyOnKeyDown}
 						>
-							{this.props.rootIds.length === 0 &&
-							this.props.searchTerm !== ""
-								? notFoundMessage
-								: this.props.rootIds.map(childId => (
-										<ChildItem
-											key={childId}
-											id={childId}
-											pathFromRoot={[childId]}
-										/>
-								  ))}
-						</ul>
+							<ul
+								ref={this.listRef}
+								className="kit-filter-condition-selector__hierarchy"
+								tabIndex={0}
+								onKeyDown={this.handleKeyDown}
+							>
+								{this.props.rootIds.length === 0 &&
+								this.props.searchTerm !== ""
+									? notFoundMessage
+									: this.props.rootIds.map(childId => (
+											<ChildItem
+												key={childId}
+												id={childId}
+												pathFromRoot={[childId]}
+											/>
+									  ))}
+							</ul>
+						</FilterConditionSelectorContext.Provider>
 					</div>
 				</div>
 

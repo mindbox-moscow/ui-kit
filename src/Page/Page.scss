@@ -78,3 +78,29 @@
 	max-width: 1600px;
 	padding: 0 70px;
 }
+
+.ui-kit-header_ribbon {
+	position: relative;
+	z-index: 10;
+}
+
+.ui-kit-header_rubber {
+	overflow: auto;
+}
+
+*::-webkit-scrollbar-track {
+	border-radius: 100px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar {
+	width: 12px;
+	background-color: #fafafa;
+}
+
+*::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	box-shadow: none;
+	background-color: #c2c2c2;
+	border: 2px solid #fafafa;
+}

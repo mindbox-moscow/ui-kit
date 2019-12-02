@@ -10,6 +10,16 @@ $bgColorOpen: #3875d7;
 
 .kit-filter-editor {
 	position: relative;
+
+	.kit-filter-condition-selector {
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+}
+
+.kit-filter-editor__breakpoint {
+	position: relative;
 }
 
 .kit-filter-editor__btn {

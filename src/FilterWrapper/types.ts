@@ -5,6 +5,8 @@ export enum SelectionStateType {
 	Concrete = "concrete"
 }
 
+export type ScrollState = "full" | "minfied";
+
 export interface FilterAction {
 	key: string;
 	name: string;
@@ -22,8 +24,10 @@ export interface StateProps {
 	selectedCancelText: string;
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
-	filterActions: FilterAction[];
+	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
+	scrollState: ScrollState;
+	buttonUpCaption: string;
 }
 
 export interface CallbackProps {

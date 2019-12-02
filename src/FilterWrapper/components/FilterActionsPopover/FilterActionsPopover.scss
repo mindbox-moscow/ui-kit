@@ -34,9 +34,13 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 		border-top: 4px solid;
 	}
 }
+.kit-filter-actions-popover__list_hide {
+	display: none;
+}
 
 .kit-filter-actions-popover__list {
-	position: relative;
+	position: absolute;
+	top: 100%;
 	left: -15px;
 	width: 180px;
 	padding: 5px 0 0;
@@ -46,7 +50,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 	background-color: #fff;
 	font-family: "PTSans", sans-serif;
 	list-style: none;
-	z-index: 10;
+	z-index: 18;
 	box-shadow: 0 0 6px 0 $boxShadowListColor;
 	box-sizing: border-box;
 

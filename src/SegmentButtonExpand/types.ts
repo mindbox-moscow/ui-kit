@@ -5,4 +5,5 @@ export interface SegmentButtonExpandProps {
 	filterActionClick: () => void;
 
 	filterActionShow: boolean;
+	disabled?: boolean;
 }

@@ -6,6 +6,7 @@ $removeColor: #a12e1e;
 $copyColorBg: $hoverColorBg;
 $copyColor: #2d597d;
 $linkedConditionEditModeColorBg: #fde487;
+$borderPopoverColor: #dddddc;
 
 // Sizes
 $itemHoverBorderRadius: 3px;
@@ -23,13 +24,18 @@ $groupHoverMarginLeft: 10px;
 		color: $removeColor;
 		font-weight: 700;
 	}
+
+	.kit-filter-details {
+		position: absolute;
+		top: calc(100% - 5px);
+		left: 0;
+		z-index: 20;
+	}
 }
 
 .kit-filtration-condition__item-text {
 	position: relative;
 	display: inline-flex;
-	flex-wrap: wrap;
-	align-items: flex-start;
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
@@ -67,10 +73,11 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	.kit-filtration-condition__content {
-		flex-wrap: wrap;
-		display: inline-flex;
-		align-items: center;
 		min-height: 25px;
+
+		> * {
+			vertical-align: sub;
+		}
 	}
 
 	.kit-filtration-condition__content > span,
@@ -95,6 +102,7 @@ $groupHoverMarginLeft: 10px;
 	&_edit {
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #fff;
+		z-index: 5;
 
 		&:hover:not(&_read-only) {
 			.kit-filtration-condition__content {
@@ -109,6 +117,15 @@ $groupHoverMarginLeft: 10px;
 		.kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
+		}
+
+		[class*="kit-segment"] {
+			background-color: #fff;
+		}
+
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove {
+			visibility: visible;
 		}
 	}
 
@@ -146,22 +163,13 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	> .kit-filtration-condition__content {
-		> [class*="kit-segment"] {
-			&:not(.kit-segment-button-expand__popover) {
-				margin-right: 10px;
-			}
+		[class*="kit-segment"]:not(.kit-segment-content__count) {
+			margin-left: 10px;
 		}
-	}
-
-	.kit-segment-button-expand__popover {
-		order: 1;
-		width: 100%;
-		cursor: default;
 	}
 
 	&_read-only {
 		> .kit-filtration-condition__drag-and-drop,
-		> .kit-filtration-condition__content > span,
 		> .kit-filtration-condition__content > b {
 			cursor: default;
 			pointer-events: none;
@@ -194,7 +202,7 @@ $groupHoverMarginLeft: 10px;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
-	height: 25px;
+	min-height: 25px;
 	margin-left: 2px;
 	border: 0;
 	z-index: 1;
@@ -229,4 +237,15 @@ $groupHoverMarginLeft: 10px;
 	> *:not(:last-child) {
 		margin-right: 10px;
 	}
+}
+
+.kit-filtration-condition__popover {
+	position: relative;
+	padding: 10px 14px 12px 18px;
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
+	border: solid 1px $borderPopoverColor;
+	background-color: #fff;
+	box-sizing: border-box;
+	z-index: 2;
 }

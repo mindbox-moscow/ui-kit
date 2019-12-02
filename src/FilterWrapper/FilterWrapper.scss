@@ -56,16 +56,22 @@ $clearButtonCountColor: #a4a4a4;
 		.kit-button {
 			opacity: 1;
 		}
+	}
 
-		.kit-filtration-group__label {
-			pointer-events: none;
-		}
+	~ .kit-filtration-group__label-line {
+		padding-top: 2px;
 	}
 }
 
 .kit-filter__wrap-filter {
+	display: flex;
+	align-items: center;
 	flex-grow: 1;
 	box-sizing: border-box;
+
+	.kit-button {
+		margin-left: 22px;
+	}
 }
 
 .kit-filter__btn-wrap {

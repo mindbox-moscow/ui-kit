@@ -1,6 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
+import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
 import { ChildRendererProps } from "./types";
 
 import "./FilterConditionSelector.scss";
@@ -26,7 +27,38 @@ interface Props {
 }
 
 export class FilterConditionSelectorItem extends React.Component<Props> {
-	public handleHighLightText = (text: string, searchText: string) => {
+	public static context: ((selectElement: HTMLLIElement) => void) | null;
+	public refSelector = React.createRef<HTMLLIElement>();
+
+	public componentDidMount() {
+		const { isSelected } = this.props;
+
+		if (isSelected) {
+			this.scrollParentOnKeyDown();
+		}
+	}
+
+	public componentDidUpdate() {
+		const { isSelected } = this.props;
+
+		if (isSelected) {
+			this.scrollParentOnKeyDown();
+		}
+	}
+
+	public scrollParentOnKeyDown = () => {
+		const scrollParent = this.context;
+		const refSelector = this.refSelector.current;
+
+		if (refSelector) {
+			scrollParent(refSelector);
+		}
+	};
+
+	public handleHighLightText = (
+		text: string,
+		searchText: string
+	): string | JSX.Element => {
 		const { type } = this.props;
 
 		if (
@@ -71,6 +103,8 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 			searchTerm
 		} = this.props;
 		const isSimpleFilterableProperty = type === "simpleFilterableProperty";
+		const isfilterablePropertyWithLinkedConditions =
+			type === "filterablePropertyWithLinkedConditions";
 
 		const hasChildren = childIds.length > 0;
 
@@ -78,6 +112,7 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 
 		return (
 			<li
+				ref={this.refSelector}
 				className={cn(
 					"kit-filter-condition-selector__hierarchy-item",
 					`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
@@ -96,14 +131,15 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 						}
 					)}
 				>
-					{!isSimpleFilterableProperty && (
-						<div
-							className="kit-filter-condition-selector__hierarchy-toggle"
-							onClick={this.onExpand}
-						>
-							<IconSvg type="arrow-right" />
-						</div>
-					)}
+					{!isSimpleFilterableProperty &&
+						!isfilterablePropertyWithLinkedConditions && (
+							<div
+								className="kit-filter-condition-selector__hierarchy-toggle"
+								onClick={this.onExpand}
+							>
+								<IconSvg type="arrow-right" />
+							</div>
+						)}
 					<div
 						className="kit-filter-condition-selector__hierarchy-name"
 						onClick={this.onSelect}
@@ -134,3 +170,5 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 		this.onExpand();
 	};
 }
+
+FilterConditionSelectorItem.contextType = FilterConditionSelectorContext;

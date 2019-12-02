@@ -48,7 +48,7 @@ $borderPopoverColor: #dddddc;
 		}
 
 		&::before {
-			top: -4px;
+			top: -3px;
 			left: -2px;
 			display: block;
 			height: 23px;
@@ -64,18 +64,6 @@ $borderPopoverColor: #dddddc;
 			z-index: 1;
 		}
 	}
-}
-
-.kit-segment-button-expand__popover {
-	position: relative;
-	padding: 10px 14px 12px 18px;
-	margin-top: -3px;
-	border-radius: 3px;
-	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
-	border: solid 1px $borderPopoverColor;
-	background-color: #fff;
-	box-sizing: border-box;
-	z-index: 2;
 }
 
 .kit-segment-button-expand__button-filter {

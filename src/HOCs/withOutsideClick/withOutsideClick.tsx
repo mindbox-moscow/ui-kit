@@ -1,6 +1,8 @@
 import * as React from "react";
 import { createRef, useEffect } from "react";
 
+export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
+
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
 	clickOutsideRef?: React.RefObject<HTMLDivElement>;
@@ -29,9 +31,7 @@ export const withOutsideClick = <T extends {}>(
 				!(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
-					target.classList.contains(
-						"kit-overflow-isnt-neutral-zone-marker"
-					)
+					target.classList.contains(neitralZoneClass)
 				)
 			) {
 				onClickOutside();

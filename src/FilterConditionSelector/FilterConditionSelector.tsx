@@ -6,6 +6,7 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
 
+import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./FilterConditionSelector.scss";
 
 interface State {
@@ -25,7 +26,10 @@ const HEADER_SEARCH_HEIGHT = 55;
 const MIN_HEIGHT_ELEMENT = 37;
 const PADDING_PARENT = 16;
 
-export class FilterConditionSelector extends React.Component<Props, State> {
+class FilterConditionSelector extends React.Component<
+	Props & WithOutsideClickProps,
+	State
+> {
 	public searchRef = React.createRef<Input>();
 	public listRef = React.createRef<HTMLUListElement>();
 
@@ -132,7 +136,8 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 			editorComponent,
 			helpComponent,
 			helpCaption,
-			onConditionStateToggle
+			onConditionStateToggle,
+			clickOutsideRef
 		} = this.props;
 
 		const ChildItem = this.props.childRenderer;
@@ -152,7 +157,10 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 		};
 
 		return (
-			<div className="kit-filter-condition-selector">
+			<div
+				ref={clickOutsideRef}
+				className="kit-filter-condition-selector"
+			>
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
@@ -221,3 +229,9 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 		);
 	}
 }
+
+const FilterConditionSelectorWithOutSide = withOutsideClick(
+	FilterConditionSelector
+);
+
+export { FilterConditionSelectorWithOutSide as FilterConditionSelector };

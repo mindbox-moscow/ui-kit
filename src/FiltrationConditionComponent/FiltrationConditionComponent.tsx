@@ -3,7 +3,6 @@ import * as React from "react";
 import { FilterDetails } from "../FilterDetails";
 import { FiltrationGroupComponentContext } from "../FiltrationGroupComponent";
 import { IconSvg } from "../IconSvg";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
 import { CallbackProps, StateProps } from "./types";
 
@@ -12,59 +11,29 @@ import "./FiltrationConditionComponent.scss";
 type Props = StateProps & CallbackProps;
 
 interface State {
-	offsetTop: number;
 	showPopover: boolean;
 	popoversChildren: React.ReactNode;
 	popoverFilterAction: React.ReactNode;
 }
-
-const RANGE_OFFSET_TOP = 30;
 
 export class FiltrationConditionComponent extends React.Component<
 	Props,
 	State
 > {
 	public static context: (() => void) | null;
-	public refComponent = React.createRef<HTMLElement>();
 	public refContent = React.createRef<HTMLDivElement>();
-	public refCondition = React.createRef<HTMLLIElement>();
-	public headerOffsetTop: number = 0;
 
 	public state = {
-		offsetTop: 0,
-		showPopover: false,
+		popoverFilterAction: null,
 		popoversChildren: null,
-		popoverFilterAction: null
+		showPopover: false
 	};
-	private observer: IntersectionObserver;
 
 	public componentDidMount() {
-		const refCondition = this.refCondition.current;
 		const rerenderBrackets = this.context;
 
 		if (rerenderBrackets) {
 			rerenderBrackets();
-		}
-
-		if (refCondition) {
-			requestAnimationFrame(() => {
-				const { top } = refCondition.getBoundingClientRect();
-
-				this.headerOffsetTop = top - RANGE_OFFSET_TOP;
-
-				const observerOptions = {
-					rootMargin: `-${Math.abs(
-						this.headerOffsetTop
-					)}px 0px 0px 0px`,
-					threshold: 1.0
-				};
-
-				this.observer = new IntersectionObserver(
-					this.checkCollapsed,
-					observerOptions
-				);
-				this.observer.observe(refCondition);
-			});
 		}
 	}
 
@@ -76,31 +45,14 @@ export class FiltrationConditionComponent extends React.Component<
 		}
 	}
 
-	public componentWillUnmount() {
-		if (this.observer instanceof IntersectionObserver) {
-			this.observer.disconnect();
-		}
-	}
-
-	public checkCollapsed = (entries: IntersectionObserverEntry[]): void => {
-		const refCondition = this.refCondition.current;
-		const { onConditionStateToggle, state } = this.props;
-
-		const entry = entries.find(({ target }) => target === refCondition);
-
-		if (entry && state === "edit" && !entry.isIntersecting) {
-			onConditionStateToggle();
-		}
-	};
-
 	public renderPopover = (
 		children: React.ReactNode,
 		filterAction: React.ReactNode
 	) => {
 		this.setState(state => ({
-			showPopover: !state.showPopover,
+			popoverFilterAction: filterAction,
 			popoversChildren: children,
-			popoverFilterAction: filterAction
+			showPopover: !state.showPopover
 		}));
 	};
 
@@ -123,25 +75,19 @@ export class FiltrationConditionComponent extends React.Component<
 		} = this.props;
 
 		const editModeContent = (
-			<OverflowVisibleContainer
-				parentRef={this.refComponent}
-				onClickOutside={onConditionStateToggle}
-			>
-				<FilterDetails
-					helpCaption={filterablePropertyName}
-					helpComponent={helpComponent}
-					editorComponent={editorComponent}
-					onClose={onConditionStateToggle}
-					viewMode="edit"
-				/>
-			</OverflowVisibleContainer>
+			<FilterDetails
+				helpCaption={filterablePropertyName}
+				helpComponent={helpComponent}
+				editorComponent={editorComponent}
+				onClose={onConditionStateToggle}
+				viewMode="edit"
+			/>
 		);
 		return (
 			<FiltrationConditionComponentContext.Provider
 				value={this.renderPopover}
 			>
 				<li
-					ref={this.refCondition}
 					className={cn("kit-filtration-condition", {
 						"kit-filtration-condition_edit": state === "edit"
 					})}
@@ -166,9 +112,7 @@ export class FiltrationConditionComponent extends React.Component<
 							className="kit-filtration-condition__content"
 							onClick={onConditionStateToggle}
 						>
-							<b ref={this.refComponent}>
-								{filterablePropertyName}
-							</b>
+							<b>{filterablePropertyName}</b>
 							{filtrationMethodName && (
 								<span
 									className={cn({

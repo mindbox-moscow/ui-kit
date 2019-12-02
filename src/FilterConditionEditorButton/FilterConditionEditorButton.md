@@ -1642,14 +1642,11 @@ class ExampleComponent extends React.Component {
 	}
 
 	togglePopup() {
-		console.log(this.state.showPopup)
 		console.log("hello");
 		this.setState(oldState => ({
 			...oldState,
 			showPopup: !oldState.showPopup
 		}));
-
-		console.log(this.state.showPopup)
 	}
 
 	onNextSelected(id) {

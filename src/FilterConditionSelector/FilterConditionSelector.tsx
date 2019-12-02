@@ -80,7 +80,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				if (this.searchRef.current && this.listRef.current) {
 					this.searchRef.current.blur();
-					this.listRef.current.focus({ preventScroll: false });
+					this.listRef.current.focus({ preventScroll: true });
 				}
 
 				onNextSelected();
@@ -90,7 +90,7 @@ export class FilterConditionSelector extends React.Component<Props, State> {
 
 				if (this.searchRef.current && this.listRef.current) {
 					this.searchRef.current.blur();
-					this.listRef.current.focus({ preventScroll: false });
+					this.listRef.current.focus({ preventScroll: true });
 				}
 
 				onConditionStateToggle();

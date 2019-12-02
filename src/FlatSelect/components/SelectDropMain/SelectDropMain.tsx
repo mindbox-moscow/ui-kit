@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Utils } from "../../modules";
 import { SelectDropMainProps } from "./types";
 
 export class SelectDropMain extends React.Component<SelectDropMainProps> {
@@ -8,16 +7,10 @@ export class SelectDropMain extends React.Component<SelectDropMainProps> {
 	private scrollHandler: () => void;
 
 	public componentDidMount() {
-		Utils.Instance.scrollableElements.push(this.selectRef.current!);
-
 		this.forceUpdate(this.addScrollHandler);
 	}
 
 	public componentWillUnmount() {
-		Utils.Instance.scrollableElements = Utils.Instance.scrollableElements.filter(
-			item => item !== this.selectRef.current!
-		);
-
 		this.removeScrollHandler();
 	}
 

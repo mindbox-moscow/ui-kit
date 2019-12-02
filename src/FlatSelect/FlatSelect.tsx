@@ -39,13 +39,12 @@ export class FlatSelect<TValue> extends React.Component<
 			className,
 			height,
 			onChange,
-			headerInfo
+			headerInfo,
+			selectedValue
 		} = this.props;
 
 		let selectedItemKey: SelectedItemKey;
 		let selectedItemText: string | JSX.Element;
-
-		const selectedValue: TValue | TValue[] = this.props.selectedValue;
 
 		if (selectedValue !== null) {
 			selectedItemKey =

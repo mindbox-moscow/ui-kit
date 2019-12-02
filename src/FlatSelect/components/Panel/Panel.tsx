@@ -7,7 +7,7 @@ export class Panel extends React.Component<PanelProps> {
 	public panelRef = React.createRef<HTMLDivElement>();
 
 	public render() {
-		const { className, width } = this.props;
+		const { className, width, children } = this.props;
 
 		return (
 			<div
@@ -15,11 +15,11 @@ export class Panel extends React.Component<PanelProps> {
 					"kit-selectR-drop",
 					"kit-overflow-isnt-neutral-zone-marker",
 					className,
-					`${String(width && Width.getClass(width))}`
+					Width.getClass(width)
 				)}
 				ref={this.panelRef}
 			>
-				{this.props.children}
+				{children}
 			</div>
 		);
 	}

@@ -1,6 +1,5 @@
 import cn from "classnames";
 import * as React from "react";
-import { unmountComponentAtNode } from "react-dom";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
@@ -19,24 +18,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidMount() {
 		Dropdown.DropdownIdentifier++;
-		this.setState(state => {
-			const newState = {
-				dropdownId: "react-dropdown-" + Dropdown.DropdownIdentifier
-			};
-
-			const dropdownPanelContainer = document.createElement("div");
-			dropdownPanelContainer.id = newState.dropdownId;
-
-			return newState;
+		this.setState({
+			dropdownId: "react-dropdown-" + Dropdown.DropdownIdentifier
 		});
-	}
-
-	public componentWillUnmount() {
-		const dropdownPanel = document.getElementById(this.state.dropdownId);
-
-		if (dropdownPanel) {
-			unmountComponentAtNode(dropdownPanel);
-		}
 	}
 
 	public hide = () => {
@@ -76,7 +60,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						`${String(height && Height.getClass(height))}`,
 						`${String(width && Width.getClass(width))}`,
 						{
-							[`${closedClassName}`]: !show,
+							[`${closedClassName}`]: !show && closedClassName,
 							"kit-selectR-open": show,
 							[`${openedClassName}`]: show,
 							"kit-selectR-placeholder": !headerInfo,

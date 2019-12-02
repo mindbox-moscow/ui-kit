@@ -16,27 +16,42 @@ export class SelectSearchList extends React.Component<
 	};
 
 	public render() {
+		const { minimized } = this.state;
+		const {
+			headerInfo,
+			clearFilterHandler,
+			resetFilterCaption,
+			selectionMode,
+			makeSelectedComponents,
+			closeCaption,
+			className,
+			searchTextValue,
+			onInputChange,
+			shouldSearchTextBeSelected,
+			onScroll,
+			children
+		} = this.props;
 		let clearFilter: JSX.Element = React.createElement("div");
 		let headerAddition: JSX.Element = React.createElement("div");
 		let selectedComponents: JSX.Element = React.createElement("div");
 		let applyButton: JSX.Element = React.createElement("div");
 
-		if (this.props.headerInfo) {
-			if (this.props.clearFilterHandler) {
+		if (headerInfo) {
+			if (clearFilterHandler) {
 				clearFilter = (
 					<span
 						className="kit-selectR-module-reset link-action link-action_grey"
-						onClick={this.props.clearFilterHandler}
+						onClick={clearFilterHandler}
 					>
 						<span className="icon_close" />
-						{this.props.resetFilterCaption}
+						{resetFilterCaption}
 					</span>
 				);
 			}
 			headerAddition = (
 				<div className="kit-selectR-drop-module">
 					<span className="kit-selectR-module-state">
-						{this.props.headerInfo}
+						{headerInfo}
 					</span>
 					{clearFilter}
 				</div>
@@ -44,21 +59,21 @@ export class SelectSearchList extends React.Component<
 		}
 
 		if (
-			this.props.selectionMode === SelectionMode.Multiple &&
-			this.props.makeSelectedComponents
+			selectionMode === SelectionMode.Multiple &&
+			makeSelectedComponents
 		) {
-			const selectedChildren = this.props.makeSelectedComponents();
+			const selectedChildren = makeSelectedComponents();
 			if (selectedChildren.length !== 0) {
 				let choisesClasses =
 					"kit-selectR-choices kit-selectR-choices-inline";
-				if (this.state.minimized) {
+				if (minimized) {
 					choisesClasses =
 						choisesClasses +
 						" kit-selectR-choices-inline-minimized";
 				}
 				const minimizeButtonClasses =
 					"kit-selectR-horizontal-extension-image " +
-					(this.state.minimized
+					(minimized
 						? "kit-selectR-horizontal-extension-image-open"
 						: "kit-selectR-horizontal-extension-image-close");
 				selectedComponents = (
@@ -78,7 +93,7 @@ export class SelectSearchList extends React.Component<
 							type="button"
 							className="button button_blue button_middle button_primary"
 						>
-							{this.props.closeCaption}
+							{closeCaption}
 						</button>
 					</div>
 				);
@@ -86,16 +101,16 @@ export class SelectSearchList extends React.Component<
 		}
 
 		return (
-			<div className={this.props.className}>
+			<div className={className}>
 				<div className="kit-selectR-drop-header">
 					<div className="kit-selectR-search">
 						<span className="kit-selectR-input">
 							<Textbox
 								notFormControl={true}
-								value={this.props.searchTextValue}
-								onChange={this.props.onInputChange}
+								value={searchTextValue}
+								onChange={onInputChange}
 								shouldTextBeSelected={
-									this.props.shouldSearchTextBeSelected
+									shouldSearchTextBeSelected
 								}
 							/>
 						</span>
@@ -104,14 +119,12 @@ export class SelectSearchList extends React.Component<
 					{selectedComponents}
 					{applyButton}
 				</div>
-				<SelectDropMain onScroll={this.props.onScroll}>
-					{this.props.children}
-				</SelectDropMain>
+				<SelectDropMain onScroll={onScroll}>{children}</SelectDropMain>
 			</div>
 		);
 	}
 
 	private onToggleChoices = () => {
-		this.setState({ minimized: !this.state.minimized });
+		this.setState(state => ({ minimized: !state.minimized }));
 	};
 }

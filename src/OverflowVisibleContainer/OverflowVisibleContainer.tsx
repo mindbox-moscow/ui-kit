@@ -1,27 +1,21 @@
 import cn from "classnames";
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { State, Props } from "./types";
+import { Props, State } from "./types";
 
+import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./OverflowVisibleContainer.scss";
-import {
-	IsntNeutralZoneMarker,
-	IWindowClickListener,
-	CreateWindowClickListener
-} from "../WindowClickListener";
 
-export class OverflowVisibleContainer extends React.Component<Props> {
+class OverflowVisibleContainer extends React.Component<
+	Props & WithOutsideClickProps
+> {
 	public state: State = {
 		positionTop: 0,
 		positionLeft: 0,
 		isLoaded: false
 	};
 
-	private windowClickListener: IWindowClickListener
-
 	private portal = document.createElement("div");
-
-	private containerRef = React.createRef<HTMLDivElement>();
 
 	public componentDidMount() {
 		const { portal } = this;
@@ -29,19 +23,6 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		document.body.appendChild(portal);
 
 		this.handleShowPopup();
-
-
-		// setTimeout предотвращает обработку 
-		// любого click по window
-		// послужившого причиной cоздания данного компонента
-		setTimeout(() => {
-			if (this.containerRef.current != null && this.props.onNeutralZoneClick != null) {
-				this.windowClickListener = CreateWindowClickListener(
-					this.props.onNeutralZoneClick,
-					this.containerRef.current as HTMLElement
-				)
-			}
-		})
 	}
 
 	public componentWillUnmount() {
@@ -50,13 +31,6 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		document.body.removeChild(portal);
 		window.removeEventListener("resize", this.handleShowPopup);
 		window.removeEventListener("load", this.handleShowPopup);
-
-		// Так как windowClickListener создаётся через setTimeout, то и его стопинг реализуется также
-		setTimeout(() => {
-			if (this.windowClickListener != undefined) {
-				this.windowClickListener.stop();
-			}
-		})
 	}
 
 	public componentDidUpdate() {
@@ -88,12 +62,12 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	public render() {
 		const { portal } = this;
 		const { positionLeft, positionTop, isLoaded } = this.state;
-		const { children, className } = this.props;
+		const { children, className, clickOutsideRef } = this.props;
 
 		return createPortal(
 			<div
-				ref={this.containerRef}
-				className={cn("kit-overflow-visiblecontainer", IsntNeutralZoneMarker, className)}
+				ref={clickOutsideRef}
+				className={cn("kit-overflow-visiblecontainer", className)}
 				style={{ left: positionLeft, top: positionTop }}
 			>
 				{isLoaded && children}
@@ -102,3 +76,9 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		);
 	}
 }
+
+const OverflowVisibleContainerwithOutside = withOutsideClick(
+	OverflowVisibleContainer
+);
+
+export { OverflowVisibleContainerwithOutside as OverflowVisibleContainer };

@@ -4,8 +4,6 @@ import { FilterAction } from "../../types";
 
 import "./FilterActionsPopover.scss";
 
-import { IsntNeutralZoneMarker } from "../../../WindowClickListener";
-
 interface FilterActionsPopoverProps {
 	filterActions: Array<FilterAction | React.ReactNode>;
 	filterActionsCaption: string;
@@ -34,9 +32,7 @@ export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
 	};
 
 	return filterActions.length ? (
-		<div
-			className={cn("kit-filter-actions-popover", IsntNeutralZoneMarker)}
-		>
+		<div className={cn("kit-filter-actions-popover")}>
 			<span
 				className="kit-filter-actions-popover__title"
 				onClick={handleClickFilter}

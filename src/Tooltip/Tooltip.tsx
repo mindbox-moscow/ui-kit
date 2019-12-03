@@ -19,7 +19,7 @@ interface State {
 type ToolTipProps = IProps;
 
 export class Tooltip extends React.Component<ToolTipProps, State> {
-	static defaultProps: DefaultProps = {
+	public static defaultProps: DefaultProps = {
 		position: "bottom",
 		textDecoration: true
 	};
@@ -59,7 +59,7 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 					{title}
 				</span>
 				<OverflowVisibleContainer
-					onNeutralZoneClick={null}
+					onClickOutside={this.handleHideTooltip}
 					parentRef={this.refTitle}
 					className="kit-tooltip__popup"
 				>

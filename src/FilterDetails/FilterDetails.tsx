@@ -1,7 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
-import { FilterDetailsProps, CallbackProps, State } from "./types";
+import { CallbackProps, FilterDetailsProps, State } from "./types";
 
 import "./FilterDetails.scss";
 
@@ -18,8 +18,9 @@ export class FilterDetails extends React.Component<Props, State> {
 	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
 	private kitFiltrationRef = React.createRef<HTMLDivElement>();
 
-	public componentWillMount() {
+	public componentDidMount() {
 		document.addEventListener("keydown", this.handleKeyDown);
+		this.handleViewExtended();
 	}
 
 	public componentWillUnmount() {
@@ -57,10 +58,6 @@ export class FilterDetails extends React.Component<Props, State> {
 			}
 		}
 	};
-
-	public componentDidMount() {
-		this.handleViewExtended();
-	}
 
 	public componentDidUpdate(prevProps: Props, prevState: State) {
 		this.handleViewExtended();

@@ -39,6 +39,7 @@ export const FilterConditionEditorButton: React.FC<Props> = ({
 				<FilterConditionSelector
 					{...otherProps}
 					onConditionStateToggle={toggleOpen}
+					onClickOutside={toggleOpen}
 				/>
 			)}
 		</div>

@@ -1,13 +1,27 @@
 import * as React from "react";
 import { createRef, useEffect } from "react";
 
-export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
-
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
 	clickOutsideRef?: React.RefObject<HTMLDivElement>;
 	children?: React.ReactNode;
 }
+
+export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
+const uiDatePickerClass = "ui-datepicker";
+
+const fromElementWithClassEvent = (
+	event: Event,
+	elementClass: string
+): boolean => {
+	return event
+		.composedPath()
+		.some(
+			(pathEvent: HTMLElement) =>
+				pathEvent.classList !== null &&
+				pathEvent.classList.contains(elementClass)
+		);
+};
 
 export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
@@ -31,7 +45,8 @@ export const withOutsideClick = <T extends {}>(
 				!(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
-					target.classList.contains(neitralZoneClass)
+					fromElementWithClassEvent(e, neitralZoneClass) ||
+					fromElementWithClassEvent(e, uiDatePickerClass)
 				)
 			) {
 				onClickOutside();

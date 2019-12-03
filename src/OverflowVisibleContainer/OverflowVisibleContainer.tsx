@@ -3,14 +3,20 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { Props, State } from "./types";
 
+<<<<<<< HEAD
 import {
 	CreateWindowClickListener,
 	IsntNeutralZoneMarker,
 	IWindowClickListener
 } from "../WindowClickListener";
+=======
+import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+>>>>>>> 77c2d92760cf33ff14489660c001ccd0f3c8de64
 import "./OverflowVisibleContainer.scss";
 
-export class OverflowVisibleContainer extends React.Component<Props> {
+class OverflowVisibleContainer extends React.Component<
+	Props & WithOutsideClickProps
+> {
 	public state: State = {
 		positionTop: 0,
 		positionLeft: 0,
@@ -18,11 +24,12 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		isLoaded: false
 	};
 
+<<<<<<< HEAD
 	private windowClickListener: IWindowClickListener;
 
+=======
+>>>>>>> 77c2d92760cf33ff14489660c001ccd0f3c8de64
 	private portal = document.createElement("div");
-
-	private containerRef = React.createRef<HTMLDivElement>();
 
 	public componentDidMount() {
 		const { portal } = this;
@@ -30,6 +37,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		document.body.appendChild(portal);
 
 		this.handleShowPopup();
+<<<<<<< HEAD
 
 		// setTimeout предотвращает обработку
 		// любого click по window
@@ -45,6 +53,8 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 				);
 			}
 		});
+=======
+>>>>>>> 77c2d92760cf33ff14489660c001ccd0f3c8de64
 	}
 
 	public componentWillUnmount() {
@@ -53,6 +63,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		document.body.removeChild(portal);
 		window.removeEventListener("resize", this.handleShowPopup);
 		window.removeEventListener("load", this.handleShowPopup);
+<<<<<<< HEAD
 
 		// Так как windowClickListener создаётся через setTimeout, то и его стопинг реализуется также
 		setTimeout(() => {
@@ -60,6 +71,8 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 				this.windowClickListener.stop();
 			}
 		});
+=======
+>>>>>>> 77c2d92760cf33ff14489660c001ccd0f3c8de64
 	}
 
 	public componentDidUpdate() {
@@ -110,6 +123,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	};
 
 	public render() {
+<<<<<<< HEAD
 		const {
 			positionLeft,
 			positionTop,
@@ -131,6 +145,17 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 					top: positionTop,
 					bottom: positionBottom
 				}}
+=======
+		const { portal } = this;
+		const { positionLeft, positionTop, isLoaded } = this.state;
+		const { children, className, clickOutsideRef } = this.props;
+
+		return createPortal(
+			<div
+				ref={clickOutsideRef}
+				className={cn("kit-overflow-visiblecontainer", className)}
+				style={{ left: positionLeft, top: positionTop }}
+>>>>>>> 77c2d92760cf33ff14489660c001ccd0f3c8de64
 			>
 				{isLoaded && children}
 			</div>,
@@ -138,3 +163,9 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		);
 	}
 }
+
+const OverflowVisibleContainerwithOutside = withOutsideClick(
+	OverflowVisibleContainer
+);
+
+export { OverflowVisibleContainerwithOutside as OverflowVisibleContainer };

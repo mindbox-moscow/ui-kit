@@ -18,7 +18,7 @@ const fromElementWithClassEvent = (
 		.composedPath()
 		.some(
 			(pathEvent: HTMLElement) =>
-				pathEvent.classList !== null &&
+				pathEvent.classList &&
 				pathEvent.classList.contains(elementClass)
 		);
 };

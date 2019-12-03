@@ -1,23 +1,24 @@
 import cn from "classnames";
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { State, Props } from "./types";
+import { Props, State } from "./types";
 
-import "./OverflowVisibleContainer.scss";
 import {
+	CreateWindowClickListener,
 	IsntNeutralZoneMarker,
-	IWindowClickListener,
-	CreateWindowClickListener
+	IWindowClickListener
 } from "../WindowClickListener";
+import "./OverflowVisibleContainer.scss";
 
 export class OverflowVisibleContainer extends React.Component<Props> {
 	public state: State = {
 		positionTop: 0,
 		positionLeft: 0,
+		positionBottom: "auto",
 		isLoaded: false
 	};
 
-	private windowClickListener: IWindowClickListener
+	private windowClickListener: IWindowClickListener;
 
 	private portal = document.createElement("div");
 
@@ -30,18 +31,20 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		this.handleShowPopup();
 
-
-		// setTimeout предотвращает обработку 
+		// setTimeout предотвращает обработку
 		// любого click по window
 		// послужившого причиной cоздания данного компонента
 		setTimeout(() => {
-			if (this.containerRef.current != null && this.props.onNeutralZoneClick != null) {
+			if (
+				this.containerRef.current != null &&
+				this.props.onNeutralZoneClick != null
+			) {
 				this.windowClickListener = CreateWindowClickListener(
 					this.props.onNeutralZoneClick,
 					this.containerRef.current as HTMLElement
-				)
+				);
 			}
-		})
+		});
 	}
 
 	public componentWillUnmount() {
@@ -56,7 +59,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 			if (this.windowClickListener != undefined) {
 				this.windowClickListener.stop();
 			}
-		})
+		});
 	}
 
 	public componentDidUpdate() {
@@ -64,18 +67,39 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	}
 
 	public handleShowPopup = () => {
-		const { parentRef } = this.props;
-		const { positionLeft, positionTop } = this.state;
+		const { parentRef, isAdaptive, onAdaptive } = this.props;
+		const { positionLeft, positionTop, positionBottom } = this.state;
 
 		if (parentRef && parentRef.current) {
-			const rect = parentRef.current.getBoundingClientRect();
-			const top = window.scrollY + rect.top + rect.height;
-			const left = rect.left;
+			const {
+				top,
+				height,
+				left
+			} = parentRef.current.getBoundingClientRect();
+			const windowScrollY = window.scrollY;
+			let reactTop: number | string = windowScrollY + top + height;
+			let rectBottom: number | string = "auto";
+			const rectLeft: number | string = left;
+			const heightBody = document.body.offsetHeight;
 
-			if (top !== positionTop || left !== positionLeft) {
+			if (isAdaptive && window.innerHeight / 2 < top) {
+				reactTop = "auto";
+				rectBottom = heightBody - windowScrollY - top - 2;
+			}
+
+			if (onAdaptive) {
+				rectBottom !== "auto" ? onAdaptive(true) : onAdaptive(false);
+			}
+
+			if (
+				reactTop !== positionTop ||
+				rectLeft !== positionLeft ||
+				rectBottom !== positionBottom
+			) {
 				this.setState({
-					positionTop: top,
-					positionLeft: left,
+					positionTop: reactTop,
+					positionLeft: rectLeft,
+					positionBottom: rectBottom,
 					isLoaded: true
 				});
 			}
@@ -86,19 +110,31 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	};
 
 	public render() {
-		const { portal } = this;
-		const { positionLeft, positionTop, isLoaded } = this.state;
+		const {
+			positionLeft,
+			positionTop,
+			positionBottom,
+			isLoaded
+		} = this.state;
 		const { children, className } = this.props;
 
 		return createPortal(
 			<div
 				ref={this.containerRef}
-				className={cn("kit-overflow-visiblecontainer", IsntNeutralZoneMarker, className)}
-				style={{ left: positionLeft, top: positionTop }}
+				className={cn(
+					"kit-overflow-visiblecontainer",
+					IsntNeutralZoneMarker,
+					className
+				)}
+				style={{
+					left: positionLeft,
+					top: positionTop,
+					bottom: positionBottom
+				}}
 			>
 				{isLoaded && children}
 			</div>,
-			portal
+			this.portal
 		);
 	}
 }

@@ -27,9 +27,20 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		this.changeVisibility(false);
 	};
 
+	public handelIsBottom = (isAdaptive: boolean) => {
+		const { isInBottomOfScreen } = this.state;
+
+		if (isInBottomOfScreen !== isAdaptive) {
+			this.setState(state => ({
+				isInBottomOfScreen: !state.isInBottomOfScreen
+			}));
+		}
+	};
+
 	public render() {
-		const { show } = this.state;
+		const { show, isInBottomOfScreen } = this.state;
 		const {
+			id,
 			className,
 			openedClassName,
 			closedClassName,
@@ -41,8 +52,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			children
 		} = this.props;
 
-		const placeholder = this.props.headerInfo ? (
-			<span className="kit-selectR-chosen">{this.props.headerInfo}</span>
+		const placeholder = headerInfo ? (
+			<span className="kit-selectR-chosen">{headerInfo}</span>
 		) : (
 			<span className="kit-selectR-chosen">{this.props.placeholder}</span>
 		);
@@ -51,7 +62,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		return (
 			<>
 				<div
-					id={this.props.id}
+					id={id}
 					className={cn(
 						className,
 						"form-control",
@@ -80,10 +91,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					<OverflowVisibleContainer
 						parentRef={this.dropdownRef}
 						onNeutralZoneClick={() => {}}
+						isAdaptive={true}
+						onAdaptive={this.handelIsBottom}
 					>
 						<Panel
 							width={width || Width.Normal}
-							className={panelClass}
+							className={cn(panelClass, {
+								"kit-selectR-above": isInBottomOfScreen
+							})}
 						>
 							{children}
 						</Panel>
@@ -99,10 +114,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	private clearSelectionSection = (): JSX.Element | null => {
 		return this.props.onSelectionClear == null ? null : (
-			<span
-				className="select2-search-choice-close"
-				onClick={this.onSelectionClear}
-			/>
+			<span onClick={this.onSelectionClear} />
 		);
 	};
 

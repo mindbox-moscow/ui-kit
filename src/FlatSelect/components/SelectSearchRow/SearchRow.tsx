@@ -1,66 +1,55 @@
+import cn from "classnames";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { SelectSearchRowProps } from "./types";
 
 export class SelectSearchRow extends React.Component<SelectSearchRowProps, {}> {
 	public render() {
-		const liClassesArray = ["kit-selectR-result"];
-
-		if (this.props.className != null) {
-			liClassesArray.push(this.props.className);
-		}
-
-		if (this.props.unselectable) {
-			liClassesArray.push("kit-selectR-unselectable");
-		}
-
-		if (this.props.disabled) {
-			liClassesArray.push("kit-selectR-disabled");
-		}
-
-		if (this.props.isSelected) {
-			liClassesArray.push(
-				this.props.isForMultiSelect
-					? "kit-selectR-selected-multi"
-					: "kit-selectR-selected"
-			);
-		}
-
-		const divClassesArray = ["kit-selectR-label "];
-		if (this.props.isLoader) {
-			divClassesArray.push("kit-selectR-request-item");
-		}
+		const {
+			className,
+			unselectable,
+			disabled,
+			isSelected,
+			isForMultiSelect,
+			hasNested,
+			isLoader,
+			text,
+			title,
+			children
+		} = this.props;
 
 		const Сhildren = (): JSX.Element | null => {
-			if (this.props.hasNested) {
-				liClassesArray.push("kit-selectR-nesting");
-
-				return (
-					<ul className="kit-selectR-results kit-selectR-results-default">
-						{this.props.children}
-					</ul>
-				);
-			}
-
-			return null;
+			return hasNested ? (
+				<ul className="kit-selectR-results kit-selectR-results-default">
+					{children}
+				</ul>
+			) : null;
 		};
 
-		const liClasses = liClassesArray.join(" ");
-		const divClasses = divClassesArray.join(" ");
-
-		const title =
-			this.props.title == null || typeof this.props.title === "string"
-				? (this.props.title as string)
-				: renderToStaticMarkup(this.props.title);
+		const titleContent =
+			title == null || typeof title === "string"
+				? (title as string)
+				: renderToStaticMarkup(title);
 
 		return (
-			<li className={liClasses}>
+			<li
+				className={cn(className, "kit-selectR-result", {
+					"kit-selectR-unselectable": unselectable,
+					"kit-selectR-disabled": disabled,
+					"kit-selectR-selected-multi":
+						isSelected && isForMultiSelect,
+					"kit-selectR-selected": isSelected && !isForMultiSelect,
+					"kit-selectR-nesting": hasNested
+				})}
+			>
 				<div
-					className={divClasses}
+					className={cn("kit-selectR-label", {
+						"kit-selectR-request-item": isLoader
+					})}
 					onClick={this.onClick}
-					title={title}
+					title={titleContent}
 				>
-					{this.props.text}
+					{text}
 				</div>
 				<Сhildren />
 			</li>

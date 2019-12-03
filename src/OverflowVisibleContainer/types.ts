@@ -10,5 +10,4 @@ export interface Props {
 	className?: string;
 	isAdaptive?: boolean;
 	onAdaptive?: (isAdaptive: boolean) => void;
-	onNeutralZoneClick: (() => void) | null;
 }

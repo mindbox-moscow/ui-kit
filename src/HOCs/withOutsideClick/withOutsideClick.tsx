@@ -14,13 +14,12 @@ const fromElementWithClassEvent = (
 	event: Event,
 	elementClass: string
 ): boolean => {
-	return event
-		.composedPath()
-		.some(
-			(pathEvent: HTMLElement) =>
-				pathEvent.classList !== null &&
-				pathEvent.classList.contains(elementClass)
+	return event.composedPath().some((pathEvent: HTMLElement) => {
+		return (
+			pathEvent.classList != null &&
+			pathEvent.classList.contains(elementClass)
 		);
+	});
 };
 
 export const withOutsideClick = <T extends {}>(

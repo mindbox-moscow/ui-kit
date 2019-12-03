@@ -90,7 +90,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				{show && (
 					<OverflowVisibleContainer
 						parentRef={this.dropdownRef}
-						onNeutralZoneClick={() => {}}
+						onClickOutside={this.changeVisibility(!show)}
 						isAdaptive={true}
 						onAdaptive={this.handelIsBottom}
 					>

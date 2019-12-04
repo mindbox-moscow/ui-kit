@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { WithOutsideClickProps, withOutsideClick } from "../HOCs";
+import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { HorizontalBracket, LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -621,4 +621,8 @@ class FiltrationGroupComponent extends React.Component<
 }
 FiltrationGroupComponent.contextType = FiltrationGroupComponentContext;
 
-export default withOutsideClick(FiltrationGroupComponent);
+const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
+	FiltrationGroupComponent
+);
+
+export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

@@ -29,7 +29,6 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 			label,
 			isOpened,
 			iconType,
-			autoFocus,
 			...otherProps
 		} = this.props;
 
@@ -37,7 +36,6 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 			<div className="kit-filter-editor">
 				<div className="kit-filter-editor__breakpoint" />
 				<button
-					autoFocus={autoFocus}
 					ref={this.refButton}
 					className={cn("kit-filter-editor__btn", {
 						"kit-filter-editor__btn_open": isOpened

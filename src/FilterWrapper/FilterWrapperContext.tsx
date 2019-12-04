@@ -1,5 +1,12 @@
 import * as React from "react";
 
-export const FilterWrapperContext = React.createContext<HTMLDivElement | null>(
+interface IFilterWrapperContext {
+	// TODO: Убрать
+	refBreakPoint: HTMLDivElement | null;
+	updateBrackets: number;
+	rerenderBrackets: () => void;
+}
+
+export const FilterWrapperContext = React.createContext<IFilterWrapperContext | null>(
 	null
 );

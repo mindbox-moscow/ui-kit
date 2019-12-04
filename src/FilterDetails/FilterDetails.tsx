@@ -81,7 +81,7 @@ export class FilterDetails extends React.Component<Props, State> {
 		return (
 			<div
 				ref={this.kitFiltrationRef}
-				tabIndex={0}
+				tabIndex={-1}
 				className={cn("kit-filter-details", {
 					"kit-filter-details_editor": viewMode === "edit",
 					"kit-filter-details_menu": viewMode === "menu"
@@ -91,6 +91,7 @@ export class FilterDetails extends React.Component<Props, State> {
 					onClick={onClose}
 					className="kit-filter-details__close"
 					type="button"
+					tabIndex={-1}
 				>
 					<IconSvg type="close" size="large" />
 				</button>

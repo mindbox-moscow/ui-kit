@@ -85,7 +85,9 @@
 }
 
 .ui-kit-header_rubber {
-	overflow: auto;
+	&.header_rubber {
+		overflow: visible;
+	}
 }
 
 *::-webkit-scrollbar-track {

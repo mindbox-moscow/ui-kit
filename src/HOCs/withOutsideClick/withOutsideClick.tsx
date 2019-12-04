@@ -16,7 +16,7 @@ const fromElementWithClassEvent = (
 ): boolean => {
 	return event.composedPath().some((pathEvent: HTMLElement) => {
 		return (
-			pathEvent.classList != null &&
+			pathEvent.classList &&
 			pathEvent.classList.contains(elementClass)
 		);
 	});

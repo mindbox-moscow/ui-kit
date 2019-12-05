@@ -35,7 +35,7 @@ export const withOutsideClick = <T extends {}>(
 			return () => {
 				document.removeEventListener("click", handleOutsideClick);
 			};
-		}, []);
+		});
 
 		const handleOutsideClick = (e: MouseEvent) => {
 			const { onClickOutside } = props;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { createRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
@@ -27,7 +27,7 @@ export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
 ) => {
 	return (props: T & WithOutsideClickProps) => {
-		const refWrapper = createRef<HTMLElement>();
+		const refWrapper = useRef<HTMLElement>();
 
 		useEffect(() => {
 			document.addEventListener("click", handleOutsideClick);
@@ -35,7 +35,11 @@ export const withOutsideClick = <T extends {}>(
 			return () => {
 				document.removeEventListener("click", handleOutsideClick);
 			};
-		});
+		}, []);
+
+		const setRef = (el: HTMLElement) => {
+			refWrapper.current = el;
+		};
 
 		const handleOutsideClick = (e: MouseEvent) => {
 			const { onClickOutside } = props;
@@ -53,6 +57,6 @@ export const withOutsideClick = <T extends {}>(
 			}
 		};
 
-		return <Wrapped {...props} clickOutsideRef={refWrapper} />;
+		return <Wrapped {...props} clickOutsideRef={setRef} />;
 	};
 };

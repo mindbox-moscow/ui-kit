@@ -1,6 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
-import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import {
+	neitralZoneClass,
+	withOutsideClick,
+	WithOutsideClickProps
+} from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { HorizontalBracket, LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -459,7 +463,8 @@ class FiltrationGroupComponent extends React.Component<
 						"kit-filtration-group_edit": state === "edit",
 						"kit-filtration-group_shaded": state === "shaded",
 						"kit-filtration-group_read-only": state === "readOnly",
-						"kit-filtration-group_not-children": !anyChildren
+						"kit-filtration-group_not-children": !anyChildren,
+						neitralZoneClass
 					})}
 				>
 					<div

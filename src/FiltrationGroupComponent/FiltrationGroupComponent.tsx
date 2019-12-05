@@ -459,12 +459,11 @@ class FiltrationGroupComponent extends React.Component<
 			>
 				<ul
 					ref={this.kitFiltrationRef}
-					className={cn("kit-filtration-group", {
+					className={cn("kit-filtration-group", neitralZoneClass, {
 						"kit-filtration-group_edit": state === "edit",
 						"kit-filtration-group_shaded": state === "shaded",
 						"kit-filtration-group_read-only": state === "readOnly",
-						"kit-filtration-group_not-children": !anyChildren,
-						neitralZoneClass
+						"kit-filtration-group_not-children": !anyChildren
 					})}
 				>
 					<div

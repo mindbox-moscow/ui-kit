@@ -1,7 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
 import {
-	neitralZoneClass,
 	withOutsideClick,
 	WithOutsideClickProps
 } from "../HOCs";
@@ -464,7 +463,7 @@ class FiltrationGroupComponent extends React.Component<
 			>
 				<ul
 					ref={this.kitFiltrationRef}
-					className={cn("kit-filtration-group", neitralZoneClass, {
+					className={cn("kit-filtration-group", {
 						"kit-filtration-group_edit": state === "edit",
 						"kit-filtration-group_shaded": state === "shaded",
 						"kit-filtration-group_read-only": state === "readOnly",

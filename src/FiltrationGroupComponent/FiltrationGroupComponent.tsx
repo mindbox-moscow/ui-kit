@@ -438,7 +438,7 @@ class FiltrationGroupComponent extends React.Component<
 			onGroupTypeToggle,
 			state,
 			onConditionRemove,
-			clickOutsideRef
+			setOutsideClickRef
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -453,8 +453,8 @@ class FiltrationGroupComponent extends React.Component<
 
 		const anyChildren = React.Children.toArray(children).length > 0;
 
-		if (clickOutsideRef) {
-			clickOutsideRef(this.kitFiltrationRef.current as HTMLElement);
+		if (setOutsideClickRef) {
+			setOutsideClickRef(this.kitFiltrationRef.current as HTMLElement);
 		}
 
 		return (

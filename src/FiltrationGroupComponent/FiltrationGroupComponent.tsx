@@ -557,4 +557,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	);
 };
 
-export default withOutsideClick(FiltrationGroupComponent);
+const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
+	FiltrationGroupComponent
+);
+
+export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

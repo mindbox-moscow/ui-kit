@@ -35,8 +35,6 @@ $kit-select-multi-border-radius: 3px;
 
 	.kit-select-multi_show_dropdown & {
 		border-color: transparent;
-		border-bottom: 1px dashed #000;
-		background: #f6f7f7;
 	}
 }
 
@@ -77,10 +75,6 @@ $kit-select-multi-border-radius: 3px;
 	&_checked {
 		color: #ffffff;
 		background-color: #3875d7;
-	}
-
-	&:focus-within {
-		box-shadow: 0 0 5px #3875d7;
 	}
 
 	&_disabled {

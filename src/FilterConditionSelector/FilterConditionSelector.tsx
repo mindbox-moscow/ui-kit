@@ -41,7 +41,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	onNextSelected,
 	onPreviousSelected,
 	onExpandCurrent,
-	clickOutsideRef
+	setOutsideClickRef
 }) => {
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
@@ -146,8 +146,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const setRef = (el: HTMLDivElement) => {
 		mainRef.current = el;
 
-		if (clickOutsideRef) {
-			clickOutsideRef(el);
+		if (setOutsideClickRef) {
+			setOutsideClickRef(el);
 		}
 	};
 

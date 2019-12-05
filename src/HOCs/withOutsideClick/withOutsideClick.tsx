@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
-	clickOutsideRef?: (el: HTMLElement) => void;
+	setOutsideClickRef?: (el: HTMLElement) => void;
 	children?: React.ReactNode;
 }
 
@@ -57,6 +57,6 @@ export const withOutsideClick = <T extends {}>(
 			}
 		};
 
-		return <Wrapped {...props} clickOutsideRef={setRef} />;
+		return <Wrapped {...props} setOutsideClickRef={setRef} />;
 	};
 };

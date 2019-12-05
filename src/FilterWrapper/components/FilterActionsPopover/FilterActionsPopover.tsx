@@ -31,7 +31,7 @@ export const FilterActionsPopover: React.FC<FilterActionsPopoverProps> = ({
 		setIsOpen(false);
 	};
 
-	return filterActions.length ? (
+	return filterActions && filterActions.length ? (
 		<div className={cn("kit-filter-actions-popover")}>
 			<span
 				className="kit-filter-actions-popover__title"

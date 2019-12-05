@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
-	clickOutsideRef?: React.RefObject<HTMLDivElement>;
+	clickOutsideRef?: (el: HTMLElement) => void;
 	children?: React.ReactNode;
 }
 
@@ -27,7 +27,7 @@ export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
 ) => {
 	return (props: T & WithOutsideClickProps) => {
-		const refWrapper = useRef<HTMLElement>();
+		const refWrapper = useRef<HTMLElement | null>(null);
 
 		useEffect(() => {
 			document.addEventListener("click", handleOutsideClick);

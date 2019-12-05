@@ -45,6 +45,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 }) => {
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
+	const mainRef = React.useRef<HTMLElement | null>(null);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
@@ -142,8 +143,16 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		[MenuMode.Examples]: examplesLabel
 	};
 
+	const setRef = (el: HTMLDivElement) => {
+		mainRef.current = el;
+
+		if (clickOutsideRef) {
+			clickOutsideRef(el);
+		}
+	};
+
 	return (
-		<div ref={clickOutsideRef} className="kit-filter-condition-selector">
+		<div ref={setRef} className="kit-filter-condition-selector">
 			<div className="kit-filter-condition-selector__wrap">
 				<div className="kit-filter-condition-selector__filter-block">
 					<Input

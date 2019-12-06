@@ -7,6 +7,7 @@ import {
 import { IconSvg, IconSvgTypes } from "../IconSvg";
 import "./FilterConditionEditorButton.scss";
 import { Props as ButtonProps } from "./types";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 
 type Props = ButtonProps &
 	SelectorProps & {
@@ -15,6 +16,7 @@ type Props = ButtonProps &
 
 export class FilterConditionEditorButton extends React.Component<Props> {
 	private refButton = React.createRef<HTMLButtonElement>();
+	private parentRef = React.createRef<HTMLDivElement>();
 
 	public focus = () => {
 		const refButton = this.refButton.current;
@@ -33,7 +35,7 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 		} = this.props;
 
 		return (
-			<div className="kit-filter-editor">
+			<div ref={this.parentRef} className="kit-filter-editor">
 				<div className="kit-filter-editor__breakpoint" />
 				<button
 					ref={this.refButton}
@@ -47,11 +49,13 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 					{label}
 				</button>
 				{isOpened && (
-					<FilterConditionSelector
-						{...otherProps}
-						onConditionStateToggle={toggleOpen}
-						onClickOutside={toggleOpen}
-					/>
+					<OverflowVisibleContainer parentRef={this.parentRef}>
+						<FilterConditionSelector
+							{...otherProps}
+							onConditionStateToggle={toggleOpen}
+							onClickOutside={toggleOpen}
+						/>
+					</OverflowVisibleContainer>
 				)}
 			</div>
 		);

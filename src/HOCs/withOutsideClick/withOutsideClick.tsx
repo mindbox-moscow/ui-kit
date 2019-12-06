@@ -9,6 +9,7 @@ export interface WithOutsideClickProps {
 
 export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
 const uiDatePickerClass = "ui-datepicker";
+const overflowVisibleContainerClass = "kit-overflow-visiblecontainer";
 
 const fromElementWithClassEvent = (
 	event: Event,
@@ -50,7 +51,9 @@ export const withOutsideClick = <T extends {}>(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
 					fromElementWithClassEvent(e, neitralZoneClass) ||
-					fromElementWithClassEvent(e, uiDatePickerClass)
+					fromElementWithClassEvent(e, uiDatePickerClass) ||
+					fromElementWithClassEvent(e, overflowVisibleContainerClass) ||
+					!e.isTrusted
 				)
 			) {
 				onClickOutside();

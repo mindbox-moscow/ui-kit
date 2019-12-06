@@ -32,7 +32,7 @@ const BRACKET_WIDTH = 2;
 class FiltrationGroupComponent extends React.Component<
 	Props & WithOutsideClickProps,
 	State
-> {
+	> {
 	public static context: (() => void) | null;
 	public state = {
 		horizontalBracket: [],
@@ -510,8 +510,8 @@ class FiltrationGroupComponent extends React.Component<
 											/>
 										</div>
 									) : (
-										labelMap[groupType]
-									)}
+											labelMap[groupType]
+										)}
 								</span>
 							)}
 						</div>

@@ -7,6 +7,7 @@ import { FiltrationConditionComponentContext } from "./FiltrationConditionCompon
 import { CallbackProps, StateProps } from "./types";
 
 import "./FiltrationConditionComponent.scss";
+import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 
 type Props = StateProps & CallbackProps;
 
@@ -19,7 +20,7 @@ interface State {
 export class FiltrationConditionComponent extends React.Component<
 	Props,
 	State
-> {
+	> {
 	public static context: (() => void) | null;
 	public refContent = React.createRef<HTMLDivElement>();
 
@@ -75,13 +76,16 @@ export class FiltrationConditionComponent extends React.Component<
 		} = this.props;
 
 		const editModeContent = (
-			<FilterDetails
-				helpCaption={filterablePropertyName}
-				helpComponent={helpComponent}
-				editorComponent={editorComponent}
-				onClose={onConditionStateToggle}
-				viewMode="edit"
-			/>
+			<OverflowVisibleContainer parentRef={this.refContent}>
+				<FilterDetails
+					helpCaption={filterablePropertyName}
+					helpComponent={helpComponent}
+					editorComponent={editorComponent}
+					onClose={onConditionStateToggle}
+					viewMode="edit"
+				/>
+			</OverflowVisibleContainer>
+
 		);
 		return (
 			<FiltrationConditionComponentContext.Provider

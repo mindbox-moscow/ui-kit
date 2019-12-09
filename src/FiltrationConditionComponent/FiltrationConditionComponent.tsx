@@ -17,6 +17,8 @@ interface State {
 	popoverFilterAction: React.ReactNode;
 }
 
+const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
+
 export class FiltrationConditionComponent extends React.Component<
 	Props,
 	State
@@ -73,8 +75,6 @@ export class FiltrationConditionComponent extends React.Component<
 			onConditionStateToggle,
 			withAlert
 		} = this.props;
-
-		const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
 		const editModeContent = (
 			<WithOutsideClickFilterDetails

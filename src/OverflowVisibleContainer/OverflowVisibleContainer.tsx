@@ -19,7 +19,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 
 		document.body.appendChild(portal);
 
-		setTimeout(this.handleShowPopup, 0);
+		this.handleShowPopup();
 	}
 
 	public componentWillUnmount() {

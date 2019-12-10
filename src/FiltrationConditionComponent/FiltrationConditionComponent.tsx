@@ -6,8 +6,8 @@ import { IconSvg } from "../IconSvg";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
 import { CallbackProps, StateProps } from "./types";
 
+import { withOutsideClick } from "../HOCs";
 import "./FiltrationConditionComponent.scss";
-import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 
 type Props = StateProps & CallbackProps;
 
@@ -17,12 +17,13 @@ interface State {
 	popoverFilterAction: React.ReactNode;
 }
 
+const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
+
 export class FiltrationConditionComponent extends React.Component<
 	Props,
 	State
-	> {
+> {
 	public static context: (() => void) | null;
-	public refContent = React.createRef<HTMLDivElement>();
 
 	public state = {
 		popoverFilterAction: null,
@@ -76,16 +77,14 @@ export class FiltrationConditionComponent extends React.Component<
 		} = this.props;
 
 		const editModeContent = (
-			<OverflowVisibleContainer parentRef={this.refContent}>
-				<FilterDetails
-					helpCaption={filterablePropertyName}
-					helpComponent={helpComponent}
-					editorComponent={editorComponent}
-					onClose={onConditionStateToggle}
-					viewMode="edit"
-				/>
-			</OverflowVisibleContainer>
-
+			<WithOutsideClickFilterDetails
+				onClickOutside={onConditionStateToggle}
+				helpCaption={filterablePropertyName}
+				helpComponent={helpComponent}
+				editorComponent={editorComponent}
+				onClose={onConditionStateToggle}
+				viewMode="edit"
+			/>
 		);
 		return (
 			<FiltrationConditionComponentContext.Provider
@@ -112,7 +111,6 @@ export class FiltrationConditionComponent extends React.Component<
 					>
 						<div className="kit-filtration-condition__drag-and-drop" />
 						<div
-							ref={this.refContent}
 							className="kit-filtration-condition__content"
 							onClick={onConditionStateToggle}
 						>

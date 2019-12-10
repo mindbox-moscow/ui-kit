@@ -7,9 +7,12 @@ import { IconSvg } from "../IconSvg";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
 import { CallbackProps, StateProps } from "./types";
 
+import { withOutsideClick } from "../HOCs";
 import "./FiltrationConditionComponent.scss";
 
 type Props = StateProps & CallbackProps;
+
+const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
 export const FiltrationConditionComponent: React.FC<Props> = ({
 	filterablePropertyName,
@@ -68,7 +71,8 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	};
 
 	const editModeContent = (
-		<FilterDetails
+		<WithOutsideClickFilterDetails
+			onClickOutside={onConditionStateToggle}
 			helpCaption={filterablePropertyName}
 			helpComponent={helpComponent}
 			editorComponent={editorComponent}

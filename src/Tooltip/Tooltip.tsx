@@ -59,7 +59,6 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 					{title}
 				</span>
 				<OverflowVisibleContainer
-					onClickOutside={this.handleHideTooltip}
 					parentRef={this.refTitle}
 					className="kit-tooltip__popup"
 				>

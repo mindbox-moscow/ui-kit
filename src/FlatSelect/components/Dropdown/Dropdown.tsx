@@ -1,6 +1,5 @@
 import cn from "classnames";
 import * as React from "react";
-import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
 import { DropdownProps, DropdownState } from "./types";
@@ -17,23 +16,39 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private dropdownRef = React.createRef<HTMLDivElement>();
 
 	public componentDidMount() {
+		this.positionDropDown();
+
 		Dropdown.DropdownIdentifier++;
 		this.setState({
 			dropdownId: "react-dropdown-" + Dropdown.DropdownIdentifier
 		});
 	}
 
+	public componentDidUpdate() {
+		this.positionDropDown();
+	}
+
 	public hide = () => {
 		this.changeVisibility(false);
 	};
 
-	public handelIsBottom = (isAdaptive: boolean) => {
+	public positionDropDown = () => {
+		const dropdownRef = this.dropdownRef.current;
 		const { isInBottomOfScreen } = this.state;
+		const windowHeight = window.innerHeight / 2;
 
-		if (isInBottomOfScreen !== isAdaptive) {
-			this.setState(state => ({
-				isInBottomOfScreen: !state.isInBottomOfScreen
-			}));
+		if (dropdownRef) {
+			const { top } = dropdownRef.getBoundingClientRect();
+
+			if (windowHeight < top && !isInBottomOfScreen) {
+				this.setState({
+					isInBottomOfScreen: true
+				});
+			} else if (windowHeight > top && isInBottomOfScreen) {
+				this.setState({
+					isInBottomOfScreen: false
+				});
+			}
 		}
 	};
 
@@ -88,21 +103,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					</span>
 				</div>
 				{show && (
-					<OverflowVisibleContainer
-						parentRef={this.dropdownRef}
-						onClickOutside={this.changeVisibility(!show)}
-						isAdaptive={true}
-						onAdaptive={this.handelIsBottom}
+					<Panel
+						width={width || Width.Normal}
+						className={cn(panelClass, {
+							"kit-selectR-above": isInBottomOfScreen
+						})}
 					>
-						<Panel
-							width={width || Width.Normal}
-							className={cn(panelClass, {
-								"kit-selectR-above": isInBottomOfScreen
-							})}
-						>
-							{children}
-						</Panel>
-					</OverflowVisibleContainer>
+						{children}
+					</Panel>
 				)}
 			</>
 		);

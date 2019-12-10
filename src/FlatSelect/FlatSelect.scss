@@ -1,3 +1,7 @@
+.flat-select {
+	position: relative;
+}
+
 .kit-selectR-offscreen,
 .kit-selectR-offscreen:focus {
 	clip: rect(0 0 0 0) !important;
@@ -103,6 +107,7 @@
 }
 
 .kit-selectR-drop {
+	position: absolute;
 	z-index: 9997;
 	width: 100%;
 	margin-top: -1px;
@@ -435,6 +440,8 @@
 	border-bottom: 0;
 	border-top: 1px solid #b0b2b5;
 	border-radius: 2px 2px 0 0;
+	top: auto;
+	bottom: 100%;
 }
 .kit-selectR-drop.kit-selectR-above .kit-selectR-drop-footer {
 	border-bottom: 1px solid #d9d9d9;

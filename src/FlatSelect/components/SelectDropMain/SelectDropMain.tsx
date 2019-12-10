@@ -14,12 +14,9 @@ export class SelectDropMain extends React.Component<SelectDropMainProps> {
 		this.removeScrollHandler();
 	}
 
-	public componentWillUpdate() {
-		this.removeScrollHandler();
-	}
-
 	public componentDidUpdate() {
 		this.addScrollHandler();
+		this.removeScrollHandler();
 	}
 
 	public render() {

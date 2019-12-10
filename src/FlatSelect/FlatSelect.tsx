@@ -64,28 +64,32 @@ export class FlatSelect<TValue> extends React.Component<
 		}
 
 		return (
-			<Dropdown
-				id={id}
-				ref={this.dropdownRef}
-				headerInfo={selectedItemText}
-				placeholder={placeholder}
-				disabled={disabled}
-				className={className}
-				width={width || Width.Normal}
-				openedClassName="form-control select2-container-active select2-dropdown-open"
-				height={height || Height.Small}
-				onSelectionClear={
-					this.shouldRenderNullMark() ? () => onChange(null) : null
-				}
-			>
-				<SelectSearchList
-					onInputChange={this.searchTermChanged}
-					searchTextValue={searchTerm}
-					headerInfo={headerInfo}
+			<div className="flat-select">
+				<Dropdown
+					id={id}
+					ref={this.dropdownRef}
+					headerInfo={selectedItemText}
+					placeholder={placeholder}
+					disabled={disabled}
+					className={className}
+					width={width || Width.Normal}
+					openedClassName="form-control select2-container-active select2-dropdown-open"
+					height={height || Height.Small}
+					onSelectionClear={
+						this.shouldRenderNullMark()
+							? () => onChange(null)
+							: null
+					}
 				>
-					{this.renderRows(selectedItemKey)}
-				</SelectSearchList>
-			</Dropdown>
+					<SelectSearchList
+						onInputChange={this.searchTermChanged}
+						searchTextValue={searchTerm}
+						headerInfo={headerInfo}
+					>
+						{this.renderRows(selectedItemKey)}
+					</SelectSearchList>
+				</Dropdown>
+			</div>
 		);
 	}
 

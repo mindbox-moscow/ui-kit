@@ -9,7 +9,6 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	public state: State = {
 		positionTop: 0,
 		positionLeft: 0,
-		positionBottom: "auto",
 		isLoaded: false
 	};
 
@@ -36,8 +35,8 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	}
 
 	public handleShowPopup = () => {
-		const { parentRef, isAdaptive, onAdaptive } = this.props;
-		const { positionLeft, positionTop, positionBottom } = this.state;
+		const { parentRef } = this.props;
+		const { positionLeft, positionTop } = this.state;
 
 		if (parentRef && parentRef.current) {
 			const {
@@ -46,29 +45,13 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 				left
 			} = parentRef.current.getBoundingClientRect();
 			const windowScrollY = window.scrollY;
-			let reactTop: number | string = windowScrollY + top + height;
-			let rectBottom: number | string = "auto";
+			const reactTop: number | string = windowScrollY + top + height;
 			const rectLeft: number | string = left;
-			const heightBody = document.body.offsetHeight;
 
-			if (isAdaptive && window.innerHeight / 2 < top) {
-				reactTop = "auto";
-				rectBottom = heightBody - windowScrollY - top - 2;
-			}
-
-			if (onAdaptive) {
-				rectBottom !== "auto" ? onAdaptive(true) : onAdaptive(false);
-			}
-
-			if (
-				reactTop !== positionTop ||
-				rectLeft !== positionLeft ||
-				rectBottom !== positionBottom
-			) {
+			if (reactTop !== positionTop || rectLeft !== positionLeft) {
 				this.setState({
 					positionTop: reactTop,
 					positionLeft: rectLeft,
-					positionBottom: rectBottom,
 					isLoaded: true
 				});
 			}
@@ -79,12 +62,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	};
 
 	public render() {
-		const {
-			positionLeft,
-			positionTop,
-			isLoaded,
-			positionBottom
-		} = this.state;
+		const { positionLeft, positionTop, isLoaded } = this.state;
 		const { children, className } = this.props;
 
 		return createPortal(
@@ -92,8 +70,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 				className={cn("kit-overflow-visiblecontainer", className)}
 				style={{
 					left: positionLeft,
-					top: positionTop,
-					bottom: positionBottom
+					top: positionTop
 				}}
 			>
 				{isLoaded && children}

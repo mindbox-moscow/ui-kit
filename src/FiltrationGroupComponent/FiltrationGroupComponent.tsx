@@ -1,6 +1,9 @@
 import cn from "classnames";
 import * as React from "react";
-import { WithOutsideClickProps, withOutsideClick } from "../HOCs";
+import {
+	withOutsideClick,
+	WithOutsideClickProps
+} from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { HorizontalBracket, LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -29,7 +32,7 @@ const BRACKET_WIDTH = 2;
 class FiltrationGroupComponent extends React.Component<
 	Props & WithOutsideClickProps,
 	State
-> {
+	> {
 	public static context: (() => void) | null;
 	public state = {
 		horizontalBracket: [],
@@ -434,7 +437,8 @@ class FiltrationGroupComponent extends React.Component<
 			children,
 			onGroupTypeToggle,
 			state,
-			onConditionRemove
+			onConditionRemove,
+			setOutsideClickRef
 		} = this.props;
 
 		const { horizontalBracket } = this.state;
@@ -448,6 +452,10 @@ class FiltrationGroupComponent extends React.Component<
 		const verticalBracket = this.verticalBracket();
 
 		const anyChildren = React.Children.toArray(children).length > 0;
+
+		if (setOutsideClickRef) {
+			setOutsideClickRef(this.kitFiltrationRef.current as HTMLElement);
+		}
 
 		return (
 			<FiltrationGroupComponentContext.Provider
@@ -502,8 +510,8 @@ class FiltrationGroupComponent extends React.Component<
 											/>
 										</div>
 									) : (
-										labelMap[groupType]
-									)}
+											labelMap[groupType]
+										)}
 								</span>
 							)}
 						</div>
@@ -621,4 +629,8 @@ class FiltrationGroupComponent extends React.Component<
 }
 FiltrationGroupComponent.contextType = FiltrationGroupComponentContext;
 
-export default withOutsideClick(FiltrationGroupComponent);
+const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
+	FiltrationGroupComponent
+);
+
+export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

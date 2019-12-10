@@ -1,32 +1,34 @@
 import * as React from "react";
-import { createRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
-	clickOutsideRef?: React.RefObject<HTMLDivElement>;
+	setOutsideClickRef?: (el: HTMLElement) => void;
 	children?: React.ReactNode;
 }
 
 export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
 const uiDatePickerClass = "ui-datepicker";
+const overflowVisibleContainerClass = "kit-overflow-visiblecontainer";
 
 const fromElementWithClassEvent = (
 	event: Event,
 	elementClass: string
 ): boolean => {
-	return event.composedPath().some((pathEvent: HTMLElement) => {
-		return (
-			pathEvent.classList &&
-			pathEvent.classList.contains(elementClass)
+	return event
+		.composedPath()
+		.some(
+			(pathEvent: HTMLElement) =>
+				pathEvent.classList &&
+				pathEvent.classList.contains(elementClass)
 		);
-	});
 };
 
 export const withOutsideClick = <T extends {}>(
 	Wrapped: React.ComponentType<T>
 ) => {
 	return (props: T & WithOutsideClickProps) => {
-		const refWrapper = createRef<HTMLElement>();
+		const refWrapper = useRef<HTMLElement | null>(null);
 
 		useEffect(() => {
 			document.addEventListener("click", handleOutsideClick);
@@ -35,6 +37,10 @@ export const withOutsideClick = <T extends {}>(
 				document.removeEventListener("click", handleOutsideClick);
 			};
 		}, []);
+
+		const setRef = (el: HTMLElement) => {
+			refWrapper.current = el;
+		};
 
 		const handleOutsideClick = (e: MouseEvent) => {
 			const { onClickOutside } = props;
@@ -45,13 +51,18 @@ export const withOutsideClick = <T extends {}>(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
 					fromElementWithClassEvent(e, neitralZoneClass) ||
-					fromElementWithClassEvent(e, uiDatePickerClass)
+					fromElementWithClassEvent(e, uiDatePickerClass) ||
+					fromElementWithClassEvent(
+						e,
+						overflowVisibleContainerClass
+					) ||
+					!e.isTrusted
 				)
 			) {
 				onClickOutside();
 			}
 		};
 
-		return <Wrapped {...props} clickOutsideRef={refWrapper} />;
+		return <Wrapped {...props} setOutsideClickRef={setRef} />;
 	};
 };

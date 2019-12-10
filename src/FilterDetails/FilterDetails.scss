@@ -10,6 +10,7 @@
 	cursor: default;
 
 	&_editor {
+		position: absolute;
 		margin-left: -5px;
 		z-index: 1;
 	}

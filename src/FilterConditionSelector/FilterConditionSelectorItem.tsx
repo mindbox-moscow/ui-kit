@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { useContext, useEffect } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
@@ -26,41 +27,38 @@ interface Props {
 	toggleExpand: (id: string) => void;
 }
 
-export class FilterConditionSelectorItem extends React.Component<Props> {
-	public static context: ((selectElement: HTMLLIElement) => void) | null;
-	public refSelector = React.createRef<HTMLLIElement>();
+export const FilterConditionSelectorItem: React.FC<Props> = ({
+	id,
+	isSelected,
+	type,
+	pathFromRoot,
+	isExpanded,
+	name,
+	childIds,
+	searchTerm,
+	childRenderer,
+	toggleExpand,
+	onSelect
+}) => {
+	const refSelector = React.createRef<HTMLLIElement>();
+	const scrollParent = useContext(FilterConditionSelectorContext);
 
-	public componentDidMount() {
-		const { isSelected } = this.props;
-
+	useEffect(() => {
 		if (isSelected) {
-			this.scrollParentOnKeyDown();
+			scrollParentOnKeyDown();
 		}
-	}
+	}, []);
 
-	public componentDidUpdate() {
-		const { isSelected } = this.props;
-
-		if (isSelected) {
-			this.scrollParentOnKeyDown();
-		}
-	}
-
-	public scrollParentOnKeyDown = () => {
-		const scrollParent = this.context;
-		const refSelector = this.refSelector.current;
-
-		if (refSelector) {
-			scrollParent(refSelector);
+	const scrollParentOnKeyDown = () => {
+		if (refSelector.current && scrollParent) {
+			scrollParent(refSelector.current);
 		}
 	};
 
-	public handleHighLightText = (
+	const handleHighLightText = (
 		text: string,
 		searchText: string
 	): string | JSX.Element => {
-		const { type } = this.props;
-
 		if (
 			type === "simpleFilterableProperty" ||
 			type === "filterablePropertyWithLinkedConditions"
@@ -92,83 +90,71 @@ export class FilterConditionSelectorItem extends React.Component<Props> {
 			return text;
 		}
 	};
-	public render(): JSX.Element {
-		const {
-			pathFromRoot,
-			isSelected,
-			type,
-			isExpanded,
-			name,
-			childIds,
-			searchTerm
-		} = this.props;
-		const isSimpleFilterableProperty = type === "simpleFilterableProperty";
-		const isfilterablePropertyWithLinkedConditions =
-			type === "filterablePropertyWithLinkedConditions";
 
-		const hasChildren = childIds.length > 0;
+	const onExpand = () => toggleExpand(id);
 
-		const ChildItem = this.props.childRenderer;
+	const onSelectItem = () => {
+		onSelect(id);
+		onExpand();
+	};
 
-		return (
-			<li
-				ref={this.refSelector}
+	const isSimpleFilterableProperty = type === "simpleFilterableProperty";
+	const isfilterablePropertyWithLinkedConditions =
+		type === "filterablePropertyWithLinkedConditions";
+
+	const hasChildren = childIds.length > 0;
+
+	const ChildItem = childRenderer;
+
+	return (
+		<li
+			ref={refSelector}
+			className={cn(
+				"kit-filter-condition-selector__hierarchy-item",
+				`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
+				{
+					"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
+					"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
+					"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren
+				}
+			)}
+		>
+			<div
 				className={cn(
-					"kit-filter-condition-selector__hierarchy-item",
-					`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
+					"kit-filter-condition-selector__hierarchy-button",
 					{
-						"kit-filter-condition-selector__hierarchy-item_expanded": isExpanded,
-						"kit-filter-condition-selector__hierarchy-item_selected": isSelected,
-						"kit-filter-condition-selector__hierarchy-item_not-child": !hasChildren
+						"kit-filter-condition-selector__hierarchy-button_selected": isSelected
 					}
 				)}
 			>
-				<div
-					className={cn(
-						"kit-filter-condition-selector__hierarchy-button",
-						{
-							"kit-filter-condition-selector__hierarchy-button_selected": isSelected
-						}
+				{!isSimpleFilterableProperty &&
+					!isfilterablePropertyWithLinkedConditions && (
+						<div
+							className="kit-filter-condition-selector__hierarchy-toggle"
+							onClick={onExpand}
+						>
+							<IconSvg type="arrow-right" />
+						</div>
 					)}
+				<div
+					className="kit-filter-condition-selector__hierarchy-name"
+					onClick={onSelectItem}
 				>
-					{!isSimpleFilterableProperty &&
-						!isfilterablePropertyWithLinkedConditions && (
-							<div
-								className="kit-filter-condition-selector__hierarchy-toggle"
-								onClick={this.onExpand}
-							>
-								<IconSvg type="arrow-right" />
-							</div>
-						)}
-					<div
-						className="kit-filter-condition-selector__hierarchy-name"
-						onClick={this.onSelect}
-					>
-						{this.handleHighLightText(name, searchTerm)}
-					</div>
+					{handleHighLightText(name, searchTerm)}
 				</div>
+			</div>
 
-				{isExpanded && hasChildren && (
-					<ul className="kit-filter-condition-selector__hierarchy-children">
-						{this.props.childIds.map(childId => (
-							<ChildItem
-								key={childId}
-								id={childId}
-								pathFromRoot={[...pathFromRoot, childId]}
-							/>
-						))}
-					</ul>
-				)}
-			</li>
-		);
-	}
-
-	private onExpand = () => this.props.toggleExpand(this.props.id);
-
-	private onSelect = () => {
-		this.props.onSelect(this.props.id);
-		this.onExpand();
-	};
-}
-
-FilterConditionSelectorItem.contextType = FilterConditionSelectorContext;
+			{isExpanded && hasChildren && (
+				<ul className="kit-filter-condition-selector__hierarchy-children">
+					{childIds.map(childId => (
+						<ChildItem
+							key={childId}
+							id={childId}
+							pathFromRoot={[...pathFromRoot, childId]}
+						/>
+					))}
+				</ul>
+			)}
+		</li>
+	);
+};

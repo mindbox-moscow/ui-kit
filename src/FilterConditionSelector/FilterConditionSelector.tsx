@@ -9,10 +9,6 @@ import { Input } from "../Input";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./FilterConditionSelector.scss";
 
-interface State {
-	autoFocus: boolean;
-}
-
 enum ArrowKeysCodes {
 	Up = 38,
 	Right = 39,
@@ -26,36 +22,48 @@ const HEADER_SEARCH_HEIGHT = 55;
 const MIN_HEIGHT_ELEMENT = 37;
 const PADDING_PARENT = 16;
 
-class FilterConditionSelector extends React.Component<
-	Props & WithOutsideClickProps,
-	State
-> {
-	public searchRef = React.createRef<Input>();
-	public listRef = React.createRef<HTMLUListElement>();
+const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
+	childRenderer,
+	onModeChanged,
+	onSearchTermChange,
+	filterLabel,
+	recentLabel,
+	savedLabel,
+	examplesLabel,
+	searchTerm,
+	menuMode,
+	rootIds,
+	notFoundMessage,
+	helpCaption,
+	helpComponent,
+	editorComponent,
+	onConditionStateToggle,
+	onNextSelected,
+	onPreviousSelected,
+	onExpandCurrent,
+	setOutsideClickRef
+}) => {
+	const searchRef = React.createRef<Input>();
+	const listRef = React.createRef<HTMLUListElement>();
+	const mainRef = React.useRef<HTMLElement | null>(null);
 
-	public handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
-		const {
-			onPreviousSelected,
-			onExpandCurrent,
-			onNextSelected
-		} = this.props;
-
-		if (document.activeElement === this.listRef.current) {
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
+		if (document.activeElement === listRef.current) {
 			switch (e.keyCode) {
 				case ArrowKeysCodes.Up:
 					e.preventDefault();
 
 					const focus = !onPreviousSelected();
-					if (focus && this.searchRef.current) {
-						this.searchRef.current.focus();
+					if (focus && searchRef.current) {
+						searchRef.current.focus();
 					}
 
 					break;
 				case ArrowKeysCodes.Esc:
 					e.preventDefault();
-					if (this.searchRef.current) {
+					if (searchRef.current) {
 						window.blur();
-						this.searchRef.current.focus();
+						searchRef.current.focus();
 					}
 					break;
 				case ArrowKeysCodes.Right:
@@ -65,8 +73,8 @@ class FilterConditionSelector extends React.Component<
 					break;
 				case ArrowKeysCodes.Down:
 					e.preventDefault();
-					if (this.searchRef.current) {
-						this.searchRef.current.blur();
+					if (searchRef.current) {
+						searchRef.current.blur();
 					}
 					onNextSelected();
 					break;
@@ -74,17 +82,15 @@ class FilterConditionSelector extends React.Component<
 		}
 	};
 
-	public handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		const { onNextSelected, onConditionStateToggle } = this.props;
-
+	const handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.keyCode) {
 			case ArrowKeysCodes.Down:
 			case ArrowKeysCodes.Enter:
 				e.preventDefault();
 
-				if (this.searchRef.current && this.listRef.current) {
-					this.searchRef.current.blur();
-					this.listRef.current.focus({ preventScroll: true });
+				if (searchRef.current && listRef.current) {
+					searchRef.current.blur();
+					listRef.current.focus({ preventScroll: true });
 				}
 
 				onNextSelected();
@@ -92,17 +98,17 @@ class FilterConditionSelector extends React.Component<
 			case ArrowKeysCodes.Esc:
 				e.preventDefault();
 
-				if (this.searchRef.current && this.listRef.current) {
-					this.searchRef.current.blur();
-					this.listRef.current.focus({ preventScroll: true });
+				if (searchRef.current && listRef.current) {
+					searchRef.current.blur();
+					listRef.current.focus({ preventScroll: true });
 				}
 
 				onConditionStateToggle();
 		}
 	};
 
-	public scrollHierarchyOnKeyDown = (selectElement: HTMLLIElement): void => {
-		const refHierarchy = this.listRef.current;
+	const scrollHierarchyOnKeyDown = (selectElement: HTMLLIElement): void => {
+		const refHierarchy = listRef.current;
 		const selectOffsetTop = selectElement.offsetTop - HEADER_SEARCH_HEIGHT;
 
 		if (refHierarchy) {
@@ -122,116 +128,99 @@ class FilterConditionSelector extends React.Component<
 		}
 	};
 
-	public render() {
-		const {
-			onSearchTermChange,
-			onModeChanged,
-			filterLabel,
-			recentLabel,
-			savedLabel,
-			examplesLabel,
-			menuMode,
-			searchTerm,
-			notFoundMessage,
-			editorComponent,
-			helpComponent,
-			helpCaption,
-			onConditionStateToggle,
-			clickOutsideRef
-		} = this.props;
+	const ChildItem = childRenderer;
 
-		const ChildItem = this.props.childRenderer;
+	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		onSearchTermChange(e.target.value);
+	};
 
-		const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-			onSearchTermChange(e.target.value);
-		};
+	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
 
-		const handleMenuModeChange = (mode: MenuMode) => () =>
-			onModeChanged(mode);
+	const menuModeMap: IMenuModeMap = {
+		[MenuMode.Filter]: filterLabel,
+		[MenuMode.Recent]: recentLabel,
+		[MenuMode.Saved]: savedLabel,
+		[MenuMode.Examples]: examplesLabel
+	};
 
-		const menuModeMap: IMenuModeMap = {
-			[MenuMode.Filter]: filterLabel,
-			[MenuMode.Recent]: recentLabel,
-			[MenuMode.Saved]: savedLabel,
-			[MenuMode.Examples]: examplesLabel
-		};
+	const setRef = (el: HTMLDivElement) => {
+		mainRef.current = el;
 
-		return (
-			<div
-				ref={clickOutsideRef}
-				className="kit-filter-condition-selector"
-			>
-				<div className="kit-filter-condition-selector__wrap">
-					<div className="kit-filter-condition-selector__filter-block">
-						<Input
-							ref={this.searchRef}
-							autoFocus={true}
-							noShadow={true}
-							value={searchTerm}
-							type="search"
-							placeholder="Название фильтра"
-							onChange={handleSearchChange}
-							onKeyDown={this.handleKeyDownSearch}
-						/>
-						<div className="kit-filter-condition-selector__filter-btn-block">
-							{Object.keys(menuModeMap).map((mode: MenuMode) => {
-								return (
-									<div
-										key={mode}
-										className={cn(
-											"kit-filter-condition-selector__filter-btn",
-											{
-												"kit-filter-condition-selector__filter-btn_active":
-													menuMode === mode
-											}
-										)}
-										onClick={handleMenuModeChange(mode)}
-									>
-										{menuModeMap[mode]}
-									</div>
-								);
-							})}
-						</div>
-					</div>
-					<div className="kit-filter-condition-selector__hierarchy-wrap">
-						<FilterConditionSelectorContext.Provider
-							value={this.scrollHierarchyOnKeyDown}
-						>
-							<ul
-								ref={this.listRef}
-								className="kit-filter-condition-selector__hierarchy"
-								tabIndex={0}
-								onKeyDown={this.handleKeyDown}
-							>
-								{this.props.rootIds.length === 0 &&
-								this.props.searchTerm !== ""
-									? notFoundMessage
-									: this.props.rootIds.map(childId => (
-											<ChildItem
-												key={childId}
-												id={childId}
-												pathFromRoot={[childId]}
-											/>
-									  ))}
-							</ul>
-						</FilterConditionSelectorContext.Provider>
+		if (setOutsideClickRef) {
+			setOutsideClickRef(el);
+		}
+	};
+
+	return (
+		<div ref={setRef} className="kit-filter-condition-selector">
+			<div className="kit-filter-condition-selector__wrap">
+				<div className="kit-filter-condition-selector__filter-block">
+					<Input
+						ref={searchRef}
+						autoFocus={true}
+						noShadow={true}
+						value={searchTerm}
+						type="search"
+						placeholder="Название фильтра"
+						onChange={handleSearchChange}
+						onKeyDown={handleKeyDownSearch}
+					/>
+					<div className="kit-filter-condition-selector__filter-btn-block">
+						{Object.keys(menuModeMap).map((mode: MenuMode) => {
+							return (
+								<div
+									key={mode}
+									className={cn(
+										"kit-filter-condition-selector__filter-btn",
+										{
+											"kit-filter-condition-selector__filter-btn_active":
+												menuMode === mode
+										}
+									)}
+									onClick={handleMenuModeChange(mode)}
+								>
+									{menuModeMap[mode]}
+								</div>
+							);
+						})}
 					</div>
 				</div>
-
-				<FilterDetails
-					helpCaption={helpCaption}
-					helpComponent={helpComponent}
-					editorComponent={editorComponent}
-					onClose={onConditionStateToggle}
-					viewMode="menu"
-				/>
+				<div className="kit-filter-condition-selector__hierarchy-wrap">
+					<FilterConditionSelectorContext.Provider
+						value={scrollHierarchyOnKeyDown}
+					>
+						<ul
+							ref={listRef}
+							className="kit-filter-condition-selector__hierarchy"
+							tabIndex={0}
+							onKeyDown={handleKeyDown}
+						>
+							{rootIds.length === 0 && searchTerm !== ""
+								? notFoundMessage
+								: rootIds.map(childId => (
+										<ChildItem
+											key={childId}
+											id={childId}
+											pathFromRoot={[childId]}
+										/>
+								  ))}
+						</ul>
+					</FilterConditionSelectorContext.Provider>
+				</div>
 			</div>
-		);
-	}
-}
 
-const FilterConditionSelectorWithOutSide = withOutsideClick(
+			<FilterDetails
+				helpCaption={helpCaption}
+				helpComponent={helpComponent}
+				editorComponent={editorComponent}
+				onClose={onConditionStateToggle}
+				viewMode="menu"
+			/>
+		</div>
+	);
+};
+
+const FilterConditionSelectorWithOutsideClick = withOutsideClick(
 	FilterConditionSelector
 );
-
-export { FilterConditionSelectorWithOutSide as FilterConditionSelector };
+export { FilterConditionSelectorWithOutsideClick as FilterConditionSelector };

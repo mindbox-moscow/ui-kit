@@ -3,12 +3,9 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { Props, State } from "./types";
 
-import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./OverflowVisibleContainer.scss";
 
-class OverflowVisibleContainer extends React.Component<
-	Props & WithOutsideClickProps
-> {
+export class OverflowVisibleContainer extends React.Component<Props> {
 	public state: State = {
 		positionTop: 0,
 		positionLeft: 0,
@@ -23,7 +20,7 @@ class OverflowVisibleContainer extends React.Component<
 
 		document.body.appendChild(portal);
 
-		this.handleShowPopup();
+		setTimeout(this.handleShowPopup, 0);
 	}
 
 	public componentWillUnmount() {
@@ -88,11 +85,10 @@ class OverflowVisibleContainer extends React.Component<
 			isLoaded,
 			positionBottom
 		} = this.state;
-		const { children, className, clickOutsideRef } = this.props;
+		const { children, className } = this.props;
 
 		return createPortal(
 			<div
-				ref={clickOutsideRef}
 				className={cn("kit-overflow-visiblecontainer", className)}
 				style={{
 					left: positionLeft,
@@ -106,9 +102,3 @@ class OverflowVisibleContainer extends React.Component<
 		);
 	}
 }
-
-const OverflowVisibleContainerwithOutside = withOutsideClick(
-	OverflowVisibleContainer
-);
-
-export { OverflowVisibleContainerwithOutside as OverflowVisibleContainer };

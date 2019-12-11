@@ -558,7 +558,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 };
 
 const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
-	FiltrationGroupComponent
+	FiltrationGroupComponent,
+	p => p.state === "edit"
 );
 
 export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

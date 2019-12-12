@@ -264,15 +264,19 @@ $searchFocusBgColor: #fffde5;
 			}
 		}
 
-		.kit-icon-svg {
-			margin-bottom: 0;
-			margin-left: 2px;
+		> .kit-filter-condition-selector__hierarchy-button {
+			.kit-icon-svg {
+				margin-bottom: 0;
+				margin-left: 2px;
+			}
 		}
 
 		&_expanded {
-			.kit-icon-svg {
-				margin-bottom: 2px;
-				margin-left: 0;
+			> .kit-filter-condition-selector__hierarchy-button {
+				.kit-icon-svg {
+					margin-bottom: 2px;
+					margin-left: 0;
+				}
 			}
 		}
 

@@ -33,7 +33,6 @@ export const FilterWrapper: React.FC<Props> = ({
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
-	const refBreakPoint = React.createRef<HTMLDivElement>();
 
 	const countSelectedItems = () => {
 		return (
@@ -80,14 +79,12 @@ export const FilterWrapper: React.FC<Props> = ({
 	);
 
 	const contextValue = {
-		refBreakPoint: refBreakPoint.current,
 		updateBrackets,
 		rerenderBrackets
 	};
 
 	return (
 		<>
-			<div ref={refBreakPoint} className="kit-filter__breackpoint" />
 			<FilterWrapperContext.Provider value={contextValue}>
 				<div
 					ref={refFilterWrapper}

@@ -18,7 +18,7 @@ $groupHoverMarginLeft: 10px;
 $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 $widthHorizontalBraket: 12px;
-$minHeight: 31px;
+$minHeight: 32px;
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -239,7 +239,7 @@ $minHeight: 31px;
 	align-items: center;
 	width: calc(100% + 10px);
 	height: 1px;
-	padding: 16px $groupLabelPaddingLeft 15px;
+	padding: 16px $groupLabelPaddingLeft;
 	border-radius: 3px 0 0 3px;
 	color: $braketColor;
 	z-index: 2;

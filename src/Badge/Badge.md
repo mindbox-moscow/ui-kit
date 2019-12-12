@@ -29,5 +29,13 @@
 		<Badge title="Завершена" size="small" mode="disabled" />
 		<Badge title="В разработке" size="small" mode="ghost" />
 	</div>
+	<div style={{ marginTop: "15px" }}>
+		<Badge
+			title="Идёт отправка:"
+			mode="warning"
+			date="11 мая 2012"
+			progress="72"
+		/>
+	</div>
 </>
 ```

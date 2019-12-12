@@ -1,4 +1,7 @@
 .kit-badge {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
 	font-family: "PT Sans", sans-serif;
 	display: inline-flex;
 	justify-content: center;
@@ -10,6 +13,7 @@
 	color: #fff;
 	font-size: 13px;
 	cursor: default;
+	white-space: pre;
 
 	&_size_small {
 		font-size: 11px;
@@ -25,9 +29,8 @@
 }
 
 .kit-badge__date {
-    margin-left: 5px;
-    border-bottom: 1px dashed #fff;
-  }
+	border-bottom: 1px dashed #fff;
+}
 
 .kit-badge__text {
 	text-align: center;
@@ -47,4 +50,22 @@
 			background-color: #fff;
 		}
 	}
+
+	&_bold {
+		font-weight: bold;
+	}
+}
+
+.kit_badge__progress {
+	margin: 0 3px;
+}
+
+.kit_badge__progressBar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	z-index: -1;
+	transition: width 0.2s;
 }

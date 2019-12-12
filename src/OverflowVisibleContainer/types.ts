@@ -1,6 +1,6 @@
 export interface State {
-	positionLeft: number;
-	positionTop: number;
+	positionLeft: number | string;
+	positionTop: number | string;
 	isLoaded: boolean;
 }
 

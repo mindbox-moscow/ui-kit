@@ -60,7 +60,10 @@ export const withOutsideClick = <T extends {}>(
 						refWrapper.current.contains(target)) ||
 					fromElementWithClassEvent(e, neitralZoneClass) ||
 					fromElementWithClassEvent(e, uiDatePickerClass) ||
-					fromElementWithClassEvent(e, overflowVisibleContainerClass) ||
+					fromElementWithClassEvent(
+						e,
+						overflowVisibleContainerClass
+					) ||
 					!e.isTrusted
 				)
 			) {

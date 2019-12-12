@@ -95,7 +95,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					)}
 					style={style}
 					ref={this.dropdownRef}
-					onClick={this.changeVisibility(!show)}
+					onClick={this.handleClick}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}
@@ -116,7 +116,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		);
 	}
 
-	private changeVisibility = (show: boolean) => () => {
+	private handleClick = () => {
+		const { show } = this.state;
+
+		this.changeVisibility(!show);
+	};
+
+	private changeVisibility = (show: boolean) => {
 		this.setState({ show });
 	};
 

@@ -630,7 +630,8 @@ class FiltrationGroupComponent extends React.Component<
 FiltrationGroupComponent.contextType = FiltrationGroupComponentContext;
 
 const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
-	FiltrationGroupComponent
+	FiltrationGroupComponent,
+	p => p.state === "edit"
 );
 
 export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

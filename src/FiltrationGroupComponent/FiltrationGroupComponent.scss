@@ -70,6 +70,8 @@ $minHeight: 31px;
 
 	&_shaded {
 		@include opacityBlock(0.3);
+
+		z-index: auto;
 	}
 
 	&_edit {

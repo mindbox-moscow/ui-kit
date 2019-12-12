@@ -25,18 +25,26 @@ const fromElementWithClassEvent = (
 };
 
 export const withOutsideClick = <T extends {}>(
-	Wrapped: React.ComponentType<T>
+	Wrapped: React.ComponentType<T>,
+	shouldBeSubscribedProvider?: (props: T) => boolean
 ) => {
 	return (props: T & WithOutsideClickProps) => {
+		const effectiveShouldBeSubscribedProvider = shouldBeSubscribedProvider == null ? () => true : shouldBeSubscribedProvider;
+
 		const refWrapper = useRef<HTMLElement | null>(null);
+		const shouldBeSubscribed = effectiveShouldBeSubscribedProvider(props);
 
 		useEffect(() => {
-			document.addEventListener("click", handleOutsideClick);
+			if (shouldBeSubscribed) {
+				document.addEventListener("click", handleOutsideClick)
+			} else {
+				document.removeEventListener("click", handleOutsideClick);
+			}
 
 			return () => {
 				document.removeEventListener("click", handleOutsideClick);
 			};
-		}, []);
+		}, [shouldBeSubscribed]);
 
 		const setRef = (el: HTMLElement) => {
 			refWrapper.current = el;

@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { neitralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { CallbackProps, FilterDetailsProps, State } from "./types";
 
@@ -82,7 +83,7 @@ export class FilterDetails extends React.Component<Props, State> {
 			<div
 				ref={this.kitFiltrationRef}
 				tabIndex={-1}
-				className={cn("kit-filter-details", {
+				className={cn("kit-filter-details", neitralZoneClass, {
 					"kit-filter-details_editor": viewMode === "edit",
 					"kit-filter-details_menu": viewMode === "menu"
 				})}

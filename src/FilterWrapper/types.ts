@@ -28,6 +28,7 @@ export interface StateProps {
 	filterActionsCaption: string;
 	scrollState: ScrollState;
 	buttonUpCaption: string;
+	shouldShowStatistics?: boolean
 }
 
 export interface CallbackProps {

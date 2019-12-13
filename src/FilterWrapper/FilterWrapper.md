@@ -3579,7 +3579,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</FilterWrapper>
 	<br />
 	<br />
-	<h1>Пример 20</h1>
+	<h1>Пример 19</h1>
 	<FilterWrapper
 		scrollState="full"
 		filterActions={[]}
@@ -3686,6 +3686,111 @@ class ExampleFlatSelectorSimple extends React.Component {
 					/>
 				</FiltrationGroupComponent>
 			</FiltrationGroupComponent>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
+	<h1>Пример 20 - без статистики по количеству найденных записей</h1>
+	<FilterWrapper
+		scrollState="full"
+		filterActions={[]}
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		shouldShowStatistics={false}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
+		selectionState="none"
+		selectedText="Выбрано"
+		selectedCancelText="Отменить"
+		selectedCountDescription="100"
+		onCancelSelection={() => console.log("clear selected")}
+	>
+		<FiltrationGroupComponent
+			onClickOutside={() => {}}
+			state="view"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filterablePropertyName="Пол"
+				filtrationMethodName="заполнен и мужской"
+			/>
+			<FiltrationConditionComponent
+				filterablePropertyName="Розничный заказ"
+				filtrationMethodName="есть такие"
+				state="view"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						onClickOutside={() => {}}
+						state="view"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Идентификатор в мобильном приложении"
+							filtrationMethodName="заполнен и равен 42"
+						/>
+					</FiltrationGroupComponent>
+				}
+			/>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
 </div>;

@@ -29,7 +29,7 @@ export interface SelectPropsBase<TValue, TSelection> {
 	className?: string;
 	headerInfo?: string | JSX.Element;
 	selectElementCaption: ({}) => string;
-	loadListCaption: string;
+	loadListCaption?: string;
 }
 
 // tslint:disable-next-line: interface-name

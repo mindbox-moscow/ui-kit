@@ -2,7 +2,6 @@
 export interface SelectSearchRowProps {
 	text?: string | JSX.Element;
 	title?: string | JSX.Element;
-
 	unselectable?: boolean;
 	disabled?: boolean;
 	isSelected?: boolean;

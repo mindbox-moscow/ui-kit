@@ -21,7 +21,7 @@ export class FlatSelect<TValue> extends React.Component<
 	}
 
 	public hide = () => {
-		this.dropdownRef.current?.hide()
+		this.dropdownRef.current?.hide();
 	};
 
 	public clearSearchTerm = () => {

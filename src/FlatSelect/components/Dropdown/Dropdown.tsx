@@ -75,7 +75,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
 		return (
-			<>
+			<div className="kit-flat-select">
 				<div
 					id={id}
 					className={cn(
@@ -112,7 +112,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						{children}
 					</Panel>
 				)}
-			</>
+			</div>
 		);
 	}
 

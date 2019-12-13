@@ -64,7 +64,6 @@ export class FlatSelect<TValue> extends React.Component<
 		}
 
 		return (
-			<div className="flat-select">
 				<Dropdown
 					id={id}
 					ref={this.dropdownRef}
@@ -89,7 +88,6 @@ export class FlatSelect<TValue> extends React.Component<
 						{this.renderRows(selectedItemKey)}
 					</SelectSearchList>
 				</Dropdown>
-			</div>
 		);
 	}
 

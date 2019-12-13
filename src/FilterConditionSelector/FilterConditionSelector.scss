@@ -265,7 +265,7 @@ $searchFocusBgColor: #fffde5;
 		}
 
 		> .kit-filter-condition-selector__hierarchy-button {
-			.kit-icon-svg {
+			.kit-filter-condition-selector__arrow {
 				margin-bottom: 0;
 				margin-left: 2px;
 			}
@@ -273,7 +273,7 @@ $searchFocusBgColor: #fffde5;
 
 		&_expanded {
 			> .kit-filter-condition-selector__hierarchy-button {
-				.kit-icon-svg {
+				.kit-filter-condition-selector__arrow {
 					margin-bottom: 2px;
 					margin-left: 0;
 				}

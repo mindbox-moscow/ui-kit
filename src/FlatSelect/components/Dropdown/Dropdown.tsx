@@ -4,6 +4,9 @@ import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
 import { DropdownProps, DropdownState } from "./types";
 
+// TODO: Удалить после редизайна
+const HEIGHT_HEADER = 90;
+
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
 
@@ -39,12 +42,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 		if (dropdownRef) {
 			const { top } = dropdownRef.getBoundingClientRect();
+			const heigthTop = top - HEIGHT_HEADER;
 
-			if (windowHeight < top && !isInBottomOfScreen) {
+			if (windowHeight < heigthTop && !isInBottomOfScreen) {
 				this.setState({
 					isInBottomOfScreen: true
 				});
-			} else if (windowHeight > top && isInBottomOfScreen) {
+			} else if (windowHeight > heigthTop && isInBottomOfScreen) {
 				this.setState({
 					isInBottomOfScreen: false
 				});
@@ -104,6 +108,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 				{show && (
 					<Panel
+						onClickOutside={this.hide}
 						width={width || Width.Full}
 						className={cn(panelClass, {
 							"kit-selectR-above": isInBottomOfScreen

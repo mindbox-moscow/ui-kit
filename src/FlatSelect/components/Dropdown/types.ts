@@ -9,7 +9,7 @@ export interface DropdownProps {
 	width?: Width;
 	isNested?: boolean;
 	widthOverride?: number;
-	onSelectionClear: (() => void) | null;
+	onSelectionClear?: (() => void) | null;
 	disabled?: boolean;
 
 	className?: string;

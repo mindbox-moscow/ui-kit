@@ -104,7 +104,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 				{show && (
 					<Panel
-						width={width || Width.Normal}
+						width={width || Width.Full}
 						className={cn(panelClass, {
 							"kit-selectR-above": isInBottomOfScreen
 						})}

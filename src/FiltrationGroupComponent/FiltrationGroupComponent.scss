@@ -93,6 +93,10 @@ $minHeight: 31px;
 			cursor: pointer;
 		}
 
+		> .kit-filtration-condition {
+			max-width: calc(100% - 30px);
+		}
+
 		> .kit-filtration-group__buttons {
 			margin-left: 20px;
 			outline: none;

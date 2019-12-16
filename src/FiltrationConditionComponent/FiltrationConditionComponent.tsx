@@ -57,7 +57,7 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	) => {
 		setPopoverFilterAction(filterAction);
 		setPopoversChildren(children);
-		setShowPopover(newShowPopover => !newShowPopover);
+		setShowPopover(prevShowPopover => !prevShowPopover);
 	};
 
 	const onConditionCopyClick = (e: React.MouseEvent) => {

@@ -1,3 +1,8 @@
+import {
+	BodyScrollOptions,
+	disableBodyScroll,
+	enableBodyScroll
+} from "body-scroll-lock";
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
@@ -21,6 +26,10 @@ const HEADER_SEARCH_HEIGHT = 55;
 // Height + PaddingTop + PaddingBottom
 const MIN_HEIGHT_ELEMENT = 37;
 const PADDING_PARENT = 16;
+
+const options: BodyScrollOptions = {
+	reserveScrollBarGap: true
+};
 
 const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	childRenderer,
@@ -46,6 +55,18 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
+
+	const handleScrollOn = () => {
+		if (listRef.current) {
+			disableBodyScroll(listRef.current, options);
+		}
+	};
+
+	const handleScrollOff = () => {
+		if (listRef.current) {
+			enableBodyScroll(listRef.current);
+		}
+	};
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
@@ -194,6 +215,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 							className="kit-filter-condition-selector__hierarchy"
 							tabIndex={0}
 							onKeyDown={handleKeyDown}
+							onMouseEnter={handleScrollOn}
+							onMouseLeave={handleScrollOff}
 						>
 							{rootIds.length === 0 && searchTerm !== ""
 								? notFoundMessage

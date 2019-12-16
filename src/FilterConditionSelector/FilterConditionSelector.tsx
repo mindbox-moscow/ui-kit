@@ -56,13 +56,13 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
 
-	const handleScrollOn = () => {
+	const handleScrollBodyOff = () => {
 		if (listRef.current) {
 			disableBodyScroll(listRef.current, options);
 		}
 	};
 
-	const handleScrollOff = () => {
+	const handleScrollBodyOn = () => {
 		if (listRef.current) {
 			enableBodyScroll(listRef.current);
 		}
@@ -215,8 +215,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 							className="kit-filter-condition-selector__hierarchy"
 							tabIndex={0}
 							onKeyDown={handleKeyDown}
-							onMouseEnter={handleScrollOn}
-							onMouseLeave={handleScrollOff}
+							onMouseEnter={handleScrollBodyOff}
+							onMouseLeave={handleScrollBodyOn}
 						>
 							{rootIds.length === 0 && searchTerm !== ""
 								? notFoundMessage

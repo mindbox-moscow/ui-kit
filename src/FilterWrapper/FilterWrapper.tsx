@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { useState } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
@@ -31,8 +32,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics
 }) => {
+	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
-	const refBreakPoint = React.createRef<HTMLDivElement>();
 
 	const countSelectedItems = () => {
 		return (
@@ -63,6 +64,10 @@ export const FilterWrapper: React.FC<Props> = ({
 		});
 	};
 
+	const rerenderBrackets = () => {
+		setUpdateBrackets(Math.random());
+	};
+
 	const ButtonUp = () => (
 		<Button
 			onClick={handleScrollUp}
@@ -74,10 +79,14 @@ export const FilterWrapper: React.FC<Props> = ({
 		</Button>
 	);
 
+	const contextValue = {
+		updateBrackets,
+		rerenderBrackets
+	};
+
 	return (
 		<>
-			<div ref={refBreakPoint} className="kit-filter__breackpoint" />
-			<FilterWrapperContext.Provider value={refBreakPoint.current}>
+			<FilterWrapperContext.Provider value={contextValue}>
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {

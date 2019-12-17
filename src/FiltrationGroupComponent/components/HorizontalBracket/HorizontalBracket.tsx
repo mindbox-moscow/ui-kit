@@ -17,110 +17,43 @@ export const HorizontalBracket: React.FC<HorizontalBracketProps> = ({
 	bracketWidth
 }) => {
 	let positionTop = 0;
-	let height = -bracketWidth;
-
-	const classes = Object.values(SearchClasses);
+	let height = 0;
 
 	return (
 		<>
 			{!!brackets.length &&
 				brackets.map((item, index) => {
-					switch (index) {
-						case 0:
-							if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationCondition
-								) ||
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroupButtons
-								)
-							) {
-								positionTop = height + minHeight / 2;
-							} else if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroup
-								)
-							) {
-								const labelLine = item.element.querySelector(
-									".kit-filtration-group__label-line"
-								) as HTMLDivElement;
+					const lastElement =
+						index === brackets.length - 1 ? -bracketWidth : 0;
+					if (
+						item.element.classList.contains(
+							SearchClasses.KitFiltrationGroup
+						)
+					) {
+						const labelLine = item.element.querySelector(
+							".kit-filtration-group__label-line"
+						) as HTMLDivElement;
 
-								positionTop =
-									labelLine &&
-									labelLine.offsetTop +
-										labelLine.offsetHeight / 2 -
-										bracketWidth;
-							}
-							break;
+						const middleLine =
+							labelLine &&
+							labelLine.offsetTop +
+								labelLine.offsetHeight / 2 +
+								lastElement;
 
-						case brackets.length - 1:
-							if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationCondition
-								) ||
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroupButtons
-								)
-							) {
-								positionTop = height + minHeight / 2;
-							} else if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroup
-								)
-							) {
-								let childHeight = minHeight;
-								item.element.childNodes.forEach(
-									(child: HTMLElement, index) => {
-										if (
-											classes.some(className =>
-												child.classList.contains(
-													className
-												)
-											)
-										) {
-											if (
-												index !==
-												item.element.childNodes.length -
-													1
-											) {
-												childHeight += child.getBoundingClientRect()
-													.height;
-											}
-										}
-									}
-								);
-								positionTop = height + childHeight / 2;
-							}
-							break;
-
-						default:
-							if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationCondition
-								) ||
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroupButtons
-								)
-							) {
-								positionTop = height + minHeight / 2;
-							} else if (
-								item.element.classList.contains(
-									SearchClasses.KitFiltrationGroup
-								)
-							) {
-								const labelLine = item.element.querySelector(
-									".kit-filtration-group__label-line"
-								) as HTMLDivElement;
-
-								positionTop =
-									labelLine &&
-									labelLine.offsetTop +
-										labelLine.offsetHeight / 2 +
-										height;
-							}
-							break;
+						positionTop = height + middleLine;
+					} else if (
+						item.element.classList.contains(
+							SearchClasses.KitFiltrationCondition
+						) ||
+						item.element.classList.contains(
+							SearchClasses.KitFiltrationGroupButtons
+						)
+					) {
+						positionTop = height + minHeight / 2 + lastElement;
 					}
+
 					height += item.height;
+
 					return (
 						<span
 							key={index}

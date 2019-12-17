@@ -704,7 +704,25 @@
 			andLabel="И"
 			orLabel="ИЛИ"
 			shouldShowLabel={true}
-		/>
+		>
+			<FiltrationGroupComponent
+				onClickOutside={() => {}}
+				state="view"
+				groupType="or"
+				andLabel="И"
+				orLabel="ИЛИ"
+				shouldShowLabel={true}
+			>
+				<FiltrationGroupComponent
+					onClickOutside={() => {}}
+					state="view"
+					groupType="or"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+				/>
+			</FiltrationGroupComponent>
+		</FiltrationGroupComponent>
 
 		<FiltrationConditionComponent
 			filterablePropertyName="Пол"

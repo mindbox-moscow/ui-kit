@@ -1,7 +1,8 @@
 import {
 	BodyScrollOptions,
 	disableBodyScroll,
-	enableBodyScroll
+	enableBodyScroll,
+	clearAllBodyScrollLocks
 } from "body-scroll-lock";
 import cn from "classnames";
 import * as React from "react";
@@ -55,6 +56,12 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
+
+	React.useEffect(() => {
+		return () => {
+			clearAllBodyScrollLocks();
+		};
+	});
 
 	const handleScrollBodyOff = () => {
 		if (listRef.current) {

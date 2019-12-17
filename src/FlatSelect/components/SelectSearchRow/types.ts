@@ -1,8 +1,7 @@
 // tslint:disable-next-line:interface-name
 export interface SelectSearchRowProps {
-	text: string | JSX.Element;
+	text?: string | JSX.Element;
 	title?: string | JSX.Element;
-
 	unselectable?: boolean;
 	disabled?: boolean;
 	isSelected?: boolean;

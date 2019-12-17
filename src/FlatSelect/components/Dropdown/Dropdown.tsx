@@ -4,6 +4,9 @@ import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
 import { DropdownProps, DropdownState } from "./types";
 
+// TODO: Удалить после редизайна
+const HEIGHT_HEADER = 90;
+
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
 
@@ -39,12 +42,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 		if (dropdownRef) {
 			const { top } = dropdownRef.getBoundingClientRect();
+			const heigthTop = top - HEIGHT_HEADER;
 
-			if (windowHeight < top && !isInBottomOfScreen) {
+			if (windowHeight < heigthTop && !isInBottomOfScreen) {
 				this.setState({
 					isInBottomOfScreen: true
 				});
-			} else if (windowHeight > top && isInBottomOfScreen) {
+			} else if (windowHeight > heigthTop && isInBottomOfScreen) {
 				this.setState({
 					isInBottomOfScreen: false
 				});
@@ -75,7 +79,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
 		return (
-			<>
+			<div className="kit-flat-select">
 				<div
 					id={id}
 					className={cn(
@@ -95,7 +99,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					)}
 					style={style}
 					ref={this.dropdownRef}
-					onClick={this.changeVisibility(!show)}
+					onClick={this.handleClick}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}
@@ -104,7 +108,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 				{show && (
 					<Panel
-						width={width || Width.Normal}
+						onClickOutside={this.hide}
+						width={width || Width.Full}
 						className={cn(panelClass, {
 							"kit-selectR-above": isInBottomOfScreen
 						})}
@@ -112,11 +117,17 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						{children}
 					</Panel>
 				)}
-			</>
+			</div>
 		);
 	}
 
-	private changeVisibility = (show: boolean) => () => {
+	private handleClick = () => {
+		const { show } = this.state;
+
+		this.changeVisibility(!show);
+	};
+
+	private changeVisibility = (show: boolean) => {
 		this.setState({ show });
 	};
 

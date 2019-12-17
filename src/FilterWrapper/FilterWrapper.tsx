@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { useState } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
@@ -28,10 +29,11 @@ export const FilterWrapper: React.FC<Props> = ({
 	filterActions,
 	filterActionsCaption,
 	scrollState = "full",
-	buttonUpCaption
+	buttonUpCaption,
+	shouldShowStatistics
 }) => {
+	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
-	const refBreakPoint = React.createRef<HTMLDivElement>();
 
 	const countSelectedItems = () => {
 		return (
@@ -62,6 +64,10 @@ export const FilterWrapper: React.FC<Props> = ({
 		});
 	};
 
+	const rerenderBrackets = () => {
+		setUpdateBrackets(Math.random());
+	};
+
 	const ButtonUp = () => (
 		<Button
 			onClick={handleScrollUp}
@@ -73,10 +79,14 @@ export const FilterWrapper: React.FC<Props> = ({
 		</Button>
 	);
 
+	const contextValue = {
+		updateBrackets,
+		rerenderBrackets
+	};
+
 	return (
 		<>
-			<div ref={refBreakPoint} className="kit-filter__breackpoint" />
-			<FilterWrapperContext.Provider value={refBreakPoint.current}>
+			<FilterWrapperContext.Provider value={contextValue}>
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
@@ -95,8 +105,8 @@ export const FilterWrapper: React.FC<Props> = ({
 						{!doesContainFilter && scrollState === "minfied" ? (
 							<ButtonUp />
 						) : (
-							children
-						)}
+								children
+							)}
 					</ul>
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
@@ -109,8 +119,8 @@ export const FilterWrapper: React.FC<Props> = ({
 										{applyButtonCaption}
 									</button>
 								) : (
-									<ButtonUp />
-								)}
+										<ButtonUp />
+									)}
 							</div>
 							{selectionState !== SelectionStateType.None &&
 								countSelectedItems()}
@@ -118,6 +128,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								isWarning={isDataOutdated}
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
+								shouldShowStatistics={shouldShowStatistics == undefined ? true : shouldShowStatistics}
 							>
 								<button
 									className="kit-filter__clear-filter-btn"
@@ -129,15 +140,16 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-						<div className="kit-filter__short-wrap-filter">
-							{selectionState !== SelectionStateType.None &&
-								countSelectedItems()}
-							<InfoWrapper
-								statisticsValue={statisticsValue}
-								statisticsDescription={statisticsDescription}
-							/>
-						</div>
-					)}
+							<div className="kit-filter__short-wrap-filter">
+								{selectionState !== SelectionStateType.None &&
+									countSelectedItems()}
+								<InfoWrapper
+									statisticsValue={statisticsValue}
+									statisticsDescription={statisticsDescription}
+									shouldShowStatistics={shouldShowStatistics == undefined ? true : shouldShowStatistics}
+								/>
+							</div>
+						)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

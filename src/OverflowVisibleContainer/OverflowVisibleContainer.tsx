@@ -39,14 +39,19 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		const { positionLeft, positionTop } = this.state;
 
 		if (parentRef && parentRef.current) {
-			const rect = parentRef.current.getBoundingClientRect();
-			const top = window.scrollY + rect.top + rect.height;
-			const left = rect.left;
+			const {
+				top,
+				height,
+				left
+			} = parentRef.current.getBoundingClientRect();
+			const windowScrollY = window.scrollY;
+			const reactTop: number | string = windowScrollY + top + height;
+			const rectLeft: number | string = left;
 
-			if (top !== positionTop || left !== positionLeft) {
+			if (reactTop !== positionTop || rectLeft !== positionLeft) {
 				this.setState({
-					positionTop: top,
-					positionLeft: left,
+					positionTop: reactTop,
+					positionLeft: rectLeft,
 					isLoaded: true
 				});
 			}
@@ -57,18 +62,20 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	};
 
 	public render() {
-		const { portal } = this;
 		const { positionLeft, positionTop, isLoaded } = this.state;
 		const { children, className } = this.props;
 
 		return createPortal(
 			<div
 				className={cn("kit-overflow-visiblecontainer", className)}
-				style={{ left: positionLeft, top: positionTop }}
+				style={{
+					left: positionLeft,
+					top: positionTop
+				}}
 			>
 				{isLoaded && children}
 			</div>,
-			portal
+			this.portal
 		);
 	}
 }

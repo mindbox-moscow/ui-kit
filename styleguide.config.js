@@ -77,6 +77,8 @@ module.exports = {
 	ignore: [
 		"**/IconSvg/icons/**",
 		"**/FiltrationGroupComponent/components/**",
-		"**/FilterWrapper/components/**"
+		"**/FilterWrapper/components/**",
+		"**/FlatSelect/components/**",
+		"**/FlatSelect/modules/**"
 	]
 };

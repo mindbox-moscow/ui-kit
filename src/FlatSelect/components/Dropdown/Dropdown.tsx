@@ -81,6 +81,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		return (
 			<div className="kit-flat-select">
 				<div
+					tabIndex={0}
 					id={id}
 					className={cn(
 						className,

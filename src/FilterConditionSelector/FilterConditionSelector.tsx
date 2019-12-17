@@ -61,7 +61,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		return () => {
 			clearAllBodyScrollLocks();
 		};
-	});
+	}, []);
 
 	const handleScrollBodyOff = () => {
 		if (listRef.current) {

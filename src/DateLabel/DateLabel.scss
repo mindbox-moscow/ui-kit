@@ -1,0 +1,21 @@
+.kit-date-label__text {
+	&_with-point {
+		position: relative;
+		margin-right: 35px;
+
+		&::after {
+			position: absolute;
+			top: 50%;
+			right: -15px;
+			content: "";
+			width: 2px;
+			height: 2px;
+			border-radius: 50%;
+			background-color: #fff;
+		}
+	}
+}
+
+.kit-date-label__date {
+	border-bottom: 1px dashed #fff;
+}

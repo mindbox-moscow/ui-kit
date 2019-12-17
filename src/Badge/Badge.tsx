@@ -19,17 +19,30 @@ const ProgressColors = {
 };
 
 interface IProps {
-	title: string;
-	color?: COLORS;
-	date?: string;
+	color?: COLORS | string;
 	size?: string;
 	mode?: Mode;
-	progress?: Number;
+	progress?: number;
+	progressColor?: COLORS | string;
 }
 
-export const Badge = (props: IProps) => {
-	const { title, color = COLORS.Green, date, size, mode, progress } = props;
-	const isProgressBar = progress && !isNaN(Number(progress));
+export const Badge: React.FC<IProps> = props => {
+	const {
+		color = COLORS.Green,
+		size,
+		mode,
+		progress,
+		progressColor,
+		children
+	} = props;
+	const isProgressBar = progress !== undefined && !isNaN(progress);
+	let backgroundColor;
+
+	if (isProgressBar) {
+		backgroundColor = mode ? ProgressColors[mode] : progressColor;
+	} else {
+		backgroundColor = mode ? ModeColors[mode] : color;
+	}
 
 	return (
 		<div
@@ -37,46 +50,17 @@ export const Badge = (props: IProps) => {
 				[`kit-badge_size_${size}`]: size,
 				[`kit-badge_mode_${mode}`]: mode
 			})}
-			style={{
-				backgroundColor: mode
-					? isProgressBar
-						? ProgressColors[mode]
-						: ModeColors[mode]
-					: color
-			}}
+			style={{ backgroundColor: backgroundColor }}
 		>
-			<span
-				className={cn("kit-badge__text", {
-					"kit-badge__text_withPoint": date && !isProgressBar,
-					"kit-badge__text_bold": isProgressBar
-				})}
-			>
-				{title}
-			</span>
-			{isProgressBar ? (
-				<>
-					<span> {`${progress}%`}</span>
-					{date && (
-						<>
-							{" - "}
-							<span className="kit-badge__date">{date}</span>
-						</>
-					)}
-					<div
-						className="kit_badge__progressBar"
-						style={{
-							backgroundColor: mode ? ModeColors[mode] : color,
-							width: `${progress}%`
-						}}
-					/>
-				</>
-			) : (
-				date && (
-					<>
-						{"Запущен: "}
-						<span className="kit-badge__date"> {date}</span>
-					</>
-				)
+			{children}
+			{isProgressBar && (
+				<div
+					className="kit_badge__progress-bar"
+					style={{
+						backgroundColor: mode ? ModeColors[mode] : color,
+						width: `${progress}%`
+					}}
+				/>
 			)}
 		</div>
 	);

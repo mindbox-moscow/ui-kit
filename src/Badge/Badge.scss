@@ -28,39 +28,7 @@
 	}
 }
 
-.kit-badge__date {
-	border-bottom: 1px dashed #fff;
-}
-
-.kit-badge__text {
-	text-align: center;
-
-	&_withPoint {
-		position: relative;
-		margin-right: 30px;
-
-		&::after {
-			position: absolute;
-			top: 50%;
-			right: -15px;
-			content: "";
-			width: 2px;
-			height: 2px;
-			border-radius: 50%;
-			background-color: #fff;
-		}
-	}
-
-	&_bold {
-		font-weight: bold;
-	}
-}
-
-.kit_badge__progress {
-	margin: 0 3px;
-}
-
-.kit_badge__progressBar {
+.kit_badge__progress-bar {
 	position: absolute;
 	top: 0;
 	left: 0;

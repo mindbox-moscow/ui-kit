@@ -7,13 +7,11 @@
 			alignItems: "center"
 		}}
 	>
-		<Badge title="Триггер активен" />
-		<Badge title="Триггер не активен" color={constants.COLORS.Blue} />
-		<Badge
-			title="Триггер в разработке"
-			color={constants.COLORS.Purple}
-			date="11 мая 2012"
-		/>
+		<Badge>Триггер активен</Badge>
+		<Badge color={constants.COLORS.Blue}>Триггер не активен</Badge>
+		<Badge color={constants.COLORS.Purple}>
+			<DateLabel title="Триггер в разработке" date="11 мая 2012" />
+		</Badge>
 	</div>
 	<div
 		style={{
@@ -23,19 +21,27 @@
 			alignItems: "center"
 		}}
 	>
-		<Badge title="Запущена" size="small" mode="success" />
-		<Badge title="Запущена (тест)" size="small" mode="warning" />
-		<Badge title="Остановлена" size="small" mode="danger" />
-		<Badge title="Завершена" size="small" mode="disabled" />
-		<Badge title="В разработке" size="small" mode="ghost" />
+		<Badge size="small" mode="success">
+			Запущена
+		</Badge>
+		<Badge size="small" mode="warning">
+			Запущена (тест)
+		</Badge>
+		<Badge size="small" mode="danger">
+			Остановлена
+		</Badge>
+		<Badge size="small" mode="disabled">
+			Завершена
+		</Badge>
+		<Badge size="small" mode="ghost">
+			В разработке
+		</Badge>
 	</div>
 	<div style={{ marginTop: "15px" }}>
-		<Badge
-			title="Идёт отправка:"
-			mode="warning"
-			date="11 мая 2012"
-			progress="72"
-		/>
+		<Badge mode="warning" progress={72}>
+			<b>Идёт отправка:</b> 72% -
+			<DateLabel date="12 окт 2019" />
+		</Badge>
 	</div>
 </>
 ```

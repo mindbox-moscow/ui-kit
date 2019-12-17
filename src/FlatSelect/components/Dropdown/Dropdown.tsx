@@ -7,6 +7,8 @@ import { DropdownProps, DropdownState } from "./types";
 // TODO: Удалить после редизайна
 const HEIGHT_HEADER = 90;
 
+const ENTER_KEY = 13;
+
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
 
@@ -56,6 +58,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
+	public handleOnFocus = (e: React.KeyboardEvent) => {
+		if (e.keyCode === ENTER_KEY) {
+			this.handleClick();
+		}
+	};
+
 	public render() {
 		const { show, isInBottomOfScreen } = this.state;
 		const {
@@ -101,6 +109,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					style={style}
 					ref={this.dropdownRef}
 					onClick={this.handleClick}
+					onKeyDown={this.handleOnFocus}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}

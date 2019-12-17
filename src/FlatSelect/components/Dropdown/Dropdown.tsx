@@ -58,7 +58,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
-	public handleOnFocus = (e: React.KeyboardEvent) => {
+	public handleOnKeyDown = (e: React.KeyboardEvent) => {
 		if (e.keyCode === ENTER_KEY) {
 			this.handleClick();
 		}
@@ -109,7 +109,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					style={style}
 					ref={this.dropdownRef}
 					onClick={this.handleClick}
-					onKeyDown={this.handleOnFocus}
+					onKeyDown={this.handleOnKeyDown}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}

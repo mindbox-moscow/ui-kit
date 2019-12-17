@@ -58,9 +58,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const mainRef = React.useRef<HTMLElement | null>(null);
 
 	React.useEffect(() => {
-		return () => {
-			clearAllBodyScrollLocks();
-		};
+		return clearAllBodyScrollLocks;
 	}, []);
 
 	const handleScrollBodyOff = () => {

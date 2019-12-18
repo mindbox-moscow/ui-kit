@@ -41,4 +41,5 @@ export interface SelectProps<TValue>
 // tslint:disable-next-line: interface-name
 export interface SelectState {
 	searchTerm: string;
+	focus: number;
 }

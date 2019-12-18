@@ -4,6 +4,7 @@ import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
 import { CallbackProps, SelectionStateType, StateProps } from "./types";
+import { neitralZoneClass } from "../HOCs";
 
 import { Button } from "../Button";
 import "./FilterWrapper.scss";
@@ -74,6 +75,7 @@ export const FilterWrapper: React.FC<Props> = ({
 			size="small"
 			color="silver"
 			hasBorder={true}
+			className={neitralZoneClass}
 		>
 			{buttonUpCaption}
 		</Button>

@@ -109,7 +109,8 @@ export class Textbox extends React.Component<TextboxProps> {
 			id,
 			placeholder,
 			onBlur,
-			title
+			title,
+			className
 		} = this.props;
 
 		const classNamesObject: ClassDictionary = {
@@ -125,12 +126,6 @@ export class Textbox extends React.Component<TextboxProps> {
 			}
 		}
 
-		const className = classNames(
-			classNamesObject,
-			Height.getClass(height),
-			additionalClasses
-		);
-
 		const effectiveValue = this.getEffectiveValue();
 
 		return (
@@ -141,7 +136,12 @@ export class Textbox extends React.Component<TextboxProps> {
 				disabled={disabled || false}
 				id={id}
 				placeholder={placeholder}
-				className={className}
+				className={classNames(
+					classNamesObject,
+					Height.getClass(height),
+					additionalClasses,
+					className
+				)}
 				onChange={this.onChange}
 				onKeyUp={this._handleKeyUp}
 				onBlur={onBlur}

@@ -22,6 +22,7 @@ export interface TextboxProps {
 	isValid?: boolean;
 	title?: string;
 	precision?: number;
+	className?: string;
 }
 
 // tslint:disable-next-line: interface-name

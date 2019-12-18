@@ -1,9 +1,13 @@
 import classNames from "classnames";
 import * as React from "react";
+import { DropdownContext } from "../FlatSelect";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
 
 export class Textbox extends React.Component<TextboxProps> {
+	public static contextType = DropdownContext;
+	public context!: React.ContextType<typeof DropdownContext>;
+
 	public get focusText() {
 		return this._focusText;
 	}
@@ -21,6 +25,12 @@ export class Textbox extends React.Component<TextboxProps> {
 		this._selectTextIfRequired();
 		this._focusTextIfRequired();
 	}
+
+	public handleOnKeyDown = (e: React.KeyboardEvent) => {
+		const contextKeyDown = this.context;
+
+		contextKeyDown && contextKeyDown(e);
+	};
 
 	public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;
@@ -139,6 +149,7 @@ export class Textbox extends React.Component<TextboxProps> {
 				title={title}
 				value={effectiveValue}
 				autoFocus={autoFocus}
+				onKeyDown={this.handleOnKeyDown}
 			/>
 		);
 	}
@@ -220,3 +231,5 @@ export class Textbox extends React.Component<TextboxProps> {
 		return value == null ? "" : value.toString();
 	};
 }
+
+Textbox.contextType = DropdownContext;

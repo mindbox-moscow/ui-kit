@@ -2,6 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
+import { DropdownContext } from "./DropDownContext";
 import { DropdownProps, DropdownState } from "./types";
 
 // TODO: Удалить после редизайна
@@ -25,7 +26,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidMount() {
 		this.positionDropDown();
-		document.addEventListener("keydown", this.handleClickEsc, false);
 
 		Dropdown.DropdownIdentifier++;
 		this.setState({
@@ -35,10 +35,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidUpdate() {
 		this.positionDropDown();
-	}
-
-	public componentWillUnmount() {
-		document.addEventListener("keydown", this.handleClickEsc, false);
 	}
 
 	public hide = () => {
@@ -72,7 +68,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
-	public handleClickEsc = (e: KeyboardEvent) => {
+	public handleClickEsc = (e: React.KeyboardEvent) => {
 		if (e.keyCode === KeysCodes.Esc) {
 			this.changeVisibility(false);
 		}
@@ -133,15 +129,17 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 
 				{show && (
-					<Panel
-						onClickOutside={this.hide}
-						width={width || Width.Full}
-						className={cn(panelClass, {
-							"kit-selectR-above": isInBottomOfScreen
-						})}
-					>
-						{children}
-					</Panel>
+					<DropdownContext.Provider value={this.handleClickEsc}>
+						<Panel
+							onClickOutside={this.hide}
+							width={width || Width.Full}
+							className={cn(panelClass, {
+								"kit-selectR-above": isInBottomOfScreen
+							})}
+						>
+							{children}
+						</Panel>
+					</DropdownContext.Provider>
 				)}
 			</div>
 		);

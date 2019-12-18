@@ -110,7 +110,8 @@ export class Textbox extends React.Component<TextboxProps> {
 			placeholder,
 			onBlur,
 			title,
-			className
+			className,
+			autoFocus = false
 		} = this.props;
 
 		const classNamesObject: ClassDictionary = {
@@ -143,10 +144,11 @@ export class Textbox extends React.Component<TextboxProps> {
 					className
 				)}
 				onChange={this.onChange}
-				onKeyUp={this._handleKeyUp}
+				onKeyDown={this._handleKeyUp}
 				onBlur={onBlur}
 				title={title}
 				value={effectiveValue}
+				autoFocus={autoFocus}
 			/>
 		);
 	}

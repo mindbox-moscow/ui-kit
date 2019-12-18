@@ -23,6 +23,7 @@ export interface TextboxProps {
 	title?: string;
 	precision?: number;
 	className?: string;
+	autoFocus?: boolean;
 }
 
 // tslint:disable-next-line: interface-name

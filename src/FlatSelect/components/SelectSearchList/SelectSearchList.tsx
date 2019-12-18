@@ -1,5 +1,6 @@
 import * as React from "react";
 import { SelectDropMain } from "..";
+import { neitralZoneClass } from "../../../HOCs";
 import { Textbox } from "../../../Textbox";
 import {
 	SelectionMode,
@@ -112,6 +113,8 @@ export class SelectSearchList extends React.Component<
 								shouldTextBeSelected={
 									shouldSearchTextBeSelected
 								}
+								className={neitralZoneClass}
+								autoFocus={true}
 							/>
 						</span>
 					</div>

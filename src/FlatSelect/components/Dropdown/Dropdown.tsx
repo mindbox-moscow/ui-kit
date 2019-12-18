@@ -7,7 +7,10 @@ import { DropdownProps, DropdownState } from "./types";
 // TODO: Удалить после редизайна
 const HEIGHT_HEADER = 90;
 
-const ENTER_KEY = 13;
+enum KeysCodes {
+	Enter = 13,
+	Esc = 27
+}
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
@@ -22,6 +25,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidMount() {
 		this.positionDropDown();
+		document.addEventListener("keydown", this.handleClickEsc, false);
 
 		Dropdown.DropdownIdentifier++;
 		this.setState({
@@ -31,6 +35,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidUpdate() {
 		this.positionDropDown();
+	}
+
+	public componentWillUnmount() {
+		document.addEventListener("keydown", this.handleClickEsc, false);
 	}
 
 	public hide = () => {
@@ -59,8 +67,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	};
 
 	public handleOnKeyDown = (e: React.KeyboardEvent) => {
-		if (e.keyCode === ENTER_KEY) {
+		if (e.keyCode === KeysCodes.Enter) {
 			this.handleClick();
+		}
+	};
+
+	public handleClickEsc = (e: KeyboardEvent) => {
+		if (e.keyCode === KeysCodes.Esc) {
+			this.changeVisibility(false);
 		}
 	};
 
@@ -86,6 +100,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		);
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
+
 		return (
 			<div className="kit-flat-select">
 				<div
@@ -116,6 +131,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						{this.clearSelectionSection()}
 					</span>
 				</div>
+
 				{show && (
 					<Panel
 						onClickOutside={this.hide}

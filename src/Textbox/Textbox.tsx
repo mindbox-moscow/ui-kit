@@ -3,17 +3,15 @@ import * as React from "react";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
 
-const ENTER_KEY = 13;
-
 export class Textbox extends React.Component<TextboxProps> {
-	private refTextbox = React.createRef<HTMLInputElement>();
-
 	public get focusText() {
 		return this._focusText;
 	}
 	public set focusText(value) {
 		this._focusText = value;
 	}
+
+	private refTextbox = React.createRef<HTMLInputElement>();
 	public componentDidMount() {
 		this._selectTextIfRequired();
 		this._focusTextIfRequired();
@@ -70,13 +68,6 @@ export class Textbox extends React.Component<TextboxProps> {
 		}
 
 		this.props.onChange(newValue);
-	};
-
-	// tslint:disable-next-line: variable-name
-	public _handleKeyUp = (e: React.KeyboardEvent) => {
-		if (e.keyCode === ENTER_KEY && this.props.onEnterFinished) {
-			this.props.onEnterFinished(this.props.value);
-		}
 	};
 
 	// tslint:disable-next-line: variable-name
@@ -144,7 +135,6 @@ export class Textbox extends React.Component<TextboxProps> {
 					className
 				)}
 				onChange={this.onChange}
-				onKeyDown={this._handleKeyUp}
 				onBlur={onBlur}
 				title={title}
 				value={effectiveValue}

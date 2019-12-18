@@ -71,6 +71,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	public handleClickEsc = (e: React.KeyboardEvent) => {
 		if (e.keyCode === KeysCodes.Esc) {
 			this.changeVisibility(false);
+			this.dropdownRef.current?.focus()
 		}
 	};
 

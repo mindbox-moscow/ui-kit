@@ -13,11 +13,6 @@ export interface SelectSearchListProps {
 	closeCaption?: string;
 }
 
-// tslint:disable-next-line: interface-name
-export interface SelectSearchListState {
-	minimized: boolean;
-}
-
 export enum SelectionMode {
 	Single,
 	Multiple

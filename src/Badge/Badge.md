@@ -1,4 +1,58 @@
 ```jsx
+class ProgressExample extends React.Component {
+	constructor() {
+		super();
+
+		this.state = {
+			label: "Идёт отправка",
+			progress: 0
+		};
+
+		this.intervalId = null;
+	}
+
+	componentDidMount() {
+		this.intervalId = setInterval(() => {
+			if (this.state.progress >= 100) {
+				clearInterval(this.intervalId);
+				this.intervalId = null;
+				this.setState({ label: "Отправлено" });
+			} else {
+				this.setState(prev => ({ progress: prev.progress + 5 }));
+			}
+		}, 2000);
+	}
+
+	componentWillUnmount() {
+		if (this.intervalId !== null) {
+			clearInterval(this.intervalId);
+		}
+	}
+
+	render() {
+		const { progress, label } = this.state;
+
+		return (
+			<Badge
+				mode={label === "Отправлено" ? "success" : "warning"}
+				progress={progress}
+			>
+				<DateLabel
+					title={
+						<>
+							<b>{label}: </b>
+							<span>{progress}%</span>
+						</>
+					}
+					date="11 мая 2012"
+				>
+					<div>Информация об отправке</div>
+				</DateLabel>
+			</Badge>
+		);
+	}
+}
+
 <>
 	<div
 		style={{
@@ -38,10 +92,7 @@
 		</Badge>
 	</div>
 	<div style={{ marginTop: "15px" }}>
-		<Badge mode="warning" progress={72}>
-			<b>Идёт отправка:</b> 72% -
-			<DateLabel date="12 окт 2019" />
-		</Badge>
+		<ProgressExample />
 	</div>
-</>
+</>;
 ```

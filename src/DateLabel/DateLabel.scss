@@ -1,13 +1,15 @@
-.kit-date-label__text {
-	&_with-point {
-		display: inline-flex;
-		align-items: center;
+.kit-date-label {
+	font-family: "PT Sans", sans-serif;
+}
 
-		&::after {
-			content: "\2022";
-			font-size: 0.5em;
-			padding: 0 1em;
-		}
+.kit-date-label__text {
+	display: inline-flex;
+	align-items: center;
+
+	&::after {
+		content: "\2022";
+		font-size: 0.5em;
+		padding: 0 1em;
 	}
 }
 

@@ -49,7 +49,7 @@ export class Page extends React.Component<Props> {
 			children,
 			hasBadge,
 			badgeTitle,
-			badgeDate,
+			badgeDate = "",
 			badgeBgColor
 		} = this.props;
 		const { title, description } = this.state;

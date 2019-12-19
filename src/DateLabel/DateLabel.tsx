@@ -1,31 +1,23 @@
 import * as React from "react";
-import cn from "classnames";
+
+import { Tooltip } from "../Tooltip";
+
 import "./DateLabel.scss";
 
 interface IProps {
-	title?: string;
-	date?: string;
+	title: string | JSX.Element;
+	date: string;
 }
 
 export const DateLabel: React.FC<IProps> = props => {
-	const { title, date, children } = props;
+	const { title, children } = props;
+
+	const date = <span className="kit-date-label__date">{props.date}</span>;
 
 	return (
 		<span className="kit-date-label">
-			{title && (
-				<span
-					className={cn("kit-date-label__text", {
-						"kit-date-label__text_with-point": date || children
-					})}
-				>
-					{title}
-				</span>
-			)}
-			{children ? (
-				<span className="kit-date-label__date">{children}</span>
-			) : date ? (
-				<span className="kit-date-label__date">{date}</span>
-			) : null}
+			<span className="kit-date-label__text">{title}</span>
+			<Tooltip title={date}>{children}</Tooltip>
 		</span>
 	);
 };

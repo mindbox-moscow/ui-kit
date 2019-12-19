@@ -9,5 +9,5 @@ export interface SelectSearchRowProps {
 	isLoader?: boolean;
 	hasNested?: boolean;
 	className?: string;
-	onClickHandler?: React.MouseEventHandler;
+	onClickHandler?: () => void;
 }

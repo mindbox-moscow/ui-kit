@@ -1,7 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
+
+const ENTER_KEY = 13;
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
@@ -16,6 +19,8 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	children,
 	onClickHandler
 }) => {
+	const context = React.useContext(DropdownContext);
+
 	const Сhildren = (): JSX.Element | null => {
 		return hasNested ? (
 			<ul className="kit-selectR-results kit-selectR-results-default">
@@ -29,17 +34,28 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			? (title as string)
 			: renderToStaticMarkup(title);
 
-	const handleClick = (e: React.MouseEvent) => {
+	const handleClick = () => {
 		if (disabled) {
 			return;
 		}
 
 		// tslint:disable-next-line: no-unused-expression
-		onClickHandler && onClickHandler(e);
+		onClickHandler && onClickHandler();
+	};
+
+	const handleOnKeyDown = (e: React.KeyboardEvent) => {
+		const contextKeyDown = context;
+
+		if (e.keyCode === ENTER_KEY && onClickHandler && contextKeyDown) {
+			onClickHandler();
+			contextKeyDown(e);
+		}
 	};
 
 	return (
 		<li
+			tabIndex={0}
+			onKeyDown={handleOnKeyDown}
 			className={cn(className, "kit-selectR-result", {
 				"kit-selectR-unselectable": unselectable,
 				"kit-selectR-disabled": disabled,

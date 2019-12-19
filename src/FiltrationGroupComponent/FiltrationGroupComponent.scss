@@ -216,6 +216,7 @@ $minHeight: 32px;
 	> li {
 		margin: 0;
 		width: 100%;
+		max-width: calc(100% - 30px);
 		padding-left: 20px;
 		box-sizing: border-box;
 

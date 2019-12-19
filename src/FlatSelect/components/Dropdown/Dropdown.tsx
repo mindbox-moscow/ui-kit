@@ -21,6 +21,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		isInBottomOfScreen: false,
 		show: false
 	};
+	private refSearch: HTMLInputElement | null = null
 
 	private dropdownRef = React.createRef<HTMLDivElement>();
 
@@ -68,17 +69,29 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
-	public handleContextOnKeyDown = (e: React.KeyboardEvent) => {
-		switch (e.keyCode) {
-			case KeysCodes.Esc:
-				this.changeVisibility(false);
-				this.dropdownRef.current?.focus()		
-				break;
-		
-			case KeysCodes.Enter:
-				this.dropdownRef.current?.focus()
+	public handleContextOnKeyDownSearch = (e: React.KeyboardEvent) => {
+		if ( e.keyCode === KeysCodes.Esc ) {
+			this.changeVisibility(false);
+			this.dropdownRef.current?.focus()		
 		}
 	};
+
+	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
+		switch (e.keyCode) {
+			case KeysCodes.Enter:
+				this.dropdownRef.current?.focus()			
+				break;
+		
+			case KeysCodes.Esc:
+				this.refSearch?.focus()
+				break;				
+		}
+	}
+
+	public searchRef = (searchElement: React.RefObject<HTMLInputElement>) => {
+		this.refSearch = searchElement.current
+		return searchElement
+	}
 
 	public render() {
 		const { show, isInBottomOfScreen } = this.state;
@@ -102,6 +115,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		);
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
+
+		const contextValues = {
+			contextOnKeyDownSearch: this.handleContextOnKeyDownSearch,
+			contextOnKeyDownItems: this.handleContextOnKeyDownItems,
+			onSearchRef: this.searchRef
+		}
 
 		return (
 			<div className="kit-flat-select">
@@ -135,7 +154,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 
 				{show && (
-					<DropdownContext.Provider value={this.handleContextOnKeyDown}>
+					<DropdownContext.Provider value={contextValues}>
 						<Panel
 							onClickOutside={this.hide}
 							width={width || Width.Full}

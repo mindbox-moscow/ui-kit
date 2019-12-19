@@ -17,8 +17,13 @@ export class Textbox extends React.Component<TextboxProps> {
 
 	private refTextbox = React.createRef<HTMLInputElement>();
 	public componentDidMount() {
+		const onSearchRef = this.context?.onSearchRef
 		this._selectTextIfRequired();
 		this._focusTextIfRequired();
+
+		if (onSearchRef) {
+			onSearchRef(this.refTextbox)
+		}
 	}
 
 	public componentDidUpdate() {
@@ -27,7 +32,7 @@ export class Textbox extends React.Component<TextboxProps> {
 	}
 
 	public handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const contextKeyDown = this.context;
+		const contextKeyDown = this.context?.contextOnKeyDownSearch;
 
 		contextKeyDown && contextKeyDown(e);
 	};

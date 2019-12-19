@@ -4,7 +4,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
 
-const ENTER_KEY = 13;
+enum KeysCodes {
+	Enter = 13,
+	Esc = 27
+}
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
@@ -44,11 +47,18 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const contextKeyDown = context;
+		const contextKeyDown = context?.contextOnKeyDownItems;
 
-		if (e.keyCode === ENTER_KEY && onClickHandler && contextKeyDown) {
-			onClickHandler();
-			contextKeyDown(e);
+		if ( onClickHandler && contextKeyDown ) {
+			switch (e.keyCode) {
+				case KeysCodes.Enter:
+					onClickHandler();
+					contextKeyDown(e);
+					break;
+			
+				case KeysCodes.Esc:
+					contextKeyDown(e);
+			}
 		}
 	};
 

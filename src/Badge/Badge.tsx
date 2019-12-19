@@ -50,7 +50,7 @@ export const Badge: React.FC<IProps> = props => {
 				[`kit-badge_size_${size}`]: size,
 				[`kit-badge_mode_${mode}`]: mode
 			})}
-			style={{ backgroundColor: backgroundColor }}
+			style={{ backgroundColor }}
 		>
 			{children}
 			{isProgressBar && (

@@ -91,6 +91,21 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						this.itemsListSearch[0].focus({ preventScroll: true })
 					}
 					break;
+				case KeysCodes.Enter:
+					e.preventDefault()
+
+					if ( this.itemsListSearch.length > 0 ) {
+						const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
+							bubbles: true,
+							cancelable: true,
+							key: "Enter",
+							code: "Enter",
+							view: window
+						})
+
+						this.itemsListSearch[0].addEventListener("searchEnter", console.log)
+						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER)
+					}
 			}
 		}
 	};

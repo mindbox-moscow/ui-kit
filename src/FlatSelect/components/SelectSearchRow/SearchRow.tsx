@@ -28,7 +28,12 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	const refElement = React.useRef<HTMLLIElement>(null)
 
 	React.useEffect(() => {
+		document.addEventListener("searchEnter", handleClick)
 		context?.onItemsRef(refElement)
+
+		return () => {
+			document.removeEventListener("searchEnter", handleClick)
+		}
 	})
 
 	const Сhildren = (): JSX.Element | null => {

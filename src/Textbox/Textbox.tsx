@@ -44,6 +44,7 @@ export class Textbox extends React.Component<TextboxProps> {
 			switch (e.keyCode) {
 				case KeysCodes.ArrowDown:
 				case KeysCodes.Esc:
+				case KeysCodes.Enter:
 					contextKeyDown(e);
 			}
 		}

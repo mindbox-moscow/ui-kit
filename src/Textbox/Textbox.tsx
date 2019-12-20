@@ -4,6 +4,12 @@ import { DropdownContext } from "../FlatSelect";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
 
+enum KeysCodes {
+	Enter = 13,
+	Esc = 27,
+	ArrowDown = 40
+}
+
 export class Textbox extends React.Component<TextboxProps> {
 	public static contextType = DropdownContext;
 	public context!: React.ContextType<typeof DropdownContext>;
@@ -34,11 +40,20 @@ export class Textbox extends React.Component<TextboxProps> {
 	public handleOnKeyDown = (e: React.KeyboardEvent) => {
 		const contextKeyDown = this.context?.contextOnKeyDownSearch;
 
-		contextKeyDown && contextKeyDown(e);
+		if (contextKeyDown ) {
+			switch (e.keyCode) {
+				case KeysCodes.ArrowDown:
+				case KeysCodes.Esc:
+					contextKeyDown(e);
+			}
+		}
 	};
 
 	public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;
+		const contextKeyDown = this.context?.contextOnKeyDownSearch;
+
+		contextKeyDown && contextKeyDown()
 
 		if (
 			newValue != null &&

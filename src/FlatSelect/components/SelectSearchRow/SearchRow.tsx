@@ -6,7 +6,9 @@ import { SelectSearchRowProps } from "./types";
 
 enum KeysCodes {
 	Enter = 13,
-	Esc = 27
+	Esc = 27,
+	ArrowDown = 40,
+	ArrowUp = 38
 }
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
@@ -23,6 +25,11 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	onClickHandler
 }) => {
 	const context = React.useContext(DropdownContext);
+	const refElement = React.useRef<HTMLLIElement>(null)
+
+	React.useEffect(() => {
+		context?.onItemsRef(refElement)
+	})
 
 	const Сhildren = (): JSX.Element | null => {
 		return hasNested ? (
@@ -57,13 +64,17 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 					break;
 			
 				case KeysCodes.Esc:
+				case KeysCodes.ArrowDown:
+				case KeysCodes.ArrowUp:
 					contextKeyDown(e);
+					break;
 			}
 		}
 	};
 
 	return (
 		<li
+			ref={refElement}
 			tabIndex={0}
 			onKeyDown={handleOnKeyDown}
 			className={cn(className, "kit-selectR-result", {

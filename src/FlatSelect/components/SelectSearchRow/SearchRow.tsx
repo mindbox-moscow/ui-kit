@@ -28,11 +28,11 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	const refElement = React.useRef<HTMLLIElement>(null)
 
 	React.useEffect(() => {
-		document.addEventListener("searchEnter", handleClick)
+		document.addEventListener("searchEnter", handelSelectEnter)
 		context?.onItemsRef(refElement)
 
 		return () => {
-			document.removeEventListener("searchEnter", handleClick)
+			document.removeEventListener("searchEnter", handelSelectEnter)
 		}
 	})
 
@@ -48,6 +48,12 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		title == null || typeof title === "string"
 			? (title as string)
 			: renderToStaticMarkup(title);
+
+	const handelSelectEnter = (e:KeyboardEvent) => {
+		if ( e.target === refElement.current && !disabled && onClickHandler ) {
+			onClickHandler();
+		}
+	}
 
 	const handleClick = () => {
 		if (disabled) {
@@ -67,7 +73,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 					onClickHandler();
 					contextKeyDown(e);
 					break;
-			
+
 				case KeysCodes.Esc:
 				case KeysCodes.ArrowDown:
 				case KeysCodes.ArrowUp:

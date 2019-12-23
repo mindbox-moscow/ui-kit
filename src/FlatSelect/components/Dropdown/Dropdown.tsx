@@ -83,10 +83,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					this.dropdownRef.current?.focus({ preventScroll: true })
 					this.itemsListSearch = []
 					break;
-	
+
 				case KeysCodes.ArrowDown:
 					e.preventDefault()
-	
+
 					if ( this.itemsListSearch.length > 0 ) {
 						this.itemsListSearch[0].focus({ preventScroll: true })
 					}
@@ -103,7 +103,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 							view: window
 						})
 
-						this.itemsListSearch[0].addEventListener("searchEnter", console.log)
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER)
 					}
 			}
@@ -127,9 +126,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 			case KeysCodes.ArrowDown:
 				e.preventDefault()
-				
+
 				if ( currentIndex === this.itemsListSearch.length - 1 ) {
-					this.itemsListSearch[0].focus({preventScroll: true})	
+					this.itemsListSearch[0].focus({preventScroll: true})
 				} else {
 					this.itemsListSearch[currentIndex + 1].focus({preventScroll: true})
 				}
@@ -151,7 +150,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		this.refSearch = searchElement.current
 	}
 
-	public itemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {	
+	public itemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {
 		if ( itemElement.current ) {
 			this.itemsListSearch = [...this.itemsListSearch, itemElement.current]
 		}

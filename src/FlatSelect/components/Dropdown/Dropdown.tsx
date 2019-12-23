@@ -21,7 +21,7 @@ const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
 	key: "Enter",
 	code: "Enter",
 	view: window
-})
+});
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
@@ -31,7 +31,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		isInBottomOfScreen: false,
 		show: false
 	};
-	private itemsListSearch: HTMLLIElement[] = []
+	private itemsListSearch: HTMLLIElement[] = [];
 	private refSearch: HTMLInputElement | null = null;
 
 	private dropdownRef = React.createRef<HTMLDivElement>();
@@ -47,7 +47,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidUpdate() {
 		this.positionDropDown();
-		this.itemsListSearch = []
+		this.itemsListSearch = [];
 	}
 
 	public hide = () => {
@@ -82,88 +82,108 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	};
 
 	public handleContextOnKeyDownSearch = (e: React.KeyboardEvent) => {
-		if ( e ) {
+		if (e) {
 			switch (e.keyCode) {
 				case KeysCodes.Esc:
-					e.preventDefault()
+					e.preventDefault();
 					this.changeVisibility(false);
-					this.dropdownRef.current?.focus({ preventScroll: true })
+					this.handleFocusElement(this.dropdownRef.current);
 					break;
 
 				case KeysCodes.ArrowDown:
-					e.preventDefault()
+					e.preventDefault();
 
-					if ( this.itemsListSearch.length > 0 ) {
-						this.itemsListSearch[0].focus({ preventScroll: true })
+					if (this.itemsListSearch.length > 0) {
+						this.itemsListSearch[0].focus({ preventScroll: true });
 					}
 					break;
 				case KeysCodes.Enter:
-					e.preventDefault()
+					e.preventDefault();
 
-					if ( this.itemsListSearch.length > 0 ) {
-						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER)
-						this.dropdownRef.current?.focus({ preventScroll: true })
+					if (this.itemsListSearch.length > 0) {
+						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER);
+						this.handleFocusElement(this.dropdownRef.current);
 					}
 			}
 		}
-
 	};
 
 	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
 		const focusElement = document.activeElement;
-		const currentIndex = this.itemsListSearch.findIndex((item) => item === focusElement )
+		const currentIndex = this.itemsListSearch.findIndex(
+			item => item === focusElement
+		);
 
 		switch (e.keyCode) {
 			case KeysCodes.Enter:
-				e.preventDefault()
-				this.dropdownRef.current?.focus({ preventScroll: true })
+				e.preventDefault();
+				this.handleFocusElement(this.dropdownRef.current);
 
 				break;
 
 			case KeysCodes.Esc:
-				e.preventDefault()
-				this.refSearch?.focus({preventScroll: true})
+				e.preventDefault();
+				this.handleFocusElement(this.refSearch);
 				break;
 
 			case KeysCodes.ArrowDown:
-				e.preventDefault()
+				e.preventDefault();
 
-				if ( currentIndex === this.itemsListSearch.length - 1 ) {
-					this.itemsListSearch[0].focus({preventScroll: true})
+				if (currentIndex === this.itemsListSearch.length - 1) {
+					this.itemsListSearch[0].focus({ preventScroll: true });
 				} else {
-					this.itemsListSearch[currentIndex + 1].focus({preventScroll: true})
+					this.itemsListSearch[currentIndex + 1].focus({
+						preventScroll: true
+					});
 				}
 				break;
 
 			case KeysCodes.ArrowUp:
-				e.preventDefault()
+				e.preventDefault();
 
-				if ( currentIndex === 0 ) {
-					this.refSearch?.focus({preventScroll: true})
+				if (currentIndex === 0) {
+					this.handleFocusElement(this.refSearch);
 				} else {
-					this.itemsListSearch[currentIndex - 1].focus({preventScroll: true})
+					this.itemsListSearch[currentIndex - 1].focus({
+						preventScroll: true
+					});
 				}
 				break;
 		}
-	}
+	};
 
 	public searchRef = (searchElement: React.RefObject<HTMLInputElement>) => {
-		this.refSearch = searchElement.current
-	}
+		this.refSearch = searchElement.current;
+	};
 
 	public itemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {
-		if ( itemElement.current ) {
-			this.itemsListSearch = [...this.itemsListSearch, itemElement.current]
+		if (itemElement.current) {
+			this.itemsListSearch = [
+				...this.itemsListSearch,
+				itemElement.current
+			];
 		}
-	}
+	};
 
-	public handleFocusFirstElement = (onMouseEnter: () => void, onMouseLeave: () => void, itemElement: React.RefObject<HTMLLIElement>) => {
-		if ( this.itemsListSearch[0] === itemElement.current ) {
-			onMouseEnter()
+	public handleFocusFirstElement = (
+		onMouseEnter: () => void,
+		onMouseLeave: () => void,
+		itemElement: React.RefObject<HTMLLIElement>
+	) => {
+		if (this.itemsListSearch[0] === itemElement.current) {
+			onMouseEnter();
 		} else {
-			onMouseLeave()
+			onMouseLeave();
 		}
-	}
+	};
+
+	public handleFocusElement = (
+		element: HTMLDivElement | HTMLInputElement | null
+	) => {
+		if (element) {
+			element.focus({ preventScroll: true });
+		}
+	};
 
 	public render() {
 		const { show, isInBottomOfScreen } = this.state;
@@ -194,7 +214,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			onSearchRef: this.searchRef,
 			onItemsRef: this.itemListRef,
 			onFocusElement: this.handleFocusFirstElement
-		}
+		};
 
 		return (
 			<div className="kit-flat-select">

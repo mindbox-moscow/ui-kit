@@ -25,16 +25,21 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	onClickHandler
 }) => {
 	const context = React.useContext(DropdownContext);
-	const refElement = React.useRef<HTMLLIElement>(null)
+	const refElement = React.useRef<HTMLLIElement>(null);
+	const [ markedItem, setMarkedItem ] = React.useState(false)
 
 	React.useEffect(() => {
 		document.addEventListener("searchEnter", handelSelectEnter)
-		context?.onItemsRef(refElement)
+
+		if ( context ) {
+			context.onItemsRef(refElement)
+			context.onFocusElement(handleMouseEnter, handleMouseLeave, refElement)
+		}
 
 		return () => {
 			document.removeEventListener("searchEnter", handelSelectEnter)
 		}
-	})
+	}, [context])
 
 	const Сhildren = (): JSX.Element | null => {
 		return hasNested ? (
@@ -51,7 +56,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 
 	const handelSelectEnter = (e:KeyboardEvent) => {
 		if ( e.target === refElement.current && !disabled && onClickHandler ) {
-			onClickHandler();
+			onClickHandler()
 		}
 	}
 
@@ -63,6 +68,14 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		// tslint:disable-next-line: no-unused-expression
 		onClickHandler && onClickHandler();
 	};
+
+	const handleMouseEnter = () => {
+		setMarkedItem(true)
+	}
+
+	const handleMouseLeave = () => {
+		setMarkedItem(false)
+	}
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
 		const contextKeyDown = context?.contextOnKeyDownItems;
@@ -93,8 +106,11 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				"kit-selectR-disabled": disabled,
 				"kit-selectR-selected-multi": isSelected && isForMultiSelect,
 				"kit-selectR-selected": isSelected && !isForMultiSelect,
-				"kit-selectR-nesting": hasNested
+				"kit-selectR-nesting": hasNested,
+				"kit-selectR-highlighted": markedItem
 			})}
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
 		>
 			<div
 				className={cn("kit-selectR-label", {

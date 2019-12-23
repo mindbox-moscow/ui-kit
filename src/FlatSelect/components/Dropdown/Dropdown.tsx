@@ -15,6 +15,14 @@ enum KeysCodes {
 	ArrowUp = 38
 }
 
+const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
+	bubbles: true,
+	cancelable: true,
+	key: "Enter",
+	code: "Enter",
+	view: window
+})
+
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
 
@@ -39,6 +47,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidUpdate() {
 		this.positionDropDown();
+		this.itemsListSearch = []
 	}
 
 	public hide = () => {
@@ -73,15 +82,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	};
 
 	public handleContextOnKeyDownSearch = (e: React.KeyboardEvent) => {
-		if ( !e ) {
-			this.itemsListSearch = []
-		} else {
+		if ( e ) {
 			switch (e.keyCode) {
 				case KeysCodes.Esc:
 					e.preventDefault()
 					this.changeVisibility(false);
 					this.dropdownRef.current?.focus({ preventScroll: true })
-					this.itemsListSearch = []
 					break;
 
 				case KeysCodes.ArrowDown:
@@ -95,20 +101,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					e.preventDefault()
 
 					if ( this.itemsListSearch.length > 0 ) {
-						const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
-							bubbles: true,
-							cancelable: true,
-							key: "Enter",
-							code: "Enter",
-							view: window
-						})
-
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER)
-						this.itemsListSearch = []
 						this.dropdownRef.current?.focus({ preventScroll: true })
 					}
 			}
 		}
+
 	};
 
 	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
@@ -119,7 +117,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			case KeysCodes.Enter:
 				e.preventDefault()
 				this.dropdownRef.current?.focus({ preventScroll: true })
-				this.itemsListSearch = []
+
 				break;
 
 			case KeysCodes.Esc:
@@ -157,7 +155,14 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		if ( itemElement.current ) {
 			this.itemsListSearch = [...this.itemsListSearch, itemElement.current]
 		}
-		console.log(this.itemsListSearch)
+	}
+
+	public handleFocusFirstElement = (onMouseEnter: () => void, onMouseLeave: () => void, itemElement: React.RefObject<HTMLLIElement>) => {
+		if ( this.itemsListSearch[0] === itemElement.current ) {
+			onMouseEnter()
+		} else {
+			onMouseLeave()
+		}
 	}
 
 	public render() {
@@ -187,7 +192,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			contextOnKeyDownSearch: this.handleContextOnKeyDownSearch,
 			contextOnKeyDownItems: this.handleContextOnKeyDownItems,
 			onSearchRef: this.searchRef,
-			onItemsRef: this.itemListRef
+			onItemsRef: this.itemListRef,
+			onFocusElement: this.handleFocusFirstElement
 		}
 
 		return (

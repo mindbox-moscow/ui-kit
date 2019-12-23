@@ -332,7 +332,9 @@
 .kit-selectR-results-default .kit-selectR-unselectable > .kit-selectR-label {
 	cursor: default;
 }
-.kit-selectR-results-default .kit-selectR-highlighted > .kit-selectR-label {
+.kit-selectR-results-default
+	.kit-selectR-highlighted:not(.kit-selectR-selected)
+	> .kit-selectR-label {
 	background: #3875d7;
 	color: #fff;
 }

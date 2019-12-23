@@ -4,37 +4,36 @@ import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 import "./FlatSelect.scss";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
-export const FlatSelect: React.FC = <TValue extends object>(
-	{
-		id,
-		placeholder,
-		disabled,
-		width,
-		className,
-		height,
-		onChange,
-		headerInfo,
-		selectedValue,
-		itemFormatter,
-		isLoading,
-		selectElementCaption,
-		items,
-		allowNull,
-		loadListCaption,
-		selectedItemFormatter
-	}: SelectProps<TValue> & { children?: React.ReactNode }) => {
-
-	const [searchTerm, setSearchTerm] = React.useState<string>("")
-	const dropdownRef = React.createRef<Dropdown>()
+export const FlatSelect: React.FC = <TValue extends object>({
+	id,
+	placeholder,
+	disabled,
+	width,
+	className,
+	height,
+	onChange,
+	headerInfo,
+	selectedValue,
+	itemFormatter,
+	isLoading,
+	selectElementCaption,
+	items,
+	allowNull,
+	loadListCaption,
+	selectedItemFormatter
+}: SelectProps<TValue> & { children?: React.ReactNode }) => {
+	const [searchTerm, setSearchTerm] = React.useState<string>("");
+	const dropdownRef = React.createRef<Dropdown>();
 
 	const hide = () => {
-		dropdownRef.current?.hide()
-	}
-
-	const searchTermChanged = (newSearchTerm: string) => {
-		setSearchTerm(newSearchTerm)
+		if (dropdownRef.current) {
+			hide();
+		}
 	};
 
+	const searchTermChanged = (newSearchTerm: string) => {
+		setSearchTerm(newSearchTerm);
+	};
 
 	const handleOnChange = (newSelectedValue: TValue) => {
 		// Для моновыпадалки есть смысл закрывать выпадашку после выбора.
@@ -161,10 +160,7 @@ export const FlatSelect: React.FC = <TValue extends object>(
 				onClickHandler={selectSearchRowClickHandler(item.value)}
 				className={item.className}
 			>
-				{renderSelectSearchRows(
-					item.children || [],
-					selectedItemKey
-				)}
+				{renderSelectSearchRows(item.children || [], selectedItemKey)}
 			</SelectSearchRow>
 		));
 	};
@@ -209,23 +205,20 @@ export const FlatSelect: React.FC = <TValue extends object>(
 	let selectedItemKey: SelectedItemKey;
 	let selectedItemText: string | JSX.Element;
 
-		if (selectedValue !== null) {
-			selectedItemKey =
-				selectedValue instanceof Array
-					? selectedValue.map(
-							value => itemFormatter(value).key
-					  )
-					: itemFormatter(selectedValue).key;
+	if (selectedValue !== null) {
+		selectedItemKey =
+			selectedValue instanceof Array
+				? selectedValue.map(value => itemFormatter(value).key)
+				: itemFormatter(selectedValue).key;
 
-			selectedItemText =
-				selectedItemFormatter !== undefined
-					? selectedItemFormatter(selectedValue)
-					: defaultSelectedValueFormatter(selectedValue);
-		} else {
-			selectedItemKey = "";
-			selectedItemText = "";
-		}
-
+		selectedItemText =
+			selectedItemFormatter !== undefined
+				? selectedItemFormatter(selectedValue)
+				: defaultSelectedValueFormatter(selectedValue);
+	} else {
+		selectedItemKey = "";
+		selectedItemText = "";
+	}
 
 	return (
 		<Dropdown
@@ -239,9 +232,7 @@ export const FlatSelect: React.FC = <TValue extends object>(
 			openedClassName="form-control select2-container-active select2-dropdown-open"
 			height={height || Height.Small}
 			onSelectionClear={
-				shouldRenderNullMark()
-					? () => onChange(null)
-					: null
+				shouldRenderNullMark() ? () => onChange(null) : null
 			}
 		>
 			<SelectSearchList
@@ -252,5 +243,5 @@ export const FlatSelect: React.FC = <TValue extends object>(
 				{renderRows(selectedItemKey)}
 			</SelectSearchList>
 		</Dropdown>
-	)
-}
+	);
+};

@@ -3,8 +3,13 @@ import { useState } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
-import { CallbackProps, SelectionStateType, StateProps } from "./types";
-import { neitralZoneClass } from "../HOCs";
+import {
+	CallbackProps,
+	SelectionStateType,
+	StateProps,
+	ScrollState
+} from "./types";
+import { neutralZoneClass } from "../HOCs";
 
 import { Button } from "../Button";
 import "./FilterWrapper.scss";
@@ -29,7 +34,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	isDataOutdated,
 	filterActions,
 	filterActionsCaption,
-	scrollState = "full",
+	scrollState = ScrollState.Full,
 	buttonUpCaption,
 	shouldShowStatistics
 }) => {
@@ -75,7 +80,7 @@ export const FilterWrapper: React.FC<Props> = ({
 			size="small"
 			color="silver"
 			hasBorder={true}
-			className={neitralZoneClass}
+			className={neutralZoneClass}
 		>
 			{buttonUpCaption}
 		</Button>
@@ -105,7 +110,8 @@ export const FilterWrapper: React.FC<Props> = ({
 						/>
 					</div>
 					<ul className="kit-filter__all-wrap">
-						{!doesContainFilter && scrollState === "minfied" ? (
+						{!doesContainFilter &&
+						scrollState === ScrollState.Minified ? (
 							<ButtonUp />
 						) : (
 							children
@@ -114,7 +120,7 @@ export const FilterWrapper: React.FC<Props> = ({
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{scrollState !== "minfied" ? (
+								{scrollState !== ScrollState.Minified ? (
 									<button
 										className="kit-filter__use-filter"
 										onClick={onApply}

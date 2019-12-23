@@ -48,10 +48,10 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const context = React.useContext(FilterWrapperContext);
-	const [scrollState, setScrollState] = React.useState<ScrollState>("full")
+	const [scrollState, setScrollState] = React.useState<ScrollState>(ScrollState.Full)
 
 	React.useEffect(() => {
-		const scrollStateFilterWrapper = context?.scrollState;
+		const scrollStateFilterWrapper = context!.scrollState;
 		if ( scrollStateFilterWrapper ) {
 			setScrollState(scrollStateFilterWrapper)
 		}

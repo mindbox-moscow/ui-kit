@@ -37,8 +37,8 @@ $searchFocusBgColor: #fffde5;
 		overflow: hidden;
 	}
 
-	&_minfied {
-		animation: mified-selector 0.25s linear forwards;
+	&_minified {
+		animation: minified-selector 0.25s linear forwards;
 	}
 
 	&_full {
@@ -375,10 +375,10 @@ $searchFocusBgColor: #fffde5;
 	}
 }
 
-@keyframes mified-selector {
+@keyframes minified-selector {
 	0% {
 		opacity: 1;
-		transform: translateY(0%);
+		transform: translateY(0);
 	}
 	100% {
 		opacity: 0;

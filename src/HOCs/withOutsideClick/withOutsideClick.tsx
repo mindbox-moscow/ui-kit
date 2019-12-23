@@ -7,7 +7,7 @@ export interface WithOutsideClickProps {
 	children?: React.ReactNode;
 }
 
-export const neitralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
+export const neutralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
 const uiDatePickerClass = "ui-datepicker";
 const overflowVisibleContainerClass = "kit-overflow-visiblecontainer";
 
@@ -29,22 +29,28 @@ export const withOutsideClick = <T extends {}>(
 	shouldBeSubscribedProvider?: (props: T) => boolean
 ) => {
 	return (props: T & WithOutsideClickProps) => {
-		const effectiveShouldBeSubscribedProvider = shouldBeSubscribedProvider == null ? () => true : shouldBeSubscribedProvider;
+		const effectiveShouldBeSubscribedProvider =
+			shouldBeSubscribedProvider == null
+				? () => true
+				: shouldBeSubscribedProvider;
 
 		const refWrapper = useRef<HTMLElement | null>(null);
 		const shouldBeSubscribed = effectiveShouldBeSubscribedProvider(props);
 
-		useEffect(() => {
-			if (shouldBeSubscribed) {
-				document.addEventListener("click", handleOutsideClick)
-			} else {
-				document.removeEventListener("click", handleOutsideClick);
-			}
+		useEffect(
+			() => {
+				if (shouldBeSubscribed) {
+					document.addEventListener("click", handleOutsideClick);
+				} else {
+					document.removeEventListener("click", handleOutsideClick);
+				}
 
-			return () => {
-				document.removeEventListener("click", handleOutsideClick);
-			};
-		}, [shouldBeSubscribed]);
+				return () => {
+					document.removeEventListener("click", handleOutsideClick);
+				};
+			},
+			[shouldBeSubscribed]
+		);
 
 		const setRef = (el: HTMLElement) => {
 			refWrapper.current = el;
@@ -58,7 +64,7 @@ export const withOutsideClick = <T extends {}>(
 				!(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
-					fromElementWithClassEvent(e, neitralZoneClass) ||
+					fromElementWithClassEvent(e, neutralZoneClass) ||
 					fromElementWithClassEvent(e, uiDatePickerClass) ||
 					fromElementWithClassEvent(
 						e,

@@ -104,6 +104,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						})
 
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER)
+						this.itemsListSearch = []
+						this.dropdownRef.current?.focus({ preventScroll: true })
 					}
 			}
 		}
@@ -117,6 +119,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			case KeysCodes.Enter:
 				e.preventDefault()
 				this.dropdownRef.current?.focus({ preventScroll: true })
+				this.itemsListSearch = []
 				break;
 
 			case KeysCodes.Esc:

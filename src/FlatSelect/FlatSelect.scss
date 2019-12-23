@@ -332,11 +332,16 @@
 .kit-selectR-results-default .kit-selectR-unselectable > .kit-selectR-label {
 	cursor: default;
 }
-.kit-selectR-results-default
-	.kit-selectR-highlighted:not(.kit-selectR-selected)
-	> .kit-selectR-label {
-	background: #3875d7;
-	color: #fff;
+.kit-selectR-results-default {
+	.kit-selectR-result:focus,
+	.kit-selectR-highlighted:not(.kit-selectR-selected) {
+		outline: none;
+
+		> .kit-selectR-label {
+			background: #3875d7;
+			color: #fff;
+		}
+	}
 }
 
 .kit-selectR-overlay {

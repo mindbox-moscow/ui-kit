@@ -111,6 +111,8 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			})}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
+			onFocus={handleMouseEnter}
+			onBlur={handleMouseLeave}
 		>
 			<div
 				className={cn("kit-selectR-label", {

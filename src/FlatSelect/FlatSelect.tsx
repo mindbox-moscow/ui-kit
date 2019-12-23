@@ -27,7 +27,7 @@ export const FlatSelect: React.FC = <TValue extends object>({
 
 	const hide = () => {
 		if (dropdownRef.current) {
-			hide();
+			dropdownRef.current.hide();
 		}
 	};
 

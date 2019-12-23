@@ -105,8 +105,8 @@ export const FilterWrapper: React.FC<Props> = ({
 						{!doesContainFilter && scrollState === "minfied" ? (
 							<ButtonUp />
 						) : (
-								children
-							)}
+							children
+						)}
 					</ul>
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
@@ -119,8 +119,8 @@ export const FilterWrapper: React.FC<Props> = ({
 										{applyButtonCaption}
 									</button>
 								) : (
-										<ButtonUp />
-									)}
+									<ButtonUp />
+								)}
 							</div>
 							{selectionState !== SelectionStateType.None &&
 								countSelectedItems()}
@@ -128,7 +128,11 @@ export const FilterWrapper: React.FC<Props> = ({
 								isWarning={isDataOutdated}
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
-								shouldShowStatistics={shouldShowStatistics == undefined ? true : shouldShowStatistics}
+								shouldShowStatistics={
+									shouldShowStatistics == undefined
+										? true
+										: shouldShowStatistics
+								}
 							>
 								<button
 									className="kit-filter__clear-filter-btn"
@@ -140,16 +144,20 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-							<div className="kit-filter__short-wrap-filter">
-								{selectionState !== SelectionStateType.None &&
-									countSelectedItems()}
-								<InfoWrapper
-									statisticsValue={statisticsValue}
-									statisticsDescription={statisticsDescription}
-									shouldShowStatistics={shouldShowStatistics == undefined ? true : shouldShowStatistics}
-								/>
-							</div>
-						)}
+						<div className="kit-filter__short-wrap-filter">
+							{selectionState !== SelectionStateType.None &&
+								countSelectedItems()}
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+								shouldShowStatistics={
+									shouldShowStatistics == undefined
+										? true
+										: shouldShowStatistics
+								}
+							/>
+						</div>
+					)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

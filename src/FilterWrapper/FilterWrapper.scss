@@ -128,6 +128,11 @@ $clearButtonCountColor: #a4a4a4;
 	outline: none;
 	cursor: pointer;
 	box-sizing: border-box;
+	transition: background-color 0.15s ease-in-out;
+
+	&:hover {
+		background-color: #d3e0e9;
+	}
 }
 
 .kit-filter__clients,
@@ -176,6 +181,11 @@ $clearButtonCountColor: #a4a4a4;
 	outline: none;
 	cursor: pointer;
 	box-sizing: border-box;
+	transition: background-color 0.15s ease-in-out;
+
+	&:hover {
+		background-color: darken($clearButtonColorBg, 10%);
+	}
 
 	.kit-icon-svg {
 		margin-right: 7px;

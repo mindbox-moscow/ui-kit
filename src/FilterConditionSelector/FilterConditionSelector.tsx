@@ -14,6 +14,7 @@ import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./FilterConditionSelector.scss";
+import { FilterWrapperContext, ScrollState } from "../FilterWrapper";
 
 enum ArrowKeysCodes {
 	Up = 38,
@@ -56,6 +57,15 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
+	const context = React.useContext(FilterWrapperContext);
+	const [scrollState, setScrollState] = React.useState<ScrollState>(ScrollState.Full)
+
+	React.useEffect(() => {
+		const scrollStateFilterWrapper = context!.scrollState;
+		if ( scrollStateFilterWrapper ) {
+			setScrollState(scrollStateFilterWrapper)
+		}
+	}, [context?.scrollState])
 
 	React.useEffect(() => {
 		return clearAllBodyScrollLocks;
@@ -178,7 +188,10 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	};
 
 	return (
-		<div ref={setRef} className="kit-filter-condition-selector">
+		<div ref={setRef} className={cn(
+			"kit-filter-condition-selector",
+			`kit-filter-condition-selector_${scrollState}`
+		)}>
 			<div className="kit-filter-condition-selector__wrap">
 				<div className="kit-filter-condition-selector__filter-block">
 					<Input

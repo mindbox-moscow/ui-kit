@@ -14,16 +14,35 @@ const ModeColors = {
 	warning: COLORS.Warning
 };
 
+const ProgressColors = {
+	warning: COLORS.WarningBackground
+};
+
 interface IProps {
-	title: string;
-	color?: COLORS;
-	date?: string;
+	color?: COLORS | string;
 	size?: string;
 	mode?: Mode;
+	progress?: number;
+	progressColor?: COLORS | string;
 }
 
-export const Badge = (props: IProps) => {
-	const { title, color = COLORS.Green, date, size, mode } = props;
+export const Badge: React.FC<IProps> = props => {
+	const {
+		color = COLORS.Green,
+		size,
+		mode,
+		progress,
+		progressColor,
+		children
+	} = props;
+	const isProgressBar = progress !== undefined && !isNaN(progress);
+	let backgroundColor;
+
+	if (isProgressBar) {
+		backgroundColor = mode ? ProgressColors[mode] : progressColor;
+	} else {
+		backgroundColor = mode ? ModeColors[mode] : color;
+	}
 
 	return (
 		<div
@@ -31,19 +50,17 @@ export const Badge = (props: IProps) => {
 				[`kit-badge_size_${size}`]: size,
 				[`kit-badge_mode_${mode}`]: mode
 			})}
-			style={{ backgroundColor: mode ? ModeColors[mode] : color }}
+			style={{ backgroundColor }}
 		>
-			<span
-				className={cn("kit-badge__text", {
-					"kit-badge__text_withPoint": date
-				})}
-			>
-				{title}
-			</span>
-			{date && (
-				<>
-					Запущен:<span className="kit-badge__date"> {date}</span>
-				</>
+			{children}
+			{isProgressBar && (
+				<div
+					className="kit_badge__progress-bar"
+					style={{
+						backgroundColor: mode ? ModeColors[mode] : color,
+						width: `${progress}%`
+					}}
+				/>
 			)}
 		</div>
 	);

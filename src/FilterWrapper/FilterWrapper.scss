@@ -52,9 +52,9 @@ $clearButtonCountColor: #a4a4a4;
 	box-sizing: border-box;
 
 	> .kit-filtration-group_not-children {
-		> .kit-filter-editor {
-			.kit-filter-editor__btn,
-			.kit-button {
+		.kit-filtration-group__buttons {
+			> .kit-filter-editor .kit-filter-editor__btn,
+			> .kit-button {
 				opacity: 1;
 			}
 		}

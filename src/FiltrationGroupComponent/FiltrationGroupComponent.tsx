@@ -225,6 +225,12 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
+				console.log({
+					groupRefHeight: groupRef.getBoundingClientRect().height,
+					heightLine,
+					groupRef
+				});
+
 				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
 					.height - heightLine}px`;
 			} else {

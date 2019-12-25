@@ -63,7 +63,7 @@ $groupHoverMarginLeft: 10px;
 		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
 		height: calc(100% + #{$groupHoverMarginTop});
-		min-height: 25px;
+		min-height: 26px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
 		background-color: $hoverColorBg;
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
@@ -72,7 +72,7 @@ $groupHoverMarginLeft: 10px;
 	}
 
 	.kit-filtration-condition__content {
-		min-height: 25px;
+		min-height: 26px;
 
 		> * {
 			vertical-align: sub;
@@ -201,7 +201,7 @@ $groupHoverMarginLeft: 10px;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
-	min-height: 25px;
+	min-height: 26px;
 	margin-left: 2px;
 	border: 0;
 	z-index: 1;

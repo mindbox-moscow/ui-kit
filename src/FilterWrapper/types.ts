@@ -32,6 +32,7 @@ export interface StateProps {
 	scrollState: ScrollState;
 	buttonUpCaption: string;
 	shouldShowStatistics?: boolean;
+	showApplyButton?: boolean;
 }
 
 export interface CallbackProps {

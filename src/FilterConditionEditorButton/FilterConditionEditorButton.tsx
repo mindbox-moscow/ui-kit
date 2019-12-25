@@ -34,7 +34,6 @@ export class FilterConditionEditorButton extends React.Component<Props> {
 
 		return (
 			<div className="kit-filter-editor">
-				<div className="kit-filter-editor__breakpoint" />
 				<button
 					ref={this.refButton}
 					className={cn("kit-filter-editor__btn", {

@@ -3,32 +3,22 @@ import * as React from "react";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./Tooltip.scss";
 
-type IProps = {
-	title: string;
-} & Partial<DefaultProps>;
-
-interface DefaultProps {
-	position: "top" | "bottom";
-	textDecoration: boolean;
+interface IProps {
+	title: string | JSX.Element;
+	position?: "top" | "bottom";
+	className?: string;
 }
 
-interface State {
+interface IState {
 	isShow: boolean;
 }
 
-type ToolTipProps = IProps;
-
-export class Tooltip extends React.Component<ToolTipProps, State> {
-	public static defaultProps: DefaultProps = {
-		position: "bottom",
-		textDecoration: true
-	};
-
+export class Tooltip extends React.Component<IProps, IState> {
 	public state = {
 		isShow: false
 	};
 
-	public refTitle = React.createRef<HTMLSpanElement>();
+	public refTitle = React.createRef<HTMLDivElement>();
 
 	public handleShowTooltip = () => {
 		this.setState({ isShow: true });
@@ -39,30 +29,39 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 
 	public render() {
 		const { isShow } = this.state;
-		const { textDecoration, position, title, children } = this.props;
+		const { title, position = "bottom", className, children } = this.props;
+
+		if (!children) {
+			return (
+				<div className={cn("kit-tooltip", className)}>
+					<div className="kit-tooltip__title">{title}</div>
+				</div>
+			);
+		}
+
 		return (
-			<span className="kit-tooltip">
-				<span
+			<div className={cn("kit-tooltip", className)}>
+				<div
 					onMouseEnter={this.handleShowTooltip}
 					onMouseLeave={this.handleHideTooltip}
 					ref={this.refTitle}
-					className={cn("kit-tooltip__title", {
-						"kit-tooltip__title_text-transform": textDecoration
-					})}
+					className="kit-tooltip__title"
 				>
-					<span
-						className={cn(
-							"kit-tooltip__road",
-							`kit-tooltip__road_${position}`
-						)}
-					/>
+					{isShow && (
+						<span
+							className={cn(
+								"kit-tooltip__road",
+								`kit-tooltip__road_${position}`
+							)}
+						/>
+					)}
 					{title}
-				</span>
+				</div>
 				<OverflowVisibleContainer
 					parentRef={this.refTitle}
 					className="kit-tooltip__popup"
 				>
-					<span
+					<div
 						onMouseEnter={this.handleShowTooltip}
 						onMouseLeave={this.handleHideTooltip}
 						className={cn(
@@ -74,9 +73,9 @@ export class Tooltip extends React.Component<ToolTipProps, State> {
 						)}
 					>
 						{children}
-					</span>
+					</div>
 				</OverflowVisibleContainer>
-			</span>
+			</div>
 		);
 	}
 }

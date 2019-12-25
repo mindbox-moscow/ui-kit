@@ -5,7 +5,10 @@ export enum SelectionStateType {
 	Concrete = "concrete"
 }
 
-export type ScrollState = "full" | "minfied";
+export enum ScrollState {
+	Full = "full",
+	Minified = "minified"
+}
 
 export interface FilterAction {
 	key: string;
@@ -28,7 +31,8 @@ export interface StateProps {
 	filterActionsCaption: string;
 	scrollState: ScrollState;
 	buttonUpCaption: string;
-	shouldShowStatistics?: boolean
+	shouldShowStatistics?: boolean;
+	showApplyButton?: boolean;
 }
 
 export interface CallbackProps {

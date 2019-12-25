@@ -133,7 +133,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 							className="kit-filter-condition-selector__hierarchy-toggle"
 							onClick={onExpand}
 						>
-							<IconSvg type="arrow-right" />
+							<IconSvg type="arrow-right" className="kit-filter-condition-selector__arrow" />
 						</div>
 					)}
 				<div

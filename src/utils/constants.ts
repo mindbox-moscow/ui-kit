@@ -7,7 +7,8 @@ export enum COLORS {
 	Success = "#417505",
 	Danger = "#D0021B",
 	Disabled = "#999999",
-	Warning = "#E7950F"
+	Warning = "#E7950F",
+	WarningBackground = "#D2B591"
 }
 
 export enum KeysCodes {

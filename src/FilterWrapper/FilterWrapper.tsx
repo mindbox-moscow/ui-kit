@@ -3,7 +3,13 @@ import { useState } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterActionsPopover, InfoWrapper } from "./components";
-import { CallbackProps, SelectionStateType, StateProps } from "./types";
+import {
+	CallbackProps,
+	SelectionStateType,
+	StateProps,
+	ScrollState
+} from "./types";
+import { neutralZoneClass } from "../HOCs";
 
 import { Button } from "../Button";
 import "./FilterWrapper.scss";
@@ -28,9 +34,10 @@ export const FilterWrapper: React.FC<Props> = ({
 	isDataOutdated,
 	filterActions,
 	filterActionsCaption,
-	scrollState = "full",
+	scrollState = ScrollState.Full,
 	buttonUpCaption,
-	shouldShowStatistics
+	shouldShowStatistics,
+	showApplyButton
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
@@ -74,6 +81,7 @@ export const FilterWrapper: React.FC<Props> = ({
 			size="small"
 			color="silver"
 			hasBorder={true}
+			className={neutralZoneClass}
 		>
 			{buttonUpCaption}
 		</Button>
@@ -81,7 +89,8 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	const contextValue = {
 		updateBrackets,
-		rerenderBrackets
+		rerenderBrackets,
+		scrollState
 	};
 
 	return (
@@ -102,7 +111,8 @@ export const FilterWrapper: React.FC<Props> = ({
 						/>
 					</div>
 					<ul className="kit-filter__all-wrap">
-						{!doesContainFilter && scrollState === "minfied" ? (
+						{!doesContainFilter &&
+						scrollState === ScrollState.Minified ? (
 							<ButtonUp />
 						) : (
 							children
@@ -111,16 +121,19 @@ export const FilterWrapper: React.FC<Props> = ({
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{scrollState !== "minfied" ? (
-									<button
-										className="kit-filter__use-filter"
-										onClick={onApply}
-									>
-										{applyButtonCaption}
-									</button>
-								) : (
-									<ButtonUp />
-								)}
+								{showApplyButton == null ||
+								showApplyButton == true ? (
+									scrollState !== ScrollState.Minified ? (
+										<button
+											className="kit-filter__use-filter"
+											onClick={onApply}
+										>
+											{applyButtonCaption}
+										</button>
+									) : (
+										<ButtonUp />
+									)
+								) : null}
 							</div>
 							{selectionState !== SelectionStateType.None &&
 								countSelectedItems()}

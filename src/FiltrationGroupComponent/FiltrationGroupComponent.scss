@@ -97,7 +97,8 @@ $minHeight: 32px;
 			margin-left: 20px;
 			outline: none;
 
-			button {
+			> .kit-filter-editor .kit-filter-editor__btn,
+			> .kit-button {
 				opacity: 1;
 			}
 		}
@@ -216,6 +217,7 @@ $minHeight: 32px;
 	> li {
 		margin: 0;
 		width: 100%;
+		max-width: calc(100% - 30px);
 		padding-left: 20px;
 		box-sizing: border-box;
 
@@ -303,7 +305,7 @@ $minHeight: 32px;
 
 .kit-filtration-group__label-vertical-bracket {
 	position: absolute;
-	top: -2px;
+	top: 0;
 	left: 14px;
 	height: calc(100% - #{$minHeight / 2});
 	border-left: 2px solid;

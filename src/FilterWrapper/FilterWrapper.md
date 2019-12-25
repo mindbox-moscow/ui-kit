@@ -320,7 +320,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 		}}
 	>
 		<FilterWrapper
-			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
@@ -334,7 +333,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onApply={() => console.log("apply filter")}
 			onClear={() => console.log("clear filter")}
 			buttonUpCaption="Вверх"
-			scrollState="minfied"
+			scrollState="minified"
 		>
 			<FiltrationGroupComponent
 				onClickOutside={() => {}}
@@ -425,7 +424,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<div>
 		<h1>Пример 2.1 - Скрытая кнопка "Применить фильтр"</h1>
 		<FilterWrapper
-			scrollState="minfied"
+			scrollState="minified"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
@@ -3010,7 +3009,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 										<Tooltip
 											title={<IconSvg type="warning" />}
 											position="top"
-											textDecoration={false}
 										>
 											Левая граница интервала должна быть
 											меньше правой
@@ -3063,7 +3061,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<Tooltip
 							title={<IconSvg type="warning" />}
 							position="top"
-							textDecoration={false}
 						>
 							Левая граница интервала должна быть меньше правой
 						</Tooltip>
@@ -3243,7 +3240,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<Tooltip
 							title={<IconSvg type="warning" />}
 							position="top"
-							textDecoration={false}
 						>
 							Левая граница интервала должна быть меньше правой
 						</Tooltip>
@@ -3386,7 +3382,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<Tooltip
 							title={<IconSvg type="warning" />}
 							position="top"
-							textDecoration={false}
 						>
 							Левая граница интервала должна быть меньше правой
 						</Tooltip>
@@ -3568,7 +3563,6 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<Tooltip
 							title={<IconSvg type="warning" />}
 							position="top"
-							textDecoration={false}
 						>
 							Левая граница интервала должна быть меньше правой
 						</Tooltip>

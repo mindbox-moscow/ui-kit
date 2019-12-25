@@ -4,40 +4,22 @@ import { withOutsideClick, WithOutsideClickProps } from "../../../HOCs";
 import { Width } from "../../../utils";
 import { PanelProps } from "./types";
 
-class Panel extends React.Component<PanelProps & WithOutsideClickProps> {
-	public panelRef = React.createRef<HTMLDivElement>();
+type Props = PanelProps & WithOutsideClickProps;
 
-	public componentDidMount() {
-		this.panelHeightOverride();
-	}
+const Panel: React.FC<Props> = ({
+	className,
+	width,
+	children,
+	setOutsideClickRef
+}) => {
+	const panelRef = React.createRef<HTMLDivElement>();
 
-	public componentDidUpdate() {
-		this.panelHeightOverride();
-	}
+	React.useEffect(() => {
+		panelHeightOverride();
+	});
 
-	public render() {
-		const { className, width, children, setOutsideClickRef } = this.props;
-
-		if (setOutsideClickRef) {
-			setOutsideClickRef(this.panelRef.current as HTMLElement);
-		}
-
-		return (
-			<div
-				className={cn(
-					"kit-selectR-drop",
-					className,
-					Width.getClass(width)
-				)}
-				ref={this.panelRef}
-			>
-				{children}
-			</div>
-		);
-	}
-
-	private panelHeightOverride = () => {
-		const panel = this.panelRef.current;
+	const panelHeightOverride = () => {
+		const panel = panelRef.current;
 
 		if (panel) {
 			const { top, bottom } = panel.getBoundingClientRect();
@@ -65,7 +47,20 @@ class Panel extends React.Component<PanelProps & WithOutsideClickProps> {
 			}
 		}
 	};
-}
+
+	if (setOutsideClickRef) {
+		setOutsideClickRef(panelRef.current as HTMLElement);
+	}
+
+	return (
+		<div
+			className={cn("kit-selectR-drop", className, Width.getClass(width))}
+			ref={panelRef}
+		>
+			{children}
+		</div>
+	);
+};
 
 const WithOutsideClickPanel = withOutsideClick(Panel);
 

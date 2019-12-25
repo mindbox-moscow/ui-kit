@@ -37,8 +37,3 @@ export interface SelectProps<TValue>
 	extends SelectPropsBase<TValue, TValue | TValue[]> {
 	onChange: (newSelectedValue: TValue | null) => void;
 }
-
-// tslint:disable-next-line: interface-name
-export interface SelectState {
-	searchTerm: string;
-}

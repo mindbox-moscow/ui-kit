@@ -1,12 +1,13 @@
 import classNames from "classnames";
 import * as React from "react";
+import { DropdownContext } from "../FlatSelect";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
-
-const ENTER_KEY = 13;
+import { KeysCodes } from '../utils/constants'
 
 export class Textbox extends React.Component<TextboxProps> {
-	private refTextbox = React.createRef<HTMLInputElement>();
+	public static contextType = DropdownContext;
+	public context!: React.ContextType<typeof DropdownContext>;
 
 	public get focusText() {
 		return this._focusText;
@@ -14,9 +15,16 @@ export class Textbox extends React.Component<TextboxProps> {
 	public set focusText(value) {
 		this._focusText = value;
 	}
+
+	private refTextbox = React.createRef<HTMLInputElement>();
 	public componentDidMount() {
+		const onSearchRef = this.context?.onSearchRef
 		this._selectTextIfRequired();
 		this._focusTextIfRequired();
+
+		if (onSearchRef) {
+			onSearchRef(this.refTextbox)
+		}
 	}
 
 	public componentDidUpdate() {
@@ -24,8 +32,24 @@ export class Textbox extends React.Component<TextboxProps> {
 		this._focusTextIfRequired();
 	}
 
+	public handleOnKeyDown = (e: React.KeyboardEvent) => {
+		const contextKeyDown = this.context?.contextOnKeyDownSearch;
+
+		if (contextKeyDown ) {
+			switch (e.keyCode) {
+				case KeysCodes.ArrowDown:
+				case KeysCodes.Esc:
+				case KeysCodes.Enter:
+					contextKeyDown(e);
+			}
+		}
+	};
+
 	public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;
+		const contextKeyDown = this.context?.contextOnKeyDownSearch;
+
+		contextKeyDown && contextKeyDown()
 
 		if (
 			newValue != null &&
@@ -73,13 +97,6 @@ export class Textbox extends React.Component<TextboxProps> {
 	};
 
 	// tslint:disable-next-line: variable-name
-	public _handleKeyUp = (e: React.KeyboardEvent) => {
-		if (e.keyCode === ENTER_KEY && this.props.onEnterFinished) {
-			this.props.onEnterFinished(this.props.value);
-		}
-	};
-
-	// tslint:disable-next-line: variable-name
 	public _selectTextIfRequired = () => {
 		if (this.props.shouldTextBeSelected) {
 			const node = this.refTextbox.current;
@@ -109,7 +126,9 @@ export class Textbox extends React.Component<TextboxProps> {
 			id,
 			placeholder,
 			onBlur,
-			title
+			title,
+			className,
+			autoFocus = false
 		} = this.props;
 
 		const classNamesObject: ClassDictionary = {
@@ -125,12 +144,6 @@ export class Textbox extends React.Component<TextboxProps> {
 			}
 		}
 
-		const className = classNames(
-			classNamesObject,
-			Height.getClass(height),
-			additionalClasses
-		);
-
 		const effectiveValue = this.getEffectiveValue();
 
 		return (
@@ -141,12 +154,18 @@ export class Textbox extends React.Component<TextboxProps> {
 				disabled={disabled || false}
 				id={id}
 				placeholder={placeholder}
-				className={className}
+				className={classNames(
+					classNamesObject,
+					Height.getClass(height),
+					additionalClasses,
+					className
+				)}
 				onChange={this.onChange}
-				onKeyUp={this._handleKeyUp}
 				onBlur={onBlur}
 				title={title}
 				value={effectiveValue}
+				autoFocus={autoFocus}
+				onKeyDown={this.handleOnKeyDown}
 			/>
 		);
 	}
@@ -228,3 +247,5 @@ export class Textbox extends React.Component<TextboxProps> {
 		return value == null ? "" : value.toString();
 	};
 }
+
+Textbox.contextType = DropdownContext;

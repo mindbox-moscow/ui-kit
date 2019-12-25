@@ -112,29 +112,28 @@ export const FilterWrapper: React.FC<Props> = ({
 					</div>
 					<ul className="kit-filter__all-wrap">
 						{!doesContainFilter &&
-							scrollState === ScrollState.Minified ? (
-								<ButtonUp />
-							) : (
-								children
-							)}
+						scrollState === ScrollState.Minified ? (
+							<ButtonUp />
+						) : (
+							children
+						)}
 					</ul>
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{showApplyButton == null || showApplyButton == true ?
-									(
-										scrollState !== ScrollState.Minified ? (
-											<button
-												className="kit-filter__use-filter"
-												onClick={onApply}
-											>
-												{applyButtonCaption}
-											</button>
-										) : (
-												<ButtonUp />
-											)
+								{showApplyButton == null ||
+								showApplyButton == true ? (
+									scrollState !== ScrollState.Minified ? (
+										<button
+											className="kit-filter__use-filter"
+											onClick={onApply}
+										>
+											{applyButtonCaption}
+										</button>
+									) : (
+										<ButtonUp />
 									)
-									: null}
+								) : null}
 							</div>
 							{selectionState !== SelectionStateType.None &&
 								countSelectedItems()}
@@ -158,20 +157,20 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-							<div className="kit-filter__short-wrap-filter">
-								{selectionState !== SelectionStateType.None &&
-									countSelectedItems()}
-								<InfoWrapper
-									statisticsValue={statisticsValue}
-									statisticsDescription={statisticsDescription}
-									shouldShowStatistics={
-										shouldShowStatistics == undefined
-											? true
-											: shouldShowStatistics
-									}
-								/>
-							</div>
-						)}
+						<div className="kit-filter__short-wrap-filter">
+							{selectionState !== SelectionStateType.None &&
+								countSelectedItems()}
+							<InfoWrapper
+								statisticsValue={statisticsValue}
+								statisticsDescription={statisticsDescription}
+								shouldShowStatistics={
+									shouldShowStatistics == undefined
+										? true
+										: shouldShowStatistics
+								}
+							/>
+						</div>
+					)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

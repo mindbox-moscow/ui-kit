@@ -10,3 +10,11 @@ export enum COLORS {
 	Warning = "#E7950F",
 	WarningBackground = "#D2B591"
 }
+
+export enum KeysCodes {
+	ArrowUp = 38,
+	ArrowRight = 39,
+	ArrowDown = 40,
+	Enter = 13,
+	Esc = 27
+}

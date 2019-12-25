@@ -2,10 +2,20 @@ import cn from "classnames";
 import * as React from "react";
 import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
+import { DropdownContext } from "./DropDownContext";
 import { DropdownProps, DropdownState } from "./types";
+import { KeysCodes } from "../../../utils/constants";
 
 // TODO: Удалить после редизайна
 const HEIGHT_HEADER = 90;
+
+const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
+	bubbles: true,
+	cancelable: true,
+	key: "Enter",
+	code: "Enter",
+	view: window
+});
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	private static DropdownIdentifier: number = 0;
@@ -15,6 +25,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		isInBottomOfScreen: false,
 		show: false
 	};
+	private itemsListSearch: HTMLLIElement[] = [];
+	private refSearch: HTMLInputElement | null = null;
 
 	private dropdownRef = React.createRef<HTMLDivElement>();
 
@@ -29,6 +41,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidUpdate() {
 		this.positionDropDown();
+		this.itemsListSearch = [];
 	}
 
 	public hide = () => {
@@ -56,6 +69,118 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
+	public handleOnKeyDown = (e: React.KeyboardEvent) => {
+		if (e.keyCode === KeysCodes.Enter) {
+			this.handleClick();
+		}
+	};
+
+	public handleContextOnKeyDownSearch = (e?: React.KeyboardEvent) => {
+		if (e) {
+			switch (e.keyCode) {
+				case KeysCodes.Esc:
+					e.preventDefault();
+					this.changeVisibility(false);
+					this.handleFocusElement(this.dropdownRef.current);
+					break;
+
+				case KeysCodes.ArrowDown:
+					e.preventDefault();
+
+					if (this.itemsListSearch.length > 0) {
+						this.itemsListSearch[0].focus({ preventScroll: true });
+					}
+					break;
+				case KeysCodes.Enter:
+					e.preventDefault();
+
+					if (this.itemsListSearch.length > 0) {
+						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER);
+						this.handleFocusElement(this.dropdownRef.current);
+					}
+			}
+		}
+	};
+
+	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
+		const focusedElement = document.activeElement;
+		const currentIndex = this.itemsListSearch.findIndex(
+			item => item === focusedElement
+		);
+
+		switch (e.keyCode) {
+			case KeysCodes.Enter:
+				e.preventDefault();
+				this.handleFocusElement(this.dropdownRef.current);
+
+				break;
+
+			case KeysCodes.Esc:
+				e.preventDefault();
+				this.handleFocusElement(this.refSearch);
+				break;
+
+			case KeysCodes.ArrowDown:
+				e.preventDefault();
+
+				if (currentIndex === this.itemsListSearch.length - 1) {
+					this.itemsListSearch[0].focus({ preventScroll: true });
+				} else {
+					this.itemsListSearch[currentIndex + 1].focus({
+						preventScroll: true
+					});
+				}
+				break;
+
+			case KeysCodes.ArrowUp:
+				e.preventDefault();
+
+				if (currentIndex === 0) {
+					this.handleFocusElement(this.refSearch);
+				} else {
+					this.itemsListSearch[currentIndex - 1].focus({
+						preventScroll: true
+					});
+				}
+				break;
+		}
+	};
+
+	public setSearchRef = (
+		searchElement: React.RefObject<HTMLInputElement>
+	) => {
+		this.refSearch = searchElement.current;
+	};
+
+	public setItemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {
+		if (itemElement.current) {
+			this.itemsListSearch = [
+				...this.itemsListSearch,
+				itemElement.current
+			];
+		}
+	};
+
+	public handleFocusFirstElement = (
+		onMouseEnter: () => void,
+		onMouseLeave: () => void,
+		itemElement: React.RefObject<HTMLLIElement>
+	) => {
+		if (this.itemsListSearch[0] === itemElement.current) {
+			onMouseEnter();
+		} else {
+			onMouseLeave();
+		}
+	};
+
+	public handleFocusElement = (
+		element: HTMLDivElement | HTMLInputElement | null
+	) => {
+		if (element) {
+			element.focus({ preventScroll: true });
+		}
+	};
+
 	public render() {
 		const { show, isInBottomOfScreen } = this.state;
 		const {
@@ -78,9 +203,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		);
 
 		const style = { ...this.props.style, marginLeft: "0 !important" };
+
+		const contextValues = {
+			contextOnKeyDownSearch: this.handleContextOnKeyDownSearch,
+			contextOnKeyDownItems: this.handleContextOnKeyDownItems,
+			onSearchRef: this.setSearchRef,
+			onItemsRef: this.setItemListRef,
+			onFocusElement: this.handleFocusFirstElement
+		};
+
 		return (
 			<div className="kit-flat-select">
 				<div
+					tabIndex={0}
 					id={id}
 					className={cn(
 						className,
@@ -100,22 +235,26 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					style={style}
 					ref={this.dropdownRef}
 					onClick={this.handleClick}
+					onKeyDown={this.handleOnKeyDown}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}
 						{this.clearSelectionSection()}
 					</span>
 				</div>
+
 				{show && (
-					<Panel
-						onClickOutside={this.hide}
-						width={width || Width.Full}
-						className={cn(panelClass, {
-							"kit-selectR-above": isInBottomOfScreen
-						})}
-					>
-						{children}
-					</Panel>
+					<DropdownContext.Provider value={contextValues}>
+						<Panel
+							onClickOutside={this.hide}
+							width={width || Width.Full}
+							className={cn(panelClass, {
+								"kit-selectR-above": isInBottomOfScreen
+							})}
+						>
+							{children}
+						</Panel>
+					</DropdownContext.Provider>
 				)}
 			</div>
 		);

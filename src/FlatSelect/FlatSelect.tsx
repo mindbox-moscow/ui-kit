@@ -2,118 +2,49 @@ import * as React from "react";
 import { Height, Width } from "../utils";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 import "./FlatSelect.scss";
-import { SelectedItemKey, SelectItem, SelectProps, SelectState } from "./types";
+import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
-export class FlatSelect<TValue> extends React.Component<
-	SelectProps<TValue>,
-	SelectState
-> {
-	private dropdownRef: React.RefObject<Dropdown>;
+export const FlatSelect: React.FC = <TValue extends object>({
+	id,
+	placeholder,
+	disabled,
+	width,
+	className,
+	height,
+	onChange,
+	headerInfo,
+	selectedValue,
+	itemFormatter,
+	isLoading,
+	selectElementCaption,
+	items,
+	allowNull,
+	loadListCaption,
+	selectedItemFormatter
+}: SelectProps<TValue> & { children?: React.ReactNode }) => {
+	const [searchTerm, setSearchTerm] = React.useState<string>("");
+	const dropdownRef = React.useRef<Dropdown>(null);
 
-	constructor(props: SelectProps<TValue>) {
-		super(props);
-
-		this.dropdownRef = React.createRef<Dropdown>();
-
-		this.state = {
-			searchTerm: ""
-		};
-	}
-
-	public hide = () => {
-		this.dropdownRef.current?.hide();
-	};
-
-	public clearSearchTerm = () => {
-		this.setState({ searchTerm: "" });
-	};
-
-	public render(): JSX.Element {
-		const { searchTerm } = this.state;
-
-		const {
-			id,
-			placeholder,
-			disabled,
-			width,
-			className,
-			height,
-			onChange,
-			headerInfo,
-			selectedValue
-		} = this.props;
-
-		let selectedItemKey: SelectedItemKey;
-		let selectedItemText: string | JSX.Element;
-
-		if (selectedValue !== null) {
-			selectedItemKey =
-				selectedValue instanceof Array
-					? selectedValue.map(
-							value => this.props.itemFormatter(value).key
-					  )
-					: this.props.itemFormatter(selectedValue).key;
-
-			selectedItemText =
-				this.props.selectedItemFormatter !== undefined
-					? this.props.selectedItemFormatter(selectedValue)
-					: this.defaultSelectedValueFormatter(selectedValue);
-		} else {
-			selectedItemKey = "";
-			selectedItemText = "";
+	const hide = React.useCallback(() => {
+		if (dropdownRef.current) {
+			dropdownRef.current.hide();
 		}
+	}, []);
 
-		return (
-				<Dropdown
-					id={id}
-					ref={this.dropdownRef}
-					headerInfo={selectedItemText}
-					placeholder={placeholder}
-					disabled={disabled}
-					className={className}
-					width={width || Width.Normal}
-					openedClassName="form-control select2-container-active select2-dropdown-open"
-					height={height || Height.Small}
-					onSelectionClear={
-						this.shouldRenderNullMark()
-							? () => onChange(null)
-							: null
-					}
-				>
-					<SelectSearchList
-						onInputChange={this.searchTermChanged}
-						searchTextValue={searchTerm}
-						headerInfo={headerInfo}
-					>
-						{this.renderRows(selectedItemKey)}
-					</SelectSearchList>
-				</Dropdown>
-		);
-	}
+	const searchTermChanged = React.useCallback((newSearchTerm: string) => {
+		setSearchTerm(newSearchTerm);
+	}, []);
 
-	private searchTermChanged = (searchTerm: string) => {
-		this.setState({ searchTerm });
-	};
-
-	private onChange = (newSelectedValue: TValue) => {
-		const { selectedValue, onChange } = this.props;
-		// Для моновыпадалки есть смысл закрывать выпадашку после выбора.
+	const handleOnChange = React.useCallback((newSelectedValue: TValue) => {
 		if (!(selectedValue instanceof Array)) {
-			this.hide();
+			hide();
 		}
 		onChange(newSelectedValue);
-	};
+	}, []);
 
-	private defaultSelectedValueFormatter = (
+	const defaultSelectedValueFormatter = (
 		selectedValue: TValue | TValue[]
 	): string => {
-		const {
-			itemFormatter,
-			isLoading,
-			selectElementCaption,
-			items
-		} = this.props;
-
 		if (selectedValue instanceof Array) {
 			const selectedItems = selectedValue.map(value =>
 				itemFormatter(value)
@@ -143,9 +74,7 @@ export class FlatSelect<TValue> extends React.Component<
 		}
 	};
 
-	private shouldRenderNullMark = () => {
-		const { disabled, allowNull, selectedValue } = this.props;
-
+	const shouldRenderNullMark = () => {
 		return (
 			!disabled &&
 			allowNull !== null &&
@@ -154,10 +83,7 @@ export class FlatSelect<TValue> extends React.Component<
 		);
 	};
 
-	private renderRows = (selectedItemKey: SelectedItemKey) => {
-		const { searchTerm } = this.state;
-		const { isLoading, loadListCaption, items, itemFormatter } = this.props;
-
+	const renderRows = (selectedItemKey: SelectedItemKey) => {
 		if (isLoading) {
 			return [
 				<SelectSearchRow
@@ -172,21 +98,20 @@ export class FlatSelect<TValue> extends React.Component<
 			let filteredItems = items.map(itemFormatter);
 			if (searchTerm !== null && searchTerm !== "") {
 				filteredItems = filteredItems
-					.map(e => this.rebuildTreeForSearchTerm(e))
+					.map(e => rebuildTreeForSearchTerm(e))
 					.filter(e => !!e) as Array<SelectItem<TValue>>;
-			} else if (this.shouldSortItems(selectedItemKey)) {
-				filteredItems = this.sortItems(filteredItems, selectedItemKey);
+			} else if (shouldSortItems(selectedItemKey)) {
+				filteredItems = sortItems(filteredItems, selectedItemKey);
 			}
 
-			return this.renderSelectSearchRows(filteredItems, selectedItemKey);
+			return renderSelectSearchRows(filteredItems, selectedItemKey);
 		}
 	};
 
-	private rebuildTreeForSearchTerm = (
+	const rebuildTreeForSearchTerm = (
 		node: SelectItem<TValue>
 	): SelectItem<TValue> | null => {
 		const r = { ...node };
-		const { searchTerm } = this.state;
 
 		r.children = undefined;
 		if (
@@ -202,7 +127,7 @@ export class FlatSelect<TValue> extends React.Component<
 
 			const children: Array<SelectItem<TValue>> = [];
 			node.children.forEach(c => {
-				const cn = this.rebuildTreeForSearchTerm(c);
+				const cn = rebuildTreeForSearchTerm(c);
 				if (cn != null) {
 					children.push(cn);
 				}
@@ -218,7 +143,7 @@ export class FlatSelect<TValue> extends React.Component<
 		return r;
 	};
 
-	private renderSelectSearchRows = (
+	const renderSelectSearchRows = (
 		filteredItems: Array<SelectItem<TValue>>,
 		selectedItemKey: SelectedItemKey
 	) => {
@@ -230,50 +155,36 @@ export class FlatSelect<TValue> extends React.Component<
 				title={item.title}
 				disabled={item.disabled || false}
 				isForMultiSelect={selectedItemKey instanceof Array}
-				isSelected={this.isSelected(item, selectedItemKey)}
-				// tslint:disable-next-line: jsx-no-lambda
-				onClickHandler={this.selectSearchRowClickHandler(item.value)}
+				isSelected={isSelected(item, selectedItemKey)}
+				onClickHandler={selectSearchRowClickHandler(item.value)}
 				className={item.className}
 			>
-				{this.renderSelectSearchRows(
-					item.children || [],
-					selectedItemKey
-				)}
+				{renderSelectSearchRows(item.children || [], selectedItemKey)}
 			</SelectSearchRow>
 		));
 	};
 
-	private selectSearchRowClickHandler = (val: TValue) => () =>
-		this.onChange(val);
+	const selectSearchRowClickHandler = (val: TValue) => () =>
+		handleOnChange(val);
 
-	private shouldSortItems = (selectedItemKey: SelectedItemKey): boolean => {
-		const { items } = this.props;
-
-		if (!Array.isArray(selectedItemKey)) {
-			return false;
-		}
-
-		if (items.length < 21) {
-			return false;
-		}
-
-		return true;
+	const shouldSortItems = (selectedItemKey: SelectedItemKey): boolean => {
+		return Array.isArray(selectedItemKey) && items.length >= 21;
 	};
 
-	private sortItems = (
+	const sortItems = (
 		items: Array<SelectItem<TValue>>,
 		selectedItemKey: SelectedItemKey
 	): Array<SelectItem<TValue>> => {
 		return items.sort(item => {
-			return item.disabled || false
+			return item.disabled
 				? 3
-				: this.isSelected(item, selectedItemKey)
+				: isSelected(item, selectedItemKey)
 				? 1
 				: 2;
 		});
 	};
 
-	private isSelected = (
+	const isSelected = (
 		item: SelectItem<TValue>,
 		selectedItemKey: SelectedItemKey
 	): boolean => {
@@ -281,4 +192,46 @@ export class FlatSelect<TValue> extends React.Component<
 			? selectedItemKey.some(key => item.key === key)
 			: item.key === selectedItemKey;
 	};
-}
+
+	let selectedItemKey: SelectedItemKey = "";
+	let selectedItemText: string | JSX.Element = "";
+
+	if (selectedValue !== null) {
+		selectedItemKey =
+			selectedValue instanceof Array
+				? selectedValue.map(value => itemFormatter(value).key)
+				: itemFormatter(selectedValue).key;
+
+		selectedItemText =
+			selectedItemFormatter !== undefined
+				? selectedItemFormatter(selectedValue)
+				: defaultSelectedValueFormatter(selectedValue);
+	}
+
+	const handleChange = () => {
+		onChange(null);
+	};
+
+	return (
+		<Dropdown
+			id={id}
+			ref={dropdownRef}
+			headerInfo={selectedItemText}
+			placeholder={placeholder}
+			disabled={disabled}
+			className={className}
+			width={width || Width.Normal}
+			openedClassName="form-control select2-container-active select2-dropdown-open"
+			height={height || Height.Small}
+			onSelectionClear={shouldRenderNullMark() ? handleChange : null}
+		>
+			<SelectSearchList
+				onInputChange={searchTermChanged}
+				searchTextValue={searchTerm}
+				headerInfo={headerInfo}
+			>
+				{renderRows(selectedItemKey)}
+			</SelectSearchList>
+		</Dropdown>
+	);
+};

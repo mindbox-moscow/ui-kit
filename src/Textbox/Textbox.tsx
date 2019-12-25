@@ -3,12 +3,7 @@ import * as React from "react";
 import { DropdownContext } from "../FlatSelect";
 import { Height, InputType, Width } from "../utils";
 import { ClassDictionary, TextboxProps } from "./types";
-
-enum KeysCodes {
-	Enter = 13,
-	Esc = 27,
-	ArrowDown = 40
-}
+import { KeysCodes } from '../utils/constants'
 
 export class Textbox extends React.Component<TextboxProps> {
 	public static contextType = DropdownContext;

@@ -3,19 +3,12 @@ import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
 import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
 import { IMenuModeMap, MenuMode, Props } from "./types";
+import { KeysCodes } from "../utils/constants";
 
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import "./FilterConditionSelector.scss";
-
-enum ArrowKeysCodes {
-	Up = 38,
-	Right = 39,
-	Down = 40,
-	Enter = 13,
-	Esc = 27
-}
 
 const HEADER_SEARCH_HEIGHT = 55;
 // Height + PaddingTop + PaddingBottom
@@ -50,7 +43,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
 			switch (e.keyCode) {
-				case ArrowKeysCodes.Up:
+				case KeysCodes.ArrowUp:
 					e.preventDefault();
 
 					const focus = !onPreviousSelected();
@@ -59,19 +52,19 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					}
 
 					break;
-				case ArrowKeysCodes.Esc:
+				case KeysCodes.Esc:
 					e.preventDefault();
 					if (searchRef.current) {
 						window.blur();
 						searchRef.current.focus();
 					}
 					break;
-				case ArrowKeysCodes.Right:
-				case ArrowKeysCodes.Enter:
+				case KeysCodes.ArrowRight:
+				case KeysCodes.Enter:
 					e.preventDefault();
 					onExpandCurrent();
 					break;
-				case ArrowKeysCodes.Down:
+				case KeysCodes.ArrowDown:
 					e.preventDefault();
 					if (searchRef.current) {
 						searchRef.current.blur();
@@ -84,8 +77,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 
 	const handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.keyCode) {
-			case ArrowKeysCodes.Down:
-			case ArrowKeysCodes.Enter:
+			case KeysCodes.ArrowDown:
+			case KeysCodes.Enter:
 				e.preventDefault();
 
 				if (searchRef.current && listRef.current) {
@@ -95,7 +88,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 
 				onNextSelected();
 				break;
-			case ArrowKeysCodes.Esc:
+			case KeysCodes.Esc:
 				e.preventDefault();
 
 				if (searchRef.current && listRef.current) {

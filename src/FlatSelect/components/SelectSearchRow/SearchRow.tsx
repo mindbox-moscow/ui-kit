@@ -3,13 +3,7 @@ import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
-
-enum KeysCodes {
-	Enter = 13,
-	Esc = 27,
-	ArrowDown = 40,
-	ArrowUp = 38
-}
+import { KeysCodes } from '../../../utils/constants';
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,

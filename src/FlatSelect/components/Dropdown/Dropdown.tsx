@@ -4,16 +4,10 @@ import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
 import { DropdownContext } from "./DropDownContext";
 import { DropdownProps, DropdownState } from "./types";
+import { KeysCodes } from "../../../utils/constants";
 
 // TODO: Удалить после редизайна
 const HEIGHT_HEADER = 90;
-
-enum KeysCodes {
-	Enter = 13,
-	Esc = 27,
-	ArrowDown = 40,
-	ArrowUp = 38
-}
 
 const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
 	bubbles: true,
@@ -81,7 +75,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
-	public handleContextOnKeyDownSearch = (e: React.KeyboardEvent) => {
+	public handleContextOnKeyDownSearch = (e?: React.KeyboardEvent) => {
 		if (e) {
 			switch (e.keyCode) {
 				case KeysCodes.Esc:
@@ -109,9 +103,9 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	};
 
 	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
-		const focusElement = document.activeElement;
+		const focusedElement = document.activeElement;
 		const currentIndex = this.itemsListSearch.findIndex(
-			item => item === focusElement
+			item => item === focusedElement
 		);
 
 		switch (e.keyCode) {
@@ -152,11 +146,13 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		}
 	};
 
-	public searchRef = (searchElement: React.RefObject<HTMLInputElement>) => {
+	public setSearchRef = (
+		searchElement: React.RefObject<HTMLInputElement>
+	) => {
 		this.refSearch = searchElement.current;
 	};
 
-	public itemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {
+	public setItemListRef = (itemElement: React.RefObject<HTMLLIElement>) => {
 		if (itemElement.current) {
 			this.itemsListSearch = [
 				...this.itemsListSearch,
@@ -211,8 +207,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		const contextValues = {
 			contextOnKeyDownSearch: this.handleContextOnKeyDownSearch,
 			contextOnKeyDownItems: this.handleContextOnKeyDownItems,
-			onSearchRef: this.searchRef,
-			onItemsRef: this.itemListRef,
+			onSearchRef: this.setSearchRef,
+			onItemsRef: this.setItemListRef,
 			onFocusElement: this.handleFocusFirstElement
 		};
 

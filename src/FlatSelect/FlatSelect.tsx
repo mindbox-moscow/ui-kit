@@ -23,25 +23,24 @@ export const FlatSelect: React.FC = <TValue extends object>({
 	selectedItemFormatter
 }: SelectProps<TValue> & { children?: React.ReactNode }) => {
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const dropdownRef = React.createRef<Dropdown>();
+	const dropdownRef = React.useRef<Dropdown>(null);
 
-	const hide = () => {
+	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
 			dropdownRef.current.hide();
 		}
-	};
+	}, []);
 
-	const searchTermChanged = (newSearchTerm: string) => {
+	const searchTermChanged = React.useCallback((newSearchTerm: string) => {
 		setSearchTerm(newSearchTerm);
-	};
+	}, []);
 
-	const handleOnChange = (newSelectedValue: TValue) => {
-		// Для моновыпадалки есть смысл закрывать выпадашку после выбора.
+	const handleOnChange = React.useCallback((newSelectedValue: TValue) => {
 		if (!(selectedValue instanceof Array)) {
 			hide();
 		}
 		onChange(newSelectedValue);
-	};
+	}, []);
 
 	const defaultSelectedValueFormatter = (
 		selectedValue: TValue | TValue[]
@@ -169,15 +168,7 @@ export const FlatSelect: React.FC = <TValue extends object>({
 		handleOnChange(val);
 
 	const shouldSortItems = (selectedItemKey: SelectedItemKey): boolean => {
-		if (!Array.isArray(selectedItemKey)) {
-			return false;
-		}
-
-		if (items.length < 21) {
-			return false;
-		}
-
-		return true;
+		return Array.isArray(selectedItemKey) && items.length >= 21;
 	};
 
 	const sortItems = (
@@ -185,7 +176,7 @@ export const FlatSelect: React.FC = <TValue extends object>({
 		selectedItemKey: SelectedItemKey
 	): Array<SelectItem<TValue>> => {
 		return items.sort(item => {
-			return item.disabled || false
+			return item.disabled
 				? 3
 				: isSelected(item, selectedItemKey)
 				? 1
@@ -202,8 +193,8 @@ export const FlatSelect: React.FC = <TValue extends object>({
 			: item.key === selectedItemKey;
 	};
 
-	let selectedItemKey: SelectedItemKey;
-	let selectedItemText: string | JSX.Element;
+	let selectedItemKey: SelectedItemKey = "";
+	let selectedItemText: string | JSX.Element = "";
 
 	if (selectedValue !== null) {
 		selectedItemKey =
@@ -215,10 +206,11 @@ export const FlatSelect: React.FC = <TValue extends object>({
 			selectedItemFormatter !== undefined
 				? selectedItemFormatter(selectedValue)
 				: defaultSelectedValueFormatter(selectedValue);
-	} else {
-		selectedItemKey = "";
-		selectedItemText = "";
 	}
+
+	const handleChange = () => {
+		onChange(null);
+	};
 
 	return (
 		<Dropdown
@@ -231,9 +223,7 @@ export const FlatSelect: React.FC = <TValue extends object>({
 			width={width || Width.Normal}
 			openedClassName="form-control select2-container-active select2-dropdown-open"
 			height={height || Height.Small}
-			onSelectionClear={
-				shouldRenderNullMark() ? () => onChange(null) : null
-			}
+			onSelectionClear={shouldRenderNullMark() ? handleChange : null}
 		>
 			<SelectSearchList
 				onInputChange={searchTermChanged}

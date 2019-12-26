@@ -2,7 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { Height, Width } from "../../../utils";
 import { Panel } from "../Panel";
-import { DropdownContext } from "./DropDownContext";
+import { DropdownContext } from "./DropdownContext";
 import { DropdownProps, DropdownState } from "./types";
 import { KeysCodes } from "../../../utils/constants";
 

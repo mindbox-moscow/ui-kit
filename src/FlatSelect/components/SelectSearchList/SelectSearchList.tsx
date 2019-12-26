@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SelectDropMain } from "..";
-import { neitralZoneClass } from "../../../HOCs";
+import { neutralZoneClass } from "../../../HOCs";
 import { Textbox } from "../../../Textbox";
 import { SelectionMode, SelectSearchListProps } from "./types";
 
@@ -97,7 +97,7 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 							value={searchTextValue}
 							onChange={onInputChange}
 							shouldTextBeSelected={shouldSearchTextBeSelected}
-							className={neitralZoneClass}
+							className={neutralZoneClass}
 							autoFocus={true}
 						/>
 					</span>

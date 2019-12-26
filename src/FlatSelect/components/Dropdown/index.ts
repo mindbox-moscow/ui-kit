@@ -1,3 +1,3 @@
 export * from "./Dropdown";
-export * from "./DropDownContext";
+export * from "./DropdownContext";
 export * from "./types";

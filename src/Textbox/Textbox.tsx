@@ -6,7 +6,6 @@ import { ClassDictionary, TextboxProps } from "./types";
 import { KeysCodes } from '../utils/constants'
 
 export class Textbox extends React.Component<TextboxProps> {
-	public static contextType = DropdownContext;
 	public context!: React.ContextType<typeof DropdownContext>;
 
 	public get focusText() {

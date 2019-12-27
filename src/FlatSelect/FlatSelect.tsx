@@ -4,7 +4,7 @@ import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 import "./FlatSelect.scss";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
-export const FlatSelect: React.FC = <TValue extends object>({
+export const FlatSelect = <TValue extends object>({
 	id,
 	placeholder,
 	disabled,

@@ -96,12 +96,14 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					const selectedElement =
 						valueContext.selectedElement || null;
 
+					console.log(selectedElement);
+
 					if (
 						selectedElement &&
 						(selectedElement.type ===
 							"filterablePropertyCategory" ||
 							selectedElement.type ===
-								"simpleFilterableProperty") &&
+								"filterablePropertyWithLinkedConditions") &&
 						!selectedElement.isExpanded
 					) {
 						onExpandCurrent();
@@ -135,7 +137,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 				const elements = getFocusableElements(
 					filterDetails as HTMLElement
 				);
-				elements[0].focus();
+				elements && elements[0].focus();
 			}
 		}
 	};

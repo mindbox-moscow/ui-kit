@@ -7,7 +7,7 @@ import { ChildRendererProps } from "./types";
 
 import "./FilterConditionSelector.scss";
 
-type ElementType =
+export type ElementType =
 	| "filterablePropertyCategory"
 	| "simpleFilterableProperty"
 	| "filterablePropertyWithLinkedConditions";
@@ -41,7 +41,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	onSelect
 }) => {
 	const refSelector = React.createRef<HTMLLIElement>();
-	const scrollParent = useContext(FilterConditionSelectorContext);
+	const context = useContext(FilterConditionSelectorContext);
 
 	useEffect(() => {
 		if (isSelected) {
@@ -50,8 +50,13 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	}, []);
 
 	const scrollParentOnKeyDown = () => {
-		if (refSelector.current && scrollParent) {
-			scrollParent(refSelector.current);
+		if (refSelector.current && context) {
+			context.onSelectElement(refSelector.current);
+			context.selectedElement = {
+				isSelected,
+				isExpanded,
+				type
+			};
 		}
 	};
 
@@ -133,7 +138,10 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 							className="kit-filter-condition-selector__hierarchy-toggle"
 							onClick={onExpand}
 						>
-							<IconSvg type="arrow-right" className="kit-filter-condition-selector__arrow" />
+							<IconSvg
+								type="arrow-right"
+								className="kit-filter-condition-selector__arrow"
+							/>
 						</div>
 					)}
 				<div

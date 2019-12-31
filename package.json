@@ -3,14 +3,11 @@
 	"version": "0.2.0-dev",
 	"types": "./build",
 	"main": "./build",
-	"dependencies": {
-		"body-scroll-lock": "^2.6.4"
-	},
+	"dependencies": {},
 	"peerDependencies": {
 		"classnames": "^2.2.6",
 		"react": "^16.8.6",
-		"react-dom": "^16.8.6",
-		"body-scroll-lock": "^2.6.4"
+		"react-dom": "^16.8.6"
 	},
 	"scripts": {
 		"test": "echo no tests",
@@ -21,7 +18,6 @@
 	},
 	"devDependencies": {
 		"@svgr/webpack": "^4.3.0",
-		"@types/body-scroll-lock": "^2.6.1",
 		"@types/classnames": "^2.2.6",
 		"@types/jest": "^22.2.3",
 		"@types/node": "^10.17.5",

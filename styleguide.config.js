@@ -79,6 +79,10 @@ module.exports = {
 		"**/FiltrationGroupComponent/components/**",
 		"**/FilterWrapper/components/**",
 		"**/FlatSelect/components/**",
-		"**/FlatSelect/modules/**"
+		"**/FlatSelect/modules/**",
+		"**/FilterConditionSelector/FilterConditionSelectorContext.tsx",
+		"**/FilterWrapper/FilterWrapperContext.tsx",
+		"**/FiltrationConditionComponent/FiltrationConditionComponentContext.tsx",
+		"**/utils/**"
 	]
 };

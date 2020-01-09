@@ -1,24 +1,24 @@
 import {
 	BodyScrollOptions,
+	clearAllBodyScrollLocks,
 	disableBodyScroll,
-	enableBodyScroll,
-	clearAllBodyScrollLocks
+	enableBodyScroll
 } from "body-scroll-lock";
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
+import { KeysCodes } from "../utils/constants";
 import {
 	FilterConditionSelectorContext,
 	IProps
 } from "./FilterConditionSelectorContext";
 import { IMenuModeMap, MenuMode, Props } from "./types";
-import { KeysCodes } from "../utils/constants";
 
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
-import "./FilterConditionSelector.scss";
 import { ContextWrapper } from "./components";
+import "./FilterConditionSelector.scss";
 import { getFocusableElements } from "./utils";
 
 const HEADER_SEARCH_HEIGHT = 55;
@@ -95,8 +95,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 
 					const selectedElement =
 						valueContext.selectedElement || null;
-
-					console.log(selectedElement);
 
 					if (
 						selectedElement &&

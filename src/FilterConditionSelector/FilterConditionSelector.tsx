@@ -135,7 +135,10 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 				const elements = getFocusableElements(
 					filterDetails as HTMLElement
 				);
-				elements && elements[0].focus();
+
+				if (elements.length > 0) {
+					elements[0].focus();
+				}
 			}
 		}
 	};

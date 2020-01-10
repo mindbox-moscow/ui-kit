@@ -1,9 +1,9 @@
 import cn from "classnames";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { KeysCodes } from '../../../utils/constants';
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
-import { KeysCodes } from '../../../utils/constants';
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
@@ -20,7 +20,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 }) => {
 	const context = React.useContext(DropdownContext);
 	const refElement = React.useRef<HTMLLIElement>(null);
-	const [ markedItem, setMarkedItem ] = React.useState(false)
+	const [ markedItem, setMarkedItem ] = React.useState(false);
 
 	React.useEffect(() => {
 		document.addEventListener("searchEnter", handelSelectEnter)
@@ -33,7 +33,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		return () => {
 			document.removeEventListener("searchEnter", handelSelectEnter)
 		}
-	}, [context])
+	}, [context, refElement])
 
 	const Сhildren = (): JSX.Element | null => {
 		return hasNested ? (

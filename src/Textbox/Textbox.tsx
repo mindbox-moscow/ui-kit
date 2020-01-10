@@ -31,7 +31,6 @@ export const Textbox: React.FC<TextboxProps> = ({
 	const refTextbox = React.createRef<HTMLInputElement>();
 
 	React.useEffect(() => {
-		console.log(context)
 		_selectTextIfRequired();
 		_focusTextIfRequired();
 
@@ -185,7 +184,7 @@ export const Textbox: React.FC<TextboxProps> = ({
 		return value.match(/^([+-]?\d+|0)$/g);
 	};
 
-	const inputIsInProcess = (newValue: any) => {
+	const inputIsInProcess = (newValue: string) => {
 		return (
 			newValue.endsWith(".") ||
 			newValue.startsWith(".") ||

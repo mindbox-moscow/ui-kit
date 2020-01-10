@@ -35,7 +35,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		}
 	}, [context, refElement])
 
-	const Сhildren = (): JSX.Element | null => {
+	const RenderСhildren = (): JSX.Element | null => {
 		return hasNested ? (
 			<ul className="kit-selectR-results kit-selectR-results-default">
 				{children}
@@ -117,7 +117,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			>
 				{text}
 			</div>
-			<Сhildren />
+			<RenderСhildren />
 		</li>
 	);
 };

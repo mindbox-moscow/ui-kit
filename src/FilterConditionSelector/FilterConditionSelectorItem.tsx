@@ -43,11 +43,14 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const refSelector = React.createRef<HTMLLIElement>();
 	const context = useContext(FilterConditionSelectorContext);
 
-	useEffect(() => {
-		if (isSelected) {
-			scrollParentOnKeyDown();
-		}
-	});
+	useEffect(
+		() => {
+			if (isSelected) {
+				scrollParentOnKeyDown();
+			}
+		},
+		[isSelected]
+	);
 
 	const scrollParentOnKeyDown = () => {
 		if (refSelector.current && context) {

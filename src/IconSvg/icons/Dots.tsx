@@ -8,6 +8,7 @@ export const Dots = ({ className, size }: ISvgProps) => (
 		height={size === "large" ? 16 * 1.5 : 16}
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 4 16"
 	>
 		<g fill="#8aacc2" fillRule="evenodd">
 			<circle cx={2} cy={2} r={2} />

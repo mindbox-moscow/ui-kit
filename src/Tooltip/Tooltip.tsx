@@ -1,81 +1,113 @@
 import cn from "classnames";
 import * as React from "react";
+import { withOutsideClick } from "../HOCs";
+import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./Tooltip.scss";
 
 interface IProps {
 	title: string | JSX.Element;
 	position?: "top" | "bottom";
+	showByClick?: boolean;
 	className?: string;
 }
 
-interface IState {
-	isShow: boolean;
-}
+const WithOutsideClickOverflowVisibleContainer = withOutsideClick(
+	OverflowVisibleContainer
+);
 
-export class Tooltip extends React.Component<IProps, IState> {
-	public state = {
-		isShow: false
+export const Tooltip: React.FC<IProps> = ({
+	title,
+	position = "bottom",
+	className,
+	children,
+	showByClick = false
+}) => {
+	const [isShow, setIsShow] = React.useState(false);
+	const refTitle = React.useRef<HTMLDivElement>(null);
+
+	const handleShowTooltip = () => {
+		setIsShow(true);
 	};
 
-	public refTitle = React.createRef<HTMLDivElement>();
-
-	public handleShowTooltip = () => {
-		this.setState({ isShow: true });
-	};
-	public handleHideTooltip = () => {
-		this.setState({ isShow: false });
+	const handleHideTooltip = () => {
+		setIsShow(false);
 	};
 
-	public render() {
-		const { isShow } = this.state;
-		const { title, position = "bottom", className, children } = this.props;
-
-		if (!children) {
-			return (
-				<div className={cn("kit-tooltip", className)}>
-					<div className="kit-tooltip__title">{title}</div>
-				</div>
-			);
-		}
-
+	if (!children) {
 		return (
 			<div className={cn("kit-tooltip", className)}>
-				<div
-					onMouseEnter={this.handleShowTooltip}
-					onMouseLeave={this.handleHideTooltip}
-					ref={this.refTitle}
-					className="kit-tooltip__title"
-				>
-					{isShow && (
-						<span
-							className={cn(
-								"kit-tooltip__road",
-								`kit-tooltip__road_${position}`
-							)}
-						/>
-					)}
-					{title}
-				</div>
-				<OverflowVisibleContainer
-					parentRef={this.refTitle}
-					className="kit-tooltip__popup"
-				>
-					<div
-						onMouseEnter={this.handleShowTooltip}
-						onMouseLeave={this.handleHideTooltip}
-						className={cn(
-							"kit-tooltip__content",
-							`kit-tooltip__content_${position}`,
-							{
-								"kit-tooltip__content_show": isShow
-							}
-						)}
-					>
-						{children}
-					</div>
-				</OverflowVisibleContainer>
+				<div className="kit-tooltip__title">{title}</div>
 			</div>
 		);
 	}
-}
+
+	const tooltipContent = (
+		<div
+			onMouseEnter={showByClick ? undefined : handleShowTooltip}
+			onMouseLeave={showByClick ? undefined : handleHideTooltip}
+			className={cn(
+				"kit-tooltip__content",
+				`kit-tooltip__content_${position}`,
+				{
+					"kit-tooltip__content_show": isShow
+				}
+			)}
+		>
+			{showByClick && (
+				<button
+					type="button"
+					onClick={handleHideTooltip}
+					className="kit-tooltip__close"
+				>
+					<IconSvg type="close" className="kit-tooltip__close-icon" />
+				</button>
+			)}
+			{children}
+		</div>
+	);
+
+	return (
+		<div className={cn("kit-tooltip", className)}>
+			<div
+				onMouseEnter={showByClick ? undefined : handleShowTooltip}
+				onMouseLeave={showByClick ? undefined : handleHideTooltip}
+				onClick={showByClick ? handleShowTooltip : undefined}
+				ref={refTitle}
+				className={cn("kit-tooltip__title", {
+					"kit-tooltip__title_pointer": showByClick
+				})}
+			>
+				{isShow && (
+					<span
+						className={cn(
+							"kit-tooltip__road",
+							`kit-tooltip__road_${position}`
+						)}
+					/>
+				)}
+				{title}
+			</div>
+			{isShow && (
+				<>
+					{showByClick ? (
+						<WithOutsideClickOverflowVisibleContainer
+							parentRef={refTitle}
+							className="kit-tooltip__popup"
+							onClickOutside={handleHideTooltip}
+						>
+							{tooltipContent}
+						</WithOutsideClickOverflowVisibleContainer>
+					) : (
+						<OverflowVisibleContainer
+							parentRef={refTitle}
+							className="kit-tooltip__popup"
+						>
+							{tooltipContent}
+						</OverflowVisibleContainer>
+					)}
+				</>
+			)}
+		</div>
+	);
+};

@@ -13,6 +13,10 @@
 	display: inline-flex;
 	align-items: center;
 	cursor: default;
+
+	&_pointer {
+		cursor: pointer;
+	}
 }
 
 .kit-tooltip__popup {
@@ -111,4 +115,29 @@
 	&_bottom {
 		top: 100%;
 	}
+}
+
+.kit-tooltip__close {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	color: #707070;
+	cursor: pointer;
+
+	&:hover {
+		color: #333;
+	}
+}
+
+.kit-tooltip__close-icon {
+	width: 10px;
+	height: 10px;
 }

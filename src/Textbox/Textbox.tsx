@@ -30,14 +30,17 @@ export const Textbox: React.FC<TextboxProps> = ({
 	const context = React.useContext(DropdownContext);
 	const refTextbox = React.createRef<HTMLInputElement>();
 
-	React.useEffect(() => {
-		_selectTextIfRequired();
-		_focusTextIfRequired();
+	React.useEffect(
+		() => {
+			selectTextIfRequired();
+			focusTextIfRequired();
 
-		if (context && context.onSearchRef) {
-			context.onSearchRef(refTextbox);
-		}
-	});
+			if (context && context.onSearchRef) {
+				context.onSearchRef(refTextbox);
+			}
+		},
+		[context?.onSearchRef, refTextbox]
+	);
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
 		if (context && context.contextOnKeyDownSearch) {
@@ -92,7 +95,7 @@ export const Textbox: React.FC<TextboxProps> = ({
 		onChange(newValue);
 	};
 
-	const _selectTextIfRequired = () => {
+	const selectTextIfRequired = () => {
 		if (shouldTextBeSelected) {
 			const node = refTextbox.current;
 
@@ -103,13 +106,13 @@ export const Textbox: React.FC<TextboxProps> = ({
 		}
 	};
 
-	const _focusTextIfRequired = () => {
+	const focusTextIfRequired = () => {
 		if (shouldTextBeFocused) {
-			_focusText();
+			focusText();
 		}
 	};
 
-	const _focusText = () => {
+	const focusText = () => {
 		const node = refTextbox.current;
 
 		if (node) {

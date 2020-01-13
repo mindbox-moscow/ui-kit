@@ -3,6 +3,12 @@
 	width: auto;
 }
 
+.kit-selectR.form-control:focus {
+	.kit-selectR-choice {
+		border-color: #5897fb;
+	}
+}
+
 .kit-selectR-offscreen,
 .kit-selectR-offscreen:focus {
 	clip: rect(0 0 0 0) !important;

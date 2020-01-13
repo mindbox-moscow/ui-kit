@@ -1,10 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
 import { Height, Width } from "../../../utils";
+import { KeysCodes } from "../../../utils/constants";
 import { Panel } from "../Panel";
 import { DropdownContext } from "./DropdownContext";
 import { DropdownProps, DropdownState } from "./types";
-import { KeysCodes } from "../../../utils/constants";
 
 // TODO: Удалить после редизайна
 const HEIGHT_HEADER = 90;

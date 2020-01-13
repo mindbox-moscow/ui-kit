@@ -2,103 +2,102 @@ import classNames from "classnames";
 import * as React from "react";
 import { DropdownContext } from "../FlatSelect";
 import { Height, InputType, Width } from "../utils";
+import { KeysCodes } from "../utils/constants";
 import { ClassDictionary, TextboxProps } from "./types";
-import { KeysCodes } from '../utils/constants'
 
-export class Textbox extends React.Component<TextboxProps> {
-	public context!: React.ContextType<typeof DropdownContext>;
+export const Textbox: React.FC<TextboxProps> = ({
+	value,
+	disabled,
+	style,
+	id,
+	placeholder,
+	className,
+	height = Height.Normal,
+	width = Width.Normal,
+	additionalClasses,
+	onBlur,
+	title,
+	autoFocus = false,
+	type,
+	minValue,
+	maxValue,
+	onChange,
+	shouldTextBeSelected,
+	notFormControl,
+	shouldTextBeFocused,
+	precision
+}) => {
+	const context = React.useContext(DropdownContext);
+	const refTextbox = React.createRef<HTMLInputElement>();
 
-	public get focusText() {
-		return this._focusText;
-	}
-	public set focusText(value) {
-		this._focusText = value;
-	}
+	React.useEffect(
+		() => {
+			selectTextIfRequired();
+			focusTextIfRequired();
 
-	private refTextbox = React.createRef<HTMLInputElement>();
-	public componentDidMount() {
-		const onSearchRef = this.context?.onSearchRef
-		this._selectTextIfRequired();
-		this._focusTextIfRequired();
+			if (context && context.onSearchRef) {
+				context.onSearchRef(refTextbox);
+			}
+		},
+		[context?.onSearchRef, refTextbox]
+	);
 
-		if (onSearchRef) {
-			onSearchRef(this.refTextbox)
-		}
-	}
-
-	public componentDidUpdate() {
-		this._selectTextIfRequired();
-		this._focusTextIfRequired();
-	}
-
-	public handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const contextKeyDown = this.context?.contextOnKeyDownSearch;
-
-		if (contextKeyDown ) {
+	const handleOnKeyDown = (e: React.KeyboardEvent) => {
+		if (context && context.contextOnKeyDownSearch) {
 			switch (e.keyCode) {
 				case KeysCodes.ArrowDown:
 				case KeysCodes.Esc:
 				case KeysCodes.Enter:
-					contextKeyDown(e);
+					context.contextOnKeyDownSearch(e);
 			}
 		}
 	};
 
-	public onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = e.target.value;
-		const contextKeyDown = this.context?.contextOnKeyDownSearch;
 
-		contextKeyDown && contextKeyDown()
+		if (context && context.contextOnKeyDownSearch) {
+			context.contextOnKeyDownSearch();
+		}
 
-		if (
-			newValue != null &&
-			newValue !== "" &&
-			this.props.type === InputType.Number
-		) {
+		if (newValue != null && newValue !== "" && type === InputType.Number) {
 			const whitespaceFreeNumber = newValue.replace(/\s/g, "");
-			if (this.canBeFractional()) {
-				if (!this.isValidDecimal(whitespaceFreeNumber)) {
+			if (canBeFractional()) {
+				if (!isValidDecimal(whitespaceFreeNumber)) {
 					return;
 				}
-			} else if (!this.isValidInteger(whitespaceFreeNumber)) {
+			} else if (!isValidInteger(whitespaceFreeNumber)) {
 				return;
 			}
 
-			if (newValue !== "-" && !this.inputIsInProcess(newValue)) {
+			if (newValue !== "-" && !inputIsInProcess(newValue)) {
 				const numericValue = parseFloat(whitespaceFreeNumber);
 
 				if (isNaN(numericValue)) {
 					return;
 				}
 
-				if (
-					this.props.minValue != null &&
-					numericValue < this.props.minValue
-				) {
+				if (minValue != null && numericValue < minValue) {
 					return;
 				}
 
-				if (
-					this.props.maxValue != null &&
-					numericValue > this.props.maxValue
-				) {
+				if (maxValue != null && numericValue > maxValue) {
 					return;
 				}
 
-				this.props.onChange(numericValue);
+				onChange(numericValue);
 			} else {
-				this.props.onChange(whitespaceFreeNumber);
+				onChange(whitespaceFreeNumber);
 			}
 			return;
 		}
 
-		this.props.onChange(newValue);
+		onChange(newValue);
 	};
 
-	// tslint:disable-next-line: variable-name
-	public _selectTextIfRequired = () => {
-		if (this.props.shouldTextBeSelected) {
-			const node = this.refTextbox.current;
+	const selectTextIfRequired = () => {
+		if (shouldTextBeSelected) {
+			const node = refTextbox.current;
 
 			if (node) {
 				node.select();
@@ -107,108 +106,33 @@ export class Textbox extends React.Component<TextboxProps> {
 		}
 	};
 
-	// tslint:disable-next-line: variable-name
-	public _focusTextIfRequired = () => {
-		if (this.props.shouldTextBeFocused) {
-			this._focusText();
+	const focusTextIfRequired = () => {
+		if (shouldTextBeFocused) {
+			focusText();
 		}
 	};
 
-	public render() {
-		const {
-			width = Width.Normal,
-			height = Height.Normal,
-			notFormControl,
-			additionalClasses,
-			style,
-			disabled,
-			id,
-			placeholder,
-			onBlur,
-			title,
-			className,
-			autoFocus = false
-		} = this.props;
-
-		const classNamesObject: ClassDictionary = {
-			"form-control": !notFormControl,
-			"form-control_error": !this.context || !this.props
-		};
-
-		if (width === Width.Full) {
-			classNamesObject["form-control_all"] = true;
-		} else {
-			if (width !== null) {
-				classNamesObject[String(Width.getClass(width))] = true;
-			}
-		}
-
-		const effectiveValue = this.getEffectiveValue();
-
-		return (
-			<input
-				ref={this.refTextbox}
-				type={InputType.Text}
-				style={style}
-				disabled={disabled || false}
-				id={id}
-				placeholder={placeholder}
-				className={classNames(
-					classNamesObject,
-					Height.getClass(height),
-					additionalClasses,
-					className
-				)}
-				onChange={this.onChange}
-				onBlur={onBlur}
-				title={title}
-				value={effectiveValue}
-				autoFocus={autoFocus}
-				onKeyDown={this.handleOnKeyDown}
-			/>
-		);
-	}
-
-	// tslint:disable-next-line: variable-name
-	private _focusText = () => {
-		const node = this.refTextbox.current;
+	const focusText = () => {
+		const node = refTextbox.current;
 
 		if (node) {
 			node.focus();
 		}
 	};
 
-	private canBeFractional = () => {
-		const { precision } = this.props;
-
+	const canBeFractional = () => {
 		return precision && precision > 0;
 	};
 
-	private isValidDecimal(value: string) {
+	const isValidDecimal = (value: string) => {
 		return value.match(
 			new RegExp(
-				`^((-\\d|-.\\d)?(\\d+\\.|\\d*)?((\\.)?\\d{1,${
-					this.props.precision
-				}})?)$`
+				`^((-\\d|-.\\d)?(\\d+\\.|\\d*)?((\\.)?\\d{1,${precision}})?)$`
 			)
-		);
-	}
-
-	private isValidInteger(value: string) {
-		return value.match(/^([+-]?\d+|0)$/g);
-	}
-
-	private inputIsInProcess = (newValue: any) => {
-		return (
-			newValue.endsWith(".") ||
-			newValue.startsWith(".") ||
-			newValue.match(/\.(0+)$/g)
 		);
 	};
 
-	private getEffectiveValue = () => {
-		const { value, precision, type } = this.props;
-
+	const getEffectiveValue = () => {
 		if (value == null || value === "") {
 			return "";
 		}
@@ -245,6 +169,54 @@ export class Textbox extends React.Component<TextboxProps> {
 
 		return value == null ? "" : value.toString();
 	};
-}
 
-Textbox.contextType = DropdownContext;
+	const classNamesObject: ClassDictionary = {
+		"form-control": !notFormControl,
+		"form-control_error": !context
+	};
+
+	if (width === Width.Full) {
+		classNamesObject["form-control_all"] = true;
+	} else {
+		if (width !== null) {
+			classNamesObject[String(Width.getClass(width))] = true;
+		}
+	}
+
+	const isValidInteger = (value: string) => {
+		return value.match(/^([+-]?\d+|0)$/g);
+	};
+
+	const inputIsInProcess = (newValue: string) => {
+		return (
+			newValue.endsWith(".") ||
+			newValue.startsWith(".") ||
+			newValue.match(/\.(0+)$/g)
+		);
+	};
+
+	const effectiveValue = getEffectiveValue();
+
+	return (
+		<input
+			ref={refTextbox}
+			type={InputType.Text}
+			style={style}
+			disabled={disabled || false}
+			id={id}
+			placeholder={placeholder}
+			className={classNames(
+				classNamesObject,
+				Height.getClass(height),
+				additionalClasses,
+				className
+			)}
+			onChange={handleOnChange}
+			onBlur={onBlur}
+			title={title}
+			value={effectiveValue}
+			autoFocus={autoFocus}
+			onKeyDown={handleOnKeyDown}
+		/>
+	);
+};

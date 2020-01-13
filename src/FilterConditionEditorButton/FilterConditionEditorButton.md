@@ -1031,7 +1031,14 @@ const allElementsDictionary = {
 		isExpanded: true,
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
-		editorComponent: null,
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
 		childIds: ["organization3"],
 		helpComponent: <div>Хелп к категории "Поведение"</div>
@@ -1494,7 +1501,14 @@ const allElementsDictionary = {
 		isExpanded: true,
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
-		editorComponent: null,
+		editorComponent: (
+			<FilterConditionEditorComponent
+				innerEditorComponent={EditorComponentExample()}
+				addFilterButtonCaption="Добавить фильтр"
+				isAddFilterButtonEnabled={false}
+				onAddFilterButtonClick={() => console.log("фильтр добавлен")}
+			/>
+		),
 		isSelected: false,
 		childIds: [
 			"segmentViewHistory",

@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
 import { Panel } from "../Panel";
@@ -244,17 +245,19 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 
 				{show && (
-					<DropdownContext.Provider value={contextValues}>
-						<Panel
-							onClickOutside={this.hide}
-							width={width || Width.Full}
-							className={cn(panelClass, {
-								"kit-selectR-above": isInBottomOfScreen
-							})}
-						>
-							{children}
-						</Panel>
-					</DropdownContext.Provider>
+					<OverflowVisibleContainer parentRef={this.dropdownRef}>
+						<DropdownContext.Provider value={contextValues}>
+							<Panel
+								onClickOutside={this.hide}
+								width={width || Width.Full}
+								className={cn(panelClass, {
+									"kit-selectR-above": isInBottomOfScreen
+								})}
+							>
+								{children}
+							</Panel>
+						</DropdownContext.Provider>
+					</OverflowVisibleContainer>
 				)}
 			</div>
 		);

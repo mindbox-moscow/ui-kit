@@ -1,9 +1,9 @@
 import cn from "classnames";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { KeysCodes } from "../../../utils/constants";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
-import { KeysCodes } from '../../../utils/constants';
 
 export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
@@ -20,22 +20,29 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 }) => {
 	const context = React.useContext(DropdownContext);
 	const refElement = React.useRef<HTMLLIElement>(null);
-	const [ markedItem, setMarkedItem ] = React.useState(false)
+	const [markedItem, setMarkedItem] = React.useState(false);
 
-	React.useEffect(() => {
-		document.addEventListener("searchEnter", handelSelectEnter)
+	React.useEffect(
+		() => {
+			document.addEventListener("searchEnter", handelSelectEnter);
 
-		if ( context ) {
-			context.onItemsRef(refElement)
-			context.onFocusElement(handleMouseEnter, handleMouseLeave, refElement)
-		}
+			if (context) {
+				context.onItemsRef(refElement);
+				context.onFocusElement(
+					handleMouseEnter,
+					handleMouseLeave,
+					refElement
+				);
+			}
 
-		return () => {
-			document.removeEventListener("searchEnter", handelSelectEnter)
-		}
-	}, [context])
+			return () => {
+				document.removeEventListener("searchEnter", handelSelectEnter);
+			};
+		},
+		[context, refElement]
+	);
 
-	const Сhildren = (): JSX.Element | null => {
+	const renderСhildren = (): JSX.Element | null => {
 		return hasNested ? (
 			<ul className="kit-selectR-results kit-selectR-results-default">
 				{children}
@@ -48,11 +55,11 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			? (title as string)
 			: renderToStaticMarkup(title);
 
-	const handelSelectEnter = (e:KeyboardEvent) => {
-		if ( e.target === refElement.current && !disabled && onClickHandler ) {
-			onClickHandler()
+	const handelSelectEnter = (e: KeyboardEvent) => {
+		if (e.target === refElement.current && !disabled && onClickHandler) {
+			onClickHandler();
 		}
-	}
+	};
 
 	const handleClick = () => {
 		if (disabled) {
@@ -64,17 +71,17 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleMouseEnter = () => {
-		setMarkedItem(true)
-	}
+		setMarkedItem(true);
+	};
 
 	const handleMouseLeave = () => {
-		setMarkedItem(false)
-	}
+		setMarkedItem(false);
+	};
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
 		const contextKeyDown = context?.contextOnKeyDownItems;
 
-		if ( onClickHandler && contextKeyDown ) {
+		if (onClickHandler && contextKeyDown) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
 					onClickHandler();
@@ -117,7 +124,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			>
 				{text}
 			</div>
-			<Сhildren />
+			{renderСhildren()}
 		</li>
 	);
 };

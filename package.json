@@ -3,11 +3,14 @@
 	"version": "0.2.0-dev",
 	"types": "./build",
 	"main": "./build",
-	"dependencies": {},
+	"dependencies": {
+		"react-focus-lock": "^2.2.1"
+	},
 	"peerDependencies": {
 		"classnames": "^2.2.6",
 		"react": "^16.8.6",
-		"react-dom": "^16.8.6"
+		"react-dom": "^16.8.6",
+		"react-focus-lock": "^2.2.1"
 	},
 	"scripts": {
 		"test": "echo no tests",

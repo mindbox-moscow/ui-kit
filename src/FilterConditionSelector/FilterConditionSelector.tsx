@@ -1,30 +1,24 @@
-import {
-	BodyScrollOptions,
-	disableBodyScroll,
-	enableBodyScroll,
-	clearAllBodyScrollLocks
-} from "body-scroll-lock";
 import cn from "classnames";
 import * as React from "react";
 import { FilterDetails } from "../FilterDetails/FilterDetails";
-import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
-import { IMenuModeMap, MenuMode, Props } from "./types";
 import { KeysCodes } from "../utils/constants";
+import {
+	FilterConditionSelectorContext,
+	IProps
+} from "./FilterConditionSelectorContext";
+import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
-import "./FilterConditionSelector.scss";
 import { ContextWrapper } from "./components";
+import "./FilterConditionSelector.scss";
+import { getFocusableElements } from "./utils";
 
 const HEADER_SEARCH_HEIGHT = 55;
 // Height + PaddingTop + PaddingBottom
 const MIN_HEIGHT_ELEMENT = 37;
 const PADDING_PARENT = 16;
-
-const options: BodyScrollOptions = {
-	reserveScrollBarGap: true
-};
 
 const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	childRenderer,
@@ -51,22 +45,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
 
-	React.useEffect(() => {
-		return clearAllBodyScrollLocks;
-	}, []);
-
-	const handleScrollBodyOff = () => {
-		if (listRef.current) {
-			disableBodyScroll(listRef.current, options);
-		}
-	};
-
-	const handleScrollBodyOn = () => {
-		if (listRef.current) {
-			enableBodyScroll(listRef.current);
-		}
-	};
-
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
 			switch (e.keyCode) {
@@ -82,14 +60,29 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 				case KeysCodes.Esc:
 					e.preventDefault();
 					if (searchRef.current) {
-						window.blur();
 						searchRef.current.focus();
 					}
 					break;
 				case KeysCodes.ArrowRight:
 				case KeysCodes.Enter:
 					e.preventDefault();
-					onExpandCurrent();
+
+					const selectedElement =
+						valueContext.selectedElement || null;
+
+					if (
+						selectedElement &&
+						(selectedElement.type ===
+							"filterablePropertyCategory" ||
+							selectedElement.type ===
+								"filterablePropertyWithLinkedConditions") &&
+						!selectedElement.isExpanded
+					) {
+						onExpandCurrent();
+					} else {
+						setNextFocus();
+					}
+
 					break;
 				case KeysCodes.ArrowDown:
 					e.preventDefault();
@@ -98,6 +91,28 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					}
 					onNextSelected();
 					break;
+			}
+		}
+	};
+
+	const setNextFocus = () => {
+		const filterDetails = document.querySelector(".kit-filter-details");
+
+		if (filterDetails) {
+			const inputText = filterDetails.querySelector(
+				'input[type="text"]'
+			) as HTMLElement;
+
+			if (inputText) {
+				inputText.focus();
+			} else {
+				const elements = getFocusableElements(
+					filterDetails as HTMLElement
+				);
+
+				if (elements.length > 0) {
+					elements[0].focus();
+				}
 			}
 		}
 	};
@@ -171,6 +186,11 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
+	const valueContext: IProps = {
+		onSelectElement: scrollHierarchyOnKeyDown,
+		selectedElement: null
+	};
+
 	return (
 		<ContextWrapper>
 			<div ref={setRef} className="kit-filter-condition-selector">
@@ -208,15 +228,13 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					</div>
 					<div className="kit-filter-condition-selector__hierarchy-wrap">
 						<FilterConditionSelectorContext.Provider
-							value={scrollHierarchyOnKeyDown}
+							value={valueContext}
 						>
 							<ul
 								ref={listRef}
 								className="kit-filter-condition-selector__hierarchy"
 								tabIndex={0}
 								onKeyDown={handleKeyDown}
-								onMouseEnter={handleScrollBodyOff}
-								onMouseLeave={handleScrollBodyOn}
 							>
 								{rootIds.length === 0 && searchTerm !== ""
 									? notFoundMessage

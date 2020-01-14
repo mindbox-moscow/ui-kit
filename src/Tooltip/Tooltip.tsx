@@ -88,22 +88,23 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 				{title}
 			</div>
-			{isShow && showByClick ? (
-				<WithOutsideClickOverflowVisibleContainer
-					parentRef={refTitle}
-					className="kit-tooltip__popup"
-					onClickOutside={handleHideTooltip}
-				>
-					{tooltipContent}
-				</WithOutsideClickOverflowVisibleContainer>
-			) : (
-				<OverflowVisibleContainer
-					parentRef={refTitle}
-					className="kit-tooltip__popup"
-				>
-					{tooltipContent}
-				</OverflowVisibleContainer>
-			)}
+			{isShow &&
+				(showByClick ? (
+					<WithOutsideClickOverflowVisibleContainer
+						parentRef={refTitle}
+						className="kit-tooltip__popup"
+						onClickOutside={handleHideTooltip}
+					>
+						{tooltipContent}
+					</WithOutsideClickOverflowVisibleContainer>
+				) : (
+					<OverflowVisibleContainer
+						parentRef={refTitle}
+						className="kit-tooltip__popup"
+					>
+						{tooltipContent}
+					</OverflowVisibleContainer>
+				))}
 		</div>
 	);
 };

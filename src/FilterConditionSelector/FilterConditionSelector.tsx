@@ -54,7 +54,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		if (listTree) {
 			const scroll = listTree.scrollTop;
 
-			console.log(scroll);
 			listTree.scrollTop = scroll + deltaY;
 		}
 	};

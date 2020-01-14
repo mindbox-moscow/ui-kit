@@ -248,6 +248,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					<OverflowVisibleContainer parentRef={this.dropdownRef}>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel
+								parentRef={this.dropdownRef}
 								onClickOutside={this.hide}
 								width={width || Width.Full}
 								className={cn(panelClass, {

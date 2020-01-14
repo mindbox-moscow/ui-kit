@@ -52,11 +52,10 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		const listTree = listRef.current;
 
 		if (listTree) {
-			const { scrollTop } = listTree;
+			const scroll = listTree.scrollTop;
 
-			listTree.scrollTo({
-				top: scrollTop + deltaY
-			});
+			console.log(scroll);
+			listTree.scrollTop = scroll + deltaY;
 		}
 	};
 

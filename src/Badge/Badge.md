@@ -37,7 +37,7 @@ class ProgressExample extends React.Component {
 				mode={label === "Отправлено" ? "success" : "warning"}
 				progress={progress}
 			>
-				<DateLabel
+				<Tooltip
 					title={
 						<>
 							<b>{label}: </b>
@@ -47,7 +47,7 @@ class ProgressExample extends React.Component {
 					date="11 мая 2012"
 				>
 					<div>Информация об отправке</div>
-				</DateLabel>
+				</Tooltip>
 			</Badge>
 		);
 	}
@@ -63,9 +63,7 @@ class ProgressExample extends React.Component {
 	>
 		<Badge>Триггер активен</Badge>
 		<Badge color={constants.COLORS.Blue}>Триггер не активен</Badge>
-		<Badge color={constants.COLORS.Purple}>
-			<DateLabel title="Триггер в разработке" date="11 мая 2012" />
-		</Badge>
+		<Badge color={constants.COLORS.Purple}>Триггер в разработке</Badge>
 	</div>
 	<div
 		style={{

@@ -13,5 +13,6 @@
 	<IconSvg type="magnifier" />
 	<IconSvg type="dots" />
 	<IconSvg type="arrow-right" />
+	<IconSvg type="link" />
 </div>
 ```

@@ -6,8 +6,9 @@ export const Close = ({ className, size }: ISvgProps) => (
 	<svg
 		width={size === "large" ? 12 * 1.5 : 12}
 		height={size === "large" ? 12 * 1.5 : 12}
-		className={className}
 		xmlns="http://www.w3.org/2000/svg"
+		viewBox="0 0 12 12"
+		className={className}
 	>
 		<g fill="currentColor">
 			<path d="M11.367 9.726L2.417.776C2.043.402 1.469.37 1.134.706s-.303.908.07 1.282l8.95 8.95c.375.374.949.406 1.283.07s.304-.908-.07-1.282z" />

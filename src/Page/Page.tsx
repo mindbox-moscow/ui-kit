@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Page.scss";
 import { TextLine } from "../TextLine/TextLine";
 import { Badge } from "../Badge/Badge";
-import { DateLabel } from "../DateLabel/DateLabel";
 import { COLORS } from "../utils/constants";
 
 interface Props {
@@ -85,10 +84,7 @@ export class Page extends React.Component<Props> {
 							{hasBadge && (
 								<div className="kit-page__tag">
 									<Badge color={badgeBgColor}>
-										<DateLabel
-											title={badgeTitle}
-											date={badgeDate}
-										/>
+										{badgeTitle} - {badgeDate}
 									</Badge>
 								</div>
 							)}

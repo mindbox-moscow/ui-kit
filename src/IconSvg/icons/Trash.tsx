@@ -8,6 +8,7 @@ export const Trash = ({ className, size }: ISvgProps) => (
 		className={className}
 		width={size === "large" ? 14 * 1.5 : 14}
 		height={size === "large" ? 16 * 1.5 : 16}
+		viewBox="0 0 14 16"
 	>
 		<path
 			fill="currentColor"

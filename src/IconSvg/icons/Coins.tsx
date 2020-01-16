@@ -6,6 +6,7 @@ export const Coins = ({ className, size }: ISvgProps) => (
 	<svg
 		width={size === "large" ? 18 * 1.5 : 18}
 		height={size === "large" ? 18 * 1.5 : 18}
+		viewBox="0 0 18 18"
 		className={className}
 		xmlns="http://www.w3.org/2000/svg"
 	>

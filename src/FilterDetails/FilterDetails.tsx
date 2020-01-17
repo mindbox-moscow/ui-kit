@@ -1,6 +1,5 @@
 import cn from "classnames";
 import * as React from "react";
-import FocusLock from "react-focus-lock";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { CallbackProps, FilterDetailsProps, State } from "./types";
@@ -89,50 +88,45 @@ export class FilterDetails extends React.Component<Props, State> {
 					"kit-filter-details_menu": viewMode === "menu"
 				})}
 			>
-				<FocusLock autoFocus={false}>
-					<button
-						onClick={onClose}
-						className="kit-filter-details__close"
-						type="button"
-						tabIndex={-1}
-					>
-						<IconSvg type="close" size="large" />
-					</button>
-					<h2 className="kit-filter-details__title">{helpCaption}</h2>
-					{editorComponent && (
-						<div className="kit-filter-details__editor-wrapper">
-							{editorComponent}
-						</div>
-					)}
-					{helpComponent && (
-						<>
-							<div className="kit-filter-details__help-wrapper-text">
-								<div
-									ref={this.kitFiltrationHelperRef}
-									className={cn(
-										"kit-filter-details__helper",
-										{
-											"kit-filter-details__helper_extended": helpIsExpanded
-										}
-									)}
-								>
-									{helpComponent}
-								</div>
-							</div>
-							<button
-								tabIndex={-1}
-								ref={this.kitFiltrationExtendButton}
-								type="button"
-								className={cn("kit-filter-details__show-btn", {
-									"kit-filter-details__show-btn_extended": helpIsExpanded
+				<button
+					onClick={onClose}
+					className="kit-filter-details__close"
+					type="button"
+					tabIndex={-1}
+				>
+					<IconSvg type="close" size="large" />
+				</button>
+				<h2 className="kit-filter-details__title">{helpCaption}</h2>
+				{editorComponent && (
+					<div className="kit-filter-details__editor-wrapper">
+						{editorComponent}
+					</div>
+				)}
+				{helpComponent && (
+					<>
+						<div className="kit-filter-details__help-wrapper-text">
+							<div
+								ref={this.kitFiltrationHelperRef}
+								className={cn("kit-filter-details__helper", {
+									"kit-filter-details__helper_extended": helpIsExpanded
 								})}
-								onClick={this.handleHelpExtended}
 							>
-								<IconSvg type="extended" />
-							</button>
-						</>
-					)}
-				</FocusLock>
+								{helpComponent}
+							</div>
+						</div>
+						<button
+							tabIndex={-1}
+							ref={this.kitFiltrationExtendButton}
+							type="button"
+							className={cn("kit-filter-details__show-btn", {
+								"kit-filter-details__show-btn_extended": helpIsExpanded
+							})}
+							onClick={this.handleHelpExtended}
+						>
+							<IconSvg type="extended" />
+						</button>
+					</>
+				)}
 			</div>
 		);
 	}

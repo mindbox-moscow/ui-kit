@@ -11,9 +11,9 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { getFocusableElements } from "../utils";
 import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
-import { getFocusableElements } from "./utils";
 
 const HEADER_SEARCH_HEIGHT = 55;
 // Height + PaddingTop + PaddingBottom

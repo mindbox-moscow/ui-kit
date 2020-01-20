@@ -8,7 +8,3 @@ export interface FilterDetailsProps {
 export interface CallbackProps {
 	onClose: () => void;
 }
-
-export interface State {
-	helpIsExpanded: boolean;
-}

@@ -2,36 +2,67 @@ import cn from "classnames";
 import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
-import { CallbackProps, FilterDetailsProps, State } from "./types";
-
+import { setLoopFocusElements } from "../utils/Focus";
 import "./FilterDetails.scss";
+import { CallbackProps, FilterDetailsProps } from "./types";
 
 type Props = FilterDetailsProps & CallbackProps;
 
 const ESC_KEY = 27;
 
-export class FilterDetails extends React.Component<Props, State> {
-	public state = {
-		helpIsExpanded: false
-	};
+export const FilterDetails: React.FC<Props> = ({
+	onClose,
+	editorComponent,
+	helpComponent,
+	helpCaption,
+	viewMode
+}) => {
+	const [helpIsExpanded, setHelpIsExpanded] = React.useState(false);
+	const kitFiltrationHelperRef = React.useRef<HTMLDivElement>(null);
+	const kitFiltrationExtendButton = React.useRef<HTMLButtonElement>(null);
+	const kitFiltrationRef = React.useRef<HTMLDivElement>(null);
+	const kitEditorWrapperRef = React.useRef<HTMLDivElement>(null);
 
-	private kitFiltrationHelperRef = React.createRef<HTMLDivElement>();
-	private kitFiltrationExtendButton = React.createRef<HTMLButtonElement>();
-	private kitFiltrationRef = React.createRef<HTMLDivElement>();
+	React.useEffect(() => {
+		document.addEventListener("keydown", handleKeyDown);
 
-	public componentDidMount() {
-		document.addEventListener("keydown", this.handleKeyDown);
-		this.handleViewExtended();
-	}
+		if (kitEditorWrapperRef.current) {
+			kitEditorWrapperRef.current.addEventListener(
+				"focusin",
+				setLoopFocusElements(kitEditorWrapperRef.current)
+			);
+			kitEditorWrapperRef.current.addEventListener(
+				"keydown",
+				setLoopFocusElements(kitEditorWrapperRef.current)
+			);
+		}
 
-	public componentWillUnmount() {
-		document.removeEventListener("keydown", this.handleKeyDown);
-	}
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
 
-	public handleKeyDown = (e: KeyboardEvent) => {
-		const { onClose } = this.props;
+			if (kitEditorWrapperRef.current) {
+				kitEditorWrapperRef.current.removeEventListener(
+					"focusin",
+					setLoopFocusElements(kitEditorWrapperRef.current)
+				);
+				kitEditorWrapperRef.current.removeEventListener(
+					"keydown",
+					setLoopFocusElements(kitEditorWrapperRef.current)
+				);
+			}
+		};
+	});
+
+	React.useEffect(
+		() => {
+			handleViewExtended();
+		},
+		[helpIsExpanded]
+	);
+
+	const handleKeyDown = (e: KeyboardEvent) => {
 		if (
-			document.activeElement === this.kitFiltrationRef.current &&
+			document.activeElement === kitFiltrationRef.current &&
 			e.keyCode === ESC_KEY
 		) {
 			e.preventDefault();
@@ -39,13 +70,13 @@ export class FilterDetails extends React.Component<Props, State> {
 		}
 	};
 
-	public handleHelpExtended = () => {
-		this.setState(state => ({ helpIsExpanded: !state.helpIsExpanded }));
+	const handleHelpExtended = () => {
+		setHelpIsExpanded(newState => !newState);
 	};
 
-	public handleViewExtended = () => {
-		const helper = this.kitFiltrationHelperRef.current;
-		const buttonExtend = this.kitFiltrationExtendButton.current;
+	const handleViewExtended = () => {
+		const helper = kitFiltrationHelperRef.current;
+		const buttonExtend = kitFiltrationExtendButton.current;
 
 		if (helper && buttonExtend) {
 			if (helper.scrollHeight <= 74) {
@@ -60,74 +91,57 @@ export class FilterDetails extends React.Component<Props, State> {
 		}
 	};
 
-	public componentDidUpdate(prevProps: Props, prevState: State) {
-		this.handleViewExtended();
-
-		if (prevState.helpIsExpanded === true) {
-			this.setState({ helpIsExpanded: false });
-		}
-	}
-
-	public render() {
-		const {
-			editorComponent,
-			helpComponent,
-			helpCaption,
-			viewMode,
-			onClose
-		} = this.props;
-
-		const { helpIsExpanded } = this.state;
-
-		return (
-			<div
-				ref={this.kitFiltrationRef}
+	return (
+		<div
+			ref={kitFiltrationRef}
+			tabIndex={-1}
+			className={cn("kit-filter-details", neutralZoneClass, {
+				"kit-filter-details_editor": viewMode === "edit",
+				"kit-filter-details_menu": viewMode === "menu"
+			})}
+		>
+			<button
+				onClick={onClose}
+				className="kit-filter-details__close"
+				type="button"
 				tabIndex={-1}
-				className={cn("kit-filter-details", neutralZoneClass, {
-					"kit-filter-details_editor": viewMode === "edit",
-					"kit-filter-details_menu": viewMode === "menu"
-				})}
 			>
-				<button
-					onClick={onClose}
-					className="kit-filter-details__close"
-					type="button"
-					tabIndex={-1}
+				<IconSvg type="close" size="large" />
+			</button>
+			<h2 className="kit-filter-details__title">{helpCaption}</h2>
+			{editorComponent && (
+				<div
+					className="kit-filter-details__editor-wrapper"
+					ref={kitEditorWrapperRef}
 				>
-					<IconSvg type="close" size="large" />
-				</button>
-				<h2 className="kit-filter-details__title">{helpCaption}</h2>
-				{editorComponent && (
-					<div className="kit-filter-details__editor-wrapper">
-						{editorComponent}
-					</div>
-				)}
-				{helpComponent && (
-					<>
-						<div className="kit-filter-details__help-wrapper-text">
-							<div
-								ref={this.kitFiltrationHelperRef}
-								className={cn("kit-filter-details__helper", {
-									"kit-filter-details__helper_extended": helpIsExpanded
-								})}
-							>
-								{helpComponent}
-							</div>
-						</div>
-						<button
-							tabIndex={-1}
-							ref={this.kitFiltrationExtendButton}
-							type="button"
-							className={cn("kit-filter-details__show-btn", {
-								"kit-filter-details__show-btn_extended": helpIsExpanded
+					{editorComponent}
+				</div>
+			)}
+			{helpComponent && (
+				<>
+					<div className="kit-filter-details__help-wrapper-text">
+						<div
+							ref={kitFiltrationHelperRef}
+							className={cn("kit-filter-details__helper", {
+								"kit-filter-details__helper_extended": helpIsExpanded
 							})}
-							onClick={this.handleHelpExtended}
 						>
-							<IconSvg type="extended" />
-						</button>
-					</>
-				)}
-			</div>
-		);
-	}
-}
+							{helpComponent}
+						</div>
+					</div>
+					<button
+						tabIndex={-1}
+						ref={kitFiltrationExtendButton}
+						type="button"
+						className={cn("kit-filter-details__show-btn", {
+							"kit-filter-details__show-btn_extended": helpIsExpanded
+						})}
+						onClick={handleHelpExtended}
+					>
+						<IconSvg type="extended" />
+					</button>
+				</>
+			)}
+		</div>
+	);
+};

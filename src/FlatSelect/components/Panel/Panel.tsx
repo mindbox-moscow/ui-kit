@@ -60,8 +60,13 @@ const Panel: React.FC<Props> = ({
 		setOutsideClickRef(panelRef.current as HTMLElement);
 	}
 
+	const handleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+	};
+
 	return (
 		<div
+			onClick={handleClick}
 			className={cn("kit-selectR-drop", className, Width.getClass(width))}
 			ref={panelRef}
 		>

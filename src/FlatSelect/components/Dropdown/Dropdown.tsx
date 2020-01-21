@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { neutralZoneClass } from "../../../HOCs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
@@ -194,7 +195,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			height,
 			width,
 			panelClass,
-			children
+			children,
+			isFixedDropdown = false
 		} = this.props;
 
 		const placeholder = headerInfo ? (
@@ -245,13 +247,16 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				</div>
 
 				{show && (
-					<OverflowVisibleContainer parentRef={this.dropdownRef}>
+					<OverflowVisibleContainer
+						parentRef={this.dropdownRef}
+						isFixed={isFixedDropdown}
+					>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel
-								parentRef={this.dropdownRef}
 								onClickOutside={this.hide}
+								parentRef={this.dropdownRef}
 								width={width || Width.Full}
-								className={cn(panelClass, {
+								className={cn(panelClass, neutralZoneClass, {
 									"kit-selectR-above": isInBottomOfScreen
 								})}
 							>

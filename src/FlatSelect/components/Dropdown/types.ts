@@ -17,6 +17,7 @@ export interface DropdownProps {
 	panelClass?: string;
 	style?: React.CSSProperties;
 	onAdaptive?: () => boolean;
+	isFixedDropdown?: boolean;
 }
 
 // tslint:disable-next-line:interface-name

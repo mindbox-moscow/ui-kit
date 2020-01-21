@@ -1,4 +1,8 @@
 .kit-overflow-visiblecontainer {
 	position: absolute;
 	z-index: 18;
+
+	&_fixed {
+		position: fixed;
+	}
 }

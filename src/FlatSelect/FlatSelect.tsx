@@ -20,7 +20,8 @@ export const FlatSelect = <TValue extends object>({
 	items,
 	allowNull,
 	loadListCaption,
-	selectedItemFormatter
+	selectedItemFormatter,
+	isFixedDropdown = false
 }: SelectProps<TValue> & { children?: React.ReactNode }) => {
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
 	const dropdownRef = React.useRef<Dropdown>(null);
@@ -224,6 +225,7 @@ export const FlatSelect = <TValue extends object>({
 			openedClassName="form-control select2-container-active select2-dropdown-open"
 			height={height || Height.Small}
 			onSelectionClear={shouldRenderNullMark() ? handleChange : null}
+			isFixedDropdown={isFixedDropdown}
 		>
 			<SelectSearchList
 				onInputChange={searchTermChanged}

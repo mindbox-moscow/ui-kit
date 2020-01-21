@@ -15,19 +15,14 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	private portal = document.createElement("div");
 
 	public componentDidMount() {
-		const { portal } = this;
-
-		document.body.appendChild(portal);
+		document.body.appendChild(this.portal);
 
 		this.handleShowPopup();
 	}
 
 	public componentWillUnmount() {
-		const { portal } = this;
-
-		document.body.removeChild(portal);
+		document.body.removeChild(this.portal);
 		window.removeEventListener("resize", this.handleShowPopup);
-		window.removeEventListener("load", this.handleShowPopup);
 	}
 
 	public componentDidUpdate() {
@@ -35,7 +30,7 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 	}
 
 	public handleShowPopup = () => {
-		const { parentRef } = this.props;
+		const { parentRef, isFixed } = this.props;
 		const { positionLeft, positionTop } = this.state;
 
 		if (parentRef && parentRef.current) {
@@ -45,7 +40,9 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 				left
 			} = parentRef.current.getBoundingClientRect();
 			const windowScrollY = window.scrollY;
-			const reactTop: number | string = windowScrollY + top + height;
+			const reactTop: number | string = isFixed
+				? top + height
+				: windowScrollY + top + height;
 			const rectLeft: number | string = left;
 
 			if (reactTop !== positionTop || rectLeft !== positionLeft) {
@@ -58,16 +55,17 @@ export class OverflowVisibleContainer extends React.Component<Props> {
 		}
 
 		window.addEventListener("resize", this.handleShowPopup);
-		window.addEventListener("load", this.handleShowPopup);
 	};
 
 	public render() {
+		const { children, className, isFixed: fixed = false } = this.props;
 		const { positionLeft, positionTop, isLoaded } = this.state;
-		const { children, className } = this.props;
 
 		return createPortal(
 			<div
-				className={cn("kit-overflow-visiblecontainer", className)}
+				className={cn("kit-overflow-visiblecontainer", className, {
+					"kit-overflow-visiblecontainer_fixed": fixed
+				})}
 				style={{
 					left: positionLeft,
 					top: positionTop

@@ -186,6 +186,10 @@ $minHeight: 32px;
 				margin-right: -11px;
 			}
 		}
+
+		&#{$self}_not-label {
+			display: none;
+		}
 	}
 
 	&_hover {

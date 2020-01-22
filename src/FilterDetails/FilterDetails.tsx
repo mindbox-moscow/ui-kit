@@ -28,6 +28,24 @@ export const FilterDetails: React.FC<Props> = ({
 
 		if (kitEditorWrapperRef.current) {
 			kitEditorWrapperRef.current.addEventListener(
+				"focusin",
+				setLoopFocusElements(kitEditorWrapperRef.current)
+			);
+		}
+
+		return () => {
+			if (kitEditorWrapperRef.current) {
+				kitEditorWrapperRef.current.removeEventListener(
+					"focusin",
+					setLoopFocusElements(kitEditorWrapperRef.current)
+				);
+			}
+		};
+	}, []);
+
+	React.useEffect(() => {
+		if (kitEditorWrapperRef.current) {
+			kitEditorWrapperRef.current.addEventListener(
 				"keydown",
 				setLoopFocusElements(kitEditorWrapperRef.current)
 			);
@@ -39,24 +57,6 @@ export const FilterDetails: React.FC<Props> = ({
 			if (kitEditorWrapperRef.current) {
 				kitEditorWrapperRef.current.removeEventListener(
 					"keydown",
-					setLoopFocusElements(kitEditorWrapperRef.current)
-				);
-			}
-		};
-	}, []);
-
-	React.useEffect(() => {
-		if (kitEditorWrapperRef.current) {
-			kitEditorWrapperRef.current.addEventListener(
-				"focusin",
-				setLoopFocusElements(kitEditorWrapperRef.current)
-			);
-		}
-
-		return () => {
-			if (kitEditorWrapperRef.current) {
-				kitEditorWrapperRef.current.removeEventListener(
-					"focusin",
 					setLoopFocusElements(kitEditorWrapperRef.current)
 				);
 			}

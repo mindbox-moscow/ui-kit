@@ -60,22 +60,10 @@
 	cursor: pointer;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
 	user-select: none;
 	background-color: #fdfdfd;
-	background-image: -webkit-gradient(
-		linear,
-		left top,
-		left bottom,
-		from(#fdfdfd),
-		to(#f5f5f5)
-	);
-	background-image: -webkit-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
-	background-image: -moz-linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#fdfdfd', endColorstr = '#f5f5f5', GradientType = 0);
 	background-image: -ms-linear-gradient(#fdfdfd, #f5f5f5);
-	background-image: linear-gradient(top, #fdfdfd 0%, #f5f5f5 100%);
+	background-image: linear-gradient(to bottom, #fdfdfd, #f5f5f5);
 }
 .kit-selectR-choice:after {
 	content: "";
@@ -450,7 +438,7 @@
 	padding-top: 8px;
 }
 .kit-selectR-drop.kit-selectR-above {
-	margin-bottom: -1px;
+	margin-bottom: 28px;
 	border-bottom: 0;
 	border-top: 1px solid #b0b2b5;
 	border-radius: 2px 2px 0 0;

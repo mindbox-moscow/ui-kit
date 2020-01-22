@@ -30,6 +30,7 @@ export interface SelectPropsBase<TValue, TSelection> {
 	headerInfo?: string | JSX.Element;
 	selectElementCaption: ({}) => string;
 	loadListCaption?: string;
+	isFixedDropdown?: boolean;
 }
 
 // tslint:disable-next-line: interface-name

@@ -10,13 +10,21 @@ const Panel: React.FC<Props> = ({
 	className,
 	width,
 	children,
-	setOutsideClickRef
+	setOutsideClickRef,
+	parentRef
 }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
 	React.useEffect(() => {
 		panelHeightOverride();
-	});
+	}, []);
+
+	React.useEffect(() => {
+		if (parentRef && parentRef.current && panelRef.current) {
+			const { clientWidth } = parentRef.current;
+			panelRef.current.style.width = `${clientWidth}px`;
+		}
+	}, []);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
@@ -52,8 +60,13 @@ const Panel: React.FC<Props> = ({
 		setOutsideClickRef(panelRef.current as HTMLElement);
 	}
 
+	const handleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+	};
+
 	return (
 		<div
+			onClick={handleClick}
 			className={cn("kit-selectR-drop", className, Width.getClass(width))}
 			ref={panelRef}
 		>

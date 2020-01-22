@@ -6,6 +6,7 @@ export interface PanelProps {
 	className?: string;
 	width: Width;
 	allowedClickTargetClasses?: string[];
+	parentRef?: React.RefObject<HTMLElement>;
 }
 
 // tslint:disable-next-line: interface-name

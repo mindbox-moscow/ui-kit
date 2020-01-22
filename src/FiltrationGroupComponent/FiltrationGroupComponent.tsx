@@ -499,7 +499,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				"kit-filtration-group_shaded": state === "shaded",
 				"kit-filtration-group_read-only": state === "readOnly",
 				"kit-filtration-group_not-children": !anyChildren,
-				"kit-filtration-group_not-label": !shouldShowLabel
+				"kit-filtration-group_no-label": !shouldShowLabel
 			})}
 		>
 			<div

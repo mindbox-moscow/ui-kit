@@ -17,7 +17,7 @@ const Panel: React.FC<Props> = ({
 
 	React.useEffect(() => {
 		panelHeightOverride();
-	});
+	}, []);
 
 	React.useEffect(() => {
 		if (parentRef && parentRef.current && panelRef.current) {

@@ -5,7 +5,7 @@ export const getFocusableElements = (element: HTMLElement): HTMLElement[] => {
 		"button:not(:disabled)",
 		"[href]",
 		"input:not(:disabled)",
-		"select",
+		"select:not(:disabled)",
 		"textarea:not(:disabled)",
 		'[tabindex]:not([tabindex="-1"])'
 	];

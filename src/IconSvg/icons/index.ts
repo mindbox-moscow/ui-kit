@@ -13,9 +13,9 @@ import { SegmentEdit } from "./SegmentEdit";
 import { Filter } from "./Filter";
 import { Duplicate } from "./Duplicate";
 import { CrossArrows } from "./CrossArrows";
-import { Link } from "./Link";
 import { Question } from "./Question";
 import { ArrowBottom } from "./ArrowBottom";
+
 import { IconsProps } from "../types";
 
 type ISvgProps = {
@@ -38,7 +38,6 @@ type IconType =
 	| "filter"
 	| "duplicate"
 	| "cross-arrows"
-	| "link"
 	| "question"
 	| "arrow-bottom";
 
@@ -60,7 +59,6 @@ const icons: Icons = {
 	filter: Filter,
 	duplicate: Duplicate,
 	"cross-arrows": CrossArrows,
-	link: Link,
 	question: Question,
 	"arrow-bottom": ArrowBottom
 };

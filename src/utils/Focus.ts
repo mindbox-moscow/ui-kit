@@ -19,6 +19,7 @@ export const setLoopFocusElements = (element: HTMLElement) => (
 	e: KeyboardEvent
 ) => {
 	const focusable = getFocusableElements(element);
+	const lastFocusable = focusable[focusable.length - 1];
 
 	if (focusable.length > 0) {
 		if (
@@ -27,11 +28,11 @@ export const setLoopFocusElements = (element: HTMLElement) => (
 			e.shiftKey
 		) {
 			e.preventDefault();
-			focusable[focusable.length - 1].focus();
+			lastFocusable.focus();
 		}
 
 		if (
-			document.activeElement === focusable[focusable.length - 1] &&
+			document.activeElement === lastFocusable &&
 			e.keyCode === KeysCodes.Tab &&
 			!e.shiftKey
 		) {

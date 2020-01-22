@@ -71,7 +71,7 @@ export const FilterDetails: React.FC<Props> = ({
 	};
 
 	const handleHelpExtended = () => {
-		setHelpIsExpanded(newState => !newState);
+		setHelpIsExpanded(prevState => !prevState);
 	};
 
 	const handleViewExtended = () => {

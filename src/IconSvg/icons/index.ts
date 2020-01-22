@@ -13,7 +13,6 @@ import { SegmentEdit } from "./SegmentEdit";
 import { Filter } from "./Filter";
 import { Duplicate } from "./Duplicate";
 import { CrossArrows } from "./CrossArrows";
-import { Link } from "./Link";
 
 import { IconsProps } from "../types";
 
@@ -36,8 +35,7 @@ type IconType =
 	| "segment-edit"
 	| "filter"
 	| "duplicate"
-	| "cross-arrows"
-	| "link";
+	| "cross-arrows";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -56,8 +54,7 @@ const icons: Icons = {
 	"segment-edit": SegmentEdit,
 	filter: Filter,
 	duplicate: Duplicate,
-	"cross-arrows": CrossArrows,
-	link: Link
+	"cross-arrows": CrossArrows
 };
 
 export { icons, IconType, ISvgProps };

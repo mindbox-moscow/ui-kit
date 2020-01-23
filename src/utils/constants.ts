@@ -16,5 +16,6 @@ export enum KeysCodes {
 	ArrowRight = 39,
 	ArrowDown = 40,
 	Enter = 13,
-	Esc = 27
+	Esc = 27,
+	Tab = 9
 }

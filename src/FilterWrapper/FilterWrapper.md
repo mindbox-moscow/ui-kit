@@ -2603,6 +2603,89 @@ class ExampleFlatSelectorSimple extends React.Component {
 	</FilterWrapper>
 	<br />
 	<br />
+	<h1>
+		Пример 12.5 - Вложенная группа -- последняя группа без лейбла в состоянии readonly
+	</h1>
+	<FilterWrapper
+		scrollState="full"
+		filterActions={[]}
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
+	>
+		<FiltrationGroupComponent
+			onClickOutside={() => {}}
+			state="readOnly"
+			groupType="and"
+			andLabel="И"
+			orLabel="ИЛИ"
+			shouldShowLabel={false}
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
+			}
+			onGroupTypeToggle={() => console.log("type toggle")}
+			onConditionStateToggle={() => console.log("state toggle")}
+			onConditionRemove={() => console.log("remove")}
+		>
+			<FiltrationConditionComponent
+				filterablePropertyName="Пол"
+				filtrationMethodName="заполнен и мужской"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						onClickOutside={() => {}}
+						state="readOnly"
+						groupType="or"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={false}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+					/>
+				}
+			/>
+			<FiltrationConditionComponent
+				filterablePropertyName="Пол"
+				filtrationMethodName="заполнен и мужской"
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<br />
+	<br />
 	<h1>Пример 13 - Если есть вложенное условие</h1>
 	<FilterWrapper
 		scrollState="full"

@@ -4,6 +4,8 @@
 }
 
 .kit-selectR.form-control:focus {
+	outline: none;
+
 	.kit-selectR-choice {
 		border-color: #5897fb;
 	}

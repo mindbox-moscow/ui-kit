@@ -26,42 +26,39 @@ export const FilterDetails: React.FC<Props> = ({
 	React.useEffect(() => {
 		document.addEventListener("keydown", handleKeyDown);
 
-		if (kitEditorWrapperRef.current) {
-			kitEditorWrapperRef.current.addEventListener(
-				"focusin",
-				setLoopFocusElements(kitEditorWrapperRef.current)
-			);
-		}
-
 		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, []);
+
+	React.useEffect(
+		() => {
 			if (kitEditorWrapperRef.current) {
-				kitEditorWrapperRef.current.removeEventListener(
+				kitEditorWrapperRef.current.addEventListener(
+					"keydown",
+					setLoopFocusElements(kitEditorWrapperRef.current)
+				);
+				kitEditorWrapperRef.current.addEventListener(
 					"focusin",
 					setLoopFocusElements(kitEditorWrapperRef.current)
 				);
 			}
-		};
-	}, []);
 
-	React.useEffect(() => {
-		if (kitEditorWrapperRef.current) {
-			kitEditorWrapperRef.current.addEventListener(
-				"keydown",
-				setLoopFocusElements(kitEditorWrapperRef.current)
-			);
-		}
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-
-			if (kitEditorWrapperRef.current) {
-				kitEditorWrapperRef.current.removeEventListener(
-					"keydown",
-					setLoopFocusElements(kitEditorWrapperRef.current)
-				);
-			}
-		};
-	});
+			return () => {
+				if (kitEditorWrapperRef.current) {
+					kitEditorWrapperRef.current.removeEventListener(
+						"keydown",
+						setLoopFocusElements(kitEditorWrapperRef.current)
+					);
+					kitEditorWrapperRef.current.removeEventListener(
+						"focusin",
+						setLoopFocusElements(kitEditorWrapperRef.current)
+					);
+				}
+			};
+		},
+		[editorComponent]
+	);
 
 	React.useEffect(
 		() => {
@@ -72,7 +69,7 @@ export const FilterDetails: React.FC<Props> = ({
 
 	const handleKeyDown = (e: KeyboardEvent) => {
 		if (
-			document.activeElement === kitFiltrationRef.current &&
+			document.activeElement === kitEditorWrapperRef.current &&
 			e.keyCode === ESC_KEY
 		) {
 			e.preventDefault();

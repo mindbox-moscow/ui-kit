@@ -66,6 +66,10 @@ $minHeight: 32px;
 			pointer-events: none;
 			cursor: default;
 		}
+
+		&#{$self}_no-label {
+			display: none;
+		}
 	}
 
 	&_shaded {
@@ -185,10 +189,6 @@ $minHeight: 32px;
 			.kit-filtration-group__label-text-buttons {
 				margin-right: -11px;
 			}
-		}
-
-		&#{$self}_no-label {
-			display: none;
 		}
 	}
 

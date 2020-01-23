@@ -2604,7 +2604,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<br />
 	<h1>
-		Пример 12.5 - Вложенная группа -- последняя группа без лейбла
+		Пример 12.5 - Вложенная группа -- последняя группа без лейбла в состоянии readonly
 	</h1>
 	<FilterWrapper
 		scrollState="full"
@@ -2620,7 +2620,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 	>
 		<FiltrationGroupComponent
 			onClickOutside={() => {}}
-			state="view"
+			state="readOnly"
 			groupType="and"
 			andLabel="И"
 			orLabel="ИЛИ"
@@ -2648,7 +2648,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				linkedConditionComponent={
 					<FiltrationGroupComponent
 						onClickOutside={() => {}}
-						state="view"
+						state="readOnly"
 						groupType="or"
 						andLabel="И"
 						orLabel="ИЛИ"

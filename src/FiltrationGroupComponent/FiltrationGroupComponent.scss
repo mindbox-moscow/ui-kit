@@ -67,7 +67,7 @@ $minHeight: 32px;
 			cursor: default;
 		}
 
-		&#{$self}_no-label {
+		&#{$self}_no-label#{$self}_not-children {
 			display: none;
 		}
 	}

@@ -2,6 +2,7 @@
 	@for $i from 1 through 12 {
 		&_#{$i} {
 			flex: 0 0 percentage($i / 12);
+			max-width: percentage($i / 12);
 		}
 	}
 }

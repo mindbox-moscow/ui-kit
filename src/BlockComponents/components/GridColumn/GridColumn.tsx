@@ -4,7 +4,7 @@ import * as React from "react";
 import "./GridColumn.scss";
 
 export interface GridColumnProps {
-	col: number;
+	col?: number;
 }
 
 export const GridColumn: React.FC<GridColumnProps> = ({ col, ...props }) => (

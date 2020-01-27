@@ -69,6 +69,9 @@
 	}
 }
 
+// ============
+// Стили для фронта
+// ============
 .header-kit-filters {
 	padding: 14px 0 0;
 }
@@ -105,4 +108,29 @@
 	box-shadow: none;
 	background-color: #c2c2c2;
 	border: 2px solid #fafafa;
+}
+
+.tabs-content,
+.form-controls,
+.dialog-main {
+	.header {
+		padding-top: 0;
+		padding-left: 0;
+		padding-right: 0;
+
+		&:last-child,
+		&:nth-last-child(2):not(.header_message) {
+			padding-bottom: 0;
+		}
+	}
+
+	.ui-kit-filter-container {
+		padding-left: 0;
+		padding-right: 0;
+		max-width: 100%;
+	}
+}
+
+.overflow-visible {
+	overflow: visible;
 }

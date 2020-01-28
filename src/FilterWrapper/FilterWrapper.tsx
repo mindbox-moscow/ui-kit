@@ -1,15 +1,15 @@
 import cn from "classnames";
 import { useState } from "react";
 import * as React from "react";
+import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { FilterActions, InfoWrapper } from "./components";
 import {
 	CallbackProps,
+	ScrollState,
 	SelectionStateType,
-	StateProps,
-	ScrollState
+	StateProps
 } from "./types";
-import { neutralZoneClass } from "../HOCs";
 
 import { Button } from "../Button";
 import "./FilterWrapper.scss";
@@ -102,7 +102,7 @@ export const FilterWrapper: React.FC<Props> = ({
 						"kit-filter_short": !doesContainFilter
 					})}
 				>
-					{filterActions.length > 0 && (
+					{filterActions && filterActions.length > 0 && (
 						<div className="kit-filter__top-filter">
 							<FilterActions
 								filterActions={filterActions}
@@ -121,8 +121,8 @@ export const FilterWrapper: React.FC<Props> = ({
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{showApplyButton === null ||
-								showApplyButton === true ? (
+								{showApplyButton == null ||
+								showApplyButton == true ? (
 									scrollState !== ScrollState.Minified ? (
 										<button
 											className="kit-filter__use-filter"
@@ -142,7 +142,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
 								shouldShowStatistics={
-									shouldShowStatistics === undefined
+									shouldShowStatistics == undefined
 										? true
 										: shouldShowStatistics
 								}
@@ -164,7 +164,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
 								shouldShowStatistics={
-									shouldShowStatistics === undefined
+									shouldShowStatistics == undefined
 										? true
 										: shouldShowStatistics
 								}

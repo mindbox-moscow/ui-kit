@@ -11,9 +11,9 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
-import { getFocusableElements } from "../utils";
 import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
+import { setNextFocus } from "./utils";
 
 const HEADER_SEARCH_HEIGHT = 55;
 // Height + PaddingTop + PaddingBottom
@@ -104,28 +104,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					}
 					onNextSelected();
 					break;
-			}
-		}
-	};
-
-	const setNextFocus = () => {
-		const filterDetails = document.querySelector(".kit-filter-details");
-
-		if (filterDetails) {
-			const inputText = filterDetails.querySelector(
-				'input[type="text"]'
-			) as HTMLElement;
-
-			if (inputText) {
-				inputText.focus();
-			} else {
-				const elements = getFocusableElements(
-					filterDetails as HTMLElement
-				);
-
-				if (elements.length > 0) {
-					elements[0].focus();
-				}
 			}
 		}
 	};

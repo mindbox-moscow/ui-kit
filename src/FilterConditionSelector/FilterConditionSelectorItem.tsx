@@ -6,6 +6,7 @@ import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext
 import { ChildRendererProps } from "./types";
 
 import "./FilterConditionSelector.scss";
+import { setNextFocus } from "./utils";
 
 export type ElementType =
 	| "filterablePropertyCategory"
@@ -104,6 +105,9 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const onSelectItem = () => {
 		onSelect(id);
 		onExpand();
+		setTimeout(() => {
+			setNextFocus();
+		}, 1);
 	};
 
 	const isSimpleFilterableProperty = type === "simpleFilterableProperty";

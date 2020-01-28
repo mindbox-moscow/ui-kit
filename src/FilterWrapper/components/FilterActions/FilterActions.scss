@@ -5,26 +5,23 @@ $hoverItemColorBg: #3875d7;
 $borderListColor: #cad9e4;
 $boxShadowListColor: rgba(0, 0, 0, 0.3);
 
-.kit-filter-actions-popover {
-	position: relative;
+.kit-filter-actions {
 	display: inline-flex;
 	box-sizing: border-box;
 	font-family: "PT Sans", sans-serif;
+
+	> * {
+		&:not(:last-child) {
+			margin-right: 8px;
+		}
+	}
 }
 
-.kit-filter-actions-popover__title {
-	display: inline-flex;
-	align-items: center;
-	height: 16px;
-	padding-left: 9px;
-	padding-right: 10px;
-	background-color: $buttonColorBg;
-	border-radius: 1000px;
-	font-size: 11px;
-	color: $textColor;
-	box-sizing: border-box;
-	cursor: pointer;
+.kit-filter-actions__popover {
+	position: relative;
+}
 
+.kit-filter-actions__title {
 	&::after {
 		content: "";
 		display: inline-block;
@@ -34,14 +31,15 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 		border-top: 4px solid;
 	}
 }
-.kit-filter-actions-popover__list_hide {
+.kit-filter-actions__list_hide {
 	display: none;
 }
 
-.kit-filter-actions-popover__list {
+.kit-filter-actions__list {
 	position: absolute;
 	top: 100%;
-	left: -15px;
+	left: 50%;
+	transform: translateX(-50%);
 	width: 180px;
 	padding: 5px 0 0;
 	margin: 10px 0 0;
@@ -80,7 +78,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 	}
 }
 
-.kit-filter-actions-popover__item {
+.kit-filter-actions__list-item {
 	display: flex;
 	align-items: center;
 	min-height: 31px;

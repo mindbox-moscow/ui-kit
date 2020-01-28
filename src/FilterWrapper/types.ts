@@ -11,9 +11,8 @@ export enum ScrollState {
 }
 
 export interface FilterAction {
-	key: string;
-	name: string;
-	onClick: () => void;
+	component: React.ReactNode;
+	isImportant: boolean;
 }
 
 export interface StateProps {
@@ -27,7 +26,7 @@ export interface StateProps {
 	selectedCancelText: string;
 	selectedCountDescription: string;
 	isDataOutdated: boolean;
-	filterActions: Array<FilterAction | React.ReactNode>;
+	filterActions: FilterAction[];
 	filterActionsCaption: string;
 	scrollState: ScrollState;
 	buttonUpCaption: string;

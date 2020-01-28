@@ -497,16 +497,31 @@ class ExampleFlatSelectorSimple extends React.Component {
 			selectedCountDescription="100 (все)"
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
-			filterActionsCaption="Действия с фильтром"
+			filterActionsCaption="Еще"
 			filterActions={[
-				"Сохранить как сегмент",
-				<>Копировать фильтр</>,
 				{
-					key: "insert",
-					name: "Вставить фильтр",
-					onClick: () => {
-						console.log("This onClick by FilterAction");
-					}
+					component: (
+						<Button size="xxs" color="gray">
+							<IconSvg type="cross-arrows" />И
+						</Button>
+					),
+					isImportant: true
+				},
+				{
+					component: (
+						<Button size="xxs" color="gray">
+							<IconSvg type="cross-arrows" />ИЛИ
+						</Button>
+					),
+					isImportant: true
+				},
+				{
+					component: <>Копировать фильтр</>,
+					isImportant: false
+				},
+				{
+					component: <> Сохранить фильтр</>,
+					isImportant: false
 				}
 			]}
 		>
@@ -2604,7 +2619,8 @@ class ExampleFlatSelectorSimple extends React.Component {
 	<br />
 	<br />
 	<h1>
-		Пример 12.5 - Вложенная группа -- последняя группа без лейбла в состоянии readonly
+		Пример 12.5 - Вложенная группа -- последняя группа без лейбла в
+		состоянии readonly
 	</h1>
 	<FilterWrapper
 		scrollState="full"

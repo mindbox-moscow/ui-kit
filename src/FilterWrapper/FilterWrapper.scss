@@ -2,6 +2,8 @@
 $clearButtonColorBg: #ffeeeb;
 $clearButtonColor: #a12e1e;
 $clearButtonCountColor: #a4a4a4;
+$topBarBg: #fcfcfc;
+$topBorderColor: #e2eaf0;
 
 .kit-filter {
 	position: relative;
@@ -10,10 +12,6 @@ $clearButtonCountColor: #a4a4a4;
 	border-radius: 4px;
 	background-color: #ffffff;
 	box-sizing: border-box;
-
-	&_with-filter-action {
-		padding-top: 22px;
-	}
 
 	&_short {
 		display: flex;
@@ -48,7 +46,7 @@ $clearButtonCountColor: #a4a4a4;
 
 .kit-filter__all-wrap {
 	padding: 0;
-	margin: 11px 11px 11px 22px;
+	margin: 15px 11px 15px 22px;
 	box-sizing: border-box;
 
 	> .kit-filtration-group_not-children {
@@ -224,11 +222,13 @@ $clearButtonCountColor: #a4a4a4;
 }
 
 .kit-filter__top-filter {
-	position: absolute;
-	top: 11px;
-	right: 11px;
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
+	padding: 11px 21px 9px;
+	border-radius: 4px 4px 0 0;
+	background-color: $topBarBg;
+	border-bottom: 1px solid $topBorderColor;
 
 	> *:not(:last-child) {
 		margin-right: 8px;

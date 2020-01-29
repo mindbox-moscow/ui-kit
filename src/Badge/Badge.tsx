@@ -35,13 +35,16 @@ export const Badge: React.FC<IProps> = props => {
 		progressColor,
 		children
 	} = props;
-	const isProgressBar = progress !== undefined && !isNaN(progress);
-	let backgroundColor;
+	let background;
 
-	if (isProgressBar) {
-		backgroundColor = mode ? ProgressColors[mode] : progressColor;
+	if (progress !== undefined && !isNaN(progress)) {
+		const backgroundColor = mode ? ProgressColors[mode] : progressColor;
+		const barColor = mode ? ModeColors[mode] : color;
+
+		background = `linear-gradient(90deg, ${barColor} ${progress}%, ${backgroundColor} ${progress}%, ${backgroundColor} ${100 -
+			progress}%)`;
 	} else {
-		backgroundColor = mode ? ModeColors[mode] : color;
+		background = mode ? ModeColors[mode] : color;
 	}
 
 	return (
@@ -50,18 +53,9 @@ export const Badge: React.FC<IProps> = props => {
 				[`kit-badge_size_${size}`]: size,
 				[`kit-badge_mode_${mode}`]: mode
 			})}
-			style={{ backgroundColor }}
+			style={{ background }}
 		>
 			{children}
-			{isProgressBar && (
-				<div
-					className="kit_badge__progress-bar"
-					style={{
-						backgroundColor: mode ? ModeColors[mode] : color,
-						width: `${progress}%`
-					}}
-				/>
-			)}
 		</div>
 	);
 };

@@ -15,7 +15,9 @@ export const FilterDetails: React.FC<Props> = ({
 	editorComponent,
 	helpComponent,
 	helpCaption,
-	viewMode
+	viewMode,
+	vertical,
+	horizontal
 }) => {
 	const [helpIsExpanded, setHelpIsExpanded] = React.useState(false);
 	const kitFiltrationHelperRef = React.useRef<HTMLDivElement>(null);
@@ -104,7 +106,9 @@ export const FilterDetails: React.FC<Props> = ({
 			tabIndex={-1}
 			className={cn("kit-filter-details", neutralZoneClass, {
 				"kit-filter-details_editor": viewMode === "edit",
-				"kit-filter-details_menu": viewMode === "menu"
+				"kit-filter-details_menu": viewMode === "menu",
+				[`kit-filter-details_vertical_${vertical}`]: vertical,
+				[`kit-filter-details_horizontal_${horizontal}`]: horizontal
 			})}
 		>
 			<button

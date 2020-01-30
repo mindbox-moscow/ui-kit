@@ -11,6 +11,7 @@ interface Props {
 	isAddFilterButtonEnabled: boolean;
 	onAddFilterButtonClick: () => void;
 	onCancelFilterButtonClick: () => void;
+	disabledSaveButton?: boolean;
 }
 
 const ENTER_KEY = 13;
@@ -32,6 +33,7 @@ export class FilterConditionEditorComponent extends React.Component<Props> {
 			onAddFilterButtonClick,
 			cancelFilterButtonCaption,
 			onCancelFilterButtonClick,
+			disabledSaveButton,
 			viewMode
 		} = this.props;
 
@@ -42,7 +44,9 @@ export class FilterConditionEditorComponent extends React.Component<Props> {
 					<Button
 						color="silver"
 						hasBorder={true}
-						disabled={!isAddFilterButtonEnabled}
+						disabled={
+							disabledSaveButton || !isAddFilterButtonEnabled
+						}
 						onClick={onAddFilterButtonClick}
 						size="medium"
 						className="kit-filter-editor-component__btn"

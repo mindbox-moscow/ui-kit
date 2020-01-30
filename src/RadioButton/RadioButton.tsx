@@ -10,6 +10,7 @@ interface IProps {
 	checked?: boolean;
 	name: string;
 	onSelected?: () => void;
+	onClick?: () => void;
 	icon?: IconsTypes;
 	iconSvg?: IconSvgTypes;
 }
@@ -22,7 +23,8 @@ export class RadioButton extends React.Component<IProps> {
 			name,
 			onSelected = () => {},
 			icon,
-			iconSvg
+			iconSvg,
+			onClick
 		} = this.props;
 
 		return (
@@ -31,6 +33,7 @@ export class RadioButton extends React.Component<IProps> {
 					className="kit-radio__input"
 					type="radio"
 					name={name}
+					onClick={onClick}
 					onChange={onSelected}
 					checked={checked}
 				/>

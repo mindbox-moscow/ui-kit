@@ -1,10 +1,10 @@
 .kit-radio {
-    font-family: "PT Sans", sans-serif;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 22px;
-    user-select: none;
+	font-family: "PT Sans", sans-serif;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 22px;
+	user-select: none;
 }
 
 .kit-radio__input {
@@ -41,12 +41,11 @@
 }
 
 .kit-radio__input {
-	&:checked + .kit-radio__checkmark {
+	&:checked+.kit-radio__checkmark {
 		margin: 0;
 		background-color: #f5f1bb;
 		border: 2px solid #a0ba82;
 		color: #000;
-		font-weight: bold;
 
 		&:hover {
 			background-color: darken($color: #f5f1bb, $amount: 18%);
@@ -66,7 +65,7 @@
 			fill: #000000;
 		}
 
-		.kit-radio__input:checked + .kit-radio__checkmark & {
+		.kit-radio__input:checked+.kit-radio__checkmark & {
 			fill: #000000;
 		}
 	}

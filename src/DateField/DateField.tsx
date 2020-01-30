@@ -2,6 +2,7 @@ import * as React from "react";
 import "./DateField.scss";
 import cn from "classnames";
 import { Icon } from "../Icon/Icon";
+import { formatValue } from "../utils/helpers";
 
 interface Props {
 	disabled?: boolean;
@@ -51,8 +52,6 @@ const monthes = [
 	"Ноя",
 	"Дек"
 ];
-
-const formatValue = (value: number) => (value < 10 ? `0${value}` : `${value}`);
 
 export class DateField extends React.Component<Props, State> {
 	public wrapper: HTMLElement;

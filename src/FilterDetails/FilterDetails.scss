@@ -20,6 +20,22 @@
 			max-height: 423px;
 		}
 	}
+
+	&_top {
+		top: 100%;
+	}
+
+	&_horizontal {
+		&_center {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&_right {
+			left: auto;
+			right: 0;
+		}
+	}
 }
 
 .kit-filter-details__title {
@@ -86,11 +102,9 @@
 		display: block;
 		width: 100%;
 		height: calc(100% - 10px);
-		background-image: linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0),
-			#ffffff
-		);
+		background-image: linear-gradient(to bottom,
+				rgba(255, 255, 255, 0),
+				#ffffff);
 	}
 
 	&_extended {
@@ -126,6 +140,7 @@
 	from {
 		overflow: hidden;
 	}
+
 	to {
 		overflow: auto;
 	}

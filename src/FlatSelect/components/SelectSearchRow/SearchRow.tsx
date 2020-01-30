@@ -79,13 +79,18 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const contextKeyDown = context?.contextOnKeyDownItems;
+		const contextKeyDown = context!.contextOnKeyDownItems;
 
-		if (onClickHandler && contextKeyDown) {
+		if (contextKeyDown) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
-					onClickHandler();
-					contextKeyDown(e);
+					if (!disabled && onClickHandler) {
+						onClickHandler();
+
+						if (!isForMultiSelect) {
+							contextKeyDown(e);
+						}
+					}
 					break;
 
 				case KeysCodes.Esc:

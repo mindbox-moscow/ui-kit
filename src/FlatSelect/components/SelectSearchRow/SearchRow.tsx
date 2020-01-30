@@ -97,6 +97,14 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				case KeysCodes.ArrowDown:
 				case KeysCodes.ArrowUp:
 					contextKeyDown(e);
+
+					if (refElement.current) {
+						refElement.current.scrollIntoView({
+							block: "center",
+							behavior: "smooth"
+						});
+					}
+
 					break;
 			}
 		}

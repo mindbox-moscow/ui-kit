@@ -212,7 +212,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			contextOnKeyDownItems: this.handleContextOnKeyDownItems,
 			onSearchRef: this.setSearchRef,
 			onItemsRef: this.setItemListRef,
-			onFocusElement: this.handleFocusFirstElement
+			onFocusElement: this.handleFocusFirstElement,
+			onCloseDropdown: this.hide
 		};
 
 		return (

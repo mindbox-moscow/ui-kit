@@ -84,9 +84,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		}
 
 		return () => {
-			window.removeEventListener("load", moveLabelAtCenterOfBracket);
-			window.removeEventListener("resize", moveLabelAtCenterOfBracket);
-
 			if (labelRef) {
 				labelRef.removeEventListener(
 					"mouseover",
@@ -237,9 +234,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
 			}
 		}
-
-		window.addEventListener("load", moveLabelAtCenterOfBracket);
-		window.addEventListener("resize", moveLabelAtCenterOfBracket);
 	};
 
 	const getChildElements = (

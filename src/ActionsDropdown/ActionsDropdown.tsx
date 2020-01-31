@@ -6,6 +6,8 @@ import cn from "classnames";
 
 interface IPropsAction {
 	title: React.ReactNode;
+	disabled?: boolean;
+	hint?: string;
 	onClick: () => void;
 }
 
@@ -17,6 +19,8 @@ interface IPropsGroup {
 interface IProps {
 	toggleBtnText: string;
 	className?: string;
+	isInline?: boolean;
+	getActions?: () => JSX.Element;
 }
 
 interface IState {
@@ -24,10 +28,24 @@ interface IState {
 }
 
 const ActionsDropdownAction = (props: IPropsAction) => {
-	const { title, onClick } = props;
+	const { title, onClick, disabled = false, hint } = props;
+
+	const handleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+
+		if (!disabled) {
+			onClick();
+		}
+	};
 
 	return (
-		<div className="kit-actions-dropdown__action" onClick={onClick}>
+		<div
+			className={cn("kit-actions-dropdown__action", {
+				"kit-actions-dropdown__action_disabled": disabled
+			})}
+			onClick={handleClick}
+			title={hint}
+		>
 			{title}
 		</div>
 	);
@@ -55,8 +73,11 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 
 	public wrapRef = React.createRef<HTMLDivElement>();
 
-	public handleClick = () =>
+	public handleClick = (e: React.MouseEvent) => {
+		e.stopPropagation();
+
 		this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
+	};
 
 	public handleClickOutside = (e: MouseEvent) => {
 		const dropdownWrap = this.wrapRef.current!;
@@ -81,7 +102,13 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 
 	public render() {
 		const { isOpen } = this.state;
-		const { className, children, toggleBtnText } = this.props;
+		const {
+			className,
+			children,
+			toggleBtnText,
+			isInline = false,
+			getActions
+		} = this.props;
 
 		return (
 			<div
@@ -90,20 +117,28 @@ class ActionsDropdown extends React.Component<IProps, IState> {
 				})}
 				ref={this.wrapRef}
 			>
-				<button
-					className="kit-actions-dropdown__toggle"
-					aria-label={toggleBtnText}
-					onClick={this.handleClick}
-				>
-					<IconSvg
-						className="kit-actions-dropdown__toggle-icon"
-						type="dots"
-					/>
-				</button>
-				{isOpen && (
-					<div className="kit-actions-dropdown__container">
-						{children}
-					</div>
+				{isInline ? (
+					<>{children}</>
+				) : (
+					<>
+						<button
+							className="kit-actions-dropdown__toggle"
+							aria-label={toggleBtnText}
+							onClick={this.handleClick}
+						>
+							<IconSvg
+								className="kit-actions-dropdown__toggle-icon"
+								type="dots"
+							/>
+						</button>
+						{isOpen && (
+							<div className="kit-actions-dropdown__container">
+								{getActions !== undefined
+									? getActions()
+									: children}
+							</div>
+						)}
+					</>
 				)}
 			</div>
 		);

@@ -54,5 +54,13 @@
 			</ActionsDropdown.Group>
 		</ActionsDropdown>
 	</div>
+	<div>
+		<ActionsDropdown isInline={true}>
+			<ActionsDropdown.Action
+				title="Редактировать"
+				onClick={() => console.log("Редактировать")}
+			/>
+		</ActionsDropdown>
+	</div>
 </>
 ```

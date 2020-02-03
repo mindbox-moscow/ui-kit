@@ -8,7 +8,6 @@ type SelectedElement = {
 };
 
 export interface IProps {
-	onSelectElement: (selectElement: HTMLLIElement) => void;
 	selectedElement: SelectedElement | null;
 }
 

@@ -15,11 +15,6 @@ import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
 
-const HEADER_SEARCH_HEIGHT = 55;
-// Height + PaddingTop + PaddingBottom
-const MIN_HEIGHT_ELEMENT = 37;
-const PADDING_PARENT = 16;
-
 const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	childRenderer,
 	onModeChanged,
@@ -44,6 +39,25 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
+	let topRect: number = 0;
+
+	React.useEffect(() => {
+		const body = document.body;
+		const refSelector = mainRef.current;
+
+		if (refSelector) {
+			const { top } = refSelector.getBoundingClientRect();
+			topRect = top;
+
+			if (body.clientHeight < refSelector.clientHeight + topRect) {
+				body.style.height = `${body.clientHeight + topRect}px`;
+			}
+		}
+
+		return () => {
+			body.style.height = "";
+		};
+	}, []);
 
 	const handleDisableBodyScroll = (e: React.WheelEvent) => {
 		e.preventDefault();
@@ -133,27 +147,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
-	const scrollHierarchyOnKeyDown = (selectElement: HTMLLIElement): void => {
-		const refHierarchy = listRef.current;
-		const selectOffsetTop = selectElement.offsetTop - HEADER_SEARCH_HEIGHT;
-
-		if (refHierarchy) {
-			if (selectOffsetTop <= refHierarchy.scrollTop) {
-				refHierarchy.scrollTop = selectOffsetTop;
-			} else if (
-				refHierarchy.clientHeight -
-					PADDING_PARENT +
-					refHierarchy.scrollTop <
-				selectOffsetTop + MIN_HEIGHT_ELEMENT
-			) {
-				refHierarchy.scrollTop =
-					selectOffsetTop +
-					MIN_HEIGHT_ELEMENT -
-					refHierarchy.clientHeight;
-			}
-		}
-	};
-
 	const ChildItem = childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -178,7 +171,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	};
 
 	const valueContext: IProps = {
-		onSelectElement: scrollHierarchyOnKeyDown,
 		selectedElement: null
 	};
 

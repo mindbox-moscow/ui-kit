@@ -19,12 +19,7 @@
 }
 
 @mixin changeHorisontalBracketsColor($color) {
-	& ~ .kit-filtration-condition > .kit-filtration-condition__item-text,
-	& ~ .kit-filtration-group__buttons,
-	&
-		~ .kit-filtration-group
-		> .kit-filtration-group__label
-		.kit-filtration-group__label-line {
+	& ~ .kit-filtration-group__buttons {
 		&::after {
 			border-top-color: $color;
 		}

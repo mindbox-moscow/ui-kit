@@ -51,6 +51,8 @@ $topBorderColor: #e2eaf0;
 
 	> .kit-filtration-group_not-children {
 		.kit-filtration-group__buttons {
+			@include removeHorisontalBrackets;
+
 			> .kit-filter-editor .kit-filter-editor__btn,
 			> .kit-button {
 				opacity: 1;

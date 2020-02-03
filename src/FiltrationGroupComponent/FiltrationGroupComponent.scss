@@ -133,6 +133,8 @@ $minHeight: 32px;
 		> .kit-filtration-group__label_or {
 			color: $orColorEdit;
 
+			@include changeHorisontalBracketsColor($orColorEdit);
+
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
 			}
@@ -140,6 +142,8 @@ $minHeight: 32px;
 
 		> .kit-filtration-group__label_and {
 			color: $andColorEdit;
+
+			@include changeHorisontalBracketsColor($andColorEdit);
 
 			.kit-filtration-group__label-line {
 				background-color: $andColorEdit;
@@ -200,6 +204,8 @@ $minHeight: 32px;
 			color: $orColorEdit;
 			background-color: $hoverColorBg;
 
+			@include changeHorisontalBracketsColor($andColorEdit);
+
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
 				background-color: $orColorEdit;
@@ -209,6 +215,8 @@ $minHeight: 32px;
 		> .kit-filtration-group__label_hover_and {
 			color: $andColorEdit;
 			background-color: $hoverColorBg;
+
+			@include changeHorisontalBracketsColor($andColorEdit);
 
 			.kit-filtration-group__label-button,
 			.kit-filtration-group__label-line,
@@ -271,6 +279,8 @@ $minHeight: 32px;
 	&_and {
 		color: $andColor;
 
+		@include changeHorisontalBracketsColor($andColor);
+
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
 			color: $andColorEdit;
@@ -280,6 +290,8 @@ $minHeight: 32px;
 
 	&_or {
 		color: $orColor;
+
+		@include changeHorisontalBracketsColor($orColor);
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line {
@@ -355,6 +367,8 @@ $minHeight: 32px;
 	box-sizing: border-box;
 	outline: none;
 	z-index: 3;
+
+	@include createHorisontalBrackets;
 
 	> * {
 		z-index: 2;

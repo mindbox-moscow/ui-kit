@@ -4,23 +4,16 @@ import * as React from "react";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
-import { HorizontalBracket, LabelButton } from "./components";
+import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
 import { CallbackProps, SearchClasses, StateProps } from "./types";
 
 type Props = StateProps & CallbackProps;
 
-// tslint:disable-next-line:interface-name
-interface ItemsRootElement {
-	element: HTMLElement;
-	height: number;
-}
-
 type SearchElementType = "first" | "last";
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 32;
-const BRACKET_WIDTH = 2;
 
 const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	groupType,
@@ -39,9 +32,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	addSimpleConditionButton,
 	onConditionStateToggle
 }) => {
-	const [horizontalBracket, setHorizontalBracket] = useState<
-		ItemsRootElement[]
-	>([]);
 	const [verticalBracket, setVerticalBracket] = useState<boolean>(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = React.useRef(false);
@@ -55,7 +45,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	useEffect(() => {
 		moveLabelAtCenterOfBracket();
 		handleCreateVerticalBrackets();
-		handleCreateHorizontalBrackets();
 	});
 
 	useMemo(
@@ -68,7 +57,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 		},
-		[children, state, verticalBracket, horizontalBracket]
+		[children, state, verticalBracket]
 	);
 
 	useEffect(() => {
@@ -236,26 +225,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
-	const getChildElements = (
-		rootElement: HTMLElement,
-		searchClasses: string[]
-	): ItemsRootElement[] | [] => {
-		const childrenElements = Array.from(rootElement.childNodes);
-
-		return childrenElements
-			.filter((item: HTMLElement) => {
-				return searchClasses.some(className =>
-					item.classList.contains(className)
-				);
-			})
-			.map((item: HTMLElement) => {
-				return {
-					element: item,
-					height: item.getBoundingClientRect().height
-				} as ItemsRootElement;
-			});
-	};
-
 	const searchFirstLastElement = (
 		searchableElement: HTMLElement,
 		searchClasses: string[],
@@ -363,32 +332,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 
 		if (isVerticalBracket !== verticalBracket) {
 			setVerticalBracket(newVerticalBracket => !newVerticalBracket);
-		}
-	};
-
-	const handleCreateHorizontalBrackets = () => {
-		const groupRef = kitFiltrationRef.current;
-		let repeater = true;
-
-		if (groupRef) {
-			const groupItems = getChildElements(groupRef, classes);
-
-			if (horizontalBracket.length !== groupItems.length) {
-				setHorizontalBracket(groupItems);
-			} else {
-				horizontalBracket.map((item: ItemsRootElement, index) => {
-					if (repeater) {
-						if (
-							item.height !== groupItems[index].height ||
-							item.element !== groupItems[index].element
-						) {
-							setHorizontalBracket(groupItems);
-
-							repeater = false;
-						}
-					}
-				});
-			}
 		}
 	};
 
@@ -541,11 +484,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						</span>
 					)}
 				</div>
-				<HorizontalBracket
-					brackets={horizontalBracket}
-					minHeight={MIN_HEIGHT}
-					bracketWidth={BRACKET_WIDTH}
-				/>
 				{renderVerticalBracket}
 			</div>
 			{renderInner}

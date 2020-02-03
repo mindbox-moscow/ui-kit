@@ -55,7 +55,7 @@ const DateRange: React.FC<Props> = ({
 	const [value, setValue] = React.useState<DateRangeValueTypes | LastPeriods>(
 		DateRangeValueTypes.NoFilter
 	);
-	const [isError, setError] = React.useState<boolean>(false);
+	const [hasError, setError] = React.useState<boolean>(false);
 
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
 		dateFrom,
@@ -149,14 +149,14 @@ const DateRange: React.FC<Props> = ({
 				<div className="kit-date-range__popup-fields">
 					<div className="kit-date-range__popup-date">
 						<DateField
-							error={isError}
+							error={hasError}
 							defaultDate={dateFrom}
 							onChange={handleChangeDateFrom}
 						/>
 					</div>
 					<div className="kit-date-range__popup-date">
 						<TimeField
-							error={isError}
+							error={hasError}
 							hours={timeFrom.hours}
 							minutes={timeFrom.minutes}
 							onChange={handleChangeTimeFrom}
@@ -171,14 +171,14 @@ const DateRange: React.FC<Props> = ({
 				<div className="kit-date-range__popup-fields">
 					<div className="kit-date-range__popup-date">
 						<DateField
-							error={isError}
+							error={hasError}
 							defaultDate={dateTo}
 							onChange={handleChangeDateTo}
 						/>
 					</div>
 					<div className="kit-date-range__popup-date">
 						<TimeField
-							error={isError}
+							error={hasError}
 							hours={timeTo.hours}
 							minutes={timeTo.minutes}
 							onChange={handleChangeTimeTo}
@@ -186,7 +186,7 @@ const DateRange: React.FC<Props> = ({
 					</div>
 				</div>
 			</div>
-			{isError && (
+			{hasError && (
 				<Tooltip
 					title={<IconSvg type="warning" />}
 					position="top"
@@ -241,7 +241,7 @@ const DateRange: React.FC<Props> = ({
 										cancelFilterButtonCaption
 									}
 									isAddFilterButtonEnabled={true}
-									disabledSaveButton={isError}
+									disabledSaveButton={hasError}
 									onAddFilterButtonClick={handleApplyFilter}
 									onCancelFilterButtonClick={onCloseFilter}
 								/>

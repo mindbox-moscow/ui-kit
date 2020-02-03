@@ -7,6 +7,7 @@
 	justify-content: center;
 	border-radius: 4px;
 	padding: 0 23px;
+	margin: 0;
 	border: 1px solid transparent;
 	cursor: pointer;
 	outline: none;
@@ -130,14 +131,13 @@
 		&:focus:not(:disabled) {
 			border-color: darken($color: #a12e1e, $amount: 18%);
 			color: darken($color: #a12e1e, $amount: 18%);
-			background-color: darken(
-				$color: rgba(255, 240, 238, 0.5),
-				$amount: 8%
-			);
+			background-color: darken($color: rgba(255, 240, 238, 0.5),
+					$amount: 8%);
 		}
 	}
 
 	&_whith-arrow {
+
 		&::after,
 		&::before {
 			display: inline-block;

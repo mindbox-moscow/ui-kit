@@ -38,11 +38,6 @@ export interface DateRangeSelectorCallbackProps {
 	onChange: (newValue: DateRangeValue) => void;
 }
 
-export interface Time {
-	hours: number;
-	minutes: number;
-}
-
 export interface IDateRange {
 	dateFrom: Date;
 	dateTo: Date;

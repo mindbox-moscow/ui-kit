@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-	DateRangeValueTypes,
-	IDateRange,
-	LastPeriods,
-	Props,
-	Time
-} from "./types";
+import { DateRangeValueTypes, IDateRange, LastPeriods, Props } from "./types";
 
 import { DateField } from "../DateField";
 import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent";
@@ -14,12 +8,7 @@ import { IconSvg } from "../IconSvg";
 import { RadioButton } from "../RadioButton";
 import { TimeField } from "../TimeField";
 import { Tooltip } from "../Tooltip";
-import {
-	getMinutes,
-	getNow,
-	getWeekBeforeNow,
-	parseDateToString
-} from "../utils/helpers";
+import { getNow, getWeekBeforeNow, parseDateToString } from "../utils/helpers";
 
 import { withOutsideClick } from "../HOCs";
 
@@ -45,17 +34,13 @@ const DateRange: React.FC<Props> = ({
 }) => {
 	const weekBeforeNow = getWeekBeforeNow();
 	const dateNow = getNow();
-	const minutesFrom = getMinutes(weekBeforeNow);
-	const minutesTo = getMinutes(dateNow);
 
 	const [dateFrom, setDateFrom] = React.useState<Date>(weekBeforeNow);
 	const [dateTo, setDateTo] = React.useState<Date>(dateNow);
-	const [timeFrom, setTimeFrom] = React.useState<Time>(minutesFrom);
-	const [timeTo, setTimeTo] = React.useState<Time>(minutesTo);
 	const [value, setValue] = React.useState<DateRangeValueTypes | LastPeriods>(
 		DateRangeValueTypes.NoFilter
 	);
-	const [hasError, setError] = React.useState<boolean>(false);
+	const [hasError, setHasError] = React.useState<boolean>(false);
 
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
 		dateFrom,
@@ -66,6 +51,11 @@ const DateRange: React.FC<Props> = ({
 		DateRangeValueTypes | LastPeriods
 	>(DateRangeValueTypes.NoFilter);
 	const [isShowFilter, setShowFilter] = React.useState<boolean>(false);
+
+	const hoursFrom = dateFrom.getHours();
+	const minutesFrom = dateFrom.getMinutes();
+	const hoursTo = dateTo.getHours();
+	const minutesTo = dateTo.getMinutes();
 
 	const handleSelectedNoFilter = () => {
 		setPrevValue(value);
@@ -99,46 +89,37 @@ const DateRange: React.FC<Props> = ({
 		onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
 	};
 
-	const handleChangeDateFrom = (currentDateFrom: Date) => {
-		currentDateFrom.setHours(timeFrom.hours);
-		currentDateFrom.setMinutes(timeFrom.minutes);
-		setDateFrom(currentDateFrom);
+	const setNewDate = (date: Date, hours: number, minutes: number) => {
+		const newDate = new Date(date);
+		newDate.setHours(hours);
+		newDate.setMinutes(minutes);
+
+		return newDate;
 	};
 
-	const handleChangeDateTo = (currentDateTo: Date) => {
-		currentDateTo.setHours(timeTo.hours);
-		currentDateTo.setMinutes(timeTo.minutes);
-		setDateTo(currentDateTo);
+	const handleChangeDateFrom = (newDateFrom: Date) => {
+		const newDate = setNewDate(newDateFrom, hoursFrom, minutesFrom);
+		setDateFrom(newDate);
+		setHasError(newDate >= dateTo);
+	};
+
+	const handleChangeDateTo = (newDateTo: Date) => {
+		const newDate = setNewDate(newDateTo, hoursTo, minutesTo);
+		setDateTo(newDate);
+		setHasError(dateFrom >= newDate);
 	};
 
 	const handleChangeTimeFrom = (hours: number, minutes: number) => {
-		setTimeFrom({ hours, minutes });
+		const newDate = setNewDate(dateFrom, hours, minutes);
+		setDateFrom(newDate);
+		setHasError(newDate >= dateTo);
 	};
 
 	const handleChangeTimeTo = (hours: number, minutes: number) => {
-		setTimeTo({ hours, minutes });
+		const newDate = setNewDate(dateTo, hours, minutes);
+		setDateTo(newDate);
+		setHasError(dateFrom >= newDate);
 	};
-
-	React.useEffect(
-		() => {
-			handleChangeDateFrom(dateFrom);
-		},
-		[timeFrom]
-	);
-
-	React.useEffect(
-		() => {
-			handleChangeDateTo(dateTo);
-		},
-		[timeTo]
-	);
-
-	React.useEffect(
-		() => {
-			setError(dateFrom >= dateTo);
-		},
-		[dateFrom, dateTo, timeFrom, timeTo]
-	);
 
 	const InnerEditorComponent = () => (
 		<div className="kit-date-range__popup">
@@ -157,8 +138,8 @@ const DateRange: React.FC<Props> = ({
 					<div className="kit-date-range__popup-date">
 						<TimeField
 							error={hasError}
-							hours={timeFrom.hours}
-							minutes={timeFrom.minutes}
+							hours={hoursFrom}
+							minutes={minutesFrom}
 							onChange={handleChangeTimeFrom}
 						/>
 					</div>
@@ -179,8 +160,8 @@ const DateRange: React.FC<Props> = ({
 					<div className="kit-date-range__popup-date">
 						<TimeField
 							error={hasError}
-							hours={timeTo.hours}
-							minutes={timeTo.minutes}
+							hours={hoursTo}
+							minutes={minutesTo}
 							onChange={handleChangeTimeTo}
 						/>
 					</div>

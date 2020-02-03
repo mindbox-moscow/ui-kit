@@ -1,0 +1,32 @@
+@mixin createHorisontalBrackets($left: -16px, $top: 17px) {
+	&::after {
+		content: "";
+		position: absolute;
+		top: $top;
+		left: $left;
+		width: 13px;
+		border-top: 2px solid $braketColor;
+		z-index: 2;
+		transform: translateY(-1px);
+		pointer-events: none;
+	}
+}
+
+@mixin removeHorisontalBrackets() {
+	&::after {
+		content: none;
+	}
+}
+
+@mixin changeHorisontalBracketsColor($color) {
+	& ~ .kit-filtration-condition > .kit-filtration-condition__item-text,
+	& ~ .kit-filtration-group__buttons,
+	&
+		~ .kit-filtration-group
+		> .kit-filtration-group__label
+		.kit-filtration-group__label-line {
+		&::after {
+			border-top-color: $color;
+		}
+	}
+}

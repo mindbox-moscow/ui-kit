@@ -19,9 +19,19 @@
 }
 
 @mixin changeHorisontalBracketsColor($color) {
-	& ~ .kit-filtration-group__buttons {
+	& ~ .kit-filtration-group__buttons,
+	& ~ .kit-filtration-condition {
 		&::after {
 			border-top-color: $color;
+		}
+	}
+}
+
+@mixin changeHorisontalBracketsOpacity($opacity) {
+	& ~ .kit-filtration-group__buttons,
+	& ~ .kit-filtration-condition {
+		&::after {
+			opacity: $opacity;
 		}
 	}
 }

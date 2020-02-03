@@ -27,8 +27,12 @@ $minHeight: 32px;
 	.kit-filtration-group__label {
 		opacity: $opacity;
 
+		@include changeHorisontalBracketsOpacity($opacity);
+
 		&:hover {
 			opacity: 1;
+
+			@include changeHorisontalBracketsOpacity(1);
 		}
 	}
 }
@@ -41,25 +45,6 @@ $minHeight: 32px;
 	padding: 0;
 	box-sizing: border-box;
 	z-index: 4;
-
-	& {
-		:not(.kit-filtration-condition) > & {
-			> li {
-				&:first-of-type {
-					&::after {
-						top: 14px;
-						opacity: 0;
-					}
-				}
-
-				&:last-of-type {
-					&::after {
-						content: none;
-					}
-				}
-			}
-		}
-	}
 
 	&_read-only {
 		.kit-filtration-group__label {
@@ -154,6 +139,8 @@ $minHeight: 32px;
 			> .kit-filtration-group__label_hover_or {
 				color: $orColorEdit;
 
+				@include changeHorisontalBracketsColor($orColorEdit);
+
 				.kit-filtration-group__label-line,
 				.kit-filtration-group__label-text {
 					background-color: $orColorEdit;
@@ -162,6 +149,8 @@ $minHeight: 32px;
 
 			> .kit-filtration-group__label_hover_and {
 				color: $andColorEdit;
+
+				@include changeHorisontalBracketsColor($andColorEdit);
 
 				.kit-filtration-group__label-button,
 				.kit-filtration-group__label-line,
@@ -204,7 +193,7 @@ $minHeight: 32px;
 			color: $orColorEdit;
 			background-color: $hoverColorBg;
 
-			@include changeHorisontalBracketsColor($andColorEdit);
+			@include changeHorisontalBracketsColor($orColorEdit);
 
 			.kit-filtration-group__label-text,
 			.kit-filtration-group__label-line {
@@ -236,12 +225,14 @@ $minHeight: 32px;
 		}
 	}
 
-	> li {
+	> .kit-filtration-condition {
 		margin: 0;
 		width: 100%;
 		max-width: calc(100% - 30px);
 		padding-left: 20px;
 		box-sizing: border-box;
+
+		@include createHorisontalBrackets(4px, 16px);
 
 		.kit-filtration-group__buttons {
 			margin-left: 20px;

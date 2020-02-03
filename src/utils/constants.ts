@@ -19,3 +19,5 @@ export enum KeysCodes {
 	Esc = 27,
 	Tab = 9
 }
+
+export const WEEK_IN_DAYS = 7;

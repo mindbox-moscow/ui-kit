@@ -7,13 +7,13 @@ import {
 	Time
 } from "./types";
 
-import { DateField } from "../DateField/DateField";
-import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent/FilterConditionEditorComponent";
-import { FilterDetails } from "../FilterDetails/FilterDetails";
-import { IconSvg } from "../IconSvg/IconSvg";
-import { RadioButton } from "../RadioButton/RadioButton";
-import { TimeField } from "../TimeField/TimeField";
-import { Tooltip } from "../Tooltip/Tooltip";
+import { DateField } from "../DateField";
+import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent";
+import { FilterDetails } from "../FilterDetails";
+import { IconSvg } from "../IconSvg";
+import { RadioButton } from "../RadioButton";
+import { TimeField } from "../TimeField";
+import { Tooltip } from "../Tooltip";
 import {
 	getMinutes,
 	getNow,
@@ -27,7 +27,7 @@ import "./DateRange.scss";
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
-export const DateRange: React.FC<Props> = ({
+const DateRange: React.FC<Props> = ({
 	labelNoFilter,
 	radioTextNoFilter,
 	labelConcrete,
@@ -43,15 +43,19 @@ export const DateRange: React.FC<Props> = ({
 	addFilterButtonCaption,
 	cancelFilterButtonCaption
 }) => {
-	const [dateFrom, setDateFrom] = React.useState<Date>(getWeekBeforeNow());
-	const [dateTo, setDateTo] = React.useState<Date>(getNow());
-	const [timeFrom, setTimeFrom] = React.useState<Time>(
-		getMinutes(getWeekBeforeNow())
-	);
-	const [timeTo, setTimeTo] = React.useState<Time>(getMinutes(getNow()));
+	const weekBeforeNow = getWeekBeforeNow();
+	const dateNow = getNow();
+	const minutesFrom = getMinutes(weekBeforeNow);
+	const minutesTo = getMinutes(dateNow);
+
+	const [dateFrom, setDateFrom] = React.useState<Date>(weekBeforeNow);
+	const [dateTo, setDateTo] = React.useState<Date>(dateNow);
+	const [timeFrom, setTimeFrom] = React.useState<Time>(minutesFrom);
+	const [timeTo, setTimeTo] = React.useState<Time>(minutesTo);
 	const [value, setValue] = React.useState<DateRangeValueTypes | LastPeriods>(
 		DateRangeValueTypes.NoFilter
 	);
+	const [isError, setError] = React.useState<boolean>(false);
 
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
 		dateFrom,
@@ -62,10 +66,6 @@ export const DateRange: React.FC<Props> = ({
 		DateRangeValueTypes | LastPeriods
 	>(DateRangeValueTypes.NoFilter);
 	const [isShowFilter, setShowFilter] = React.useState<boolean>(false);
-
-	React.useEffect(() => {
-		setDateRange({ dateFrom, dateTo });
-	}, []);
 
 	const handleSelectedNoFilter = () => {
 		setPrevValue(value);
@@ -100,10 +100,14 @@ export const DateRange: React.FC<Props> = ({
 	};
 
 	const handleChangeDateFrom = (currentDateFrom: Date) => {
+		currentDateFrom.setHours(timeFrom.hours);
+		currentDateFrom.setMinutes(timeFrom.minutes);
 		setDateFrom(currentDateFrom);
 	};
 
 	const handleChangeDateTo = (currentDateTo: Date) => {
+		currentDateTo.setHours(timeTo.hours);
+		currentDateTo.setMinutes(timeTo.minutes);
 		setDateTo(currentDateTo);
 	};
 
@@ -114,6 +118,27 @@ export const DateRange: React.FC<Props> = ({
 	const handleChangeTimeTo = (hours: number, minutes: number) => {
 		setTimeTo({ hours, minutes });
 	};
+
+	React.useEffect(
+		() => {
+			handleChangeDateFrom(dateFrom);
+		},
+		[timeFrom]
+	);
+
+	React.useEffect(
+		() => {
+			handleChangeDateTo(dateTo);
+		},
+		[timeTo]
+	);
+
+	React.useEffect(
+		() => {
+			setError(dateFrom >= dateTo);
+		},
+		[dateFrom, dateTo, timeFrom, timeTo]
+	);
 
 	const InnerEditorComponent = () => (
 		<div className="kit-date-range__popup">
@@ -172,8 +197,6 @@ export const DateRange: React.FC<Props> = ({
 			)}
 		</div>
 	);
-
-	const isError = dateFrom > dateTo;
 
 	return (
 		<div className="kit-date-range">
@@ -262,3 +285,5 @@ export const DateRange: React.FC<Props> = ({
 		</div>
 	);
 };
+
+export default DateRange;

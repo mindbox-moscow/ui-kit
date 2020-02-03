@@ -20,8 +20,6 @@ const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
 });
 
 export class Dropdown extends React.Component<DropdownProps, DropdownState> {
-	private static DropdownIdentifier: number = 0;
-
 	public state = {
 		dropdownId: "",
 		isInBottomOfScreen: false,
@@ -34,11 +32,6 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public componentDidMount() {
 		this.positionDropDown();
-
-		Dropdown.DropdownIdentifier++;
-		this.setState({
-			dropdownId: "react-dropdown-" + Dropdown.DropdownIdentifier
-		});
 	}
 
 	public componentDidUpdate() {
@@ -255,6 +248,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						<DropdownContext.Provider value={contextValues}>
 							<Panel
 								onClickOutside={this.hide}
+								ignoreNeutralZoneClass={true}
 								parentRef={this.dropdownRef}
 								width={width || Width.Full}
 								className={cn(panelClass, neutralZoneClass, {

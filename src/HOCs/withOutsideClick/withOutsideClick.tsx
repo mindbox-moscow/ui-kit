@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 export interface WithOutsideClickProps {
 	onClickOutside: () => void;
 	setOutsideClickRef?: (el: HTMLElement) => void;
+	ignoreNeutralZoneClass?: boolean;
 	children?: React.ReactNode;
 }
 
@@ -57,14 +58,17 @@ export const withOutsideClick = <T extends {}>(
 		};
 
 		const handleOutsideClick = (e: MouseEvent) => {
-			const { onClickOutside } = props;
+			const { onClickOutside, ignoreNeutralZoneClass } = props;
 			const target = e.target as HTMLElement;
+			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
+				? false
+				: fromElementWithClassEvent(e, neutralZoneClass);
 
 			if (
 				!(
 					(refWrapper.current &&
 						refWrapper.current.contains(target)) ||
-					fromElementWithClassEvent(e, neutralZoneClass) ||
+					isIgnoreNeutralZoneClass ||
 					fromElementWithClassEvent(e, uiDatePickerClass) ||
 					fromElementWithClassEvent(
 						e,

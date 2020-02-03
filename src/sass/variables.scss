@@ -1,4 +1,16 @@
 // Colors
+$braketColor: #c3d4e1;
+$orColor: #dcc6f3;
+$orColorEdit: #9859dc;
+$andColor: $braketColor;
+$andColorEdit: #2d597d;
+$removeColorBg: #ffeeeb;
+$removeColor: #a12e1e;
+$hoverColorBg: #f5f8fa;
+$editColorBg: #e2eaf0;
+$closeColor: #666;
+$copyColorBg: $hoverColorBg;
+$copyColor: $andColorEdit;
 $hoverColorBg: #f5f8fa;
 $editModeColorBg: #3875d7;
 $removeColorBg: #ffeeeb;
@@ -7,16 +19,11 @@ $copyColorBg: $hoverColorBg;
 $copyColor: #2d597d;
 $linkedConditionEditModeColorBg: #fde487;
 $borderPopoverColor: #dddddc;
-$braketColor: #c3d4e1;
-$orColor: #dcc6f3;
-$orColorEdit: #9859dc;
-$andColor: $braketColor;
-$andColorEdit: #2d597d;
-$hoverColorBg: #f5f8fa;
-$editColorBg: #e2eaf0;
-$closeColor: #666;
-$copyColorBg: $hoverColorBg;
-$copyColor: $andColorEdit;
+$clearButtonColorBg: #ffeeeb;
+$clearButtonColor: #a12e1e;
+$clearButtonCountColor: #a4a4a4;
+$topBarBg: #fcfcfc;
+$topBorderColor: #e2eaf0;
 
 // Sizes
 $itemHoverBorderRadius: 3px;
@@ -28,3 +35,7 @@ $borderWidthLine: 2px;
 $groupLabelPaddingLeft: 15px;
 $widthHorizontalBraket: 12px;
 $minHeight: 32px;
+
+$itemHoverBorderRadius: 3px;
+$groupHoverMarginTop: 0px;
+$groupHoverMarginLeft: 10px;

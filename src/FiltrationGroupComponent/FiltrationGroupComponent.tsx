@@ -60,43 +60,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		[children, state, verticalBracket]
 	);
 
-	useEffect(() => {
-		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
-
-		if (labelRef) {
-			labelRef.addEventListener("mouseover", handleHoverAddClassLabel);
-		}
-
-		if (closeRef) {
-			closeRef.addEventListener("mouseover", handleHoverAddClassLabel);
-		}
-
-		return () => {
-			if (labelRef) {
-				labelRef.removeEventListener(
-					"mouseover",
-					handleHoverAddClassLabel
-				);
-				labelRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			if (closeRef) {
-				closeRef.removeEventListener(
-					"mouseover",
-					handleHoverAddClassLabel
-				);
-				closeRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-		};
-	}, []);
-
 	const moveLabelAtCenterOfBracket = () => {
 		let heightGroup = 0;
 		let heightLine = 0;
@@ -249,7 +212,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 
 	const handleHoverAddClassLabel = () => {
 		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
@@ -268,21 +230,11 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					);
 				}
 			});
-
-			if (closeRef) {
-				closeRef.addEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			labelRef.addEventListener("mouseout", handleHoverRemoveClassLabel);
 		}
 	};
 
 	const handleHoverRemoveClassLabel = () => {
 		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.parentElement!.classList.remove(
@@ -303,18 +255,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					);
 				}
 			});
-
-			if (closeRef) {
-				closeRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			labelRef.removeEventListener(
-				"mouseout",
-				handleHoverRemoveClassLabel
-			);
 		}
 	};
 
@@ -397,6 +337,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					onClick={onConditionStateToggle}
 					type="button"
 					className="kit-filtration-group__close"
+					onMouseOver={handleHoverAddClassLabel}
+					onMouseOut={handleHoverRemoveClassLabel}
 				>
 					<IconSvg type="close" />
 				</button>
@@ -446,12 +388,17 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					`kit-filtration-group__label_hover_${groupType}`
 				)}
 				onClick={handleGroupLabelClick}
+				onMouseOver={handleHoverAddClassLabel}
+				onMouseOut={handleHoverRemoveClassLabel}
 			/>
 			<div
 				ref={kitFiltrationLabelLineRef}
 				className={cn("kit-filtration-group__label-line", {
 					[`kit-filtration-group__label-line_${groupType}`]: shouldShowLabel
 				})}
+				onClick={handleGroupLabelClick}
+				onMouseOver={handleHoverAddClassLabel}
+				onMouseOut={handleHoverRemoveClassLabel}
 			>
 				{shouldShowLabel && (
 					<span className="kit-filtration-group__label-text">

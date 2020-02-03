@@ -1,24 +1,4 @@
-// Colors
-$braketColor: #c3d4e1;
-$orColor: #dcc6f3;
-$orColorEdit: #9859dc;
-$andColor: $braketColor;
-$andColorEdit: #2d597d;
-$removeColorBg: #ffeeeb;
-$removeColor: #a12e1e;
-$hoverColorBg: #f5f8fa;
-$editColorBg: #e2eaf0;
-$closeColor: #666;
-$copyColorBg: $hoverColorBg;
-$copyColor: $andColorEdit;
-
-// Sizing
-$groupHoverMarginTop: 0px;
-$groupHoverMarginLeft: 10px;
-$borderWidthLine: 2px;
-$groupLabelPaddingLeft: 15px;
-$widthHorizontalBraket: 12px;
-$minHeight: 32px;
+@import "../sass/index.scss";
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -47,7 +27,8 @@ $minHeight: 32px;
 	z-index: 4;
 
 	&_read-only {
-		.kit-filtration-group__label {
+		.kit-filtration-group__label,
+		.kit-filtration-group__label-line {
 			pointer-events: none;
 			cursor: default;
 		}
@@ -286,6 +267,7 @@ $minHeight: 32px;
 	background-color: $braketColor;
 	box-sizing: border-box;
 	z-index: 3;
+	cursor: pointer;
 
 	&_and {
 		color: $andColor;

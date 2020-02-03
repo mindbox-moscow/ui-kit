@@ -55,7 +55,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		}
 
 		return () => {
-			body.style.height = `auto`;
+			body.style.height = "";
 		};
 	}, []);
 

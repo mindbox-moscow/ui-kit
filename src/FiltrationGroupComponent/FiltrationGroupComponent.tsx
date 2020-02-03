@@ -443,47 +443,45 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				ref={kitFiltrationLabelRef}
 				className={cn(
 					"kit-filtration-group__label",
-					`kit-filtration-group__label_hover_${groupType}`,
-					{
-						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
-					}
+					`kit-filtration-group__label_hover_${groupType}`
 				)}
 				onClick={handleGroupLabelClick}
+			/>
+			<div
+				ref={kitFiltrationLabelLineRef}
+				className={cn("kit-filtration-group__label-line", {
+					[`kit-filtration-group__label-line_${groupType}`]: shouldShowLabel
+				})}
 			>
-				<div
-					ref={kitFiltrationLabelLineRef}
-					className="kit-filtration-group__label-line"
-				>
-					{shouldShowLabel && (
-						<span className="kit-filtration-group__label-text">
-							{state === "edit" ? (
-								<div
-									className={cn(
-										"kit-filtration-group__label-text-buttons",
-										`kit-filtration-group__label-text-buttons_${groupType}`
-									)}
+				{shouldShowLabel && (
+					<span className="kit-filtration-group__label-text">
+						{state === "edit" ? (
+							<div
+								className={cn(
+									"kit-filtration-group__label-text-buttons",
+									`kit-filtration-group__label-text-buttons_${groupType}`
+								)}
+							>
+								{renderCopyButton()}
+								<button
+									key="remove"
+									onClick={onConditionRemove}
+									className="kit-filtration-group__remove"
+									type="button"
 								>
-									{renderCopyButton()}
-									<button
-										key="remove"
-										onClick={onConditionRemove}
-										className="kit-filtration-group__remove"
-										type="button"
-									>
-										<IconSvg type="trash" />
-									</button>
-									<LabelButton
-										onToggle={onGroupTypeToggle}
-										types={labelMap}
-										activeType={groupType}
-									/>
-								</div>
-							) : (
-								labelMap[groupType]
-							)}
-						</span>
-					)}
-				</div>
+									<IconSvg type="trash" />
+								</button>
+								<LabelButton
+									onToggle={onGroupTypeToggle}
+									types={labelMap}
+									activeType={groupType}
+								/>
+							</div>
+						) : (
+							labelMap[groupType]
+						)}
+					</span>
+				)}
 				{renderVerticalBracket}
 			</div>
 			{renderInner}

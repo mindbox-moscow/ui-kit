@@ -1,48 +1,41 @@
 import * as React from "react";
 import { SelectDropMainProps } from "./types";
 
-export class SelectDropMain extends React.Component<SelectDropMainProps> {
-	private selectRef = React.createRef<HTMLDivElement>();
+export const SelectDropMain: React.FC<SelectDropMainProps> = ({
+	onScroll,
+	children
+}) => {
+	const selectRef = React.useRef<HTMLDivElement>(null);
+	let scrollHandler: () => void;
 
-	private scrollHandler: () => void;
+	React.useEffect(() => {
+		addScrollHandler();
 
-	public componentDidMount() {
-		this.forceUpdate(this.addScrollHandler);
-	}
+		return removeScrollHandler;
+	}, []);
 
-	public componentWillUnmount() {
-		this.removeScrollHandler();
-	}
+	const addScrollHandler = () => {
+		if (onScroll && !scrollHandler) {
+			const selectNode = selectRef.current;
 
-	public componentDidUpdate() {
-		this.addScrollHandler();
-		this.removeScrollHandler();
-	}
-
-	public render() {
-		return (
-			<div className="kit-selectR-drop-main" ref={this.selectRef}>
-				<ul className="kit-selectR-results kit-selectR-results-default">
-					{this.props.children}
-				</ul>
-			</div>
-		);
-	}
-
-	private addScrollHandler = () => {
-		if (this.props.onScroll && !this.scrollHandler) {
-			const selectNode = this.selectRef.current!;
-			this.scrollHandler = this.props.onScroll(selectNode);
-			selectNode.addEventListener("scroll", this.scrollHandler);
+			if (selectNode) {
+				scrollHandler = onScroll(selectNode);
+				selectNode.addEventListener("scroll", scrollHandler);
+			}
 		}
 	};
 
-	private removeScrollHandler = () => {
-		if (this.scrollHandler) {
-			this.selectRef.current!.removeEventListener(
-				"scroll",
-				this.scrollHandler
-			);
+	const removeScrollHandler = () => {
+		if (scrollHandler && selectRef.current) {
+			selectRef.current.removeEventListener("scroll", scrollHandler);
 		}
 	};
-}
+
+	return (
+		<div className="kit-selectR-drop-main" ref={selectRef}>
+			<ul className="kit-selectR-results kit-selectR-results-default">
+				{children}
+			</ul>
+		</div>
+	);
+};

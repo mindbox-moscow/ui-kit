@@ -20,7 +20,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	z-index: 4;
+	z-index: 3;
 
 	&_read-only {
 		.kit-filtration-group__label,
@@ -52,6 +52,11 @@
 
 	&_edit {
 		@include opacityBlock();
+		z-index: 4;
+
+		.kit-filtration-group {
+			z-index: 3;
+		}
 
 		&::before {
 			content: "";

@@ -16,6 +16,14 @@ import "./DateRange.scss";
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
+const makeNewDate = (date: Date, hours: number, minutes: number) => {
+	const newDate = new Date(date);
+	newDate.setHours(hours);
+	newDate.setMinutes(minutes);
+
+	return newDate;
+};
+
 const DateRange: React.FC<Props> = ({
 	labelNoFilter,
 	radioTextNoFilter,
@@ -40,6 +48,10 @@ const DateRange: React.FC<Props> = ({
 	const [value, setValue] = React.useState<DateRangeValueTypes | LastPeriods>(
 		DateRangeValueTypes.NoFilter
 	);
+	const [prevValue, setPrevValue] = React.useState<
+		DateRangeValueTypes | LastPeriods
+	>(DateRangeValueTypes.NoFilter);
+
 	const [hasError, setHasError] = React.useState<boolean>(false);
 
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
@@ -47,9 +59,6 @@ const DateRange: React.FC<Props> = ({
 		dateTo
 	});
 
-	const [prevValue, setPrevValue] = React.useState<
-		DateRangeValueTypes | LastPeriods
-	>(DateRangeValueTypes.NoFilter);
 	const [isShowFilter, setShowFilter] = React.useState<boolean>(false);
 
 	const hoursFrom = dateFrom.getHours();
@@ -63,10 +72,10 @@ const DateRange: React.FC<Props> = ({
 		onChange({ type: DateRangeValueTypes.NoFilter });
 	};
 
-	const handleSelectedLast = (currentValue: LastPeriods) => () => {
+	const handleSelectedLast = (period: LastPeriods) => () => {
 		setPrevValue(value);
-		setValue(currentValue);
-		onChange({ type: DateRangeValueTypes.Last, period: currentValue });
+		setValue(period);
+		onChange({ type: DateRangeValueTypes.Last, period });
 	};
 
 	const onCloseFilter = () => {
@@ -89,34 +98,26 @@ const DateRange: React.FC<Props> = ({
 		onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
 	};
 
-	const setNewDate = (date: Date, hours: number, minutes: number) => {
-		const newDate = new Date(date);
-		newDate.setHours(hours);
-		newDate.setMinutes(minutes);
-
-		return newDate;
-	};
-
 	const handleChangeDateFrom = (newDateFrom: Date) => {
-		const newDate = setNewDate(newDateFrom, hoursFrom, minutesFrom);
+		const newDate = makeNewDate(newDateFrom, hoursFrom, minutesFrom);
 		setDateFrom(newDate);
 		setHasError(newDate >= dateTo);
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
-		const newDate = setNewDate(newDateTo, hoursTo, minutesTo);
+		const newDate = makeNewDate(newDateTo, hoursTo, minutesTo);
 		setDateTo(newDate);
 		setHasError(dateFrom >= newDate);
 	};
 
 	const handleChangeTimeFrom = (hours: number, minutes: number) => {
-		const newDate = setNewDate(dateFrom, hours, minutes);
+		const newDate = makeNewDate(dateFrom, hours, minutes);
 		setDateFrom(newDate);
 		setHasError(newDate >= dateTo);
 	};
 
 	const handleChangeTimeTo = (hours: number, minutes: number) => {
-		const newDate = setNewDate(dateTo, hours, minutes);
+		const newDate = makeNewDate(dateTo, hours, minutes);
 		setDateTo(newDate);
 		setHasError(dateFrom >= newDate);
 	};

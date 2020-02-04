@@ -82,15 +82,20 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				"last"
 			);
 
+			const groupRefHeight = groupRef.getBoundingClientRect().height;
+			const firstChildElementHeight = firstChildElement
+				? firstChildElement.clientHeight
+				: 0;
+			const lastChildElementHeight = lastChildElement
+				? lastChildElement.clientHeight
+				: 0;
+
 			if (firstChildElement) {
 				if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
-						.height;
-
 					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
@@ -130,9 +135,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					const lastChildElementHeight = lastChildElement.getBoundingClientRect()
-						.height;
-
 					const labelLine = lastChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
@@ -154,13 +156,9 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						SearchClasses.KitFiltrationCondition
 					)
 				) {
-					heightGroup +=
-						lastChildElement.getBoundingClientRect().height -
-						MIN_HEIGHT;
+					heightGroup += lastChildElementHeight - MIN_HEIGHT;
 
-					heightLine +=
-						lastChildElement.getBoundingClientRect().height -
-						MIN_HEIGHT / 2;
+					heightLine += lastChildElementHeight - MIN_HEIGHT / 2;
 				} else if (
 					lastChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroupButtons
@@ -170,12 +168,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 
-			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
-				heightGroup}px`;
+			labelRef.style.height = `${groupRefHeight - heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
-				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
-					.height - heightLine}px`;
+				labelLineRef.style.height = `${groupRefHeight - heightLine}px`;
 			} else {
 				labelLineRef.style.height = "0px";
 			}

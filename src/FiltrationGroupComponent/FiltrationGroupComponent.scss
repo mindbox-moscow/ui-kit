@@ -3,18 +3,14 @@
 // Mixins
 @mixin opacityBlock($opacity: 1) {
 	> .kit-filtration-condition
-		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
-	.kit-filtration-group__label {
+		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
 		opacity: $opacity;
-
-		@include changeHorisontalBracketsOpacity($opacity);
 
 		&:hover {
 			opacity: 1;
-
-			@include changeHorisontalBracketsOpacity(1);
 		}
 	}
+	@include changeHorisontalBracketsOpacity($opacity);
 }
 
 .kit-filtration-group {
@@ -98,14 +94,20 @@
 
 		> .kit-filtration-group__label-line_or {
 			color: $orColorEdit;
-			background-color: $orColorEdit;
+
+			.kit-filtration-group__label-line-vertical {
+				background-color: $orColorEdit;
+			}
 
 			@include changeHorisontalBracketsColor($orColorEdit);
 		}
 
 		> .kit-filtration-group__label-line_and {
 			color: $andColorEdit;
-			background-color: $andColorEdit;
+
+			.kit-filtration-group__label-line-vertical {
+				background-color: $andColorEdit;
+			}
 
 			@include changeHorisontalBracketsColor($andColorEdit);
 		}
@@ -113,23 +115,23 @@
 		> .kit-filtration-group {
 			> .kit-filtration-group__label-line_hover_or {
 				color: $orColorEdit;
-				background-color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
 
-				.kit-filtration-group__label-text {
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
 					background-color: $orColorEdit;
 				}
 			}
 
 			> .kit-filtration-group__label-line_hover_and {
 				color: $andColorEdit;
-				background-color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
 
 				.kit-filtration-group__label-button,
-				.kit-filtration-group__label-text {
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
 					background-color: $andColorEdit;
 				}
 
@@ -170,11 +172,11 @@
 
 			& ~ .kit-filtration-group__label-line {
 				color: $orColorEdit;
-				background-color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
 
-				.kit-filtration-group__label-text {
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
 					background-color: $orColorEdit;
 				}
 			}
@@ -186,11 +188,12 @@
 
 			& ~ .kit-filtration-group__label-line {
 				color: $andColorEdit;
-				background-color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
 
-				.kit-filtration-group__label-text {
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical,
+				.kit-filtration-group__label-line-horizontal {
 					background-color: $andColorEdit;
 					color: #fff;
 				}
@@ -200,6 +203,15 @@
 		> .kit-filtration-group__buttons {
 			button {
 				opacity: 1;
+			}
+		}
+	}
+
+	& > & .kit-filtration-group__label-line {
+		&_or,
+		&_and {
+			.kit-filtration-group__label-line-horizontal {
+				@include createHorisontalBrackets(-30px, 50%);
 			}
 		}
 	}
@@ -263,19 +275,17 @@
 	left: 5px;
 	margin-top: 0;
 	margin-left: -1px;
-	color: $braketColor;
-	background-color: $braketColor;
 	box-sizing: border-box;
-	z-index: 3;
+	z-index: 4;
 	cursor: pointer;
 
 	&_and {
 		color: $andColor;
-		background-color: $andColor;
 
 		@include changeHorisontalBracketsColor($andColor);
 
-		.kit-filtration-group__label-text {
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line-vertical {
 			color: $andColorEdit;
 			background-color: $andColor;
 		}
@@ -283,14 +293,29 @@
 
 	&_or {
 		color: $orColor;
-		background-color: $orColor;
 
 		@include changeHorisontalBracketsColor($orColor);
 
-		.kit-filtration-group__label-text {
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line-vertical {
 			background-color: $orColor;
 		}
 	}
+}
+
+.kit-filtration-group__label-line-vertical {
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	width: $borderWidthLine;
+	height: 100%;
+	left: 0;
+	margin-top: 0;
+	color: $braketColor;
+	background-color: $braketColor;
+	box-sizing: border-box;
+	pointer-events: none;
+	z-index: 3;
 }
 
 .kit-filtration-group__label-vertical-bracket {
@@ -298,8 +323,8 @@
 	top: -#{$minHeight / 2};
 	left: 0;
 	height: #{$minHeight / 2};
-	border-left: 2px solid;
-	color: currentColor;
+	width: 2px;
+	background-color: inherit;
 }
 
 .kit-filtration-group__label-text {

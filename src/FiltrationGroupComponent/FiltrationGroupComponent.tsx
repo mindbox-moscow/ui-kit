@@ -400,36 +400,39 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				onMouseOver={handleHoverAddClassLabel}
 				onMouseOut={handleHoverRemoveClassLabel}
 			>
-				{shouldShowLabel && (
-					<span className="kit-filtration-group__label-text">
-						{state === "edit" ? (
-							<div
-								className={cn(
-									"kit-filtration-group__label-text-buttons",
-									`kit-filtration-group__label-text-buttons_${groupType}`
-								)}
-							>
-								{renderCopyButton()}
-								<button
-									key="remove"
-									onClick={onConditionRemove}
-									className="kit-filtration-group__remove"
-									type="button"
+				<div className="kit-filtration-group__label-line-vertical">
+					{shouldShowLabel && (
+						<span className="kit-filtration-group__label-text">
+							{state === "edit" ? (
+								<div
+									className={cn(
+										"kit-filtration-group__label-text-buttons",
+										`kit-filtration-group__label-text-buttons_${groupType}`
+									)}
 								>
-									<IconSvg type="trash" />
-								</button>
-								<LabelButton
-									onToggle={onGroupTypeToggle}
-									types={labelMap}
-									activeType={groupType}
-								/>
-							</div>
-						) : (
-							labelMap[groupType]
-						)}
-					</span>
-				)}
-				{renderVerticalBracket}
+									{renderCopyButton()}
+									<button
+										key="remove"
+										onClick={onConditionRemove}
+										className="kit-filtration-group__remove"
+										type="button"
+									>
+										<IconSvg type="trash" />
+									</button>
+									<LabelButton
+										onToggle={onGroupTypeToggle}
+										types={labelMap}
+										activeType={groupType}
+									/>
+								</div>
+							) : (
+								labelMap[groupType]
+							)}
+						</span>
+					)}
+					{renderVerticalBracket}
+				</div>
+				<div className="kit-filtration-group__label-line-horizontal" />
 			</div>
 			{renderInner}
 		</ul>

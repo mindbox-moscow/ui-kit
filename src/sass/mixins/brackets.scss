@@ -6,9 +6,9 @@
 		left: $left;
 		width: 13px;
 		border-top: 2px solid $braketColor;
-		z-index: 2;
 		transform: translateY(-1px);
 		pointer-events: none;
+		z-index: 2;
 	}
 }
 
@@ -20,7 +20,11 @@
 
 @mixin changeHorisontalBracketsColor($color) {
 	& ~ .kit-filtration-group__buttons,
-	& ~ .kit-filtration-condition {
+	& ~ .kit-filtration-condition,
+	&
+		~ .kit-filtration-group
+		> .kit-filtration-group__label-line
+		.kit-filtration-group__label-line-horizontal {
 		&::after {
 			border-top-color: $color;
 		}
@@ -28,9 +32,30 @@
 }
 
 @mixin changeHorisontalBracketsOpacity($opacity) {
-	& ~ .kit-filtration-group__buttons,
-	& ~ .kit-filtration-condition {
-		&::after {
+	> .kit-filtration-group__label {
+		& ~ .kit-filtration-group__buttons,
+		& ~ .kit-filtration-condition {
+			&::after {
+				opacity: $opacity;
+			}
+		}
+	}
+
+	> .kit-filtration-group__label {
+		& ~ .kit-filtration-group {
+			.kit-filtration-group__label-line
+				.kit-filtration-group__label-line-horizontal {
+				&::after {
+					opacity: $opacity;
+				}
+			}
+		}
+	}
+
+	> .kit-filtration-group__label {
+		&
+			~ .kit-filtration-group__label-line
+			.kit-filtration-group__label-line-vertical {
 			opacity: $opacity;
 		}
 	}

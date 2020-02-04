@@ -1,3 +1,9 @@
+.kit-block-wrapper {
+	> * {
+		margin-right: 5px;
+	}
+}
+
 span.kit-block-wrapper {
 	display: inline-flex;
 	align-items: center;

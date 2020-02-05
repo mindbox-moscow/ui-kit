@@ -7,10 +7,9 @@ import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
 import { CallbackProps, SearchClasses, StateProps } from "./types";
+import { searchFirstLastElement } from "./utils";
 
 type Props = StateProps & CallbackProps;
-
-type SearchElementType = "first" | "last";
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 32;
@@ -182,28 +181,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
 			}
 		}
-	};
-
-	const searchFirstLastElement = (
-		searchableElement: HTMLElement,
-		searchClasses: string[],
-		search: SearchElementType
-	): HTMLElement | null => {
-		const childrenElements = Array.from(
-			searchableElement.children
-		) as HTMLElement[];
-
-		if (search === "last") {
-			childrenElements.reverse();
-		}
-
-		return (
-			childrenElements.find((item: HTMLElement) => {
-				return searchClasses.some(className =>
-					item.classList.contains(className)
-				);
-			}) || null
-		);
 	};
 
 	const handleHoverAddClassLabel = () => {

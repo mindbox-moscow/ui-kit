@@ -45,8 +45,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	const kitFiltrationLabelLineRef = React.useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		moveLabelAtCenterOfBracket();
-		handleCreateVerticalBrackets();
+		calculateMainVerticalBracket();
+		createSmallVerticalBracket();
 	});
 
 	useMemo(
@@ -62,7 +62,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		[children, state, shoudShowSmallVerticalBracket]
 	);
 
-	const moveLabelAtCenterOfBracket = () => {
+	const calculateMainVerticalBracket = () => {
 		let heightGroup = 0;
 		let heightLine = 0;
 		let positionTop = 0;
@@ -234,7 +234,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
-	const handleCreateVerticalBrackets = () => {
+	const createSmallVerticalBracket = () => {
 		let isVerticalBracket = false;
 
 		if (kitFiltrationRef && kitFiltrationRef.current) {

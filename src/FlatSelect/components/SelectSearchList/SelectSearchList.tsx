@@ -16,7 +16,6 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 	searchTextValue,
 	onInputChange,
 	shouldSearchTextBeSelected,
-	onScroll,
 	children,
 	getChildRef
 }) => {
@@ -122,7 +121,7 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 				{selectedComponents}
 				{applyButton}
 			</div>
-			<SelectDropMain getChildRef={getRefDropMain} onScroll={onScroll}>
+			<SelectDropMain getChildRef={getRefDropMain}>
 				{children}
 			</SelectDropMain>
 		</div>

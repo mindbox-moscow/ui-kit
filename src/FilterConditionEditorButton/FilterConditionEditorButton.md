@@ -1593,6 +1593,7 @@ const createChildRenderer = (
 
 			this.onSelect = this.onSelect.bind(this);
 			this.onToggleExpand = this.onToggleExpand.bind(this);
+			this.createList = this.createList.bind(this);
 		}
 
 		onSelect() {
@@ -1602,26 +1603,34 @@ const createChildRenderer = (
 			onToggleExpandCallback(this.props.id);
 		}
 
-		render() {
+		createList() {
 			const { name, type, childIds } = allElementsDictionary[
 				this.props.id
 			];
 
-			return (
-				<FilterConditionSelectorItem
-					id={this.props.id}
-					name={name}
-					type={type}
-					isSelected={this.props.id === state.selectedId}
-					childIds={childIds}
-					isExpanded={state.expansionState[this.props.id]}
-					childRenderer={ExampleChildRenderer}
-					onSelect={this.onSelect}
-					toggleExpand={this.onToggleExpand}
-					searchTerm="ещё"
-					pathFromRoot={this.props.pathFromRoot}
-				/>
-			);
+			let list = [];
+			for (let i = 0; i < state.countFilters; i++) {
+				list.push(
+					<FilterConditionSelectorItem
+						id={this.props.id}
+						name={name}
+						type={type}
+						isSelected={this.props.id === state.selectedId}
+						childIds={childIds}
+						isExpanded={state.expansionState[this.props.id]}
+						childRenderer={ExampleChildRenderer}
+						onSelect={this.onSelect}
+						toggleExpand={this.onToggleExpand}
+						searchTerm="ещё"
+						pathFromRoot={this.props.pathFromRoot}
+					/>
+				);
+			}
+			return list;
+		}
+
+		render() {
+			return <>{this.createList()}</>;
 		}
 	};
 };
@@ -1644,11 +1653,13 @@ class ExampleComponent extends React.Component {
 				"newsletters",
 				"shopping",
 				"loyaltyProgram"
-			]
+			],
+			countFilters: 1
 		};
 		this.togglePopup = this.togglePopup.bind(this);
 		this.onSelect = this.onSelect.bind(this);
 		this.onToggleExpand = this.onToggleExpand.bind(this);
+		this.handleChangeCountFilter = this.handleChangeCountFilter.bind(this);
 	}
 
 	componentDidMount() {
@@ -1726,9 +1737,22 @@ class ExampleComponent extends React.Component {
 		return callBack;
 	}
 
+	handleChangeCountFilter(e) {
+		this.setState({
+			countFilters: e.target.value
+		});
+	}
+
 	render() {
 		return (
 			<>
+				<div>
+					<input
+						value={this.state.countFilters}
+						onChange={this.handleChangeCountFilter}
+						type="number"
+					/>
+				</div>
 				<FilterWrapper
 					filterActions={[]}
 					statisticsDescription="Потребителей найдено"

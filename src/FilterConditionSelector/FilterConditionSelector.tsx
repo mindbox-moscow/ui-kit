@@ -59,19 +59,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		};
 	}, []);
 
-	const handleDisableBodyScroll = (e: React.WheelEvent) => {
-		e.preventDefault();
-
-		const { deltaY } = e;
-		const listTree = listRef.current;
-
-		if (listTree) {
-			const scroll = listTree.scrollTop;
-
-			listTree.scrollTop = scroll + deltaY;
-		}
-	};
-
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
 			switch (e.keyCode) {
@@ -218,7 +205,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 								className="kit-filter-condition-selector__hierarchy"
 								tabIndex={0}
 								onKeyDown={handleKeyDown}
-								onWheel={handleDisableBodyScroll}
 							>
 								{rootIds.length === 0 && searchTerm !== ""
 									? notFoundMessage

@@ -31,7 +31,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	addSimpleConditionButton,
 	onConditionStateToggle
 }) => {
-	const [verticalBracket, setVerticalBracket] = useState<boolean>(false);
+	const [
+		shoudShowSmallVerticalBracket,
+		setShoudShowSmallVerticalBracket
+	] = useState<boolean>(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
 
@@ -56,7 +59,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 		},
-		[children, state, verticalBracket]
+		[children, state, shoudShowSmallVerticalBracket]
 	);
 
 	const moveLabelAtCenterOfBracket = () => {
@@ -243,8 +246,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 			}
 		}
 
-		if (isVerticalBracket !== verticalBracket) {
-			setVerticalBracket(newVerticalBracket => !newVerticalBracket);
+		if (isVerticalBracket !== shoudShowSmallVerticalBracket) {
+			setShoudShowSmallVerticalBracket(
+				newVerticalBracket => !newVerticalBracket
+			);
 		}
 	};
 
@@ -263,14 +268,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 			</button>
 		);
 	};
-
-	const verticalBrackets = () => (
-		<>
-			{verticalBracket && (
-				<span className="kit-filtration-group__label-vertical-bracket" />
-			)}
-		</>
-	);
 
 	const renderGroupButtons = (noChildren?: boolean) =>
 		shouldShowButtons && (
@@ -335,7 +332,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	};
 
 	const renderInner = renderInnerComponents();
-	const renderVerticalBracket = verticalBrackets();
 
 	const anyChildren = React.Children.toArray(children).length > 0;
 
@@ -403,7 +399,9 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 							)}
 						</span>
 					)}
-					{renderVerticalBracket}
+					{shoudShowSmallVerticalBracket && (
+						<span className="kit-filtration-group__label-vertical-bracket" />
+					)}
 				</div>
 				<div className="kit-filtration-group__label-line-horizontal" />
 			</div>

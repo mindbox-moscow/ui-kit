@@ -3,13 +3,18 @@ import { SelectDropMainProps } from "./types";
 
 export const SelectDropMain: React.FC<SelectDropMainProps> = ({
 	onScroll,
-	children
+	children,
+	getChildRef
 }) => {
 	const selectRef = React.useRef<HTMLDivElement>(null);
 	let scrollHandler: () => void;
 
 	React.useEffect(() => {
 		addScrollHandler();
+
+		if (getChildRef) {
+			getChildRef(selectRef);
+		}
 
 		return removeScrollHandler;
 	}, []);

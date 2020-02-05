@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import * as React from "react";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
@@ -34,7 +34,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 }) => {
 	const [verticalBracket, setVerticalBracket] = useState<boolean>(false);
 	const context = useContext(FilterWrapperContext);
-	const shouldRerenderBrackets = React.useRef(false);
+	const shouldRerenderBrackets = useRef(false);
 
 	const classes = Object.values(SearchClasses);
 	const kitFiltrationRef = React.useRef<HTMLUListElement>(null);

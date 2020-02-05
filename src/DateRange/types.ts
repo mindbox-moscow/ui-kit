@@ -44,6 +44,12 @@ export interface IDateRange {
 }
 
 export interface Props {
+	caption: Caption;
+	dataRangeValue: DateRangeValue;
+	onChange: (value: DateRangeValue) => void;
+}
+
+export interface Caption {
 	labelNoFilter: string;
 	radioTextNoFilter: string;
 	labelConcrete: string;
@@ -57,5 +63,4 @@ export interface Props {
 	addFilterButtonCaption: string;
 	cancelFilterButtonCaption: string;
 	tooltipContent: React.ReactNode;
-	onChange: (value: DateRangeValue) => void;
 }

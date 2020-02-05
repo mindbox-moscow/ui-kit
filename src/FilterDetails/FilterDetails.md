@@ -3,7 +3,7 @@
 	<FilterDetails
 		helpCaption="Простая категория Caption"
 		editorComponent={
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={""}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}

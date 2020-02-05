@@ -1,14 +1,17 @@
 import * as React from "react";
-import { DateRangeValueTypes, IDateRange, LastPeriods, Props } from "./types";
+import {
+	DateRangeValue,
+	DateRangeValueTypes,
+	IDateRange,
+	LastPeriods,
+	Props
+} from "./types";
 
-import { DateField } from "../DateField";
-import { FilterConditionEditorComponent } from "../FilterConditionEditorComponent";
+import { ConditionEditorPopup } from "../ConditionEditorPopup";
 import { FilterDetails } from "../FilterDetails";
-import { IconSvg } from "../IconSvg";
 import { RadioButton } from "../RadioButton";
-import { TimeField } from "../TimeField";
-import { Tooltip } from "../Tooltip";
 import { getNow, getWeekBeforeNow, parseDateToString } from "../utils/helpers";
+import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
 
@@ -24,33 +27,35 @@ const makeNewDate = (date: Date, hours: number, minutes: number) => {
 	return newDate;
 };
 
-const DateRange: React.FC<Props> = ({
-	labelNoFilter,
-	radioTextNoFilter,
-	labelConcrete,
-	radioConcreteFromText,
-	radioConcreteToText,
-	labelLast,
-	radioTextWeek,
-	radioTextMonth,
-	radioTextYear,
-	helpCaption,
-	tooltipContent,
-	onChange,
-	addFilterButtonCaption,
-	cancelFilterButtonCaption
-}) => {
+const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
+	const {
+		labelNoFilter,
+		radioTextNoFilter,
+		labelConcrete,
+		radioConcreteFromText,
+		radioConcreteToText,
+		labelLast,
+		radioTextWeek,
+		radioTextMonth,
+		radioTextYear,
+		helpCaption,
+		tooltipContent,
+		addFilterButtonCaption,
+		cancelFilterButtonCaption
+	} = caption;
+
 	const weekBeforeNow = getWeekBeforeNow();
 	const dateNow = getNow();
+	const defaultValue = { type: DateRangeValueTypes.NoFilter };
 
 	const [dateFrom, setDateFrom] = React.useState<Date>(weekBeforeNow);
 	const [dateTo, setDateTo] = React.useState<Date>(dateNow);
-	const [value, setValue] = React.useState<DateRangeValueTypes | LastPeriods>(
-		DateRangeValueTypes.NoFilter
+	const [value, setValue] = React.useState<DateRangeValue>(
+		dataRangeValue || defaultValue
 	);
-	const [prevValue, setPrevValue] = React.useState<
-		DateRangeValueTypes | LastPeriods
-	>(DateRangeValueTypes.NoFilter);
+	const [prevValue, setPrevValue] = React.useState<DateRangeValue>(
+		dataRangeValue || defaultValue
+	);
 
 	const [hasError, setHasError] = React.useState<boolean>(false);
 
@@ -68,13 +73,13 @@ const DateRange: React.FC<Props> = ({
 
 	const handleSelectedNoFilter = () => {
 		setPrevValue(value);
-		setValue(DateRangeValueTypes.NoFilter);
+		setValue({ type: DateRangeValueTypes.NoFilter });
 		onChange({ type: DateRangeValueTypes.NoFilter });
 	};
 
 	const handleSelectedLast = (period: LastPeriods) => () => {
 		setPrevValue(value);
-		setValue(period);
+		setValue({ type: DateRangeValueTypes.Last, period });
 		onChange({ type: DateRangeValueTypes.Last, period });
 	};
 
@@ -86,9 +91,9 @@ const DateRange: React.FC<Props> = ({
 		setDateTo(dateRange.dateTo);
 	};
 
-	const handleToggleFilter = (currentValue: DateRangeValueTypes) => () => {
+	const handleToggleFilter = () => {
 		setPrevValue(value);
-		setValue(currentValue);
+		setValue({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
 		setShowFilter(prev => !prev);
 	};
 
@@ -122,63 +127,9 @@ const DateRange: React.FC<Props> = ({
 		setHasError(dateFrom >= newDate);
 	};
 
-	const InnerEditorComponent = () => (
-		<div className="kit-date-range__popup">
-			<div className="kit-date-range__popup-dates">
-				<span className="kit-date-range__popup-date-text">
-					{radioConcreteFromText}
-				</span>
-				<div className="kit-date-range__popup-fields">
-					<div className="kit-date-range__popup-date">
-						<DateField
-							error={hasError}
-							defaultDate={dateFrom}
-							onChange={handleChangeDateFrom}
-						/>
-					</div>
-					<div className="kit-date-range__popup-date">
-						<TimeField
-							error={hasError}
-							hours={hoursFrom}
-							minutes={minutesFrom}
-							onChange={handleChangeTimeFrom}
-						/>
-					</div>
-				</div>
-			</div>
-			<div className="kit-date-range__popup-dates">
-				<span className="kit-date-range__popup-date-text">
-					{radioConcreteToText}
-				</span>
-				<div className="kit-date-range__popup-fields">
-					<div className="kit-date-range__popup-date">
-						<DateField
-							error={hasError}
-							defaultDate={dateTo}
-							onChange={handleChangeDateTo}
-						/>
-					</div>
-					<div className="kit-date-range__popup-date">
-						<TimeField
-							error={hasError}
-							hours={hoursTo}
-							minutes={minutesTo}
-							onChange={handleChangeTimeTo}
-						/>
-					</div>
-				</div>
-			</div>
-			{hasError && (
-				<Tooltip
-					title={<IconSvg type="warning" />}
-					position="top"
-					className="kit-date-range__popup-tooltip"
-				>
-					{tooltipContent}
-				</Tooltip>
-			)}
-		</div>
-	);
+	const isLastPeriod = value.type === DateRangeValueTypes.Last;
+
+	console.log(value, "VALUE");
 
 	return (
 		<div className="kit-date-range">
@@ -187,7 +138,7 @@ const DateRange: React.FC<Props> = ({
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedNoFilter}
-					checked={value === DateRangeValueTypes.NoFilter}
+					checked={value.type === DateRangeValueTypes.NoFilter}
 				>
 					{radioTextNoFilter}
 				</RadioButton>
@@ -197,10 +148,8 @@ const DateRange: React.FC<Props> = ({
 				<div className="kit-date-range__radio-button">
 					<RadioButton
 						name="date"
-						onClick={handleToggleFilter(
-							DateRangeValueTypes.Concrete
-						)}
-						checked={value === DateRangeValueTypes.Concrete}
+						onClick={handleToggleFilter}
+						// checked={value.type === DateRangeValueTypes.Concrete}
 					>
 						{`${radioConcreteFromText} ${parseDateToString(
 							dateRange.dateFrom
@@ -211,9 +160,36 @@ const DateRange: React.FC<Props> = ({
 					{isShowFilter && (
 						<WithOutsideClickFilterDetails
 							editorComponent={
-								<FilterConditionEditorComponent
+								<ConditionEditorPopup
 									innerEditorComponent={
-										<InnerEditorComponent />
+										<InnerEditorComponent
+											radioConcreteFromText={
+												radioConcreteFromText
+											}
+											radioConcreteToText={
+												radioConcreteToText
+											}
+											tooltipContent={tooltipContent}
+											hasError={hasError}
+											dateFrom={dateFrom}
+											dateTo={dateTo}
+											timeFrom={{
+												hours: hoursFrom,
+												minutes: minutesFrom
+											}}
+											timeTo={{
+												hours: hoursTo,
+												minutes: minutesTo
+											}}
+											onChangeDateFrom={
+												handleChangeDateFrom
+											}
+											onChangeDateTo={handleChangeDateTo}
+											onChangeTimeFrom={
+												handleChangeTimeFrom
+											}
+											onChangeTimeTo={handleChangeTimeTo}
+										/>
 									}
 									viewMode="edit"
 									addFilterButtonCaption={
@@ -222,8 +198,7 @@ const DateRange: React.FC<Props> = ({
 									cancelFilterButtonCaption={
 										cancelFilterButtonCaption
 									}
-									isAddFilterButtonEnabled={true}
-									disabledSaveButton={hasError}
+									isAddFilterButtonEnabled={!hasError}
 									onAddFilterButtonClick={handleApplyFilter}
 									onCancelFilterButtonClick={onCloseFilter}
 								/>
@@ -243,7 +218,7 @@ const DateRange: React.FC<Props> = ({
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Week)}
-					checked={value === LastPeriods.Week}
+					checked={isLastPeriod && value.period === LastPeriods.Week}
 				>
 					{radioTextWeek}
 				</RadioButton>
@@ -251,7 +226,7 @@ const DateRange: React.FC<Props> = ({
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Month)}
-					checked={value === LastPeriods.Month}
+					// checked={value.period === LastPeriods.Month}
 				>
 					{radioTextMonth}
 				</RadioButton>
@@ -259,7 +234,7 @@ const DateRange: React.FC<Props> = ({
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Year)}
-					checked={value === LastPeriods.Year}
+					// checked={value.period === LastPeriods.Year}
 				>
 					{radioTextYear}
 				</RadioButton>

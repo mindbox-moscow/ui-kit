@@ -426,7 +426,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={segmentViewHistory()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -447,7 +447,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={segmentViewHistory()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -468,7 +468,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={segmentView()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -489,7 +489,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={segmentHistory()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -510,7 +510,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -531,7 +531,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -552,7 +552,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -573,7 +573,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -594,7 +594,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -615,7 +615,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -636,7 +636,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -657,7 +657,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -678,7 +678,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -699,7 +699,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -720,7 +720,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -741,7 +741,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Ещё простая категория"),
 		toggleExpand: () => console.log("toggleExpand Ещё простая категория"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -776,7 +776,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -797,7 +797,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -818,7 +818,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -839,7 +839,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -880,7 +880,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Персональные данные"),
 		toggleExpand: () => console.log("toggleExpand Персональные данные"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -901,7 +901,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Дополнительные поля"),
 		toggleExpand: () => console.log("toggleExpand Дополнительные поля"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -922,7 +922,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -943,7 +943,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Техническое"),
 		toggleExpand: () => console.log("toggleExpand Техническое"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -969,7 +969,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -990,7 +990,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1011,7 +1011,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1032,7 +1032,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1053,7 +1053,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1074,7 +1074,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1095,7 +1095,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1116,7 +1116,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1137,7 +1137,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1158,7 +1158,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1179,7 +1179,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1200,7 +1200,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1229,7 +1229,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1250,7 +1250,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1271,7 +1271,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1292,7 +1292,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1313,7 +1313,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1334,7 +1334,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1355,7 +1355,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1376,7 +1376,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1397,7 +1397,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1418,7 +1418,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1439,7 +1439,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Простой фильтр"),
 		toggleExpand: () => console.log("toggleExpand Простой фильтр"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1460,7 +1460,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Устройство"),
 		toggleExpand: () => console.log("toggleExpand Устройство"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1481,7 +1481,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Техническое"),
 		toggleExpand: () => console.log("toggleExpand Техническое"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}
@@ -1502,7 +1502,7 @@ const allElementsDictionary = {
 		onSelect: () => console.log("onSelect Поведение"),
 		toggleExpand: () => console.log("toggleExpand Поведение"),
 		editorComponent: (
-			<FilterConditionEditorComponent
+			<ConditionEditorPopup
 				innerEditorComponent={EditorComponentExample()}
 				addFilterButtonCaption="Добавить фильтр"
 				isAddFilterButtonEnabled={false}

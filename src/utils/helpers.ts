@@ -1,6 +1,8 @@
 import { BrowserList } from "./constants";
 
-const browsersRegExpMap = {
+type BrowsersRegExpMap = { [key in BrowserList]: string };
+
+const browsersRegExpMap: BrowsersRegExpMap = {
 	[BrowserList.Safari]: "^(?=.*Safari)(?!.*Chrome|.*Chromium).*",
 	[BrowserList.Chrome]: "^(?=.*Chrome)(?!.*Chromium).*",
 	[BrowserList.Chromium]: "Chromium"

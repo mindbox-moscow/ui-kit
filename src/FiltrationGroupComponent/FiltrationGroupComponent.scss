@@ -11,7 +11,7 @@
 		}
 	}
 	@include changeHorisontalBracketsOpacity($opacity);
-	@include changeVerticalSmallBaracketOpacity($opacity);
+	@include changeVerticalSmallBracketOpacity($opacity);
 }
 
 .kit-filtration-group {
@@ -106,7 +106,7 @@
 			}
 
 			@include changeHorisontalBracketsColor($orColorEdit);
-			@include changeColorVerticalSmallBaracket($orColorEdit);
+			@include changeColorVerticalSmallBracket($orColorEdit);
 		}
 
 		> .kit-filtration-group__label-line_and {
@@ -117,7 +117,7 @@
 			}
 
 			@include changeHorisontalBracketsColor($andColorEdit);
-			@include changeColorVerticalSmallBaracket($andColorEdit);
+			@include changeColorVerticalSmallBracket($andColorEdit);
 		}
 
 		> .kit-filtration-group {
@@ -182,7 +182,7 @@
 				color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
-				@include changeColorVerticalSmallBaracket($orColorEdit);
+				@include changeColorVerticalSmallBracket($orColorEdit);
 
 				.kit-filtration-group__label-text,
 				.kit-filtration-group__label-line-vertical {
@@ -199,7 +199,7 @@
 				color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
-				@include changeColorVerticalSmallBaracket($andColorEdit);
+				@include changeColorVerticalSmallBracket($andColorEdit);
 
 				.kit-filtration-group__label-text,
 				.kit-filtration-group__label-line-vertical,
@@ -240,7 +240,7 @@
 		}
 	}
 
-	@include createVerticalSmallBaracket;
+	@include createVerticalSmallBracket;
 
 	.kit-filter__btn {
 		position: relative;
@@ -295,7 +295,7 @@
 		color: $andColor;
 
 		@include changeHorisontalBracketsColor($andColor);
-		@include changeColorVerticalSmallBaracket($andColor);
+		@include changeColorVerticalSmallBracket($andColor);
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line-vertical {
@@ -308,7 +308,7 @@
 		color: $orColor;
 
 		@include changeHorisontalBracketsColor($orColor);
-		@include changeColorVerticalSmallBaracket($orColor);
+		@include changeColorVerticalSmallBracket($orColor);
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line-vertical {

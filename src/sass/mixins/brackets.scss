@@ -61,7 +61,7 @@
 	}
 }
 
-@mixin createVerticalSmallBaracket() {
+@mixin createVerticalSmallBracket() {
 	> .kit-filtration-condition > .kit-filtration-group {
 		> .kit-filtration-condition:first-of-type,
 		> .kit-filtration-group__buttons,
@@ -88,7 +88,7 @@
 	}
 }
 
-@mixin changeColorVerticalSmallBaracket($color) {
+@mixin changeColorVerticalSmallBracket($color) {
 	& ~ .kit-filtration-condition:first-of-type,
 	& ~ .kit-filtration-group__buttons {
 		&::before {
@@ -97,7 +97,7 @@
 	}
 }
 
-@mixin changeVerticalSmallBaracketOpacity($opacity) {
+@mixin changeVerticalSmallBracketOpacity($opacity) {
 	> .kit-filtration-condition {
 		&::before {
 			opacity: $opacity;

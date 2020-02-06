@@ -16,8 +16,8 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 	searchTextValue,
 	onInputChange,
 	shouldSearchTextBeSelected,
-	onScroll,
-	children
+	children,
+	getChildRef
 }) => {
 	const [minimized, setMinimized] = React.useState<boolean>(false);
 	const context = React.useContext(DropdownContext);
@@ -34,6 +34,12 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 	const onCloseDropdown = () => {
 		if (context) {
 			context.onCloseDropdown();
+		}
+	};
+
+	const getRefDropMain = (ref: React.RefObject<HTMLElement>) => {
+		if (getChildRef) {
+			getChildRef(ref);
 		}
 	};
 
@@ -115,7 +121,9 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 				{selectedComponents}
 				{applyButton}
 			</div>
-			<SelectDropMain onScroll={onScroll}>{children}</SelectDropMain>
+			<SelectDropMain getChildRef={getRefDropMain}>
+				{children}
+			</SelectDropMain>
 		</div>
 	);
 };

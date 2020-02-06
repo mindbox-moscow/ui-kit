@@ -19,3 +19,9 @@ export enum KeysCodes {
 	Esc = 27,
 	Tab = 9
 }
+
+export enum BrowserList {
+	Safari = "Safari",
+	Chrome = "Chrome",
+	Chromium = "Chromium"
+}

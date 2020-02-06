@@ -11,6 +11,7 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { BrowserList } from "../utils/constants";
 import { checkBrowser } from "../utils/helpers";
 import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
@@ -61,7 +62,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	}, []);
 
 	const handleDisableBodyScroll = (e: React.WheelEvent) => {
-		if (checkBrowser("Safari") && !checkBrowser("Chrome")) {
+		if (checkBrowser(BrowserList.Safari)) {
 			e.preventDefault();
 
 			const { deltaY } = e;

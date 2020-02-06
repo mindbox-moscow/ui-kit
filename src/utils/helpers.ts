@@ -1,19 +1,13 @@
 import { BrowserList } from "./constants";
 
-const userAgent = (browserName: string): boolean => {
-	return navigator.userAgent.includes(browserName);
+const browsersRegExpMap = {
+	[BrowserList.Safari]: "^(?=.*Safari)(?!.*Chrome|.*Chromium).*",
+	[BrowserList.Chrome]: "^(?=.*Chrome)(?!.*Chromium).*",
+	[BrowserList.Chromium]: "Chromium"
 };
 
 export const checkBrowser = (browserName: BrowserList): boolean => {
-	switch (browserName) {
-		case BrowserList.Safari:
-			return (
-				userAgent(BrowserList.Safari) &&
-				!userAgent(BrowserList.Chrome) &&
-				!userAgent(BrowserList.Chromium)
-			);
+	const regExp = new RegExp(browsersRegExpMap[browserName], "gi");
 
-		default:
-			return false;
-	}
+	return regExp.test(window.navigator.userAgent);
 };

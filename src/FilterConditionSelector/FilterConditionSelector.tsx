@@ -11,6 +11,7 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { checkBrowser } from "../utils/helpers";
 import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
@@ -58,6 +59,21 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 			body.style.height = "";
 		};
 	}, []);
+
+	const handleDisableBodyScroll = (e: React.WheelEvent) => {
+		if (checkBrowser("Safari") && !checkBrowser("Chrome")) {
+			e.preventDefault();
+
+			const { deltaY } = e;
+			const listTree = listRef.current;
+
+			if (listTree) {
+				const scroll = listTree.scrollTop;
+
+				listTree.scrollTop = scroll + deltaY;
+			}
+		}
+	};
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
 		if (document.activeElement === listRef.current) {
@@ -205,6 +221,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 								className="kit-filter-condition-selector__hierarchy"
 								tabIndex={0}
 								onKeyDown={handleKeyDown}
+								onWheel={handleDisableBodyScroll}
 							>
 								{rootIds.length === 0 && searchTerm !== ""
 									? notFoundMessage

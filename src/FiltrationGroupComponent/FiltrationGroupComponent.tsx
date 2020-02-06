@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
@@ -31,10 +31,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	addSimpleConditionButton,
 	onConditionStateToggle
 }) => {
-	const [
-		shoudShowSmallVerticalBracket,
-		setShoudShowSmallVerticalBracket
-	] = useState<boolean>(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
 
@@ -46,7 +42,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 
 	useEffect(() => {
 		calculateMainVerticalBracket();
-		createSmallVerticalBracket();
 	});
 
 	useMemo(
@@ -59,7 +54,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 		},
-		[children, state, shoudShowSmallVerticalBracket]
+		[children, state]
 	);
 
 	const calculateMainVerticalBracket = () => {
@@ -234,25 +229,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
-	const createSmallVerticalBracket = () => {
-		let isVerticalBracket = false;
-
-		if (kitFiltrationRef && kitFiltrationRef.current) {
-			const ref = kitFiltrationRef.current;
-			const parentNode = ref.parentNode as HTMLElement;
-
-			if (parentNode.classList.contains("kit-filtration-condition")) {
-				isVerticalBracket = true;
-			}
-		}
-
-		if (isVerticalBracket !== shoudShowSmallVerticalBracket) {
-			setShoudShowSmallVerticalBracket(
-				newVerticalBracket => !newVerticalBracket
-			);
-		}
-	};
-
 	const renderCopyButton = () => {
 		if (!shouldShowDuplicateButton) {
 			return null;
@@ -398,9 +374,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 								labelMap[groupType]
 							)}
 						</span>
-					)}
-					{shoudShowSmallVerticalBracket && (
-						<span className="kit-filtration-group__label-vertical-bracket" />
 					)}
 				</div>
 				<div className="kit-filtration-group__label-line-horizontal" />

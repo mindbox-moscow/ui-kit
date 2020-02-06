@@ -11,6 +11,7 @@
 		}
 	}
 	@include changeHorisontalBracketsOpacity($opacity);
+	@include changeVerticalSmallBaracketOpacity($opacity);
 }
 
 .kit-filtration-group {
@@ -105,6 +106,7 @@
 			}
 
 			@include changeHorisontalBracketsColor($orColorEdit);
+			@include changeColorVerticalSmallBaracket($orColorEdit);
 		}
 
 		> .kit-filtration-group__label-line_and {
@@ -115,6 +117,7 @@
 			}
 
 			@include changeHorisontalBracketsColor($andColorEdit);
+			@include changeColorVerticalSmallBaracket($andColorEdit);
 		}
 
 		> .kit-filtration-group {
@@ -179,6 +182,7 @@
 				color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
+				@include changeColorVerticalSmallBaracket($orColorEdit);
 
 				.kit-filtration-group__label-text,
 				.kit-filtration-group__label-line-vertical {
@@ -195,6 +199,7 @@
 				color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
+				@include changeColorVerticalSmallBaracket($andColorEdit);
 
 				.kit-filtration-group__label-text,
 				.kit-filtration-group__label-line-vertical,
@@ -234,6 +239,8 @@
 			margin-left: 20px;
 		}
 	}
+
+	@include createVerticalSmallBaracket;
 
 	.kit-filter__btn {
 		position: relative;
@@ -288,6 +295,7 @@
 		color: $andColor;
 
 		@include changeHorisontalBracketsColor($andColor);
+		@include changeColorVerticalSmallBaracket($andColor);
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line-vertical {
@@ -300,6 +308,7 @@
 		color: $orColor;
 
 		@include changeHorisontalBracketsColor($orColor);
+		@include changeColorVerticalSmallBaracket($orColor);
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line-vertical {
@@ -320,15 +329,6 @@
 	background-color: $braketColor;
 	box-sizing: border-box;
 	z-index: 3;
-}
-
-.kit-filtration-group__label-vertical-bracket {
-	position: absolute;
-	top: -#{$minHeight / 2};
-	left: 0;
-	height: #{$minHeight / 2};
-	width: 2px;
-	background-color: inherit;
 }
 
 .kit-filtration-group__label-text {

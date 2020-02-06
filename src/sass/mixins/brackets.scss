@@ -60,3 +60,47 @@
 		}
 	}
 }
+
+@mixin createVerticalSmallBaracket() {
+	> .kit-filtration-condition > .kit-filtration-group {
+		> .kit-filtration-condition:first-of-type,
+		> .kit-filtration-group__buttons,
+		&.kit-filtration-group_not-children {
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 4px;
+				display: block;
+				width: 2px;
+				height: #{$minHeight / 2};
+				background-color: $braketColor;
+				z-index: 3;
+				pointer-events: none;
+			}
+		}
+
+		> .kit-filtration-group__buttons {
+			&::before {
+				left: -16px;
+			}
+		}
+	}
+}
+
+@mixin changeColorVerticalSmallBaracket($color) {
+	& ~ .kit-filtration-condition:first-of-type,
+	& ~ .kit-filtration-group__buttons {
+		&::before {
+			background-color: $color !important;
+		}
+	}
+}
+
+@mixin changeVerticalSmallBaracketOpacity($opacity) {
+	> .kit-filtration-condition {
+		&::before {
+			opacity: $opacity;
+		}
+	}
+}

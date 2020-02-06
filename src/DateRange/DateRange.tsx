@@ -3,8 +3,8 @@ import {
 	DateRangeValue,
 	DateRangeValueTypes,
 	IDateRange,
-	LastPeriods,
-	Props
+	IDateRangeCaption,
+	LastPeriods
 } from "./types";
 
 import { ConditionEditorPopup } from "../ConditionEditorPopup";
@@ -27,7 +27,13 @@ const makeNewDate = (date: Date, hours: number, minutes: number) => {
 	return newDate;
 };
 
-const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
+interface IProps {
+	caption: IDateRangeCaption;
+	value: DateRangeValue;
+	onChange: (value: DateRangeValue) => void;
+}
+
+const DateRange = ({ onChange, caption, value }: IProps) => {
 	const {
 		labelNoFilter,
 		radioTextNoFilter,
@@ -44,92 +50,95 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 		cancelFilterButtonCaption
 	} = caption;
 
-	const weekBeforeNow = getWeekBeforeNow();
-	const dateNow = getNow();
-	const defaultValue = { type: DateRangeValueTypes.NoFilter };
-
-	const [dateFrom, setDateFrom] = React.useState<Date>(weekBeforeNow);
-	const [dateTo, setDateTo] = React.useState<Date>(dateNow);
-	const [value, setValue] = React.useState<DateRangeValue>(
-		dataRangeValue || defaultValue
-	);
-	const [prevValue, setPrevValue] = React.useState<DateRangeValue>(
-		dataRangeValue || defaultValue
-	);
-
+	const dateFromInit =
+		value.type === DateRangeValueTypes.Concrete
+			? value.dateFrom
+			: getWeekBeforeNow();
+	const dateToInit =
+		value.type === DateRangeValueTypes.Concrete ? value.dateTo : getNow();
+	const [dateFrom, setDateFrom] = React.useState<Date>(dateFromInit);
+	const [dateTo, setDateTo] = React.useState<Date>(dateToInit);
 	const [hasError, setHasError] = React.useState<boolean>(false);
-
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
 		dateFrom,
 		dateTo
 	});
-
-	const [isShowFilter, setShowFilter] = React.useState<boolean>(false);
-
+	const [shouldShowFilter, setShouldShowFilter] = React.useState<boolean>(
+		false
+	);
 	const hoursFrom = dateFrom.getHours();
 	const minutesFrom = dateFrom.getMinutes();
 	const hoursTo = dateTo.getHours();
 	const minutesTo = dateTo.getMinutes();
 
 	const handleSelectedNoFilter = () => {
-		setPrevValue(value);
-		setValue({ type: DateRangeValueTypes.NoFilter });
 		onChange({ type: DateRangeValueTypes.NoFilter });
 	};
 
 	const handleSelectedLast = (period: LastPeriods) => () => {
-		setPrevValue(value);
-		setValue({ type: DateRangeValueTypes.Last, period });
 		onChange({ type: DateRangeValueTypes.Last, period });
 	};
 
 	const onCloseFilter = () => {
-		setShowFilter(false);
-		setValue(prevValue);
-
+		setShouldShowFilter(false);
 		setDateFrom(dateRange.dateFrom);
 		setDateTo(dateRange.dateTo);
+		setHasError(false);
 	};
 
 	const handleToggleFilter = () => {
-		setPrevValue(value);
-		setValue({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
-		setShowFilter(prev => !prev);
+		setShouldShowFilter(prev => !prev);
 	};
 
 	const handleApplyFilter = () => {
-		setShowFilter(false);
+		setShouldShowFilter(false);
 		setDateRange({ dateFrom, dateTo });
 		onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
 		const newDate = makeNewDate(newDateFrom, hoursFrom, minutesFrom);
-		setDateFrom(newDate);
-		setHasError(newDate >= dateTo);
+		const isError = newDate >= dateTo;
+
+		setHasError(isError);
+
+		if (!isError) {
+			setDateFrom(newDate);
+		}
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
 		const newDate = makeNewDate(newDateTo, hoursTo, minutesTo);
-		setDateTo(newDate);
-		setHasError(dateFrom >= newDate);
+		const isError = dateFrom >= newDate;
+
+		setHasError(isError);
+
+		if (!isError) {
+			setDateTo(newDate);
+		}
 	};
 
 	const handleChangeTimeFrom = (hours: number, minutes: number) => {
 		const newDate = makeNewDate(dateFrom, hours, minutes);
-		setDateFrom(newDate);
-		setHasError(newDate >= dateTo);
+		const isError = newDate >= dateTo;
+
+		setHasError(isError);
+
+		if (!isError) {
+			setDateFrom(newDate);
+		}
 	};
 
 	const handleChangeTimeTo = (hours: number, minutes: number) => {
 		const newDate = makeNewDate(dateTo, hours, minutes);
-		setDateTo(newDate);
-		setHasError(dateFrom >= newDate);
+		const isError = dateFrom >= newDate;
+
+		setHasError(isError);
+
+		if (!isError) {
+			setDateTo(newDate);
+		}
 	};
-
-	const isLastPeriod = value.type === DateRangeValueTypes.Last;
-
-	console.log(value, "VALUE");
 
 	return (
 		<div className="kit-date-range">
@@ -149,7 +158,7 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 					<RadioButton
 						name="date"
 						onClick={handleToggleFilter}
-						// checked={value.type === DateRangeValueTypes.Concrete}
+						checked={value.type === DateRangeValueTypes.Concrete}
 					>
 						{`${radioConcreteFromText} ${parseDateToString(
 							dateRange.dateFrom
@@ -157,7 +166,7 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 					${radioConcreteToText} ${parseDateToString(dateRange.dateTo)}`}
 					</RadioButton>
 
-					{isShowFilter && (
+					{shouldShowFilter && (
 						<WithOutsideClickFilterDetails
 							editorComponent={
 								<ConditionEditorPopup
@@ -218,7 +227,10 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Week)}
-					checked={isLastPeriod && value.period === LastPeriods.Week}
+					checked={
+						value.type === DateRangeValueTypes.Last &&
+						value.period === LastPeriods.Week
+					}
 				>
 					{radioTextWeek}
 				</RadioButton>
@@ -226,7 +238,10 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Month)}
-					// checked={value.period === LastPeriods.Month}
+					checked={
+						value.type === DateRangeValueTypes.Last &&
+						value.period === LastPeriods.Month
+					}
 				>
 					{radioTextMonth}
 				</RadioButton>
@@ -234,7 +249,10 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 				<RadioButton
 					name="date"
 					onSelected={handleSelectedLast(LastPeriods.Year)}
-					// checked={value.period === LastPeriods.Year}
+					checked={
+						value.type === DateRangeValueTypes.Last &&
+						value.period === LastPeriods.Year
+					}
 				>
 					{radioTextYear}
 				</RadioButton>
@@ -243,4 +261,4 @@ const DateRange: React.FC<Props> = ({ onChange, caption, dataRangeValue }) => {
 	);
 };
 
-export default DateRange;
+export { DateRange };

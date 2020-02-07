@@ -241,6 +241,7 @@ $groupHoverMarginLeft: 10px;
 .kit-filtration-condition__popover {
 	position: relative;
 	padding: 10px 14px 12px 18px;
+	margin-top: -3px;
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
 	border: solid 1px $borderPopoverColor;

@@ -53,11 +53,12 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 
 	const renderPopover = (
 		children: React.ReactNode,
-		filterAction: React.ReactNode
+		filterAction: React.ReactNode,
+		shoudShowSegment: boolean
 	) => {
 		setPopoverFilterAction(filterAction);
 		setPopoversChildren(children);
-		setShowPopover(prevShowPopover => !prevShowPopover);
+		setShowPopover(shoudShowSegment);
 	};
 
 	const onConditionCopyClick = (e: React.MouseEvent) => {

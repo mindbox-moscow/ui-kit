@@ -150,6 +150,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								<button
 									className="kit-filter__clear-filter-btn"
 									onClick={onClear}
+									type="button"
 								>
 									<IconSvg type="close" />
 									{clearButtonCaption}

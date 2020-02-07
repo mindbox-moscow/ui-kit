@@ -10,6 +10,7 @@ interface IContext {
 		onMouseLeave: () => void,
 		itemElement: React.RefObject<HTMLLIElement>
 	) => void;
+	onCloseDropdown: () => void;
 }
 
 export const DropdownContext = React.createContext<IContext | null>(null);

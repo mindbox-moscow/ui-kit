@@ -2,6 +2,7 @@ import * as React from "react";
 import { SelectDropMain } from "..";
 import { neutralZoneClass } from "../../../HOCs";
 import { Textbox } from "../../../Textbox";
+import { DropdownContext } from "../Dropdown";
 import { SelectionMode, SelectSearchListProps } from "./types";
 
 export const SelectSearchList: React.FC<SelectSearchListProps> = ({
@@ -15,10 +16,11 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 	searchTextValue,
 	onInputChange,
 	shouldSearchTextBeSelected,
-	onScroll,
-	children
+	children,
+	getChildRef
 }) => {
 	const [minimized, setMinimized] = React.useState<boolean>(false);
+	const context = React.useContext(DropdownContext);
 
 	let clearFilter: JSX.Element = React.createElement("div");
 	let headerAddition: JSX.Element = React.createElement("div");
@@ -27,6 +29,18 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 
 	const onToggleChoices = () => {
 		setMinimized(prevMinimized => !prevMinimized);
+	};
+
+	const onCloseDropdown = () => {
+		if (context) {
+			context.onCloseDropdown();
+		}
+	};
+
+	const getRefDropMain = (ref: React.RefObject<HTMLElement>) => {
+		if (getChildRef) {
+			getChildRef(ref);
+		}
 	};
 
 	if (headerInfo) {
@@ -77,6 +91,7 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 			applyButton = (
 				<div className="kit-selectR-drop-module">
 					<button
+						onClick={onCloseDropdown}
 						type="button"
 						className="button button_blue button_middle button_primary"
 					>
@@ -106,7 +121,9 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 				{selectedComponents}
 				{applyButton}
 			</div>
-			<SelectDropMain onScroll={onScroll}>{children}</SelectDropMain>
+			<SelectDropMain getChildRef={getRefDropMain}>
+				{children}
+			</SelectDropMain>
 		</div>
 	);
 };

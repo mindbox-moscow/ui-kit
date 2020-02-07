@@ -4,13 +4,13 @@ export interface SelectSearchListProps {
 	className?: string;
 	searchTextValue: string;
 	shouldSearchTextBeSelected?: boolean;
-	onScroll?: (element: Element) => () => void;
 	selectionMode?: SelectionMode;
 	headerInfo?: string | JSX.Element;
 	clearFilterHandler?: React.MouseEventHandler;
 	makeSelectedComponents?: () => JSX.Element[];
 	resetFilterCaption?: string;
 	closeCaption?: string;
+	getChildRef?: (ref: React.RefObject<HTMLElement>) => void;
 }
 
 export enum SelectionMode {

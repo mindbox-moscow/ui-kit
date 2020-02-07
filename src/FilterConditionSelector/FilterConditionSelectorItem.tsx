@@ -1,11 +1,11 @@
 import cn from "classnames";
-import { useContext, useEffect } from "react";
 import * as React from "react";
 import { IconSvg } from "../IconSvg";
 import { FilterConditionSelectorContext } from "./FilterConditionSelectorContext";
 import { ChildRendererProps } from "./types";
 
 import "./FilterConditionSelector.scss";
+import { setNextFocus } from "./utils";
 
 export type ElementType =
 	| "filterablePropertyCategory"
@@ -41,9 +41,9 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	onSelect
 }) => {
 	const refSelector = React.createRef<HTMLLIElement>();
-	const context = useContext(FilterConditionSelectorContext);
+	const context = React.useContext(FilterConditionSelectorContext);
 
-	useEffect(
+	React.useEffect(
 		() => {
 			if (isSelected) {
 				scrollParentOnKeyDown();
@@ -54,7 +54,11 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 
 	const scrollParentOnKeyDown = () => {
 		if (refSelector.current && context) {
-			context.onSelectElement(refSelector.current);
+			refSelector.current.scrollIntoView({
+				behavior: "smooth",
+				block: "nearest"
+			});
+
 			context.selectedElement = {
 				isSelected,
 				isExpanded,
@@ -104,6 +108,9 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const onSelectItem = () => {
 		onSelect(id);
 		onExpand();
+		setTimeout(() => {
+			setNextFocus();
+		}, 1);
 	};
 
 	const isSimpleFilterableProperty = type === "simpleFilterableProperty";

@@ -21,3 +21,9 @@ export enum KeysCodes {
 }
 
 export const WEEK_IN_DAYS = 7;
+
+export enum BrowserList {
+	Safari = "Safari",
+	Chrome = "Chrome",
+	Chromium = "Chromium"
+}

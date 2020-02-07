@@ -1,9 +1,4 @@
-// Colors
-$clearButtonColorBg: #ffeeeb;
-$clearButtonColor: #a12e1e;
-$clearButtonCountColor: #a4a4a4;
-$topBarBg: #fcfcfc;
-$topBorderColor: #e2eaf0;
+@import "../sass/main";
 
 .kit-filter {
 	position: relative;
@@ -51,6 +46,8 @@ $topBorderColor: #e2eaf0;
 
 	> .kit-filtration-group_not-children {
 		.kit-filtration-group__buttons {
+			@include removeHorisontalBrackets;
+
 			> .kit-filter-editor .kit-filter-editor__btn,
 			> .kit-button {
 				opacity: 1;
@@ -141,6 +138,16 @@ $topBorderColor: #e2eaf0;
 	letter-spacing: -0.4px;
 	line-height: 19px;
 	box-sizing: border-box;
+}
+
+.kit-filter__clients-number {
+	.preloader_trigger.state-active {
+		position: static;
+		margin-top: 0;
+		margin-left: 5px;
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
 
 .kit-filter__clients {

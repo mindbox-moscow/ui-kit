@@ -1,17 +1,4 @@
-// Colors
-$hoverColorBg: #f5f8fa;
-$editModeColorBg: #3875d7;
-$removeColorBg: #ffeeeb;
-$removeColor: #a12e1e;
-$copyColorBg: $hoverColorBg;
-$copyColor: #2d597d;
-$linkedConditionEditModeColorBg: #fde487;
-$borderPopoverColor: #dddddc;
-
-// Sizes
-$itemHoverBorderRadius: 3px;
-$groupHoverMarginTop: 0px;
-$groupHoverMarginLeft: 10px;
+@import "../sass/main";
 
 .kit-filtration-condition {
 	position: relative;

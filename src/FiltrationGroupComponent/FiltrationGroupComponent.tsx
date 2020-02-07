@@ -1,26 +1,18 @@
 import cn from "classnames";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
-import { HorizontalBracket, LabelButton } from "./components";
+import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
 import { CallbackProps, SearchClasses, StateProps } from "./types";
+import { searchFirstLastElement } from "./utils";
 
 type Props = StateProps & CallbackProps;
 
-// tslint:disable-next-line:interface-name
-interface ItemsRootElement {
-	element: HTMLElement;
-	height: number;
-}
-
-type SearchElementType = "first" | "last";
-
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 32;
-const BRACKET_WIDTH = 2;
 
 const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	groupType,
@@ -39,12 +31,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	addSimpleConditionButton,
 	onConditionStateToggle
 }) => {
-	const [horizontalBracket, setHorizontalBracket] = useState<
-		ItemsRootElement[]
-	>([]);
-	const [verticalBracket, setVerticalBracket] = useState<boolean>(false);
 	const context = useContext(FilterWrapperContext);
-	const shouldRerenderBrackets = React.useRef(false);
+	const shouldRerenderBrackets = useRef(false);
 
 	const classes = Object.values(SearchClasses);
 	const kitFiltrationRef = React.useRef<HTMLUListElement>(null);
@@ -53,9 +41,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	const kitFiltrationLabelLineRef = React.useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		moveLabelAtCenterOfBracket();
-		handleCreateVerticalBrackets();
-		handleCreateHorizontalBrackets();
+		calculateMainVerticalBracket();
 	});
 
 	useMemo(
@@ -68,50 +54,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 		},
-		[children, state, verticalBracket, horizontalBracket]
+		[children, state]
 	);
 
-	useEffect(() => {
-		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
-
-		if (labelRef) {
-			labelRef.addEventListener("mouseover", handleHoverAddClassLabel);
-		}
-
-		if (closeRef) {
-			closeRef.addEventListener("mouseover", handleHoverAddClassLabel);
-		}
-
-		return () => {
-			window.removeEventListener("load", moveLabelAtCenterOfBracket);
-			window.removeEventListener("resize", moveLabelAtCenterOfBracket);
-
-			if (labelRef) {
-				labelRef.removeEventListener(
-					"mouseover",
-					handleHoverAddClassLabel
-				);
-				labelRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			if (closeRef) {
-				closeRef.removeEventListener(
-					"mouseover",
-					handleHoverAddClassLabel
-				);
-				closeRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-		};
-	}, []);
-
-	const moveLabelAtCenterOfBracket = () => {
+	const calculateMainVerticalBracket = () => {
 		let heightGroup = 0;
 		let heightLine = 0;
 		let positionTop = 0;
@@ -133,15 +79,20 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				"last"
 			);
 
+			const groupRefHeight = groupRef.getBoundingClientRect().height;
+			const firstChildElementHeight = firstChildElement
+				? firstChildElement.clientHeight
+				: 0;
+			const lastChildElementHeight = lastChildElement
+				? lastChildElement.clientHeight
+				: 0;
+
 			if (firstChildElement) {
 				if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					const firstChildElementHeight = firstChildElement.getBoundingClientRect()
-						.height;
-
 					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
@@ -181,9 +132,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						SearchClasses.KitFiltrationGroup
 					)
 				) {
-					const lastChildElementHeight = lastChildElement.getBoundingClientRect()
-						.height;
-
 					const labelLine = lastChildElement.querySelector(
 						".kit-filtration-group__label-line"
 					) as HTMLDivElement;
@@ -205,13 +153,9 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						SearchClasses.KitFiltrationCondition
 					)
 				) {
-					heightGroup +=
-						lastChildElement.getBoundingClientRect().height -
-						MIN_HEIGHT;
+					heightGroup += lastChildElementHeight - MIN_HEIGHT;
 
-					heightLine +=
-						lastChildElement.getBoundingClientRect().height -
-						MIN_HEIGHT / 2;
+					heightLine += lastChildElementHeight - MIN_HEIGHT / 2;
 				} else if (
 					lastChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroupButtons
@@ -221,12 +165,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				}
 			}
 
-			labelRef.style.height = `${groupRef.getBoundingClientRect().height -
-				heightGroup}px`;
+			labelRef.style.height = `${groupRefHeight - heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
-				labelLineRef.style.height = `${groupRef.getBoundingClientRect()
-					.height - heightLine}px`;
+				labelLineRef.style.height = `${groupRefHeight - heightLine}px`;
 			} else {
 				labelLineRef.style.height = "0px";
 			}
@@ -237,56 +179,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
 			}
 		}
-
-		window.addEventListener("load", moveLabelAtCenterOfBracket);
-		window.addEventListener("resize", moveLabelAtCenterOfBracket);
-	};
-
-	const getChildElements = (
-		rootElement: HTMLElement,
-		searchClasses: string[]
-	): ItemsRootElement[] | [] => {
-		const childrenElements = Array.from(rootElement.childNodes);
-
-		return childrenElements
-			.filter((item: HTMLElement) => {
-				return searchClasses.some(className =>
-					item.classList.contains(className)
-				);
-			})
-			.map((item: HTMLElement) => {
-				return {
-					element: item,
-					height: item.getBoundingClientRect().height
-				} as ItemsRootElement;
-			});
-	};
-
-	const searchFirstLastElement = (
-		searchableElement: HTMLElement,
-		searchClasses: string[],
-		search: SearchElementType
-	): HTMLElement | null => {
-		const childrenElements = Array.from(
-			searchableElement.children
-		) as HTMLElement[];
-
-		if (search === "last") {
-			childrenElements.reverse();
-		}
-
-		return (
-			childrenElements.find((item: HTMLElement) => {
-				return searchClasses.some(className =>
-					item.classList.contains(className)
-				);
-			}) || null
-		);
 	};
 
 	const handleHoverAddClassLabel = () => {
 		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.parentElement!.classList.add("kit-filtration-group_hover");
@@ -305,21 +201,11 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					);
 				}
 			});
-
-			if (closeRef) {
-				closeRef.addEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			labelRef.addEventListener("mouseout", handleHoverRemoveClassLabel);
 		}
 	};
 
 	const handleHoverRemoveClassLabel = () => {
 		const labelRef = kitFiltrationLabelRef.current;
-		const closeRef = kitFiltrationCloseRef.current;
 
 		if (labelRef) {
 			labelRef.parentElement!.classList.remove(
@@ -340,61 +226,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					);
 				}
 			});
-
-			if (closeRef) {
-				closeRef.removeEventListener(
-					"mouseout",
-					handleHoverRemoveClassLabel
-				);
-			}
-
-			labelRef.removeEventListener(
-				"mouseout",
-				handleHoverRemoveClassLabel
-			);
-		}
-	};
-
-	const handleCreateVerticalBrackets = () => {
-		let isVerticalBracket = false;
-
-		if (kitFiltrationRef && kitFiltrationRef.current) {
-			const ref = kitFiltrationRef.current;
-			const parentNode = ref.parentNode as HTMLElement;
-
-			if (parentNode.classList.contains("kit-filtration-condition")) {
-				isVerticalBracket = true;
-			}
-		}
-
-		if (isVerticalBracket !== verticalBracket) {
-			setVerticalBracket(newVerticalBracket => !newVerticalBracket);
-		}
-	};
-
-	const handleCreateHorizontalBrackets = () => {
-		const groupRef = kitFiltrationRef.current;
-		let repeater = true;
-
-		if (groupRef) {
-			const groupItems = getChildElements(groupRef, classes);
-
-			if (horizontalBracket.length !== groupItems.length) {
-				setHorizontalBracket(groupItems);
-			} else {
-				horizontalBracket.map((item: ItemsRootElement, index) => {
-					if (repeater) {
-						if (
-							item.height !== groupItems[index].height ||
-							item.element !== groupItems[index].element
-						) {
-							setHorizontalBracket(groupItems);
-
-							repeater = false;
-						}
-					}
-				});
-			}
 		}
 	};
 
@@ -413,14 +244,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 			</button>
 		);
 	};
-
-	const verticalBrackets = () => (
-		<>
-			{verticalBracket && (
-				<span className="kit-filtration-group__label-vertical-bracket" />
-			)}
-		</>
-	);
 
 	const renderGroupButtons = (noChildren?: boolean) =>
 		shouldShowButtons && (
@@ -460,6 +283,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					onClick={onConditionStateToggle}
 					type="button"
 					className="kit-filtration-group__close"
+					onMouseOver={handleHoverAddClassLabel}
+					onMouseOut={handleHoverRemoveClassLabel}
 				>
 					<IconSvg type="close" />
 				</button>
@@ -483,7 +308,6 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	};
 
 	const renderInner = renderInnerComponents();
-	const renderVerticalBracket = verticalBrackets();
 
 	const anyChildren = React.Children.toArray(children).length > 0;
 
@@ -506,17 +330,22 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				ref={kitFiltrationLabelRef}
 				className={cn(
 					"kit-filtration-group__label",
-					`kit-filtration-group__label_hover_${groupType}`,
-					{
-						[`kit-filtration-group__label_${groupType}`]: shouldShowLabel
-					}
+					`kit-filtration-group__label_hover_${groupType}`
 				)}
 				onClick={handleGroupLabelClick}
+				onMouseOver={handleHoverAddClassLabel}
+				onMouseOut={handleHoverRemoveClassLabel}
+			/>
+			<div
+				ref={kitFiltrationLabelLineRef}
+				className={cn("kit-filtration-group__label-line", {
+					[`kit-filtration-group__label-line_${groupType}`]: shouldShowLabel
+				})}
+				onClick={handleGroupLabelClick}
+				onMouseOver={handleHoverAddClassLabel}
+				onMouseOut={handleHoverRemoveClassLabel}
 			>
-				<div
-					ref={kitFiltrationLabelLineRef}
-					className="kit-filtration-group__label-line"
-				>
+				<div className="kit-filtration-group__label-line-vertical">
 					{shouldShowLabel && (
 						<span className="kit-filtration-group__label-text">
 							{state === "edit" ? (
@@ -547,12 +376,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						</span>
 					)}
 				</div>
-				<HorizontalBracket
-					brackets={horizontalBracket}
-					minHeight={MIN_HEIGHT}
-					bracketWidth={BRACKET_WIDTH}
-				/>
-				{renderVerticalBracket}
+				<div className="kit-filtration-group__label-line-horizontal" />
 			</div>
 			{renderInner}
 		</ul>

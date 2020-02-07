@@ -1,36 +1,17 @@
-// Colors
-$braketColor: #c3d4e1;
-$orColor: #dcc6f3;
-$orColorEdit: #9859dc;
-$andColor: $braketColor;
-$andColorEdit: #2d597d;
-$removeColorBg: #ffeeeb;
-$removeColor: #a12e1e;
-$hoverColorBg: #f5f8fa;
-$editColorBg: #e2eaf0;
-$closeColor: #666;
-$copyColorBg: $hoverColorBg;
-$copyColor: $andColorEdit;
-
-// Sizing
-$groupHoverMarginTop: 0px;
-$groupHoverMarginLeft: 10px;
-$borderWidthLine: 2px;
-$groupLabelPaddingLeft: 15px;
-$widthHorizontalBraket: 12px;
-$minHeight: 32px;
+@import "../sass/main";
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
 	> .kit-filtration-condition
-		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit),
-	.kit-filtration-group__label {
+		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
 		opacity: $opacity;
 
 		&:hover {
 			opacity: 1;
 		}
 	}
+	@include changeHorisontalBracketsOpacity($opacity);
+	@include changeVerticalSmallBracketOpacity($opacity);
 }
 
 .kit-filtration-group {
@@ -40,29 +21,11 @@ $minHeight: 32px;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	z-index: 4;
-
-	& {
-		:not(.kit-filtration-condition) > & {
-			> li {
-				&:first-of-type {
-					&::after {
-						top: 14px;
-						opacity: 0;
-					}
-				}
-
-				&:last-of-type {
-					&::after {
-						content: none;
-					}
-				}
-			}
-		}
-	}
+	z-index: 3;
 
 	&_read-only {
-		.kit-filtration-group__label {
+		.kit-filtration-group__label,
+		.kit-filtration-group__label-line {
 			pointer-events: none;
 			cursor: default;
 		}
@@ -90,6 +53,11 @@ $minHeight: 32px;
 
 	&_edit {
 		@include opacityBlock();
+		z-index: 4;
+
+		.kit-filtration-group {
+			z-index: 3;
+		}
 
 		&::before {
 			content: "";
@@ -117,8 +85,8 @@ $minHeight: 32px;
 			}
 		}
 
-		> .kit-filtration-group__label_or,
-		> .kit-filtration-group__label_and {
+		> .kit-filtration-group__label-line_or,
+		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text {
 				transform: translateX(-100%);
 				background-color: transparent;
@@ -130,38 +98,48 @@ $minHeight: 32px;
 			}
 		}
 
-		> .kit-filtration-group__label_or {
+		> .kit-filtration-group__label-line_or {
 			color: $orColorEdit;
 
-			.kit-filtration-group__label-line {
+			.kit-filtration-group__label-line-vertical {
 				background-color: $orColorEdit;
 			}
+
+			@include changeHorisontalBracketsColor($orColorEdit);
+			@include changeColorVerticalSmallBracket($orColorEdit);
 		}
 
-		> .kit-filtration-group__label_and {
+		> .kit-filtration-group__label-line_and {
 			color: $andColorEdit;
 
-			.kit-filtration-group__label-line {
+			.kit-filtration-group__label-line-vertical {
 				background-color: $andColorEdit;
 			}
+
+			@include changeHorisontalBracketsColor($andColorEdit);
+			@include changeColorVerticalSmallBracket($andColorEdit);
 		}
 
 		> .kit-filtration-group {
-			> .kit-filtration-group__label_hover_or {
+			> .kit-filtration-group__label-line_hover_or {
 				color: $orColorEdit;
 
-				.kit-filtration-group__label-line,
-				.kit-filtration-group__label-text {
+				@include changeHorisontalBracketsColor($orColorEdit);
+
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
 					background-color: $orColorEdit;
 				}
 			}
 
-			> .kit-filtration-group__label_hover_and {
+			> .kit-filtration-group__label-line_hover_and {
 				color: $andColorEdit;
 
+				@include changeHorisontalBracketsColor($andColorEdit);
+
 				.kit-filtration-group__label-button,
-				.kit-filtration-group__label-line,
-				.kit-filtration-group__label-text {
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
 					background-color: $andColorEdit;
 				}
 
@@ -179,8 +157,8 @@ $minHeight: 32px;
 			margin-left: 30px;
 		}
 
-		> .kit-filtration-group__label_or,
-		> .kit-filtration-group__label_and {
+		> .kit-filtration-group__label-line_or,
+		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text-height {
 				margin-right: -22px;
 				margin-top: 4px;
@@ -200,9 +178,16 @@ $minHeight: 32px;
 			color: $orColorEdit;
 			background-color: $hoverColorBg;
 
-			.kit-filtration-group__label-text,
-			.kit-filtration-group__label-line {
-				background-color: $orColorEdit;
+			& ~ .kit-filtration-group__label-line {
+				color: $orColorEdit;
+
+				@include changeHorisontalBracketsColor($orColorEdit);
+				@include changeColorVerticalSmallBracket($orColorEdit);
+
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical {
+					background-color: $orColorEdit;
+				}
 			}
 		}
 
@@ -210,14 +195,18 @@ $minHeight: 32px;
 			color: $andColorEdit;
 			background-color: $hoverColorBg;
 
-			.kit-filtration-group__label-button,
-			.kit-filtration-group__label-line,
-			.kit-filtration-group__label-text {
-				background-color: $andColorEdit;
-			}
+			& ~ .kit-filtration-group__label-line {
+				color: $andColorEdit;
 
-			.kit-filtration-group__label-text {
-				color: #fff;
+				@include changeHorisontalBracketsColor($andColorEdit);
+				@include changeColorVerticalSmallBracket($andColorEdit);
+
+				.kit-filtration-group__label-text,
+				.kit-filtration-group__label-line-vertical,
+				.kit-filtration-group__label-line-horizontal {
+					background-color: $andColorEdit;
+					color: #fff;
+				}
 			}
 		}
 
@@ -228,17 +217,30 @@ $minHeight: 32px;
 		}
 	}
 
-	> li {
+	& > & .kit-filtration-group__label-line {
+		&_or,
+		&_and {
+			.kit-filtration-group__label-line-horizontal {
+				@include createHorisontalBrackets(-30px, 50%);
+			}
+		}
+	}
+
+	> .kit-filtration-condition {
 		margin: 0;
 		width: 100%;
 		max-width: calc(100% - 30px);
 		padding-left: 20px;
 		box-sizing: border-box;
 
+		@include createHorisontalBrackets(4px, 16px);
+
 		.kit-filtration-group__buttons {
 			margin-left: 20px;
 		}
 	}
+
+	@include createVerticalSmallBracket;
 
 	.kit-filter__btn {
 		position: relative;
@@ -268,25 +270,6 @@ $minHeight: 32px;
 		}
 	}
 
-	&_and {
-		color: $andColor;
-
-		.kit-filtration-group__label-text,
-		.kit-filtration-group__label-line {
-			color: $andColorEdit;
-			background-color: $andColor;
-		}
-	}
-
-	&_or {
-		color: $orColor;
-
-		.kit-filtration-group__label-text,
-		.kit-filtration-group__label-line {
-			background-color: $orColor;
-		}
-	}
-
 	& ~ ul {
 		margin-left: 30px;
 	}
@@ -301,29 +284,51 @@ $minHeight: 32px;
 	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
-	left: $groupLabelPaddingLeft;
-	height: 100%;
+	left: 5px;
 	margin-top: 0;
 	margin-left: -1px;
+	box-sizing: border-box;
+	z-index: 4;
+	cursor: pointer;
+
+	&_and {
+		color: $andColor;
+
+		@include changeHorisontalBracketsColor($andColor);
+		@include changeColorVerticalSmallBracket($andColor);
+
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line-vertical {
+			color: $andColorEdit;
+			background-color: $andColor;
+		}
+	}
+
+	&_or {
+		color: $orColor;
+
+		@include changeHorisontalBracketsColor($orColor);
+		@include changeColorVerticalSmallBracket($orColor);
+
+		.kit-filtration-group__label-text,
+		.kit-filtration-group__label-line-vertical {
+			background-color: $orColor;
+		}
+	}
+}
+
+.kit-filtration-group__label-line-vertical {
+	position: absolute;
+	display: inline-flex;
+	align-items: center;
+	width: $borderWidthLine;
+	height: 100%;
+	left: 0;
+	margin-top: 0;
+	color: $braketColor;
 	background-color: $braketColor;
 	box-sizing: border-box;
-}
-
-.kit-filtration-group__label-horizontal-bracket {
-	position: absolute;
-	display: inline-block;
-	width: 11px;
-	border-top: 2px solid;
-	color: currentColor;
-}
-
-.kit-filtration-group__label-vertical-bracket {
-	position: absolute;
-	top: 0;
-	left: 14px;
-	height: calc(100% - #{$minHeight / 2});
-	border-left: 2px solid;
-	color: currentColor;
+	z-index: 3;
 }
 
 .kit-filtration-group__label-text {
@@ -355,6 +360,8 @@ $minHeight: 32px;
 	box-sizing: border-box;
 	outline: none;
 	z-index: 3;
+
+	@include createHorisontalBrackets;
 
 	> * {
 		z-index: 2;

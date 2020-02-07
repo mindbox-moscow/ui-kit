@@ -1,0 +1,106 @@
+@mixin createHorisontalBrackets($left: -16px, $top: 17px) {
+	&::after {
+		content: "";
+		position: absolute;
+		top: $top;
+		left: $left;
+		width: 13px;
+		border-top: 2px solid $braketColor;
+		transform: translateY(-1px);
+		pointer-events: none;
+		z-index: 2;
+	}
+}
+
+@mixin removeHorisontalBrackets() {
+	&::after {
+		content: none;
+	}
+}
+
+@mixin changeHorisontalBracketsColor($color) {
+	& ~ .kit-filtration-group__buttons,
+	& ~ .kit-filtration-condition,
+	&
+		~ .kit-filtration-group
+		> .kit-filtration-group__label-line
+		.kit-filtration-group__label-line-horizontal {
+		&::after {
+			border-top-color: $color;
+		}
+	}
+}
+
+@mixin changeHorisontalBracketsOpacity($opacity) {
+	> .kit-filtration-group__label {
+		& ~ .kit-filtration-group__buttons,
+		& ~ .kit-filtration-condition {
+			&::after {
+				opacity: $opacity;
+			}
+		}
+	}
+
+	> .kit-filtration-group__label {
+		& ~ .kit-filtration-group {
+			.kit-filtration-group__label-line
+				.kit-filtration-group__label-line-horizontal {
+				&::after {
+					opacity: $opacity;
+				}
+			}
+		}
+	}
+
+	> .kit-filtration-group__label {
+		&
+			~ .kit-filtration-group__label-line
+			.kit-filtration-group__label-line-vertical {
+			opacity: $opacity;
+		}
+	}
+}
+
+@mixin createVerticalSmallBracket() {
+	> .kit-filtration-condition > .kit-filtration-group {
+		> .kit-filtration-condition:first-of-type,
+		> .kit-filtration-group__buttons,
+		&.kit-filtration-group_not-children {
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 4px;
+				display: block;
+				width: 2px;
+				height: #{$minHeight / 2};
+				background-color: $braketColor;
+				z-index: 3;
+				pointer-events: none;
+			}
+		}
+
+		> .kit-filtration-group__buttons {
+			&::before {
+				left: -16px;
+			}
+		}
+	}
+}
+
+@mixin changeColorVerticalSmallBracket($color) {
+	& ~ .kit-filtration-condition:first-of-type,
+	& ~ .kit-filtration-group__buttons {
+		&::before {
+			background-color: $color !important;
+		}
+	}
+}
+
+@mixin changeVerticalSmallBracketOpacity($opacity) {
+	> .kit-filtration-condition {
+		&::before {
+			opacity: $opacity;
+		}
+	}
+}

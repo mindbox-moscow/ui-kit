@@ -1,10 +1,9 @@
 .kit-block-wrapper {
 	> * {
-		margin-left: 5px;
+		vertical-align: middle;
 	}
 }
 
 span.kit-block-wrapper {
 	display: inline-flex;
-	align-items: center;
 }

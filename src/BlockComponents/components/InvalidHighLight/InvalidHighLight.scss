@@ -3,23 +3,17 @@ $error: #ffeeeb;
 
 .kit-block-invalid-high-light {
 	position: relative;
+	display: inline-block;
+	padding-left: 3px;
+	padding-right: 3px;
+	border-radius: 4px;
+	margin-right: 5px;
+	line-height: 19px;
+	background-color: $error;
 	color: #000;
 
 	> span {
 		position: relative;
 		z-index: 1;
-	}
-
-	&::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		display: block;
-		width: calc(100% + 6px);
-		height: 100%;
-		margin-left: -3px;
-		border-radius: 4px;
-		background-color: $error;
 	}
 }

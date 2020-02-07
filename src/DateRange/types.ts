@@ -1,17 +1,20 @@
+export interface IDateRange {
+	dateFrom: Date;
+	dateTo: Date;
+}
+
 export enum DateRangeValueTypes {
 	NoFilter = "no-filter",
 	Concrete = "concrete",
 	Last = "last"
 }
 
-export interface NoFilterDateRangeValue {
+export interface INoFilterDateRangeValue {
 	type: DateRangeValueTypes.NoFilter;
 }
 
-export interface ConcreteDateRangeValue {
+export interface IConcreteDateRangeValue extends IDateRange {
 	type: DateRangeValueTypes.Concrete;
-	dateFrom: Date;
-	dateTo: Date;
 }
 
 export enum LastPeriods {
@@ -20,36 +23,17 @@ export enum LastPeriods {
 	Year = "year"
 }
 
-export interface LastDateRangeValue {
+export interface ILastDateRangeValue {
 	type: DateRangeValueTypes.Last;
 	period: LastPeriods;
 }
 
 export type DateRangeValue =
-	| NoFilterDateRangeValue
-	| ConcreteDateRangeValue
-	| LastDateRangeValue;
+	| INoFilterDateRangeValue
+	| IConcreteDateRangeValue
+	| ILastDateRangeValue;
 
-export interface DateRangeSelectorStateProps {
-	value: DateRangeValue;
-}
-
-export interface DateRangeSelectorCallbackProps {
-	onChange: (newValue: DateRangeValue) => void;
-}
-
-export interface IDateRange {
-	dateFrom: Date;
-	dateTo: Date;
-}
-
-export interface Props {
-	caption: Caption;
-	dataRangeValue: DateRangeValue;
-	onChange: (value: DateRangeValue) => void;
-}
-
-export interface Caption {
+export interface IDateRangeCaption {
 	labelNoFilter: string;
 	radioTextNoFilter: string;
 	labelConcrete: string;

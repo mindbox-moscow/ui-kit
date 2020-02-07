@@ -58,6 +58,7 @@ $searchFocusBgColor: #fffde5;
 .kit-filter-condition-selector__hierarchy-wrap {
 	height: 100%;
 	overflow: auto;
+	overscroll-behavior-y: contain;
 }
 
 .kit-filter-condition-selector__hierarchy {

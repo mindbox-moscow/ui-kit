@@ -1,0 +1,67 @@
+.kit-date-range {
+	display: flex;
+}
+
+.kit-date-range__content {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+
+	&:not(:last-child) {
+		margin-right: 8px;
+	}
+}
+
+.kit-date-range__radio-button {
+	position: relative;
+
+	.kit-filter-details {
+		width: 474px;
+	}
+
+	.kit-filter-details__title {
+		padding-left: 35px;
+	}
+
+	.kit-filter-details__editor-wrapper {
+		padding: 10px 35px 25px;
+		border-bottom: 0;
+	}
+}
+
+.kit-date-range__label {
+	margin-right: 4px;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+}
+
+.kit-date-range__popup {
+	display: flex;
+	margin-bottom: 8px;
+	align-items: flex-end;
+}
+
+.kit-date-range__popup-dates:first-child {
+	margin-right: 10px;
+}
+
+.kit-date-range__popup-fields {
+	display: flex;
+}
+
+.kit-date-range__popup-date {
+	&:not(:last-child) {
+		margin-right: 10px;
+	}
+}
+
+.kit-date-range__popup-date-text {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.kit-date-range__popup-tooltip {
+	position: relative;
+	left: 8px;
+	margin-bottom: 7px;
+}

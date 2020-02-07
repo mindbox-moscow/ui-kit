@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button } from "../Button";
 
-import "./FilterConditionEditorComponent.scss";
+import "./ConditionEditorPopup.scss";
 
 interface Props {
 	viewMode: "edit" | "menu";
@@ -15,7 +15,7 @@ interface Props {
 
 const ENTER_KEY = 13;
 
-export class FilterConditionEditorComponent extends React.Component<Props> {
+export class ConditionEditorPopup extends React.Component<Props> {
 	public handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
 		const { onAddFilterButtonClick, isAddFilterButtonEnabled } = this.props;
 

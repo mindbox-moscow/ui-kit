@@ -510,7 +510,8 @@ class ExampleFlatSelectorSimple extends React.Component {
 				{
 					component: (
 						<Button size="xxs" color="gray">
-							<IconSvg type="cross-arrows" />ИЛИ
+							<IconSvg type="cross-arrows" />
+							ИЛИ
 						</Button>
 					),
 					isImportant: true
@@ -1914,7 +1915,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 					onConditionStateToggle={() => console.log("change state")}
 					onClose={() => console.log("close")}
 					editorComponent={
-						<FilterConditionEditorComponent
+						<ConditionEditorPopup
 							innerEditorComponent={
 								<Select
 									hasDescriptions={true}
@@ -3047,7 +3048,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionStateToggle={() => console.log("change state")}
 				onClose={() => console.log("close")}
 				editorComponent={
-					<FilterConditionEditorComponent
+					<ConditionEditorPopup
 						innerEditorComponent={
 							<GridContainer>
 								<GridRow>
@@ -3230,7 +3231,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionStateToggle={() => console.log("change state")}
 				onClose={() => console.log("close")}
 				editorComponent={
-					<FilterConditionEditorComponent
+					<ConditionEditorPopup
 						innerEditorComponent={
 							<GridContainer>
 								<GridRow>
@@ -3409,7 +3410,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionStateToggle={() => console.log("change state")}
 				onClose={() => console.log("close")}
 				editorComponent={
-					<FilterConditionEditorComponent
+					<ConditionEditorPopup
 						innerEditorComponent={
 							<GridContainer>
 								<GridRow>
@@ -3551,7 +3552,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onConditionStateToggle={() => console.log("change state")}
 				onClose={() => console.log("close")}
 				editorComponent={
-					<FilterConditionEditorComponent
+					<ConditionEditorPopup
 						innerEditorComponent={
 							<GridContainer>
 								<GridRow>

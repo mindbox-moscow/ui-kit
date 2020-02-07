@@ -20,6 +20,8 @@ export enum KeysCodes {
 	Tab = 9
 }
 
+export const WEEK_IN_DAYS = 7;
+
 export enum BrowserList {
 	Safari = "Safari",
 	Chrome = "Chrome",

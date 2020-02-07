@@ -2,6 +2,7 @@ import * as React from "react";
 import "./DateField.scss";
 import cn from "classnames";
 import { Icon } from "../Icon/Icon";
+import { parseDateToString } from "../utils/helpers";
 
 interface Props {
 	disabled?: boolean;
@@ -52,8 +53,6 @@ const monthes = [
 	"Дек"
 ];
 
-const formatValue = (value: number) => (value < 10 ? `0${value}` : `${value}`);
-
 export class DateField extends React.Component<Props, State> {
 	public wrapper: HTMLElement;
 	public state: State;
@@ -66,9 +65,7 @@ export class DateField extends React.Component<Props, State> {
 			isOpenCalendar: false,
 			activeDate: new Date(defaultDate),
 			showedDate: new Date(defaultDate),
-			dateString: `${formatValue(defaultDate.getDate())}.${formatValue(
-				defaultDate.getMonth() + 1
-			)}.${defaultDate.getFullYear()}`
+			dateString: parseDateToString(defaultDate)
 		};
 	}
 
@@ -125,9 +122,7 @@ export class DateField extends React.Component<Props, State> {
 		const { onChange = () => {} } = this.props;
 		const newDate = new Date(year, month, date);
 		this.setState({
-			dateString: `${formatValue(newDate.getDate())}.${formatValue(
-				newDate.getMonth() + 1
-			)}.${newDate.getFullYear()}`,
+			dateString: parseDateToString(newDate),
 			activeDate: newDate
 		});
 		onChange(newDate);

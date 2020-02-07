@@ -318,13 +318,17 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	return (
 		<ul
 			ref={kitFiltrationRef}
-			className={cn("kit-filtration-group", {
-				"kit-filtration-group_edit": state === "edit",
-				"kit-filtration-group_shaded": state === "shaded",
-				"kit-filtration-group_read-only": state === "readOnly",
-				"kit-filtration-group_not-children": !anyChildren,
-				"kit-filtration-group_no-label": !shouldShowLabel
-			})}
+			className={cn(
+				"kit-filtration-group",
+				`kit-filtration-group_${groupType}`,
+				{
+					"kit-filtration-group_edit": state === "edit",
+					"kit-filtration-group_shaded": state === "shaded",
+					"kit-filtration-group_read-only": state === "readOnly",
+					"kit-filtration-group_not-children": !anyChildren,
+					"kit-filtration-group_no-label": !shouldShowLabel
+				}
+			)}
 		>
 			<div
 				ref={kitFiltrationLabelRef}

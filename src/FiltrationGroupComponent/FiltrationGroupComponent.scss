@@ -23,6 +23,14 @@
 	box-sizing: border-box;
 	z-index: 3;
 
+	&_or {
+		@include changeColorVerticalSmallBracket($orColor);
+	}
+
+	&_and {
+		@include changeColorVerticalSmallBracket($andColor);
+	}
+
 	&_read-only {
 		.kit-filtration-group__label,
 		.kit-filtration-group__label-line {
@@ -57,22 +65,6 @@
 
 		.kit-filtration-group {
 			z-index: 3;
-		}
-
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: calc(100% + #{$groupHoverMarginLeft});
-			height: calc(100% + #{$groupHoverMarginTop});
-			min-height: $minHeight;
-			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-			background-color: $editColorBg;
-			border-radius: 3px 0 0 3px;
-			box-sizing: border-box;
-			cursor: pointer;
 		}
 
 		> .kit-filtration-group__buttons {
@@ -153,10 +145,6 @@
 	&_not-children {
 		min-height: $minHeight;
 
-		&#{$self}_edit {
-			margin-left: 30px;
-		}
-
 		> .kit-filtration-group__label-line_or,
 		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text-height {
@@ -173,6 +161,14 @@
 	&_hover {
 		cursor: pointer;
 		@include opacityBlock();
+
+		&.kit-filtration-group_or {
+			@include changeColorVerticalSmallBracket($orColorEdit);
+		}
+
+		&.kit-filtration-group_and {
+			@include changeColorVerticalSmallBracket($andColorEdit);
+		}
 
 		> .kit-filtration-group__label_hover_or {
 			color: $orColorEdit;

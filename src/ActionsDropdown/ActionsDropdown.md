@@ -55,11 +55,15 @@
 		</ActionsDropdown>
 	</div>
 	<div>
-		<ActionsDropdown isInline={true}>
-			<ActionsDropdown.Action
-				title="Редактировать"
-				onClick={() => console.log("Редактировать")}
-			/>
+		<span style={{ marginRight: "8px" }}>
+			Дробдаун с произвольными children
+		</span>
+		<ActionsDropdown>
+			<ul style={{ padding: "10px", margin: 0 }}>
+				<li>Раз</li>
+				<li>Два</li>
+				<li>Три</li>
+			</ul>
 		</ActionsDropdown>
 	</div>
 </>

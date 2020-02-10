@@ -65,7 +65,7 @@
 	> .kit-filtration-condition > .kit-filtration-group {
 		> .kit-filtration-condition:first-of-type,
 		> .kit-filtration-group__buttons,
-		&.kit-filtration-group_not-children {
+		&.kit-filtration-group_not-children:not(&.kit-filtration-group_no-label) {
 			&::before {
 				content: "";
 				position: absolute;
@@ -90,7 +90,8 @@
 
 @mixin changeColorVerticalSmallBracket($color) {
 	& ~ .kit-filtration-condition:first-of-type,
-	& ~ .kit-filtration-group__buttons {
+	& ~ .kit-filtration-group__buttons,
+	&.kit-filtration-group_not-children {
 		&::before {
 			background-color: $color !important;
 		}
@@ -98,7 +99,9 @@
 }
 
 @mixin changeVerticalSmallBracketOpacity($opacity) {
-	> .kit-filtration-condition {
+	> .kit-filtration-condition,
+	> .kit-filtration-group__buttons,
+	&.kit-filtration-group_not-children:not(&.kit-filtration-group_no-label) {
 		&::before {
 			opacity: $opacity;
 		}

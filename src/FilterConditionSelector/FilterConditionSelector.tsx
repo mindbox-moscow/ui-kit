@@ -47,6 +47,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		const body = document.body;
 		const refSelector = mainRef.current;
 
+		setAutoFocusSearchInput();
+
 		if (refSelector) {
 			const { top } = refSelector.getBoundingClientRect();
 			topRect = top;
@@ -174,6 +176,12 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
+	const setAutoFocusSearchInput = () => {
+		if (searchRef.current) {
+			searchRef.current.focus();
+		}
+	};
+
 	const valueContext: IProps = {
 		selectedElement: null
 	};
@@ -185,7 +193,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
 							ref={searchRef}
-							autoFocus={true}
 							noShadow={true}
 							value={searchTerm}
 							type="search"

@@ -13,7 +13,7 @@ interface IProps {
 	className?: string;
 	children?: ReactNode;
 	// getActions() используется, если нужны вычисления после открытия дропдауна
-	getActions?: () => JSX.Element;
+	getActions?: () => ReactNode;
 }
 
 const ActionsDropdown = (props: IProps) => {
@@ -43,7 +43,8 @@ const ActionsDropdown = (props: IProps) => {
 			{isOpen && (
 				<Dropdown onClickOutside={closeDropdown}>
 					<MethodsProvider value={{ closeDropdown }}>
-						{getActions !== undefined ? getActions() : children}
+						{children}
+						{getActions !== undefined ? getActions() : null}
 					</MethodsProvider>
 				</Dropdown>
 			)}

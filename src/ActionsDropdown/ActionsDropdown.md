@@ -7,6 +7,7 @@
 			<ActionsDropdown.Action
 				title="Редактировать"
 				onClick={() => console.log("Редактировать")}
+				closeDropdownOnClick={false}
 			/>
 			<ActionsDropdown.Group title="Добавить">
 				<ActionsDropdown.Action

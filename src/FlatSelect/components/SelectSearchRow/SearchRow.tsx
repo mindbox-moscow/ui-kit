@@ -62,8 +62,6 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleClick = () => {
-		const { onCloseDropdown } = context!;
-
 		if (disabled) {
 			return;
 		}
@@ -71,8 +69,8 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		// tslint:disable-next-line: no-unused-expression
 		onClickHandler && onClickHandler();
 
-		if (!isForMultiSelect) {
-			onCloseDropdown();
+		if (context && !isForMultiSelect) {
+			context.onCloseDropdown();
 		}
 	};
 
@@ -85,9 +83,9 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const { contextOnKeyDownItems, onCloseDropdown } = context!;
+		if (context) {
+			const { contextOnKeyDownItems, onCloseDropdown } = context;
 
-		if (contextOnKeyDownItems) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
 					if (!disabled && onClickHandler) {

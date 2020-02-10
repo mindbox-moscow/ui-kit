@@ -2,9 +2,9 @@
 
 .kit-detalization-row {
     width: 100%;
-    display: flex;
-    font-family: "PT Sans", sans-serif;
     box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+    display: flex;
 
     &__name {
         @media (max-width: $tablet) {
@@ -13,8 +13,8 @@
     }
 
     &__value {
-        margin-left: auto;
         flex: 1 0 auto;
+        margin-left: auto;
         text-align: right;
     }
 }

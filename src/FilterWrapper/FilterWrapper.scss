@@ -1,38 +1,38 @@
-@import "../sass/main";
+@import '../sass/main';
 
 .kit-filter {
 	position: relative;
 	width: 100%;
+	background-color: #ffffff;
 	border: 1px solid #d4d4d4;
 	border-radius: 4px;
-	background-color: #ffffff;
 	box-sizing: border-box;
 
 	&_short {
-		display: flex;
 		align-items: center;
 		height: 46px;
 		padding: 0;
-		color: #a4a4a4;
-		font-family: "PT Sans";
-		font-size: 14px;
-		letter-spacing: -0.4px;
-		line-height: 19px;
 		box-sizing: border-box;
+		font-family: 'PT Sans';
+		font-size: 14px;
+		line-height: 19px;
+		color: #a4a4a4;
+		letter-spacing: -0.4px;
+		display: flex;
 
 		.kit-filter__all-wrap {
-			display: flex;
 			align-items: center;
 			margin-top: 0;
 			margin-bottom: 0;
+			display: flex;
 		}
 	}
 }
 
 .kit-filter__short-wrap-filter {
-	display: flex;
-	margin-left: auto;
 	height: 100%;
+	margin-left: auto;
+	display: flex;
 
 	> * {
 		height: 100%;
@@ -40,8 +40,8 @@
 }
 
 .kit-filter__all-wrap {
-	padding: 0;
 	margin: 15px 11px 15px 22px;
+	padding: 0;
 	box-sizing: border-box;
 
 	> .kit-filtration-group_not-children {
@@ -82,18 +82,18 @@
 }
 
 .kit-filter__btn {
-	height: 22px;
 	min-width: 160px;
+	height: 22px;
+	background-color: #f1f5f8;
 	border: 1px solid #c5d6e1;
 	border-radius: 3px;
-	background-color: #f1f5f8;
-	color: #265378;
-	font-family: "PT Sans", sans-serif;
-	font-size: 13px;
-	line-height: 18px;
-	text-align: center;
 	outline: none;
 	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	color: #265378;
+	text-align: center;
 }
 
 .kit-filter__wrap {
@@ -112,17 +112,17 @@
 }
 
 .kit-filter__use-filter {
-	height: 40px;
 	width: 399px;
+	height: 40px;
 	background-color: #e2eaf0;
-	font-family: "PT Sans", sans-serif;
+	border: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	text-align: center;
-	border: 0;
-	outline: none;
 	cursor: pointer;
-	box-sizing: border-box;
 	transition: background-color 0.15s ease-in-out;
 
 	&:hover {
@@ -132,12 +132,12 @@
 
 .kit-filter__clients,
 .kit-filter__clients-number {
-	color: #333333;
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
-	letter-spacing: -0.4px;
-	line-height: 19px;
 	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	color: #333333;
+	letter-spacing: -0.4px;
 }
 
 .kit-filter__clients-number {
@@ -151,13 +151,13 @@
 }
 
 .kit-filter__clients {
-	display: inline-flex;
 	align-items: center;
 	height: 100%;
-	padding-left: 15px;
 	padding-right: 15px;
+	padding-left: 15px;
 	border: 2px solid transparent;
 	box-sizing: border-box;
+	display: inline-flex;
 
 	&_warning {
 		background-color: rgb(242, 227, 191);
@@ -166,26 +166,26 @@
 }
 
 .kit-filter__clients-number {
-	font-weight: 600;
 	box-sizing: border-box;
+	font-weight: 600;
 }
 
 .kit-filter__clear-filter-btn {
 	position: relative;
-	display: inline-flex;
 	align-items: center;
 	height: 100%;
 	padding: 0 30px;
-	border: 0;
-	color: $clearButtonColor;
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
-	letter-spacing: -0.4px;
-	line-height: 19px;
 	background-color: $clearButtonColorBg;
+	border: 0;
 	outline: none;
-	cursor: pointer;
 	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	color: $clearButtonColor;
+	letter-spacing: -0.4px;
+	cursor: pointer;
+	display: inline-flex;
 	transition: background-color 0.15s ease-in-out;
 
 	&:hover {
@@ -204,12 +204,12 @@
 	box-sizing: border-box;
 
 	.kit-filter__clear-filter-btn {
-		color: $clearButtonCountColor;
-		padding: 0;
-		margin: 0 10px 0 30px;
 		height: auto;
+		margin: 0 10px 0 30px;
+		padding: 0;
 		background-color: transparent;
 		border-bottom: 1px dotted $clearButtonCountColor;
+		color: $clearButtonCountColor;
 	}
 
 	&_part,
@@ -220,22 +220,22 @@
 }
 
 .kit-filter__count-block-text {
-	color: #333333;
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
-	letter-spacing: -0.4px;
-	line-height: 19px;
 	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	line-height: 19px;
+	color: #333333;
+	letter-spacing: -0.4px;
 }
 
 .kit-filter__top-filter {
-	display: flex;
-	align-items: center;
 	justify-content: flex-end;
+	align-items: center;
 	padding: 11px 21px 9px;
-	border-radius: 4px 4px 0 0;
 	background-color: $topBarBg;
 	border-bottom: 1px solid $topBorderColor;
+	border-radius: 4px 4px 0 0;
+	display: flex;
 
 	> *:not(:last-child) {
 		margin-right: 8px;

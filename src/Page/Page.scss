@@ -1,16 +1,16 @@
 .kit-page {
 	position: relative;
-	padding-bottom: 53px;
 	min-height: 100vh;
+	padding-bottom: 53px;
 	background-color: #fafaf7;
 
 	&__container {
-		margin-left: auto;
-		margin-right: auto;
-		padding-left: 15px;
-		padding-right: 15px;
 		width: 100%;
 		max-width: 1100px;
+		margin-right: auto;
+		margin-left: auto;
+		padding-right: 15px;
+		padding-left: 15px;
 	}
 
 	&__title {
@@ -22,19 +22,19 @@
 	}
 
 	&__header {
-		box-sizing: border-box;
-		display: flex;
 		height: 50px;
-		background-color: #fff;
+		background-color: #ffffff;
 		border-top: 1px solid #d4d4d4;
 		border-bottom: 1px solid #d4d4d4;
+		box-sizing: border-box;
+		display: flex;
 	}
 
 	&__head-inner {
-		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 		height: 100%;
+		display: flex;
 	}
 
 	&__button {
@@ -61,9 +61,9 @@
 
 	&__footer {
 		position: absolute;
+		right: 0;
 		bottom: 0;
 		left: 0;
-		right: 0;
 		height: 53px;
 		border-top: 1px solid #d4d4d4;
 	}
@@ -77,8 +77,8 @@
 }
 
 .ui-kit-filter-container {
-	margin: 0px auto;
 	max-width: 1600px;
+	margin: 0px auto;
 	padding: 0 70px;
 }
 
@@ -94,8 +94,8 @@
 }
 
 *::-webkit-scrollbar-track {
-	border-radius: 100px;
 	background-color: transparent;
+	border-radius: 100px;
 }
 
 *::-webkit-scrollbar {
@@ -104,10 +104,10 @@
 }
 
 *::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	box-shadow: none;
 	background-color: #c2c2c2;
 	border: 2px solid #fafafa;
+	border-radius: 10px;
+	box-shadow: none;
 }
 
 .tabs-content,
@@ -115,8 +115,8 @@
 .dialog-main {
 	.header {
 		padding-top: 0;
-		padding-left: 0;
 		padding-right: 0;
+		padding-left: 0;
 
 		&:last-child,
 		&:nth-last-child(2):not(.header_message) {
@@ -125,9 +125,9 @@
 	}
 
 	.ui-kit-filter-container {
-		padding-left: 0;
-		padding-right: 0;
 		max-width: 100%;
+		padding-right: 0;
+		padding-left: 0;
 	}
 }
 

@@ -1,21 +1,21 @@
 .kit-tag {
-    font-family: "PT Sans", sans-serif;
-    display: inline-flex;
     padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 10px;
     padding-right: 10px;
-    border-radius: 3px;
+    padding-left: 10px;
+    padding-bottom: 4px;
     background-color: #417505;
-    color: #fff;
+    border-radius: 3px;
+    font-family: 'PT Sans', sans-serif;
     font-size: 13px;
+    color: #ffffff;
+    display: inline-flex;
 
     &_develop {
         background-color: #ae00d2;
     }
 
     &__date {
-        border-bottom: 1px dashed #fff;
+        border-bottom: 1px dashed #ffffff;
     }
 
     &__text {
@@ -26,11 +26,11 @@
             position: absolute;
             top: 50%;
             right: -15px;
-            content: "";
             width: 2px;
             height: 2px;
+            background-color: #ffffff;
             border-radius: 50%;
-            background-color: #fff;
+            content: '';
         }
     }
 }

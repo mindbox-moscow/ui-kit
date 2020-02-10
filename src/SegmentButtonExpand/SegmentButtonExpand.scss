@@ -1,4 +1,4 @@
-$textFilterColor: #333;
+$textFilterColor: #333333;
 $borderColor: #d9e7fe;
 $borderHoverColor: #e2eaf0;
 $mainColor: #3875d7;
@@ -6,23 +6,23 @@ $borderPopoverColor: #dddddc;
 
 .kit-segment-button-expand {
 	position: relative;
-	display: inline-flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 32px;
 	height: 16px;
-	border-radius: 8px;
-	border: solid 1px $borderColor;
 	background-color: transparent;
-	color: $mainColor;
-	box-sizing: border-box;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	border: solid 1px $borderColor;
+	border-radius: 8px;
 	outline: none;
+	box-sizing: border-box;
+	color: $mainColor;
 	cursor: pointer;
+	display: inline-flex;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
 	&:hover {
-		border-color: $borderHoverColor;
 		background-color: $borderHoverColor;
+		border-color: $borderHoverColor;
 	}
 
 	&_open {
@@ -34,30 +34,30 @@ $borderPopoverColor: #dddddc;
 
 		&::after,
 		&::before {
-			content: "";
 			position: absolute;
 			width: 32px;
+			content: '';
 		}
 
 		&::after {
-			left: -1px;
 			top: 100%;
-			height: 10px;
-			background-color: #fff;
+			left: -1px;
 			z-index: 1;
+			height: 10px;
+			background-color: #ffffff;
 		}
 
 		&::before {
 			top: -3px;
 			left: -2px;
-			display: block;
-			height: 23px;
-			background-color: #fff;
-			border-radius: 10px 10px 0 0;
-			border-width: 1px 1px 0 1px;
-			border-color: $borderPopoverColor;
-			border-style: solid;
 			z-index: 1;
+			height: 23px;
+			background-color: #ffffff;
+			border-width: 1px 1px 0 1px;
+			border-style: solid;
+			border-color: $borderPopoverColor;
+			border-radius: 10px 10px 0 0;
+			display: block;
 		}
 
 		svg {
@@ -70,22 +70,22 @@ $borderPopoverColor: #dddddc;
 	position: absolute;
 	top: 15px;
 	right: 17px;
-	display: inline-flex;
+	z-index: 10;
 	align-items: center;
 	height: 16px;
-	padding: 0 10px 0 10px;
 	margin: 0;
+	padding: 0 10px 0 10px;
+	background-color: $borderHoverColor;
 	border: 0;
 	border-radius: 8px;
-	background-color: $borderHoverColor;
-	font-family: "PT Sans", sans-serif;
+	outline: none;
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 11px;
 	line-height: 1;
 	color: $textFilterColor;
-	outline: none;
-	box-sizing: border-box;
 	cursor: pointer;
-	z-index: 10;
+	display: inline-flex;
 
 	svg {
 		margin-right: 6px;

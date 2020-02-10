@@ -11,13 +11,13 @@ $searchFocusBorderColor: #5897fb;
 $searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector {
-	display: flex;
+	z-index: 20;
 	width: 982px;
 	height: 600px;
-	background-color: #fff;
+	background-color: #ffffff;
 	border-radius: 4px;
-	font-family: "PT Sans", sans-serif;
-	z-index: 20;
+	font-family: 'PT Sans', sans-serif;
+	display: flex;
 
 	.kit-input-field_search {
 		transition: border-color 0.15s ease-in-out,
@@ -25,14 +25,14 @@ $searchFocusBgColor: #fffde5;
 
 		&:hover,
 		&:focus {
-			border-color: $searchFocusBorderColor;
 			background-color: $searchFocusBgColor;
+			border-color: $searchFocusBorderColor;
 		}
 	}
 
 	.kit-filter-details {
-		border-bottom-right-radius: 4px;
 		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
 		overflow: hidden;
 	}
 
@@ -46,12 +46,12 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__wrap {
-	max-width: 378px;
 	width: 100%;
+	max-width: 378px;
 	border: 1px solid $borderColor;
 	border-right: 0;
-	border-bottom-left-radius: 4px;
 	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
 }
 
 .kit-filter-condition-selector__hierarchy-wrap {
@@ -61,40 +61,40 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy {
+	width: fit-content;
+	min-width: 100%;
+	height: calc(100% - 46px);
 	margin: 0;
 	padding: 8px 11px;
-	height: calc(100% - 46px);
 	overflow: auto;
-	min-width: 100%;
-	width: fit-content;
-	list-style: none;
 	box-sizing: border-box;
+	list-style: none;
 }
 
 .kit-filter-condition-selector__hierarchy-button {
 	position: relative;
-	display: flex;
 	align-items: center;
-	cursor: pointer;
 	color: $itemNameColor;
+	cursor: pointer;
+	display: flex;
 
 	&::before {
-		content: "";
 		position: absolute;
 		top: 0;
 		right: -11px;
-		display: block;
-		height: 100%;
-		width: 1000vw;
-		mix-blend-mode: multiply;
 		z-index: 1;
+		width: 1000vw;
+		height: 100%;
 		box-sizing: border-box;
+		content: '';
+		display: block;
+		mix-blend-mode: multiply;
 	}
 
 	&:hover,
 	&:focus,
 	&_selected {
-		color: #fff;
+		color: #ffffff;
 	}
 
 	&:hover,
@@ -111,14 +111,14 @@ $searchFocusBgColor: #fffde5;
 		}
 
 		&::after {
-			content: "";
 			position: absolute;
-			right: -11px;
 			top: 0;
+			right: -11px;
 			border-top: 13px solid transparent;
 			border-left: 12px solid $selectItemColorBg;
 			border-bottom: 14px solid transparent;
 			box-sizing: border-box;
+			content: '';
 		}
 
 		&:hover {
@@ -134,28 +134,28 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-name {
-	flex-grow: 1;
-	display: flex;
+	z-index: 1;
 	align-items: center;
+	flex-grow: 1;
 	padding: 4px 10px 5px 8px;
-	border: 0;
 	background-color: transparent;
-	font-family: "PT Sans", sans-serif;
+	border: 0;
+	outline: none;
+	overflow: hidden;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 14px;
-	font-weight: bold;
 	line-height: 18px;
+	font-weight: bold;
 	color: currentColor;
 	text-align: left;
 	white-space: nowrap;
-	overflow: hidden;
 	text-overflow: ellipsis;
-	outline: none;
 	cursor: pointer;
-	z-index: 1;
+	display: flex;
 
 	> span {
-		display: inline-block;
 		height: 18px;
+		display: inline-block;
 	}
 }
 
@@ -164,9 +164,9 @@ $searchFocusBgColor: #fffde5;
 	&_simpleFilterableProperty {
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
+				position: relative;
 				padding-left: 15px;
 				font-weight: normal;
-				position: relative;
 			}
 		}
 	}
@@ -175,14 +175,14 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
-					content: "";
 					position: absolute;
 					left: 2px;
-					display: block;
-					border-top: 5px solid transparent;
-					border-bottom: 5px solid transparent;
-					border-left: 6px solid $toggleCircleColor;
 					background-color: transparent;
+					border-top: 5px solid transparent;
+					border-left: 6px solid $toggleCircleColor;
+					border-bottom: 5px solid transparent;
+					content: '';
+					display: block;
 				}
 			}
 
@@ -190,7 +190,7 @@ $searchFocusBgColor: #fffde5;
 			&:hover {
 				.kit-filter-condition-selector__hierarchy-name {
 					&::before {
-						border-left-color: #fff;
+						border-left-color: #ffffff;
 					}
 				}
 			}
@@ -211,15 +211,15 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
-					content: "";
 					position: absolute;
 					left: 1px;
-					display: block;
 					width: 8px;
 					height: 8px;
-					border-radius: 50%;
 					background-color: $toggleCircleColor;
+					border-radius: 50%;
 					box-sizing: border-box;
+					content: '';
+					display: block;
 				}
 			}
 
@@ -227,7 +227,7 @@ $searchFocusBgColor: #fffde5;
 			&:hover {
 				.kit-filter-condition-selector__hierarchy-name {
 					&::before {
-						background-color: #fff;
+						background-color: #ffffff;
 					}
 				}
 			}
@@ -237,30 +237,30 @@ $searchFocusBgColor: #fffde5;
 
 .kit-filter-condition-selector__hierarchy-children {
 	padding-left: 15px;
-	list-style: none;
 	box-sizing: border-box;
+	list-style: none;
 
 	.kit-filter-condition-selector__hierarchy-item {
 		position: relative;
 
 		&::before,
 		&::after {
-			content: "";
 			position: absolute;
-			display: block;
 			color: $bracketColor;
+			content: '';
+			display: block;
 		}
 
 		&::before {
 			top: 0;
 			left: -13px;
-			border-left: 2px solid;
 			height: 100%;
+			border-left: 2px solid;
 		}
 
 		&::after {
-			left: -12px;
 			top: 12px;
+			left: -12px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
@@ -302,31 +302,31 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__filter-block {
+	max-height: 71px;
 	padding: 8px 10px;
 	background-color: $filterBlockColorBg;
-	font-size: 14px;
-	max-height: 71px;
 	border-bottom: 1px solid $borderColor;
+	font-size: 14px;
 }
 
 .kit-filter-condition-selector__filter-btn-block {
-	display: none;
-	align-items: center;
 	justify-content: space-between;
+	align-items: center;
 	margin-top: 6px;
 	padding-top: 4px;
+	display: none;
 }
 
 .kit-filter-condition-selector__filter-btn {
-	display: inline-block;
-	font-family: "PT Sans", sans-serif;
+	padding: 0;
+	background-color: transparent;
+	border: 0;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 12px;
 	color: $filterButtonColor;
 	text-decoration: none;
-	border: 0;
-	background-color: transparent;
-	padding: 0;
 	cursor: pointer;
+	display: inline-block;
 
 	&:not(:last-child) {
 		margin-right: 14px;
@@ -337,35 +337,35 @@ $searchFocusBgColor: #fffde5;
 	}
 
 	&_active {
-		color: #000;
 		font-weight: 600;
+		color: #000000;
 	}
 }
 
 .kit-filter-condition-selector__hierarchy-toggle {
-	padding: 0;
+	z-index: 1;
 	width: 6px;
 	margin-top: -3px;
 	margin-left: 1px;
-	border: none;
+	padding: 0;
 	background-color: transparent;
-	color: inherit;
+	border: none;
 	outline: none;
 	box-sizing: border-box;
+	color: inherit;
 	cursor: pointer;
-	z-index: 1;
 
 	.kit-filter-condition-selector__hierarchy-item_expanded
 		> .kit-filter-condition-selector__hierarchy-button
 		& {
-		transform: rotate(90deg);
 		margin-top: -1px;
+		transform: rotate(90deg);
 	}
 }
 
 .kit-filter-condition-selector__high-light-text {
 	background: #fcf9cf;
-	color: #000;
+	color: #000000;
 }
 
 @keyframes full-selector {

@@ -4,16 +4,16 @@ $contentBorderColor: #dddddc;
 $contentBgColor: #fafaf7;
 
 .kit-popover__content {
+	width: fit-content;
 	max-width: 550px;
 	max-height: 229px;
-	width: fit-content;
 	padding: 5px 12px;
-	border-radius: 3px;
-	border: solid 1px $contentBorderColor;
 	background-color: $contentBgColor;
-	box-sizing: border-box;
+	border: solid 1px $contentBorderColor;
+	border-radius: 3px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	box-sizing: border-box;
 
 	.kit-filtration-condition__item-text .kit-filtration-condition__content {
 		flex-wrap: nowrap;
@@ -22,14 +22,14 @@ $contentBgColor: #fafaf7;
 }
 
 .kit-popover__button {
-	padding: 0;
 	margin: 8px 0 0;
-	border: 0;
+	padding: 0;
 	background-color: transparent;
-	font-family: "PT Sans", sans-serif;
+	border: 0;
+	outline: none;
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 13px;
 	color: $buttonTextColor;
-	outline: none;
 	cursor: pointer;
-	box-sizing: border-box;
 }

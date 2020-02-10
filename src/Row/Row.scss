@@ -1,40 +1,40 @@
 .kit-row {
-    box-sizing: border-box;
-    display: flex;
     align-items: flex-end;
+    width: 100%;
     margin-top: 14px;
     margin-bottom: 14px;
-    width: 100%;
+    box-sizing: border-box;
+    display: flex;
 
     &_edit {
         align-items: flex-start;
-        border-bottom: 1px solid #d4d4d4;
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 14px;
         padding-bottom: 15px;
+        border-bottom: 1px solid #d4d4d4;
     }
 
     &__content {
         position: relative;
-        box-sizing: border-box;
-        display: flex;
         flex-wrap: wrap;
         align-items: center;
         flex-grow: 1;
         min-height: 23px;
+        box-sizing: border-box;
         font-size: 14px;
+        display: flex;
 
         &_error {
-            font-style: italic;
             color: #a12e1e;
+            font-style: italic;
         }
 
         a {
             color: #305176;
 
             &:hover {
-                color: #888;
+                color: #888888;
             }
         }
     }
@@ -45,21 +45,21 @@
 
     &__name {
         position: relative;
+        position: relative;
         width: 154px;
         margin-top: 0;
         margin-bottom: 0;
         padding-bottom: 2px;
-        font-family: "PT Sans", sans-serif;
-        position: relative;
-        color: #888;
+        font-family: 'PT Sans', sans-serif;
         font-size: 14px;
+        color: #888888;
 
         &::after {
             position: absolute;
-            content: "";
-            border-bottom: 1px dashed #d4d4d4;
-            width: 100%;
             bottom: 6px;
+            width: 100%;
+            border-bottom: 1px dashed #d4d4d4;
+            content: '';
         }
     }
 
@@ -77,16 +77,16 @@
 
     &__name-text {
         position: relative;
-        max-width: 100px;
-        background-color: #fff;
         z-index: 1;
+        max-width: 100px;
+        background-color: #ffffff;
     }
 
     &_edit &__name {
-        box-sizing: border-box;
-        padding-top: 5px;
         min-width: 210px;
+        padding-top: 5px;
         padding-right: 15px;
+        box-sizing: border-box;
 
         &_help {
             padding-top: 0;
@@ -99,7 +99,7 @@
 
     &_edit &__name-text {
         background-color: transparent;
-        color: #000;
+        color: #000000;
     }
 
     &__text {
@@ -107,10 +107,10 @@
     }
 
     &__desc {
+        width: 100%;
         margin-top: 7px;
         margin-bottom: -4px;
         font-size: 13px;
-        width: 100%;
 
         &_danger {
             font-weight: bold;
@@ -131,8 +131,8 @@
 
         &:last-child {
             width: 100%;
-            margin-top: 15px;
             width: 100%;
+            margin-top: 15px;
         }
     }
 
@@ -159,18 +159,18 @@
     }
 
     &__footer {
+        align-items: center;
         margin-top: 20px;
         display: flex;
-        align-items: center;
     }
 
     &__small-filter {
-        display: block;
         width: 100%;
         padding: 10px;
-        background-color: #fff;
+        background-color: #ffffff;
         border: 1px solid #f0ece4;
         border-radius: 3px;
+        display: block;
 
         &_bottom {
             margin-top: 14px;
@@ -188,7 +188,7 @@
     &__filter {
         width: 100%;
         height: 283px;
-        background-color: #fff;
+        background-color: #ffffff;
         border: 1px solid #f0ece4;
         border-radius: 3px;
 
@@ -211,10 +211,10 @@
     }
 
     &__action-filter {
-        margin-top: 15px;
         width: 667px;
         height: 149px;
-        background-color: #fff;
+        margin-top: 15px;
+        background-color: #ffffff;
         border: 1px solid #f0ece4;
         border-radius: 2px;
     }
@@ -223,12 +223,12 @@
         position: absolute;
         top: 6px;
         right: -9px;
-        padding: 0;
         width: 18px;
         height: 20px;
+        padding: 0;
+        border: none;
         cursor: pointer;
         background: none;
-        border: none;
     }
 
     &__input {

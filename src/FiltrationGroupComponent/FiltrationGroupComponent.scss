@@ -1,4 +1,4 @@
-@import "../sass/main";
+@import '../sass/main';
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -10,6 +10,7 @@
 			opacity: 1;
 		}
 	}
+
 	@include changeHorisontalBracketsOpacity($opacity);
 	@include changeVerticalSmallBracketOpacity($opacity);
 }
@@ -17,17 +18,17 @@
 .kit-filtration-group {
 	$self: &;
 	position: relative;
+	z-index: 3;
 	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	z-index: 3;
 
 	&_read-only {
 		.kit-filtration-group__label,
 		.kit-filtration-group__label-line {
-			pointer-events: none;
 			cursor: default;
+			pointer-events: none;
 		}
 
 		&#{$self}_no-label#{$self}_not-children {
@@ -88,9 +89,9 @@
 		> .kit-filtration-group__label-line_or,
 		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text {
-				transform: translateX(-100%);
-				background-color: transparent;
 				margin-left: 2px;
+				background-color: transparent;
+				transform: translateX(-100%);
 
 				&:hover {
 					background-color: transparent;
@@ -144,7 +145,7 @@
 				}
 
 				.kit-filtration-group__label-text {
-					color: #fff;
+					color: #ffffff;
 				}
 			}
 		}
@@ -160,8 +161,8 @@
 		> .kit-filtration-group__label-line_or,
 		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text-height {
-				margin-right: -22px;
 				margin-top: 4px;
+				margin-right: -22px;
 			}
 
 			.kit-filtration-group__label-text-buttons {
@@ -172,11 +173,12 @@
 
 	&_hover {
 		cursor: pointer;
+
 		@include opacityBlock();
 
 		> .kit-filtration-group__label_hover_or {
-			color: $orColorEdit;
 			background-color: $hoverColorBg;
+			color: $orColorEdit;
 
 			& ~ .kit-filtration-group__label-line {
 				color: $orColorEdit;
@@ -192,8 +194,8 @@
 		}
 
 		> .kit-filtration-group__label_hover_and {
-			color: $andColorEdit;
 			background-color: $hoverColorBg;
+			color: $andColorEdit;
 
 			& ~ .kit-filtration-group__label-line {
 				color: $andColorEdit;
@@ -205,7 +207,7 @@
 				.kit-filtration-group__label-line-vertical,
 				.kit-filtration-group__label-line-horizontal {
 					background-color: $andColorEdit;
-					color: #fff;
+					color: #ffffff;
 				}
 			}
 		}
@@ -227,9 +229,9 @@
 	}
 
 	> .kit-filtration-condition {
-		margin: 0;
 		width: 100%;
 		max-width: calc(100% - 30px);
+		margin: 0;
 		padding-left: 20px;
 		box-sizing: border-box;
 
@@ -253,15 +255,15 @@
 	position: absolute;
 	top: 0;
 	left: -10px;
-	display: flex;
+	z-index: 2;
 	align-items: center;
 	width: calc(100% + 10px);
 	height: 1px;
 	padding: 16px $groupLabelPaddingLeft;
 	border-radius: 3px 0 0 3px;
-	color: $braketColor;
-	z-index: 2;
 	box-sizing: border-box;
+	color: $braketColor;
+	display: flex;
 
 	& ~ .kit-filtration-group,
 	& ~ .kit-filtration-condition {
@@ -281,15 +283,15 @@
 
 .kit-filtration-group__label-line {
 	position: absolute;
-	display: inline-flex;
+	left: 5px;
+	z-index: 4;
 	align-items: center;
 	width: $borderWidthLine;
-	left: 5px;
 	margin-top: 0;
 	margin-left: -1px;
 	box-sizing: border-box;
-	z-index: 4;
 	cursor: pointer;
+	display: inline-flex;
 
 	&_and {
 		color: $andColor;
@@ -299,8 +301,8 @@
 
 		.kit-filtration-group__label-text,
 		.kit-filtration-group__label-line-vertical {
-			color: $andColorEdit;
 			background-color: $andColor;
+			color: $andColorEdit;
 		}
 	}
 
@@ -319,47 +321,47 @@
 
 .kit-filtration-group__label-line-vertical {
 	position: absolute;
-	display: inline-flex;
+	left: 0;
+	z-index: 3;
 	align-items: center;
 	width: $borderWidthLine;
 	height: 100%;
-	left: 0;
 	margin-top: 0;
-	color: $braketColor;
 	background-color: $braketColor;
 	box-sizing: border-box;
-	z-index: 3;
+	color: $braketColor;
+	display: inline-flex;
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 0;
-	display: inline-flex;
-	align-items: center;
+	z-index: 1;
 	justify-content: center;
+	align-items: center;
 	min-width: 26px;
 	min-height: 16px;
 	border-radius: 3px;
-	font-family: "PT Sans", sans-serif;
-	color: #fff;
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 10px;
-	font-weight: bold;
 	line-height: 1;
+	font-weight: bold;
+	color: #ffffff;
 	text-align: center;
 	transform: translateX(-50%);
-	z-index: 1;
-	box-sizing: border-box;
+	display: inline-flex;
 }
 
 .kit-filtration-group__buttons {
 	position: relative;
-	display: inline-flex;
+	z-index: 3;
 	align-items: center;
 	min-height: $minHeight;
 	padding-right: 20px;
-	box-sizing: border-box;
 	outline: none;
-	z-index: 3;
+	box-sizing: border-box;
+	display: inline-flex;
 
 	@include createHorisontalBrackets;
 
@@ -381,30 +383,30 @@
 		}
 
 		&::before {
-			content: "";
 			position: absolute;
-			display: block;
+			top: 0;
+			left: -10px;
+			z-index: 3;
 			width: calc(100% + 10px);
 			height: 100%;
-			left: -10px;
-			top: 0;
-			z-index: 3;
+			content: '';
+			display: block;
 		}
 	}
 }
 
 .kit-filtration-group__remove,
 .kit-filtration-group__copy {
-	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
 	padding: 0;
 	border: 0;
-	transition: background-color 0.15s ease-in-out;
-	cursor: pointer;
 	outline: none;
 	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-flex;
+	transition: background-color 0.15s ease-in-out;
 }
 
 .kit-filtration-group__remove {
@@ -428,21 +430,21 @@
 }
 
 .kit-filtration-group__label-button {
-	font-family: "PT Sans", sans-serif;
-	font-weight: 700;
-	line-height: 1;
-	font-size: 12px;
-	border: 0;
-	padding-left: 0;
 	padding-right: 0;
-	cursor: pointer;
-	outline: none;
+	padding-left: 0;
 	background-color: transparent;
-	color: rgba(#fff, 0.25);
+	border: 0;
+	outline: none;
 	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 12px;
+	line-height: 1;
+	font-weight: 700;
+	color: rgba(#ffffff, 0.25);
+	cursor: pointer;
 
 	&_active {
-		color: #fff;
+		color: #ffffff;
 	}
 
 	*:not(:last-child) {
@@ -454,13 +456,13 @@
 	position: absolute;
 	top: 7px;
 	right: 13px;
+	z-index: 10;
 	padding: 0;
 	border: 0;
-	background: none;
+	outline: none;
 	color: $closeColor;
 	cursor: pointer;
-	z-index: 10;
-	outline: none;
+	background: none;
 	transition: color 0.15s ease-in-out;
 
 	&:hover {
@@ -469,13 +471,13 @@
 }
 
 .kit-filtration-group__label-text-buttons {
-	display: flex;
 	align-items: center;
 	height: 22px;
-	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-	background-color: #fff;
+	background-color: #ffffff;
 	border-radius: 4px 0 0 4px;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	box-sizing: border-box;
+	display: flex;
 
 	&_or {
 		.kit-filtration-group__label-button {
@@ -498,9 +500,9 @@
 	}
 
 	.kit-filtration-group__label-button {
-		padding: 0 6px 0 9px;
 		height: 100%;
 		margin-right: 0;
+		padding: 0 6px 0 9px;
 		font-size: 12px;
 	}
 }

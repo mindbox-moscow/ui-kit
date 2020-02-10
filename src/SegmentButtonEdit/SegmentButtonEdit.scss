@@ -3,22 +3,22 @@ $borderHoverColor: #e2eaf0;
 $mainColor: #3875d7;
 
 .kit-segment-button-edit {
-	display: inline-flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 32px;
 	height: 16px;
-	border-radius: 8px;
-	border: solid 1px $borderColor;
 	background-color: transparent;
-	color: $mainColor;
-	box-sizing: border-box;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	border: solid 1px $borderColor;
+	border-radius: 8px;
 	outline: none;
+	box-sizing: border-box;
+	color: $mainColor;
 	cursor: pointer;
+	display: inline-flex;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
 	&:hover {
-		border-color: $borderHoverColor;
 		background-color: $borderHoverColor;
+		border-color: $borderHoverColor;
 	}
 }

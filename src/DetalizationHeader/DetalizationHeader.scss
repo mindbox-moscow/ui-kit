@@ -3,7 +3,7 @@
 .kit-detalizationHeader {
     width: 100%;
     display: flex;
-    font-family: "PT Sans", sans-serif;
+    font-family: 'PT Sans', sans-serif;
 
     @media (max-width: $tablet-medium) {
         flex-direction: column;
@@ -55,9 +55,9 @@
 		outline: none;
 
         @media (max-width: $mobile-large) {
-            margin-bottom: 10px;
-            order: 1;
             flex: 1 0 100%;
+            order: 1;
+            margin-bottom: 10px;
         }
     }
 }

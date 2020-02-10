@@ -1,15 +1,15 @@
-@import "../sass/main";
+@import '../sass/main';
 
 .kit-filtration-condition {
 	position: relative;
-	font-family: "PT Sans", sans-serif;
+	list-style: none;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 14px;
 	line-height: 19px;
-	list-style: none;
 
 	&_with-alert {
-		color: $removeColor;
 		font-weight: 700;
+		color: $removeColor;
 	}
 
 	.kit-filter-details {
@@ -21,11 +21,11 @@
 
 .kit-filtration-condition__item-text {
 	position: relative;
-	display: inline-flex;
-	padding: 3px 0 3px 0;
-	margin-right: 5px;
-	transition: color 0.15s ease-in-out;
 	z-index: 3;
+	margin-right: 5px;
+	padding: 3px 0 3px 0;
+	display: inline-flex;
+	transition: color 0.15s ease-in-out;
 
 	&:hover:not(&_read-only) {
 		> .kit-filtration-condition__content {
@@ -47,7 +47,6 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		display: block;
 		width: calc(100% + #{$groupHoverMarginLeft});
 		height: calc(100% + #{$groupHoverMarginTop});
 		min-height: 26px;
@@ -56,6 +55,7 @@
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
+		display: block;
 	}
 
 	.kit-filtration-condition__content {
@@ -74,8 +74,8 @@
 
 	&_hover {
 		&::before {
-			content: "";
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
+			content: '';
 		}
 
 		& + .kit-filtration-group_hover {
@@ -86,9 +86,9 @@
 	}
 
 	&_edit {
-		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
-		color: #fff;
 		z-index: 5;
+		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
+		color: #ffffff;
 
 		&:hover:not(&_read-only) {
 			.kit-filtration-condition__content {
@@ -101,12 +101,12 @@
 		}
 
 		.kit-filtration-condition__drag-and-drop {
-			display: flex;
 			background-color: $editModeColorBg;
+			display: flex;
 		}
 
-		[class*="kit-segment"] {
-			background-color: #fff;
+		[class*='kit-segment'] {
+			background-color: #ffffff;
 		}
 
 		> .kit-filtration-condition__copy,
@@ -117,9 +117,9 @@
 
 	&_linked-condition-edit {
 		&::before {
-			content: "";
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
+			content: '';
 		}
 
 		> .kit-filtration-condition__copy,
@@ -149,7 +149,7 @@
 	}
 
 	> .kit-filtration-condition__content {
-		[class*="kit-segment"]:not(.kit-segment-content__count) {
+		[class*='kit-segment']:not(.kit-segment-content__count) {
 			margin-left: 10px;
 		}
 	}
@@ -157,9 +157,9 @@
 	&_read-only {
 		> .kit-filtration-condition__drag-and-drop,
 		> .kit-filtration-condition__content > b {
+			z-index: 0;
 			cursor: default;
 			pointer-events: none;
-			z-index: 0;
 		}
 
 		> .kit-filtration-condition__copy,
@@ -173,28 +173,28 @@
 	position: absolute;
 	top: 3px;
 	right: 100%;
-	display: none;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 5px;
 	height: calc(100% - 6px);
 	background-color: $hoverColorBg;
 	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
+	display: none;
 }
 
 .kit-filtration-condition__copy,
 .kit-filtration-condition__remove {
-	display: inline-flex;
+	z-index: 1;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
 	min-height: 26px;
 	margin-left: 2px;
 	border: 0;
-	z-index: 1;
-	transition: background-color 0.15s ease-in-out;
-	cursor: pointer;
 	outline: none;
+	cursor: pointer;
+	display: inline-flex;
+	transition: background-color 0.15s ease-in-out;
 	visibility: hidden;
 }
 
@@ -208,8 +208,8 @@
 }
 
 .kit-filtration-condition__remove {
-	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	background-color: $removeColorBg;
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	color: $removeColor;
 
 	&:hover {
@@ -227,11 +227,11 @@
 
 .kit-filtration-condition__popover {
 	position: relative;
-	padding: 10px 14px 12px 18px;
-	border-radius: 3px;
-	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
-	border: solid 1px $borderPopoverColor;
-	background-color: #fff;
-	box-sizing: border-box;
 	z-index: 2;
+	padding: 10px 14px 12px 18px;
+	background-color: #ffffff;
+	border: solid 1px $borderPopoverColor;
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 0 rgba(#000000, 0.1);
+	box-sizing: border-box;
 }

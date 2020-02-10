@@ -21,42 +21,42 @@
 }
 
 .kit-tooltip__content {
-	display: block;
-	box-sizing: border-box;
 	position: absolute;
-	z-index: 10;
 	left: 50%;
-	color: #000;
-	font-family: "PT Sans", sans-serif;
-	transform: translateX(-60px);
-	background-color: #ffffff;
+	z-index: 10;
+	min-width: 156px;
 	padding: 13px 24px 13px 15px;
+	background-color: #ffffff;
 	border: 1px solid #c7c5bd;
 	border-radius: 4px;
-	min-width: 156px;
 	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.35);
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	color: #000000;
+	transform: translateX(-60px);
+	display: block;
 	visibility: hidden;
 
 	&::before,
 	&::after {
 		position: absolute;
-		pointer-events: none;
-		border: solid transparent;
-		content: "";
-		height: 0;
-		width: 0;
 		bottom: 100%;
 		left: 60px;
+		width: 0;
+		height: 0;
+		border: solid transparent;
+		content: '';
+		pointer-events: none;
 	}
 
 	&::before {
-		border-width: 9px;
 		margin: 0 -9px;
+		border-width: 9px;
 	}
 
 	&::after {
-		border-width: 7px;
 		margin: 0 -7px;
+		border-width: 7px;
 	}
 
 	&_bottom {
@@ -72,7 +72,7 @@
 		}
 
 		&::after {
-			border-bottom-color: #fff;
+			border-bottom-color: #ffffff;
 		}
 	}
 
@@ -89,7 +89,7 @@
 		}
 
 		&::after {
-			border-top-color: #fff;
+			border-top-color: #ffffff;
 		}
 	}
 
@@ -100,12 +100,12 @@
 
 .kit-tooltip__road {
 	position: absolute;
-	display: block;
+	right: 0;
+	z-index: 10;
 	width: 100%;
 	height: 100%;
 	min-height: 15px;
-	z-index: 10;
-	right: 0;
+	display: block;
 
 	&_top {
 		bottom: 100%;
@@ -120,20 +120,20 @@
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 20px;
 	height: 20px;
 	padding: 0;
-	border: 0;
 	background-color: transparent;
+	border: 0;
+	outline: none;
 	color: #707070;
 	cursor: pointer;
-	outline: none;
+	display: flex;
 
 	&:hover {
-		color: #333;
+		color: #333333;
 	}
 }
 

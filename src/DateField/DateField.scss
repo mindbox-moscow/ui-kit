@@ -4,27 +4,27 @@ $errorColoBorder: #ddaaa2;
 
 .kit-date-field {
 	position: relative;
-	font-family: "PT Sans", sans-serif;
-	box-sizing: border-box;
-	padding-left: 9px;
-	padding-right: 25px;
-	display: inline-flex;
 	align-items: center;
 	width: 114px;
 	height: 29px;
-	font-size: 14px;
-	background-color: #fff;
+	padding-right: 25px;
+	padding-left: 9px;
+	background-color: #ffffff;
 	border: 1px solid #b0b2b5;
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+	box-sizing: border-box;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+	display: inline-flex;
 
 	&_disabled {
 		opacity: 0.35;
 	}
 
 	&_no-shadow {
-		box-shadow: none;
 		border: 1px solid #c5d6e1;
+		box-shadow: none;
 	}
 
 	&_error {
@@ -33,15 +33,15 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__input {
-		padding-right: 0;
-		padding-left: 0;
 		width: 100%;
 		height: 100%;
-		font-family: "PT Sans", sans-serif;
-		font-size: 14px;
-		color: #000;
+		padding-right: 0;
+		padding-left: 0;
 		border: none;
 		outline: none;
+		font-family: 'PT Sans', sans-serif;
+		font-size: 14px;
+		color: #000000;
 		background: none;
 	}
 
@@ -54,14 +54,14 @@ $errorColoBorder: #ddaaa2;
 
 	&__drop {
 		position: absolute;
-		z-index: 9;
 		top: 100%;
 		left: 0;
-		margin-top: 1px;
-		visibility: hidden;
+		z-index: 9;
 		width: 239px;
+		margin-top: 1px;
 		background-color: #fffcf0;
 		box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+		visibility: hidden;
 		opacity: 0;
 		transition: opacity 0.3s ease-out;
 
@@ -72,12 +72,12 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__head {
-		padding: 0 10px;
-		display: flex;
-		align-items: center;
 		justify-content: space-between;
+		align-items: center;
 		height: 40px;
+		padding: 0 10px;
 		border-bottom: 1px solid #d4d4d4;
+		display: flex;
 	}
 
 	&__select {
@@ -86,14 +86,14 @@ $errorColoBorder: #ddaaa2;
 
 	&__nav {
 		position: relative;
-		padding: 0;
-		display: block;
 		width: 18px;
 		height: 18px;
-		cursor: pointer;
-		background: none;
-		border: 1px solid #000;
+		padding: 0;
+		border: 1px solid #000000;
 		border-radius: 50%;
+		cursor: pointer;
+		display: block;
+		background: none;
 
 		&:hover {
 			opacity: 0.7;
@@ -103,10 +103,10 @@ $errorColoBorder: #ddaaa2;
 			position: absolute;
 			top: 4px;
 			left: 1px;
-			display: block;
-			content: "";
 			border: 4px solid transparent;
-			border-right: 4px solid #000;
+			border-right: 4px solid #000000;
+			content: '';
+			display: block;
 		}
 
 		&_next {
@@ -115,44 +115,44 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__calendar {
+		flex-wrap: wrap;
 		padding-top: 7px;
 		padding-left: 2px;
 		padding-bottom: 3px;
 		display: flex;
-		flex-wrap: wrap;
 	}
 
 	&__day {
+		justify-content: flex-end;
+		align-items: center;
+		width: 33px;
 		padding-right: 7px;
 		padding-bottom: 2px;
 		box-sizing: border-box;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		width: 33px;
 		font-size: 13px;
 		font-weight: bold;
+		color: #000000;
 		text-align: right;
-		color: #000;
+		display: flex;
 	}
 
 	&__date {
-		padding-bottom: 1px;
-		padding-right: 7px;
-		box-sizing: border-box;
-		display: flex;
-		align-items: center;
 		justify-content: flex-end;
+		align-items: center;
 		width: 33px;
 		height: 32px;
-		font-size: 13px;
-		color: #000;
+		padding-right: 7px;
+		padding-bottom: 1px;
 		border: 1px solid transparent;
 		border-radius: 3px;
+		box-sizing: border-box;
+		font-size: 13px;
+		color: #000000;
 		cursor: pointer;
+		display: flex;
 
 		&:hover {
-			border-color: #ddd;
+			border-color: #dddddd;
 		}
 
 		&_current {
@@ -161,8 +161,8 @@ $errorColoBorder: #ddaaa2;
 		}
 
 		&_active {
-			background-color: #fff;
-			border-color: #ddd;
+			background-color: #ffffff;
+			border-color: #dddddd;
 		}
 
 		&_old {

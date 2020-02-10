@@ -20,35 +20,35 @@ $bgColorOpen: #3875d7;
 
 .kit-filter-editor__btn {
 	position: relative;
-	display: inline-flex;
 	align-items: center;
 	min-height: 22px;
 	margin: 0;
 	padding: 0 23px;
-	border-radius: 4px;
-	color: $textColor;
-	text-align: center;
-	border: 1px solid $borderColor;
 	background-color: $bgColor;
-	font-family: "PT Sans", sans-serif;
+	border: 1px solid $borderColor;
+	border-radius: 4px;
+	outline: none;
+	font-family: 'PT Sans', sans-serif;
 	font-size: 14px;
 	line-height: 22px;
-	outline: none;
+	color: $textColor;
+	text-align: center;
 	cursor: pointer;
+	display: inline-flex;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
 
 	&_open {
-		color: #fff;
 		background-color: $bgColorOpen;
 		border-color: $bgColorOpen;
+		color: #ffffff;
 	}
 
 	&:hover:not(:disabled),
 	&:focus:not(:disabled) {
-		color: $textColor;
 		background-color: $bgHoverColor;
 		border-color: $borderHoverColor;
+		color: $textColor;
 	}
 
 	&:disabled {

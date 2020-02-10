@@ -44,7 +44,7 @@ const ActionsDropdown = (props: IProps) => {
 				<Dropdown onClickOutside={closeDropdown}>
 					<MethodsProvider value={{ closeDropdown }}>
 						{children}
-						{getActions !== undefined ? getActions() : null}
+						{getActions && getActions()}
 					</MethodsProvider>
 				</Dropdown>
 			)}

@@ -57,7 +57,7 @@
 	</div>
 	<div>
 		<span style={{ marginRight: "8px" }}>
-			Дробдаун с произвольными children
+			Дропдаун с произвольными children
 		</span>
 		<ActionsDropdown>
 			<ul style={{ padding: "10px", margin: 0 }}>

@@ -1,0 +1,46 @@
+.kit-group-radio-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.kit-group-radio-buttons__label {
+	margin-right: 4px;
+}
+
+.kit-group-radio-buttons__wrapper {
+	display: inline-flex;
+	border: 1px dashed #265378;
+	border-radius: 4px;
+
+	.kit-radio {
+		position: relative;
+		margin-top: -2px;
+		margin-bottom: -2px;
+		margin-right: -2px;
+
+		&:first-child {
+			margin-left: -2px;
+		}
+
+		&:not(:last-child)::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			display: block;
+			width: 1px;
+			height: 19px;
+			background: #285477;
+		}
+	}
+
+	.kit-radio__checkmark {
+		position: relative;
+		margin: 0;
+		border-width: 2px;
+		border-color: transparent;
+		z-index: 1;
+	}
+}

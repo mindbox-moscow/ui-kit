@@ -3,7 +3,9 @@
 	"version": "0.2.0-dev",
 	"types": "./build",
 	"main": "./build",
-	"dependencies": {},
+	"dependencies": {
+		"@nivo/bar": "^0.61.1"
+	},
 	"peerDependencies": {
 		"classnames": "^2.2.6",
 		"react": "^16.8.6",

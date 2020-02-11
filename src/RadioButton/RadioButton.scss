@@ -42,10 +42,12 @@
 
 .kit-radio__input {
 	&:checked + .kit-radio__checkmark {
+		position: relative;
 		margin: 0;
 		background-color: #f5f1bb;
 		border: 2px solid #a0ba82;
 		color: #000;
+		z-index: 2;
 
 		&:hover {
 			background-color: darken($color: #f5f1bb, $amount: 18%);

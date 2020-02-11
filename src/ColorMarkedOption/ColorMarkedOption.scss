@@ -1,0 +1,26 @@
+.kit-color-marked-option {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.kit-color-marked-option__item {
+	display: flex;
+	align-items: center;
+
+	&:not(:last-child) {
+		&::after {
+			content: "/";
+			display: inline-block;
+			margin-left: 5px;
+			margin-right: 5px;
+		}
+	}
+}
+
+.kit-color-marked-option__color {
+	width: 10px;
+	height: 13px;
+	margin-right: 2px;
+	border-radius: 2px 2px 0px 0px;
+}

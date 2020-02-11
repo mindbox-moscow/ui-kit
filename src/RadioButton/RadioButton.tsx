@@ -13,6 +13,7 @@ interface IProps {
 	onClick?: () => void;
 	icon?: IconsTypes;
 	iconSvg?: IconSvgTypes;
+	disabled?: boolean;
 }
 
 export class RadioButton extends React.Component<IProps> {
@@ -24,7 +25,8 @@ export class RadioButton extends React.Component<IProps> {
 			onSelected = () => {},
 			icon,
 			iconSvg,
-			onClick
+			onClick,
+			disabled
 		} = this.props;
 
 		return (
@@ -36,6 +38,7 @@ export class RadioButton extends React.Component<IProps> {
 					onClick={onClick}
 					onChange={onSelected}
 					checked={checked}
+					disabled={disabled}
 				/>
 				<span
 					className={cn(

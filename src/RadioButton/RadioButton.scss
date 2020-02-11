@@ -2,7 +2,6 @@
 	font-family: "PT Sans", sans-serif;
 	position: relative;
 	display: inline-block;
-	cursor: pointer;
 	font-size: 22px;
 	user-select: none;
 }
@@ -25,6 +24,7 @@
 	border: 1px dashed #265378;
 	font-size: 14px;
 	color: #265378;
+	cursor: pointer;
 
 	&:hover {
 		background-color: lighten($color: #265378, $amount: 65%);
@@ -41,7 +41,7 @@
 }
 
 .kit-radio__input {
-	&:checked+.kit-radio__checkmark {
+	&:checked + .kit-radio__checkmark {
 		margin: 0;
 		background-color: #f5f1bb;
 		border: 2px solid #a0ba82;
@@ -49,6 +49,26 @@
 
 		&:hover {
 			background-color: darken($color: #f5f1bb, $amount: 18%);
+		}
+	}
+
+	&:disabled + .kit-radio__checkmark {
+		position: relative;
+		background-color: transparent;
+		pointer-events: none;
+		cursor: none;
+		opacity: 0.4;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f0f4f4;
+			border-radius: 4px;
+			z-index: -1;
 		}
 	}
 }
@@ -65,7 +85,7 @@
 			fill: #000000;
 		}
 
-		.kit-radio__input:checked+.kit-radio__checkmark & {
+		.kit-radio__input:checked + .kit-radio__checkmark & {
 			fill: #000000;
 		}
 	}

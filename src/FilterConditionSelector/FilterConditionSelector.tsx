@@ -11,6 +11,7 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { useDebounce } from "../HOOKs";
 import { BrowserList } from "../utils/constants";
 import { checkBrowser } from "../utils/helpers";
 import { ContextWrapper } from "./components";
@@ -41,7 +42,16 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
+	const [searchTermState, setSearchTerm] = React.useState(searchTerm);
+	const debouncedSearchTerm = useDebounce(searchTermState, 500);
 	let topRect: number = 0;
+
+	React.useEffect(
+		() => {
+			onSearchTermChange(debouncedSearchTerm);
+		},
+		[debouncedSearchTerm]
+	);
 
 	React.useEffect(() => {
 		const body = document.body;
@@ -154,7 +164,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const ChildItem = childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onSearchTermChange(e.target.value);
+		setSearchTerm(e.target.value);
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);

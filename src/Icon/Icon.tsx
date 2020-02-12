@@ -13,7 +13,8 @@ export type IconsTypes =
 	| "edit"
 	| "arrowDown"
 	| "percentRound"
-	| "coins";
+	| "coins"
+	| "link";
 
 interface IProps {
 	className?: string;

@@ -83,6 +83,7 @@ module.exports = {
 		"**/FilterConditionSelector/FilterConditionSelectorContext.tsx",
 		"**/FilterWrapper/FilterWrapperContext.tsx",
 		"**/FiltrationConditionComponent/FiltrationConditionComponentContext.tsx",
-		"**/utils/**"
+		"**/utils/**",
+		"**/ActionsDropdown/components/**"
 	]
 };

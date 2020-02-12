@@ -4,5 +4,6 @@
 	<Icon icon="pause" />
 	<Icon icon="edit" />
 	<Icon icon="arrowDown " />
+	<Icon icon="link" />
 </div>
 ```

@@ -42,7 +42,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
-	const [searchTermState, setSearchTerm] = React.useState(searchTerm);
+	const [searchTermState, setSearchTermState] = React.useState(searchTerm);
 	const debouncedSearchTerm = useDebounce(searchTermState, 500);
 	let topRect: number = 0;
 
@@ -164,7 +164,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const ChildItem = childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchTerm(e.target.value);
+		setSearchTermState(e.target.value);
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);

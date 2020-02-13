@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { useActionsDropdownContext } from "../context";
 
-interface IProps {
+interface IActionProps {
 	title: React.ReactNode;
 	disabled?: boolean;
 	hint?: string;
@@ -11,7 +11,7 @@ interface IProps {
 	onClick: () => void;
 }
 
-const Action = (props: IProps) => {
+const Action = (props: IActionProps) => {
 	const {
 		title,
 		onClick,
@@ -44,4 +44,4 @@ const Action = (props: IProps) => {
 	);
 };
 
-export { Action };
+export { Action, IActionProps };

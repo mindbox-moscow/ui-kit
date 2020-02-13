@@ -1,3 +1,4 @@
+import * as cn from "classnames";
 import * as React from "react";
 import {
 	DateRangeValue,
@@ -30,10 +31,11 @@ const makeNewDate = (date: Date, hours: number, minutes: number) => {
 interface IProps {
 	caption: IDateRangeCaption;
 	value: DateRangeValue;
+	className?: string;
 	onChange: (value: DateRangeValue) => void;
 }
 
-const DateRange = ({ onChange, caption, value }: IProps) => {
+const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const {
 		labelNoFilter,
 		radioTextNoFilter,
@@ -141,7 +143,7 @@ const DateRange = ({ onChange, caption, value }: IProps) => {
 	};
 
 	return (
-		<div className="kit-date-range">
+		<div className={cn("kit-date-range", className)}>
 			<div className="kit-date-range__content">
 				<label className="kit-date-range__label">{labelNoFilter}</label>
 				<RadioButton

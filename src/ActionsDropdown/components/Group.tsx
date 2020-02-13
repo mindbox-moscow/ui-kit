@@ -1,10 +1,10 @@
 import * as React from "react";
 
-interface IProps {
+interface IGroupProps {
 	title?: string;
 }
 
-const Group: React.FC<IProps> = props => {
+const Group: React.FC<IGroupProps> = props => {
 	const { title, children } = props;
 
 	return (
@@ -17,4 +17,4 @@ const Group: React.FC<IProps> = props => {
 	);
 };
 
-export { Group };
+export { Group, IGroupProps };

@@ -1,2 +1,2 @@
 export * from "./DateRange";
-export { DateRangeValueTypes, LastPeriods } from "./types";
+export { DateRangeValue, DateRangeValueTypes, LastPeriods } from "./types";

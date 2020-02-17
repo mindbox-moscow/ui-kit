@@ -7,6 +7,7 @@ import "./DateField.scss";
 interface IProps {
 	disabled?: boolean;
 	defaultDate?: Date;
+	monthes?: string[]
 	onChange?: (date?: Date) => void;
 	noShadow?: boolean;
 	error?: boolean;
@@ -38,7 +39,7 @@ const controledKeys = {
 	arrowRight: true,
 };
 
-const monthes = [
+const defaultMonthes = [
 	"Янв",
 	"Фев",
 	"Мар",
@@ -173,7 +174,7 @@ export class DateField extends React.Component<IProps, IState> {
 			showedDate,
 			dateString,
 		} = this.state;
-		const { disabled, noShadow, error } = this.props;
+		const { disabled, noShadow, error, monthes = defaultMonthes } = this.props;
 		const date = activeDate && activeDate.getDate();
 		const month = activeDate && activeDate.getMonth();
 		const year = activeDate && activeDate.getFullYear();

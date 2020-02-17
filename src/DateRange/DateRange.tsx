@@ -18,6 +18,8 @@ import { withOutsideClick } from "../HOCs";
 
 import "./DateRange.scss";
 
+const EMPTY_SPACES = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
 interface IProps {
@@ -147,7 +149,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								</span>
 								: <span className='kit-date-range__radio-content'>
 									{radioConcreteFromText}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									{EMPTY_SPACES}
 									{radioConcreteToText}&nbsp;
 								</span>
 						}
@@ -182,7 +184,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 									cancelFilterButtonCaption={
 										cancelFilterButtonCaption
 									}
-									isAddFilterButtonEnabled={!!dateFrom && !!dateTo && !hasError}
+									isAddFilterButtonEnabled={Boolean(dateFrom && dateTo && !hasError)}
 									onAddFilterButtonClick={handleApplyFilter}
 									onCancelFilterButtonClick={onCloseFilter}
 								/>

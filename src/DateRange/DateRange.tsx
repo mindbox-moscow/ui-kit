@@ -161,6 +161,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								<ConditionEditorPopup
 									innerEditorComponent={
 										<InnerEditorComponent
+											monthes={caption.monthes}
 											radioConcreteFromText={
 												radioConcreteFromText
 											}

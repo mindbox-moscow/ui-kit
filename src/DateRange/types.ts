@@ -47,4 +47,5 @@ export interface IDateRangeCaption {
 	addFilterButtonCaption: string;
 	cancelFilterButtonCaption: string;
 	tooltipContent: React.ReactNode;
+	monthes?: string[]
 }

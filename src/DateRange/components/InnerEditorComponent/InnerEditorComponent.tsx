@@ -9,6 +9,7 @@ interface IProps {
 	radioConcreteToText: string;
 	tooltipContent: React.ReactNode;
 	hasError: boolean;
+	monthes?: string[]
 	dateFrom?: Date;
 	dateTo?: Date;
 	onChangeDateFrom: (date: Date) => void;
@@ -19,6 +20,7 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 	radioConcreteFromText,
 	radioConcreteToText,
 	tooltipContent,
+	monthes,
 	hasError,
 	dateFrom,
 	dateTo,
@@ -33,6 +35,7 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 			<div className="kit-date-range__popup-fields">
 				<div className="kit-date-range__popup-date">
 					<DateField
+						monthes={monthes}
 						error={hasError}
 						defaultDate={dateFrom}
 						onChange={onChangeDateFrom}
@@ -47,6 +50,7 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 			<div className="kit-date-range__popup-fields">
 				<div className="kit-date-range__popup-date">
 					<DateField
+						monthes={monthes}
 						error={hasError}
 						defaultDate={dateTo}
 						onChange={onChangeDateTo}

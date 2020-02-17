@@ -1,6 +1,6 @@
 export interface IDateRange {
-	dateFrom: Date;
-	dateTo: Date;
+	dateFrom?: Date;
+	dateTo?: Date;
 }
 
 export enum DateRangeValueTypes {

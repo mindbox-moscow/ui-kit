@@ -29,6 +29,11 @@
 	}
 }
 
+.kit-date-range__radio-content {
+	display: inline-block;
+	min-width: 172px;
+}
+
 .kit-date-range__label {
 	margin-right: 4px;
 	font-family: "PT Sans", sans-serif;
@@ -41,8 +46,13 @@
 	align-items: flex-end;
 }
 
-.kit-date-range__popup-dates:first-child {
-	margin-right: 10px;
+.kit-date-range__popup-dates {
+	margin-left: 5px;
+
+	&:first-child {
+		margin-right: 5px;
+		margin-left: 0;
+	}
 }
 
 .kit-date-range__popup-fields {
@@ -50,9 +60,7 @@
 }
 
 .kit-date-range__popup-date {
-	&:not(:last-child) {
-		margin-right: 10px;
-	}
+	width: 100%;
 }
 
 .kit-date-range__popup-date-text {

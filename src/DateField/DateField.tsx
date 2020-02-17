@@ -1,30 +1,25 @@
-import * as React from "react";
-import "./DateField.scss";
 import cn from "classnames";
+import * as React from "react";
 import { Icon } from "../Icon/Icon";
 import { parseDateToString } from "../utils/helpers";
+import "./DateField.scss";
 
-interface Props {
+interface IProps {
 	disabled?: boolean;
-	defaultDate: Date;
-	onChange?: (date: Date) => void;
+	defaultDate?: Date;
+	onChange?: (date?: Date) => void;
 	noShadow?: boolean;
 	error?: boolean;
 }
 
-interface State {
+interface IState {
 	isOpenCalendar: boolean;
-	activeDate: Date;
+	activeDate?: Date;
 	showedDate: Date;
 	dateString: string;
 }
 
 const controledKeys = {
-	arrowLeft: true,
-	arrowRight: true,
-	Delete: true,
-	Backspace: true,
-	Tab: true,
 	".": true,
 	"0": true,
 	"1": true,
@@ -35,7 +30,12 @@ const controledKeys = {
 	"6": true,
 	"7": true,
 	"8": true,
-	"9": true
+	"9": true,
+	Backspace: true,
+	Delete: true,
+	Tab: true,
+	arrowLeft: true,
+	arrowRight: true,
 };
 
 const monthes = [
@@ -53,19 +53,19 @@ const monthes = [
 	"Дек"
 ];
 
-export class DateField extends React.Component<Props, State> {
+export class DateField extends React.Component<IProps, IState> {
 	public wrapper: HTMLElement;
-	public state: State;
+	public state: IState;
 
-	constructor(props: Props) {
+	constructor(props: IProps) {
 		super(props);
 		const { defaultDate } = props;
 
 		this.state = {
+			activeDate: defaultDate && new Date(defaultDate),
+			dateString: defaultDate ? parseDateToString(defaultDate) : '',
 			isOpenCalendar: false,
-			activeDate: new Date(defaultDate),
-			showedDate: new Date(defaultDate),
-			dateString: parseDateToString(defaultDate)
+			showedDate: defaultDate ? new Date(defaultDate) : new Date(),
 		};
 	}
 
@@ -119,11 +119,11 @@ export class DateField extends React.Component<Props, State> {
 		month: number,
 		date: number
 	) => () => {
-		const { onChange = () => {} } = this.props;
+		const { onChange = () => null } = this.props;
 		const newDate = new Date(year, month, date);
 		this.setState({
+			activeDate: newDate,
 			dateString: parseDateToString(newDate),
-			activeDate: newDate
 		});
 		onChange(newDate);
 	};
@@ -135,7 +135,7 @@ export class DateField extends React.Component<Props, State> {
 	};
 
 	public handleChange = (event: any) => {
-		const { onChange = () => {} } = this.props;
+		const { onChange = () => null } = this.props;
 
 		const dateParser = /(\d{2})\.(\d{2})\.(\d{4})/;
 		const match = event.target.value.match(dateParser);
@@ -160,8 +160,8 @@ export class DateField extends React.Component<Props, State> {
 		onChange(activeDate);
 
 		this.setState({
-			dateString: event.target.value,
 			activeDate,
+			dateString: event.target.value,
 			showedDate
 		});
 	};
@@ -171,12 +171,12 @@ export class DateField extends React.Component<Props, State> {
 			isOpenCalendar,
 			activeDate,
 			showedDate,
-			dateString
+			dateString,
 		} = this.state;
 		const { disabled, noShadow, error } = this.props;
-		const date = activeDate.getDate();
-		const month = activeDate.getMonth();
-		const year = activeDate.getFullYear();
+		const date = activeDate && activeDate.getDate();
+		const month = activeDate && activeDate.getMonth();
+		const year = activeDate && activeDate.getFullYear();
 		const nowYear = showedDate.getFullYear();
 		const nowMonth = showedDate.getMonth();
 		const lastShow = new Date(nowYear, nowMonth, 32);
@@ -222,10 +222,10 @@ export class DateField extends React.Component<Props, State> {
 			<div
 				className={cn("kit-date-field", {
 					"kit-date-field_disabled": disabled,
+					"kit-date-field_error": error,
 					"kit-date-field_no-shadow": noShadow,
-					"kit-date-field_error": error
 				})}
-				onClick={disabled ? () => {} : this.handleOpen}
+				onClick={disabled ? () => null : this.handleOpen}
 				ref={this.handleWrapperRef}
 			>
 				<input
@@ -300,10 +300,10 @@ export class DateField extends React.Component<Props, State> {
 							<div
 								key={index}
 								className={cn("kit-date-field__date", {
+									"kit-date-field__date_active":
+										activeDay === day,
 									"kit-date-field__date_current":
 										currentDay === day,
-									"kit-date-field__date_active":
-										activeDay === day
 								})}
 								onClick={this.changeActiveDate(
 									nowYear,

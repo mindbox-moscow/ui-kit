@@ -16,6 +16,22 @@ export const getWeekBeforeNow = (): Date => {
 	return new Date(now.setDate(now.getDate() - WEEK_IN_DAYS));
 };
 
+export const getMonthBeforeNow = (): Date => {
+	const now = getNow();
+	now.setSeconds(0);
+	now.setMilliseconds(0);
+
+	return new Date(now.setMonth(now.getMonth() - 1));
+};
+
+export const getYearBeforeNow = (): Date => {
+	const now = getNow();
+	now.setSeconds(0);
+	now.setMilliseconds(0);
+
+	return new Date(now.setFullYear(now.getFullYear() - 1));
+};
+
 export const parseDateToString = (date: Date) => date.toLocaleDateString();
 
 type BrowsersRegExpMap = { [key in BrowserList]: string };

@@ -2,33 +2,17 @@ import * as React from "react";
 
 import { DateField } from "../../../DateField";
 import { IconSvg } from "../../../IconSvg";
-import { TimeField } from "../../../TimeField";
 import { Tooltip } from "../../../Tooltip";
-
-interface ITimeProp {
-	hours: number;
-	minutes: number;
-}
 
 interface IProps {
 	radioConcreteFromText: string;
 	radioConcreteToText: string;
 	tooltipContent: React.ReactNode;
 	hasError: boolean;
-	dateFrom: Date;
-	dateTo: Date;
-	timeFrom: ITimeProp;
-	timeTo: ITimeProp;
+	dateFrom?: Date;
+	dateTo?: Date;
 	onChangeDateFrom: (date: Date) => void;
 	onChangeDateTo: (date: Date) => void;
-	onChangeTimeFrom: (
-		hours: ITimeProp["hours"],
-		minutes: ITimeProp["minutes"]
-	) => void;
-	onChangeTimeTo: (
-		hours: ITimeProp["hours"],
-		minutes: ITimeProp["minutes"]
-	) => void;
 }
 
 export const InnerEditorComponent: React.FC<IProps> = ({
@@ -38,12 +22,8 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 	hasError,
 	dateFrom,
 	dateTo,
-	timeFrom,
-	timeTo,
 	onChangeDateFrom,
 	onChangeDateTo,
-	onChangeTimeFrom,
-	onChangeTimeTo
 }) => (
 	<div className="kit-date-range__popup">
 		<div className="kit-date-range__popup-dates">
@@ -58,14 +38,6 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 						onChange={onChangeDateFrom}
 					/>
 				</div>
-				<div className="kit-date-range__popup-date">
-					<TimeField
-						error={hasError}
-						hours={timeFrom.hours}
-						minutes={timeFrom.minutes}
-						onChange={onChangeTimeFrom}
-					/>
-				</div>
 			</div>
 		</div>
 		<div className="kit-date-range__popup-dates">
@@ -78,14 +50,6 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 						error={hasError}
 						defaultDate={dateTo}
 						onChange={onChangeDateTo}
-					/>
-				</div>
-				<div className="kit-date-range__popup-date">
-					<TimeField
-						error={hasError}
-						hours={timeTo.hours}
-						minutes={timeTo.minutes}
-						onChange={onChangeTimeTo}
 					/>
 				</div>
 			</div>

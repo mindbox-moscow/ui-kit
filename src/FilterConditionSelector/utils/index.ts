@@ -5,7 +5,7 @@ export const setNextFocus = () => {
 
 	if (filterDetails) {
 		const inputText = filterDetails.querySelector(
-			'input[type="text"]'
+			'input[type="text"], input[type="number"]'
 		) as HTMLElement;
 
 		if (inputText) {

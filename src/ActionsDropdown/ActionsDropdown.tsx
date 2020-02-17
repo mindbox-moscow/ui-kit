@@ -1,116 +1,58 @@
-import * as React from "react";
-import { IconSvg } from "../IconSvg";
-import "./ActionsDropdown.scss";
-
 import cn from "classnames";
+import * as React from "react";
+import { ReactNode, useState } from "react";
 
-interface IPropsAction {
-	title: React.ReactNode;
-	onClick: () => void;
-}
+import { IconSvg } from "../IconSvg";
+import { Action, Dropdown, Group } from "./components";
+import { MethodsProvider } from "./context";
 
-interface IPropsGroup {
-	children: React.ReactNode;
-	title?: string;
-}
+import "./ActionsDropdown.scss";
 
 interface IProps {
 	toggleBtnText: string;
 	className?: string;
+	children?: ReactNode;
+	// getActions() используется, если нужны вычисления после открытия дропдауна
+	getActions?: () => ReactNode;
 }
 
-interface IState {
-	isOpen: boolean;
-}
+const ActionsDropdown = (props: IProps) => {
+	const { className, children, toggleBtnText, getActions } = props;
+	const [isOpen, setIsOpen] = useState(false);
 
-const ActionsDropdownAction = (props: IPropsAction) => {
-	const { title, onClick } = props;
+	const toggleDropdown = () => setIsOpen(curr => !curr);
+
+	const closeDropdown = () => setIsOpen(false);
 
 	return (
-		<div className="kit-actions-dropdown__action" onClick={onClick}>
-			{title}
+		<div
+			className={cn("kit-actions-dropdown", className, {
+				"kit-actions-dropdown_opened": isOpen
+			})}
+		>
+			<button
+				className="kit-actions-dropdown__toggle"
+				aria-label={toggleBtnText}
+				onClick={toggleDropdown}
+			>
+				<IconSvg
+					className="kit-actions-dropdown__toggle-icon"
+					type="dots"
+				/>
+			</button>
+			{isOpen && (
+				<Dropdown onClickOutside={closeDropdown}>
+					<MethodsProvider value={{ closeDropdown }}>
+						{children}
+						{getActions && getActions()}
+					</MethodsProvider>
+				</Dropdown>
+			)}
 		</div>
 	);
 };
 
-const ActionsDropdownGroup = (props: IPropsGroup) => {
-	const { title, children } = props;
-
-	return (
-		<section className="kit-actions-dropdown__group">
-			{title && (
-				<h6 className="kit-actions-dropdown__group-title">{title}</h6>
-			)}
-			{children}
-		</section>
-	);
-};
-
-class ActionsDropdown extends React.Component<IProps, IState> {
-	public static Action: (props: IPropsAction) => JSX.Element;
-	public static Group: (props: IPropsGroup) => JSX.Element;
-	public state = {
-		isOpen: false
-	};
-
-	public wrapRef = React.createRef<HTMLDivElement>();
-
-	public handleClick = () =>
-		this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
-
-	public handleClickOutside = (e: MouseEvent) => {
-		const dropdownWrap = this.wrapRef.current!;
-
-		if (
-			!dropdownWrap.contains(e.target as Node) ||
-			(e.target as Element).classList.contains(
-				"kit-actions-dropdown__action"
-			)
-		) {
-			this.setState({ isOpen: false });
-		}
-	};
-
-	public componentDidMount() {
-		document.addEventListener("click", this.handleClickOutside);
-	}
-
-	public componentWillUnmount() {
-		document.removeEventListener("click", this.handleClickOutside);
-	}
-
-	public render() {
-		const { isOpen } = this.state;
-		const { className, children, toggleBtnText } = this.props;
-
-		return (
-			<div
-				className={cn("kit-actions-dropdown", className, {
-					"kit-actions-dropdown_opened": isOpen
-				})}
-				ref={this.wrapRef}
-			>
-				<button
-					className="kit-actions-dropdown__toggle"
-					aria-label={toggleBtnText}
-					onClick={this.handleClick}
-				>
-					<IconSvg
-						className="kit-actions-dropdown__toggle-icon"
-						type="dots"
-					/>
-				</button>
-				{isOpen && (
-					<div className="kit-actions-dropdown__container">
-						{children}
-					</div>
-				)}
-			</div>
-		);
-	}
-}
-
-ActionsDropdown.Group = ActionsDropdownGroup;
-ActionsDropdown.Action = ActionsDropdownAction;
+ActionsDropdown.Action = Action;
+ActionsDropdown.Group = Group;
 
 export { ActionsDropdown };

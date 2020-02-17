@@ -62,12 +62,19 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleClick = () => {
+		const { onCloseDropdown } = context!;
+
 		if (disabled) {
 			return;
 		}
 
-		// tslint:disable-next-line: no-unused-expression
-		onClickHandler && onClickHandler();
+		if (onClickHandler) {
+			onClickHandler();
+		}
+
+		if (!isForMultiSelect) {
+			onCloseDropdown();
+		}
 	};
 
 	const handleMouseEnter = () => {
@@ -79,16 +86,17 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleOnKeyDown = (e: React.KeyboardEvent) => {
-		const contextKeyDown = context!.contextOnKeyDownItems;
+		const { contextOnKeyDownItems, onCloseDropdown } = context!;
 
-		if (contextKeyDown) {
+		if (contextOnKeyDownItems) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
 					if (!disabled && onClickHandler) {
 						onClickHandler();
 
 						if (!isForMultiSelect) {
-							contextKeyDown(e);
+							contextOnKeyDownItems(e);
+							onCloseDropdown();
 						}
 					}
 					break;
@@ -96,12 +104,12 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				case KeysCodes.Esc:
 				case KeysCodes.ArrowDown:
 				case KeysCodes.ArrowUp:
-					contextKeyDown(e);
+					contextOnKeyDownItems(e);
 
 					if (refElement.current) {
 						refElement.current.scrollIntoView({
-							block: "center",
-							behavior: "smooth"
+							behavior: "smooth",
+							block: "nearest"
 						});
 					}
 

@@ -236,7 +236,7 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	padding-left: 15px;
+	padding-left: 13px;
 	list-style: none;
 	box-sizing: border-box;
 
@@ -253,13 +253,13 @@ $searchFocusBgColor: #fffde5;
 
 		&::before {
 			top: 0;
-			left: -13px;
+			left: -11px;
 			border-left: 2px solid;
 			height: 100%;
 		}
 
 		&::after {
-			left: -12px;
+			left: -10px;
 			top: 12px;
 			width: 6px;
 			border-bottom: 2px solid;
@@ -290,7 +290,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-children {
 			.kit-filter-condition-selector__hierarchy-item {
 				&::before {
-					left: -11px;
+					left: -9px;
 				}
 
 				&::after {

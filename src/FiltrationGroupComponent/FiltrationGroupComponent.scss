@@ -67,6 +67,11 @@
 			z-index: 3;
 		}
 
+		> .kit-filtration-group__label_hover_or,
+		> .kit-filtration-group__label_hover_and {
+			background-color: $hoverColorBg;
+		}
+
 		> .kit-filtration-group__buttons {
 			margin-left: 20px;
 			outline: none;

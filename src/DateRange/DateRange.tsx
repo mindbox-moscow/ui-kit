@@ -149,7 +149,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								</span>
 								: <span className='kit-date-range__radio-content'>
 									{radioConcreteFromText}
-									{EMPTY_SPACES}
+									<span dangerouslySetInnerHTML={{ __html: EMPTY_SPACES }} />
 									{radioConcreteToText}&nbsp;
 								</span>
 						}

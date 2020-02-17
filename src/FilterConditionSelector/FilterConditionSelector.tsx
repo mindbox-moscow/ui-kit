@@ -18,27 +18,30 @@ import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
 
-const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
-	childRenderer,
-	onModeChanged,
-	onSearchTermChange,
-	filterLabel,
-	recentLabel,
-	savedLabel,
-	examplesLabel,
-	menuMode,
-	rootIds,
-	notFoundMessage,
-	helpCaption,
-	helpComponent,
-	editorComponent,
-	onConditionStateToggle,
-	onNextSelected,
-	onPreviousSelected,
-	onExpandCurrent,
-	setOutsideClickRef,
-	...props
-}) => {
+const FilterConditionSelector: React.FC<
+	Props & WithOutsideClickProps
+> = props => {
+	const {
+		childRenderer,
+		onModeChanged,
+		onSearchTermChange,
+		filterLabel,
+		recentLabel,
+		savedLabel,
+		examplesLabel,
+		menuMode,
+		rootIds,
+		notFoundMessage,
+		helpCaption,
+		helpComponent,
+		editorComponent,
+		onConditionStateToggle,
+		onNextSelected,
+		onPreviousSelected,
+		onExpandCurrent,
+		setOutsideClickRef
+	} = props;
+
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);

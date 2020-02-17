@@ -26,7 +26,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	recentLabel,
 	savedLabel,
 	examplesLabel,
-	searchTerm,
 	menuMode,
 	rootIds,
 	notFoundMessage,
@@ -37,13 +36,14 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	onNextSelected,
 	onPreviousSelected,
 	onExpandCurrent,
-	setOutsideClickRef
+	setOutsideClickRef,
+	...props
 }) => {
 	const searchRef = React.createRef<Input>();
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
-	const [searchTermState, setSearchTermState] = React.useState(searchTerm);
-	const debouncedSearchTerm = useDebounce(searchTermState, 500);
+	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
+	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	let topRect: number = 0;
 
 	React.useEffect(
@@ -166,7 +166,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const ChildItem = childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchTermState(e.target.value);
+		setSearchTerm(e.target.value);
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -204,7 +204,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 						<Input
 							ref={searchRef}
 							noShadow={true}
-							value={searchTermState}
+							value={searchTerm}
 							type="search"
 							placeholder="Название фильтра"
 							onChange={handleSearchChange}
@@ -241,7 +241,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 								onKeyDown={handleKeyDown}
 								onWheel={handleDisableBodyScroll}
 							>
-								{rootIds.length === 0 && searchTerm !== ""
+								{rootIds.length === 0 &&
+								debouncedSearchTerm !== ""
 									? notFoundMessage
 									: rootIds.map(childId => (
 											<ChildItem

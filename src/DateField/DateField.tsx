@@ -55,7 +55,11 @@ export class DateField extends React.Component<IProps, IState> {
 		}
 	};
 
-	public handleOpen = () => this.setState({ isOpenCalendar: true });
+	public handleOpen = () => {
+		if (!this.props.disabled) {
+			this.setState({ isOpenCalendar: true })
+		}
+	};
 
 	public handleChangeCurrentMonth = (direction: 1 | -1) => () => {
 		const oldDate = new Date(this.state.showedDate);

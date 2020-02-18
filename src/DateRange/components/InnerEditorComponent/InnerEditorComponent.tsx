@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { DateField } from "../../../DateField";
+import { DateField, Days, Months } from "../../../DateField";
 import { IconSvg } from "../../../IconSvg";
 import { Tooltip } from "../../../Tooltip";
 
@@ -9,7 +9,8 @@ interface IProps {
 	radioConcreteToText: string;
 	tooltipContent: React.ReactNode;
 	hasError: boolean;
-	monthes?: string[]
+	months: Months;
+	days: Days;
 	dateFrom?: Date;
 	dateTo?: Date;
 	onChangeDateFrom: (date: Date) => void;
@@ -20,10 +21,11 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 	radioConcreteFromText,
 	radioConcreteToText,
 	tooltipContent,
-	monthes,
+	months,
 	hasError,
 	dateFrom,
 	dateTo,
+	days,
 	onChangeDateFrom,
 	onChangeDateTo,
 }) => (
@@ -35,9 +37,10 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 			<div className="kit-date-range__popup-fields">
 				<div className="kit-date-range__popup-date">
 					<DateField
-						monthes={monthes}
+						months={months}
+						days={days}
 						error={hasError}
-						defaultDate={dateFrom}
+						value={dateFrom}
 						onChange={onChangeDateFrom}
 					/>
 				</div>
@@ -50,9 +53,10 @@ export const InnerEditorComponent: React.FC<IProps> = ({
 			<div className="kit-date-range__popup-fields">
 				<div className="kit-date-range__popup-date">
 					<DateField
-						monthes={monthes}
+						months={months}
+						days={days}
 						error={hasError}
-						defaultDate={dateTo}
+						value={dateTo}
 						onChange={onChangeDateTo}
 					/>
 				</div>

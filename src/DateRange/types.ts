@@ -1,6 +1,8 @@
+import { Days, Months } from "../DateField";
+
 export interface IDateRange {
-	dateFrom?: Date;
-	dateTo?: Date;
+	dateTo?: Date
+	dateFrom?: Date
 }
 
 export enum DateRangeValueTypes {
@@ -13,8 +15,10 @@ export interface INoFilterDateRangeValue {
 	type: DateRangeValueTypes.NoFilter;
 }
 
-export interface IConcreteDateRangeValue extends IDateRange {
+export interface IConcreteDateRangeValue {
 	type: DateRangeValueTypes.Concrete;
+	dateFrom: Date;
+	dateTo: Date;
 }
 
 export enum LastPeriods {
@@ -47,5 +51,6 @@ export interface IDateRangeCaption {
 	addFilterButtonCaption: string;
 	cancelFilterButtonCaption: string;
 	tooltipContent: React.ReactNode;
-	monthes?: string[]
+	months: Months;
+	days: Days;
 }

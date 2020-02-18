@@ -18,7 +18,7 @@ import { withOutsideClick } from "../HOCs";
 
 import "./DateRange.scss";
 
-const EMPTY_SPACES = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+const EMPTY_SPACES = new Array(20).fill('&nbsp;').join('')
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
@@ -64,24 +64,24 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	);
 
 	const handleSelectedNoFilter = () => {
-		setDateFrom(undefined)
-		setDateTo(undefined)
+		setDateFrom(undefined);
+		setDateTo(undefined);
 		onChange({ type: DateRangeValueTypes.NoFilter });
 	};
 
 	const handleSelectedLast = (period: LastPeriods) => () => {
-		let newDateFrom
-		const neDateTo = getNow()
+		let newDateFrom;
+		const newDateTo = getNow();
 		if (period === LastPeriods.Week) {
-			newDateFrom = getWeekBeforeNow()
+			newDateFrom = getWeekBeforeNow();
 		} else if (period === LastPeriods.Month) {
-			newDateFrom = getMonthBeforeNow()
+			newDateFrom = getMonthBeforeNow();
 		} else {
-			newDateFrom = getYearBeforeNow()
+			newDateFrom = getYearBeforeNow();
 		}
-		setDateFrom(newDateFrom)
-		setDateTo(neDateTo)
-		setDateRange({ dateFrom: newDateFrom, dateTo: neDateTo });
+		setDateFrom(newDateFrom);
+		setDateTo(newDateTo);
+		setDateRange({ dateFrom: newDateFrom, dateTo: newDateTo });
 
 		onChange({ type: DateRangeValueTypes.Last, period });
 	};
@@ -100,7 +100,9 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const handleApplyFilter = () => {
 		setShouldShowFilter(false);
 		setDateRange({ dateFrom, dateTo });
-		onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
+		if (dateFrom && dateTo) {
+			onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
+		}
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
@@ -161,7 +163,8 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								<ConditionEditorPopup
 									innerEditorComponent={
 										<InnerEditorComponent
-											monthes={caption.monthes}
+											months={caption.months}
+											days={caption.days}
 											radioConcreteFromText={
 												radioConcreteFromText
 											}

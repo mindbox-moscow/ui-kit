@@ -4,21 +4,52 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { Button } from "../src/Button/Button";
-import { Page } from "../src/Page/Page";
-import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
-import { Row } from "../src/Row/Row";
-import { Text } from "../src/Text/Text";
-import { RadioButton } from "../src/RadioButton/RadioButton";
-import { Select } from "../src/Select/Select";
-import { DateField } from "../src/DateField/DateField";
-import { TimeField } from "../src/TimeField/TimeField";
 import { Checkbox } from "../src/Checkbox/Checkbox";
+import { DateField, Days, Months } from "../src/DateField/DateField";
 import { Input } from "../src/Input/Input";
+import { Page } from "../src/Page/Page";
 import { Period } from "../src/Period/Period";
+import { RadioButton } from "../src/RadioButton/RadioButton";
+import { Row } from "../src/Row/Row";
+import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
+import { Select } from "../src/Select/Select";
+import { Text } from "../src/Text/Text";
+import { TimeField } from "../src/TimeField/TimeField";
 import { COLORS } from "../src/utils/constants";
 
+const months: Months = [
+    "Янв",
+    "Фев",
+    "Мар",
+    "Апр",
+    "Май",
+    "Июн",
+    "Июл",
+    "Авг",
+    "Сен",
+    "Окт",
+    "Ноя",
+    "Дек"
+];
+
+const days: Days = [
+    "Пн",
+    "Вт",
+    "Ср",
+    "Чт",
+    "Пт",
+    "Сб",
+    "Вс",
+];
+
 class When extends React.Component<{}> {
+    public state = { dateFrom: new Date(2013, 12, 12), dateTo: new Date() };
+
+    public handleChangeDateFrom = (val: Date) => this.setState({dateFrom: val});
+    public handleChangeDateTo = (val: Date) => this.setState({dateTo: val});
+    
     public render() {
+        const { dateTo, dateFrom } = this.state;
         return (
             <Page
                 title="Триггер №15"
@@ -31,45 +62,45 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1. Состояние по умолчанию. Пока не выбрано событие,
                     сохранить правило нельзя.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         description="25 авг 2018 – 1 янв 2019"
                         title="Период активности"
                     >
-                        <RadioButton name="whenBlock1-group1" checked>
+                        <RadioButton name="whenBlock1-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock1-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock1-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock1-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock1-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Инициатор события">
-                        <RadioButton name="whenBlock1-group3" checked>
+                    <Row isEdit={true} isControl={true} title="Инициатор события">
+                        <RadioButton name="whenBlock1-group3" checked={true}>
                             Любой
                         </RadioButton>
                         <RadioButton name="whenBlock1-group3">
                             Настроить фильтр по потребителям
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelect title="Событие">
+                    <Row isEdit={true} isSelect={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
                             isFiltered={true}
@@ -98,8 +129,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
                             Сохранить
                         </Button>
                         <Text mode="danger">
@@ -112,63 +143,66 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     2. Переключились в планирование периода активности
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Период активности"
                         description="25 авг 2018 – 1 янв 2019"
                     >
                         <RadioButton name="whenBlock2-group1">
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
-                        <RadioButton name="whenBlock2-group1" checked>
+                        <RadioButton name="whenBlock2-group1" checked={true}>
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Дата и время старта">
-                        <DateField defaultDate={new Date("07/21/2019")}  />
+                    <Row isEdit={true} isControl={true} title="Дата и время старта">
+                        <DateField onChange={this.handleChangeDateFrom} days={days} months={months} value={dateFrom}  />
                         <TimeField hours={12} minutes={23}  />
                     </Row>
-                    <Row isEdit isControl title="Дата окончания">
+                    <Row isEdit={true} isControl={true} title="Дата окончания">
                         <DateField
-                            disabled
-                            defaultDate={new Date("07/21/2019")}
+                            months={months}
+                            days={days}
+                            onChange={this.handleChangeDateTo}
+                            disabled={true}
+                            value={dateTo}
 
                         />
-                        <TimeField disabled hours={12} minutes={20}  />
+                        <TimeField disabled={true} hours={12} minutes={20}  />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Триггер активен до конца кампании"
                         />
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock2-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock2-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock2-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Инициатор события">
-                        <RadioButton name="whenBlock2-group3" checked>
+                    <Row isEdit={true} isControl={true} title="Инициатор события">
+                        <RadioButton name="whenBlock2-group3" checked={true}>
                             Любой
                         </RadioButton>
                         <RadioButton name="whenBlock2-group3">
                             Настроить фильтр по потребителям
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelect title="Событие">
+                    <Row isEdit={true} isSelect={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -194,8 +228,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
                             Сохранить
                         </Button>
                         <Text mode="danger">
@@ -208,43 +242,43 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     3. Инициатор события: переключились в настройку фильтра по
                     потребителям
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         description="25 авг 2018 – 1 янв 2019"
                         title="Период активности"
                     >
-                        <RadioButton name="whenBlock3-group1" checked>
+                        <RadioButton name="whenBlock3-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock3-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock3-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock3-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock3-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock3-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock3-group3" checked>
+                        <RadioButton name="whenBlock3-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__small-filter kit-row__small-filter_bottom">
@@ -284,9 +318,9 @@ class When extends React.Component<{}> {
                                         },
                                         { title: "Потребитель вошел на сайт" },
                                         {
+                                            disabled: true,
                                             title:
                                                 "Активация секретного кода потребителем",
-                                            disabled: true
                                         },
                                         { title: "Потребитель получил приз" },
                                         {
@@ -299,10 +333,10 @@ class When extends React.Component<{}> {
                             </div>
                         </div>
                     </Row>
-                    <Row isEdit isSelect title="Событие">
+                    <Row isEdit={true} isSelect={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -328,8 +362,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
                             Сохранить
                         </Button>
                         <Text mode="danger">
@@ -342,50 +376,50 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     4. Настроили фильтр по инициатору события
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Период активности"
                         description="25 авг 2018 – 1 янв 2019"
                     >
-                        <RadioButton name="whenBlock41-group1" checked>
+                        <RadioButton name="whenBlock41-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock41-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock41-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock41-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock41-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock41-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock41-group3" checked>
+                        <RadioButton name="whenBlock41-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
-                    <Row isEdit isSelect title="Событие">
+                    <Row isEdit={true} isSelect={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -411,8 +445,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
                             Сохранить
                         </Button>
                         <Text mode="danger">
@@ -425,50 +459,50 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     5. Выбираем событие для правила запуска
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Период активности"
                         description="25 авг 2018 – 1 янв 2019"
                     >
-                        <RadioButton name="whenBlock4-group1" checked>
+                        <RadioButton name="whenBlock4-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock4-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock4-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock4-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock4-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock4-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock4-group3" checked>
+                        <RadioButton name="whenBlock4-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
-                    <Row isEdit isSelect title="Событие">
+                    <Row isEdit={true} isSelect={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -494,8 +528,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
                             Сохранить
                         </Button>
                         <Text mode="danger">
@@ -508,9 +542,9 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     6. Выбрали событие — появились дополнительные блоки и
@@ -519,43 +553,43 @@ class When extends React.Component<{}> {
                     фильтра не выводится, пока не отмечен чекбокс «Настроить
                     фильтр по этому событию».
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Период активности"
                         description="25 авг 2018 – 1 янв 2019"
                     >
-                        <RadioButton name="whenBlock5-group1" checked>
+                        <RadioButton name="whenBlock5-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock5-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock5-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock5-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock5-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom isFilter title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} isFilter={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock5-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock5-group3" checked>
+                        <RadioButton name="whenBlock5-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
-                    <Row isEdit isSelectChecked title="Событие">
+                    <Row isEdit={true} isSelectChecked={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -584,8 +618,8 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Время от события"
                     >
                         Активировать триггер
@@ -601,8 +635,8 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -619,8 +653,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -629,51 +663,51 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     7. Отметили чекбокс «Настроить фильтр по этому событию»,
                     появился блок настройки фильтра для выбраного события.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
+                <SectionWrapper title="Когда" isEdit={true}>
                     <Row
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Период активности"
                         description="25 авг 2018 – 1 янв 2019"
                     >
-                        <RadioButton name="whenBlock6-group1" checked>
+                        <RadioButton name="whenBlock6-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock6-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock6-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock6-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock6-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock6-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock6-group3" checked>
+                        <RadioButton name="whenBlock6-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
-                    <Row isEdit isSelectChecked title="Событие">
+                    <Row isEdit={true} isSelectChecked={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -699,13 +733,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
                     <Row
-                        isEdit
-                        isSmallFilter
+                        isEdit={true}
+                        isSmallFilter={true}
                         title="Триггер сработает при попадании под фильтр по активации кодов"
                     >
                         <Select
@@ -728,9 +762,9 @@ class When extends React.Component<{}> {
                                 { title: "Редактирование анкеты потребителем" },
                                 { title: "Потребитель вошел на сайт" },
                                 {
+                                    disabled: true,
                                     title:
                                         "Активация секретного кода потребителем",
-                                    disabled: true
                                 },
                                 { title: "Потребитель получил приз" },
                                 { title: "Изменение статуса FMCG заказа" },
@@ -740,8 +774,8 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Время от события"
                     >
                         Активировать триггер
@@ -757,8 +791,8 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -775,8 +809,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -785,46 +819,46 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     8. Настроили фильтр для выбраного события, отредактировали
                     время от события и срок актуальности.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock7-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock7-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock7-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
-                        <RadioButton name="whenBlock7-group2" checked>
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
+                        <RadioButton name="whenBlock7-group2" checked={true}>
                             По событию
                         </RadioButton>
                         <RadioButton name="whenBlock7-group2">
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isCustom title="Инициатор события">
+                    <Row isEdit={true} isCustom={true} title="Инициатор события">
                         <div className="kit-row__control">
                             <RadioButton name="whenBlock7-group3">
                                 Любой
                             </RadioButton>
                         </div>
-                        <RadioButton name="whenBlock7-group3" checked>
+                        <RadioButton name="whenBlock7-group3" checked={true}>
                             Настроить фильтр по потребителям
                         </RadioButton>
                         <div className="kit-row__filter kit-row__filter_bottom" />
                     </Row>
-                    <Row isEdit isSelectChecked title="Событие">
+                    <Row isEdit={true} isSelectChecked={true} title="Событие">
                         <Select
                             placeholder="Выберите событие"
-                            isFiltered
+                            isFiltered={true}
                             items={[
                                 { title: "Потребитель попал в БД" },
                                 { title: "Потребитель был сдедублицирован" },
@@ -850,21 +884,21 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
                     <Row
-                        isEdit
-                        isFilter
+                        isEdit={true}
+                        isFilter={true}
                         title="Триггер сработает при попадании под фильтр по активации кодов"
                     >
                         &nbsp;
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Время от события"
                     >
                         Активировать триггер
@@ -883,8 +917,8 @@ class When extends React.Component<{}> {
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -901,8 +935,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -911,9 +945,9 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 1. Включили запуск триггера по графику. По умолчанию
@@ -921,24 +955,24 @@ class When extends React.Component<{}> {
                     на простой ежедневный, ежемесячный, ежегодный, а также
                     опционально — выбрать вариант «Настроить особый режим»
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock7-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock7-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock7-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock7-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock7-group2" checked>
+                        <RadioButton name="whenBlock7-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -948,7 +982,7 @@ class When extends React.Component<{}> {
                         />
                         <Checkbox text="Настроить фильтр по этому событию" />
                     </Row>
-                    <Row isEdit title="Дни недели">
+                    <Row isEdit={true} title="Дни недели">
                         <Period
                             theme="small"
                             items={[
@@ -962,13 +996,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -985,8 +1019,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -995,9 +1029,9 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 2. Выбрали вариант «Настроить особый режим», появились
@@ -1008,24 +1042,24 @@ class When extends React.Component<{}> {
                     с «Каждый гол» на «По годам». Пример режима по дням
                     (повторять запуск каждые Х дней).
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock8-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock8-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock8-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock8-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock8-group2" checked>
+                        <RadioButton name="whenBlock8-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1034,23 +1068,23 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждую">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждую">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1067,8 +1101,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -1077,32 +1111,32 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 3. Пример режима по неделям. Повторять запуск каждые Х
                     недель в определенные дни недели.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock9-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock9-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock9-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock9-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock9-group2" checked>
+                        <RadioButton name="whenBlock9-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1111,17 +1145,17 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждую">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждую">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit title="Дни недели">
+                    <Row isEdit={true} title="Дни недели">
                         <Period
                             theme="small"
                             items={[
@@ -1135,13 +1169,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1158,8 +1192,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -1168,32 +1202,32 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 4. Пример режима по месяцам. Повторять запуск каждые Х
                     месяцев по конкретным датам.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock10-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock10-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock10-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock10-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock10-group2" checked>
+                        <RadioButton name="whenBlock10-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1202,17 +1236,17 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждый">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждый">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit isSelectCalendar title="Дни повтора">
+                    <Row isEdit={true} isSelectCalendar={true} title="Дни повтора">
                         <Select
                             placeholder="Выберите дни повтора"
                             items={[
@@ -1265,13 +1299,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1288,8 +1322,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -1298,9 +1332,9 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 5. Кроме режима по конкретным датам, пользователь может
@@ -1309,24 +1343,24 @@ class When extends React.Component<{}> {
                     выбора дня недели. Возможна любая комбинация значений этих
                     двух контролов.
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock11-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock11-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock11-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock11-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock11-group2" checked>
+                        <RadioButton name="whenBlock11-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1335,17 +1369,17 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждый">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждый">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit isSelectDouble title="Дни повтора">
+                    <Row isEdit={true} isSelectDouble={true} title="Дни повтора">
                         <Select
                             placeholder="Выберите дни повтора"
                             items={[
@@ -1380,13 +1414,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1403,8 +1437,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -1413,33 +1447,33 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 7. Пример режима по годам. Повторять запуск каждые Х лет
                     по конкретным месяцам. Блок «Дни повтора» содержит все те же
                     опции, что и в варианте по месяцам
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock12-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock12-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock12-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock12-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock12-group2" checked>
+                        <RadioButton name="whenBlock12-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1448,17 +1482,17 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждый">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждый">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit isControl title="Месяцы повтора">
+                    <Row isEdit={true} isControl={true} title="Месяцы повтора">
                         <Period
                             items={[
                                 { title: "Янв", isChecked: true },
@@ -1476,7 +1510,7 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isSelectCalendar title="Дни повтора">
+                    <Row isEdit={true} isSelectCalendar={true} title="Дни повтора">
                         <Select
                             placeholder="Выберите дни повтора"
                             items={[
@@ -1529,13 +1563,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1552,8 +1586,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>
@@ -1562,33 +1596,33 @@ class When extends React.Component<{}> {
                     style={{
                         color: "#8b572a",
                         fontSize: "16px;",
-                        paddingTop: "28px",
+                        paddingBottom: "16px",
                         paddingLeft: "2px",
-                        paddingBottom: "16px"
+                        paddingTop: "28px",
                     }}
                 >
                     1 | 9. Пример режима по годам. Повторять запуск каждые Х лет
                     по конкретным месяцам. Блок «Дни повтора» содержит все те же
                     опции, что и в варианте по месяцам
                 </div>
-                <SectionWrapper title="Когда" isEdit>
-                    <Row isEdit isControl title="Период активности">
-                        <RadioButton name="whenBlock13-group1" checked>
+                <SectionWrapper title="Когда" isEdit={true}>
+                    <Row isEdit={true} isControl={true} title="Период активности">
+                        <RadioButton name="whenBlock13-group1" checked={true}>
                             Триггер активен на протяжении всей кампании
                         </RadioButton>
                         <RadioButton name="whenBlock13-group1">
                             Запланировать период активности
                         </RadioButton>
                     </Row>
-                    <Row isEdit isControl title="Режим запуска">
+                    <Row isEdit={true} isControl={true} title="Режим запуска">
                         <RadioButton name="whenBlock13-group2">
                             По событию
                         </RadioButton>
-                        <RadioButton name="whenBlock13-group2" checked>
+                        <RadioButton name="whenBlock13-group2" checked={true}>
                             По графику
                         </RadioButton>
                     </Row>
-                    <Row isEdit isSelectChecked title="Запускать">
+                    <Row isEdit={true} isSelectChecked={true} title="Запускать">
                         <Select
                             placeholder="Выберите"
                             items={[
@@ -1597,17 +1631,17 @@ class When extends React.Component<{}> {
                             ]}
                         />
                         <Checkbox
-                            checked
+                            checked={true}
                             text="Настроить фильтр по этому событию"
                         />
                     </Row>
-                    <Row isEdit isControl title="Повторять запуск каждый">
+                    <Row isEdit={true} isControl={true} title="Повторять запуск каждый">
                         <div className="kit-row__input">
                             <Input value="1" maxLength={2} />
                         </div>
                         неделю с момента старт
                     </Row>
-                    <Row isEdit isControl title="Месяцы повтора">
+                    <Row isEdit={true} isControl={true} title="Месяцы повтора">
                         <Period
                             items={[
                                 { title: "Янв", isChecked: true },
@@ -1625,7 +1659,7 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isSelectDouble title="Дни повтора">
+                    <Row isEdit={true} isSelectDouble={true} title="Дни повтора">
                         <Select
                             placeholder="Выберите дни повтора"
                             items={[
@@ -1660,13 +1694,13 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit title="Время">
+                    <Row isEdit={true} title="Время">
                         <TimeField hours={12} minutes={23}  />
                     </Row>
                     <Row
                         help="Текст подсказки"
-                        isEdit
-                        isControl
+                        isEdit={true}
+                        isControl={true}
                         title="Срок актуальности"
                     >
                         Допускается запоздание срабатывания триггера не более,
@@ -1683,8 +1717,8 @@ class When extends React.Component<{}> {
                             ]}
                         />
                     </Row>
-                    <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                    <Row isEdit={true} isFooter={true}>
+                        <Button color="gray" hasUnderline={true} size="large">
                             Сохранить
                         </Button>
                     </Row>

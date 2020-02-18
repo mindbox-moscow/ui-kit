@@ -34,7 +34,22 @@ class DateRangeExample extends React.Component {
 					tooltipContent:
 						"Левая граница интервала должна быть меньше правой",
 					addFilterButtonCaption: "Применить изменения",
-					cancelFilterButtonCaption: "Отменить"
+					cancelFilterButtonCaption: "Отменить",
+					months: [
+						"Янв",
+						"Фев",
+						"Мар",
+						"Апр",
+						"Май",
+						"Июн",
+						"Июл",
+						"Авг",
+						"Сен",
+						"Окт",
+						"Ноя",
+						"Дек"
+					],
+					days: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
 				}}
 				value={value}
 				onChange={this.handleChange}

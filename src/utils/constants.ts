@@ -21,6 +21,8 @@ export enum KeysCodes {
 }
 
 export const WEEK_IN_DAYS = 7;
+export const MONTH_IN_DAYS = 30;
+export const YEAR_IN_DAYS = 365;
 
 export enum BrowserList {
 	Safari = "Safari",

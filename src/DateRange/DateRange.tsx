@@ -11,7 +11,8 @@ import {
 import { ConditionEditorPopup } from "../ConditionEditorPopup";
 import { FilterDetails } from "../FilterDetails";
 import { RadioButton } from "../RadioButton";
-import { getMonthBeforeNow, getNow, getWeekBeforeNow, getYearBeforeNow, parseDateToString } from "../utils/helpers";
+import { MONTH_IN_DAYS, WEEK_IN_DAYS, YEAR_IN_DAYS } from "../utils/constants";
+import { getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
 import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
@@ -73,11 +74,11 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		let newDateFrom;
 		const newDateTo = getNow();
 		if (period === LastPeriods.Week) {
-			newDateFrom = getWeekBeforeNow();
+			newDateFrom = getDaysBeforeNow(WEEK_IN_DAYS);
 		} else if (period === LastPeriods.Month) {
-			newDateFrom = getMonthBeforeNow();
+			newDateFrom = getDaysBeforeNow(MONTH_IN_DAYS);
 		} else {
-			newDateFrom = getYearBeforeNow();
+			newDateFrom = getDaysBeforeNow(YEAR_IN_DAYS);
 		}
 		setDateFrom(newDateFrom);
 		setDateTo(newDateTo);

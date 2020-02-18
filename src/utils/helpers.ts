@@ -2,6 +2,8 @@ import { BrowserList, WEEK_IN_DAYS } from "./constants";
 
 export const getNow = (): Date => {
 	const now = new Date();
+	now.setHours(0);
+	now.setMinutes(0);
 	now.setSeconds(0);
 	now.setMilliseconds(0);
 
@@ -10,26 +12,12 @@ export const getNow = (): Date => {
 
 export const getWeekBeforeNow = (): Date => {
 	const now = getNow();
-	now.setSeconds(0);
-	now.setMilliseconds(0);
-
-	return new Date(now.setDate(now.getDate() - WEEK_IN_DAYS));
+	return new Date(now.setDate(now.getDate() + 1 - WEEK_IN_DAYS));
 };
 
-export const getMonthBeforeNow = (): Date => {
+export const getDaysBeforeNow = (days: number): Date => {
 	const now = getNow();
-	now.setSeconds(0);
-	now.setMilliseconds(0);
-
-	return new Date(now.setMonth(now.getMonth() - 1));
-};
-
-export const getYearBeforeNow = (): Date => {
-	const now = getNow();
-	now.setSeconds(0);
-	now.setMilliseconds(0);
-
-	return new Date(now.setFullYear(now.getFullYear() - 1));
+	return new Date(now.setDate(now.getDate() + 1 - days));
 };
 
 export const parseDateToString = (date: Date) => date.toLocaleDateString();

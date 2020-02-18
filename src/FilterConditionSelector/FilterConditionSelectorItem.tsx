@@ -40,7 +40,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	toggleExpand,
 	onSelect
 }) => {
-	const refSelector = React.createRef<HTMLLIElement>();
+	const refSelectorButton = React.createRef<HTMLDivElement>();
 	const context = React.useContext(FilterConditionSelectorContext);
 
 	React.useEffect(
@@ -53,8 +53,8 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	);
 
 	const scrollParentOnKeyDown = () => {
-		if (refSelector.current && context) {
-			refSelector.current.scrollIntoView({
+		if (refSelectorButton.current && context) {
+			refSelectorButton.current.scrollIntoView({
 				behavior: "smooth",
 				block: "nearest"
 			});
@@ -123,7 +123,6 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 
 	return (
 		<li
-			ref={refSelector}
 			className={cn(
 				"kit-filter-condition-selector__hierarchy-item",
 				`kit-filter-condition-selector__hierarchy-simple-filter_${type}`,
@@ -135,6 +134,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 			)}
 		>
 			<div
+				ref={refSelectorButton}
 				className={cn(
 					"kit-filter-condition-selector__hierarchy-button",
 					{

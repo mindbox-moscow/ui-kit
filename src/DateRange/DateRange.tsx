@@ -17,7 +17,6 @@ import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
 
-import { EMPTY_SPACES } from "./constants";
 import "./DateRange.scss";
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
@@ -43,7 +42,8 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		helpCaption,
 		tooltipContent,
 		addFilterButtonCaption,
-		cancelFilterButtonCaption
+		cancelFilterButtonCaption,
+		periodPlaceholder,
 	} = caption;
 
 	const dateFromInit =
@@ -157,8 +157,9 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								</span>
 								: <span className='kit-date-range__radio-content'>
 									{radioConcreteFromText}
-									<span dangerouslySetInnerHTML={{ __html: EMPTY_SPACES }} />
-									{radioConcreteToText}&nbsp;
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
+									{radioConcreteToText}
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
 								</span>
 						}
 					</RadioButton>

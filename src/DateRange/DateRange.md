@@ -35,6 +35,7 @@ class DateRangeExample extends React.Component {
 						"Левая граница интервала должна быть меньше правой",
 					addFilterButtonCaption: "Применить изменения",
 					cancelFilterButtonCaption: "Отменить",
+					periodPlaceholder: "дд.мм.гггг",
 					months: [
 						"Янв",
 						"Фев",

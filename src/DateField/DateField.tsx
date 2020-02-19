@@ -9,8 +9,8 @@ export type Months = [string, string, string, string, string, string, string, st
 export type Days = [string, string, string, string, string, string, string];
 
 enum DateType {
-	month = 'month',
-	year = 'year',
+	Month,
+	Year,
 };
 
 enum Direction {
@@ -80,7 +80,7 @@ export class DateField extends React.Component<IProps, IState> {
 	public handleSelectDate = (type: DateType) => (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const oldDate = new Date(this.state.showedDate);
 		const value = parseInt(event.target.value, 10);
-		if (type === 'month') {
+		if (type === DateType.Month) {
 			oldDate.setMonth(value);
 		} else {
 			oldDate.setFullYear(value);
@@ -192,8 +192,8 @@ export class DateField extends React.Component<IProps, IState> {
 		const handleNextMonth = this.handleChangeCurrentMonth(Direction.Next);
 		const handlePrevMonth = this.handleChangeCurrentMonth(Direction.Prev);
 
-		const handleChangeMonth = this.handleSelectDate(DateType.month);
-		const handleChangeYear = this.handleSelectDate(DateType.year);
+		const handleChangeMonth = this.handleSelectDate(DateType.Month);
+		const handleChangeYear = this.handleSelectDate(DateType.Year);
 
 		return (
 			<div

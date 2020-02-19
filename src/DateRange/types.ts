@@ -53,4 +53,5 @@ export interface IDateRangeCaption {
 	tooltipContent: React.ReactNode;
 	months: Months;
 	days: Days;
+	periodPlaceholder: string;
 }

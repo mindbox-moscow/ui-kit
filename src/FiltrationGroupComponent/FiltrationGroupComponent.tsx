@@ -160,7 +160,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 
 					heightGroup += lastChildElementHeight - itemTextHeight;
 
-					heightLine += lastChildElementHeight - itemTextHeight / 2;
+					heightLine += lastChildElementHeight - MIN_HEIGHT / 2;
 				} else if (
 					lastChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroupButtons

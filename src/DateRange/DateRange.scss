@@ -35,7 +35,7 @@
 }
 
 .kit-date-range__label {
-	margin-right: 4px;
+	margin-right: 8px;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 }
@@ -43,10 +43,11 @@
 .kit-date-range__popup {
 	display: flex;
 	margin-bottom: 8px;
-	align-items: flex-end;
+	align-items: flex-start;
 }
 
 .kit-date-range__popup-dates {
+	height: 48px;
 	margin-left: 5px;
 
 	&:first-child {
@@ -64,6 +65,8 @@
 }
 
 .kit-date-range__popup-date-text {
+	display: block;
+	height: 19px;
 	font-size: 14px;
 	font-weight: bold;
 }

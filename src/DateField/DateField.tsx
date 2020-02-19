@@ -8,6 +8,16 @@ import "./DateField.scss";
 export type Months = [string, string, string, string, string, string, string, string, string, string, string, string];
 export type Days = [string, string, string, string, string, string, string];
 
+enum DateType {
+	month = 'month',
+	year = 'year',
+};
+
+enum Direction {
+	Next = 1,
+	Prev  = -1,
+};
+
 interface IProps {
 	disabled?: boolean;
 	value?: Date;
@@ -61,13 +71,13 @@ export class DateField extends React.Component<IProps, IState> {
 		}
 	};
 
-	public handleChangeCurrentMonth = (direction: 1 | -1) => () => {
+	public handleChangeCurrentMonth = (direction: Direction) => () => {
 		const oldDate = new Date(this.state.showedDate);
 		oldDate.setMonth(oldDate.getMonth() + direction);
 		this.setState({ showedDate: oldDate });
 	};
 
-	public handleSelectDate = (type: 'month' | 'year') => (event: React.ChangeEvent<HTMLSelectElement>) => {
+	public handleSelectDate = (type: DateType) => (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const oldDate = new Date(this.state.showedDate);
 		const value = parseInt(event.target.value, 10);
 		if (type === 'month') {
@@ -83,7 +93,7 @@ export class DateField extends React.Component<IProps, IState> {
 		month: number,
 		date: number
 	) => () => {
-		const { onChange = () => null } = this.props;
+		const { onChange } = this.props;
 		const newDate = new Date(year, month, date);
 		this.setState({
 			dateString: parseDateToString(newDate),
@@ -91,14 +101,14 @@ export class DateField extends React.Component<IProps, IState> {
 		onChange(newDate);
 	};
 
-	public handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-		if (!controledKeys[event.key]) {
-			event.preventDefault();
+	public handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+		if (!controledKeys[evt.key]) {
+			evt.preventDefault();
 		}
 	};
 
 	public handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-		const { value, onChange = () => null } = this.props;
+		const { value, onChange } = this.props;
 
 		const dateParser = /(\d{2})\.(\d{2})\.(\d{4})/;
 		const match = evt.target.value.match(dateParser);
@@ -179,11 +189,11 @@ export class DateField extends React.Component<IProps, IState> {
 		for (let d = 1; d < 7 - lastDayFormat; d++) {
 			afterDaysList.push(d);
 		}
-		const handleNextMonth = this.handleChangeCurrentMonth(1);
-		const handlePrevMonth = this.handleChangeCurrentMonth(-1);
+		const handleNextMonth = this.handleChangeCurrentMonth(Direction.Next);
+		const handlePrevMonth = this.handleChangeCurrentMonth(Direction.Prev);
 
-		const handleChangeMonth = this.handleSelectDate('month');
-		const handleChangeYear = this.handleSelectDate('year');
+		const handleChangeMonth = this.handleSelectDate(DateType.month);
+		const handleChangeYear = this.handleSelectDate(DateType.year);
 
 		return (
 			<div

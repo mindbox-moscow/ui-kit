@@ -20,6 +20,7 @@ export enum KeysCodes {
 	Tab = 9
 }
 
+export const DAY_OFFSET = 1;
 export const WEEK_IN_DAYS = 7;
 export const MONTH_IN_DAYS = 30;
 export const YEAR_IN_DAYS = 365;

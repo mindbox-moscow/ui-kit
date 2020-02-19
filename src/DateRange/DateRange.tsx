@@ -12,14 +12,13 @@ import { ConditionEditorPopup } from "../ConditionEditorPopup";
 import { FilterDetails } from "../FilterDetails";
 import { RadioButton } from "../RadioButton";
 import { MONTH_IN_DAYS, WEEK_IN_DAYS, YEAR_IN_DAYS } from "../utils/constants";
-import { getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
+import { changeDateToBeginOfTheDay, changeDateToEndOfTheDay, getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
 import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
 
+import { EMPTY_SPACES } from "./constants";
 import "./DateRange.scss";
-
-const EMPTY_SPACES = new Array(20).fill('&nbsp;').join('')
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
@@ -102,25 +101,31 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		setShouldShowFilter(false);
 		setDateRange({ dateFrom, dateTo });
 		if (dateFrom && dateTo) {
-			onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
+			onChange({
+				dateFrom: changeDateToBeginOfTheDay(dateFrom),
+				dateTo: changeDateToEndOfTheDay(dateTo),
+				type: DateRangeValueTypes.Concrete,
+			});
 		}
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
-		const isError = dateTo ? newDateFrom >= dateTo : false;
+		const beginDateFrom = changeDateToBeginOfTheDay(newDateFrom);
+		const isError = dateTo ? beginDateFrom >= dateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateFrom(newDateFrom);
+			setDateFrom(beginDateFrom);
 		}
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
-		const isError = dateFrom ? dateFrom >= newDateTo : false;
+		const endDateTo = changeDateToEndOfTheDay(newDateTo);
+		const isError = dateFrom ? dateFrom >= endDateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateTo(newDateTo);
+			setDateTo(endDateTo);
 		}
 	};
 
@@ -176,9 +181,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 											hasError={hasError}
 											dateFrom={dateFrom}
 											dateTo={dateTo}
-											onChangeDateFrom={
-												handleChangeDateFrom
-											}
+											onChangeDateFrom={handleChangeDateFrom}
 											onChangeDateTo={handleChangeDateTo}
 										/>
 									}

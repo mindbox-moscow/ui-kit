@@ -1,4 +1,21 @@
 ```jsx
+const months = [
+	"Янв",
+	"Фев",
+	"Мар",
+	"Апр",
+	"Май",
+	"Июн",
+	"Июл",
+	"Авг",
+	"Сен",
+	"Окт",
+	"Ноя",
+	"Дек"
+];
+
+const days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
 class ExampleSegmentButtonExpand extends React.Component {
 	constructor() {
 		super();
@@ -3077,8 +3094,11 @@ class ExampleFlatSelectorSimple extends React.Component {
 									<GridColumn>
 										<Wrapper>от</Wrapper>
 										<DateField
+											onChange={() => null}
+											months={months}
+											days={days}
 											error={true}
-											defaultDate={new Date(2018, 11, 10)}
+											value={new Date(2018, 11, 10)}
 											noShadow={false}
 										/>
 									</GridColumn>
@@ -3093,7 +3113,10 @@ class ExampleFlatSelectorSimple extends React.Component {
 									<GridColumn>
 										<Wrapper>до</Wrapper>
 										<DateField
-											defaultDate={new Date(2018, 11, 10)}
+											onChange={() => null}
+											months={months}
+											days={days}
+											value={new Date(2018, 11, 10)}
 											noShadow={false}
 										/>
 									</GridColumn>

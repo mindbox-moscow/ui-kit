@@ -11,7 +11,8 @@ import {
 import { ConditionEditorPopup } from "../ConditionEditorPopup";
 import { FilterDetails } from "../FilterDetails";
 import { RadioButton } from "../RadioButton";
-import { getNow, getWeekBeforeNow, parseDateToString } from "../utils/helpers";
+import { MONTH_IN_DAYS, WEEK_IN_DAYS, YEAR_IN_DAYS } from "../utils/constants";
+import { changeDateToBeginOfTheDay, changeDateToEndOfTheDay, getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
 import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
@@ -19,14 +20,6 @@ import { withOutsideClick } from "../HOCs";
 import "./DateRange.scss";
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
-
-const makeNewDate = (date: Date, hours: number, minutes: number) => {
-	const newDate = new Date(date);
-	newDate.setHours(hours);
-	newDate.setMinutes(minutes);
-
-	return newDate;
-};
 
 interface IProps {
 	caption: IDateRangeCaption;
@@ -49,17 +42,18 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		helpCaption,
 		tooltipContent,
 		addFilterButtonCaption,
-		cancelFilterButtonCaption
+		cancelFilterButtonCaption,
+		periodPlaceholder,
 	} = caption;
 
 	const dateFromInit =
 		value.type === DateRangeValueTypes.Concrete
 			? value.dateFrom
-			: getWeekBeforeNow();
+			: undefined;
 	const dateToInit =
-		value.type === DateRangeValueTypes.Concrete ? value.dateTo : getNow();
-	const [dateFrom, setDateFrom] = React.useState<Date>(dateFromInit);
-	const [dateTo, setDateTo] = React.useState<Date>(dateToInit);
+		value.type === DateRangeValueTypes.Concrete ? value.dateTo : undefined;
+	const [dateFrom, setDateFrom] = React.useState<Date | undefined>(dateFromInit);
+	const [dateTo, setDateTo] = React.useState<Date | undefined>(dateToInit);
 	const [hasError, setHasError] = React.useState<boolean>(false);
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
 		dateFrom,
@@ -68,16 +62,27 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const [shouldShowFilter, setShouldShowFilter] = React.useState<boolean>(
 		false
 	);
-	const hoursFrom = dateFrom.getHours();
-	const minutesFrom = dateFrom.getMinutes();
-	const hoursTo = dateTo.getHours();
-	const minutesTo = dateTo.getMinutes();
 
 	const handleSelectedNoFilter = () => {
+		setDateFrom(undefined);
+		setDateTo(undefined);
 		onChange({ type: DateRangeValueTypes.NoFilter });
 	};
 
 	const handleSelectedLast = (period: LastPeriods) => () => {
+		let newDateFrom;
+		const newDateTo = getNow();
+		if (period === LastPeriods.Week) {
+			newDateFrom = getDaysBeforeNow(WEEK_IN_DAYS);
+		} else if (period === LastPeriods.Month) {
+			newDateFrom = getDaysBeforeNow(MONTH_IN_DAYS);
+		} else {
+			newDateFrom = getDaysBeforeNow(YEAR_IN_DAYS);
+		}
+		setDateFrom(newDateFrom);
+		setDateTo(newDateTo);
+		setDateRange({ dateFrom: newDateFrom, dateTo: newDateTo });
+
 		onChange({ type: DateRangeValueTypes.Last, period });
 	};
 
@@ -95,50 +100,32 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const handleApplyFilter = () => {
 		setShouldShowFilter(false);
 		setDateRange({ dateFrom, dateTo });
-		onChange({ type: DateRangeValueTypes.Concrete, dateFrom, dateTo });
+		if (dateFrom && dateTo) {
+			onChange({
+				dateFrom: changeDateToBeginOfTheDay(dateFrom),
+				dateTo: changeDateToEndOfTheDay(dateTo),
+				type: DateRangeValueTypes.Concrete,
+			});
+		}
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
-		const newDate = makeNewDate(newDateFrom, hoursFrom, minutesFrom);
-		const isError = newDate >= dateTo;
-
+		const beginDateFrom = changeDateToBeginOfTheDay(newDateFrom);
+		const isError = dateTo ? beginDateFrom >= dateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateFrom(newDate);
+			setDateFrom(beginDateFrom);
 		}
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
-		const newDate = makeNewDate(newDateTo, hoursTo, minutesTo);
-		const isError = dateFrom >= newDate;
-
+		const endDateTo = changeDateToEndOfTheDay(newDateTo);
+		const isError = dateFrom ? dateFrom >= endDateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateTo(newDate);
-		}
-	};
-
-	const handleChangeTimeFrom = (hours: number, minutes: number) => {
-		const newDate = makeNewDate(dateFrom, hours, minutes);
-		const isError = newDate >= dateTo;
-
-		setHasError(isError);
-
-		if (!isError) {
-			setDateFrom(newDate);
-		}
-	};
-
-	const handleChangeTimeTo = (hours: number, minutes: number) => {
-		const newDate = makeNewDate(dateTo, hours, minutes);
-		const isError = dateFrom >= newDate;
-
-		setHasError(isError);
-
-		if (!isError) {
-			setDateTo(newDate);
+			setDateTo(endDateTo);
 		}
 	};
 
@@ -162,10 +149,19 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 						onClick={handleToggleFilter}
 						checked={value.type === DateRangeValueTypes.Concrete}
 					>
-						{`${radioConcreteFromText} ${parseDateToString(
-							dateRange.dateFrom
-						)}
-					${radioConcreteToText} ${parseDateToString(dateRange.dateTo)}`}
+						{
+							value.type !== DateRangeValueTypes.NoFilter
+								? <span className='kit-date-range__radio-content'>
+									{radioConcreteFromText}&nbsp;{dateRange.dateFrom ? parseDateToString(dateRange.dateFrom) : ''}&nbsp;
+									{radioConcreteToText}&nbsp;{dateRange.dateTo ? parseDateToString(dateRange.dateTo) : ''}
+								</span>
+								: <span className='kit-date-range__radio-content'>
+									{radioConcreteFromText}
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
+									{radioConcreteToText}
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
+								</span>
+						}
 					</RadioButton>
 
 					{shouldShowFilter && (
@@ -174,6 +170,8 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 								<ConditionEditorPopup
 									innerEditorComponent={
 										<InnerEditorComponent
+											months={caption.months}
+											days={caption.days}
 											radioConcreteFromText={
 												radioConcreteFromText
 											}
@@ -184,22 +182,8 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 											hasError={hasError}
 											dateFrom={dateFrom}
 											dateTo={dateTo}
-											timeFrom={{
-												hours: hoursFrom,
-												minutes: minutesFrom
-											}}
-											timeTo={{
-												hours: hoursTo,
-												minutes: minutesTo
-											}}
-											onChangeDateFrom={
-												handleChangeDateFrom
-											}
+											onChangeDateFrom={handleChangeDateFrom}
 											onChangeDateTo={handleChangeDateTo}
-											onChangeTimeFrom={
-												handleChangeTimeFrom
-											}
-											onChangeTimeTo={handleChangeTimeTo}
 										/>
 									}
 									viewMode="edit"
@@ -209,7 +193,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 									cancelFilterButtonCaption={
 										cancelFilterButtonCaption
 									}
-									isAddFilterButtonEnabled={!hasError}
+									isAddFilterButtonEnabled={Boolean(dateFrom && dateTo && !hasError)}
 									onAddFilterButtonClick={handleApplyFilter}
 									onCancelFilterButtonClick={onCloseFilter}
 								/>

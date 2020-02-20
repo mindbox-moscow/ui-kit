@@ -1,19 +1,33 @@
-import { BrowserList, WEEK_IN_DAYS } from "./constants";
+import { BrowserList, DAY_OFFSET } from "./constants";
+
+export const changeDateToEndOfTheDay = (date: Date) => {
+	date.setHours(23);
+	date.setMinutes(59);
+	date.setSeconds(59);
+	date.setMilliseconds(999);
+
+	return date;
+}
+
+export const changeDateToBeginOfTheDay = (date: Date) => {
+	date.setHours(0);
+	date.setMinutes(0);
+	date.setSeconds(0);
+	date.setMilliseconds(0);
+
+	return date;
+}
 
 export const getNow = (): Date => {
 	const now = new Date();
-	now.setSeconds(0);
-	now.setMilliseconds(0);
 
-	return now;
+	return changeDateToEndOfTheDay(now);
 };
 
-export const getWeekBeforeNow = (): Date => {
+export const getDaysBeforeNow = (days: number): Date => {
 	const now = getNow();
-	now.setSeconds(0);
-	now.setMilliseconds(0);
 
-	return new Date(now.setDate(now.getDate() - WEEK_IN_DAYS));
+	return new Date(now.setDate(now.getDate() + DAY_OFFSET - days));
 };
 
 export const parseDateToString = (date: Date) => date.toLocaleDateString();

@@ -6,7 +6,7 @@ import "./RadioButton.scss";
 import cn from "classnames";
 
 interface IProps {
-	children: string;
+	children: string | React.ReactElement;
 	checked?: boolean;
 	name: string;
 	onSelected?: () => void;
@@ -21,7 +21,7 @@ export class RadioButton extends React.Component<IProps> {
 			children,
 			checked,
 			name,
-			onSelected = () => {},
+			onSelected = () => null,
 			icon,
 			iconSvg,
 			onClick

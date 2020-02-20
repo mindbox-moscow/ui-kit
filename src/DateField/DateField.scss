@@ -32,6 +32,10 @@ $errorColoBorder: #ddaaa2;
 		border-color: $errorColoBorder;
 	}
 
+	&_block {
+		width: 100%;
+	}
+
 	&__input {
 		padding-right: 0;
 		padding-left: 0;

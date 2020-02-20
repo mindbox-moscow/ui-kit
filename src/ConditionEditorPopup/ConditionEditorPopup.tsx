@@ -3,7 +3,7 @@ import { Button } from "../Button";
 
 import "./ConditionEditorPopup.scss";
 
-interface Props {
+interface IProps {
 	viewMode: "edit" | "menu";
 	innerEditorComponent: React.ReactNode;
 	addFilterButtonCaption: string;
@@ -15,7 +15,7 @@ interface Props {
 
 const ENTER_KEY = 13;
 
-export class ConditionEditorPopup extends React.Component<Props> {
+export class ConditionEditorPopup extends React.Component<IProps> {
 	public handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
 		const { onAddFilterButtonClick, isAddFilterButtonEnabled } = this.props;
 

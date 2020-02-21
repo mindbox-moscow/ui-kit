@@ -2,7 +2,7 @@ import cn from "classnames";
 import { useState } from "react";
 import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
-import { useDebounce } from "../HOOKs";
+import { useWindowResize } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { FilterActions, InfoWrapper } from "./components";
 import {
@@ -42,14 +42,11 @@ export const FilterWrapper: React.FC<Props> = ({
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
-	const debouncedResize = useDebounce(updateBrackets, 150);
+	const debouncedResize = useWindowResize();
 
 	React.useEffect(
 		() => {
-			window.addEventListener("resize", rerenderBrackets);
-			return () => {
-				window.removeEventListener("resize", rerenderBrackets);
-			};
+			rerenderBrackets();
 		},
 		[debouncedResize]
 	);

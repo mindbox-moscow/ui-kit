@@ -17,12 +17,15 @@ export function useWindowResize(delay: number = 150) {
 	const [windowSize, setWindowSize] = React.useState(getSize);
 
 	React.useEffect(() => {
-		let timeoutId: any;
+		let timeoutId: number;
 
 		const resizeListener = () => {
 			clearTimeout(timeoutId);
 
-			timeoutId = setTimeout(() => setWindowSize(getSize()), delay);
+			timeoutId = window.setTimeout(
+				() => setWindowSize(getSize()),
+				delay
+			);
 		};
 
 		window.addEventListener("resize", resizeListener);

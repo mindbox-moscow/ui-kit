@@ -47,6 +47,9 @@ const FilterConditionSelector: React.FC<
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
+	let itemsListSearch: HTMLDivElement[] = [];
+	let itemListFirstFocus: () => void = () => null;
+	let itemListFirstBlur: () => void = () => null;
 	let topRect: number = 0;
 
 	React.useEffect(
@@ -152,6 +155,7 @@ const FilterConditionSelector: React.FC<
 					listRef.current.focus({ preventScroll: true });
 				}
 
+				itemListFirstBlur();
 				onNextSelected();
 				break;
 			case KeysCodes.Esc:
@@ -170,6 +174,12 @@ const FilterConditionSelector: React.FC<
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
+
+		if (e.target.value === "") {
+			itemListFirstBlur();
+		} else {
+			itemListFirstFocus();
+		}
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -195,8 +205,27 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
+	const setItemRef = (itemElement: React.RefObject<HTMLDivElement>) => {
+		if (itemElement.current) {
+			itemsListSearch = [...itemsListSearch, itemElement.current];
+		}
+	};
+
+	const setFocusFirstElement = (
+		onMouseEnter: () => void,
+		onMouseLeave: () => void,
+		itemElement: React.RefObject<HTMLDivElement>
+	) => {
+		if (itemsListSearch[0] === itemElement.current) {
+			itemListFirstFocus = onMouseEnter;
+			itemListFirstBlur = onMouseLeave;
+		}
+	};
+
 	const valueContext: IProps = {
-		selectedElement: null
+		selectedElement: null,
+		onItemsRef: setItemRef,
+		onFocusElement: setFocusFirstElement
 	};
 
 	return (

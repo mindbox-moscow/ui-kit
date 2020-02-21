@@ -94,7 +94,8 @@ $searchFocusBgColor: #fffde5;
 
 	&:hover,
 	&:focus,
-	&_selected {
+	&_selected,
+	&_highlighted {
 		color: #fff;
 	}
 
@@ -105,7 +106,8 @@ $searchFocusBgColor: #fffde5;
 		}
 	}
 
-	&_selected {
+	&_selected,
+	&_highlighted {
 		&::before {
 			right: 1px;
 			background-color: $selectItemColorBg;

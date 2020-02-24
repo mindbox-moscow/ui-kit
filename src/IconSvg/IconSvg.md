@@ -18,5 +18,6 @@
 	<IconSvg type="area-selection" />
 	<IconSvg type="flip-horisontal" />
 	<IconSvg type="revert" />
+	<IconSvg type="move" />
 </div>
 ```

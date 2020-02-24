@@ -19,6 +19,7 @@ import { IconsProps } from "../types";
 import { AreaSelection } from "./AreaSelection";
 import { FlipHorizontal } from "./FlipHorizontal";
 import { Revert } from "./Revert";
+import { Move } from "./Move";
 
 type ISvgProps = {
 	className: string;
@@ -44,7 +45,8 @@ type IconType =
 	| "arrow-bottom"
 	| "area-selection"
 	| "flip-horisontal"
-	| "revert";
+	| "revert"
+	| "move";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -68,7 +70,8 @@ const icons: Icons = {
 	"arrow-bottom": ArrowBottom,
 	"area-selection": AreaSelection,
 	"flip-horisontal": FlipHorizontal,
-	revert: Revert
+	revert: Revert,
+	move: Move
 };
 
 export { icons, IconType, ISvgProps };

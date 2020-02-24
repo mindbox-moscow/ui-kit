@@ -46,7 +46,7 @@ type IconType =
 	| "question"
 	| "arrow-bottom"
 	| "area-selection"
-	| "flip-horisontal"
+	| "flip-horizontal"
 	| "revert"
 	| "move"
 	| "plus"
@@ -73,7 +73,7 @@ const icons: Icons = {
 	question: Question,
 	"arrow-bottom": ArrowBottom,
 	"area-selection": AreaSelection,
-	"flip-horisontal": FlipHorizontal,
+	"flip-horizontal": FlipHorizontal,
 	revert: Revert,
 	move: Move,
 	plus: Plus,

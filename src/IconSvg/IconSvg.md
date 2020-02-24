@@ -16,7 +16,7 @@
 	<IconSvg type="question" />
 	<IconSvg type="arrow-bottom" />
 	<IconSvg type="area-selection" />
-	<IconSvg type="flip-horisontal" />
+	<IconSvg type="flip-horizontal" />
 	<IconSvg type="revert" />
 	<IconSvg type="move" />
 	<IconSvg type="plus" />

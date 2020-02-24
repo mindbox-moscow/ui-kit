@@ -16,6 +16,12 @@ import { CrossArrows } from "./CrossArrows";
 import { Question } from "./Question";
 import { ArrowBottom } from "./ArrowBottom";
 import { IconsProps } from "../types";
+import { AreaSelection } from "./AreaSelection";
+import { FlipHorizontal } from "./FlipHorizontal";
+import { Revert } from "./Revert";
+import { Move } from "./Move";
+import { Plus } from "./Plus";
+import { Minus } from "./Minus";
 
 type ISvgProps = {
 	className: string;
@@ -38,7 +44,13 @@ type IconType =
 	| "duplicate"
 	| "cross-arrows"
 	| "question"
-	| "arrow-bottom";
+	| "arrow-bottom"
+	| "area-selection"
+	| "flip-horizontal"
+	| "revert"
+	| "move"
+	| "plus"
+	| "minus";
 
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
@@ -59,7 +71,13 @@ const icons: Icons = {
 	duplicate: Duplicate,
 	"cross-arrows": CrossArrows,
 	question: Question,
-	"arrow-bottom": ArrowBottom
+	"arrow-bottom": ArrowBottom,
+	"area-selection": AreaSelection,
+	"flip-horizontal": FlipHorizontal,
+	revert: Revert,
+	move: Move,
+	plus: Plus,
+	minus: Minus
 };
 
 export { icons, IconType, ISvgProps };

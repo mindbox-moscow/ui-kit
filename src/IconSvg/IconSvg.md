@@ -19,5 +19,7 @@
 	<IconSvg type="flip-horisontal" />
 	<IconSvg type="revert" />
 	<IconSvg type="move" />
+	<IconSvg type="plus" />
+	<IconSvg type="minus" />
 </div>
 ```

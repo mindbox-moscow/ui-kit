@@ -51,8 +51,9 @@ const FilterConditionSelector: React.FC<
 		setFirstItemTree
 	] = React.useState<HTMLDivElement | null>(null);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
-	let markedFirstItemTree: () => void = () => null;
-	let unmarkedFirstItemTree: () => void = () => null;
+	let markedFirstItemTree: () => void;
+	let unmarkedFirstItemTree: () => void;
+	let selectFirstItemTree: () => void;
 	let topRect: number = 0;
 	let counter = 0;
 
@@ -162,7 +163,6 @@ const FilterConditionSelector: React.FC<
 	const handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.keyCode) {
 			case KeysCodes.ArrowDown:
-			case KeysCodes.Enter:
 				e.preventDefault();
 
 				if (searchRef.current && listRef.current) {
@@ -173,6 +173,14 @@ const FilterConditionSelector: React.FC<
 				unmarkedFirstItemTree();
 				onNextSelected();
 				break;
+			case KeysCodes.Enter:
+				e.preventDefault();
+
+				unmarkedFirstItemTree();
+				selectFirstItemTree();
+
+				break;
+
 			case KeysCodes.Esc:
 				e.preventDefault();
 
@@ -215,15 +223,17 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
-	const setFocusFirstElement = (
+	const getFirstItemTree = (
 		onMouseEnter: () => void,
 		onMouseLeave: () => void,
+		onSelect: () => void,
 		itemElement: React.RefObject<HTMLDivElement>
 	) => {
 		if (counter === 0 && itemElement.current) {
 			setFirstItemTree(itemElement.current);
 			markedFirstItemTree = onMouseEnter;
 			unmarkedFirstItemTree = onMouseLeave;
+			selectFirstItemTree = onSelect;
 
 			counter++;
 		}
@@ -231,7 +241,7 @@ const FilterConditionSelector: React.FC<
 
 	const valueContext: IProps = {
 		selectedElement: null,
-		onFocusElement: setFocusFirstElement
+		onFocusElement: getFirstItemTree
 	};
 
 	return (

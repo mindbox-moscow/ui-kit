@@ -12,6 +12,7 @@ export interface IProps {
 	onFocusElement: (
 		onMouseEnter: () => void,
 		onMouseLeave: () => void,
+		onSelect: () => void,
 		itemElement: React.RefObject<HTMLDivElement>
 	) => void;
 }

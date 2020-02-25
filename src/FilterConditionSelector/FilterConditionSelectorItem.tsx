@@ -59,6 +59,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				context.onFocusElement(
 					handleMouseEnter,
 					handleMouseLeave,
+					onSelectItem,
 					refSelectorButton
 				);
 			}

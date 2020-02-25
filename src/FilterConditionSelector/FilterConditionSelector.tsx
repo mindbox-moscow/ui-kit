@@ -54,6 +54,17 @@ const FilterConditionSelector: React.FC<
 
 	React.useEffect(
 		() => {
+			if (debouncedSearchTerm === "") {
+				itemListFirstBlur();
+			} else {
+				itemListFirstFocus();
+			}
+		},
+		[onSearchTermChange]
+	);
+
+	React.useEffect(
+		() => {
 			onSearchTermChange(debouncedSearchTerm);
 		},
 		[debouncedSearchTerm]
@@ -149,6 +160,7 @@ const FilterConditionSelector: React.FC<
 			case KeysCodes.ArrowDown:
 			case KeysCodes.Enter:
 				e.preventDefault();
+				itemListFirstBlur();
 
 				if (searchRef.current && listRef.current) {
 					searchRef.current.blur();
@@ -174,12 +186,7 @@ const FilterConditionSelector: React.FC<
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
-
-		if (e.target.value === "") {
-			itemListFirstBlur();
-		} else {
-			itemListFirstFocus();
-		}
+		itemListFirstBlur();
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -225,7 +232,8 @@ const FilterConditionSelector: React.FC<
 	const valueContext: IProps = {
 		selectedElement: null,
 		onItemsRef: setItemRef,
-		onFocusElement: setFocusFirstElement
+		onFocusElement: setFocusFirstElement,
+		searchTerm
 	};
 
 	return (

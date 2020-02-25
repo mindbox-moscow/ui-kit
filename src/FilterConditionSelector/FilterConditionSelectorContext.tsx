@@ -8,6 +8,7 @@ interface SelectedElement {
 }
 
 export interface IProps {
+	searchTerm: string;
 	selectedElement: SelectedElement | null;
 	onItemsRef: (itemElement: React.RefObject<HTMLDivElement>) => void;
 	onFocusElement: (

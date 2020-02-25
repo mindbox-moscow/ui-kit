@@ -46,28 +46,37 @@ const FilterConditionSelector: React.FC<
 	const listRef = React.createRef<HTMLUListElement>();
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
+	const [
+		firstItemTree,
+		setFirstItemTree
+	] = React.useState<HTMLDivElement | null>(null);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
-	let itemsListSearch: HTMLDivElement[] = [];
-	let itemListFirstFocus: () => void = () => null;
-	let itemListFirstBlur: () => void = () => null;
+	let markedFirstItemTree: () => void = () => null;
+	let unmarkedFirstItemTree: () => void = () => null;
 	let topRect: number = 0;
-
-	React.useEffect(
-		() => {
-			if (debouncedSearchTerm === "") {
-				itemListFirstBlur();
-			} else {
-				itemListFirstFocus();
-			}
-		},
-		[onSearchTermChange]
-	);
+	let counter = 0;
 
 	React.useEffect(
 		() => {
 			onSearchTermChange(debouncedSearchTerm);
 		},
 		[debouncedSearchTerm]
+	);
+
+	React.useEffect(
+		() => {
+			if (debouncedSearchTerm === "") {
+				unmarkedFirstItemTree();
+			} else {
+				markedFirstItemTree();
+			}
+
+			console.log({
+				firstItemTree,
+				debouncedSearchTerm
+			});
+		},
+		[firstItemTree]
 	);
 
 	React.useEffect(() => {
@@ -160,14 +169,13 @@ const FilterConditionSelector: React.FC<
 			case KeysCodes.ArrowDown:
 			case KeysCodes.Enter:
 				e.preventDefault();
-				itemListFirstBlur();
 
 				if (searchRef.current && listRef.current) {
 					searchRef.current.blur();
 					listRef.current.focus({ preventScroll: true });
 				}
 
-				itemListFirstBlur();
+				unmarkedFirstItemTree();
 				onNextSelected();
 				break;
 			case KeysCodes.Esc:
@@ -186,7 +194,7 @@ const FilterConditionSelector: React.FC<
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
-		itemListFirstBlur();
+		unmarkedFirstItemTree();
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -212,26 +220,22 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
-	const setItemRef = (itemElement: React.RefObject<HTMLDivElement>) => {
-		if (itemElement.current) {
-			itemsListSearch = [...itemsListSearch, itemElement.current];
-		}
-	};
-
 	const setFocusFirstElement = (
 		onMouseEnter: () => void,
 		onMouseLeave: () => void,
 		itemElement: React.RefObject<HTMLDivElement>
 	) => {
-		if (itemsListSearch[0] === itemElement.current) {
-			itemListFirstFocus = onMouseEnter;
-			itemListFirstBlur = onMouseLeave;
+		if (counter === 0 && itemElement.current) {
+			setFirstItemTree(itemElement.current);
+			markedFirstItemTree = onMouseEnter;
+			unmarkedFirstItemTree = onMouseLeave;
+
+			counter++;
 		}
 	};
 
 	const valueContext: IProps = {
 		selectedElement: null,
-		onItemsRef: setItemRef,
 		onFocusElement: setFocusFirstElement
 	};
 

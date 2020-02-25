@@ -56,7 +56,6 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	React.useEffect(
 		() => {
 			if (context) {
-				context.onItemsRef(refSelectorButton);
 				context.onFocusElement(
 					handleMouseEnter,
 					handleMouseLeave,
@@ -64,7 +63,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				);
 			}
 		},
-		[context, refSelectorButton]
+		[searchTerm, refSelectorButton]
 	);
 
 	const scrollParentOnKeyDown = () => {

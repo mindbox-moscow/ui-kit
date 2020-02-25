@@ -9,7 +9,6 @@ interface SelectedElement {
 
 export interface IProps {
 	selectedElement: SelectedElement | null;
-	onItemsRef: (itemElement: React.RefObject<HTMLDivElement>) => void;
 	onFocusElement: (
 		onMouseEnter: () => void,
 		onMouseLeave: () => void,

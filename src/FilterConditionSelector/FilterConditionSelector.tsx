@@ -70,11 +70,6 @@ const FilterConditionSelector: React.FC<
 			} else {
 				markedFirstItemTree();
 			}
-
-			console.log({
-				firstItemTree,
-				debouncedSearchTerm
-			});
 		},
 		[firstItemTree]
 	);

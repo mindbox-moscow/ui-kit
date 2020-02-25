@@ -55,7 +55,6 @@ const FilterConditionSelector: React.FC<
 	let unmarkedFirstItemTree: () => void;
 	let selectFirstItemTree: () => void;
 	let topRect: number = 0;
-	let counter = 0;
 
 	React.useEffect(
 		() => {
@@ -229,13 +228,11 @@ const FilterConditionSelector: React.FC<
 		onSelect: () => void,
 		itemElement: React.RefObject<HTMLDivElement>
 	) => {
-		if (counter === 0 && itemElement.current) {
+		if (itemElement.current) {
 			setFirstItemTree(itemElement.current);
 			markedFirstItemTree = onMouseEnter;
 			unmarkedFirstItemTree = onMouseLeave;
 			selectFirstItemTree = onSelect;
-
-			counter++;
 		}
 	};
 

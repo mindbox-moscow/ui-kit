@@ -4,9 +4,10 @@ export interface FilterDetailsProps {
 	editorComponent: React.ReactNode;
 	viewMode: "edit" | "menu";
 	vertical?: "top";
-	horizontal?: "center" | "right"
+	horizontal?: "center" | "right";
 }
 
 export interface CallbackProps {
 	onClose: () => void;
+	rollBackFocus?: (isClick: boolean) => void;
 }

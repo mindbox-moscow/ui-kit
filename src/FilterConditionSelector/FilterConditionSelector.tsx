@@ -232,8 +232,7 @@ const FilterConditionSelector: React.FC<
 	const valueContext: IProps = {
 		selectedElement: null,
 		onItemsRef: setItemRef,
-		onFocusElement: setFocusFirstElement,
-		searchTerm
+		onFocusElement: setFocusFirstElement
 	};
 
 	return (

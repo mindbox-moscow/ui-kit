@@ -195,8 +195,8 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
-	const handleRollBackFocus = (isClick: boolean) => {
-		if (isClick && searchRef.current && listRef.current) {
+	const handleRollBackFocus = () => {
+		if (searchRef.current && listRef.current) {
 			listRef.current.focus({ preventScroll: true });
 		}
 	};

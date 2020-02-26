@@ -72,7 +72,7 @@ export const FilterDetails: React.FC<Props> = ({
 	const handleKeyDown = (e: KeyboardEvent) => {
 		if (rollBackFocus) {
 			if (e.keyCode === KeysCodes.Esc) {
-				rollBackFocus(true);
+				rollBackFocus();
 			}
 		} else {
 			const wrapperRef = kitEditorWrapperRef.current;

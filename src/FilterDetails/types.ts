@@ -9,5 +9,5 @@ export interface FilterDetailsProps {
 
 export interface CallbackProps {
 	onClose: () => void;
-	rollBackFocus?: (isClick: boolean) => void;
+	rollBackFocus?: () => void;
 }

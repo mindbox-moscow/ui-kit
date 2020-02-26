@@ -47,11 +47,11 @@ const FilterConditionSelector: React.FC<
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 	const [
-		firstItemTree,
-		setFirstItemTree
+		treeFirstItem,
+		setTreeFirstItem
 	] = React.useState<HTMLDivElement | null>(null);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
-	let markedFirstItemTree: () => void;
+	let markFirstItemTree: () => void;
 	let unmarkedFirstItemTree: () => void;
 	let selectFirstItemTree: () => void;
 	let topRect: number = 0;
@@ -68,10 +68,10 @@ const FilterConditionSelector: React.FC<
 			if (debouncedSearchTerm === "") {
 				unmarkedFirstItemTree();
 			} else {
-				markedFirstItemTree();
+				markFirstItemTree();
 			}
 		},
-		[firstItemTree]
+		[treeFirstItem]
 	);
 
 	React.useEffect(() => {
@@ -229,8 +229,8 @@ const FilterConditionSelector: React.FC<
 		itemElement: React.RefObject<HTMLDivElement>
 	) => {
 		if (itemElement.current) {
-			setFirstItemTree(itemElement.current);
-			markedFirstItemTree = onMouseEnter;
+			setTreeFirstItem(itemElement.current);
+			markFirstItemTree = onMouseEnter;
 			unmarkedFirstItemTree = onMouseLeave;
 			selectFirstItemTree = onSelect;
 		}

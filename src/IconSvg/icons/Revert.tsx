@@ -13,36 +13,36 @@ export const Revert = ({ className, size }: ISvgProps) => (
 		<g display="none">
 			<polyline
 				display="inline"
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				fill="#000000"
 				stroke="#2A26FF"
-				stroke-width="10"
-				stroke-miterlimit="10"
+				strokeWidth="10"
+				strokeMiterlimit="10"
 				points="   85.091,11.092 83,35 59.091,32.908  "
 			/>
 			<polyline
 				display="inline"
 				fill="#000000"
 				stroke="#2A26FF"
-				stroke-width="10"
-				stroke-miterlimit="10"
+				strokeWidth="10"
+				strokeMiterlimit="10"
 				points="40.909,67.092 17,65    14.909,88.908  "
 			/>
 			<path
 				display="inline"
 				fill="#000000"
 				stroke="#2A26FF"
-				stroke-width="10"
-				stroke-miterlimit="10"
+				strokeWidth="10"
+				strokeMiterlimit="10"
 				d="M15.221,40.681   c3.229-12.003,12.592-22.006,25.462-25.454c16.696-4.474,33.797,3.557,41.361,18.35"
 			/>
 			<path
 				display="inline"
 				fill="#000000"
 				stroke="#2A26FF"
-				stroke-width="10"
-				stroke-miterlimit="10"
+				strokeWidth="10"
+				strokeMiterlimit="10"
 				d="M84.778,59.32   c-3.228,12.003-12.591,22.005-25.461,25.453c-16.696,4.474-33.797-3.557-41.361-18.35"
 			/>
 		</g>
@@ -54,32 +54,32 @@ export const Revert = ({ className, size }: ISvgProps) => (
 				display="inline"
 				fill="#000000"
 				stroke="#E00C02"
-				stroke-width="4"
-				stroke-miterlimit="10"
+				strokeWidth="4"
+				strokeMiterlimit="10"
 				points="84.83,13.08 83,34    62.08,32.17  "
 			/>
 			<polyline
 				display="inline"
 				fill="#000000"
 				stroke="#E00C02"
-				stroke-width="4"
-				stroke-miterlimit="10"
+				strokeWidth="4"
+				strokeMiterlimit="10"
 				points="37.92,67.83 17,66    15.17,86.92  "
 			/>
 			<path
 				display="inline"
 				fill="#000000"
 				stroke="#E00C02"
-				stroke-width="4"
-				stroke-miterlimit="10"
+				strokeWidth="4"
+				strokeMiterlimit="10"
 				d="M15.221,40.681   c3.229-12.003,12.592-22.006,25.462-25.454c16.696-4.474,33.797,3.557,41.361,18.35"
 			/>
 			<path
 				display="inline"
 				fill="#000000"
 				stroke="#E00C02"
-				stroke-width="4"
-				stroke-miterlimit="10"
+				strokeWidth="4"
+				strokeMiterlimit="10"
 				d="M84.778,59.32   c-3.228,12.003-12.591,22.005-25.461,25.453c-16.696,4.474-33.797-3.557-41.361-18.35"
 			/>
 		</g>

@@ -42,8 +42,8 @@ const FilterConditionSelector: React.FC<
 		setOutsideClickRef
 	} = props;
 
-	const searchRef = React.createRef<Input>();
-	const listRef = React.createRef<HTMLUListElement>();
+	const searchRef = React.useRef<Input>(null);
+	const listRef = React.useRef<HTMLUListElement>(null);
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -195,6 +195,12 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
+	const handleRollBackFocus = () => {
+		if (searchRef.current && listRef.current) {
+			listRef.current.focus({ preventScroll: true });
+		}
+	};
+
 	const valueContext: IProps = {
 		selectedElement: null
 	};
@@ -265,6 +271,7 @@ const FilterConditionSelector: React.FC<
 					editorComponent={editorComponent}
 					onClose={onConditionStateToggle}
 					viewMode="menu"
+					rollBackFocus={handleRollBackFocus}
 				/>
 			</div>
 		</ContextWrapper>

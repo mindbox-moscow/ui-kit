@@ -7,7 +7,7 @@ type ConditionState =
 
 export interface StateProps {
 	filterablePropertyName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"
-	filtrationMethodName?: string; // способ фильтрации. "есть такие" или "заполнен и". может отсутстовать.
+	filtrationMethodName?: string | JSX.Element; // способ фильтрации. "есть такие" или "заполнен и". может отсутстовать.
 	filtrationMethodParametersComponent?: React.ReactNode; // компонент настроек для способа фильтрации. тоже может
 	// отсутствовать.
 	linkedConditionComponent?: React.ReactNode; // компонент вложенного условия фильтрации. туда всегда будет

@@ -239,7 +239,7 @@
 		box-sizing: border-box;
 
 		> .kit-filtration-condition__item-text {
-			@include createHorisontalBrackets(-16px, 50%);
+			@include createHorisontalBrackets(-16px, 16px);
 		}
 
 		.kit-filtration-group__buttons {

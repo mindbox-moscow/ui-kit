@@ -52,7 +52,7 @@ const FilterConditionSelector: React.FC<
 	] = React.useState<HTMLDivElement | null>(null);
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	let markFirstItemTree: () => void;
-	let unmarkedFirstItemTree: () => void;
+	let unmarkFirstItemTree: () => void;
 	let selectFirstItemTree: () => void;
 	let topRect: number = 0;
 
@@ -66,7 +66,7 @@ const FilterConditionSelector: React.FC<
 	React.useEffect(
 		() => {
 			if (debouncedSearchTerm === "") {
-				unmarkedFirstItemTree();
+				unmarkFirstItemTree();
 			} else {
 				markFirstItemTree();
 			}
@@ -169,13 +169,13 @@ const FilterConditionSelector: React.FC<
 					listRef.current.focus({ preventScroll: true });
 				}
 
-				unmarkedFirstItemTree();
+				unmarkFirstItemTree();
 				onNextSelected();
 				break;
 			case KeysCodes.Enter:
 				e.preventDefault();
 
-				unmarkedFirstItemTree();
+				unmarkFirstItemTree();
 				selectFirstItemTree();
 
 				break;
@@ -196,7 +196,7 @@ const FilterConditionSelector: React.FC<
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
-		unmarkedFirstItemTree();
+		unmarkFirstItemTree();
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -231,7 +231,7 @@ const FilterConditionSelector: React.FC<
 		if (itemElement.current) {
 			setTreeFirstItem(itemElement.current);
 			markFirstItemTree = onMouseEnter;
-			unmarkedFirstItemTree = onMouseLeave;
+			unmarkFirstItemTree = onMouseLeave;
 			selectFirstItemTree = onSelect;
 		}
 	};

@@ -239,7 +239,15 @@ const FilterConditionSelector: React.FC<
 							})}
 						</div>
 					</div>
-					<div className="kit-filter-condition-selector__hierarchy-wrap">
+					<div
+						className={cn(
+							"kit-filter-condition-selector__hierarchy-wrap",
+							{
+								"kit-filter-condition-selector__hierarchy-wrap_search":
+									debouncedSearchTerm !== ""
+							}
+						)}
+					>
 						<FilterConditionSelectorContext.Provider
 							value={valueContext}
 						>

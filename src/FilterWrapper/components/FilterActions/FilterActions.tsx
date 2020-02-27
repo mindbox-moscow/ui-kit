@@ -40,6 +40,7 @@ export const FilterActions: React.FC<FilterActionsProps> = ({
 						size="xxs"
 						color="gray"
 						className="kit-filter-actions__title"
+						type="button"
 					>
 						{filterActionsCaption}
 					</Button>

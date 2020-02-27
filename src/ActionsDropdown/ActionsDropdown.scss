@@ -8,16 +8,16 @@ $kit-actions-dropdown-padding: 15px;
 .kit-actions-dropdown__toggle {
 	position: relative;
 	top: 2px;
+	display: flex;
 	width: 14px;
 	height: 20px;
 	margin: 0;
 	padding: 0;
+	background: none;
 	border: none;
 	border-radius: 0;
 	outline: none;
 	cursor: pointer;
-	display: flex;
-	background: none;
 	appearance: none;
 
 	.kit-actions-dropdown_opened & {
@@ -68,7 +68,7 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__action {
 	margin: 7px 0;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 18px;
 	color: #333333;
@@ -97,7 +97,7 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__group-title {
 	margin: 7px 0;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 12px;
 	line-height: 18px;
 	font-weight: normal;

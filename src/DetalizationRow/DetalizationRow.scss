@@ -1,10 +1,10 @@
-@import '../variables';
+@import "../variables";
 
 .kit-detalization-row {
+    display: flex;
     width: 100%;
     box-sizing: border-box;
-    font-family: 'PT Sans', sans-serif;
-    display: flex;
+    font-family: "PT Sans", sans-serif;
 
     &__name {
         @media (max-width: $tablet) {

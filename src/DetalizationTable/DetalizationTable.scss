@@ -1,24 +1,24 @@
-@import '../variables';
+@import "../variables";
 
 .kit-detalization-table {
     width: 100%;
     box-sizing: border-box;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
 
     &__header {
+        display: flex;
         justify-content: space-between;
         padding-bottom: 5px;
         border-bottom: 1px solid #d4d4d4;
         font-size: 14px;
         font-weight: 900;
-        display: flex;
     }
 
     &__row {
+        display: flex;
         justify-content: space-between;
         align-items: flex-start;
         margin-top: 18px;
-        display: flex;
 
         @media (max-width: $tablet) {
             justify-content: flex-start;

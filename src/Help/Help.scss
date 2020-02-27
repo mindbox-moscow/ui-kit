@@ -1,6 +1,6 @@
 .kit-help {
     position: relative;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
     font-size: 13px;
 
     &__icon {
@@ -19,10 +19,10 @@
         padding: 8px 14px 8px;
         background-color: #fffcf0;
         box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-        box-sizing: border-box;
-        color: #000000;
         visibility: hidden;
+        box-sizing: border-box;
         opacity: 0;
+        color: #000000;
         transition: opacity 0.3s ease-out;
 
         &::before {
@@ -34,7 +34,7 @@
             height: 33px;
             background-color: #fffcf0;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-            content: '';
+            content: "";
         }
 
         &::after {
@@ -45,7 +45,7 @@
             width: 5px;
             height: 33px;
             background-color: #fffcf0;
-            content: '';
+            content: "";
         }
     }
 

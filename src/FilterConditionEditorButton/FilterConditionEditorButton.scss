@@ -20,6 +20,7 @@ $bgColorOpen: #3875d7;
 
 .kit-filter-editor__btn {
 	position: relative;
+	display: inline-flex;
 	align-items: center;
 	min-height: 22px;
 	margin: 0;
@@ -28,15 +29,14 @@ $bgColorOpen: #3875d7;
 	border: 1px solid $borderColor;
 	border-radius: 4px;
 	outline: none;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 22px;
 	color: $textColor;
 	text-align: center;
-	cursor: pointer;
-	display: inline-flex;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&_open {
 		background-color: $bgColorOpen;
@@ -52,8 +52,8 @@ $bgColorOpen: #3875d7;
 	}
 
 	&:disabled {
-		cursor: auto;
 		opacity: 0.35;
+		cursor: auto;
 	}
 
 	svg {

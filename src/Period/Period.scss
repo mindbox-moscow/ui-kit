@@ -1,18 +1,18 @@
 .kit-period {
+    display: flex;
     flex-wrap: wrap;
     max-width: 270px;
-    font-family: 'PT Sans', sans-serif;
-    display: flex;
+    font-family: "PT Sans", sans-serif;
 
     &__item {
         position: relative;
+        display: block;
         flex-shrink: 0;
         width: 56px;
         height: 56px;
         margin-right: 9px;
         margin-bottom: 8px;
         cursor: pointer;
-        display: block;
 
         &:hover {
             opacity: 0.8;
@@ -26,6 +26,7 @@
     }
 
     &__title {
+        display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -36,7 +37,6 @@
         box-sizing: border-box;
         font-size: 14px;
         color: #000000;
-        display: flex;
     }
 
     &__input:checked+&__title {

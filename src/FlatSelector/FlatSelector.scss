@@ -10,6 +10,7 @@ $mainColor: #3875d7;
 }
 
 .kit-flat-selector__item {
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	flex-grow: 1;
@@ -19,15 +20,14 @@ $mainColor: #3875d7;
 	border: solid 1px rgba($mainColor, 0.15);
 	border-radius: 4px;
 	outline: none;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 1.07;
 	color: $mainColor;
 	white-space: nowrap;
-	cursor: pointer;
-	display: inline-flex;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		border-color: rgba($mainColor, 1);

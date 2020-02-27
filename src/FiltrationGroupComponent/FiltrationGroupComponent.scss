@@ -1,4 +1,4 @@
-@import '../sass/main';
+@import "../sass/main";
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
@@ -27,8 +27,8 @@
 	&_read-only {
 		.kit-filtration-group__label,
 		.kit-filtration-group__label-line {
-			cursor: default;
 			pointer-events: none;
+			cursor: default;
 		}
 
 		&#{$self}_no-label#{$self}_not-children {
@@ -61,7 +61,6 @@
 		}
 
 		&::before {
-			content: "";
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -73,6 +72,7 @@
 			background-color: $editColorBg;
 			border-radius: 3px 0 0 3px;
 			box-sizing: border-box;
+			content: "";
 			cursor: pointer;
 		}
 
@@ -256,6 +256,7 @@
 	top: 0;
 	left: -10px;
 	z-index: 2;
+	display: flex;
 	align-items: center;
 	width: calc(100% + 10px);
 	height: 1px;
@@ -263,7 +264,6 @@
 	border-radius: 3px 0 0 3px;
 	box-sizing: border-box;
 	color: $braketColor;
-	display: flex;
 
 	& ~ .kit-filtration-group,
 	& ~ .kit-filtration-condition {
@@ -285,13 +285,13 @@
 	position: absolute;
 	left: 5px;
 	z-index: 4;
+	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
 	margin-top: 0;
 	margin-left: -1px;
 	box-sizing: border-box;
 	cursor: pointer;
-	display: inline-flex;
 
 	&_and {
 		color: $andColor;
@@ -323,6 +323,7 @@
 	position: absolute;
 	left: 0;
 	z-index: 3;
+	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
 	height: 100%;
@@ -330,38 +331,37 @@
 	background-color: $braketColor;
 	box-sizing: border-box;
 	color: $braketColor;
-	display: inline-flex;
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 0;
 	z-index: 1;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	min-width: 26px;
 	min-height: 16px;
 	border-radius: 3px;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 10px;
 	line-height: 1;
 	font-weight: bold;
 	color: #ffffff;
 	text-align: center;
 	transform: translateX(-50%);
-	display: inline-flex;
 }
 
 .kit-filtration-group__buttons {
 	position: relative;
 	z-index: 3;
+	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
 	padding-right: 20px;
 	outline: none;
 	box-sizing: border-box;
-	display: inline-flex;
 
 	@include createHorisontalBrackets;
 
@@ -387,16 +387,17 @@
 			top: 0;
 			left: -10px;
 			z-index: 3;
+			display: block;
 			width: calc(100% + 10px);
 			height: 100%;
-			content: '';
-			display: block;
+			content: "";
 		}
 	}
 }
 
 .kit-filtration-group__remove,
 .kit-filtration-group__copy {
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
@@ -404,9 +405,8 @@
 	border: 0;
 	outline: none;
 	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-flex;
 	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
 }
 
 .kit-filtration-group__remove {
@@ -436,7 +436,7 @@
 	border: 0;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 12px;
 	line-height: 1;
 	font-weight: 700;
@@ -458,12 +458,12 @@
 	right: 13px;
 	z-index: 10;
 	padding: 0;
+	background: none;
 	border: 0;
 	outline: none;
 	color: $closeColor;
-	cursor: pointer;
-	background: none;
 	transition: color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		color: $andColor;
@@ -471,13 +471,13 @@
 }
 
 .kit-filtration-group__label-text-buttons {
+	display: flex;
 	align-items: center;
 	height: 22px;
 	background-color: #ffffff;
 	border-radius: 4px 0 0 4px;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	box-sizing: border-box;
-	display: flex;
 
 	&_or {
 		.kit-filtration-group__label-button {

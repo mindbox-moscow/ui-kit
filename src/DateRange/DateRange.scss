@@ -31,14 +31,14 @@
 
 .kit-date-range__label {
 	margin-right: 4px;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 }
 
 .kit-date-range__popup {
+	display: flex;
 	align-items: flex-end;
 	margin-bottom: 8px;
-	display: flex;
 }
 
 .kit-date-range__popup-dates:first-child {

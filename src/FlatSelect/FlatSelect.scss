@@ -28,12 +28,12 @@
 
 .kit-selectR-container {
 	position: relative;
+	display: inline-block;
+	*display: inline;
 	margin: 0;
 	zoom: 1;
 	box-sizing: border-box;
 	vertical-align: middle;
-	display: inline-block;
-	*display: inline;
 }
 .kit-selectR-container,
 .kit-selectR-choice,
@@ -43,10 +43,11 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 }
 .kit-selectR-choice {
 	position: relative;
+	display: block;
 	height: 29px;
 	padding: 0;
 	background-color: #fdfdfd;
@@ -64,20 +65,20 @@
 	cursor: pointer;
 	-webkit-user-select: none;
 	user-select: none;
-	display: block;
 	-webkit-touch-callout: none;
 }
 .kit-selectR-choice::after {
 	position: absolute;
 	top: 0;
 	right: 0;
+	display: block;
 	width: 22px;
 	height: 100%;
-	content: '';
-	display: block;
 	background: url(./images/selectR.png) no-repeat 3px 49%;
+	content: "";
 }
 .kit-selectR-chosen {
+	display: block;
 	width: auto;
 	max-width: 100%;
 	padding-right: 26px;
@@ -85,20 +86,19 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	display: block;
 }
 .kit-selectR-clear {
 	position: absolute;
 	top: 50%;
 	right: 19px;
+	display: none;
 	width: 21px;
 	height: 21px;
 	margin-top: -11px;
+	background: url(./images/selectR.png) -54px 50% no-repeat;
 	outline: none;
 	font-size: 0;
 	cursor: pointer;
-	display: none;
-	background: url(./images/selectR.png) -54px 50% no-repeat;
 }
 .kit-selectR-clear:hover {
 	background-position: -84px 50%;
@@ -109,11 +109,11 @@
 	z-index: 9997;
 	width: 100%;
 	margin-top: -1px;
+	background: #ffffff;
 	border: 1px solid #b0b2b5;
 	border-top: 0;
 	border-radius: 0 0 2px 2px;
 	color: #000000;
-	background: #ffffff;
 }
 
 .kit-selectR-drop-header {
@@ -138,8 +138,8 @@
 .kit-selectR-drop-footer {
 	display: table;
 	width: 100%;
-	border-top: 1px solid #d9d9d9;
 	background: #f5f5f5;
+	border-top: 1px solid #d9d9d9;
 }
 .kit-selectR-drop-footer-left {
 	display: table-cell;
@@ -157,10 +157,10 @@
 .kit-selectR-request-item {
 	padding-right: 5px;
 	padding-left: 24px !important;
-	border-radius: 2px;
-	font-style: italic;
 	background: #fff7d7 url(./images/selectR-preloader-input.gif) no-repeat 0
 		40%;
+	border-radius: 2px;
+	font-style: italic;
 }
 
 .kit-selectR-search {
@@ -171,19 +171,19 @@
 	display: block;
 }
 .kit-selectR-input input {
+	display: block;
 	width: 100%;
 	height: auto !important;
 	min-height: 19px;
 	margin: 0;
 	padding: 4px 20px 4px 6px;
+	background: #ffffff url(./images/selectR.png) no-repeat 100% -53px;
 	border: 1px solid #b0b2b5;
 	border-radius: 2px;
 	outline: 0;
 	box-shadow: inset 0 1px 1px #dddddd;
 	box-sizing: border-box;
 	font-size: 13px;
-	display: block;
-	background: #ffffff url(./images/selectR.png) no-repeat 100% -53px;
 }
 .kit-selectR-input.kit-selectR-request input {
 	background: #ffffff url(./images/selectR-preloader-input.gif) no-repeat 100%
@@ -197,10 +197,10 @@
 	top: 1px;
 	right: 22px;
 	bottom: 1px;
-	width: 23px;
-	cursor: pointer;
 	display: none;
+	width: 23px;
 	background: url(./images/selectR.png) no-repeat -205px 50%;
+	cursor: pointer;
 }
 .kit-selectR-input-clear:hover {
 	background-position: -235px 50%;
@@ -225,20 +225,20 @@
 
 .kit-selectR-result.kit-selectR-disabled.kit-selectR-readonly
 	> .kit-selectR-label {
-	font-weight: bolder !important;
-	color: #000000 !important;
 	background: #ffffff !important;
 	opacity: 1 !important;
+	font-weight: bolder !important;
+	color: #000000 !important;
 }
 .kit-selectR-result {
 	position: relative;
+	display: block;
 	background-image: none;
 	list-style: none;
-	display: block;
 }
 .kit-selectR-result.kit-selectR-disabled > .kit-selectR-label {
-	color: #000000 !important;
 	opacity: 0.3;
+	color: #000000 !important;
 	cursor: default;
 }
 .kit-selectR-result > .kit-selectR-label:hover {
@@ -319,8 +319,8 @@
 	left: 4px;
 	width: 6px;
 	height: 6px;
-	content: '';
 	background: url(./images/selectR.png) no-repeat -150px -33px;
+	content: "";
 }
 .kit-selectR-results-default
 	.kit-selectR-selected-multi.kit-selectR-highlighted::after {
@@ -369,8 +369,8 @@
 	.kit-selectR-input input {
 		height: 100%;
 		min-height: 27px;
-		border: 0;
 		background: transparent none;
+		border: 0;
 		box-shadow: none;
 		cursor: pointer;
 	}
@@ -386,6 +386,7 @@
 }
 .kit-selectR-choices-result {
 	position: relative;
+	display: inline-block;
 	margin-bottom: 10px;
 	background-color: #e8e9eb;
 	border-radius: 2px;
@@ -395,20 +396,19 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	display: inline-block;
 	-webkit-touch-callout: none;
 }
 .kit-selectR-choices-result .kit-selectR-clear {
-	display: block;
 	right: 2px;
+	display: block;
 	height: 100%;
 }
 .kit-selectR-choices-label {
+	display: inline-block;
 	padding: 3px 24px 3px 6px;
 	font-size: 13px;
 	line-height: 1.16;
 	vertical-align: middle;
-	display: inline-block;
 }
 .kit-selectR-choices-default .kit-selectR-choices-result {
 	display: block;
@@ -500,9 +500,9 @@
 	background-color: #e8e9eb;
 }
 .kit-selectR-horizontal-extension-image {
+	display: block;
 	width: 8px;
 	height: 8px;
-	display: block;
 	margin: 0 auto;
 }
 .kit-selectR-horizontal-extension-image-open {
@@ -590,11 +590,11 @@
 	position: absolute;
 	top: 0;
 	z-index: 1;
+	display: block;
 	width: 1px;
 	height: 100%;
-	content: '';
-	display: block;
 	background: #dfdfdf;
+	content: "";
 }
 .kit-selectR-drop-main_filter {
 	float: left;

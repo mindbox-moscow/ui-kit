@@ -6,6 +6,7 @@ $borderPopoverColor: #dddddc;
 
 .kit-segment-button-expand {
 	position: relative;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	width: 32px;
@@ -16,9 +17,8 @@ $borderPopoverColor: #dddddc;
 	outline: none;
 	box-sizing: border-box;
 	color: $mainColor;
-	cursor: pointer;
-	display: inline-flex;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		background-color: $borderHoverColor;
@@ -36,7 +36,7 @@ $borderPopoverColor: #dddddc;
 		&::before {
 			position: absolute;
 			width: 32px;
-			content: '';
+			content: "";
 		}
 
 		&::after {
@@ -51,13 +51,13 @@ $borderPopoverColor: #dddddc;
 			top: -3px;
 			left: -2px;
 			z-index: 1;
+			display: block;
 			height: 23px;
 			background-color: #ffffff;
 			border-width: 1px 1px 0 1px;
 			border-style: solid;
 			border-color: $borderPopoverColor;
 			border-radius: 10px 10px 0 0;
-			display: block;
 		}
 
 		svg {
@@ -71,6 +71,7 @@ $borderPopoverColor: #dddddc;
 	top: 15px;
 	right: 17px;
 	z-index: 10;
+	display: inline-flex;
 	align-items: center;
 	height: 16px;
 	margin: 0;
@@ -80,12 +81,11 @@ $borderPopoverColor: #dddddc;
 	border-radius: 8px;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 11px;
 	line-height: 1;
 	color: $textFilterColor;
 	cursor: pointer;
-	display: inline-flex;
 
 	svg {
 		margin-right: 6px;

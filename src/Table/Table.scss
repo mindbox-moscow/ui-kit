@@ -1,9 +1,9 @@
-@import '../variables';
+@import "../variables";
 
 .kit-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
     color: #333333;
 
     @media (max-width: $tablet) {
@@ -16,13 +16,13 @@
         & th:not(:first-child) {
             position: relative;
             left: -37%;
+            display: block;
             width: 137%;
             max-height: 31px;
             padding-bottom: 5px;
             font-size: 14px;
             font-weight: bold;
             text-align: right;
-            display: block;
         }
 
         & th:first-child {

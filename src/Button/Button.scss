@@ -1,5 +1,6 @@
 .kit-button {
 	$self: &;
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0;
@@ -8,19 +9,18 @@
 	border-radius: 4px;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
-	cursor: pointer;
-	display: inline-flex;
+	font-family: "PT Sans", sans-serif;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	svg {
 		margin-right: 5px;
 	}
 
 	&__text {
-		align-items: center;
 		display: inline-flex;
+		align-items: center;
 	}
 
 	&:hover:not(:disabled),
@@ -29,8 +29,8 @@
 	}
 
 	&:disabled {
-		cursor: auto;
 		opacity: 0.35;
+		cursor: auto;
 	}
 
 	&_color-gray {
@@ -64,13 +64,13 @@
 	}
 
 	&_size-xxs {
+		display: inline-flex;
 		align-items: center;
 		min-height: 22px;
 		padding: 0 9px;
 		font-size: 13px;
 		line-height: 19px;
 		line-height: 18px;
-		display: inline-flex;
 	}
 
 	&_size-xs {
@@ -104,9 +104,9 @@
 	}
 
 	&_size-large:disabled {
+		opacity: 0.5;
 		color: #e2eaf0;
 		cursor: default;
-		opacity: 0.5;
 	}
 
 	&_hasBorder {
@@ -140,18 +140,18 @@
 
 		&::after,
 		&::before {
-			margin-top: 1px;
 			display: inline-block;
+			margin-top: 1px;
 		}
 
 		&_left::before {
 			margin-right: 4px;
-			content: '←';
+			content: "←";
 		}
 
 		&_right::after {
 			margin-left: 4px;
-			content: '→';
+			content: "→";
 		}
 	}
 

@@ -1,8 +1,8 @@
-@import '../variables';
+@import "../variables";
 
 .kit-tabs {
     width: 100%;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
 
     &__header {
         display: flex;
@@ -14,6 +14,7 @@
     }
 
     &__list {
+        display: flex;
         flex: 1 0 auto;
         justify-content: flex-end;
         align-items: baseline;
@@ -21,7 +22,6 @@
         padding-left: 0;
         list-style: none;
         text-align: right;
-        display: flex;
 
         @media (max-width: $tablet-medium) {
             flex-wrap: wrap;
@@ -65,11 +65,11 @@
     }
 
     &__tabs-content {
+        display: flex;
         flex-wrap: wrap;
         align-items: center;
         margin-top: 10px;
         padding-bottom: 20px;
-        display: flex;
 
         @media (max-width: $tablet-large) {
             justify-content: space-between;

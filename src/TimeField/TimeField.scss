@@ -5,6 +5,7 @@ $errorColoBorder: #ddaaa2;
 .kit-time-field {
 	position: relative;
 	z-index: 5;
+	display: inline-flex;
 	align-items: center;
 	width: 72px;
 	height: 29px;
@@ -14,9 +15,8 @@ $errorColoBorder: #ddaaa2;
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
-	display: inline-flex;
 
 	&_disabled {
 		opacity: 0.35;
@@ -54,7 +54,7 @@ $errorColoBorder: #ddaaa2;
 				border: 2px solid #d4d4d4;
 				border-top-left-radius: 2px;
 				border-top-right-radius: 2px;
-				content: '';
+				content: "";
 			}
 		}
 	}
@@ -66,29 +66,29 @@ $errorColoBorder: #ddaaa2;
 		height: 16px;
 		padding-right: 0;
 		padding-left: 0;
+		background: none;
 		border: none;
 		outline: none;
-		font-family: 'PT Sans', sans-serif;
+		font-family: "PT Sans", sans-serif;
 		font-size: 14px;
 		color: #000000;
 		text-align: left;
-		background: none;
 	}
 
 	&__controls {
+		display: flex;
 		flex-direction: column;
 		margin-left: 3px;
 		padding-top: 1px;
-		display: flex;
 	}
 
 	&__button {
 		margin: 0;
 		padding: 0;
+		background: none;
 		border: none;
 		outline: none;
 		cursor: pointer;
-		background: none;
 	}
 
 	&_disabled &__button {
@@ -97,18 +97,18 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__arrow {
+		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: 8px;
 		height: 8px;
-		display: flex;
 
 		&::after {
+			display: block;
 			margin-top: -3px;
 			border: 3px solid transparent;
 			border-bottom: 4px solid #000000;
-			content: '';
-			display: block;
+			content: "";
 		}
 
 		&_down::after {
@@ -123,6 +123,7 @@ $errorColoBorder: #ddaaa2;
 		top: 38px;
 		left: -11px;
 		z-index: 10;
+		display: flex;
 		width: 94px;
 		height: 318px;
 		background-color: #f2f2f2;
@@ -132,10 +133,10 @@ $errorColoBorder: #ddaaa2;
 		overflow: hidden;
 		box-sizing: border-box;
 		list-style: none;
-		display: flex;
 
 		&_list {
 			position: absolute;
+			display: flex;
 			flex-direction: column;
 			height: 100%;
 			margin: 0;
@@ -143,7 +144,6 @@ $errorColoBorder: #ddaaa2;
 			padding-right: calc(50% + 15px);
 			overflow-x: hidden;
 			overflow-y: scroll;
-			display: flex;
 
 			&:last-child {
 				left: 50%;
@@ -157,11 +157,11 @@ $errorColoBorder: #ddaaa2;
 			padding-right: 14px;
 			padding-left: 14px;
 			padding-bottom: 3px;
+			background: none;
 			border: none;
-			font-family: 'PT Sans', sans-serif;
+			font-family: "PT Sans", sans-serif;
 			font-size: 14px;
 			cursor: pointer;
-			background: none;
 
 			&-selected {
 				background-color: #ffffff;

@@ -13,7 +13,7 @@
 }
 
 .kit-promotion-group-edit {
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 16px;
 	line-height: 16px;
 	color: #333333;
@@ -52,30 +52,30 @@
 	border: none;
 
 	&:first-child {
+		display: inline-block;
 		width: 100%;
 		max-width: 446px;
-		display: inline-block;
 		margin-right: 10px;
 	}
 
 	&:last-child {
+		display: inline-block;
 		width: 100%;
 		max-width: 267px;
-		display: inline-block;
 	}
 }
 
 .kit-promotion-group-edit__calc-strategy {
+	display: inline-block;
 	width: 100%;
 	max-width: 446px;
-	display: inline-block;
 	margin-right: 10px;
 }
 
 .kit-promotion-group-edit__arbitration-mode {
+	display: inline-block;
 	width: 100%;
 	max-width: 267px;
-	display: inline-block;
 }
 
 .kit-promotion-group-edit__calc-strategy-desc {

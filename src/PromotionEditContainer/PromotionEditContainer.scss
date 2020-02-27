@@ -1,11 +1,11 @@
 .kit-promotion-edit-container {
 	position: relative;
+	display: flex;
 	flex-direction: column;
 	padding: 11px 32px 15px;
 	background-color: #fffaed;
 	border: 2px solid #a0ba82;
 	border-radius: 6px;
-	display: flex;
 }
 
 .kit-promotion-edit-container__header {

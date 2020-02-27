@@ -1,20 +1,21 @@
 .kit-radio {
 	position: relative;
-	font-family: 'PT Sans', sans-serif;
+	display: inline-block;
+	font-family: "PT Sans", sans-serif;
 	font-size: 22px;
 	cursor: pointer;
 	user-select: none;
-	display: inline-block;
 }
 
 .kit-radio__input {
 	position: absolute;
 	left: -9999px;
-	cursor: pointer;
 	opacity: 0;
+	cursor: pointer;
 }
 
 .kit-radio__checkmark {
+	display: flex;
 	align-items: center;
 	margin: 1px;
 	padding: 4px 15px;
@@ -24,7 +25,6 @@
 	box-sizing: border-box;
 	font-size: 14px;
 	color: #265378;
-	display: flex;
 
 	&:hover {
 		background-color: lighten($color: #265378, $amount: 65%);

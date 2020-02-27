@@ -6,9 +6,9 @@
 		z-index: 2;
 		width: 13px;
 		border-top: 2px solid $braketColor;
-		content: '';
-		transform: translateY(-1px);
 		pointer-events: none;
+		content: "";
+		transform: translateY(-1px);
 	}
 }
 
@@ -71,12 +71,12 @@
 				top: 0;
 				left: 4px;
 				z-index: 3;
+				display: block;
 				width: 2px;
 				height: #{$minHeight / 2};
 				background-color: $braketColor;
-				content: '';
-				display: block;
 				pointer-events: none;
+				content: "";
 			}
 		}
 

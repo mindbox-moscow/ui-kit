@@ -1,27 +1,27 @@
 .kit-textLine {
     position: relative;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
     font-size: 14px;
     color: #333333;
 
     &__title {
         position: relative;
+        display: inline-block;
         margin-top: 0;
         margin-bottom: 0;
         font-size: 26px;
         font-weight: normal;
         color: #000000;
-        display: inline-block;
     }
 
     &__description {
         position: relative;
+        display: inline-block;
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 7px;
         padding-bottom: 7px;
         font-weight: normal;
-        display: inline-block;
     }
 
     &__input-box {
@@ -48,10 +48,10 @@
         top: 0;
         right: 10px;
         height: 32px;
+        opacity: 0.5;
         font-size: 14px;
         line-height: 33px;
         color: #888888;
-        opacity: 0.5;
     }
 
     &__button {

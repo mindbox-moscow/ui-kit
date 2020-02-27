@@ -1,9 +1,9 @@
-@import '../variables';
+@import "../variables";
 
 .kit-detalizationHeader {
-    width: 100%;
     display: flex;
-    font-family: 'PT Sans', sans-serif;
+    width: 100%;
+    font-family: "PT Sans", sans-serif;
 
     @media (max-width: $tablet-medium) {
         flex-direction: column;

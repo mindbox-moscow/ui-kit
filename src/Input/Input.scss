@@ -3,6 +3,7 @@
 }
 
 .kit-input-field {
+	display: block;
 	width: 100%;
 	height: 29px;
 	padding-right: 10px;
@@ -13,11 +14,10 @@
 	outline: none;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	cursor: pointer;
-	display: block;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -64,8 +64,8 @@
 	right: 6px;
 	width: 22px;
 	height: 22px;
-	cursor: default;
 	pointer-events: none;
+	cursor: default;
 	fill: #999999;
 
 	.kit-input-field_no-shadow + & {

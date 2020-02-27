@@ -3,6 +3,7 @@ $borderHoverColor: #e2eaf0;
 $mainColor: #3875d7;
 
 .kit-segment-button-edit {
+	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	width: 32px;
@@ -13,9 +14,8 @@ $mainColor: #3875d7;
 	outline: none;
 	box-sizing: border-box;
 	color: $mainColor;
-	cursor: pointer;
-	display: inline-flex;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		background-color: $borderHoverColor;

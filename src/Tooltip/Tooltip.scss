@@ -24,18 +24,18 @@
 	position: absolute;
 	left: 50%;
 	z-index: 10;
+	display: block;
 	min-width: 156px;
 	padding: 13px 24px 13px 15px;
 	background-color: #ffffff;
 	border: 1px solid #c7c5bd;
 	border-radius: 4px;
 	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.35);
+	visibility: hidden;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	color: #000000;
 	transform: translateX(-60px);
-	display: block;
-	visibility: hidden;
 
 	&::before,
 	&::after {
@@ -45,8 +45,8 @@
 		width: 0;
 		height: 0;
 		border: solid transparent;
-		content: '';
 		pointer-events: none;
+		content: "";
 	}
 
 	&::before {
@@ -102,10 +102,10 @@
 	position: absolute;
 	right: 0;
 	z-index: 10;
+	display: block;
 	width: 100%;
 	height: 100%;
 	min-height: 15px;
-	display: block;
 
 	&_top {
 		bottom: 100%;
@@ -120,6 +120,7 @@
 	position: absolute;
 	top: 5px;
 	right: 5px;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 20px;
@@ -130,7 +131,6 @@
 	outline: none;
 	color: #707070;
 	cursor: pointer;
-	display: flex;
 
 	&:hover {
 		color: #333333;

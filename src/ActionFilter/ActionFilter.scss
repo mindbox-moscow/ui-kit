@@ -4,11 +4,11 @@
     background-color: #ffffff;
     border: 1px solid #f0ece4;
     border-radius: 2px;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
 
     &__content {
-        padding: 14px 19px 20px 19px;
         display: flex;
+        padding: 14px 19px 20px 19px;
     }
 
     &__title {
@@ -27,9 +27,9 @@
     }
 
     &__footer {
+        display: flex;
         padding: 14px 19px;
         border-top: 1px solid rgba(212, 212, 212, 0.35);
-        display: flex;
     }
 
     &__footer-inner {

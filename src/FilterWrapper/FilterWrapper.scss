@@ -1,4 +1,4 @@
-@import '../sass/main';
+@import "../sass/main";
 
 .kit-filter {
 	position: relative;
@@ -9,30 +9,30 @@
 	box-sizing: border-box;
 
 	&_short {
+		display: flex;
 		align-items: center;
 		height: 46px;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: 'PT Sans';
+		font-family: "PT Sans";
 		font-size: 14px;
 		line-height: 19px;
 		color: #a4a4a4;
 		letter-spacing: -0.4px;
-		display: flex;
 
 		.kit-filter__all-wrap {
+			display: flex;
 			align-items: center;
 			margin-top: 0;
 			margin-bottom: 0;
-			display: flex;
 		}
 	}
 }
 
 .kit-filter__short-wrap-filter {
+	display: flex;
 	height: 100%;
 	margin-left: auto;
-	display: flex;
 
 	> * {
 		height: 100%;
@@ -89,7 +89,7 @@
 	border-radius: 3px;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	color: #265378;
@@ -118,12 +118,12 @@
 	border: 0;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 13px;
 	line-height: 18px;
 	text-align: center;
-	cursor: pointer;
 	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		background-color: #d3e0e9;
@@ -133,7 +133,7 @@
 .kit-filter__clients,
 .kit-filter__clients-number {
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	color: #333333;
@@ -143,21 +143,21 @@
 .kit-filter__clients-number {
 	.preloader_trigger.state-active {
 		position: static;
+		display: inline-block;
 		margin-top: 0;
 		margin-left: 5px;
-		display: inline-block;
 		vertical-align: middle;
 	}
 }
 
 .kit-filter__clients {
+	display: inline-flex;
 	align-items: center;
 	height: 100%;
 	padding-right: 15px;
 	padding-left: 15px;
 	border: 2px solid transparent;
 	box-sizing: border-box;
-	display: inline-flex;
 
 	&_warning {
 		background-color: rgb(242, 227, 191);
@@ -172,6 +172,7 @@
 
 .kit-filter__clear-filter-btn {
 	position: relative;
+	display: inline-flex;
 	align-items: center;
 	height: 100%;
 	padding: 0 30px;
@@ -179,14 +180,13 @@
 	border: 0;
 	outline: none;
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	color: $clearButtonColor;
 	letter-spacing: -0.4px;
-	cursor: pointer;
-	display: inline-flex;
 	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&:hover {
 		background-color: darken($clearButtonColorBg, 10%);
@@ -221,7 +221,7 @@
 
 .kit-filter__count-block-text {
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	color: #333333;
@@ -229,13 +229,13 @@
 }
 
 .kit-filter__top-filter {
+	display: flex;
 	justify-content: flex-end;
 	align-items: center;
 	padding: 11px 21px 9px;
 	background-color: $topBarBg;
 	border-bottom: 1px solid $topBorderColor;
 	border-radius: 4px 4px 0 0;
-	display: flex;
 
 	> *:not(:last-child) {
 		margin-right: 8px;

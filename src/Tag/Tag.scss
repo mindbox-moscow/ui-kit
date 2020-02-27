@@ -1,14 +1,14 @@
 .kit-tag {
+    display: inline-flex;
     padding-top: 4px;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 4px;
     background-color: #417505;
     border-radius: 3px;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
     font-size: 13px;
     color: #ffffff;
-    display: inline-flex;
 
     &_develop {
         background-color: #ae00d2;
@@ -30,7 +30,7 @@
             height: 2px;
             background-color: #ffffff;
             border-radius: 50%;
-            content: '';
+            content: "";
         }
     }
 }

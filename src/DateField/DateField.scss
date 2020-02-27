@@ -4,6 +4,7 @@ $errorColoBorder: #ddaaa2;
 
 .kit-date-field {
 	position: relative;
+	display: inline-flex;
 	align-items: center;
 	width: 114px;
 	height: 29px;
@@ -14,9 +15,8 @@ $errorColoBorder: #ddaaa2;
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 	box-sizing: border-box;
-	font-family: 'PT Sans', sans-serif;
+	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
-	display: inline-flex;
 
 	&_disabled {
 		opacity: 0.35;
@@ -37,12 +37,12 @@ $errorColoBorder: #ddaaa2;
 		height: 100%;
 		padding-right: 0;
 		padding-left: 0;
+		background: none;
 		border: none;
 		outline: none;
-		font-family: 'PT Sans', sans-serif;
+		font-family: "PT Sans", sans-serif;
 		font-size: 14px;
 		color: #000000;
-		background: none;
 	}
 
 	&__icon {
@@ -72,12 +72,12 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__head {
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		height: 40px;
 		padding: 0 10px;
 		border-bottom: 1px solid #d4d4d4;
-		display: flex;
 	}
 
 	&__select {
@@ -86,14 +86,14 @@ $errorColoBorder: #ddaaa2;
 
 	&__nav {
 		position: relative;
+		display: block;
 		width: 18px;
 		height: 18px;
 		padding: 0;
+		background: none;
 		border: 1px solid #000000;
 		border-radius: 50%;
 		cursor: pointer;
-		display: block;
-		background: none;
 
 		&:hover {
 			opacity: 0.7;
@@ -103,10 +103,10 @@ $errorColoBorder: #ddaaa2;
 			position: absolute;
 			top: 4px;
 			left: 1px;
+			display: block;
 			border: 4px solid transparent;
 			border-right: 4px solid #000000;
-			content: '';
-			display: block;
+			content: "";
 		}
 
 		&_next {
@@ -115,14 +115,15 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__calendar {
+		display: flex;
 		flex-wrap: wrap;
 		padding-top: 7px;
 		padding-left: 2px;
 		padding-bottom: 3px;
-		display: flex;
 	}
 
 	&__day {
+		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 		width: 33px;
@@ -133,10 +134,10 @@ $errorColoBorder: #ddaaa2;
 		font-weight: bold;
 		color: #000000;
 		text-align: right;
-		display: flex;
 	}
 
 	&__date {
+		display: flex;
 		justify-content: flex-end;
 		align-items: center;
 		width: 33px;
@@ -149,7 +150,6 @@ $errorColoBorder: #ddaaa2;
 		font-size: 13px;
 		color: #000000;
 		cursor: pointer;
-		display: flex;
 
 		&:hover {
 			border-color: #dddddd;

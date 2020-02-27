@@ -1,5 +1,6 @@
 .kit-module {
     position: relative;
+    display: flex;
     flex-direction: column;
     height: 220px;
     padding-top: 24px;
@@ -10,8 +11,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'PT Sans', sans-serif;
-    display: flex;
+    font-family: "PT Sans", sans-serif;
 
     &__name,
     &__text,

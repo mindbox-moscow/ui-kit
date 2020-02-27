@@ -9,7 +9,7 @@
     border: 1px solid #d4d4d4;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'PT Sans', sans-serif;
+    font-family: "PT Sans", sans-serif;
 
     &_active {
         border-width: 2px;
@@ -46,12 +46,12 @@
     }
 
     &__title {
+        display: inline-block;
         margin: 0 0 5px 0;
         border-bottom: 1px dashed;
         font-size: 18px;
         line-height: 1;
         font-weight: normal;
-        display: inline-block;
     }
 
     &__title-inner {
@@ -63,20 +63,20 @@
     }
 
     &__button {
+        display: none;
         height: 18px;
         margin: 0;
         padding: 0;
+        background: none;
         border: none;
 		outline: none;
-        font-family: 'PT Sans', sans-serif;
+        font-family: "PT Sans", sans-serif;
         font-size: inherit;
         line-height: 1;
         font-weight: inherit;
         color: inherit;
         vertical-align: top;
         cursor: pointer;
-        background: none;
-        display: none;
 
         &_show {
             display: inline-block
@@ -96,7 +96,7 @@
             background-image: url(../assets/icons/icons.png);
             background-position: -360px -160px;
             background-size: 400px;
-            content: '';
+            content: "";
 
             @media (-webkit-min-device-pixel-ratio: 2),
                 (min-resolution: 192dpi) {

@@ -13,7 +13,7 @@ const getSize = () => {
 	};
 };
 
-export function useWindowResize(delay: number = 150) {
+export function useDebouncedWindowSize(delay: number = 150) {
 	const [windowSize, setWindowSize] = React.useState(getSize);
 
 	React.useEffect(() => {

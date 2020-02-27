@@ -60,6 +60,23 @@ $searchFocusBgColor: #fffde5;
 	flex-grow: 1;
 	overflow: auto;
 	overscroll-behavior-y: contain;
+
+	&_search {
+		.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+			> .kit-filter-condition-selector__hierarchy-button
+			.kit-filter-condition-selector__hierarchy-name::before {
+			content: "";
+			position: absolute;
+			left: 1px;
+			display: block;
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			border: 0;
+			background-color: $toggleCircleColor;
+			box-sizing: border-box;
+		}
+	}
 }
 
 .kit-filter-condition-selector__hierarchy {

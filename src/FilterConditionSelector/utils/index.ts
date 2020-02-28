@@ -1,5 +1,3 @@
-import { getFocusableElements } from "../../utils";
-
 export const setNextFocus = () => {
 	const filterDetails = document.querySelector(".kit-filter-details");
 
@@ -21,12 +19,6 @@ export const setNextFocus = () => {
 
 			// tslint:disable-next-line: no-unused-expression
 			selectLast && selectLast.focus();
-		} else {
-			const elements = getFocusableElements(filterDetails as HTMLElement);
-
-			if (elements.length > 0) {
-				elements[0].focus();
-			}
 		}
 	}
 };

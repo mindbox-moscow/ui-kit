@@ -1649,7 +1649,10 @@ const createChildRenderer = (
 					/>
 				);
 			}
-			return list;
+
+			return list.map((item, index) => {
+				return <Fragment key={index}>{item}</Fragment>;
+			});
 		}
 
 		render() {

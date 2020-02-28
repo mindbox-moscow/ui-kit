@@ -99,7 +99,7 @@ export const FilterWrapper: React.FC<Props> = ({
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
-						"kit-filter_short": !doesContainFilter
+						"kit-filter_short": !doesContainFilter && (filterActions == null || filterActions.length == 0)
 					})}
 				>
 					{filterActions && filterActions.length > 0 && (

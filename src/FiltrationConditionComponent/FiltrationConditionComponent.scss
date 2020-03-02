@@ -91,16 +91,16 @@
 		color: #ffffff;
 
 		&:hover:not(&_read-only) {
-			.kit-filtration-condition__content {
+			> .kit-filtration-condition__content {
 				background-color: $editModeColorBg;
 			}
 		}
 
-		.kit-filtration-condition__content {
+		> .kit-filtration-condition__content {
 			background-color: $editModeColorBg;
 		}
 
-		.kit-filtration-condition__drag-and-drop {
+		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
 		}
@@ -141,10 +141,14 @@
 	}
 
 	&_shaded {
-		opacity: 0.3;
+		> * {
+			opacity: 0.3;
+		}
 
 		&:hover {
-			opacity: 1;
+			> * {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -228,6 +232,7 @@
 .kit-filtration-condition__popover {
 	position: relative;
 	z-index: 2;
+	margin-top: -3px;
 	padding: 10px 14px 12px 18px;
 	background-color: #ffffff;
 	border: solid 1px $borderPopoverColor;

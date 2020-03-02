@@ -1,53 +1,57 @@
 .kit-icon {
-    display: block;
-    width: 22px;
-    height: 22px;
-    background-image: url(../assets/icons/icons.png);
-    background-size: 400px;
-    cursor: pointer;
+	display: block;
+	width: 22px;
+	height: 22px;
+	background-image: url(../assets/icons/icons.png);
+	background-size: 400px;
+	cursor: pointer;
 
-    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        background-image: url(../assets/icons/icons@2x.png);
-    }
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+		background-image: url(../assets/icons/icons@2x.png);
+	}
 
-    &_help {
-        background-position: -120px 0;
-    }
+	&_help {
+		background-position: -120px 0;
+	}
 
-    &_play {
-        background-position: -120px -80px;
-    }
+	&_play {
+		background-position: -120px -80px;
+	}
 
-    &_pause {
-        background-position: -201px -80px;
-    }
+	&_pause {
+		background-position: -201px -80px;
+	}
 
-    &_search {
-        background-position: -240px -160px;
-    }
+	&_search {
+		background-position: -240px -160px;
+	}
 
-    &_calendar {
-        background-position: -200px -319px;
-    }
+	&_calendar {
+		background-position: -200px -319px;
+	}
 
-    &_remove {
-        background-position: -240px -160px;
-    }
+	&_remove {
+		background-position: -240px -160px;
+	}
 
-    &_edit {
-        background-position: -80px -160px;
-        opacity: 0.25;
-    }
+	&_edit {
+		background-position: -80px -160px;
+		opacity: 0.25;
+	}
 
-    &_arrowDown {
-        background-position: -280px -200px;
+	&_arrowDown {
+		background-position: -280px -200px;
 	}
 
 	&_percentRound {
-        background-position: -280px -200px;
+		background-position: -280px -200px;
 	}
 
 	&_coins {
-        background-position: -280px -200px;
-    }
+		background-position: -280px -200px;
+	}
+
+	&_link {
+		background-position: -201px -40px;
+	}
 }

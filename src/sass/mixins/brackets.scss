@@ -3,7 +3,7 @@
 		position: absolute;
 		top: $top;
 		left: $left;
-		z-index: 2;
+		z-index: -1;
 		width: 13px;
 		border-top: 2px solid $braketColor;
 		pointer-events: none;
@@ -20,7 +20,7 @@
 
 @mixin changeHorisontalBracketsColor($color) {
 	& ~ .kit-filtration-group__buttons,
-	& ~ .kit-filtration-condition,
+	& ~ .kit-filtration-condition > .kit-filtration-condition__item-text,
 	&
 		~ .kit-filtration-group
 		> .kit-filtration-group__label-line
@@ -33,15 +33,18 @@
 
 @mixin changeHorisontalBracketsOpacity($opacity) {
 	> .kit-filtration-group__label {
-		& ~ .kit-filtration-group__buttons,
-		& ~ .kit-filtration-condition {
+		& ~ .kit-filtration-group__buttons {
 			&::after {
 				opacity: $opacity;
 			}
 		}
-	}
 
-	> .kit-filtration-group__label {
+		& ~ .kit-filtration-condition > .kit-filtration-condition__item-text {
+			&::after {
+				opacity: $opacity;
+			}
+		}
+
 		& ~ .kit-filtration-group {
 			.kit-filtration-group__label-line
 				.kit-filtration-group__label-line-horizontal {
@@ -50,9 +53,7 @@
 				}
 			}
 		}
-	}
 
-	> .kit-filtration-group__label {
 		&
 			~ .kit-filtration-group__label-line
 			.kit-filtration-group__label-line-vertical {
@@ -65,7 +66,7 @@
 	> .kit-filtration-condition > .kit-filtration-group {
 		> .kit-filtration-condition:first-of-type,
 		> .kit-filtration-group__buttons,
-		&.kit-filtration-group_not-children {
+		&.kit-filtration-group_not-children:not(&.kit-filtration-group_no-label) {
 			&::before {
 				position: absolute;
 				top: 0;
@@ -90,7 +91,8 @@
 
 @mixin changeColorVerticalSmallBracket($color) {
 	& ~ .kit-filtration-condition:first-of-type,
-	& ~ .kit-filtration-group__buttons {
+	& ~ .kit-filtration-group__buttons,
+	&.kit-filtration-group_not-children {
 		&::before {
 			background-color: $color !important;
 		}
@@ -98,7 +100,9 @@
 }
 
 @mixin changeVerticalSmallBracketOpacity($opacity) {
-	> .kit-filtration-condition {
+	> .kit-filtration-condition,
+	> .kit-filtration-group__buttons,
+	&.kit-filtration-group_not-children {
 		&::before {
 			opacity: $opacity;
 		}

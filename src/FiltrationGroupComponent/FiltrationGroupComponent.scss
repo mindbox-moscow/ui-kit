@@ -4,10 +4,14 @@
 @mixin opacityBlock($opacity: 1) {
 	> .kit-filtration-condition
 		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
-		opacity: $opacity;
+		> * {
+			opacity: $opacity;
+		}
 
 		&:hover {
-			opacity: 1;
+			> * {
+				opacity: 1;
+			}
 		}
 	}
 
@@ -23,6 +27,14 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+
+	&_or {
+		@include changeColorVerticalSmallBracket($orColor);
+	}
+
+	&_and {
+		@include changeColorVerticalSmallBracket($andColor);
+	}
 
 	&_read-only {
 		.kit-filtration-group__label,
@@ -60,20 +72,9 @@
 			z-index: 3;
 		}
 
-		&::before {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: calc(100% + #{$groupHoverMarginLeft});
-			height: calc(100% + #{$groupHoverMarginTop});
-			min-height: $minHeight;
-			margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-			background-color: $editColorBg;
-			border-radius: 3px 0 0 3px;
-			box-sizing: border-box;
-			content: "";
-			cursor: pointer;
+		> .kit-filtration-group__label_hover_or,
+		> .kit-filtration-group__label_hover_and {
+			background-color: $hoverColorBg;
 		}
 
 		> .kit-filtration-group__buttons {
@@ -154,10 +155,6 @@
 	&_not-children {
 		min-height: $minHeight;
 
-		&#{$self}_edit {
-			margin-left: 30px;
-		}
-
 		> .kit-filtration-group__label-line_or,
 		> .kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text-height {
@@ -175,6 +172,14 @@
 		cursor: pointer;
 
 		@include opacityBlock();
+
+		&.kit-filtration-group_or {
+			@include changeColorVerticalSmallBracket($orColorEdit);
+		}
+
+		&.kit-filtration-group_and {
+			@include changeColorVerticalSmallBracket($andColorEdit);
+		}
 
 		> .kit-filtration-group__label_hover_or {
 			background-color: $hoverColorBg;
@@ -235,7 +240,9 @@
 		padding-left: 20px;
 		box-sizing: border-box;
 
-		@include createHorisontalBrackets(4px, 16px);
+		> .kit-filtration-condition__item-text {
+			@include createHorisontalBrackets(-16px, 16px);
+		}
 
 		.kit-filtration-group__buttons {
 			margin-left: 20px;

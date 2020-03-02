@@ -1,4 +1,21 @@
 ```jsx
+const months = [
+	"Янв",
+	"Фев",
+	"Мар",
+	"Апр",
+	"Май",
+	"Июн",
+	"Июл",
+	"Авг",
+	"Сен",
+	"Окт",
+	"Ноя",
+	"Дек"
+];
+
+const days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
 class ExampleFlatSelect extends React.Component {
 	constructor() {
 		super();
@@ -82,7 +99,10 @@ const segmentViewHistory = () => (
 				<Form>
 					<FormField label="Дата:">
 						<DateField
-							defaultDate={new Date(2019, 11, 9)}
+							onChange={() => null}
+							months={months}
+							days={days}
+							value={new Date(2019, 11, 9)}
 							noShadow={true}
 						/>
 					</FormField>
@@ -372,7 +392,10 @@ const segmentHistory = () => (
 				<Form>
 					<FormField label="Дата:">
 						<DateField
-							defaultDate={new Date(2019, 11, 9)}
+							onChange={() => null}
+							months={months}
+							days={days}
+							value={new Date(2019, 11, 9)}
 							noShadow={true}
 						/>
 					</FormField>

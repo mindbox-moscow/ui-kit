@@ -153,7 +153,12 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 						SearchClasses.KitFiltrationCondition
 					)
 				) {
-					heightGroup += lastChildElementHeight - MIN_HEIGHT;
+					const itemText = lastChildElement.querySelector(
+						".kit-filtration-condition__item-text"
+					);
+					const itemTextHeight = itemText ? itemText.clientHeight : 0;
+
+					heightGroup += lastChildElementHeight - itemTextHeight;
 
 					heightLine += lastChildElementHeight - MIN_HEIGHT / 2;
 				} else if (
@@ -245,49 +250,56 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 		);
 	};
 
-	const renderGroupButtons = (noChildren?: boolean) =>
-		shouldShowButtons && (
-			<div
-				className={cn("kit-filtration-group__buttons", {
-					"kit-filtration-group__buttons_no-children": noChildren
-				})}
-			>
-				{addSimpleConditionButton}
-				{addGroupConditionButton}
-			</div>
-		);
+	const renderGroupButtons = () => {
+		const hasChildren = React.Children.count(children) === 0;
 
-	const renderInnerComponents = () => {
-		if (state === "view" || state === "shaded" || state === "readOnly") {
-			if (React.Children.count(children) === 0) {
-				if (!shouldShowLabel) {
-					return renderGroupButtons(true);
-				} else {
-					return null;
-				}
-			}
-
-			return (
-				<>
-					{children}
-					{renderGroupButtons()}
-				</>
-			);
+		if (
+			hasChildren &&
+			shouldShowLabel &&
+			(state === "view" || state === "shaded" || state === "readOnly")
+		) {
+			return false;
 		}
 
 		return (
-			<>
-				<button
-					ref={kitFiltrationCloseRef}
-					key="toggle"
-					onClick={onConditionStateToggle}
-					type="button"
-					className="kit-filtration-group__close"
-					onMouseOver={handleHoverAddClassLabel}
-					onMouseOut={handleHoverRemoveClassLabel}
+			shouldShowButtons && (
+				<div
+					className={cn("kit-filtration-group__buttons", {
+						"kit-filtration-group__buttons_no-children":
+							hasChildren && !shouldShowLabel
+					})}
 				>
-					<IconSvg type="close" />
-				</button>
+					{addSimpleConditionButton}
+					{addGroupConditionButton}
+				</div>
+			)
+		);
+	};
+
+	const renderGroupClose = () => {
+		if (state === "view" || state === "shaded" || state === "readOnly") {
+			return false;
+		}
+
+		return (
+			<button
+				ref={kitFiltrationCloseRef}
+				key="toggle"
+				onClick={onConditionStateToggle}
+				type="button"
+				className="kit-filtration-group__close"
+				onMouseOver={handleHoverAddClassLabel}
+				onMouseOut={handleHoverRemoveClassLabel}
+			>
+				<IconSvg type="close" />
+			</button>
+		);
+	};
+
+	const renderInnerComponents = () => {
+		return (
+			<>
+				{renderGroupClose()}
 				{children}
 				{renderGroupButtons()}
 			</>
@@ -318,13 +330,17 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	return (
 		<ul
 			ref={kitFiltrationRef}
-			className={cn("kit-filtration-group", {
-				"kit-filtration-group_edit": state === "edit",
-				"kit-filtration-group_shaded": state === "shaded",
-				"kit-filtration-group_read-only": state === "readOnly",
-				"kit-filtration-group_not-children": !anyChildren,
-				"kit-filtration-group_no-label": !shouldShowLabel
-			})}
+			className={cn(
+				"kit-filtration-group",
+				`kit-filtration-group_${groupType}`,
+				{
+					"kit-filtration-group_edit": state === "edit",
+					"kit-filtration-group_shaded": state === "shaded",
+					"kit-filtration-group_read-only": state === "readOnly",
+					"kit-filtration-group_not-children": !anyChildren,
+					"kit-filtration-group_no-label": !shouldShowLabel
+				}
+			)}
 		>
 			<div
 				ref={kitFiltrationLabelRef}

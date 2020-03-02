@@ -11,41 +11,56 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 import { Input } from "../Input";
 
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { useDebounce } from "../HOOKs";
 import { BrowserList } from "../utils/constants";
 import { checkBrowser } from "../utils/helpers";
 import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
 
-const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
-	childRenderer,
-	onModeChanged,
-	onSearchTermChange,
-	filterLabel,
-	recentLabel,
-	savedLabel,
-	examplesLabel,
-	searchTerm,
-	menuMode,
-	rootIds,
-	notFoundMessage,
-	helpCaption,
-	helpComponent,
-	editorComponent,
-	onConditionStateToggle,
-	onNextSelected,
-	onPreviousSelected,
-	onExpandCurrent,
-	setOutsideClickRef
-}) => {
-	const searchRef = React.createRef<Input>();
-	const listRef = React.createRef<HTMLUListElement>();
+const FilterConditionSelector: React.FC<
+	Props & WithOutsideClickProps
+> = props => {
+	const {
+		childRenderer,
+		onModeChanged,
+		onSearchTermChange,
+		filterLabel,
+		recentLabel,
+		savedLabel,
+		examplesLabel,
+		menuMode,
+		rootIds,
+		notFoundMessage,
+		helpCaption,
+		helpComponent,
+		editorComponent,
+		onConditionStateToggle,
+		onNextSelected,
+		onPreviousSelected,
+		onExpandCurrent,
+		setOutsideClickRef
+	} = props;
+
+	const searchRef = React.useRef<Input>(null);
+	const listRef = React.useRef<HTMLUListElement>(null);
 	const mainRef = React.useRef<HTMLElement | null>(null);
+	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
+	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	let topRect: number = 0;
+
+	React.useEffect(
+		() => {
+			onSearchTermChange(debouncedSearchTerm);
+		},
+		[debouncedSearchTerm]
+	);
 
 	React.useEffect(() => {
 		const body = document.body;
 		const refSelector = mainRef.current;
+
+		setAutoFocusSearchInput();
 
 		if (refSelector) {
 			const { top } = refSelector.getBoundingClientRect();
@@ -154,7 +169,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 	const ChildItem = childRenderer;
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onSearchTermChange(e.target.value);
+		setSearchTerm(e.target.value);
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -174,6 +189,18 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 		}
 	};
 
+	const setAutoFocusSearchInput = () => {
+		if (searchRef.current) {
+			searchRef.current.focus();
+		}
+	};
+
+	const handleRollBackFocus = () => {
+		if (searchRef.current && listRef.current) {
+			listRef.current.focus({ preventScroll: true });
+		}
+	};
+
 	const valueContext: IProps = {
 		selectedElement: null
 	};
@@ -185,7 +212,6 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
 							ref={searchRef}
-							autoFocus={true}
 							noShadow={true}
 							value={searchTerm}
 							type="search"
@@ -213,7 +239,15 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 							})}
 						</div>
 					</div>
-					<div className="kit-filter-condition-selector__hierarchy-wrap">
+					<div
+						className={cn(
+							"kit-filter-condition-selector__hierarchy-wrap",
+							{
+								"kit-filter-condition-selector__hierarchy-wrap_search":
+									debouncedSearchTerm !== ""
+							}
+						)}
+					>
 						<FilterConditionSelectorContext.Provider
 							value={valueContext}
 						>
@@ -224,7 +258,8 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 								onKeyDown={handleKeyDown}
 								onWheel={handleDisableBodyScroll}
 							>
-								{rootIds.length === 0 && searchTerm !== ""
+								{rootIds.length === 0 &&
+								debouncedSearchTerm !== ""
 									? notFoundMessage
 									: rootIds.map(childId => (
 											<ChildItem
@@ -244,6 +279,7 @@ const FilterConditionSelector: React.FC<Props & WithOutsideClickProps> = ({
 					editorComponent={editorComponent}
 					onClose={onConditionStateToggle}
 					viewMode="menu"
+					rollBackFocus={handleRollBackFocus}
 				/>
 			</div>
 		</ContextWrapper>

@@ -3,6 +3,10 @@ $kit-actions-dropdown-padding: 15px;
 .kit-actions-dropdown {
 	position: relative;
 	display: inline-block;
+
+	&_opened {
+		z-index: 3;
+	}
 }
 
 .kit-actions-dropdown__toggle {
@@ -73,6 +77,15 @@ $kit-actions-dropdown-padding: 15px;
 	line-height: 18px;
 	color: #333333;
 	cursor: pointer;
+
+	&_disabled {
+		opacity: 0.5;
+		cursor: default;
+
+		&:active {
+			pointer-events: none;
+		}
+	}
 }
 
 .kit-actions-dropdown__group {

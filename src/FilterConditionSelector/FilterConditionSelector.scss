@@ -46,6 +46,8 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__wrap {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
 	max-width: 378px;
 	border: 1px solid $borderColor;
@@ -55,18 +57,34 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-wrap {
-	height: 100%;
+	flex-grow: 1;
 	overflow: auto;
 	overscroll-behavior-y: contain;
+
+	&_search {
+		.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+			> .kit-filter-condition-selector__hierarchy-button
+			.kit-filter-condition-selector__hierarchy-name::before {
+			position: absolute;
+			left: 1px;
+			display: block;
+			width: 8px;
+			height: 8px;
+			background-color: $toggleCircleColor;
+			border: 0;
+			border-radius: 50%;
+			box-sizing: border-box;
+			content: "";
+		}
+	}
 }
 
 .kit-filter-condition-selector__hierarchy {
 	width: fit-content;
 	min-width: 100%;
-	height: calc(100% - 46px);
+	height: 100%;
 	margin: 0;
 	padding: 8px 11px;
-	overflow: auto;
 	box-sizing: border-box;
 	list-style: none;
 }
@@ -236,7 +254,7 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy-children {
-	padding-left: 15px;
+	padding-left: 13px;
 	box-sizing: border-box;
 	list-style: none;
 
@@ -253,14 +271,14 @@ $searchFocusBgColor: #fffde5;
 
 		&::before {
 			top: 0;
-			left: -13px;
+			left: -11px;
 			height: 100%;
 			border-left: 2px solid;
 		}
 
 		&::after {
 			top: 12px;
-			left: -12px;
+			left: -10px;
 			width: 6px;
 			border-bottom: 2px solid;
 		}
@@ -290,7 +308,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-children {
 			.kit-filter-condition-selector__hierarchy-item {
 				&::before {
-					left: -11px;
+					left: -9px;
 				}
 
 				&::after {

@@ -2,6 +2,7 @@ import cn from "classnames";
 import { useState } from "react";
 import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
+import { useDebouncedWindowSize } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { FilterActions, InfoWrapper } from "./components";
 import {
@@ -41,6 +42,14 @@ export const FilterWrapper: React.FC<Props> = ({
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
+	const debouncedWindowSize = useDebouncedWindowSize();
+
+	React.useEffect(
+		() => {
+			rerenderBrackets();
+		},
+		[debouncedWindowSize]
+	);
 
 	const countSelectedItems = () => {
 		return (
@@ -99,7 +108,7 @@ export const FilterWrapper: React.FC<Props> = ({
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
-						"kit-filter_short": !doesContainFilter
+						"kit-filter_short": !doesContainFilter && (filterActions == null || filterActions.length == 0)
 					})}
 				>
 					{filterActions && filterActions.length > 0 && (

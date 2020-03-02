@@ -7,6 +7,7 @@
 			<ActionsDropdown.Action
 				title="Редактировать"
 				onClick={() => console.log("Редактировать")}
+				closeDropdownOnClick={false}
 			/>
 			<ActionsDropdown.Group title="Добавить">
 				<ActionsDropdown.Action
@@ -52,6 +53,18 @@
 					onClick={() => console.log("Архивировать")}
 				/>
 			</ActionsDropdown.Group>
+		</ActionsDropdown>
+	</div>
+	<div>
+		<span style={{ marginRight: "8px" }}>
+			Дропдаун с произвольными children
+		</span>
+		<ActionsDropdown>
+			<ul style={{ padding: "10px", margin: 0 }}>
+				<li>Раз</li>
+				<li>Два</li>
+				<li>Три</li>
+			</ul>
 		</ActionsDropdown>
 	</div>
 </>

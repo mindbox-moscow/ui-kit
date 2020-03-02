@@ -1,71 +1,50 @@
-import * as React from "react";
-import "./DateField.scss";
 import cn from "classnames";
+import * as React from "react";
 import { Icon } from "../Icon/Icon";
 import { parseDateToString } from "../utils/helpers";
+import { controledKeys } from "./consts";
+import "./DateField.scss";
 
-interface Props {
+export type Months = [string, string, string, string, string, string, string, string, string, string, string, string];
+export type Days = [string, string, string, string, string, string, string];
+
+enum DateType {
+	Month,
+	Year,
+};
+
+enum Direction {
+	Next = 1,
+	Prev  = -1,
+};
+
+interface IProps {
 	disabled?: boolean;
-	defaultDate: Date;
-	onChange?: (date: Date) => void;
+	value?: Date;
+	months: Months;
+	days: Days;
+	onChange: (date: Date) => void;
 	noShadow?: boolean;
 	error?: boolean;
 }
 
-interface State {
+interface IState {
 	isOpenCalendar: boolean;
-	activeDate: Date;
 	showedDate: Date;
 	dateString: string;
 }
 
-const controledKeys = {
-	arrowLeft: true,
-	arrowRight: true,
-	Delete: true,
-	Backspace: true,
-	Tab: true,
-	".": true,
-	"0": true,
-	"1": true,
-	"2": true,
-	"3": true,
-	"4": true,
-	"5": true,
-	"6": true,
-	"7": true,
-	"8": true,
-	"9": true
-};
-
-const monthes = [
-	"Янв",
-	"Фев",
-	"Мар",
-	"Апр",
-	"Май",
-	"Июн",
-	"Июл",
-	"Авг",
-	"Сен",
-	"Окт",
-	"Ноя",
-	"Дек"
-];
-
-export class DateField extends React.Component<Props, State> {
+export class DateField extends React.Component<IProps, IState> {
 	public wrapper: HTMLElement;
-	public state: State;
 
-	constructor(props: Props) {
+	constructor(props: IProps) {
 		super(props);
-		const { defaultDate } = props;
+		const { value } = props;
 
 		this.state = {
+			dateString: value ? parseDateToString(value) : '',
 			isOpenCalendar: false,
-			activeDate: new Date(defaultDate),
-			showedDate: new Date(defaultDate),
-			dateString: parseDateToString(defaultDate)
+			showedDate: value ? new Date(value) : new Date(),
 		};
 	}
 
@@ -86,31 +65,26 @@ export class DateField extends React.Component<Props, State> {
 		}
 	};
 
-	public handleOpen = () => this.setState({ isOpenCalendar: true });
+	public handleOpen = () => {
+		if (!this.props.disabled) {
+			this.setState({ isOpenCalendar: true })
+		}
+	};
 
-	public handlePrevMonth = () => {
-		const oldDate = this.state.showedDate;
-		oldDate.setMonth(oldDate.getMonth() - 1);
+	public handleChangeCurrentMonth = (direction: Direction) => () => {
+		const oldDate = new Date(this.state.showedDate);
+		oldDate.setMonth(oldDate.getMonth() + direction);
 		this.setState({ showedDate: oldDate });
 	};
 
-	public handleNextMonth = () => {
-		const oldDate = this.state.showedDate;
-		oldDate.setMonth(oldDate.getMonth() + 1);
-		this.setState({ showedDate: oldDate });
-	};
-
-	public handleChangeYear = (event: any) => {
-		const oldDate = this.state.showedDate;
+	public handleSelectDate = (type: DateType) => (event: React.ChangeEvent<HTMLSelectElement>) => {
+		const oldDate = new Date(this.state.showedDate);
 		const value = parseInt(event.target.value, 10);
-		oldDate.setFullYear(value);
-		this.setState({ showedDate: oldDate });
-	};
-
-	public handleChangeMonth = (event: any) => {
-		const oldDate = this.state.showedDate;
-		const value = parseInt(event.target.value, 10);
-		oldDate.setMonth(value);
+		if (type === DateType.Month) {
+			oldDate.setMonth(value);
+		} else {
+			oldDate.setFullYear(value);
+		}
 		this.setState({ showedDate: oldDate });
 	};
 
@@ -119,26 +93,25 @@ export class DateField extends React.Component<Props, State> {
 		month: number,
 		date: number
 	) => () => {
-		const { onChange = () => {} } = this.props;
+		const { onChange } = this.props;
 		const newDate = new Date(year, month, date);
 		this.setState({
 			dateString: parseDateToString(newDate),
-			activeDate: newDate
 		});
 		onChange(newDate);
 	};
 
-	public handleKeyDown = (event: any) => {
-		if (!controledKeys[event.key]) {
-			event.preventDefault();
+	public handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+		if (!controledKeys[evt.key]) {
+			evt.preventDefault();
 		}
 	};
 
-	public handleChange = (event: any) => {
-		const { onChange = () => {} } = this.props;
+	public handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+		const { value, onChange } = this.props;
 
 		const dateParser = /(\d{2})\.(\d{2})\.(\d{4})/;
-		const match = event.target.value.match(dateParser);
+		const match = evt.target.value.match(dateParser);
 		const parsedDate =
 			match &&
 			new Date(
@@ -147,36 +120,35 @@ export class DateField extends React.Component<Props, State> {
 				parseInt(match[1], 10)
 			);
 
-		const nowDate = parsedDate || Date.parse(event.target.value);
+		const nowDate = parsedDate || Date.parse(evt.target.value);
 		const activeDate =
 			!nowDate && isNaN(nowDate)
-				? this.state.activeDate
+				? value && new Date(value)
 				: new Date(nowDate);
 		const showedDate =
 			!nowDate && isNaN(nowDate)
-				? this.state.showedDate
+				? new Date(this.state.showedDate)
 				: new Date(nowDate);
 
-		onChange(activeDate);
+		onChange(activeDate || showedDate);
 
 		this.setState({
-			dateString: event.target.value,
-			activeDate,
+			dateString: evt.target.value,
 			showedDate
 		});
 	};
 
+
 	public render() {
 		const {
 			isOpenCalendar,
-			activeDate,
 			showedDate,
-			dateString
+			dateString,
 		} = this.state;
-		const { disabled, noShadow, error } = this.props;
-		const date = activeDate.getDate();
-		const month = activeDate.getMonth();
-		const year = activeDate.getFullYear();
+		const { disabled, value, noShadow, error, months, days } = this.props;
+		const date = value && value.getDate();
+		const month = value && value.getMonth();
+		const year = value && value.getFullYear();
 		const nowYear = showedDate.getFullYear();
 		const nowMonth = showedDate.getMonth();
 		const lastShow = new Date(nowYear, nowMonth, 32);
@@ -217,15 +189,20 @@ export class DateField extends React.Component<Props, State> {
 		for (let d = 1; d < 7 - lastDayFormat; d++) {
 			afterDaysList.push(d);
 		}
+		const handleNextMonth = this.handleChangeCurrentMonth(Direction.Next);
+		const handlePrevMonth = this.handleChangeCurrentMonth(Direction.Prev);
+
+		const handleChangeMonth = this.handleSelectDate(DateType.Month);
+		const handleChangeYear = this.handleSelectDate(DateType.Year);
 
 		return (
 			<div
 				className={cn("kit-date-field", {
 					"kit-date-field_disabled": disabled,
+					"kit-date-field_error": error,
 					"kit-date-field_no-shadow": noShadow,
-					"kit-date-field_error": error
 				})}
-				onClick={disabled ? () => {} : this.handleOpen}
+				onClick={this.handleOpen}
 				ref={this.handleWrapperRef}
 			>
 				<input
@@ -249,16 +226,16 @@ export class DateField extends React.Component<Props, State> {
 					<div className="kit-date-field__head">
 						<button
 							type="button"
-							onClick={this.handlePrevMonth}
+							onClick={handlePrevMonth}
 							className="kit-date-field__nav"
 						/>
 						<div>
 							<select
 								value={nowMonth}
 								className="kit-date-field__select"
-								onChange={this.handleChangeMonth}
+								onChange={handleChangeMonth}
 							>
-								{monthes.map((item, index) => (
+								{months.map((item, index) => (
 									<option key={index} value={index}>
 										{item}
 									</option>
@@ -267,7 +244,7 @@ export class DateField extends React.Component<Props, State> {
 							<select
 								value={nowYear}
 								className="kit-date-field__select"
-								onChange={this.handleChangeYear}
+								onChange={handleChangeYear}
 							>
 								{yearsList.map(item => (
 									<option key={item}>{item}</option>
@@ -277,17 +254,11 @@ export class DateField extends React.Component<Props, State> {
 						<button
 							className="kit-date-field__nav kit-date-field__nav_next"
 							type="button"
-							onClick={this.handleNextMonth}
+							onClick={handleNextMonth}
 						/>
 					</div>
 					<div className="kit-date-field__calendar">
-						<div className="kit-date-field__day">Пн</div>
-						<div className="kit-date-field__day">Вт</div>
-						<div className="kit-date-field__day">Ср</div>
-						<div className="kit-date-field__day">Чт</div>
-						<div className="kit-date-field__day">Пт</div>
-						<div className="kit-date-field__day">Сб</div>
-						<div className="kit-date-field__day">Вс</div>
+						{days.map(item => <div className="kit-date-field__day" key={item}>{item}</div>)}
 						{beforeDaysList.map((day, index) => (
 							<div
 								key={index}
@@ -300,10 +271,10 @@ export class DateField extends React.Component<Props, State> {
 							<div
 								key={index}
 								className={cn("kit-date-field__date", {
+									"kit-date-field__date_active":
+										activeDay === day,
 									"kit-date-field__date_current":
 										currentDay === day,
-									"kit-date-field__date_active":
-										activeDay === day
 								})}
 								onClick={this.changeActiveDate(
 									nowYear,

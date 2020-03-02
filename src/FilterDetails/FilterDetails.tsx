@@ -2,13 +2,12 @@ import cn from "classnames";
 import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
+import { KeysCodes } from "../utils/constants";
 import { setLoopFocusElements } from "../utils/Focus";
 import "./FilterDetails.scss";
 import { CallbackProps, FilterDetailsProps } from "./types";
 
 type Props = FilterDetailsProps & CallbackProps;
-
-const ESC_KEY = 27;
 
 export const FilterDetails: React.FC<Props> = ({
 	onClose,
@@ -17,7 +16,8 @@ export const FilterDetails: React.FC<Props> = ({
 	helpCaption,
 	viewMode,
 	vertical,
-	horizontal
+	horizontal,
+	rollBackFocus
 }) => {
 	const [helpIsExpanded, setHelpIsExpanded] = React.useState(false);
 	const kitFiltrationHelperRef = React.useRef<HTMLDivElement>(null);
@@ -70,12 +70,21 @@ export const FilterDetails: React.FC<Props> = ({
 	);
 
 	const handleKeyDown = (e: KeyboardEvent) => {
-		if (
-			document.activeElement === kitEditorWrapperRef.current &&
-			e.keyCode === ESC_KEY
-		) {
-			e.preventDefault();
-			onClose();
+		if (rollBackFocus) {
+			if (e.keyCode === KeysCodes.Esc) {
+				rollBackFocus();
+			}
+		} else {
+			const wrapperRef = kitEditorWrapperRef.current;
+
+			if (
+				wrapperRef &&
+				wrapperRef.contains(document.activeElement) &&
+				e.keyCode === KeysCodes.Esc
+			) {
+				e.preventDefault();
+				onClose();
+			}
 		}
 	};
 

@@ -1,5 +1,8 @@
 {
-	"extends": ["stylelint-config-recommended", "stylelint-config-prettier"],
+	"extends": [
+		"stylelint-config-recommended",
+		"stylelint-config-prettier"
+	],
 	"plugins": [
 		"stylelint-order",
 		"stylelint-declaration-block-no-ignored-properties",
@@ -23,11 +26,15 @@
 					"blockless-after-same-name-blockless",
 					"first-nested"
 				],
-				"ignore": ["after-comment"]
+				"ignore": [
+					"after-comment"
+				]
 			}
 		],
 		"selector-pseudo-element-colon-notation": "double",
+		"selector-nested-pattern": "^((?!(&__|&-|\\.)).*|\\..* \\&)*$",
 		"order/properties-order": [
+			"content",
 			"position",
 			"top",
 			"right",
@@ -170,7 +177,6 @@
 			"tab-size",
 			"hyphens",
 			"pointer-events",
-			"content",
 			"quotes",
 			"counter-reset",
 			"counter-increment",

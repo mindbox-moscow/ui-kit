@@ -57,12 +57,9 @@
 		}
 	},
 	"lint-staged": {
-		"linters": {
-			"*.scss": [
-				"prettier --write",
-				"stylelint --fix",
-				"git add"
-			]
-		}
+		"*.scss": [
+			"prettier --write",
+			"stylelint --fix"
+		]
 	}
 }

@@ -41,7 +41,6 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	onSelect
 }) => {
 	const refSelectorButton = React.createRef<HTMLDivElement>();
-	const [markedItem, setMarkedItem] = React.useState(false);
 	const context = React.useContext(FilterConditionSelectorContext);
 
 	React.useEffect(
@@ -51,20 +50,6 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 			}
 		},
 		[isSelected]
-	);
-
-	React.useEffect(
-		() => {
-			if (context) {
-				context.onFocusElement(
-					handleMouseEnter,
-					handleMouseLeave,
-					onSelectItem,
-					refSelectorButton
-				);
-			}
-		},
-		[searchTerm, refSelectorButton]
 	);
 
 	const scrollParentOnKeyDown = () => {
@@ -77,7 +62,8 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 			context.selectedElement = {
 				isSelected,
 				isExpanded,
-				type
+				type,
+				onSelect: onSelectItem
 			};
 		}
 	};
@@ -128,14 +114,6 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 		}, 1);
 	};
 
-	const handleMouseEnter = () => {
-		setMarkedItem(true);
-	};
-
-	const handleMouseLeave = () => {
-		setMarkedItem(false);
-	};
-
 	const isSimpleFilterableProperty = type === "simpleFilterableProperty";
 	const isfilterablePropertyWithLinkedConditions =
 		type === "filterablePropertyWithLinkedConditions";
@@ -161,12 +139,9 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				className={cn(
 					"kit-filter-condition-selector__hierarchy-button",
 					{
-						"kit-filter-condition-selector__hierarchy-button_selected": isSelected,
-						"kit-filter-condition-selector__hierarchy-button_highlighted": markedItem
+						"kit-filter-condition-selector__hierarchy-button_selected": isSelected
 					}
 				)}
-				onMouseEnter={handleMouseEnter}
-				onMouseLeave={handleMouseLeave}
 			>
 				{!isSimpleFilterableProperty &&
 					!isfilterablePropertyWithLinkedConditions && (

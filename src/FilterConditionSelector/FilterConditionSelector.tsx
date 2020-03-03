@@ -46,14 +46,8 @@ const FilterConditionSelector: React.FC<
 	const listRef = React.useRef<HTMLUListElement>(null);
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
-	const [
-		treeFirstItem,
-		setTreeFirstItem
-	] = React.useState<HTMLDivElement | null>(null);
+
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
-	let markFirstItemTree: () => void;
-	let unmarkFirstItemTree: () => void;
-	let selectFirstItemTree: () => void;
 	let topRect: number = 0;
 
 	React.useEffect(
@@ -61,17 +55,6 @@ const FilterConditionSelector: React.FC<
 			onSearchTermChange(debouncedSearchTerm);
 		},
 		[debouncedSearchTerm]
-	);
-
-	React.useEffect(
-		() => {
-			if (debouncedSearchTerm === "") {
-				unmarkFirstItemTree();
-			} else {
-				markFirstItemTree();
-			}
-		},
-		[treeFirstItem]
 	);
 
 	React.useEffect(() => {
@@ -169,14 +152,16 @@ const FilterConditionSelector: React.FC<
 					listRef.current.focus({ preventScroll: true });
 				}
 
-				unmarkFirstItemTree();
 				onNextSelected();
 				break;
 			case KeysCodes.Enter:
 				e.preventDefault();
 
-				unmarkFirstItemTree();
-				selectFirstItemTree();
+				const selectedElement = valueContext.selectedElement || null;
+
+				if (valueContext.selectedElement) {
+					selectedElement!.onSelect();
+				}
 
 				break;
 
@@ -196,7 +181,6 @@ const FilterConditionSelector: React.FC<
 
 	const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
-		unmarkFirstItemTree();
 	};
 
 	const handleMenuModeChange = (mode: MenuMode) => () => onModeChanged(mode);
@@ -222,20 +206,6 @@ const FilterConditionSelector: React.FC<
 		}
 	};
 
-	const getFirstItemTree = (
-		onMouseEnter: () => void,
-		onMouseLeave: () => void,
-		onSelect: () => void,
-		itemElement: React.RefObject<HTMLDivElement>
-	) => {
-		if (itemElement.current) {
-			setTreeFirstItem(itemElement.current);
-			markFirstItemTree = onMouseEnter;
-			unmarkFirstItemTree = onMouseLeave;
-			selectFirstItemTree = onSelect;
-		}
-	};
-
 	const handleRollBackFocus = () => {
 		if (searchRef.current && listRef.current) {
 			listRef.current.focus({ preventScroll: true });
@@ -243,8 +213,7 @@ const FilterConditionSelector: React.FC<
 	};
 
 	const valueContext: IProps = {
-		selectedElement: null,
-		onFocusElement: getFirstItemTree
+		selectedElement: null
 	};
 
 	return (

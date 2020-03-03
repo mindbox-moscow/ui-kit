@@ -116,17 +116,30 @@ const FilterConditionSelector: React.FC<
 					const selectedElement =
 						valueContext.selectedElement || null;
 
-					if (
-						selectedElement &&
-						(selectedElement.type ===
-							"filterablePropertyCategory" ||
-							selectedElement.type ===
-								"filterablePropertyWithLinkedConditions") &&
-						!selectedElement.isExpanded
-					) {
-						onExpandCurrent();
+					if (searchTerm === "") {
+						if (
+							selectedElement &&
+							(selectedElement.type ===
+								"filterablePropertyCategory" ||
+								selectedElement.type ===
+									"filterablePropertyWithLinkedConditions") &&
+							!selectedElement.isExpanded
+						) {
+							onExpandCurrent();
+						} else {
+							setNextFocus();
+						}
 					} else {
-						setNextFocus();
+						if (
+							selectedElement &&
+							selectedElement.type ===
+								"filterablePropertyCategory" &&
+							!selectedElement.isExpanded
+						) {
+							onExpandCurrent();
+						} else {
+							setNextFocus();
+						}
 					}
 
 					break;

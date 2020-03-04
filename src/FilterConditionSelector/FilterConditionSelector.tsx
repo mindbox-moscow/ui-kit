@@ -159,8 +159,8 @@ const FilterConditionSelector: React.FC<
 
 				const selectedElement = valueContext.selectedElement || null;
 
-				if (valueContext.selectedElement) {
-					selectedElement!.onSelect();
+				if (selectedElement) {
+					selectedElement.onSelect();
 				}
 
 				break;

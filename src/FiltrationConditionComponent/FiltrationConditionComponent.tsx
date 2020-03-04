@@ -23,9 +23,9 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	helpComponent,
 	editorComponent,
 	onConditionStateToggle,
-	withAlert,
 	onConditionCopy,
-	onConditionRemove
+	onConditionRemove,
+	negativePostFix
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
 	const [popoverFilterAction, setPopoverFilterAction] = useState<
@@ -111,12 +111,11 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 					>
 						<b>{filterablePropertyName}</b>
 						{filtrationMethodName && (
-							<span
-								className={cn({
-									"kit-filtration-condition_with-alert": withAlert
-								})}
-							>
-								{filtrationMethodName}
+							<span>{filtrationMethodName}</span>
+						)}
+						{negativePostFix && (
+							<span className="kit-filtration-condition__negative-postfix">
+								{negativePostFix}
 							</span>
 						)}
 						{filtrationMethodParametersComponent}

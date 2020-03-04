@@ -347,7 +347,7 @@
 								shouldShowLabel={false}
 							>
 								<FiltrationConditionComponent
-									withAlert={true}
+									negativePostFix="не"
 									filtrationObjectName="Период от текущей даты"
 									filtrationMethodName="до"
 									filtrationMethodParametersComponent={

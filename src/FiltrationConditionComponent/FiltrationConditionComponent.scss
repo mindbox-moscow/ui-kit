@@ -7,11 +7,6 @@
 	line-height: 19px;
 	list-style: none;
 
-	&_with-alert {
-		color: $removeColor;
-		font-weight: 700;
-	}
-
 	.kit-filter-details {
 		top: calc(100% - 5px);
 		left: 0;
@@ -239,4 +234,8 @@
 	background-color: #fff;
 	box-sizing: border-box;
 	z-index: 2;
+}
+
+.kit-filtration-condition__negative-postfix {
+	color: $removeColor;
 }

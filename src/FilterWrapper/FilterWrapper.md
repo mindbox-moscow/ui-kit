@@ -860,7 +860,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				<FiltrationConditionComponent
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
-					withAlert={true}
+					negativePostFix="не"
 				/>
 				<FiltrationConditionComponent
 					filterablePropertyName="Возраст"

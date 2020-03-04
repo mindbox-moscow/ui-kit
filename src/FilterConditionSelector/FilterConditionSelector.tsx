@@ -46,6 +46,7 @@ const FilterConditionSelector: React.FC<
 	const listRef = React.useRef<HTMLUListElement>(null);
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
+
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
 	let topRect: number = 0;
 
@@ -116,17 +117,30 @@ const FilterConditionSelector: React.FC<
 					const selectedElement =
 						valueContext.selectedElement || null;
 
-					if (
-						selectedElement &&
-						(selectedElement.type ===
-							"filterablePropertyCategory" ||
-							selectedElement.type ===
-								"filterablePropertyWithLinkedConditions") &&
-						!selectedElement.isExpanded
-					) {
-						onExpandCurrent();
+					if (searchTerm === "") {
+						if (
+							selectedElement &&
+							(selectedElement.type ===
+								"filterablePropertyCategory" ||
+								selectedElement.type ===
+									"filterablePropertyWithLinkedConditions") &&
+							!selectedElement.isExpanded
+						) {
+							onExpandCurrent();
+						} else {
+							setNextFocus();
+						}
 					} else {
-						setNextFocus();
+						if (
+							selectedElement &&
+							selectedElement.type ===
+								"filterablePropertyCategory" &&
+							!selectedElement.isExpanded
+						) {
+							onExpandCurrent();
+						} else {
+							setNextFocus();
+						}
 					}
 
 					break;
@@ -144,7 +158,6 @@ const FilterConditionSelector: React.FC<
 	const handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.keyCode) {
 			case KeysCodes.ArrowDown:
-			case KeysCodes.Enter:
 				e.preventDefault();
 
 				if (searchRef.current && listRef.current) {
@@ -154,6 +167,17 @@ const FilterConditionSelector: React.FC<
 
 				onNextSelected();
 				break;
+			case KeysCodes.Enter:
+				e.preventDefault();
+
+				const selectedElement = valueContext.selectedElement || null;
+
+				if (selectedElement) {
+					selectedElement.onSelect();
+				}
+
+				break;
+
 			case KeysCodes.Esc:
 				e.preventDefault();
 

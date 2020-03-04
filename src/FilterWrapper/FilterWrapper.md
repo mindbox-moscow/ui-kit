@@ -1929,7 +1929,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 					state="edit"
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
-					onConditionStateToggle={() => console.log("change state")}
+					onConditionStateToggle={() => null}
 					onClose={() => console.log("close")}
 					editorComponent={
 						<ConditionEditorPopup
@@ -3062,7 +3062,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="edit"
-				onConditionStateToggle={() => console.log("change state")}
+				onConditionStateToggle={() => null}
 				onClose={() => console.log("close")}
 				editorComponent={
 					<ConditionEditorPopup
@@ -3251,7 +3251,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="edit"
-				onConditionStateToggle={() => console.log("change state")}
+				onConditionStateToggle={() => null}
 				onClose={() => console.log("close")}
 				editorComponent={
 					<ConditionEditorPopup
@@ -3430,7 +3430,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="edit"
-				onConditionStateToggle={() => console.log("change state")}
+				onConditionStateToggle={() => null}
 				onClose={() => console.log("close")}
 				editorComponent={
 					<ConditionEditorPopup
@@ -3572,7 +3572,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filterablePropertyName="Дата и время"
 				filtrationMethodName="заполнена и"
 				state="view"
-				onConditionStateToggle={() => console.log("change state")}
+				onConditionStateToggle={() => null}
 				onClose={() => console.log("close")}
 				editorComponent={
 					<ConditionEditorPopup

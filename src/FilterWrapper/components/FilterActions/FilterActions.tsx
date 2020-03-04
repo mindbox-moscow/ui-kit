@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { Fragment } from "react";
 import { Button } from "../../../Button";
 import { useClickOutside } from "../../../HOOKs";
 import { FilterAction } from "../../types";
@@ -35,8 +36,10 @@ const FilterActions: React.FC<FilterActionsProps> = ({
 	useClickOutside(refActions, hideListPopover);
 
 	return (
-		<div className="kit-filter-actions" ref={refActions}>
-			{filterImportant.map((item: FilterAction) => item.component)}
+		<div className="kit-filter-actions">
+			{filterImportant.map((item: FilterAction, index) => (
+				<Fragment key={index}>{item.component}</Fragment>
+			))}
 			{filterNotImportant.length > 0 && (
 				<div className="kit-filter-actions__popover">
 					<Button

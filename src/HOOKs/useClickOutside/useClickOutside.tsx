@@ -6,19 +6,17 @@ export function useClickOutside(
 ) {
 	React.useEffect(
 		() => {
-			const listner = (event: MouseEvent) => {
-				const target = event.target as HTMLElement;
+			const listner = (e: MouseEvent) => {
+				const target = e.target as HTMLElement;
 				if (!(ref.current && ref.current.contains(target))) {
-					handler(event);
+					handler(e);
 				}
-
-				return;
 			};
 
-			document.addEventListener("mousedown", listner);
+			document.addEventListener("click", listner);
 
 			return () => {
-				document.removeEventListener("mousedown", listner);
+				document.removeEventListener("click", listner);
 			};
 		},
 		[ref, handler]

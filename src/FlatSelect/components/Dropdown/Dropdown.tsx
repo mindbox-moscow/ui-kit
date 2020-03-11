@@ -266,8 +266,11 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	private handleClick = () => {
 		const { show } = this.state;
+		const { disabled } = this.props;
 
-		this.changeVisibility(!show);
+		if (!disabled) {
+			this.changeVisibility(!show);
+		}
 	};
 
 	private changeVisibility = (show: boolean) => {

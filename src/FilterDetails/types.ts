@@ -10,4 +10,7 @@ export interface FilterDetailsProps {
 export interface CallbackProps {
 	onClose: () => void;
 	rollBackFocus?: () => void;
+	onKeyDown?: (
+		e: React.KeyboardEvent | React.KeyboardEvent<HTMLUListElement>
+	) => void;
 }

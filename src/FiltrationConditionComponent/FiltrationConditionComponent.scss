@@ -41,6 +41,14 @@
 		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
 		}
+
+		.kit-filtration-group_edit & {
+			> .kit-filtration-condition__content,
+			> .kit-filtration-condition__drag-and-drop,
+			> .kit-filtration-condition__copy {
+				background-color: #fff;
+			}
+		}
 	}
 
 	&::before {

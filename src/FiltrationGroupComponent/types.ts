@@ -1,3 +1,5 @@
+import { IActionProps } from "../ActionsDropdown";
+
 type GroupType = "and" | "or";
 
 type ConditionState =
@@ -18,6 +20,8 @@ export interface StateProps {
 	addGroupConditionButton?: React.ReactNode;
 	shouldShowButtons: boolean;
 	shouldShowDuplicateButton: boolean;
+	moreConditionToggle: string;
+	moreActions: IActionProps[];
 }
 
 export interface CallbackProps {

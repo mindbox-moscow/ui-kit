@@ -495,6 +495,13 @@
 				label="Добавить фильтр"
 			/>
 		}
+		moreConditionToggle="Действие"
+		moreActions={[
+			{
+				title: "Вложить в группу",
+				onClick: () => console.log("Click")
+			}
+		]}
 	>
 		<FiltrationConditionComponent
 			filterablePropertyName="Пол"

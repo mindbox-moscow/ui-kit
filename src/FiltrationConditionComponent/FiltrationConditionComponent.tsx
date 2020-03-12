@@ -1,6 +1,7 @@
 import cn from "classnames";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as React from "react";
+import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterDetails } from "../FilterDetails";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { IconSvg } from "../IconSvg";
@@ -25,7 +26,9 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	onConditionStateToggle,
 	withAlert,
 	onConditionCopy,
-	onConditionRemove
+	onConditionRemove,
+	moreConditionToggle,
+	moreActions
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
 	const [popoverFilterAction, setPopoverFilterAction] = useState<
@@ -135,6 +138,18 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 					>
 						<IconSvg type="trash" />
 					</button>
+					<ActionsDropdown
+						className="kit-filtration-condition__more"
+						toggleBtnText={moreConditionToggle}
+					>
+						{moreActions &&
+							moreActions.map((props, index) => (
+								<ActionsDropdown.Action
+									{...props}
+									key={index}
+								/>
+							))}
+					</ActionsDropdown>
 					{state === "edit" && editModeContent}
 				</div>
 				{showPopover && (

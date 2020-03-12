@@ -336,6 +336,10 @@
 	background-color: $braketColor;
 	box-sizing: border-box;
 	z-index: 3;
+
+	> .kit-filtration-group__label-text {
+		border-radius: 4px;
+	}
 }
 
 .kit-filtration-group__label-text {
@@ -401,12 +405,13 @@
 }
 
 .kit-filtration-group__remove,
-.kit-filtration-group__copy {
+.kit-filtration-group__copy,
+.kit-filtration-group__more {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	padding: 0;
+	padding: 0 0 1px;
 	border: 0;
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
@@ -428,6 +433,16 @@
 	width: 36px;
 	background-color: $copyColorBg;
 	color: $copyColor;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
+}
+
+.kit-filtration-group__more {
+	background-color: $copyColorBg;
+	color: $copyColor;
+	font-weight: normal;
 
 	&:hover {
 		background-color: darken($copyColorBg, 10%);

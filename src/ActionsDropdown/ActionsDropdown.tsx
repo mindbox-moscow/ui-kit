@@ -3,7 +3,7 @@ import * as React from "react";
 import { ReactNode, useState } from "react";
 
 import { IconSvg } from "../IconSvg";
-import { Action, Dropdown, Group } from "./components";
+import { Action, Dropdown, Group, IActionProps } from "./components";
 import { MethodsProvider } from "./context";
 
 import "./ActionsDropdown.scss";
@@ -55,4 +55,4 @@ const ActionsDropdown = (props: IProps) => {
 ActionsDropdown.Action = Action;
 ActionsDropdown.Group = Group;
 
-export { ActionsDropdown };
+export { ActionsDropdown, IActionProps };

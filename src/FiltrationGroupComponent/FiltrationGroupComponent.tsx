@@ -1,6 +1,7 @@
 import cn from "classnames";
 import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
+import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
@@ -29,7 +30,9 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	shouldShowButtons,
 	addGroupConditionButton,
 	addSimpleConditionButton,
-	onConditionStateToggle
+	onConditionStateToggle,
+	moreConditionToggle,
+	moreActions
 }) => {
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
@@ -363,7 +366,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 			>
 				<div className="kit-filtration-group__label-line-vertical">
 					{shouldShowLabel && (
-						<span className="kit-filtration-group__label-text">
+						<div className="kit-filtration-group__label-text">
 							{state === "edit" ? (
 								<div
 									className={cn(
@@ -371,6 +374,18 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 										`kit-filtration-group__label-text-buttons_${groupType}`
 									)}
 								>
+									<ActionsDropdown
+										className="kit-filtration-group__more"
+										toggleBtnText={moreConditionToggle}
+									>
+										{moreActions &&
+											moreActions.map((props, index) => (
+												<ActionsDropdown.Action
+													{...props}
+													key={index}
+												/>
+											))}
+									</ActionsDropdown>
 									{renderCopyButton()}
 									<button
 										key="remove"
@@ -389,7 +404,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 							) : (
 								labelMap[groupType]
 							)}
-						</span>
+						</div>
 					)}
 				</div>
 				<div className="kit-filtration-group__label-line-horizontal" />

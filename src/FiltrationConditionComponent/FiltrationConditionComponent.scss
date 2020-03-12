@@ -34,7 +34,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 
@@ -110,7 +111,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 	}
@@ -123,7 +125,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 
@@ -167,7 +170,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 	}
@@ -193,13 +197,18 @@
 	align-items: center;
 	width: 44px;
 	min-height: 26px;
-	margin-left: 2px;
 	border: 0;
+}
+
+.kit-filtration-condition__copy,
+.kit-filtration-condition__remove,
+.kit-filtration-condition__more {
 	z-index: 1;
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 	outline: none;
 	visibility: hidden;
+	margin-left: 2px;
 }
 
 .kit-filtration-condition__copy {
@@ -212,12 +221,20 @@
 }
 
 .kit-filtration-condition__remove {
-	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	background-color: $removeColorBg;
 	color: $removeColor;
 
 	&:hover {
 		background-color: darken($removeColorBg, 10%);
+	}
+}
+
+.kit-filtration-condition__more {
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
+	background-color: $copyColorBg;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
 	}
 }
 

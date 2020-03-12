@@ -1,3 +1,5 @@
+import { IActionProps } from "../ActionsDropdown";
+
 type ConditionState =
 	| "view"
 	| "edit"
@@ -16,6 +18,8 @@ export interface StateProps {
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FilterablePropertyHierarchyElement.editorComponent.
 	helpComponent?: React.ReactNode; // компонент хелпа. точно такой же, как в FilterablePropertyHierarchyElement.helpComponent.
 	withAlert: boolean;
+	moreConditionToggle: string;
+	moreActions: IActionProps[];
 }
 
 export interface CallbackProps {

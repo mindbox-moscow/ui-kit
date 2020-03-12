@@ -11,7 +11,8 @@ $kit-actions-dropdown-padding: 15px;
 
 .kit-actions-dropdown__toggle {
 	position: relative;
-	top: 2px;
+	top: 50%;
+	transform: translateY(-50%);
 	display: flex;
 	width: 14px;
 	height: 20px;

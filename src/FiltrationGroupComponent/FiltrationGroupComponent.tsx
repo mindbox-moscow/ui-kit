@@ -377,6 +377,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 									<ActionsDropdown
 										className="kit-filtration-group__more"
 										toggleBtnText={moreConditionToggle}
+										positionDropdown="right"
 									>
 										{moreActions &&
 											moreActions.map((props, index) => (

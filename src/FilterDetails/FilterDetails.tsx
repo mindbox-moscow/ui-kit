@@ -17,21 +17,14 @@ export const FilterDetails: React.FC<Props> = ({
 	viewMode,
 	vertical,
 	horizontal,
-	rollBackFocus
+	rollBackFocus,
+	onKeyDown
 }) => {
 	const [helpIsExpanded, setHelpIsExpanded] = React.useState(false);
 	const kitFiltrationHelperRef = React.useRef<HTMLDivElement>(null);
 	const kitFiltrationExtendButton = React.useRef<HTMLButtonElement>(null);
 	const kitFiltrationRef = React.useRef<HTMLDivElement>(null);
 	const kitEditorWrapperRef = React.useRef<HTMLDivElement>(null);
-
-	React.useEffect(() => {
-		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
-	}, []);
 
 	React.useEffect(
 		() => {
@@ -69,10 +62,19 @@ export const FilterDetails: React.FC<Props> = ({
 		[helpIsExpanded]
 	);
 
-	const handleKeyDown = (e: KeyboardEvent) => {
+	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (rollBackFocus) {
-			if (e.keyCode === KeysCodes.Esc) {
-				rollBackFocus();
+			switch (e.keyCode) {
+				case KeysCodes.Esc:
+					rollBackFocus();
+					break;
+				case KeysCodes.ArrowUp:
+				case KeysCodes.ArrowDown:
+					if (onKeyDown) {
+						rollBackFocus();
+						onKeyDown(e);
+					}
+					break;
 			}
 		} else {
 			const wrapperRef = kitEditorWrapperRef.current;
@@ -111,6 +113,7 @@ export const FilterDetails: React.FC<Props> = ({
 
 	return (
 		<div
+			onKeyDown={handleKeyDown}
 			ref={kitFiltrationRef}
 			tabIndex={-1}
 			className={cn("kit-filter-details", neutralZoneClass, {

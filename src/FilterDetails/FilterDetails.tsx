@@ -3,7 +3,10 @@ import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { KeysCodes } from "../utils/constants";
-import { setLoopFocusElements } from "../utils/Focus";
+import {
+	setKeyDownEnterLoopFocusElements,
+	setLoopFocusElements
+} from "../utils/Focus";
 import "./FilterDetails.scss";
 import { CallbackProps, FilterDetailsProps } from "./types";
 
@@ -31,11 +34,11 @@ export const FilterDetails: React.FC<Props> = ({
 			if (kitEditorWrapperRef.current) {
 				kitEditorWrapperRef.current.addEventListener(
 					"keydown",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					setDetectedKeyDown
 				);
 				kitEditorWrapperRef.current.addEventListener(
 					"focusin",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					setDetectedKeyDown
 				);
 			}
 
@@ -43,11 +46,11 @@ export const FilterDetails: React.FC<Props> = ({
 				if (kitEditorWrapperRef.current) {
 					kitEditorWrapperRef.current.removeEventListener(
 						"keydown",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						setDetectedKeyDown
 					);
 					kitEditorWrapperRef.current.removeEventListener(
 						"focusin",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						setDetectedKeyDown
 					);
 				}
 			};
@@ -61,6 +64,21 @@ export const FilterDetails: React.FC<Props> = ({
 		},
 		[helpIsExpanded]
 	);
+
+	const setDetectedKeyDown = (e: KeyboardEvent) => {
+		if (kitEditorWrapperRef.current) {
+			switch (e.keyCode) {
+				case KeysCodes.Enter:
+					setKeyDownEnterLoopFocusElements(
+						kitEditorWrapperRef.current
+					)(e);
+					break;
+				case KeysCodes.Tab:
+					setLoopFocusElements(kitEditorWrapperRef.current)(e);
+					break;
+			}
+		}
+	};
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (rollBackFocus) {

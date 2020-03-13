@@ -101,7 +101,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 			if (this.onMarkFirstElement && this.refSearch!.value !== "") {
 				this.onMarkFirstElement();
 			}
-		}, 1);
+		}, 0);
 	};
 
 	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {

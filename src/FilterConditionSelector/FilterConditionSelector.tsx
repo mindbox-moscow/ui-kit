@@ -304,6 +304,7 @@ const FilterConditionSelector: React.FC<
 					onClose={onConditionStateToggle}
 					viewMode="menu"
 					rollBackFocus={handleRollBackFocus}
+					onKeyDown={handleKeyDown}
 				/>
 			</div>
 		</ContextWrapper>

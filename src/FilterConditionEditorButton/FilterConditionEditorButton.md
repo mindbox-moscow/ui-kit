@@ -1,4 +1,5 @@
 ```jsx
+const { Fragment } = require("react");
 const months = [
 	"Янв",
 	"Фев",

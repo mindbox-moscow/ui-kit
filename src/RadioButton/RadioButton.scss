@@ -2,7 +2,6 @@
 	font-family: "PT Sans", sans-serif;
 	position: relative;
 	display: inline-block;
-	cursor: pointer;
 	font-size: 22px;
 	user-select: none;
 }
@@ -24,6 +23,7 @@
 	border-radius: 4px;
 	border: 1px dashed #265378;
 	font-size: 14px;
+	cursor: pointer;
 	color: #265378;
 
 	&:hover {
@@ -41,7 +41,7 @@
 }
 
 .kit-radio__input {
-	&:checked+.kit-radio__checkmark {
+	&:checked + .kit-radio__checkmark {
 		margin: 0;
 		background-color: #f5f1bb;
 		border: 2px solid #a0ba82;
@@ -50,6 +50,12 @@
 		&:hover {
 			background-color: darken($color: #f5f1bb, $amount: 18%);
 		}
+	}
+
+	&:disabled + .kit-radio__checkmark {
+		background-color: #f0f4f4;
+		color: rgba(40, 84, 119, 0.4);
+		cursor: default;
 	}
 }
 
@@ -65,7 +71,7 @@
 			fill: #000000;
 		}
 
-		.kit-radio__input:checked+.kit-radio__checkmark & {
+		.kit-radio__input:checked + .kit-radio__checkmark & {
 			fill: #000000;
 		}
 	}

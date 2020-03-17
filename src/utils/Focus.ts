@@ -9,34 +9,27 @@ export const getFocusableElements = (
 		"[href]",
 		"input:not(:disabled)",
 		"select:not(:disabled)",
-		"textarea:not(:disabled)",
-		'[tabindex]:not([tabindex="-1"])'
-	];
-
-	const selectorsWithoutTabIndex = [
-		"button:not(:disabled)",
-		"[href]",
-		"input:not(:disabled)",
-		"select:not(:disabled)",
 		"textarea:not(:disabled)"
 	];
 
+	const selectorsWithTabIndex = [
+		...selectors,
+		'[tabindex]:not([tabindex="-1"])'
+	];
+
 	const focusableElements = element.querySelectorAll(
-		withoutTabIndex
-			? selectorsWithoutTabIndex.join(",")
-			: selectors.join(",")
+		withoutTabIndex ? selectors.join(",") : selectorsWithTabIndex.join(",")
 	);
 
 	return Array.from(focusableElements) as HTMLElement[];
 };
 
-export const setLoopFocusElements = (element: HTMLElement) => (
+export const setFocusLoopOnElements = (
+	element: HTMLElement,
 	e: KeyboardEvent
 ) => {
 	const focusable = getFocusableElements(element);
 	const lastFocusable = focusable[focusable.length - 1];
-
-	console.log(focusable);
 
 	if (focusable.length > 0) {
 		if (
@@ -59,8 +52,8 @@ export const setLoopFocusElements = (element: HTMLElement) => (
 	}
 };
 
-export const setKeyDownEnterLoopFocusElements = (element: HTMLElement) => (
-	e: KeyboardEvent
+export const setFocusLoopOnElementsExceptTabIndexed = (
+	element: HTMLElement
 ) => {
 	const focusable = getFocusableElements(element, true);
 	const focusedElement = document.activeElement;

@@ -4,8 +4,8 @@ import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { KeysCodes } from "../utils/constants";
 import {
-	setKeyDownEnterLoopFocusElements,
-	setLoopFocusElements
+	setFocusLoopOnElements,
+	setFocusLoopOnElementsExceptTabIndexed
 } from "../utils/Focus";
 import "./FilterDetails.scss";
 import { CallbackProps, FilterDetailsProps } from "./types";
@@ -34,11 +34,11 @@ export const FilterDetails: React.FC<Props> = ({
 			if (kitEditorWrapperRef.current) {
 				kitEditorWrapperRef.current.addEventListener(
 					"keydown",
-					setDetectedKeyDown
+					handleKeyDownForFocusLoop
 				);
 				kitEditorWrapperRef.current.addEventListener(
 					"focusin",
-					setDetectedKeyDown
+					handleKeyDownForFocusLoop
 				);
 			}
 
@@ -46,11 +46,11 @@ export const FilterDetails: React.FC<Props> = ({
 				if (kitEditorWrapperRef.current) {
 					kitEditorWrapperRef.current.removeEventListener(
 						"keydown",
-						setDetectedKeyDown
+						handleKeyDownForFocusLoop
 					);
 					kitEditorWrapperRef.current.removeEventListener(
 						"focusin",
-						setDetectedKeyDown
+						handleKeyDownForFocusLoop
 					);
 				}
 			};
@@ -65,16 +65,16 @@ export const FilterDetails: React.FC<Props> = ({
 		[helpIsExpanded]
 	);
 
-	const setDetectedKeyDown = (e: KeyboardEvent) => {
+	const handleKeyDownForFocusLoop = (e: KeyboardEvent) => {
 		if (kitEditorWrapperRef.current) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
-					setKeyDownEnterLoopFocusElements(
+					setFocusLoopOnElementsExceptTabIndexed(
 						kitEditorWrapperRef.current
-					)(e);
+					);
 					break;
 				case KeysCodes.Tab:
-					setLoopFocusElements(kitEditorWrapperRef.current)(e);
+					setFocusLoopOnElements(kitEditorWrapperRef.current, e);
 					break;
 			}
 		}

@@ -36,12 +36,12 @@ export const FlatSelect = <TValue extends object>({
 		setSearchTerm(newSearchTerm);
 	}, []);
 
-	const handleOnChange = React.useCallback((newSelectedValue: TValue) => {
+	const handleOnChange = (newSelectedValue: TValue) => {
 		if (!(selectedValue instanceof Array)) {
 			hide();
 		}
 		onChange(newSelectedValue);
-	}, []);
+	};
 
 	const defaultSelectedValueFormatter = (
 		selectedValue: TValue | TValue[]

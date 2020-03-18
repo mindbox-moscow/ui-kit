@@ -1,4 +1,5 @@
 ```jsx
+const { Fragment } = require("react");
 const months = [
 	"Янв",
 	"Фев",
@@ -1649,7 +1650,10 @@ const createChildRenderer = (
 					/>
 				);
 			}
-			return list;
+
+			return list.map((item, index) => {
+				return <Fragment key={index}>{item}</Fragment>;
+			});
 		}
 
 		render() {

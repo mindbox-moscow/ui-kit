@@ -16,6 +16,7 @@ $mainColor: #3875d7;
 	color: $mainColor;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 	cursor: pointer;
+	padding: 0;
 
 	&:hover {
 		background-color: $borderHoverColor;

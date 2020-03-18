@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { Fragment } from "react";
 import { Button } from "../../../Button";
 import { FilterAction } from "../../types";
 
@@ -32,7 +33,9 @@ export const FilterActions: React.FC<FilterActionsProps> = ({
 
 	return (
 		<div className="kit-filter-actions">
-			{filterImportant.map((item: FilterAction) => item.component)}
+			{filterImportant.map((item: FilterAction, index) => (
+				<Fragment key={index}>{item.component}</Fragment>
+			))}
 			{filterNotImportant.length > 0 && (
 				<div className="kit-filter-actions__popover">
 					<Button

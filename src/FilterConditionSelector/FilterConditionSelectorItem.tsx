@@ -62,7 +62,8 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 			context.selectedElement = {
 				isSelected,
 				isExpanded,
-				type
+				type,
+				onSelect: onSelectItem
 			};
 		}
 	};

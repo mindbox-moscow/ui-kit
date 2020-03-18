@@ -24,6 +24,7 @@
 	border-radius: 4px;
 	box-sizing: border-box;
 	font-size: 14px;
+	cursor: pointer;
 	color: #265378;
 
 	&:hover {
@@ -50,6 +51,12 @@
 		&:hover {
 			background-color: darken($color: #f5f1bb, $amount: 18%);
 		}
+	}
+
+	&:disabled+.kit-radio__checkmark {
+		background-color: #f0f4f4;
+		color: rgba(40, 84, 119, 0.4);
+		cursor: default;
 	}
 }
 

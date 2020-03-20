@@ -95,10 +95,10 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 							state === "edit",
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit",
-						"kit-filtration-condition__item-text_shaded":
-							state === "shaded",
 						"kit-filtration-condition__item-text_read-only":
 							state === "readOnly",
+						"kit-filtration-condition__item-text_shaded":
+							state === "shaded",
 						"kit-filtration-condition__item-text_view":
 							state === "view"
 					})}

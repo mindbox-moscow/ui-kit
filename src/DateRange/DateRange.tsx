@@ -110,7 +110,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
-		const isError = dateTo ? newDateFrom >= dateTo : false;
+		const isError = dateTo ? newDateFrom > dateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
@@ -119,7 +119,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
-		const isError = dateFrom ? dateFrom >= newDateTo : false;
+		const isError = dateFrom ? dateFrom > newDateTo : false;
 		setHasError(isError);
 
 		if (!isError) {

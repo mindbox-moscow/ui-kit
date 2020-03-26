@@ -18,6 +18,7 @@ class ExampleFlatSelect extends React.Component {
 
 	render() {
 		const { items, selectedValue, height, width } = this.state;
+		const { disabled } = this.props;
 
 		const itemFormatter = value => ({
 			key: value ? "true" : "false",
@@ -37,12 +38,16 @@ class ExampleFlatSelect extends React.Component {
 				onChange={value =>
 					this.onFiltrationMethodSettingsUpdated(value)
 				}
+				disabled={disabled}
 			/>
 		);
 	}
 }
 
 <div>
+	<h5>Стандартное состояние</h5>
 	<ExampleFlatSelect />
+	<h5>Disabled</h5>
+	<ExampleFlatSelect disabled={true} />
 </div>;
 ```

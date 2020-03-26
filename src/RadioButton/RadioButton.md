@@ -6,7 +6,9 @@
 		alignItems: "center"
 	}}
 >
-	<RadioButton name="group_1">Radio-button</RadioButton>
+	<RadioButton name="group_1" disabled>
+		Radio-button
+	</RadioButton>
 	<RadioButton name="group_1" checked>
 		Radio-button (checked)
 	</RadioButton>

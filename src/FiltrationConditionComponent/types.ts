@@ -17,9 +17,9 @@ export interface IStateProps {
 	state: ConditionState; // состояние условия фильтрации. то же самое, что в группах.
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FilterablePropertyHierarchyElement.editorComponent.
 	helpComponent?: React.ReactNode; // компонент хелпа. точно такой же, как в FilterablePropertyHierarchyElement.helpComponent.
-	withAlert: boolean;
 	moreConditionToggleCaption?: string;
 	moreActions?: IActionProps[];
+	withAlert?: boolean;
 }
 
 export interface ICallbackProps {

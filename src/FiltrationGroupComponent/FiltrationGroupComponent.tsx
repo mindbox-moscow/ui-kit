@@ -7,10 +7,10 @@ import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
-import { CallbackProps, SearchClasses, StateProps } from "./types";
+import { ICallbackProps, IStateProps, SearchClasses } from "./types";
 import { searchFirstLastElement } from "./utils";
 
-type Props = StateProps & CallbackProps;
+type Props = IStateProps & ICallbackProps;
 
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 32;
@@ -31,7 +31,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	addGroupConditionButton,
 	addSimpleConditionButton,
 	onConditionStateToggle,
-	moreConditionToggle,
+	moreConditionToggleCaption,
 	moreActions
 }) => {
 	const context = useContext(FilterWrapperContext);
@@ -338,10 +338,10 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				`kit-filtration-group_${groupType}`,
 				{
 					"kit-filtration-group_edit": state === "edit",
-					"kit-filtration-group_shaded": state === "shaded",
-					"kit-filtration-group_read-only": state === "readOnly",
+					"kit-filtration-group_no-label": !shouldShowLabel,
 					"kit-filtration-group_not-children": !anyChildren,
-					"kit-filtration-group_no-label": !shouldShowLabel
+					"kit-filtration-group_read-only": state === "readOnly",
+					"kit-filtration-group_shaded": state === "shaded"
 				}
 			)}
 		>
@@ -367,44 +367,44 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				<div className="kit-filtration-group__label-line-vertical">
 					{shouldShowLabel && (
 						<div className="kit-filtration-group__label-text">
-							{state === "edit" ? (
-								<div
-									className={cn(
-										"kit-filtration-group__label-text-buttons",
-										`kit-filtration-group__label-text-buttons_${groupType}`
-									)}
-								>
-									<ActionsDropdown
-										className="kit-filtration-group__more"
-										toggleBtnText={moreConditionToggle}
-										positionDropdown="right"
+							{state === "edit" ?
+								moreActions && moreActions.length && (
+									<div
+										className={cn(
+											"kit-filtration-group__label-text-buttons",
+											`kit-filtration-group__label-text-buttons_${groupType}`
+										)}
 									>
-										{moreActions &&
-											moreActions.map((props, index) => (
+										<ActionsDropdown
+											className="kit-filtration-group__more"
+											toggleBtnText={moreConditionToggleCaption || ""}
+											positionDropdown="right"
+										>
+											{moreActions.map((props, index) => (
 												<ActionsDropdown.Action
 													{...props}
 													key={index}
 												/>
 											))}
-									</ActionsDropdown>
-									{renderCopyButton()}
-									<button
-										key="remove"
-										onClick={onConditionRemove}
-										className="kit-filtration-group__remove"
-										type="button"
-									>
-										<IconSvg type="trash" />
-									</button>
-									<LabelButton
-										onToggle={onGroupTypeToggle}
-										types={labelMap}
-										activeType={groupType}
-									/>
-								</div>
-							) : (
-								labelMap[groupType]
-							)}
+										</ActionsDropdown>
+										{renderCopyButton()}
+										<button
+											key="remove"
+											onClick={onConditionRemove}
+											className="kit-filtration-group__remove"
+											type="button"
+										>
+											<IconSvg type="trash" />
+										</button>
+										<LabelButton
+											onToggle={onGroupTypeToggle}
+											types={labelMap}
+											activeType={groupType}
+										/>
+									</div>
+								) : (
+									labelMap[groupType]
+								)}
 						</div>
 					)}
 				</div>

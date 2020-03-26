@@ -495,7 +495,7 @@
 				label="Добавить фильтр"
 			/>
 		}
-		moreConditionToggle="Действие"
+		moreConditionToggleCaption="Действие"
 		moreActions={[
 			{
 				title: "Вложить в группу",

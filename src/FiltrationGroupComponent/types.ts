@@ -9,7 +9,7 @@ type ConditionState =
 	| "linkedConditionEdit"
 	| "readOnly";
 
-export interface StateProps {
+export interface IStateProps {
 	groupType: GroupType; // тип группы: И или ИЛИ
 	state: ConditionState;
 	andLabel: string; // лейбл для И
@@ -20,11 +20,11 @@ export interface StateProps {
 	addGroupConditionButton?: React.ReactNode;
 	shouldShowButtons: boolean;
 	shouldShowDuplicateButton: boolean;
-	moreConditionToggle: string;
-	moreActions: IActionProps[];
+	moreConditionToggleCaption?: string;
+	moreActions?: IActionProps[];
 }
 
-export interface CallbackProps {
+export interface ICallbackProps {
 	onGroupTypeToggle: () => void;
 	onConditionStateToggle: () => void;
 	onConditionRemove: () => void;

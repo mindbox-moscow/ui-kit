@@ -3,7 +3,7 @@
 	<FiltrationConditionComponent
 		filterablePropertyName="Цена"
 		filtrationMethodName="заполнена и"
-		moreConditionToggle="Действие"
+		moreConditionToggleCaption="Действие"
 		moreActions={[
 			{
 				title: "Редактировать",
@@ -14,7 +14,7 @@
 	<FiltrationConditionComponent
 		filterablePropertyName="Розничный заказ"
 		filtrationMethodName="в количестве"
-		moreConditionToggle="Действие"
+		moreConditionToggleCaption="Действие"
 		moreActions={[
 			{
 				title: "Редактировать",

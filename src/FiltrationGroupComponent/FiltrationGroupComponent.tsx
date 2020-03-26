@@ -367,14 +367,14 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				<div className="kit-filtration-group__label-line-vertical">
 					{shouldShowLabel && (
 						<div className="kit-filtration-group__label-text">
-							{state === "edit" ?
-								moreActions && moreActions.length && (
-									<div
-										className={cn(
-											"kit-filtration-group__label-text-buttons",
-											`kit-filtration-group__label-text-buttons_${groupType}`
-										)}
-									>
+							{state === "edit" ? (
+								<div
+									className={cn(
+										"kit-filtration-group__label-text-buttons",
+										`kit-filtration-group__label-text-buttons_${groupType}`
+									)}
+								>
+									{moreActions && moreActions.length && (
 										<ActionsDropdown
 											className="kit-filtration-group__more"
 											toggleBtnText={moreConditionToggleCaption || ""}
@@ -387,24 +387,25 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 												/>
 											))}
 										</ActionsDropdown>
-										{renderCopyButton()}
-										<button
-											key="remove"
-											onClick={onConditionRemove}
-											className="kit-filtration-group__remove"
-											type="button"
-										>
-											<IconSvg type="trash" />
-										</button>
-										<LabelButton
-											onToggle={onGroupTypeToggle}
-											types={labelMap}
-											activeType={groupType}
-										/>
-									</div>
-								) : (
-									labelMap[groupType]
-								)}
+									)}
+									{renderCopyButton()}
+									<button
+										key="remove"
+										onClick={onConditionRemove}
+										className="kit-filtration-group__remove"
+										type="button"
+									>
+										<IconSvg type="trash" />
+									</button>
+									<LabelButton
+										onToggle={onGroupTypeToggle}
+										types={labelMap}
+										activeType={groupType}
+									/>
+								</div>
+							) : (
+								labelMap[groupType]
+							)}
 						</div>
 					)}
 				</div>

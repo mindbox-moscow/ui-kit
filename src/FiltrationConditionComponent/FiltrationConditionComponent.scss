@@ -106,6 +106,8 @@
 		}
 
 		> .kit-filtration-condition__content {
+			position: relative;
+			z-index: 3;
 			background-color: $editModeColorBg;
 		}
 

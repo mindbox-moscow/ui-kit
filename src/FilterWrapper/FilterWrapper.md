@@ -435,6 +435,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
 				onConditionRemove={() => console.log("remove")}
+				moreConditionToggleCaption="Действие"
+				moreActions={[
+					{
+						title: "Редактировать",
+						onClick: () => console.log("Click")
+					}
+				]}
 			/>
 		</FilterWrapper>
 	</div>
@@ -591,6 +598,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 					onGroupTypeToggle={() => console.log("type toggle")}
 					onConditionStateToggle={() => console.log("state toggle")}
 					onConditionRemove={() => console.log("remove")}
+					moreConditionToggleCaption="Действие"
+					moreActions={[
+						{
+							title: "Редактировать",
+							onClick: () => console.log("Click")
+						}
+					]}
 				/>
 			</FiltrationGroupComponent>
 		</FilterWrapper>
@@ -716,6 +730,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 					<IconSvg type="cross-arrows" />И
 				</Button>
 			}
+			moreConditionToggleCaption="Действие"
+			moreActions={[
+				{
+					title: "Редактировать",
+					onClick: () => console.log("Click")
+				}
+			]}
 		>
 			<FiltrationGroupComponent
 				onClickOutside={() => {}}
@@ -832,6 +853,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 					<IconSvg type="cross-arrows" />И
 				</Button>
 			}
+			moreConditionToggleCaption="Действие"
+			moreActions={[
+				{
+					title: "Редактировать",
+					onClick: () => console.log("Click")
+				}
+			]}
 		>
 			<FiltrationGroupComponent
 				onClickOutside={() => {}}
@@ -970,6 +998,13 @@ class ExampleFlatSelectorSimple extends React.Component {
 						<IconSvg type="cross-arrows" />И
 					</Button>
 				}
+				moreConditionToggleCaption="Действие"
+				moreActions={[
+					{
+						title: "Редактировать",
+						onClick: () => console.log("Click")
+					}
+				]}
 			>
 				<FiltrationConditionComponent
 					filterablePropertyName="Пол"

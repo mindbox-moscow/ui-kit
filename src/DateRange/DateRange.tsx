@@ -12,7 +12,7 @@ import { ConditionEditorPopup } from "../ConditionEditorPopup";
 import { FilterDetails } from "../FilterDetails";
 import { RadioButton } from "../RadioButton";
 import { MONTH_IN_DAYS, WEEK_IN_DAYS, YEAR_IN_DAYS } from "../utils/constants";
-import { changeDateToBeginOfTheDay, changeDateToEndOfTheDay, getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
+import { getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
 import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
 import { withOutsideClick } from "../HOCs";
@@ -102,30 +102,28 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		setDateRange({ dateFrom, dateTo });
 		if (dateFrom && dateTo) {
 			onChange({
-				dateFrom: changeDateToBeginOfTheDay(dateFrom),
-				dateTo: changeDateToEndOfTheDay(dateTo),
+				dateFrom,
+				dateTo,
 				type: DateRangeValueTypes.Concrete,
 			});
 		}
 	};
 
 	const handleChangeDateFrom = (newDateFrom: Date) => {
-		const beginDateFrom = changeDateToBeginOfTheDay(newDateFrom);
-		const isError = dateTo ? beginDateFrom >= dateTo : false;
+		const isError = dateTo ? newDateFrom > dateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateFrom(beginDateFrom);
+			setDateFrom(newDateFrom);
 		}
 	};
 
 	const handleChangeDateTo = (newDateTo: Date) => {
-		const endDateTo = changeDateToEndOfTheDay(newDateTo);
-		const isError = dateFrom ? dateFrom >= endDateTo : false;
+		const isError = dateFrom ? dateFrom > newDateTo : false;
 		setHasError(isError);
 
 		if (!isError) {
-			setDateTo(endDateTo);
+			setDateTo(newDateTo);
 		}
 	};
 

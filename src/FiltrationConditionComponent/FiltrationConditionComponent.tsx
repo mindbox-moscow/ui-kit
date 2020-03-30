@@ -1,16 +1,17 @@
 import cn from "classnames";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as React from "react";
+import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterDetails } from "../FilterDetails";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { IconSvg } from "../IconSvg";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
-import { CallbackProps, StateProps } from "./types";
+import { ICallbackProps, IStateProps } from "./types";
 
 import { withOutsideClick } from "../HOCs";
 import "./FiltrationConditionComponent.scss";
 
-type Props = StateProps & CallbackProps;
+type Props = IStateProps & ICallbackProps;
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
@@ -25,7 +26,9 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	onConditionStateToggle,
 	withAlert,
 	onConditionCopy,
-	onConditionRemove
+	onConditionRemove,
+	moreConditionToggleCaption,
+	moreActions
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
 	const [popoverFilterAction, setPopoverFilterAction] = useState<
@@ -95,10 +98,10 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 							state === "edit",
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit",
-						"kit-filtration-condition__item-text_shaded":
-							state === "shaded",
 						"kit-filtration-condition__item-text_read-only":
 							state === "readOnly",
+						"kit-filtration-condition__item-text_shaded":
+							state === "shaded",
 						"kit-filtration-condition__item-text_view":
 							state === "view"
 					})}
@@ -135,6 +138,19 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 					>
 						<IconSvg type="trash" />
 					</button>
+					{moreActions && moreActions.length && (
+						<ActionsDropdown
+							className="kit-filtration-condition__more"
+							toggleBtnText={moreConditionToggleCaption || ""}
+						>
+							{moreActions.map((props, index) => (
+								<ActionsDropdown.Action
+									{...props}
+									key={index}
+								/>
+							))}
+						</ActionsDropdown>
+					)}
 					{state === "edit" && editModeContent}
 				</div>
 				{showPopover && (

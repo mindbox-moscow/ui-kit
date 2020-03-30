@@ -3,7 +3,10 @@ import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { KeysCodes } from "../utils/constants";
-import { setLoopFocusElements } from "../utils/Focus";
+import {
+	setFocusLoopOnElements,
+	setFocusLoopOnElementsExceptTabIndexed
+} from "../utils/Focus";
 import "./FilterDetails.scss";
 import { CallbackProps, FilterDetailsProps } from "./types";
 
@@ -17,7 +20,8 @@ export const FilterDetails: React.FC<Props> = ({
 	viewMode,
 	vertical,
 	horizontal,
-	rollBackFocus
+	rollBackFocus,
+	onKeyDown
 }) => {
 	const [helpIsExpanded, setHelpIsExpanded] = React.useState(false);
 	const kitFiltrationHelperRef = React.useRef<HTMLDivElement>(null);
@@ -25,24 +29,16 @@ export const FilterDetails: React.FC<Props> = ({
 	const kitFiltrationRef = React.useRef<HTMLDivElement>(null);
 	const kitEditorWrapperRef = React.useRef<HTMLDivElement>(null);
 
-	React.useEffect(() => {
-		document.addEventListener("keydown", handleKeyDown);
-
-		return () => {
-			document.removeEventListener("keydown", handleKeyDown);
-		};
-	}, []);
-
 	React.useEffect(
 		() => {
 			if (kitEditorWrapperRef.current) {
 				kitEditorWrapperRef.current.addEventListener(
 					"keydown",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					handleKeyDownForFocusLoop
 				);
 				kitEditorWrapperRef.current.addEventListener(
 					"focusin",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					handleKeyDownForFocusLoop
 				);
 			}
 
@@ -50,11 +46,11 @@ export const FilterDetails: React.FC<Props> = ({
 				if (kitEditorWrapperRef.current) {
 					kitEditorWrapperRef.current.removeEventListener(
 						"keydown",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						handleKeyDownForFocusLoop
 					);
 					kitEditorWrapperRef.current.removeEventListener(
 						"focusin",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						handleKeyDownForFocusLoop
 					);
 				}
 			};
@@ -69,10 +65,34 @@ export const FilterDetails: React.FC<Props> = ({
 		[helpIsExpanded]
 	);
 
-	const handleKeyDown = (e: KeyboardEvent) => {
+	const handleKeyDownForFocusLoop = (e: KeyboardEvent) => {
+		if (kitEditorWrapperRef.current) {
+			switch (e.keyCode) {
+				case KeysCodes.Enter:
+					setFocusLoopOnElementsExceptTabIndexed(
+						kitEditorWrapperRef.current
+					);
+					break;
+				case KeysCodes.Tab:
+					setFocusLoopOnElements(kitEditorWrapperRef.current, e);
+					break;
+			}
+		}
+	};
+
+	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (rollBackFocus) {
-			if (e.keyCode === KeysCodes.Esc) {
-				rollBackFocus();
+			switch (e.keyCode) {
+				case KeysCodes.Esc:
+					rollBackFocus();
+					break;
+				case KeysCodes.ArrowUp:
+				case KeysCodes.ArrowDown:
+					if (onKeyDown) {
+						rollBackFocus();
+						onKeyDown(e);
+					}
+					break;
 			}
 		} else {
 			const wrapperRef = kitEditorWrapperRef.current;
@@ -111,6 +131,7 @@ export const FilterDetails: React.FC<Props> = ({
 
 	return (
 		<div
+			onKeyDown={handleKeyDown}
 			ref={kitFiltrationRef}
 			tabIndex={-1}
 			className={cn("kit-filter-details", neutralZoneClass, {

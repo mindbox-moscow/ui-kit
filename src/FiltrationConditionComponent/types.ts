@@ -1,3 +1,5 @@
+import { IActionProps } from "../ActionsDropdown";
+
 type ConditionState =
 	| "view"
 	| "edit"
@@ -5,7 +7,7 @@ type ConditionState =
 	| "linkedConditionEdit"
 	| "readOnly";
 
-export interface StateProps {
+export interface IStateProps {
 	filterablePropertyName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"
 	filtrationMethodName?: string | JSX.Element; // способ фильтрации. "есть такие" или "заполнен и". может отсутстовать.
 	filtrationMethodParametersComponent?: React.ReactNode; // компонент настроек для способа фильтрации. тоже может
@@ -15,10 +17,12 @@ export interface StateProps {
 	state: ConditionState; // состояние условия фильтрации. то же самое, что в группах.
 	editorComponent: React.ReactNode; // компонент редактирования условия фильтрации. точно такой же, как в FilterablePropertyHierarchyElement.editorComponent.
 	helpComponent?: React.ReactNode; // компонент хелпа. точно такой же, как в FilterablePropertyHierarchyElement.helpComponent.
-	withAlert: boolean;
+	moreConditionToggleCaption?: string;
+	moreActions?: IActionProps[];
+	withAlert?: boolean;
 }
 
-export interface CallbackProps {
+export interface ICallbackProps {
 	onConditionStateToggle: () => void; // вызывается, когда мы кликаем в режиме просмотра на условие. если мы уже в режиме редактирования, то повторный клик его снимает.
 	onConditionRemove: () => void; // вызывается при клике на корзинку
 	onConditionCopy: () => void;

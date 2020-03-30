@@ -2,18 +2,18 @@
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
-	> .kit-filtration-condition
-		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
-		> * {
+	>.kit-filtration-condition>.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
+		>* {
 			opacity: $opacity;
 		}
 
 		&:hover {
-			> * {
+			>* {
 				opacity: 1;
 			}
 		}
 	}
+
 	@include changeHorisontalBracketsOpacity($opacity);
 	@include changeVerticalSmallBracketOpacity($opacity);
 }
@@ -36,6 +36,7 @@
 	}
 
 	&_read-only {
+
 		.kit-filtration-group__label,
 		.kit-filtration-group__label-line {
 			pointer-events: none;
@@ -50,7 +51,7 @@
 	&_shaded {
 		@include opacityBlock(0.3);
 
-		> .kit-filtration-group__buttons {
+		>.kit-filtration-group__buttons {
 			button {
 				opacity: 0.3;
 
@@ -71,23 +72,23 @@
 			z-index: 3;
 		}
 
-		> .kit-filtration-group__label_hover_or,
-		> .kit-filtration-group__label_hover_and {
+		>.kit-filtration-group__label_hover_or,
+		>.kit-filtration-group__label_hover_and {
 			background-color: $hoverColorBg;
 		}
 
-		> .kit-filtration-group__buttons {
+		>.kit-filtration-group__buttons {
 			margin-left: 20px;
 			outline: none;
 
-			> .kit-filter-editor .kit-filter-editor__btn,
-			> .kit-button {
+			>.kit-filter-editor .kit-filter-editor__btn,
+			>.kit-button {
 				opacity: 1;
 			}
 		}
 
-		> .kit-filtration-group__label-line_or,
-		> .kit-filtration-group__label-line_and {
+		>.kit-filtration-group__label-line_or,
+		>.kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text {
 				transform: translateX(-100%);
 				background-color: transparent;
@@ -99,7 +100,7 @@
 			}
 		}
 
-		> .kit-filtration-group__label-line_or {
+		>.kit-filtration-group__label-line_or {
 			color: $orColorEdit;
 
 			.kit-filtration-group__label-line-vertical {
@@ -110,7 +111,7 @@
 			@include changeColorVerticalSmallBracket($orColorEdit);
 		}
 
-		> .kit-filtration-group__label-line_and {
+		>.kit-filtration-group__label-line_and {
 			color: $andColorEdit;
 
 			.kit-filtration-group__label-line-vertical {
@@ -121,8 +122,8 @@
 			@include changeColorVerticalSmallBracket($andColorEdit);
 		}
 
-		> .kit-filtration-group {
-			> .kit-filtration-group__label-line_hover_or {
+		>.kit-filtration-group {
+			>.kit-filtration-group__label-line_hover_or {
 				color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
@@ -133,7 +134,7 @@
 				}
 			}
 
-			> .kit-filtration-group__label-line_hover_and {
+			>.kit-filtration-group__label-line_hover_and {
 				color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
@@ -154,8 +155,8 @@
 	&_not-children {
 		min-height: $minHeight;
 
-		> .kit-filtration-group__label-line_or,
-		> .kit-filtration-group__label-line_and {
+		>.kit-filtration-group__label-line_or,
+		>.kit-filtration-group__label-line_and {
 			.kit-filtration-group__label-text-height {
 				margin-right: -22px;
 				margin-top: 4px;
@@ -179,11 +180,11 @@
 			@include changeColorVerticalSmallBracket($andColorEdit);
 		}
 
-		> .kit-filtration-group__label_hover_or {
+		>.kit-filtration-group__label_hover_or {
 			color: $orColorEdit;
 			background-color: $hoverColorBg;
 
-			& ~ .kit-filtration-group__label-line {
+			&~.kit-filtration-group__label-line {
 				color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
@@ -196,11 +197,11 @@
 			}
 		}
 
-		> .kit-filtration-group__label_hover_and {
+		>.kit-filtration-group__label_hover_and {
 			color: $andColorEdit;
 			background-color: $hoverColorBg;
 
-			& ~ .kit-filtration-group__label-line {
+			&~.kit-filtration-group__label-line {
 				color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
@@ -215,14 +216,15 @@
 			}
 		}
 
-		> .kit-filtration-group__buttons {
+		>.kit-filtration-group__buttons {
 			button {
 				opacity: 1;
 			}
 		}
 	}
 
-	& > & .kit-filtration-group__label-line {
+	&>& .kit-filtration-group__label-line {
+
 		&_or,
 		&_and {
 			.kit-filtration-group__label-line-horizontal {
@@ -231,14 +233,14 @@
 		}
 	}
 
-	> .kit-filtration-condition {
+	>.kit-filtration-condition {
 		margin: 0;
 		width: 100%;
 		max-width: calc(100% - 30px);
 		padding-left: 20px;
 		box-sizing: border-box;
 
-		> .kit-filtration-condition__item-text {
+		>.kit-filtration-condition__item-text {
 			@include createHorisontalBrackets(-16px, 16px);
 		}
 
@@ -270,18 +272,18 @@
 	z-index: 2;
 	box-sizing: border-box;
 
-	& ~ .kit-filtration-group,
-	& ~ .kit-filtration-condition {
+	&~.kit-filtration-group,
+	&~.kit-filtration-condition {
 		.kit-filtration-group__label {
 			border-radius: 0 0 0 3px;
 		}
 	}
 
-	& ~ ul {
+	&~ul {
 		margin-left: 30px;
 	}
 
-	& ~ .kit-filtration-group_not-children.kit-filtration-group_edit {
+	&~.kit-filtration-group_not-children.kit-filtration-group_edit {
 		margin-left: 60px;
 	}
 }
@@ -336,6 +338,10 @@
 	background-color: $braketColor;
 	box-sizing: border-box;
 	z-index: 3;
+
+	>.kit-filtration-group__label-text {
+		border-radius: 4px;
+	}
 }
 
 .kit-filtration-group__label-text {
@@ -354,7 +360,7 @@
 	line-height: 1;
 	text-align: center;
 	transform: translateX(-50%);
-	z-index: 1;
+	z-index: 5;
 	box-sizing: border-box;
 }
 
@@ -366,15 +372,15 @@
 	padding-right: 20px;
 	box-sizing: border-box;
 	outline: none;
-	z-index: 3;
+	z-index: 2;
 
 	@include createHorisontalBrackets;
 
-	> * {
+	>* {
 		z-index: 2;
 	}
 
-	> *:not(:last-child) {
+	>*:not(:last-child) {
 		margin-right: 5px;
 	}
 
@@ -383,7 +389,7 @@
 	}
 
 	&_no-children {
-		> * {
+		>* {
 			z-index: 3;
 		}
 
@@ -401,12 +407,13 @@
 }
 
 .kit-filtration-group__remove,
-.kit-filtration-group__copy {
+.kit-filtration-group__copy,
+.kit-filtration-group__more {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	padding: 0;
+	padding: 0 0 1px;
 	border: 0;
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
@@ -431,6 +438,20 @@
 
 	&:hover {
 		background-color: darken($copyColorBg, 10%);
+	}
+}
+
+.kit-filtration-group__more {
+	background-color: $copyColorBg;
+	color: $copyColor;
+	font-weight: normal;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
+
+	.kit-actions-dropdown__action {
+		white-space: nowrap;
 	}
 }
 
@@ -496,11 +517,11 @@
 		}
 	}
 
-	> *:not(:first-child) {
+	>*:not(:first-child) {
 		margin-left: 1px;
 	}
 
-	> *:first-child {
+	>*:first-child {
 		border-radius: 4px 0 0 4px;
 	}
 

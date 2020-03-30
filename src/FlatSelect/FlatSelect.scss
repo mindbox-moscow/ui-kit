@@ -213,6 +213,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	border-top: 1px dashed #929393;
+	scroll-snap-type: y mandatory;
 }
 
 .kit-selectR-results {
@@ -340,6 +341,10 @@
 			background: #3875d7;
 			color: #fff;
 		}
+	}
+
+	.kit-selectR-highlighted:not(.kit-selectR-selected) {
+		scroll-snap-align: center;
 	}
 }
 

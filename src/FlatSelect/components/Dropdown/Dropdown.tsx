@@ -95,6 +95,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER);
 						this.handleFocusElement(this.dropdownRef.current);
 					}
+					break;
+				case KeysCodes.ArrowUp:
+					e.stopPropagation();
+					break;
 			}
 		}
 	};

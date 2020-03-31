@@ -1,5 +1,7 @@
 import * as React from "react";
 
+export const neutralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
+
 export function useClickOutside(
 	ref: React.RefObject<HTMLElement>,
 	handler: (e: MouseEvent) => void

@@ -8,12 +8,10 @@ import { IconSvg } from "../IconSvg";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
 import { ICallbackProps, IStateProps } from "./types";
 
-import { withOutsideClick } from "../HOCs";
+import { useClickOutside } from "../HOOKs";
 import "./FiltrationConditionComponent.scss";
 
 type Props = IStateProps & ICallbackProps;
-
-const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
 export const FiltrationConditionComponent: React.FC<Props> = ({
 	filterablePropertyName,
@@ -40,6 +38,7 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	const [showPopover, setShowPopover] = useState(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
+	const refFilterDetails = useRef(null);
 
 	useEffect(
 		() => {
@@ -53,6 +52,10 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		},
 		[showPopover, filtrationMethodName]
 	);
+
+	if (state === "edit") {
+		useClickOutside(refFilterDetails, onConditionStateToggle);
+	}
 
 	const renderPopover = (
 		children: React.ReactNode,
@@ -75,8 +78,8 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	};
 
 	const editModeContent = (
-		<WithOutsideClickFilterDetails
-			onClickOutside={onConditionStateToggle}
+		<FilterDetails
+			ref={refFilterDetails}
 			helpCaption={filterablePropertyName}
 			helpComponent={helpComponent}
 			editorComponent={editorComponent}

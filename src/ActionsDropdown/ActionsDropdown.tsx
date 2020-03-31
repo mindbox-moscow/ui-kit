@@ -1,9 +1,10 @@
 import cn from "classnames";
 import * as React from "react";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 
+import { useClickOutside } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
-import { Action, Dropdown, Group, IActionProps } from "./components";
+import { Action, Group, IActionProps } from "./components";
 import { MethodsProvider } from "./context";
 
 import "./ActionsDropdown.scss";
@@ -26,10 +27,13 @@ const ActionsDropdown = (props: IProps) => {
 		positionDropdown = "left"
 	} = props;
 	const [isOpen, setIsOpen] = useState(false);
+	const refDropdown = useRef<HTMLDivElement>(null);
 
 	const toggleDropdown = () => setIsOpen(curr => !curr);
 
 	const closeDropdown = () => setIsOpen(false);
+
+	useClickOutside(refDropdown, closeDropdown);
 
 	return (
 		<div
@@ -53,12 +57,15 @@ const ActionsDropdown = (props: IProps) => {
 				/>
 			</button>
 			{isOpen && (
-				<Dropdown onClickOutside={closeDropdown}>
+				<div
+					ref={refDropdown}
+					className="kit-actions-dropdown__container"
+				>
 					<MethodsProvider value={{ closeDropdown }}>
 						{children}
 						{getActions && getActions()}
 					</MethodsProvider>
-				</Dropdown>
+				</div>
 			)}
 		</div>
 	);

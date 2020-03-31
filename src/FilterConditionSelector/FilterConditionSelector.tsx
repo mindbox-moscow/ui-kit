@@ -44,6 +44,7 @@ const FilterConditionSelector: React.FC<
 
 	const searchRef = React.useRef<Input>(null);
 	const listRef = React.useRef<HTMLUListElement>(null);
+	const wrapperListRef = React.useRef<HTMLDivElement>(null);
 	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 
@@ -82,7 +83,7 @@ const FilterConditionSelector: React.FC<
 			e.preventDefault();
 
 			const { deltaY } = e;
-			const listTree = listRef.current;
+			const listTree = wrapperListRef.current;
 
 			if (listTree) {
 				const scroll = listTree.scrollTop;
@@ -264,6 +265,7 @@ const FilterConditionSelector: React.FC<
 						</div>
 					</div>
 					<div
+						ref={wrapperListRef}
 						className={cn(
 							"kit-filter-condition-selector__hierarchy-wrap",
 							{

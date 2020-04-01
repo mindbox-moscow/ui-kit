@@ -67,6 +67,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public handleOnKeyDown = (e: React.KeyboardEvent) => {
 		if (e.keyCode === KeysCodes.Enter) {
+			e.preventDefault();
+
 			this.handleClick();
 		}
 	};
@@ -81,7 +83,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					break;
 
 				case KeysCodes.ArrowDown:
-					e.preventDefault();
+					e.stopPropagation();
 
 					if (this.itemsListSearch.length > 0) {
 						this.itemsListSearch[0].focus({ preventScroll: true });
@@ -94,6 +96,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER);
 						this.handleFocusElement(this.dropdownRef.current);
 					}
+					break;
+				case KeysCodes.ArrowUp:
+					e.stopPropagation();
+					break;
 			}
 		}
 
@@ -119,11 +125,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 			case KeysCodes.Esc:
 				e.preventDefault();
+
 				this.handleFocusElement(this.refSearch);
 				break;
 
 			case KeysCodes.ArrowDown:
-				e.preventDefault();
+				e.stopPropagation();
 
 				if (currentIndex === this.itemsListSearch.length - 1) {
 					this.itemsListSearch[0].focus({ preventScroll: true });
@@ -135,7 +142,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				break;
 
 			case KeysCodes.ArrowUp:
-				e.preventDefault();
+				e.stopPropagation();
 
 				if (currentIndex === 0) {
 					this.handleFocusElement(this.refSearch);

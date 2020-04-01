@@ -1,7 +1,7 @@
 export interface ISegmentButtonExpandProps {
 	onClick: () => void;
 	isOpen: boolean;
-	isHideButton?: boolean;
+	hidden?: boolean;
 	filterActionCaption?: string;
 	filterActionClick?: () => void;
 

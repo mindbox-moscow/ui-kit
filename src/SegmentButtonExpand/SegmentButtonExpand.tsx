@@ -9,7 +9,7 @@ import "./SegmentButtonExpand.scss";
 export const SegmentButtonExpand: React.FC<Props> = ({
 	onClick,
 	isOpen,
-	isHideButton,
+	hidden,
 	disabled,
 	filterActionCaption,
 	filterActionClick,
@@ -22,10 +22,10 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 		() => {
 			const renderPopover = context;
 			if (renderPopover) {
-				renderPopover(children, filterAction(), isOpen && !isHideButton);
+				renderPopover(children, filterAction(), isOpen && !hidden);
 			}
 		},
-		[children, isOpen, context, isHideButton]
+		[children, isOpen, context, hidden]
 	);
 
 	const filterAction = () => {
@@ -55,8 +55,8 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 	return (
 		<button
 			className={cn("kit-segment-button-expand", {
-				"kit-segment-button-expand_hide": isHideButton,
-				"kit-segment-button-expand_open": isOpen && !isHideButton
+				"kit-segment-button-expand_hide": hidden,
+				"kit-segment-button-expand_open": isOpen && !hidden
 			})}
 			type="button"
 			onClick={handleClick(onClick, disabled)}

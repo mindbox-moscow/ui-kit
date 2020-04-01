@@ -2,13 +2,14 @@ import cn from "classnames";
 import * as React from "react";
 import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent/FiltrationConditionComponentContext";
 import { IconSvg } from "../IconSvg";
-import { SegmentButtonExpandProps as Props } from "./types";
+import { ISegmentButtonExpandProps as Props } from "./types";
 
 import "./SegmentButtonExpand.scss";
 
 export const SegmentButtonExpand: React.FC<Props> = ({
 	onClick,
 	isOpen,
+	hidden,
 	disabled,
 	filterActionCaption,
 	filterActionClick,
@@ -21,17 +22,17 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 		() => {
 			const renderPopover = context;
 			if (renderPopover) {
-				renderPopover(children, filterAction(), isOpen);
+				renderPopover(children, filterAction(), isOpen && !hidden);
 			}
 		},
-		[children, isOpen]
+		[children, isOpen, context, hidden]
 	);
 
 	const filterAction = () => {
 		return (
 			filterActionShow && (
 				<button
-					className="kit-segment-button-expand__button-filter"
+					className={"kit-segment-button-expand__button-filter"}
 					type="button"
 					onClick={handleClick(filterActionClick)}
 				>
@@ -42,19 +43,20 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 		);
 	};
 
-	const handleClick = (onClick: () => void, disabled?: boolean) => (
+	const handleClick = (onClickAction?: () => void, isDisabled?: boolean) => (
 		e: React.MouseEvent
 	) => {
-		if (!disabled) {
+		if (!isDisabled && onClickAction) {
 			e.stopPropagation();
-			onClick();
+			onClickAction();
 		}
 	};
 
 	return (
 		<button
 			className={cn("kit-segment-button-expand", {
-				"kit-segment-button-expand_open": isOpen
+				"kit-segment-button-expand_hide": hidden,
+				"kit-segment-button-expand_open": isOpen && !hidden
 			})}
 			type="button"
 			onClick={handleClick(onClick, disabled)}

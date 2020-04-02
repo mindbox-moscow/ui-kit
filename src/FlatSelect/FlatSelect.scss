@@ -213,7 +213,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	border-top: 1px dashed #929393;
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y proximity;
 }
 
 .kit-selectR-results {

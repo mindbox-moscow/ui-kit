@@ -52,7 +52,7 @@ $searchFocusBgColor: #fffde5;
 	flex-grow: 1;
 	overflow: auto;
 	overscroll-behavior-y: contain;
-	scroll-snap-type: y mandatory;
+	scroll-snap-type: y proximity;
 
 	&_search {
 		.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions

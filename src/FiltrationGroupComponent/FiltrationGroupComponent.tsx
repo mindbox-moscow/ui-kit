@@ -82,7 +82,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 				"last"
 			);
 
-			const groupRefHeight = groupRef.getBoundingClientRect().height;
+			const groupRefHeight = groupRef.clientHeight;
 			const firstChildElementHeight = firstChildElement
 				? firstChildElement.clientHeight
 				: 0;
@@ -143,7 +143,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 					let labelLineMiddle = 0;
 
 					if (labelLine) {
-						const { height } = labelLine.getBoundingClientRect();
+						const height = labelLine.clientHeight;
 						const offsetTop = labelLine.offsetTop;
 
 						withOutLine = lastChildElementHeight - height;

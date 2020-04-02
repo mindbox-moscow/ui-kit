@@ -19,10 +19,12 @@
 }
 
 @mixin changeHorisontalBracketsColor($color) {
-
-	&~.kit-filtration-group__buttons,
-	&~.kit-filtration-condition>.kit-filtration-condition__item-text,
-	&~.kit-filtration-group>.kit-filtration-group__label-line .kit-filtration-group__label-line-horizontal {
+	& ~ .kit-filtration-group__buttons,
+	& ~ .kit-filtration-condition > .kit-filtration-condition__item-text,
+	&
+		~ .kit-filtration-group
+		> .kit-filtration-group__label-line
+		.kit-filtration-group__label-line-horizontal {
 		&::after {
 			border-top-color: $color;
 		}
@@ -30,38 +32,40 @@
 }
 
 @mixin changeHorisontalBracketsOpacity($opacity) {
-	>.kit-filtration-group__label {
-		&~.kit-filtration-group__buttons {
+	> .kit-filtration-group__label {
+		& ~ .kit-filtration-group__buttons {
 			&::after {
 				opacity: $opacity;
 			}
 		}
 
-		&~.kit-filtration-condition>.kit-filtration-condition__item-text {
+		& ~ .kit-filtration-condition > .kit-filtration-condition__item-text {
 			&::after {
 				opacity: $opacity;
 			}
 		}
 
-		&~.kit-filtration-group {
-			.kit-filtration-group__label-line .kit-filtration-group__label-line-horizontal {
+		& ~ .kit-filtration-group {
+			.kit-filtration-group__label-line
+				.kit-filtration-group__label-line-horizontal {
 				&::after {
 					opacity: $opacity;
 				}
 			}
 		}
 
-		&~.kit-filtration-group__label-line .kit-filtration-group__label-line-vertical {
+		&
+			~ .kit-filtration-group__label-line
+			.kit-filtration-group__label-line-vertical {
 			opacity: $opacity;
 		}
 	}
 }
 
 @mixin createVerticalSmallBracket() {
-	>.kit-filtration-condition>.kit-filtration-group {
-
-		>.kit-filtration-condition:first-of-type,
-		>.kit-filtration-group__buttons,
+	> .kit-filtration-condition > .kit-filtration-group {
+		> .kit-filtration-condition:first-of-type,
+		> .kit-filtration-group__buttons,
 		&.kit-filtration-group_not-children:not(&.kit-filtration-group_no-label) {
 			&::before {
 				content: "";
@@ -77,18 +81,34 @@
 			}
 		}
 
-		>.kit-filtration-group__buttons {
+		> .kit-filtration-group__buttons {
 			&::before {
 				left: -16px;
+			}
+		}
+
+		> .kit-filtration-group:first-of-type {
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -26px;
+				height: 50%;
+				display: block;
+				width: 2px;
+				background-color: $braketColor;
+				z-index: 3;
+				pointer-events: none;
 			}
 		}
 	}
 }
 
 @mixin changeColorVerticalSmallBracket($color) {
-
-	&~.kit-filtration-condition:first-of-type,
-	&~.kit-filtration-group__buttons:not(.kit-filtration-group__buttons_no-children),
+	& ~ .kit-filtration-condition:first-of-type,
+	& ~ .kit-filtration-group:first-of-type,
+	&
+		~ .kit-filtration-group__buttons:not(.kit-filtration-group__buttons_no-children),
 	&.kit-filtration-group_not-children {
 		&::before {
 			background-color: $color !important;
@@ -97,9 +117,9 @@
 }
 
 @mixin changeVerticalSmallBracketOpacity($opacity) {
-
-	>.kit-filtration-condition,
-	>.kit-filtration-group__buttons,
+	> .kit-filtration-condition,
+	> .kit-filtration-group__buttons,
+	> .kit-filtration-group,
 	&.kit-filtration-group_not-children {
 		&::before {
 			opacity: $opacity;

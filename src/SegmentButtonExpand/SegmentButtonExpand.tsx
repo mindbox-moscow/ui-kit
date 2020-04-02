@@ -25,7 +25,7 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 				renderPopover(children, filterAction(), isOpen && !hidden);
 			}
 		},
-		[children, isOpen, context, hidden]
+		[children, isOpen, hidden]
 	);
 
 	const filterAction = () => {

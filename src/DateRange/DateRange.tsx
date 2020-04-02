@@ -62,7 +62,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const [shouldShowFilter, setShouldShowFilter] = React.useState<boolean>(
 		false
 	);
-	const refFilterDetails = React.useRef<HTMLDivElement>(null);
+	const refContent = React.useRef<HTMLDivElement>(null);
 
 	const handleSelectedNoFilter = () => {
 		setDateFrom(undefined);
@@ -128,7 +128,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		}
 	};
 
-	useClickOutside(refFilterDetails, onCloseFilter);
+	useClickOutside(refContent, onCloseFilter, shouldShowFilter);
 
 	return (
 		<div className={cn("kit-date-range", className)}>
@@ -144,7 +144,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 			</div>
 			<div className="kit-date-range__content">
 				<label className="kit-date-range__label">{labelConcrete}</label>
-				<div className="kit-date-range__radio-button">
+				<div ref={refContent} className="kit-date-range__radio-button">
 					<RadioButton
 						name="date"
 						onClick={handleToggleFilter}
@@ -178,7 +178,6 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 
 					{shouldShowFilter && (
 						<FilterDetails
-							ref={refFilterDetails}
 							editorComponent={
 								<ConditionEditorPopup
 									innerEditorComponent={

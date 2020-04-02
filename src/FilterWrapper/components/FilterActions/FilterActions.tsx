@@ -33,7 +33,7 @@ const FilterActions: React.FC<FilterActionsProps> = ({
 		setIsOpen(false);
 	};
 
-	useClickOutside(refActions, hideListPopover);
+	useClickOutside(refActions, hideListPopover, isOpen);
 
 	return (
 		<div className="kit-filter-actions">

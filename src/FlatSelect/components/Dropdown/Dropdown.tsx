@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { neutralZoneClass, useClickOutside } from "../../../HOOKs";
+import { neutralZoneClass } from "../../../HOOKs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
@@ -233,8 +233,6 @@ const Dropdown = React.forwardRef(
 			onCloseDropdown: hide
 		};
 
-		useClickOutside(refPanel, hide);
-
 		return (
 			<div className="kit-flat-select">
 				<div
@@ -274,12 +272,12 @@ const Dropdown = React.forwardRef(
 					>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel
-								// ignoreNeutralZoneClass={true}
 								parentRef={dropdownRef}
 								width={width || Width.Full}
 								className={cn(panelClass, neutralZoneClass, {
 									"kit-selectR-above": isInBottomOfScreen
 								})}
+								onCLose={hide}
 							>
 								{children}
 							</Panel>

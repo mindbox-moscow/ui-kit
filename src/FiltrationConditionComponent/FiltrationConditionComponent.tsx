@@ -13,7 +13,7 @@ import "./FiltrationConditionComponent.scss";
 
 type Props = IStateProps & ICallbackProps;
 
-export const FiltrationConditionComponent: React.FC<Props> = ({
+const FiltrationConditionComponent: React.FC<Props> = ({
 	filterablePropertyName,
 	filtrationMethodName,
 	filtrationMethodParametersComponent,
@@ -38,7 +38,6 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	const [showPopover, setShowPopover] = useState(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
-	const refFilterDetails = useRef(null);
 
 	useEffect(
 		() => {
@@ -53,9 +52,13 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		[showPopover, filtrationMethodName]
 	);
 
-	if (state === "edit") {
-		useClickOutside(refFilterDetails, onConditionStateToggle);
-	}
+	const handleStateToggle = () => {
+		if (state === "edit") {
+			onConditionStateToggle();
+		}
+	};
+
+	useClickOutside(refContent, handleStateToggle, state === "edit");
 
 	const renderPopover = (
 		children: React.ReactNode,
@@ -79,7 +82,6 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 
 	const editModeContent = (
 		<FilterDetails
-			ref={refFilterDetails}
 			helpCaption={filterablePropertyName}
 			helpComponent={helpComponent}
 			editorComponent={editorComponent}
@@ -167,3 +169,5 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		</FiltrationConditionComponentContext.Provider>
 	);
 };
+
+export { FiltrationConditionComponent };

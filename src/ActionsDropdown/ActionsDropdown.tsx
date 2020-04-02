@@ -33,10 +33,11 @@ const ActionsDropdown = (props: IProps) => {
 
 	const closeDropdown = () => setIsOpen(false);
 
-	useClickOutside(refDropdown, closeDropdown);
+	useClickOutside(refDropdown, closeDropdown, isOpen);
 
 	return (
 		<div
+			ref={refDropdown}
 			className={cn(
 				"kit-actions-dropdown",
 				`kit-actions-dropdown_${positionDropdown}`,
@@ -57,10 +58,7 @@ const ActionsDropdown = (props: IProps) => {
 				/>
 			</button>
 			{isOpen && (
-				<div
-					ref={refDropdown}
-					className="kit-actions-dropdown__container"
-				>
+				<div className="kit-actions-dropdown__container">
 					<MethodsProvider value={{ closeDropdown }}>
 						{children}
 						{getActions && getActions()}

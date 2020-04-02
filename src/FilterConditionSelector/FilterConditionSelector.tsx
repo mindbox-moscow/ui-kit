@@ -10,7 +10,6 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
 
-import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { useDebounce } from "../HOOKs";
 import { BrowserList } from "../utils/constants";
 import { checkBrowser } from "../utils/helpers";
@@ -18,9 +17,12 @@ import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
 
-const FilterConditionSelector: React.FC<
-	Props & WithOutsideClickProps
-> = props => {
+type Ref = HTMLDivElement;
+
+const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
+	props,
+	ref
+) => {
 	const {
 		childRenderer,
 		onModeChanged,
@@ -38,13 +40,14 @@ const FilterConditionSelector: React.FC<
 		onConditionStateToggle,
 		onNextSelected,
 		onPreviousSelected,
-		onExpandCurrent,
-		setOutsideClickRef
+		onExpandCurrent
 	} = props;
 
 	const searchRef = React.useRef<Input>(null);
 	const listRef = React.useRef<HTMLUListElement>(null);
-	const mainRef = React.useRef<HTMLElement | null>(null);
+	const mainRef = ref
+		? (ref as React.RefObject<Ref>)
+		: React.useRef<HTMLDivElement>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -205,14 +208,6 @@ const FilterConditionSelector: React.FC<
 		[MenuMode.Examples]: examplesLabel
 	};
 
-	const setRef = (el: HTMLDivElement) => {
-		mainRef.current = el;
-
-		if (setOutsideClickRef) {
-			setOutsideClickRef(el);
-		}
-	};
-
 	const setAutoFocusSearchInput = () => {
 		if (searchRef.current) {
 			searchRef.current.focus();
@@ -231,7 +226,7 @@ const FilterConditionSelector: React.FC<
 
 	return (
 		<ContextWrapper>
-			<div ref={setRef} className="kit-filter-condition-selector">
+			<div ref={mainRef} className="kit-filter-condition-selector">
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
@@ -311,7 +306,8 @@ const FilterConditionSelector: React.FC<
 	);
 };
 
-const FilterConditionSelectorWithOutsideClick = withOutsideClick(
+const ForwardedRefFilterConditionSelector = React.forwardRef(
 	FilterConditionSelector
 );
-export { FilterConditionSelectorWithOutsideClick as FilterConditionSelector };
+
+export { ForwardedRefFilterConditionSelector as FilterConditionSelector };

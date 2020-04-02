@@ -2,6 +2,7 @@
 
 .kit-filtration-condition {
 	position: relative;
+	z-index: 3;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
@@ -10,6 +11,10 @@
 	&_with-alert {
 		color: $removeColor;
 		font-weight: 700;
+	}
+
+	&_show-dropdown {
+		z-index: 6;
 	}
 
 	.kit-filter-details {
@@ -25,7 +30,7 @@
 	padding: 3px 0 3px 0;
 	margin-right: 5px;
 	transition: color 0.15s ease-in-out;
-	z-index: 3;
+	z-index: 4;
 
 	&:hover:not(&_read-only) {
 		> .kit-filtration-condition__content {

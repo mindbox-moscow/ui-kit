@@ -12,6 +12,7 @@ interface IProps {
 	toggleBtnText: string;
 	className?: string;
 	children?: ReactNode;
+	onToggle?: (state: boolean) => void;
 	// getActions() используется, если нужны вычисления после открытия дропдауна
 	getActions?: () => ReactNode;
 	positionDropdown?: "left" | "right";
@@ -23,13 +24,24 @@ const ActionsDropdown = (props: IProps) => {
 		children,
 		toggleBtnText,
 		getActions,
+		onToggle,
 		positionDropdown = "left"
 	} = props;
 	const [isOpen, setIsOpen] = useState(false);
 
-	const toggleDropdown = () => setIsOpen(curr => !curr);
+	const toggleDropdown = () => {
+		setIsOpen(curr => !curr);
+		if (onToggle !== undefined) {
+			onToggle(!isOpen);
+		}
+	};
 
-	const closeDropdown = () => setIsOpen(false);
+	const closeDropdown = () => {
+		setIsOpen(false);
+		if (onToggle !== undefined) {
+			onToggle(false);
+		}
+	}
 
 	return (
 		<div

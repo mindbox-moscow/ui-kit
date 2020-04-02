@@ -3,7 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
-import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { neutralZoneClass, withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -374,20 +374,22 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 										`kit-filtration-group__label-text-buttons_${groupType}`
 									)}
 								>
-									{moreActions && moreActions.length && (
-										<ActionsDropdown
-											className="kit-filtration-group__more"
-											toggleBtnText={moreConditionToggleCaption || ""}
-											positionDropdown="right"
-										>
-											{moreActions.map((props, index) => (
-												<ActionsDropdown.Action
-													{...props}
-													key={index}
-												/>
-											))}
-										</ActionsDropdown>
-									)}
+									<div className={neutralZoneClass}>
+										{moreActions && moreActions.length && (
+											<ActionsDropdown
+												className="kit-filtration-group__more"
+												toggleBtnText={moreConditionToggleCaption || ""}
+												positionDropdown="right"
+											>
+												{moreActions.map((props, index) => (
+													<ActionsDropdown.Action
+														{...props}
+														key={index}
+													/>
+												))}
+											</ActionsDropdown>
+										)}
+									</div>
 									{renderCopyButton()}
 									<button
 										key="remove"

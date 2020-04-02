@@ -3,7 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
-import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
+import { neutralZoneClass, withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -376,10 +376,8 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 								>
 									{moreActions && moreActions.length && (
 										<ActionsDropdown
-											className="kit-filtration-group__more"
-											toggleBtnText={
-												moreConditionToggleCaption || ""
-											}
+											className={cn("kit-filtration-group__more", neutralZoneClass)}
+											toggleBtnText={moreConditionToggleCaption || ""}
 											positionDropdown="right"
 										>
 											{moreActions.map((props, index) => (

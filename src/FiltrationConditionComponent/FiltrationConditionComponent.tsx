@@ -38,6 +38,7 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		null
 	);
 	const [showPopover, setShowPopover] = useState(false);
+	const [showDropdown, setShowDropdown] = useState(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
 
@@ -89,7 +90,8 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		<FiltrationConditionComponentContext.Provider value={renderPopover}>
 			<li
 				className={cn("kit-filtration-condition", {
-					"kit-filtration-condition_edit": state === "edit"
+					"kit-filtration-condition_edit": state === "edit",
+					"kit-filtration-condition_show-dropdown": showDropdown
 				})}
 			>
 				<div
@@ -126,21 +128,22 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 					</div>
 					<button
 						type="button"
-						className="kit-filtration-condition__copy"
-						onClick={onConditionCopyClick}
-					>
-						<IconSvg type="duplicate" />
-					</button>
-					<button
-						type="button"
 						className="kit-filtration-condition__remove"
 						onClick={onConditionRemoveClick}
 					>
 						<IconSvg type="trash" />
 					</button>
+					<button
+						type="button"
+						className="kit-filtration-condition__copy"
+						onClick={onConditionCopyClick}
+					>
+						<IconSvg type="duplicate" />
+					</button>
 					{moreActions && moreActions.length && (
 						<ActionsDropdown
 							className="kit-filtration-condition__more"
+							onToggle={setShowDropdown}
 							toggleBtnText={moreConditionToggleCaption || ""}
 						>
 							{moreActions.map((props, index) => (

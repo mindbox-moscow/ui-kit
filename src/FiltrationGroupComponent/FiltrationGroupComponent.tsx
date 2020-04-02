@@ -374,22 +374,20 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 										`kit-filtration-group__label-text-buttons_${groupType}`
 									)}
 								>
-									<div className={neutralZoneClass}>
-										{moreActions && moreActions.length && (
-											<ActionsDropdown
-												className="kit-filtration-group__more"
-												toggleBtnText={moreConditionToggleCaption || ""}
-												positionDropdown="right"
-											>
-												{moreActions.map((props, index) => (
-													<ActionsDropdown.Action
-														{...props}
-														key={index}
-													/>
-												))}
-											</ActionsDropdown>
-										)}
-									</div>
+									{moreActions && moreActions.length && (
+										<ActionsDropdown
+											className={`kit-filtration-group__more ${neutralZoneClass}`}
+											toggleBtnText={moreConditionToggleCaption || ""}
+											positionDropdown="right"
+										>
+											{moreActions.map((props, index) => (
+												<ActionsDropdown.Action
+													{...props}
+													key={index}
+												/>
+											))}
+										</ActionsDropdown>
+									)}
 									{renderCopyButton()}
 									<button
 										key="remove"

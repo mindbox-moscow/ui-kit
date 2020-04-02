@@ -376,7 +376,7 @@ const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 								>
 									{moreActions && moreActions.length && (
 										<ActionsDropdown
-											className={`kit-filtration-group__more ${neutralZoneClass}`}
+											className={cn("kit-filtration-group__more", neutralZoneClass)}
 											toggleBtnText={moreConditionToggleCaption || ""}
 											positionDropdown="right"
 										>

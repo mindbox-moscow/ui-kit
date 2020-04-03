@@ -549,6 +549,9 @@ class ExampleFlatSelectorSimple extends React.Component {
 					isImportant: false
 				}
 			]}
+			renderHeadInformation={() => (
+				<TimeTravel onDatesChange={() => {}} />
+			)}
 		>
 			<FiltrationGroupComponent
 				onClickOutside={() => {}}

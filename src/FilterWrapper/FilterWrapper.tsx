@@ -38,11 +38,13 @@ export const FilterWrapper: React.FC<Props> = ({
 	scrollState = ScrollState.Full,
 	buttonUpCaption,
 	shouldShowStatistics,
-	showApplyButton
+	showApplyButton,
+	renderHeadInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
 	const debouncedWindowSize = useDebouncedWindowSize();
+	const hasFilterActions = filterActions && filterActions.length > 0;
 
 	React.useEffect(
 		() => {
@@ -108,17 +110,20 @@ export const FilterWrapper: React.FC<Props> = ({
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
-						"kit-filter_short":
-							!doesContainFilter &&
-							(filterActions == null || filterActions.length == 0)
+						"kit-filter_short": !doesContainFilter && (filterActions == null || filterActions.length === 0)
 					})}
 				>
-					{filterActions && filterActions.length > 0 && (
+					{(hasFilterActions || renderHeadInformation) &&  (
 						<div className="kit-filter__top-filter">
-							<FilterActions
-								filterActions={filterActions}
-								filterActionsCaption={filterActionsCaption}
-							/>
+							{renderHeadInformation && (<div className="kit-filter__top-info">
+								{renderHeadInformation()}
+							</div>)}
+							{hasFilterActions && (
+								<FilterActions
+									filterActions={filterActions}
+									filterActionsCaption={filterActionsCaption}
+								/>
+							)}
 						</div>
 					)}
 					<ul className="kit-filter__all-wrap">
@@ -133,7 +138,7 @@ export const FilterWrapper: React.FC<Props> = ({
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
 								{showApplyButton == null ||
-								showApplyButton == true ? (
+								showApplyButton === true ? (
 									scrollState !== ScrollState.Minified ? (
 										<button
 											className="kit-filter__use-filter"
@@ -153,7 +158,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
 								shouldShowStatistics={
-									shouldShowStatistics == undefined
+									shouldShowStatistics === undefined
 										? true
 										: shouldShowStatistics
 								}
@@ -176,7 +181,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
 								shouldShowStatistics={
-									shouldShowStatistics == undefined
+									shouldShowStatistics === undefined
 										? true
 										: shouldShowStatistics
 								}

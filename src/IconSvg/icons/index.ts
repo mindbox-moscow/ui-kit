@@ -1,27 +1,28 @@
+import { IconsProps } from "../types";
+import { AreaSelection } from "./AreaSelection";
+import { ArrowBottom } from "./ArrowBottom";
 import { ArrowRight } from "./ArrowRight";
+import { Calendar } from "./Calendar";
 import { CatalogTree } from "./CatalogTree";
 import { Close } from "./Close";
 import { Coins } from "./Coins";
-import { Dots } from "./Dots";
-import { Magnifier } from "./Magnifier";
-import { PercentRound } from "./PercentRound";
-import { Trash } from "./Trash";
-import { Extended } from "./Extended";
-import { Warning } from "./Warning";
-import { SegmentExpand } from "./SegmentExpand";
-import { SegmentEdit } from "./SegmentEdit";
-import { Filter } from "./Filter";
-import { Duplicate } from "./Duplicate";
 import { CrossArrows } from "./CrossArrows";
-import { Question } from "./Question";
-import { ArrowBottom } from "./ArrowBottom";
-import { IconsProps } from "../types";
-import { AreaSelection } from "./AreaSelection";
+import { Dots } from "./Dots";
+import { Duplicate } from "./Duplicate";
+import { Extended } from "./Extended";
+import { Filter } from "./Filter";
 import { FlipHorizontal } from "./FlipHorizontal";
-import { Revert } from "./Revert";
-import { Move } from "./Move";
-import { Plus } from "./Plus";
+import { Magnifier } from "./Magnifier";
 import { Minus } from "./Minus";
+import { Move } from "./Move";
+import { PercentRound } from "./PercentRound";
+import { Plus } from "./Plus";
+import { Question } from "./Question";
+import { Revert } from "./Revert";
+import { SegmentEdit } from "./SegmentEdit";
+import { SegmentExpand } from "./SegmentExpand";
+import { Trash } from "./Trash";
+import { Warning } from "./Warning";
 
 type ISvgProps = {
 	className: string;
@@ -30,6 +31,7 @@ type ISvgProps = {
 type IconType =
 	| "catalog-tree"
 	| "close"
+	| "calendar"
 	| "coins"
 	| "dots"
 	| "percent-round"
@@ -55,29 +57,30 @@ type IconType =
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
 const icons: Icons = {
+	"area-selection": AreaSelection,
+	"arrow-bottom": ArrowBottom,
 	"arrow-right": ArrowRight,
+	calendar: Calendar,
 	"catalog-tree": CatalogTree,
 	close: Close,
 	coins: Coins,
-	dots: Dots,
-	magnifier: Magnifier,
-	trash: Trash,
-	"percent-round": PercentRound,
-	extended: Extended,
-	warning: Warning,
-	"segment-expand": SegmentExpand,
-	"segment-edit": SegmentEdit,
-	filter: Filter,
-	duplicate: Duplicate,
 	"cross-arrows": CrossArrows,
-	question: Question,
-	"arrow-bottom": ArrowBottom,
-	"area-selection": AreaSelection,
+	dots: Dots,
+	duplicate: Duplicate,
+	extended: Extended,
+	filter: Filter,
 	"flip-horizontal": FlipHorizontal,
-	revert: Revert,
+	magnifier: Magnifier,
+	minus: Minus,
 	move: Move,
+	"percent-round": PercentRound,
 	plus: Plus,
-	minus: Minus
+	question: Question,
+	revert: Revert,
+	"segment-edit": SegmentEdit,
+	"segment-expand": SegmentExpand,
+	trash: Trash,
+	warning: Warning
 };
 
 export { icons, IconType, ISvgProps };

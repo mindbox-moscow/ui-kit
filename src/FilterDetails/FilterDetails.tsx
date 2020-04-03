@@ -75,6 +75,8 @@ export const FilterDetails = React.forwardRef<Ref, Props>(
 			if (kitEditorWrapperRef.current) {
 				switch (e.keyCode) {
 					case KeysCodes.Enter:
+						e.preventDefault();
+
 						setFocusLoopOnElementsExceptTabIndexed(
 							kitEditorWrapperRef.current
 						);
@@ -90,10 +92,14 @@ export const FilterDetails = React.forwardRef<Ref, Props>(
 			if (rollBackFocus) {
 				switch (e.keyCode) {
 					case KeysCodes.Esc:
+						e.preventDefault();
+
 						rollBackFocus();
 						break;
 					case KeysCodes.ArrowUp:
 					case KeysCodes.ArrowDown:
+						e.preventDefault();
+
 						if (onKeyDown) {
 							rollBackFocus();
 							onKeyDown(e);

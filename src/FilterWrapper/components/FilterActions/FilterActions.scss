@@ -31,6 +31,7 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 		border-top: 4px solid;
 	}
 }
+
 .kit-filter-actions__list_hide {
 	display: none;
 }
@@ -92,9 +93,9 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 	cursor: pointer;
 	box-sizing: border-box;
+	transition: opacity 0.3s ease-out;
 
 	&:hover {
-		color: #fff;
-		background-color: $hoverItemColorBg;
+		opacity: 0.6;
 	}
 }

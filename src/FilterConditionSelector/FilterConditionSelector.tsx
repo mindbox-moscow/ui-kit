@@ -45,6 +45,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 
 	const searchRef = React.useRef<Input>(null);
 	const listRef = React.useRef<HTMLUListElement>(null);
+	const wrapperListRef = React.useRef<HTMLDivElement>(null);
 	const mainRef = ref
 		? (ref as React.RefObject<Ref>)
 		: React.useRef<HTMLDivElement>(null);
@@ -85,7 +86,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 			e.preventDefault();
 
 			const { deltaY } = e;
-			const listTree = listRef.current;
+			const listTree = wrapperListRef.current;
 
 			if (listTree) {
 				const scroll = listTree.scrollTop;
@@ -259,6 +260,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 						</div>
 					</div>
 					<div
+						ref={wrapperListRef}
 						className={cn(
 							"kit-filter-condition-selector__hierarchy-wrap",
 							{

@@ -3,7 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
-import { useClickOutside } from "../HOOKs";
+import { neutralZoneClass, useClickOutside } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -81,7 +81,7 @@ const FiltrationGroupComponent = ({
 				"last"
 			);
 
-			const groupRefHeight = groupRef.getBoundingClientRect().height;
+			const groupRefHeight = groupRef.clientHeight;
 			const firstChildElementHeight = firstChildElement
 				? firstChildElement.clientHeight
 				: 0;
@@ -142,7 +142,7 @@ const FiltrationGroupComponent = ({
 					let labelLineMiddle = 0;
 
 					if (labelLine) {
-						const { height } = labelLine.getBoundingClientRect();
+						const height = labelLine.clientHeight;
 						const offsetTop = labelLine.offsetTop;
 
 						withOutLine = lastChildElementHeight - height;
@@ -379,7 +379,10 @@ const FiltrationGroupComponent = ({
 								>
 									{moreActions && moreActions.length && (
 										<ActionsDropdown
-											className="kit-filtration-group__more"
+											className={cn(
+												"kit-filtration-group__more",
+												neutralZoneClass
+											)}
 											toggleBtnText={
 												moreConditionToggleCaption || ""
 											}

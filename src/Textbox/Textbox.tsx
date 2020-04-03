@@ -46,6 +46,7 @@ export const Textbox: React.FC<TextboxProps> = ({
 		if (context && context.contextOnKeyDownSearch) {
 			switch (e.keyCode) {
 				case KeysCodes.ArrowDown:
+				case KeysCodes.ArrowUp:
 				case KeysCodes.Esc:
 				case KeysCodes.Enter:
 					context.contextOnKeyDownSearch(e);

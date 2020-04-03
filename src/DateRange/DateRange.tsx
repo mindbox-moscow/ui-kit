@@ -15,9 +15,11 @@ import { MONTH_IN_DAYS, WEEK_IN_DAYS, YEAR_IN_DAYS } from "../utils/constants";
 import { getDaysBeforeNow, getNow, parseDateToString } from "../utils/helpers";
 import { InnerEditorComponent } from "./components/InnerEditorComponent";
 
-import { useClickOutside } from "../HOOKs";
+import { withOutsideClick } from "../HOCs";
 
 import "./DateRange.scss";
+
+const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
 interface IProps {
 	caption: IDateRangeCaption;
@@ -41,7 +43,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		tooltipContent,
 		addFilterButtonCaption,
 		cancelFilterButtonCaption,
-		periodPlaceholder
+		periodPlaceholder,
 	} = caption;
 
 	const dateFromInit =
@@ -50,9 +52,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 			: undefined;
 	const dateToInit =
 		value.type === DateRangeValueTypes.Concrete ? value.dateTo : undefined;
-	const [dateFrom, setDateFrom] = React.useState<Date | undefined>(
-		dateFromInit
-	);
+	const [dateFrom, setDateFrom] = React.useState<Date | undefined>(dateFromInit);
 	const [dateTo, setDateTo] = React.useState<Date | undefined>(dateToInit);
 	const [hasError, setHasError] = React.useState<boolean>(false);
 	const [dateRange, setDateRange] = React.useState<IDateRange>({
@@ -62,7 +62,6 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 	const [shouldShowFilter, setShouldShowFilter] = React.useState<boolean>(
 		false
 	);
-	const refContent = React.useRef<HTMLDivElement>(null);
 
 	const handleSelectedNoFilter = () => {
 		setDateFrom(undefined);
@@ -105,7 +104,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 			onChange({
 				dateFrom,
 				dateTo,
-				type: DateRangeValueTypes.Concrete
+				type: DateRangeValueTypes.Concrete,
 			});
 		}
 	};
@@ -128,8 +127,6 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 		}
 	};
 
-	useClickOutside(refContent, onCloseFilter, shouldShowFilter);
-
 	return (
 		<div className={cn("kit-date-range", className)}>
 			<div className="kit-date-range__content">
@@ -144,40 +141,29 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 			</div>
 			<div className="kit-date-range__content">
 				<label className="kit-date-range__label">{labelConcrete}</label>
-				<div ref={refContent} className="kit-date-range__radio-button">
+				<div className="kit-date-range__radio-button">
 					<RadioButton
 						name="date"
 						onClick={handleToggleFilter}
 						checked={value.type === DateRangeValueTypes.Concrete}
 					>
-						{value.type !== DateRangeValueTypes.NoFilter ? (
-							<span className="kit-date-range__radio-content">
-								{radioConcreteFromText}&nbsp;
-								{dateRange.dateFrom
-									? parseDateToString(dateRange.dateFrom)
-									: ""}
-								&nbsp;
-								{radioConcreteToText}&nbsp;
-								{dateRange.dateTo
-									? parseDateToString(dateRange.dateTo)
-									: ""}
-							</span>
-						) : (
-							<span className="kit-date-range__radio-content">
-								{radioConcreteFromText}
-								<span className="kit-date-range__radio-date-placeholder">
-									{periodPlaceholder}
+						{
+							value.type !== DateRangeValueTypes.NoFilter
+								? <span className='kit-date-range__radio-content'>
+									{radioConcreteFromText}&nbsp;{dateRange.dateFrom ? parseDateToString(dateRange.dateFrom) : ''}&nbsp;
+									{radioConcreteToText}&nbsp;{dateRange.dateTo ? parseDateToString(dateRange.dateTo) : ''}
 								</span>
-								{radioConcreteToText}
-								<span className="kit-date-range__radio-date-placeholder">
-									{periodPlaceholder}
+								: <span className='kit-date-range__radio-content'>
+									{radioConcreteFromText}
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
+									{radioConcreteToText}
+									<span className='kit-date-range__radio-date-placeholder'>{periodPlaceholder}</span>
 								</span>
-							</span>
-						)}
+						}
 					</RadioButton>
 
 					{shouldShowFilter && (
-						<FilterDetails
+						<WithOutsideClickFilterDetails
 							editorComponent={
 								<ConditionEditorPopup
 									innerEditorComponent={
@@ -194,9 +180,7 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 											hasError={hasError}
 											dateFrom={dateFrom}
 											dateTo={dateTo}
-											onChangeDateFrom={
-												handleChangeDateFrom
-											}
+											onChangeDateFrom={handleChangeDateFrom}
 											onChangeDateTo={handleChangeDateTo}
 										/>
 									}
@@ -207,14 +191,13 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 									cancelFilterButtonCaption={
 										cancelFilterButtonCaption
 									}
-									isAddFilterButtonEnabled={Boolean(
-										dateFrom && dateTo && !hasError
-									)}
+									isAddFilterButtonEnabled={Boolean(dateFrom && dateTo && !hasError)}
 									onAddFilterButtonClick={handleApplyFilter}
 									onCancelFilterButtonClick={onCloseFilter}
 								/>
 							}
 							viewMode="edit"
+							onClickOutside={onCloseFilter}
 							helpCaption={helpCaption}
 							onClose={onCloseFilter}
 							horizontal="center"

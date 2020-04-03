@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { useClickOutside } from "../HOOKs";
+import { withOutsideClick } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./Tooltip.scss";
@@ -12,6 +12,10 @@ interface IProps {
 	className?: string;
 }
 
+const WithOutsideClickOverflowVisibleContainer = withOutsideClick(
+	OverflowVisibleContainer
+);
+
 export const Tooltip: React.FC<IProps> = ({
 	title,
 	position = "bottom",
@@ -21,7 +25,6 @@ export const Tooltip: React.FC<IProps> = ({
 }) => {
 	const [isShow, setIsShow] = React.useState(false);
 	const refTitle = React.useRef<HTMLDivElement>(null);
-	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
 
 	const handleShowTooltip = () => {
 		setIsShow(true);
@@ -64,10 +67,6 @@ export const Tooltip: React.FC<IProps> = ({
 		</div>
 	);
 
-	if (showByClick) {
-		useClickOutside(refOverflowVisibleContainer, handleHideTooltip);
-	}
-
 	return (
 		<div className={cn("kit-tooltip", className)}>
 			<div
@@ -91,13 +90,13 @@ export const Tooltip: React.FC<IProps> = ({
 			</div>
 			{isShow &&
 				(showByClick ? (
-					<OverflowVisibleContainer
-						ref={refOverflowVisibleContainer}
+					<WithOutsideClickOverflowVisibleContainer
 						parentRef={refTitle}
 						className="kit-tooltip__popup"
+						onClickOutside={handleHideTooltip}
 					>
 						{tooltipContent}
-					</OverflowVisibleContainer>
+					</WithOutsideClickOverflowVisibleContainer>
 				) : (
 					<OverflowVisibleContainer
 						parentRef={refTitle}

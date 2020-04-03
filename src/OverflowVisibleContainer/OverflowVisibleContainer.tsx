@@ -1,66 +1,68 @@
 import cn from "classnames";
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { Props } from "./types";
+import { Props, State } from "./types";
 
 import "./OverflowVisibleContainer.scss";
 
-type Ref = HTMLDivElement;
+export class OverflowVisibleContainer extends React.Component<Props> {
+	public state: State = {
+		positionTop: 0,
+		positionLeft: 0,
+		isLoaded: false
+	};
 
-export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
-	(props, ref) => {
-		const {
-			parentRef,
-			className,
-			isFixed: fixed = false,
-			children
-		} = props;
+	private portal = document.createElement("div");
 
-		const [positionLeft, setPositionLeft] = React.useState<number | string>(
-			0
-		);
-		const [positionTop, setPositionTop] = React.useState<number | string>(
-			0
-		);
-		const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
-		const [portal] = React.useState(document.createElement("div"));
+	public componentDidMount() {
+		document.body.appendChild(this.portal);
 
-		React.useEffect(() => {
-			document.body.appendChild(portal);
+		this.handleShowPopup();
+	}
 
-			return () => {
-				document.body.removeChild(portal);
-			};
-		}, []);
+	public componentWillUnmount() {
+		document.body.removeChild(this.portal);
+		window.removeEventListener("resize", this.handleShowPopup);
+	}
 
-		React.useEffect(() => {
-			handleShowPopup();
-		});
+	public componentDidUpdate() {
+		this.handleShowPopup();
+	}
 
-		const handleShowPopup = () => {
-			if (parentRef && parentRef.current) {
-				const {
-					top,
-					height,
-					left
-				} = parentRef.current.getBoundingClientRect();
-				const windowScrollY = window.scrollY;
-				const reactTop: number | string = fixed
-					? top + height
-					: windowScrollY + top + height;
-				const rectLeft: number | string = left;
+	public handleShowPopup = () => {
+		const { parentRef, isFixed } = this.props;
+		const { positionLeft, positionTop } = this.state;
 
-				if (reactTop !== positionTop || rectLeft !== positionLeft) {
-					setPositionLeft(rectLeft);
-					setPositionTop(reactTop);
-					setIsLoaded(true);
-				}
+		if (parentRef && parentRef.current) {
+			const {
+				top,
+				height,
+				left
+			} = parentRef.current.getBoundingClientRect();
+			const windowScrollY = window.scrollY;
+			const reactTop: number | string = isFixed
+				? top + height
+				: windowScrollY + top + height;
+			const rectLeft: number | string = left;
+
+			if (reactTop !== positionTop || rectLeft !== positionLeft) {
+				this.setState({
+					positionTop: reactTop,
+					positionLeft: rectLeft,
+					isLoaded: true
+				});
 			}
-		};
+		}
+
+		window.addEventListener("resize", this.handleShowPopup);
+	};
+
+	public render() {
+		const { children, className, isFixed: fixed = false } = this.props;
+		const { positionLeft, positionTop, isLoaded } = this.state;
 
 		return createPortal(
 			<div
-				ref={ref}
 				className={cn("kit-overflow-visiblecontainer", className, {
 					"kit-overflow-visiblecontainer_fixed": fixed
 				})}
@@ -71,7 +73,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 			>
 				{isLoaded && children}
 			</div>,
-			portal
+			this.portal
 		);
 	}
-);
+}

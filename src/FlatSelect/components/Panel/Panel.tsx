@@ -1,16 +1,17 @@
 import cn from "classnames";
 import * as React from "react";
+import { withOutsideClick, WithOutsideClickProps } from "../../../HOCs";
 import { Width } from "../../../utils";
-import { IProps } from "./types";
+import { PanelProps } from "./types";
 
-import { useClickOutside } from "../../../HOOKs";
+type Props = PanelProps & WithOutsideClickProps;
 
-const Panel: React.FC<IProps> = ({
+const Panel: React.FC<Props> = ({
 	className,
 	width,
 	children,
-	parentRef,
-	onCLose
+	setOutsideClickRef,
+	parentRef
 }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
@@ -24,8 +25,6 @@ const Panel: React.FC<IProps> = ({
 			panelRef.current.style.width = `${clientWidth}px`;
 		}
 	}, []);
-
-	useClickOutside(panelRef, onCLose, true, true);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
@@ -57,6 +56,10 @@ const Panel: React.FC<IProps> = ({
 		}
 	};
 
+	if (setOutsideClickRef) {
+		setOutsideClickRef(panelRef.current as HTMLElement);
+	}
+
 	const handleClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
@@ -72,4 +75,6 @@ const Panel: React.FC<IProps> = ({
 	);
 };
 
-export { Panel };
+const WithOutsideClickPanel = withOutsideClick(Panel);
+
+export { WithOutsideClickPanel as Panel };

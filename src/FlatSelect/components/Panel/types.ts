@@ -1,13 +1,12 @@
 import { Width } from "../../../utils";
 
 // tslint:disable-next-line: interface-name
-export interface IProps {
+export interface PanelProps {
 	isNested?: boolean;
 	className?: string;
 	width: Width;
 	allowedClickTargetClasses?: string[];
 	parentRef?: React.RefObject<HTMLElement>;
-	onCLose: () => void;
 }
 
 // tslint:disable-next-line: interface-name

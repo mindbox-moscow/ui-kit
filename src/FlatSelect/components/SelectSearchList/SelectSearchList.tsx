@@ -1,6 +1,6 @@
 import * as React from "react";
 import { SelectDropMain } from "..";
-import { neutralZoneClass } from "../../../HOOKs";
+import { neutralZoneClass } from "../../../HOCs";
 import { Textbox } from "../../../Textbox";
 import { DropdownContext } from "../Dropdown";
 import { SelectionMode, SelectSearchListProps } from "./types";

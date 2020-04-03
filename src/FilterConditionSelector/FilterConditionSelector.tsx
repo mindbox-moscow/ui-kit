@@ -10,6 +10,7 @@ import { IMenuModeMap, MenuMode, Props } from "./types";
 
 import { Input } from "../Input";
 
+import { withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { useDebounce } from "../HOOKs";
 import { BrowserList } from "../utils/constants";
 import { checkBrowser } from "../utils/helpers";
@@ -17,12 +18,9 @@ import { ContextWrapper } from "./components";
 import "./FilterConditionSelector.scss";
 import { setNextFocus } from "./utils";
 
-type Ref = HTMLDivElement;
-
-const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
-	props,
-	ref
-) => {
+const FilterConditionSelector: React.FC<
+	Props & WithOutsideClickProps
+> = props => {
 	const {
 		childRenderer,
 		onModeChanged,
@@ -40,15 +38,14 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 		onConditionStateToggle,
 		onNextSelected,
 		onPreviousSelected,
-		onExpandCurrent
+		onExpandCurrent,
+		setOutsideClickRef
 	} = props;
 
 	const searchRef = React.useRef<Input>(null);
 	const listRef = React.useRef<HTMLUListElement>(null);
 	const wrapperListRef = React.useRef<HTMLDivElement>(null);
-	const mainRef = ref
-		? (ref as React.RefObject<Ref>)
-		: React.useRef<HTMLDivElement>(null);
+	const mainRef = React.useRef<HTMLElement | null>(null);
 	const [searchTerm, setSearchTerm] = React.useState(props.searchTerm);
 
 	const debouncedSearchTerm = useDebounce(searchTerm, 500);
@@ -209,6 +206,14 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 		[MenuMode.Examples]: examplesLabel
 	};
 
+	const setRef = (el: HTMLDivElement) => {
+		mainRef.current = el;
+
+		if (setOutsideClickRef) {
+			setOutsideClickRef(el);
+		}
+	};
+
 	const setAutoFocusSearchInput = () => {
 		if (searchRef.current) {
 			searchRef.current.focus();
@@ -227,7 +232,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 
 	return (
 		<ContextWrapper>
-			<div ref={mainRef} className="kit-filter-condition-selector">
+			<div ref={setRef} className="kit-filter-condition-selector">
 				<div className="kit-filter-condition-selector__wrap">
 					<div className="kit-filter-condition-selector__filter-block">
 						<Input
@@ -308,8 +313,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 	);
 };
 
-const ForwardedRefFilterConditionSelector = React.forwardRef(
+const FilterConditionSelectorWithOutsideClick = withOutsideClick(
 	FilterConditionSelector
 );
-
-export { ForwardedRefFilterConditionSelector as FilterConditionSelector };
+export { FilterConditionSelectorWithOutsideClick as FilterConditionSelector };

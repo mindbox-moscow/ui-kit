@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useState } from "react";
 import * as React from "react";
-import { neutralZoneClass } from "../HOOKs";
+import { neutralZoneClass } from "../HOCs";
 import { useDebouncedWindowSize } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { FilterActions, InfoWrapper } from "./components";

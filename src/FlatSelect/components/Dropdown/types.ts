@@ -18,13 +18,7 @@ export interface DropdownProps {
 	style?: React.CSSProperties;
 	onAdaptive?: () => boolean;
 	isFixedDropdown?: boolean;
-}
-
-// tslint:disable-next-line:interface-name
-export interface DropdownState {
-	show: boolean;
-	isInBottomOfScreen: boolean;
-	dropdownId: string;
+	children?: React.ReactNode;
 }
 
 // tslint:disable-next-line: interface-name

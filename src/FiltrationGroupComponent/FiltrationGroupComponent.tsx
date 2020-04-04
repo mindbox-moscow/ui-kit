@@ -3,7 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
-import { neutralZoneClass, useClickOutside } from "../HOOKs";
+import { neutralZoneClass, withOutsideClick, WithOutsideClickProps } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
 import "./FiltrationGroupComponent.scss";
@@ -15,7 +15,7 @@ type Props = IStateProps & ICallbackProps;
 // Менять только высоту, остальные правки делать в стилях!
 const MIN_HEIGHT = 32;
 
-const FiltrationGroupComponent = ({
+const FiltrationGroupComponent: React.FC<Props & WithOutsideClickProps> = ({
 	groupType,
 	andLabel,
 	orLabel,
@@ -24,6 +24,7 @@ const FiltrationGroupComponent = ({
 	onGroupTypeToggle,
 	state,
 	onConditionRemove,
+	setOutsideClickRef,
 	shouldShowDuplicateButton,
 	onConditionCopy,
 	shouldShowButtons,
@@ -32,7 +33,7 @@ const FiltrationGroupComponent = ({
 	onConditionStateToggle,
 	moreConditionToggleCaption,
 	moreActions
-}: Props) => {
+}) => {
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
 
@@ -325,13 +326,9 @@ const FiltrationGroupComponent = ({
 
 	const anyChildren = React.Children.toArray(children).length > 0;
 
-	const handleStateToggle = () => {
-		if (state === "edit" && onConditionStateToggle) {
-			onConditionStateToggle();
-		}
-	};
-
-	useClickOutside(kitFiltrationRef, handleStateToggle, state === "edit");
+	if (setOutsideClickRef) {
+		setOutsideClickRef(kitFiltrationRef.current as HTMLElement);
+	}
 
 	return (
 		<ul
@@ -379,13 +376,8 @@ const FiltrationGroupComponent = ({
 								>
 									{moreActions && moreActions.length && (
 										<ActionsDropdown
-											className={cn(
-												"kit-filtration-group__more",
-												neutralZoneClass
-											)}
-											toggleBtnText={
-												moreConditionToggleCaption || ""
-											}
+											className={cn("kit-filtration-group__more", neutralZoneClass)}
+											toggleBtnText={moreConditionToggleCaption || ""}
 											positionDropdown="right"
 										>
 											{moreActions.map((props, index) => (
@@ -424,4 +416,9 @@ const FiltrationGroupComponent = ({
 	);
 };
 
-export { FiltrationGroupComponent };
+const FiltrationGroupComponentWithOutsideClick = withOutsideClick(
+	FiltrationGroupComponent,
+	p => p.state === "edit"
+);
+
+export { FiltrationGroupComponentWithOutsideClick as FiltrationGroupComponent };

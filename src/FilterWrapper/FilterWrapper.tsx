@@ -39,7 +39,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics,
 	showApplyButton,
-	renderHeadInformation
+	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
@@ -113,10 +113,10 @@ export const FilterWrapper: React.FC<Props> = ({
 						"kit-filter_short": !doesContainFilter && (filterActions == null || filterActions.length === 0)
 					})}
 				>
-					{(hasFilterActions || renderHeadInformation) &&  (
+					{(hasFilterActions || headInformation) &&  (
 						<div className="kit-filter__top-filter">
-							{renderHeadInformation && (<div className="kit-filter__top-info">
-								{renderHeadInformation()}
+							{headInformation && (<div className="kit-filter__top-info">
+								{headInformation}
 							</div>)}
 							{hasFilterActions && (
 								<FilterActions

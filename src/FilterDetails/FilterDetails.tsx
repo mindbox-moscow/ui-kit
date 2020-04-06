@@ -3,7 +3,10 @@ import * as React from "react";
 import { neutralZoneClass } from "../HOCs";
 import { IconSvg } from "../IconSvg";
 import { KeysCodes } from "../utils/constants";
-import { setLoopFocusElements } from "../utils/Focus";
+import {
+	setFocusLoopOnElements,
+	setFocusLoopOnElementsExceptTabIndexed
+} from "../utils/Focus";
 import "./FilterDetails.scss";
 import { CallbackProps, FilterDetailsProps } from "./types";
 
@@ -31,11 +34,11 @@ export const FilterDetails: React.FC<Props> = ({
 			if (kitEditorWrapperRef.current) {
 				kitEditorWrapperRef.current.addEventListener(
 					"keydown",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					handleKeyDownForFocusLoop
 				);
 				kitEditorWrapperRef.current.addEventListener(
 					"focusin",
-					setLoopFocusElements(kitEditorWrapperRef.current)
+					handleKeyDownForFocusLoop
 				);
 			}
 
@@ -43,11 +46,11 @@ export const FilterDetails: React.FC<Props> = ({
 				if (kitEditorWrapperRef.current) {
 					kitEditorWrapperRef.current.removeEventListener(
 						"keydown",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						handleKeyDownForFocusLoop
 					);
 					kitEditorWrapperRef.current.removeEventListener(
 						"focusin",
-						setLoopFocusElements(kitEditorWrapperRef.current)
+						handleKeyDownForFocusLoop
 					);
 				}
 			};
@@ -62,14 +65,35 @@ export const FilterDetails: React.FC<Props> = ({
 		[helpIsExpanded]
 	);
 
+	const handleKeyDownForFocusLoop = (e: KeyboardEvent) => {
+		if (kitEditorWrapperRef.current) {
+			switch (e.keyCode) {
+				case KeysCodes.Enter:
+					e.preventDefault();
+
+					setFocusLoopOnElementsExceptTabIndexed(
+						kitEditorWrapperRef.current
+					);
+					break;
+				case KeysCodes.Tab:
+					setFocusLoopOnElements(kitEditorWrapperRef.current, e);
+					break;
+			}
+		}
+	};
+
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (rollBackFocus) {
 			switch (e.keyCode) {
 				case KeysCodes.Esc:
+					e.preventDefault();
+
 					rollBackFocus();
 					break;
 				case KeysCodes.ArrowUp:
 				case KeysCodes.ArrowDown:
+					e.preventDefault();
+
 					if (onKeyDown) {
 						rollBackFocus();
 						onKeyDown(e);

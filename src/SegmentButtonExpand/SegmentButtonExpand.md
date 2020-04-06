@@ -1,5 +1,9 @@
 ```jsx
 <div>
-	<SegmentButtonExpand onClick={() => {}} isOpen={false} />
+	<SegmentButtonExpand
+		onClick={() => {}}
+		isOpen={false}
+		filterActionShow={false}
+	/>
 </div>
 ```

@@ -12,6 +12,10 @@
 		color: $removeColor;
 	}
 
+	&_show-dropdown {
+		z-index: 6;
+	}
+
 	.kit-filter-details {
 		top: calc(100% - 5px);
 		left: 0;
@@ -22,6 +26,7 @@
 .kit-filtration-condition__item-text {
 	position: relative;
 	z-index: 3;
+	z-index: 4;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
@@ -34,7 +39,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 
@@ -105,6 +111,8 @@
 		}
 
 		> .kit-filtration-condition__content {
+			position: relative;
+			z-index: 3;
 			background-color: $editModeColorBg;
 		}
 
@@ -118,7 +126,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 	}
@@ -131,7 +140,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 
@@ -175,7 +185,8 @@
 		}
 
 		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove {
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 	}
@@ -196,14 +207,19 @@
 
 .kit-filtration-condition__copy,
 .kit-filtration-condition__remove {
-	z-index: 1;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	width: 44px;
 	min-height: 26px;
-	margin-left: 2px;
 	border: 0;
+}
+
+.kit-filtration-condition__copy,
+.kit-filtration-condition__remove,
+.kit-filtration-condition__more {
+	z-index: 1;
+	margin-left: 2px;
 	outline: none;
 	visibility: hidden;
 	transition: background-color 0.15s ease-in-out;
@@ -229,6 +245,19 @@
 	}
 }
 
+.kit-filtration-condition__more {
+	background-color: $copyColorBg;
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
+
+	.kit-actions-dropdown__action {
+		white-space: nowrap;
+	}
+}
+
 .kit-filtration-condition__item-text__block-method-params {
 	display: inline-flex;
 
@@ -247,4 +276,8 @@
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000000, 0.1);
 	box-sizing: border-box;
+}
+
+.kit-filtration-condition__negative-name-part {
+	color: $removeColor;
 }

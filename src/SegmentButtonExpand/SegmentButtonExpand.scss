@@ -65,6 +65,10 @@ $borderPopoverColor: #dddddc;
 			z-index: 1;
 		}
 	}
+
+	&_hide {
+		display: none;
+	}
 }
 
 .kit-segment-button-expand__button-filter {

@@ -23,6 +23,7 @@
 	$self: &;
 	position: relative;
 	z-index: 3;
+	z-index: 2;
 	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
@@ -66,10 +67,14 @@
 
 	&_edit {
 		@include opacityBlock();
-		z-index: 4;
+		z-index: 5;
 
 		.kit-filtration-group {
 			z-index: 3;
+		}
+
+		.kit-filtration-group__label-line {
+			z-index: 8;
 		}
 
 		> .kit-filtration-group__label_hover_or,
@@ -338,12 +343,16 @@
 	background-color: $braketColor;
 	box-sizing: border-box;
 	color: $braketColor;
+
+	> .kit-filtration-group__label-text {
+		border-radius: 4px;
+	}
 }
 
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 0;
-	z-index: 1;
+	z-index: 5;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -363,12 +372,12 @@
 .kit-filtration-group__buttons {
 	position: relative;
 	z-index: 3;
+	z-index: 2;
 	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
 	padding-right: 20px;
 	outline: none;
-	box-sizing: border-box;
 
 	@include createHorisontalBrackets;
 
@@ -403,12 +412,13 @@
 }
 
 .kit-filtration-group__remove,
-.kit-filtration-group__copy {
+.kit-filtration-group__copy,
+.kit-filtration-group__more {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	padding: 0;
+	padding: 0 0 1px;
 	border: 0;
 	outline: none;
 	box-sizing: border-box;
@@ -433,6 +443,20 @@
 
 	&:hover {
 		background-color: darken($copyColorBg, 10%);
+	}
+}
+
+.kit-filtration-group__more {
+	background-color: $copyColorBg;
+	font-weight: normal;
+	color: $copyColor;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
+
+	.kit-actions-dropdown__action {
+		white-space: nowrap;
 	}
 }
 

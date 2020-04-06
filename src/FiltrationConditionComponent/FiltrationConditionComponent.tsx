@@ -1,16 +1,17 @@
 import cn from "classnames";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as React from "react";
+import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterDetails } from "../FilterDetails";
 import { FilterWrapperContext } from "../FilterWrapper";
 import { IconSvg } from "../IconSvg";
 import { FiltrationConditionComponentContext } from "./FiltrationConditionComponentContext";
-import { CallbackProps, StateProps } from "./types";
+import { ICallbackProps, IStateProps } from "./types";
 
 import { withOutsideClick } from "../HOCs";
 import "./FiltrationConditionComponent.scss";
 
-type Props = StateProps & CallbackProps;
+type Props = IStateProps & ICallbackProps;
 
 const WithOutsideClickFilterDetails = withOutsideClick(FilterDetails);
 
@@ -25,7 +26,9 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 	onConditionStateToggle,
 	withAlert,
 	onConditionCopy,
-	onConditionRemove
+	onConditionRemove,
+	moreConditionToggleCaption,
+	moreActions
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
 	const [popoverFilterAction, setPopoverFilterAction] = useState<
@@ -35,6 +38,7 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		null
 	);
 	const [showPopover, setShowPopover] = useState(false);
+	const [showDropdown, setShowDropdown] = useState(false);
 	const context = useContext(FilterWrapperContext);
 	const shouldRerenderBrackets = useRef(false);
 
@@ -86,7 +90,8 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 		<FiltrationConditionComponentContext.Provider value={renderPopover}>
 			<li
 				className={cn("kit-filtration-condition", {
-					"kit-filtration-condition_edit": state === "edit"
+					"kit-filtration-condition_edit": state === "edit",
+					"kit-filtration-condition_show-dropdown": showDropdown
 				})}
 			>
 				<div
@@ -95,10 +100,10 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 							state === "edit",
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit",
-						"kit-filtration-condition__item-text_shaded":
-							state === "shaded",
 						"kit-filtration-condition__item-text_read-only":
 							state === "readOnly",
+						"kit-filtration-condition__item-text_shaded":
+							state === "shaded",
 						"kit-filtration-condition__item-text_view":
 							state === "view"
 					})}
@@ -123,18 +128,32 @@ export const FiltrationConditionComponent: React.FC<Props> = ({
 					</div>
 					<button
 						type="button"
-						className="kit-filtration-condition__copy"
-						onClick={onConditionCopyClick}
-					>
-						<IconSvg type="duplicate" />
-					</button>
-					<button
-						type="button"
 						className="kit-filtration-condition__remove"
 						onClick={onConditionRemoveClick}
 					>
 						<IconSvg type="trash" />
 					</button>
+					<button
+						type="button"
+						className="kit-filtration-condition__copy"
+						onClick={onConditionCopyClick}
+					>
+						<IconSvg type="duplicate" />
+					</button>
+					{moreActions && moreActions.length && (
+						<ActionsDropdown
+							className="kit-filtration-condition__more"
+							onToggle={setShowDropdown}
+							toggleBtnText={moreConditionToggleCaption || ""}
+						>
+							{moreActions.map((props, index) => (
+								<ActionsDropdown.Action
+									{...props}
+									key={index}
+								/>
+							))}
+						</ActionsDropdown>
+					)}
 					{state === "edit" && editModeContent}
 				</div>
 				{showPopover && (

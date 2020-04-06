@@ -91,6 +91,8 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		if (contextOnKeyDownItems) {
 			switch (e.keyCode) {
 				case KeysCodes.Enter:
+					e.preventDefault();
+
 					if (!disabled && onClickHandler) {
 						onClickHandler();
 
@@ -104,6 +106,8 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				case KeysCodes.Esc:
 				case KeysCodes.ArrowDown:
 				case KeysCodes.ArrowUp:
+					e.preventDefault();
+
 					contextOnKeyDownItems(e);
 
 					if (refElement.current) {

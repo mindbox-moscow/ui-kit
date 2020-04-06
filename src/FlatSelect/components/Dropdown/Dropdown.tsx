@@ -27,6 +27,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 	};
 	private itemsListSearch: HTMLLIElement[] = [];
 	private refSearch: HTMLInputElement | null = null;
+	private onMarkFirstElement: (() => void) | null = null;
 
 	private dropdownRef = React.createRef<HTMLDivElement>();
 
@@ -66,6 +67,8 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 	public handleOnKeyDown = (e: React.KeyboardEvent) => {
 		if (e.keyCode === KeysCodes.Enter) {
+			e.preventDefault();
+
 			this.handleClick();
 		}
 	};
@@ -80,7 +83,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 					break;
 
 				case KeysCodes.ArrowDown:
-					e.preventDefault();
+					e.stopPropagation();
 
 					if (this.itemsListSearch.length > 0) {
 						this.itemsListSearch[0].focus({ preventScroll: true });
@@ -93,8 +96,18 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 						this.itemsListSearch[0].dispatchEvent(EVENT_ENTER);
 						this.handleFocusElement(this.dropdownRef.current);
 					}
+					break;
+				case KeysCodes.ArrowUp:
+					e.stopPropagation();
+					break;
 			}
 		}
+
+		setTimeout(() => {
+			if (this.onMarkFirstElement && this.refSearch!.value !== "") {
+				this.onMarkFirstElement();
+			}
+		}, 0);
 	};
 
 	public handleContextOnKeyDownItems = (e: React.KeyboardEvent) => {
@@ -112,11 +125,12 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 
 			case KeysCodes.Esc:
 				e.preventDefault();
+
 				this.handleFocusElement(this.refSearch);
 				break;
 
 			case KeysCodes.ArrowDown:
-				e.preventDefault();
+				e.stopPropagation();
 
 				if (currentIndex === this.itemsListSearch.length - 1) {
 					this.itemsListSearch[0].focus({ preventScroll: true });
@@ -128,7 +142,7 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 				break;
 
 			case KeysCodes.ArrowUp:
-				e.preventDefault();
+				e.stopPropagation();
 
 				if (currentIndex === 0) {
 					this.handleFocusElement(this.refSearch);
@@ -162,10 +176,10 @@ export class Dropdown extends React.Component<DropdownProps, DropdownState> {
 		itemElement: React.RefObject<HTMLLIElement>
 	) => {
 		if (this.itemsListSearch[0] === itemElement.current) {
-			onMouseEnter();
-		} else {
-			onMouseLeave();
+			this.onMarkFirstElement = onMouseEnter;
 		}
+
+		onMouseLeave();
 	};
 
 	public handleFocusElement = (

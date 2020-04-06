@@ -38,7 +38,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	scrollState = ScrollState.Full,
 	buttonUpCaption,
 	shouldShowStatistics = true,
-	showApplyButton = false,
+	showApplyButton = true,
 	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);

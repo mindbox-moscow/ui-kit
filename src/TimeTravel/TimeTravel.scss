@@ -1,45 +1,45 @@
 .kit-time-travel {
 	display: flex;
 	align-items: center;
+}
 
-	&__button {
-		box-sizing: border-box;
-		margin-right: 8px;
-		padding: 0;
-		height: 20px;
-		font-family: "PT Sans", sans-serif;
-		font-size: 11px;
-		cursor: pointer;
-		color: #91a9bb;
-		background: none;
-		border: 1px solid #91a9bb;
-		border-radius: 3px;
+.kit-time-travel__button {
+	box-sizing: border-box;
+	margin-right: 8px;
+	padding: 0;
+	height: 20px;
+	font-family: "PT Sans", sans-serif;
+	font-size: 11px;
+	cursor: pointer;
+	color: #91a9bb;
+	background: none;
+	border: 1px solid #91a9bb;
+	border-radius: 3px;
 
-		&:hover {
-			color: #ffffff;
-			background-color: #91a9bb;
-		}
-
-		&:last-of-type {
-			margin-right: 0;
-		}
+	&:hover {
+		color: #ffffff;
+		background-color: #91a9bb;
 	}
 
-	&__button-inner {
-		position: relative;
-		top: 0;
-		left: 0;
-		padding-left: 8px;
-		padding-right: 8px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
+	&:last-of-type {
+		margin-right: 0;
 	}
+}
 
-	&__calendar {
-		margin-top: -1px;
-		margin-right: 8px;
-		color: #91a9bb;
-	}
+.kit-time-travel__button-inner {
+	position: relative;
+	top: 0;
+	left: 0;
+	padding-left: 8px;
+	padding-right: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
+.kit-time-travel__calendar {
+	margin-top: -1px;
+	margin-right: 8px;
+	color: #91a9bb;
 }

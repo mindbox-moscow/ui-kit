@@ -37,8 +37,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	filterActionsCaption,
 	scrollState = ScrollState.Full,
 	buttonUpCaption,
-	shouldShowStatistics,
-	showApplyButton,
+	shouldShowStatistics = true,
+	showApplyButton = false,
 	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
@@ -77,8 +77,8 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	const handleScrollUp = () => {
 		window.scrollTo({
-			top: 0,
-			behavior: "smooth"
+			behavior: "smooth",
+			top: 0
 		});
 	};
 
@@ -99,9 +99,9 @@ export const FilterWrapper: React.FC<Props> = ({
 	);
 
 	const contextValue = {
-		updateBrackets,
 		rerenderBrackets,
-		scrollState
+		scrollState,
+		updateBrackets
 	};
 
 	return (
@@ -137,8 +137,7 @@ export const FilterWrapper: React.FC<Props> = ({
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
 							<div className="kit-filter__wrap-filter">
-								{showApplyButton == null ||
-								showApplyButton === true ? (
+								{showApplyButton ? (
 									scrollState !== ScrollState.Minified ? (
 										<button
 											className="kit-filter__use-filter"
@@ -157,11 +156,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								isWarning={isDataOutdated}
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
-								shouldShowStatistics={
-									shouldShowStatistics === undefined
-										? true
-										: shouldShowStatistics
-								}
+								shouldShowStatistics={shouldShowStatistics}
 							>
 								<button
 									className="kit-filter__clear-filter-btn"
@@ -180,11 +175,7 @@ export const FilterWrapper: React.FC<Props> = ({
 							<InfoWrapper
 								statisticsValue={statisticsValue}
 								statisticsDescription={statisticsDescription}
-								shouldShowStatistics={
-									shouldShowStatistics === undefined
-										? true
-										: shouldShowStatistics
-								}
+								shouldShowStatistics={shouldShowStatistics}
 							/>
 						</div>
 					)}

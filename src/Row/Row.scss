@@ -55,11 +55,11 @@
         color: #888888;
 
         &::after {
+            content: "";
             position: absolute;
             bottom: 6px;
             width: 100%;
             border-bottom: 1px dashed #d4d4d4;
-            content: "";
         }
     }
 

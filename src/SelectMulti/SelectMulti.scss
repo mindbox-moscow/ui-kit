@@ -48,12 +48,12 @@ $kit-select-multi-border-radius: 3px;
 	text-overflow: ellipsis;
 
 	&::after {
+		content: "";
 		position: absolute;
 		top: 13px;
 		right: 14px;
 		border: 3px solid transparent;
 		border-top: 4px solid #323232;
-		content: "";
 		transition: transform 0.3s ease-out;
 		transform-origin: 50% 2px;
 

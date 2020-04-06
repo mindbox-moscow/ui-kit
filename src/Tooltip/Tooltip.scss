@@ -39,6 +39,7 @@
 
 	&::before,
 	&::after {
+		content: "";
 		position: absolute;
 		bottom: 100%;
 		left: 60px;
@@ -46,7 +47,6 @@
 		height: 0;
 		border: solid transparent;
 		pointer-events: none;
-		content: "";
 	}
 
 	&::before {

@@ -46,7 +46,7 @@
 			> .kit-filtration-condition__content,
 			> .kit-filtration-condition__drag-and-drop,
 			> .kit-filtration-condition__copy {
-				background-color: #fff;
+				background-color: #ffffff;
 			}
 		}
 	}
@@ -82,8 +82,8 @@
 
 	&_hover {
 		&::before {
-			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 			content: "";
+			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
 		& + .kit-filtration-group_hover {
@@ -125,9 +125,9 @@
 
 	&_linked-condition-edit {
 		&::before {
+			content: "";
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
-			content: "";
 		}
 
 		> .kit-filtration-condition__copy,

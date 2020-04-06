@@ -145,13 +145,13 @@
 		}
 
 		&_left::before {
-			margin-right: 4px;
 			content: "←";
+			margin-right: 4px;
 		}
 
 		&_right::after {
-			margin-left: 4px;
 			content: "→";
+			margin-left: 4px;
 		}
 	}
 

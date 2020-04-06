@@ -104,13 +104,13 @@ $errorColoBorder: #ddaaa2;
 		}
 
 		&::after {
+			content: "";
 			position: absolute;
 			top: 4px;
 			left: 1px;
 			display: block;
 			border: 4px solid transparent;
 			border-right: 4px solid #000000;
-			content: "";
 		}
 
 		&_next {

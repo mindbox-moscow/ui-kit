@@ -88,6 +88,7 @@
         color: #417505;
 
         &::before {
+            content: "";
             position: absolute;
             top: -3px;
             left: -24px;
@@ -96,7 +97,6 @@
             background-image: url(../assets/icons/icons.png);
             background-position: -360px -160px;
             background-size: 400px;
-            content: "";
 
             @media (-webkit-min-device-pixel-ratio: 2),
                 (min-resolution: 192dpi) {

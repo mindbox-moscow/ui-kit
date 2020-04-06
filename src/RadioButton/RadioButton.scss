@@ -24,8 +24,8 @@
 	border-radius: 4px;
 	box-sizing: border-box;
 	font-size: 14px;
-	cursor: pointer;
 	color: #265378;
+	cursor: pointer;
 
 	&:hover {
 		background-color: lighten($color: #265378, $amount: 65%);

@@ -45,6 +45,7 @@ $errorColoBorder: #ddaaa2;
 			border-color: #d4d4d4;
 
 			&::after {
+				content: "";
 				position: absolute;
 				top: -9px;
 				right: -11px;
@@ -54,7 +55,6 @@ $errorColoBorder: #ddaaa2;
 				border: 2px solid #d4d4d4;
 				border-top-left-radius: 2px;
 				border-top-right-radius: 2px;
-				content: "";
 			}
 		}
 	}
@@ -104,11 +104,11 @@ $errorColoBorder: #ddaaa2;
 		height: 8px;
 
 		&::after {
+			content: "";
 			display: block;
 			margin-top: -3px;
 			border: 3px solid transparent;
 			border-bottom: 4px solid #000000;
-			content: "";
 		}
 
 		&_down::after {

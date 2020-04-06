@@ -104,8 +104,8 @@ $kit-select-nested-padding-left: 10px;
 
 .kit-select-nested__dropdown-option-details {
 	&:not(:first-child)::before {
-		margin: 0 8px;
 		content: "·";
+		margin: 0 8px;
 	}
 
 	.kit-select-nested__label & {
@@ -249,14 +249,14 @@ $kit-select-nested-padding-left: 10px;
 	&::before {
 		$color: #323232;
 		$color-alt: #ffffff;
+
+		content: "";
 		display: block;
 		width: 0;
 		height: 0;
 		border: $kit-select-nested-triangle-width solid transparent;
 		border-left: $kit-select-nested-triangle-width solid $color;
 		border-right-width: 0;
-
-		content: "";
 
 		.kit-select-nested__dropdown-option_show_sublist > & {
 			transform: rotate(90deg);

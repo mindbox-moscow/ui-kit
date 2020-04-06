@@ -57,6 +57,7 @@ $searchFocusBgColor: #fffde5;
 		.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
 			> .kit-filter-condition-selector__hierarchy-button
 			.kit-filter-condition-selector__hierarchy-name::before {
+			content: "";
 			position: absolute;
 			left: 1px;
 			display: block;
@@ -66,7 +67,6 @@ $searchFocusBgColor: #fffde5;
 			border: 0;
 			border-radius: 50%;
 			box-sizing: border-box;
-			content: "";
 		}
 	}
 }
@@ -89,6 +89,7 @@ $searchFocusBgColor: #fffde5;
 	cursor: pointer;
 
 	&::before {
+		content: "";
 		position: absolute;
 		top: 0;
 		right: -11px;
@@ -97,7 +98,6 @@ $searchFocusBgColor: #fffde5;
 		width: 1000vw;
 		height: 100%;
 		box-sizing: border-box;
-		content: "";
 		mix-blend-mode: multiply;
 	}
 
@@ -121,6 +121,7 @@ $searchFocusBgColor: #fffde5;
 		}
 
 		&::after {
+			content: "";
 			position: absolute;
 			top: 0;
 			right: -11px;
@@ -128,7 +129,6 @@ $searchFocusBgColor: #fffde5;
 			border-left: 12px solid $selectItemColorBg;
 			border-bottom: 14px solid transparent;
 			box-sizing: border-box;
-			content: "";
 		}
 
 		&:hover {
@@ -185,6 +185,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
+					content: "";
 					position: absolute;
 					left: 2px;
 					display: block;
@@ -192,7 +193,6 @@ $searchFocusBgColor: #fffde5;
 					border-top: 5px solid transparent;
 					border-left: 6px solid $toggleCircleColor;
 					border-bottom: 5px solid transparent;
-					content: "";
 				}
 			}
 
@@ -221,6 +221,7 @@ $searchFocusBgColor: #fffde5;
 		> .kit-filter-condition-selector__hierarchy-button {
 			.kit-filter-condition-selector__hierarchy-name {
 				&::before {
+					content: "";
 					position: absolute;
 					left: 1px;
 					display: block;
@@ -229,7 +230,6 @@ $searchFocusBgColor: #fffde5;
 					background-color: $toggleCircleColor;
 					border-radius: 50%;
 					box-sizing: border-box;
-					content: "";
 				}
 			}
 
@@ -255,10 +255,10 @@ $searchFocusBgColor: #fffde5;
 
 		&::before,
 		&::after {
+			content: "";
 			position: absolute;
 			display: block;
 			color: $bracketColor;
-			content: "";
 		}
 
 		&::before {

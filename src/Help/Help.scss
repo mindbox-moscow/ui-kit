@@ -26,6 +26,7 @@
         transition: opacity 0.3s ease-out;
 
         &::before {
+            content: "";
             position: absolute;
             top: 0;
             right: -37px;
@@ -34,10 +35,10 @@
             height: 33px;
             background-color: #fffcf0;
             box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-            content: "";
         }
 
         &::after {
+            content: "";
             position: absolute;
             top: 0;
             right: -2px;
@@ -45,7 +46,6 @@
             width: 5px;
             height: 33px;
             background-color: #fffcf0;
-            content: "";
         }
     }
 

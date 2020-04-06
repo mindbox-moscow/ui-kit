@@ -23,12 +23,12 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 
 .kit-filter-actions__title {
 	&::after {
+		content: "";
 		display: inline-block;
 		margin-left: 5px;
 		border-top: 4px solid;
 		border-left: 4px solid transparent;
 		border-right: 4px solid transparent;
-		content: "";
 	}
 }
 .kit-filter-actions__list_hide {
@@ -54,10 +54,10 @@ $boxShadowListColor: rgba(0, 0, 0, 0.3);
 
 	&::before,
 	&::after {
+		content: "";
 		position: absolute;
 		bottom: 100%;
 		left: 50%;
-		content: "";
 	}
 
 	&::before {

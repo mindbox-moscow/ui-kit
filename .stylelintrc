@@ -32,7 +32,7 @@
 			}
 		],
 		"selector-pseudo-element-colon-notation": "double",
-		"selector-nested-pattern": "^((?!(&__|&-|\\.)).*|\\..* \\&)*$",
+		"selector-nested-pattern": "^(?!(&__|&-|&\\.)).*",
 		"order/properties-order": [
 			"content",
 			"position",

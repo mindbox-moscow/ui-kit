@@ -18,6 +18,7 @@ export interface Props {
 	onPreviousSelected: () => boolean;
 	onNextSelected: () => void;
 	onExpandCurrent: () => void;
+	searchPlaceholder: string;
 }
 
 export interface ChildRendererProps {

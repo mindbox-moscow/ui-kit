@@ -39,7 +39,8 @@ const FilterConditionSelector: React.FC<
 		onNextSelected,
 		onPreviousSelected,
 		onExpandCurrent,
-		setOutsideClickRef
+		setOutsideClickRef,
+		searchPlaceholder
 	} = props;
 
 	const searchRef = React.useRef<Input>(null);
@@ -240,7 +241,7 @@ const FilterConditionSelector: React.FC<
 							noShadow={true}
 							value={searchTerm}
 							type="search"
-							placeholder="Название фильтра"
+							placeholder={searchPlaceholder}
 							onChange={handleSearchChange}
 							onKeyDown={handleKeyDownSearch}
 						/>

@@ -4,6 +4,7 @@ import {
 	FilterConditionSelector,
 	Props as SelectorProps
 } from "../FilterConditionSelector";
+import { useClickOutside } from "../HOOKs";
 import { IconSvg, IconSvgTypes } from "../IconSvg";
 import "./FilterConditionEditorButton.scss";
 import { Props as ButtonProps } from "./types";
@@ -13,46 +14,55 @@ type Props = ButtonProps &
 		iconType?: IconSvgTypes;
 	};
 
-export class FilterConditionEditorButton extends React.Component<Props> {
-	private refButton = React.createRef<HTMLButtonElement>();
+export interface FilterConditionEditorButtonHandles {
+	focus: () => void;
+}
 
-	public focus = () => {
-		const refButton = this.refButton.current;
-		if (refButton) {
-			refButton.focus();
+export const FilterConditionEditorButton = React.forwardRef<
+	FilterConditionEditorButtonHandles,
+	Props
+>((props, ref) => {
+	const { toggleOpen, label, isOpened, iconType, ...otherProps } = props;
+
+	const refButton = React.useRef<HTMLButtonElement>(null);
+	const refFilterConditionSelector = React.useRef<HTMLDivElement>(null);
+
+	React.useImperativeHandle(ref, () => ({
+		focus: () => {
+			if (refButton.current) {
+				refButton.current.focus();
+			}
+		}
+	}));
+
+	const handleClose = () => {
+		if (isOpened) {
+			toggleOpen();
 		}
 	};
 
-	public render() {
-		const {
-			toggleOpen,
-			label,
-			isOpened,
-			iconType,
-			...otherProps
-		} = this.props;
+	useClickOutside(refFilterConditionSelector, handleClose, isOpened);
 
-		return (
-			<div className="kit-filter-editor">
-				<button
-					ref={this.refButton}
-					className={cn("kit-filter-editor__btn", {
-						"kit-filter-editor__btn_open": isOpened
-					})}
-					type="button"
-					onClick={toggleOpen}
-				>
-					{iconType && <IconSvg type={iconType} />}
-					{label}
-				</button>
-				{isOpened && (
-					<FilterConditionSelector
-						{...otherProps}
-						onConditionStateToggle={toggleOpen}
-						onClickOutside={toggleOpen}
-					/>
-				)}
-			</div>
-		);
-	}
-}
+	return (
+		<div className="kit-filter-editor">
+			<button
+				ref={refButton}
+				className={cn("kit-filter-editor__btn", {
+					"kit-filter-editor__btn_open": isOpened
+				})}
+				type="button"
+				onClick={toggleOpen}
+			>
+				{iconType && <IconSvg type={iconType} />}
+				{label}
+			</button>
+			{isOpened && (
+				<FilterConditionSelector
+					{...otherProps}
+					ref={refFilterConditionSelector}
+					onConditionStateToggle={toggleOpen}
+				/>
+			)}
+		</div>
+	);
+});

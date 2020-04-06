@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { useState } from "react";
 import * as React from "react";
-import { neutralZoneClass } from "../HOCs";
+import { neutralZoneClass } from "../HOOKs";
 import { useDebouncedWindowSize } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { FilterActions, InfoWrapper } from "./components";
@@ -108,7 +108,9 @@ export const FilterWrapper: React.FC<Props> = ({
 				<div
 					ref={refFilterWrapper}
 					className={cn("kit-filter", {
-						"kit-filter_short": !doesContainFilter && (filterActions == null || filterActions.length == 0)
+						"kit-filter_short":
+							!doesContainFilter &&
+							(filterActions == null || filterActions.length == 0)
 					})}
 				>
 					{filterActions && filterActions.length > 0 && (

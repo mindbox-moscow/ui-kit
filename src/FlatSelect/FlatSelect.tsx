@@ -1,8 +1,11 @@
 import * as React from "react";
 import { Height, Width } from "../utils";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
-import "./FlatSelect.scss";
+
+import { DropdownHandles } from "./components/Dropdown";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
+
+import "./FlatSelect.scss";
 
 export const FlatSelect = <TValue extends object>({
 	id,
@@ -24,7 +27,7 @@ export const FlatSelect = <TValue extends object>({
 	isFixedDropdown = false
 }: SelectProps<TValue> & { children?: React.ReactNode }) => {
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const dropdownRef = React.useRef<Dropdown>(null);
+	const dropdownRef = React.useRef<DropdownHandles>(null);
 
 	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
@@ -216,7 +219,6 @@ export const FlatSelect = <TValue extends object>({
 	return (
 		<Dropdown
 			id={id}
-			ref={dropdownRef}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}
 			disabled={disabled}

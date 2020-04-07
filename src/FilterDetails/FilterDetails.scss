@@ -1,18 +1,18 @@
 .kit-filter-details {
-	background-color: #fff;
 	width: 602px;
+	background-color: #ffffff;
 	border: 1px solid #c8d8e2;
-	font-family: "PT Sans", sans-serif;
-	color: #000;
-	box-sizing: border-box;
 	outline: none;
+	box-sizing: border-box;
+	font-family: "PT Sans", sans-serif;
+	color: #000000;
 
 	cursor: default;
 
 	&_editor {
 		position: absolute;
-		margin-left: -5px;
 		z-index: 1;
+		margin-left: -5px;
 	}
 
 	&_menu {
@@ -32,8 +32,8 @@
 		}
 
 		&_right {
-			left: auto;
 			right: 0;
+			left: auto;
 		}
 	}
 }
@@ -44,22 +44,22 @@
 	height: 46px;
 	margin: 0;
 	padding-left: 26px;
+	background-color: #fafaf7;
+	border-bottom: 1px solid #c8d8e2;
+	box-sizing: border-box;
 	font-size: 21px;
 	line-height: 23px;
 	font-weight: 400;
-	border-bottom: 1px solid #c8d8e2;
 	letter-spacing: 0.5px;
-	background-color: #fafaf7;
-	box-sizing: border-box;
 }
 
 .kit-filter-details__editor-wrapper {
 	padding: 15px 25px;
-	background-color: #fff;
-	border-bottom: 1px solid #eee;
+	background-color: #ffffff;
+	border-bottom: 1px solid #eeeeee;
 	border-top-right-radius: 2px;
-	font-size: 14px;
 	box-sizing: border-box;
+	font-size: 14px;
 }
 
 .kit-filter-details__help-wrapper-text {
@@ -83,16 +83,16 @@
 .kit-filter-details__show-btn {
 	position: relative;
 	display: flex;
-	align-items: center;
 	justify-content: center;
-	height: 47px;
+	align-items: center;
 	width: 100%;
-	background: none;
+	height: 47px;
 	padding: 0;
+	background: none;
 	border: 0;
+	outline: none;
 	box-sizing: border-box;
 	cursor: pointer;
-	outline: none;
 
 	&::before {
 		content: "";
@@ -130,10 +130,10 @@
 	padding: 0;
 	background: none;
 	border: none;
+	outline: none;
 	color: #707070;
 	transition: color 0.15s ease-in-out;
 	cursor: pointer;
-	outline: none;
 }
 
 @keyframes extended {

@@ -4,11 +4,11 @@
 		position: absolute;
 		top: $top;
 		left: $left;
+		z-index: -1;
 		width: 13px;
 		border-top: 2px solid $braketColor;
-		transform: translateY(-1px);
 		pointer-events: none;
-		z-index: -1;
+		transform: translateY(-1px);
 	}
 }
 
@@ -72,11 +72,11 @@
 				position: absolute;
 				top: 0;
 				left: 4px;
+				z-index: 3;
 				display: block;
 				width: 2px;
 				height: #{$minHeight / 2};
 				background-color: $braketColor;
-				z-index: 3;
 				pointer-events: none;
 			}
 		}

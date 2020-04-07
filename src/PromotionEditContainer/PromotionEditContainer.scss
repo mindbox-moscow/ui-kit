@@ -3,9 +3,9 @@
 	display: flex;
 	flex-direction: column;
 	padding: 11px 32px 15px;
+	background-color: #fffaed;
 	border: 2px solid #a0ba82;
 	border-radius: 6px;
-	background-color: #fffaed;
 }
 
 .kit-promotion-edit-container__header {
@@ -21,13 +21,13 @@
 }
 
 .kit-promotion-edit-container__close {
-	background-color: transparent;
-	border: none;
-	margin: 0;
-	padding: 0;
 	position: absolute;
 	top: 10px;
 	right: 10px;
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	border: none;
 	cursor: pointer;
 	appearance: none;
 }

@@ -1,18 +1,18 @@
 .kit-button {
 	$self: &;
-	font-family: "PT Sans", sans-serif;
-	box-sizing: border-box;
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
-	border-radius: 4px;
-	padding: 0 23px;
+	align-items: center;
 	margin: 0;
+	padding: 0 23px;
 	border: 1px solid transparent;
-	cursor: pointer;
+	border-radius: 4px;
 	outline: none;
+	box-sizing: border-box;
+	font-family: "PT Sans", sans-serif;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	svg {
 		margin-right: 5px;
@@ -29,13 +29,13 @@
 	}
 
 	&:disabled {
-		cursor: auto;
 		opacity: 0.35;
+		cursor: auto;
 	}
 
 	&_color-gray {
 		background-color: #e2eaf0;
-		color: #000;
+		color: #000000;
 
 		&:hover:not(:disabled) {
 			background-color: darken($color: #e2eaf0, $amount: 8%);
@@ -54,8 +54,8 @@
 	}
 
 	&_color-silver {
-		color: #265378;
 		background-color: #f1f5f8;
+		color: #265378;
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
@@ -64,49 +64,49 @@
 	}
 
 	&_size-xxs {
-		font-size: 13px;
 		display: inline-flex;
 		align-items: center;
 		min-height: 22px;
-		line-height: 19px;
 		padding: 0 9px;
+		font-size: 13px;
+		line-height: 19px;
 		line-height: 18px;
 	}
 
 	&_size-xs {
 		min-height: 23px;
-		line-height: 20px;
 		font-size: 12px;
+		line-height: 20px;
 	}
 
 	&_size-small {
 		min-height: 24px;
-		line-height: 21px;
 		font-size: 14px;
+		line-height: 21px;
 	}
 
 	&_size-medium {
 		min-height: 28px;
-		line-height: 25px;
 		font-size: 13px;
+		line-height: 25px;
 	}
 
 	&_size-normal {
 		min-height: 32px;
-		line-height: 29px;
 		font-size: 14px;
+		line-height: 29px;
 	}
 
 	&_size-large {
 		min-height: 38px;
-		line-height: 35px;
 		font-size: 16px;
+		line-height: 35px;
 	}
 
 	&_size-large:disabled {
+		opacity: 0.5;
 		color: #e2eaf0;
 		cursor: default;
-		opacity: 0.5;
 	}
 
 	&_hasBorder {
@@ -123,16 +123,16 @@
 	}
 
 	&_danger {
-		color: #a12e1e;
-		border-color: #a12e1e;
 		background-color: rgba(255, 240, 238, 0.5);
+		border-color: #a12e1e;
+		color: #a12e1e;
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {
-			border-color: darken($color: #a12e1e, $amount: 18%);
-			color: darken($color: #a12e1e, $amount: 18%);
 			background-color: darken($color: rgba(255, 240, 238, 0.5),
 					$amount: 8%);
+			border-color: darken($color: #a12e1e, $amount: 18%);
+			color: darken($color: #a12e1e, $amount: 18%);
 		}
 	}
 
@@ -165,29 +165,29 @@
 	}
 
 	&__text_hasUnderline {
-		color: #265378;
 		border-bottom: 1px dashed #265378;
+		color: #265378;
 	}
 
 	&__icon {
-		margin-top: -2px;
-		margin-right: 4px;
-		margin-left: -10px;
 		width: 18px;
 		max-width: 18px;
 		height: 18px;
 		max-height: 18px;
+		margin-top: -2px;
+		margin-right: 4px;
+		margin-left: -10px;
 		transform: scale(0.9);
 	}
 
 	&_simple_text {
-		min-width: 0;
-		min-height: 0;
 		width: auto;
+		min-width: 0;
 		height: auto;
+		min-height: 0;
 		padding: 0;
-		color: #265378;
 		background-color: transparent;
+		color: #265378;
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {

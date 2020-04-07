@@ -3,28 +3,28 @@ $errorColoBg: #ffeeeb;
 $errorColoBorder: #ddaaa2;
 
 .kit-time-field {
-	font-family: "PT Sans", sans-serif;
 	position: relative;
-	box-sizing: border-box;
-	padding-left: 9px;
+	z-index: 5;
 	display: inline-flex;
 	align-items: center;
 	width: 72px;
 	height: 29px;
-	font-size: 14px;
-	background-color: #fff;
+	padding-left: 9px;
+	background-color: #ffffff;
 	border: 1px solid #b0b2b5;
 	border-radius: 2px;
 	box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-	z-index: 5;
+	box-sizing: border-box;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
 
 	&_disabled {
 		opacity: 0.35;
 	}
 
 	&_no-shadow {
-		box-shadow: none;
 		border: 1px solid #c5d6e1;
+		box-shadow: none;
 	}
 
 	&_error {
@@ -33,28 +33,28 @@ $errorColoBorder: #ddaaa2;
 	}
 
 	&__outer {
-		display: inline-block;
 		position: relative;
+		display: inline-block;
 	}
 
 	&_wrapper {
 		width: 72px;
 
 		&-open {
-			border-color: #d4d4d4;
 			background-color: #f2f2f2;
+			border-color: #d4d4d4;
 
 			&::after {
+				content: "";
 				position: absolute;
 				top: -9px;
+				right: -11px;
 				bottom: -9px;
 				left: -11px;
-				right: -11px;
+				background-color: #f2f2f2;
 				border: 2px solid #d4d4d4;
 				border-top-left-radius: 2px;
 				border-top-right-radius: 2px;
-				background-color: #f2f2f2;
-				content: "";
 			}
 		}
 	}
@@ -62,109 +62,109 @@ $errorColoBorder: #ddaaa2;
 	&__input {
 		position: relative;
 		z-index: 2;
-		padding-right: 0;
-		padding-left: 0;
 		width: 40px;
 		height: 16px;
-		font-family: "PT Sans", sans-serif;
-		font-size: 14px;
-		text-align: left;
-		color: #000;
+		padding-right: 0;
+		padding-left: 0;
+		background: none;
 		border: none;
 		outline: none;
-		background: none;
+		font-family: "PT Sans", sans-serif;
+		font-size: 14px;
+		color: #000000;
+		text-align: left;
 	}
 
 	&__controls {
-		margin-left: 3px;
-		padding-top: 1px;
 		display: flex;
 		flex-direction: column;
+		margin-left: 3px;
+		padding-top: 1px;
 	}
 
 	&__button {
 		margin: 0;
 		padding: 0;
-		cursor: pointer;
 		background: none;
 		border: none;
 		outline: none;
+		cursor: pointer;
 	}
 
 	&_disabled &__button {
-		cursor: default;
 		outline: none;
+		cursor: default;
 	}
 
 	&__arrow {
 		display: flex;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 		width: 8px;
 		height: 8px;
 
 		&::after {
-			margin-top: -3px;
-			display: block;
 			content: "";
+			display: block;
+			margin-top: -3px;
 			border: 3px solid transparent;
-			border-bottom: 4px solid #000;
+			border-bottom: 4px solid #000000;
 		}
 
 		&_down::after {
 			margin-top: 0;
+			border-top: 4px solid #000000;
 			border-bottom: 3px solid transparent;
-			border-top: 4px solid #000;
 		}
 	}
 
 	&__drop-down {
-		overflow: hidden;
-		box-sizing: border-box;
 		position: absolute;
 		top: 38px;
 		left: -11px;
-		width: 94px;
+		z-index: 10;
 		display: flex;
+		width: 94px;
 		height: 318px;
 		background-color: #f2f2f2;
-		border-bottom: 2px solid #d4d4d4;
-		border-right: 2px solid #d4d4d4;
 		border-left: 2px solid #d4d4d4;
-		z-index: 10;
+		border-right: 2px solid #d4d4d4;
+		border-bottom: 2px solid #d4d4d4;
+		overflow: hidden;
+		box-sizing: border-box;
 		list-style: none;
 
 		&_list {
 			position: absolute;
-			height: 100%;
 			display: flex;
 			flex-direction: column;
-			overflow-y: scroll;
-			overflow-x: hidden;
-			padding: 0;
+			height: 100%;
 			margin: 0;
+			padding: 0;
 			padding-right: calc(50% + 15px);
+			overflow-x: hidden;
+			overflow-y: scroll;
 
 			&:last-child {
-				border-left: 2px solid #d4d4d4;
 				left: 50%;
 				padding-right: 15px;
+				border-left: 2px solid #d4d4d4;
 			}
 		}
 
 		&_item {
 			padding-top: 3px;
-			padding-bottom: 3px;
-			padding-left: 14px;
 			padding-right: 14px;
-			font-family: "PT Sans", sans-serif;
-			font-size: 14px;
+			padding-left: 14px;
+			padding-bottom: 3px;
 			background: none;
 			border: none;
+			font-family: "PT Sans", sans-serif;
+			font-size: 14px;
 			cursor: pointer;
 
 			&-selected {
-				background-color: #fff;
+				background-color: #ffffff;
 				font-weight: bold;
 			}
 		}

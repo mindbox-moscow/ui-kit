@@ -1,57 +1,57 @@
 .kit-section-wrapper {
-    font-family: "PT Sans", sans-serif;
-    margin-bottom: 16px;
     position: relative;
+    margin-bottom: 16px;
     padding-top: 24px;
-    padding-bottom: 7px;
-    padding-left: 30px;
     padding-right: 30px;
-    border-radius: 4px;
+    padding-left: 30px;
+    padding-bottom: 7px;
+    background-color: #ffffff;
     border: 1px solid #d4d4d4;
-    background-color: #fff;
+    border-radius: 4px;
     box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
 
     &_active {
-        border-color: #a0ba82;
         border-width: 2px;
+        border-color: #a0ba82;
     }
 
     &_edit {
         padding-bottom: 20px;
-        border-color: #a0ba82;
-        border-width: 2px;
         background-color: #fffaed;
+        border-width: 2px;
+        border-color: #a0ba82;
     }
 
     &__button-edit {
         position: absolute;
-        right: 20px;
         top: 20px;
+        right: 20px;
         padding: 0;
         background-color: transparent;
         border: none;
-        cursor: pointer;
 		outline: none;
+        cursor: pointer;
 
         &:hover {
             opacity: 0.7;
         }
 
         &_hide {
+            right: auto;
+            left: -9999;
             visibility: hidden;
             opacity: 0;
-            left: -9999;
-            right: auto;
         }
     }
 
     &__title {
-        margin: 0 0 5px 0;
         display: inline-block;
+        margin: 0 0 5px 0;
         border-bottom: 1px dashed;
         font-size: 18px;
-        font-weight: normal;
         line-height: 1;
+        font-weight: normal;
     }
 
     &__title-inner {
@@ -63,20 +63,20 @@
     }
 
     &__button {
-        padding: 0;
-        margin: 0;
+        display: none;
         height: 18px;
-        font-family: "PT Sans", sans-serif;
-        font-size: inherit;
-        font-weight: inherit;
-        line-height: 1;
-        color: inherit;
+        margin: 0;
+        padding: 0;
         background: none;
         border: none;
+		outline: none;
+        font-family: "PT Sans", sans-serif;
+        font-size: inherit;
+        line-height: 1;
+        font-weight: inherit;
+        color: inherit;
         vertical-align: top;
         cursor: pointer;
-        display: none;
-		outline: none;
 
         &_show {
             display: inline-block
@@ -95,8 +95,8 @@
             width: 18px;
             height: 16px;
             background-image: url(../assets/icons/icons.png);
-            background-size: 400px;
             background-position: -360px -160px;
+            background-size: 400px;
 
             @media (-webkit-min-device-pixel-ratio: 2),
                 (min-resolution: 192dpi) {

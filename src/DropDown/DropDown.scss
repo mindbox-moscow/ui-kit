@@ -1,10 +1,10 @@
-@import '../variables';
+@import "../variables";
 
 .kit-dropdown {
   position: relative;
-  font-family: "PT Sans", sans-serif;
-  box-sizing: border-box;
   margin: 0 15px;
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
 
   @media (max-width: $mobile-large) {
     width: 100%;
@@ -13,17 +13,17 @@
 
   &__btn {
     display: flex;
-    align-items: center;
     justify-content: flex-end;
-    font-weight: bold;
+    align-items: center;
     width: 130px;
     height: 28px;
-    border-radius: 3px;
-    border: 1px solid #8aacc2;
     background-color: #e2eaf0;
-    color: #000;
-    cursor: pointer;
+    border: 1px solid #8aacc2;
+    border-radius: 3px;
     outline: none;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
 
     @media (max-width: $mobile-large) {
       justify-content: center;
@@ -38,8 +38,8 @@
     &_open {
       background-color: darken($color: #f2f2f2, $amount: 8%);
       border-color: darken($color: #d4d4d4, $amount: 8%);
-      border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
 
       &:hover:not(:disabled) {
         background-color: darken($color: #f2f2f2, $amount: 9%);
@@ -60,23 +60,23 @@
     position: absolute;
     top: 27px;
     left: 0;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     width: 130px;
     max-height: 483px;
-    padding: 0;
     margin: 0;
+    padding: 0;
     background-color: #f2f2f2;
     border: 1px solid darken($color: #d4d4d4, $amount: 8%);
-    list-style: none;
-    opacity: 0;
-    pointer-events: none;
-    box-sizing: border-box;
-    border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
     overflow: hidden;
     overflow-y: auto;
-    z-index: 10;
+    box-sizing: border-box;
+    opacity: 0;
+    list-style: none;
+    pointer-events: none;
 
     @media (max-width: $mobile-large) {
       width: 100%;
@@ -100,14 +100,14 @@
 
   &__year {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    font-size: 13px;
-    line-height: 1;
+    align-items: center;
     padding: 12px 14px;
     background-color: transparent;
     border: none;
     outline: none;
+    font-size: 13px;
+    line-height: 1;
     cursor: pointer;
   }
 
@@ -118,10 +118,10 @@
   &__month {
     display: none;
     flex-direction: column;
-    padding: 0;
     margin: 0;
-    list-style: none;
+    padding: 0;
     box-sizing: border-box;
+    list-style: none;
 
     &_open {
       display: flex;
@@ -129,10 +129,10 @@
   }
 
   &__month-item {
+    padding: 12px 14px;
     font-size: 13px;
     line-height: 1;
     color: #000000;
-    padding: 12px 14px;
     cursor: pointer;
 
     &:hover {

@@ -5,11 +5,11 @@ $kit-select-multi-border-radius: 3px;
 	z-index: 1;
 	display: block;
 	min-width: 108px;
-	font-family: "PT Sans", sans-serif;
 	background-color: #ffffff;
-	white-space: nowrap;
-	box-sizing: border-box;
 	border-radius: $kit-select-multi-border-radius;
+	box-sizing: border-box;
+	font-family: "PT Sans", sans-serif;
+	white-space: nowrap;
 
 	& * {
 		box-sizing: border-box;
@@ -23,15 +23,15 @@ $kit-select-multi-border-radius: 3px;
 .kit-select-multi__label {
 	width: 100%;
 	min-height: 29px;
+	margin: 0;
+	padding: 4px 30px 4px 10px;
 	background-color: #ffffff;
 	border: 1px solid #c5d6e1;
 	border-radius: $kit-select-multi-border-radius;
-	appearance: none;
-	margin: 0;
-	padding: 4px 30px 4px 10px;
-	cursor: pointer;
-	text-align: left;
 	outline: none;
+	text-align: left;
+	cursor: pointer;
+	appearance: none;
 
 	.kit-select-multi_show_dropdown & {
 		border-color: transparent;
@@ -39,23 +39,23 @@ $kit-select-multi-border-radius: 3px;
 }
 
 .kit-select-multi__label-title {
+	overflow: hidden;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	font-weight: 400;
 	color: #000000;
-	overflow: hidden;
 	text-overflow: ellipsis;
 
 	&::after {
+		content: "";
 		position: absolute;
 		top: 13px;
 		right: 14px;
-		content: "";
 		border: 3px solid transparent;
 		border-top: 4px solid #323232;
-		transform-origin: 50% 2px;
 		transition: transform 0.3s ease-out;
+		transform-origin: 50% 2px;
 
 		.kit-select-multi_show_dropdown & {
 			transform: rotate(180deg);
@@ -66,15 +66,15 @@ $kit-select-multi-border-radius: 3px;
 .kit-select-multi__dropdown-list {
 	margin: 0;
 	padding: 0;
+	background: #ffffff;
 	list-style: none;
-	background: #fff;
 	pointer-events: auto;
 }
 
 .kit-select-multi__dropdown-option {
 	&_checked {
-		color: #ffffff;
 		background-color: #3875d7;
+		color: #ffffff;
 	}
 
 	&_disabled {
@@ -84,10 +84,10 @@ $kit-select-multi-border-radius: 3px;
 
 .kit-select-multi__dropdown-option-label {
 	display: block;
-	cursor: pointer;
 	padding: 4px 10px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	cursor: pointer;
 
 	.kit-select-multi__dropdown-option_disabled & {
 		cursor: default;
@@ -95,7 +95,6 @@ $kit-select-multi-border-radius: 3px;
 }
 
 .kit-select-multi__dropdown-option-input {
-	pointer-events: none;
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -104,18 +103,19 @@ $kit-select-multi-border-radius: 3px;
 	border: 0;
 	overflow: hidden;
 	clip: rect(0 0 0 0);
-	clip-path: inset(100%);
+	pointer-events: none;
 	transform: translate(1px, 1px);
+	clip-path: inset(100%);
 }
 
 .kit-select-multi__dropdown-list-wrap {
 	position: absolute;
 	top: 0;
-	padding-top: 28px;
 	width: 100%;
+	padding-top: 28px;
 	border: 1px solid #8aacc2;
+	border-radius: 3px;
 	box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.12);
 	overflow: hidden;
-	border-radius: 3px;
 	pointer-events: none;
 }

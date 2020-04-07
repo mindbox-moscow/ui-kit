@@ -40,7 +40,8 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 		onConditionStateToggle,
 		onNextSelected,
 		onPreviousSelected,
-		onExpandCurrent
+		onExpandCurrent,
+		searchPlaceholder
 	} = props;
 
 	const searchRef = React.useRef<Input>(null);
@@ -235,7 +236,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 							noShadow={true}
 							value={searchTerm}
 							type="search"
-							placeholder="Название фильтра"
+							placeholder={searchPlaceholder}
 							onChange={handleSearchChange}
 							onKeyDown={handleKeyDownSearch}
 						/>

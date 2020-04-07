@@ -79,7 +79,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 			const parts = text.split(new RegExp(`(${searchText})`, "gi"));
 
 			return (
-				<span>
+				<span className="kit-filter-condition-selector__text">
 					{parts.map((part, index) => {
 						if (
 							part.toLocaleLowerCase() ===
@@ -100,7 +100,11 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				</span>
 			);
 		} else {
-			return <span>{text}</span>;
+			return (
+				<span className="kit-filter-condition-selector__text">
+					{text}
+				</span>
+			);
 		}
 	};
 

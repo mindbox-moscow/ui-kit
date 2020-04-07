@@ -66,14 +66,74 @@ $searchFocusBgColor: #fffde5;
 	text-align: left;
 	cursor: pointer;
 
-	> span {
-		display: inline-block;
-		max-width: calc(100% - 10px);
-		height: 18px;
-		overflow: hidden;
-		white-space: nowrap;
-		text-overflow: ellipsis;
+	.kit-filter-condition-selector__hierarchy-button > & {
+		height: 100%;
 	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+		> .kit-filter-condition-selector__hierarchy-button
+		&,
+	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
+		> .kit-filter-condition-selector__hierarchy-button
+		& {
+		position: relative;
+		padding-left: 15px;
+		font-weight: normal;
+	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
+		> .kit-filter-condition-selector__hierarchy-button
+		&::before {
+		content: "";
+		position: absolute;
+		left: 1px;
+		display: block;
+		width: 8px;
+		height: 8px;
+		background-color: $toggleCircleColor;
+		border-radius: 50%;
+		box-sizing: border-box;
+	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
+		> .kit-filter-condition-selector__hierarchy-button_selected
+		&::before,
+	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
+		> .kit-filter-condition-selector__hierarchy-button_selected
+		&:hover {
+		background-color: #ffffff;
+	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+		> .kit-filter-condition-selector__hierarchy-button
+		&::before {
+		content: "";
+		position: absolute;
+		left: 2px;
+		display: block;
+		background-color: transparent;
+		border-top: 5px solid transparent;
+		border-left: 6px solid $toggleCircleColor;
+		border-bottom: 5px solid transparent;
+	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+		> .kit-filter-condition-selector__hierarchy-button_selected
+		&::before,
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
+		> .kit-filter-condition-selector__hierarchy-button:hover
+		&::before {
+		border-left-color: #ffffff;
+	}
+}
+
+.kit-filter-condition-selector__text {
+	display: inline-block;
+	max-width: calc(100% - 10px);
+	height: 18px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .kit-filter-condition-selector__hierarchy-wrap {
@@ -169,75 +229,31 @@ $searchFocusBgColor: #fffde5;
 		}
 	}
 
-	> .kit-filter-condition-selector__hierarchy-name {
-		height: 100%;
+	.kit-filter-condition-selector__hierarchy-children
+		.kit-filter-condition-selector__hierarchy-item
+		> & {
+		.kit-filter-condition-selector__arrow {
+			margin-bottom: 0;
+			margin-left: 2px;
+		}
+	}
+
+	.kit-filter-condition-selector__hierarchy-children
+		.kit-filter-condition-selector__hierarchy-item_expanded
+		> & {
+		.kit-filter-condition-selector__arrow {
+			margin-bottom: 2px;
+			margin-left: 0;
+		}
 	}
 }
 
 .kit-filter-condition-selector__hierarchy-simple-filter {
-	&_filterablePropertyWithLinkedConditions,
-	&_simpleFilterableProperty {
-		> .kit-filter-condition-selector__hierarchy-button {
-			.kit-filter-condition-selector__hierarchy-name {
-				position: relative;
-				padding-left: 15px;
-				font-weight: normal;
-			}
-		}
-	}
-
 	&_filterablePropertyWithLinkedConditions {
-		> .kit-filter-condition-selector__hierarchy-button {
-			.kit-filter-condition-selector__hierarchy-name {
-				&::before {
-					content: "";
-					position: absolute;
-					left: 2px;
-					display: block;
-					background-color: transparent;
-					border-top: 5px solid transparent;
-					border-left: 6px solid $toggleCircleColor;
-					border-bottom: 5px solid transparent;
-				}
-			}
-
-			&_selected,
-			&:hover {
-				.kit-filter-condition-selector__hierarchy-name::before {
-					border-left-color: #ffffff;
-				}
-			}
-		}
-
 		.kit-filter-condition-selector__hierarchy-simple-filte.kit-filter-condition-selector__hierarchy-item_expanded {
 			> .kit-filter-condition-selector__hierarchy-button {
 				.kit-filter-condition-selector__hierarchy-name::before {
 					transform: rotate(90deg);
-				}
-			}
-		}
-	}
-
-	&_simpleFilterableProperty {
-		> .kit-filter-condition-selector__hierarchy-button {
-			.kit-filter-condition-selector__hierarchy-name {
-				&::before {
-					content: "";
-					position: absolute;
-					left: 1px;
-					display: block;
-					width: 8px;
-					height: 8px;
-					background-color: $toggleCircleColor;
-					border-radius: 50%;
-					box-sizing: border-box;
-				}
-			}
-
-			&_selected,
-			&:hover {
-				.kit-filter-condition-selector__hierarchy-name::before {
-					background-color: #ffffff;
 				}
 			}
 		}
@@ -283,22 +299,6 @@ $searchFocusBgColor: #fffde5;
 		&:last-child {
 			&::before {
 				height: 14px;
-			}
-		}
-
-		> .kit-filter-condition-selector__hierarchy-button {
-			.kit-filter-condition-selector__arrow {
-				margin-bottom: 0;
-				margin-left: 2px;
-			}
-		}
-
-		&_expanded {
-			> .kit-filter-condition-selector__hierarchy-button {
-				.kit-filter-condition-selector__arrow {
-					margin-bottom: 2px;
-					margin-left: 0;
-				}
 			}
 		}
 

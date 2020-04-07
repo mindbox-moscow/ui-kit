@@ -27,6 +27,8 @@
 		"cpy": "^7.0.1",
 		"file-loader": "^2.0.0",
 		"html-webpack-plugin": "^3.2.0",
+		"husky": "^4.2.1",
+		"lint-staged": "^10.0.7",
 		"node-sass": "^4.12.0",
 		"prettier": "1.15.3",
 		"react": "^16.8.6",
@@ -34,6 +36,13 @@
 		"react-dom": "^16.8.6",
 		"react-styleguidist": "^8.0.6",
 		"sass-loader": "^7.1.0",
+		"stylelint": "^13.1.0",
+		"stylelint-cli": "^1.3.0",
+		"stylelint-config-prettier": "^8.0.1",
+		"stylelint-config-recommended": "^3.0.0",
+		"stylelint-declaration-block-no-ignored-properties": "^2.2.0",
+		"stylelint-order": "^4.0.0",
+		"stylelint-scss": "^3.14.2",
 		"ts-loader": "^4.3.0",
 		"tslint": "^5.17.0",
 		"tslint-config-prettier": "^1.18.0",
@@ -41,5 +50,16 @@
 		"typescript": "3.7.2",
 		"webpack": "^4.28.1",
 		"webpack-cli": "^3.1.2"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.scss": [
+			"prettier --write",
+			"stylelint --fix"
+		]
 	}
 }

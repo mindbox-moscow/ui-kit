@@ -1,10 +1,10 @@
 .kit-text {
+    margin: 0;
     font-family: "PT Sans", sans-serif;
     font-size: 14px;
-    margin: 0;
 
     &_danger {
-        font-style: italic;
         color: #a12e1e;
+        font-style: italic;
     }
 }

@@ -11,30 +11,30 @@ $mainColor: #3875d7;
 
 .kit-flat-selector__item {
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
-	height: 28px;
+	align-items: center;
 	flex-grow: 1;
+	height: 28px;
 	padding: 0 10px;
-	border-radius: 4px;
+	background-color: #ffffff;
 	border: solid 1px rgba($mainColor, 0.15);
-	background-color: #fff;
+	border-radius: 4px;
+	outline: none;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 1.07;
 	color: $mainColor;
+	white-space: nowrap;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
-	white-space: nowrap;
 	cursor: pointer;
-	outline: none;
 
 	&:hover {
 		border-color: rgba($mainColor, 1);
 	}
 
 	&_selected {
-		color: #fff;
 		background-color: $mainColor;
+		color: #ffffff;
 	}
 }

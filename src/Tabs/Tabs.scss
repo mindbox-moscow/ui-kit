@@ -1,4 +1,4 @@
-@import '../variables';
+@import "../variables";
 
 .kit-tabs {
     width: 100%;
@@ -14,19 +14,19 @@
     }
 
     &__list {
-        margin: 0;
-        padding-left: 0;
         display: flex;
+        flex: 1 0 auto;
         justify-content: flex-end;
         align-items: baseline;
-        flex: 1 0 auto;
+        margin: 0;
+        padding-left: 0;
         list-style: none;
         text-align: right;
 
         @media (max-width: $tablet-medium) {
-            margin-top: 8px;
-            justify-content: flex-start;
             flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-top: 8px;
         }
     }
 
@@ -40,18 +40,18 @@
     }
 
     &__module {
+        flex: 1 0 32%;
         max-width: 32%;
         margin-bottom: 20px;
-        flex: 1 0 32%;
 
         @media (max-width: $tablet-large) {
-            max-width: 48%;
             flex-basis: 48%;
+            max-width: 48%;
         }
 
         @media (max-width: $tablet) {
-            max-width: 100%;
             flex-basis: 100%;
+            max-width: 100%;
         }
     }
 
@@ -65,11 +65,11 @@
     }
 
     &__tabs-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
         margin-top: 10px;
         padding-bottom: 20px;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
 
         @media (max-width: $tablet-large) {
             justify-content: space-between;

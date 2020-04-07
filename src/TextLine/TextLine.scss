@@ -1,27 +1,27 @@
 .kit-textLine {
-    font-family: "PT Sans", sans-serif;
     position: relative;
-    color: #333;
+    font-family: "PT Sans", sans-serif;
     font-size: 14px;
+    color: #333333;
 
     &__title {
         position: relative;
         display: inline-block;
         margin-top: 0;
         margin-bottom: 0;
-        font-weight: normal;
-        color: #000;
         font-size: 26px;
+        font-weight: normal;
+        color: #000000;
     }
 
     &__description {
         position: relative;
         display: inline-block;
-        font-weight: normal;
         margin-top: 0;
         margin-bottom: 0;
         padding-top: 7px;
         padding-bottom: 7px;
+        font-weight: normal;
     }
 
     &__input-box {
@@ -33,25 +33,25 @@
         width: 100%;
         margin-top: 0;
         margin-bottom: 8px;
-        padding-left: 10px;
-        padding-right: 178px;
         padding-top: 6px;
+        padding-right: 178px;
+        padding-left: 10px;
         padding-bottom: 6px;
-        border-radius: 4px;
         border: 2px solid #a0ba82;
-        font-size: 14px;
+        border-radius: 4px;
         box-sizing: border-box;
+        font-size: 14px;
     }
 
     &__signature {
         position: absolute;
-        right: 10px;
         top: 0;
+        right: 10px;
         height: 32px;
+        opacity: 0.5;
         font-size: 14px;
         line-height: 33px;
-        color: #888;
-        opacity: 0.5;
+        color: #888888;
     }
 
     &__button {
@@ -59,10 +59,10 @@
         top: 8px;
         right: -35px;
         padding: 0;
-        cursor: pointer;
-        border: none;
         background-color: transparent;
+        border: none;
 		outline: none;
+        cursor: pointer;
 
         &:hover {
             opacity: 0.7;

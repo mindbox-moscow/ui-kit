@@ -2,14 +2,14 @@
 
 .kit-filtration-condition {
 	position: relative;
+	list-style: none;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 19px;
-	list-style: none;
 
 	&_with-alert {
-		color: $removeColor;
 		font-weight: 700;
+		color: $removeColor;
 	}
 
 	&_show-dropdown {
@@ -25,34 +25,34 @@
 
 .kit-filtration-condition__item-text {
 	position: relative;
-	display: inline-flex;
-	padding: 3px 0 3px 0;
-	margin-right: 5px;
-	transition: color 0.15s ease-in-out;
+	z-index: 3;
 	z-index: 4;
+	display: inline-flex;
+	margin-right: 5px;
+	padding: 3px 0 3px 0;
+	transition: color 0.15s ease-in-out;
 
 	&:hover:not(&_read-only) {
-		>.kit-filtration-condition__content {
+		> .kit-filtration-condition__content {
 			background-color: $hoverColorBg;
 			cursor: pointer;
 		}
 
-		>.kit-filtration-condition__copy,
-		>.kit-filtration-condition__remove,
-		>.kit-filtration-condition__more {
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 
-		>.kit-filtration-condition__drag-and-drop {
+		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
 		}
 
 		.kit-filtration-group_edit & {
-
-			>.kit-filtration-condition__content,
-			>.kit-filtration-condition__drag-and-drop,
-			>.kit-filtration-condition__copy {
-				background-color: #fff;
+			> .kit-filtration-condition__content,
+			> .kit-filtration-condition__drag-and-drop,
+			> .kit-filtration-condition__copy {
+				background-color: #ffffff;
 			}
 		}
 	}
@@ -75,12 +75,12 @@
 	.kit-filtration-condition__content {
 		min-height: 26px;
 
-		>* {
+		> * {
 			vertical-align: sub;
 		}
 	}
 
-	.kit-filtration-condition__content>span,
+	.kit-filtration-condition__content > span,
 	b {
 		position: relative;
 		margin-right: 5px;
@@ -92,7 +92,7 @@
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
-		&+.kit-filtration-group_hover {
+		& + .kit-filtration-group_hover {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
 			}
@@ -100,34 +100,34 @@
 	}
 
 	&_edit {
-		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
-		color: #fff;
 		z-index: 5;
+		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
+		color: #ffffff;
 
 		&:hover:not(&_read-only) {
-			>.kit-filtration-condition__content {
+			> .kit-filtration-condition__content {
 				background-color: $editModeColorBg;
 			}
 		}
 
-		>.kit-filtration-condition__content {
+		> .kit-filtration-condition__content {
 			position: relative;
 			z-index: 3;
 			background-color: $editModeColorBg;
 		}
 
-		>.kit-filtration-condition__drag-and-drop {
+		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
 		}
 
 		[class*="kit-segment"] {
-			background-color: #fff;
+			background-color: #ffffff;
 		}
 
-		>.kit-filtration-condition__copy,
-		>.kit-filtration-condition__remove,
-		>.kit-filtration-condition__more {
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
 	}
@@ -139,9 +139,9 @@
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
-		>.kit-filtration-condition__copy,
-		>.kit-filtration-condition__remove,
-		>.kit-filtration-condition__more {
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 
@@ -151,7 +151,7 @@
 			}
 		}
 
-		&+.kit-filtration-group_edit {
+		& + .kit-filtration-group_edit {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
 			}
@@ -159,35 +159,34 @@
 	}
 
 	&_shaded {
-		>* {
+		> * {
 			opacity: 0.3;
 		}
 
 		&:hover {
-			>* {
+			> * {
 				opacity: 1;
 			}
 		}
 	}
 
-	>.kit-filtration-condition__content {
+	> .kit-filtration-condition__content {
 		[class*="kit-segment"]:not(.kit-segment-content__count) {
 			margin-left: 10px;
 		}
 	}
 
 	&_read-only {
-
-		>.kit-filtration-condition__drag-and-drop,
-		>.kit-filtration-condition__content>b {
-			cursor: default;
-			pointer-events: none;
+		> .kit-filtration-condition__drag-and-drop,
+		> .kit-filtration-condition__content > b {
 			z-index: 0;
+			pointer-events: none;
+			cursor: default;
 		}
 
-		>.kit-filtration-condition__copy,
-		>.kit-filtration-condition__remove,
-		>.kit-filtration-condition__more {
+		> .kit-filtration-condition__copy,
+		> .kit-filtration-condition__remove,
+		> .kit-filtration-condition__more {
 			display: none;
 		}
 	}
@@ -198,8 +197,8 @@
 	top: 3px;
 	right: 100%;
 	display: none;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	width: 5px;
 	height: calc(100% - 6px);
 	background-color: $hoverColorBg;
@@ -220,11 +219,11 @@
 .kit-filtration-condition__remove,
 .kit-filtration-condition__more {
 	z-index: 1;
-	transition: background-color 0.15s ease-in-out;
-	cursor: pointer;
+	margin-left: 2px;
 	outline: none;
 	visibility: hidden;
-	margin-left: 2px;
+	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
 }
 
 .kit-filtration-condition__copy {
@@ -238,6 +237,7 @@
 
 .kit-filtration-condition__remove {
 	background-color: $removeColorBg;
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	color: $removeColor;
 
 	&:hover {
@@ -246,8 +246,8 @@
 }
 
 .kit-filtration-condition__more {
-	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 	background-color: $copyColorBg;
+	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 
 	&:hover {
 		background-color: darken($copyColorBg, 10%);
@@ -261,21 +261,21 @@
 .kit-filtration-condition__item-text__block-method-params {
 	display: inline-flex;
 
-	>*:not(:last-child) {
+	> *:not(:last-child) {
 		margin-right: 10px;
 	}
 }
 
 .kit-filtration-condition__popover {
 	position: relative;
-	padding: 10px 14px 12px 18px;
-	margin-top: -3px;
-	border-radius: 3px;
-	box-shadow: 1px 1px 4px 0 rgba(#000, 0.1);
-	border: solid 1px $borderPopoverColor;
-	background-color: #fff;
-	box-sizing: border-box;
 	z-index: 2;
+	margin-top: -3px;
+	padding: 10px 14px 12px 18px;
+	background-color: #ffffff;
+	border: solid 1px $borderPopoverColor;
+	border-radius: 3px;
+	box-shadow: 1px 1px 4px 0 rgba(#000000, 0.1);
+	box-sizing: border-box;
 }
 
 .kit-filtration-condition__negative-name-part {

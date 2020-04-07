@@ -4,26 +4,26 @@ $mainColor: #999999;
 
 .kit-segment-content {
 	display: inline-flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	min-width: 32px;
-	padding-left: 10px;
-	padding-right: 10px;
 	height: 16px;
-	border-radius: 8px;
-	border: solid 1px $borderColor;
+	padding-right: 10px;
+	padding-left: 10px;
 	background-color: transparent;
+	border: solid 1px $borderColor;
+	border-radius: 8px;
+	outline: none;
+	box-sizing: border-box;
 	color: $mainColor;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
-	outline: none;
 	cursor: default;
-	box-sizing: border-box;
 }
 
 .kit-segment-content__count {
-	color: inherit;
+	box-sizing: border-box;
 	font-family: "PT Sans", sans-serif;
 	font-size: 11px;
 	line-height: 1;
-	box-sizing: border-box;
+	color: inherit;
 }

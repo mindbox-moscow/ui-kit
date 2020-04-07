@@ -25,35 +25,35 @@ $bgColorOpen: #3875d7;
 	min-height: 22px;
 	margin: 0;
 	padding: 0 23px;
-	border-radius: 4px;
-	color: $textColor;
-	text-align: center;
-	border: 1px solid $borderColor;
 	background-color: $bgColor;
+	border: 1px solid $borderColor;
+	border-radius: 4px;
+	outline: none;
 	font-family: "PT Sans", sans-serif;
 	font-size: 14px;
 	line-height: 22px;
-	outline: none;
-	cursor: pointer;
+	color: $textColor;
+	text-align: center;
 	transition: color 0.15s, background-color 0.15s ease-in-out,
 		border-color 0.15s ease-in-out;
+	cursor: pointer;
 
 	&_open {
-		color: #fff;
 		background-color: $bgColorOpen;
 		border-color: $bgColorOpen;
+		color: #ffffff;
 	}
 
 	&:hover:not(:disabled),
 	&:focus:not(:disabled) {
-		color: $textColor;
 		background-color: $bgHoverColor;
 		border-color: $borderHoverColor;
+		color: $textColor;
 	}
 
 	&:disabled {
-		cursor: auto;
 		opacity: 0.35;
+		cursor: auto;
 	}
 
 	svg {

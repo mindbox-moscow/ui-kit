@@ -83,7 +83,6 @@
 		}
 
 		> .kit-filtration-group__buttons {
-			margin-left: 20px;
 			outline: none;
 
 			> .kit-filter-editor .kit-filter-editor__btn,
@@ -168,7 +167,22 @@
 			}
 
 			.kit-filtration-group__label-text-buttons {
-				margin-right: -11px;
+				margin-right: 9px;
+			}
+		}
+	}
+
+	&:not(#{ $self }_not-children) {
+		.kit-filtration-group__buttons {
+			margin-left: 20px;
+		}
+
+		#{ $self }_not-children {
+			> .kit-filtration-group__label-line_or,
+			> .kit-filtration-group__label-line_and {
+				.kit-filtration-group__label-text-buttons {
+					margin-right: -11px;
+				}
 			}
 		}
 	}
@@ -387,10 +401,6 @@
 
 	> *:not(:last-child) {
 		margin-right: 5px;
-	}
-
-	&:not(&_no-children) {
-		margin-left: 20px;
 	}
 
 	&_no-children {

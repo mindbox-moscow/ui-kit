@@ -100,7 +100,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				</span>
 			);
 		} else {
-			return text;
+			return <span>{text}</span>;
 		}
 	};
 

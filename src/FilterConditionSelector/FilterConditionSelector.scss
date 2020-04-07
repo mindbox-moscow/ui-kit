@@ -48,9 +48,38 @@ $searchFocusBgColor: #fffde5;
 	border-bottom-left-radius: 4px;
 }
 
+.kit-filter-condition-selector__hierarchy-name {
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+	max-width: 100%;
+	padding: 4px 10px 5px 8px;
+	background-color: transparent;
+	border: 0;
+	outline: none;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 18px;
+	font-weight: bold;
+	color: currentColor;
+	text-align: left;
+	cursor: pointer;
+
+	> span {
+		display: inline-block;
+		max-width: calc(100% - 10px);
+		height: 18px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}
+
 .kit-filter-condition-selector__hierarchy-wrap {
 	flex-grow: 1;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	overscroll-behavior-y: contain;
 	scroll-snap-type: y proximity;
 	scroll-padding: 50% 0;
@@ -74,7 +103,7 @@ $searchFocusBgColor: #fffde5;
 }
 
 .kit-filter-condition-selector__hierarchy {
-	width: fit-content;
+	width: 100%;
 	min-width: 100%;
 	height: 100%;
 	margin: 0;
@@ -145,32 +174,6 @@ $searchFocusBgColor: #fffde5;
 	}
 }
 
-.kit-filter-condition-selector__hierarchy-name {
-	z-index: 1;
-	display: flex;
-	align-items: center;
-	flex-grow: 1;
-	padding: 4px 10px 5px 8px;
-	background-color: transparent;
-	border: 0;
-	outline: none;
-	overflow: hidden;
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
-	line-height: 18px;
-	font-weight: bold;
-	color: currentColor;
-	text-align: left;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	cursor: pointer;
-
-	> span {
-		display: inline-block;
-		height: 18px;
-	}
-}
-
 .kit-filter-condition-selector__hierarchy-simple-filter {
 	&_filterablePropertyWithLinkedConditions,
 	&_simpleFilterableProperty {
@@ -200,20 +203,16 @@ $searchFocusBgColor: #fffde5;
 
 			&_selected,
 			&:hover {
-				.kit-filter-condition-selector__hierarchy-name {
-					&::before {
-						border-left-color: #ffffff;
-					}
+				.kit-filter-condition-selector__hierarchy-name::before {
+					border-left-color: #ffffff;
 				}
 			}
 		}
 
-		&.kit-filter-condition-selector__hierarchy-item_expanded {
+		.kit-filter-condition-selector__hierarchy-simple-filte.kit-filter-condition-selector__hierarchy-item_expanded {
 			> .kit-filter-condition-selector__hierarchy-button {
-				.kit-filter-condition-selector__hierarchy-name {
-					&::before {
-						transform: rotate(90deg);
-					}
+				.kit-filter-condition-selector__hierarchy-name::before {
+					transform: rotate(90deg);
 				}
 			}
 		}
@@ -237,10 +236,8 @@ $searchFocusBgColor: #fffde5;
 
 			&_selected,
 			&:hover {
-				.kit-filter-condition-selector__hierarchy-name {
-					&::before {
-						background-color: #ffffff;
-					}
+				.kit-filter-condition-selector__hierarchy-name::before {
+					background-color: #ffffff;
 				}
 			}
 		}

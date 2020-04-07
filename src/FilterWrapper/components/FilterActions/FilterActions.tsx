@@ -2,6 +2,7 @@ import cn from "classnames";
 import * as React from "react";
 import { Fragment } from "react";
 import { Button } from "../../../Button";
+import { useClickOutside } from "../../../HOOKs";
 import { FilterAction } from "../../types";
 
 import "./FilterActions.scss";
@@ -11,10 +12,11 @@ interface FilterActionsProps {
 	filterActionsCaption: string;
 }
 
-export const FilterActions: React.FC<FilterActionsProps> = ({
+const FilterActions: React.FC<FilterActionsProps> = ({
 	filterActions,
 	filterActionsCaption
 }) => {
+	const refActions = React.useRef(null);
 	const [isOpen, setIsOpen] = React.useState(false);
 	const filterNotImportant = filterActions.filter(
 		(item: FilterAction) => !item.isImportant
@@ -30,6 +32,8 @@ export const FilterActions: React.FC<FilterActionsProps> = ({
 	const hideListPopover = () => {
 		setIsOpen(false);
 	};
+
+	useClickOutside(refActions, hideListPopover, isOpen);
 
 	return (
 		<div className="kit-filter-actions">
@@ -67,3 +71,5 @@ export const FilterActions: React.FC<FilterActionsProps> = ({
 		</div>
 	);
 };
+
+export { FilterActions };

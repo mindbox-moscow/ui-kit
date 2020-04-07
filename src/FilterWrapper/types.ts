@@ -32,6 +32,7 @@ export interface StateProps {
 	buttonUpCaption: string;
 	shouldShowStatistics?: boolean;
 	showApplyButton?: boolean;
+	headInformation?: React.ReactElement;
 }
 
 export interface CallbackProps {

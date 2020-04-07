@@ -45,7 +45,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
 	const debouncedWindowSize = useDebouncedWindowSize();
 	const hasFilterActions = filterActions && filterActions.length > 0;
-	const hasheadInformation = filterActions && filterActions.length > 0 && headInformation;
+	const hasheadInformation = doesContainFilter && headInformation;
 	
 	React.useEffect(
 		() => {

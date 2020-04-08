@@ -234,14 +234,31 @@
 
 .kit-filter__top-filter {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	padding: 11px 21px 9px;
 	background-color: $topBarBg;
 	border-bottom: 1px solid $topBorderColor;
 	border-radius: 4px 4px 0 0;
+}
+
+.kit-filter__top-right {
+	display: flex;
 
 	>*:not(:last-child) {
 		margin-right: 8px;
+	}
+
+	.kit-filter__undo {
+		display: block;
+		margin: 0 12px;
+	}
+
+	.kit-filter__redo {
+		display: block;
+		transform-origin: 50% 50%;
+		transform: rotate3d(0, 1, 0, 180deg);
+		backface-visibility: visible;
+		margin: 0 12px;
 	}
 }

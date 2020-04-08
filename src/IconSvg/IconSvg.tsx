@@ -2,8 +2,8 @@ import cn from "classnames";
 import * as React from "react";
 
 import { icons, IconType } from "./icons";
-import { IconsProps } from "./types";
 import "./IconSvg.scss";
+import { IconsProps } from "./types";
 
 type IconSvgTypes = {
 	type: IconType;

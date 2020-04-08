@@ -30,6 +30,10 @@ export const FilterWrapper: React.FC<Props> = ({
 	applyButtonCaption,
 	clearButtonCaption,
 	doesContainFilter,
+	canRedo,
+	canUndo,
+	onUndo,
+	onRedo,
 	onApply,
 	onClear,
 	isDataOutdated,
@@ -117,17 +121,37 @@ export const FilterWrapper: React.FC<Props> = ({
 								filterActions.length === 0)
 					})}
 				>
-					{(hasFilterActions || hasheadInformation) &&  (
+					{doesContainFilter && (
 						<div className="kit-filter__top-filter">
-							{hasheadInformation && (<div className="kit-filter__top-info">
+							{hasheadInformation ? (<div className="kit-filter__top-info">
 								{headInformation}
-							</div>)}
-							{hasFilterActions && (
-								<FilterActions
-									filterActions={filterActions}
-									filterActionsCaption={filterActionsCaption}
-								/>
-							)}
+							</div>) : <div />}
+							<div className="kit-filter__top-right">
+								{hasFilterActions && (
+									<FilterActions
+										filterActions={filterActions}
+										filterActionsCaption={filterActionsCaption}
+									/>
+								)}
+								<Button
+									onClick={onUndo}
+									size="xxs"
+									color="gray"
+									disabled={!canUndo}
+									type="button"
+								>
+									<IconSvg type="circle-arrow" className="kit-filter__undo" />
+								</Button>
+								<Button
+									onClick={onRedo}
+									size="xxs"
+									color="gray"
+									disabled={!canRedo}
+									type="button"
+								>
+									<IconSvg type="circle-arrow" className="kit-filter__redo" />
+								</Button>
+							</div>
 						</div>
 					)}
 					<ul className="kit-filter__all-wrap">

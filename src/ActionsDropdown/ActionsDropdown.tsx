@@ -31,7 +31,9 @@ const ActionsDropdown = (props: IProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const refDropdown = useRef<HTMLDivElement>(null);
 
-	const toggleDropdown = () => {
+	const toggleDropdown = (e: React.MouseEvent) => {
+		e.preventDefault();
+
 		setIsOpen(curr => !curr);
 		if (onToggle !== undefined) {
 			onToggle(!isOpen);
@@ -43,7 +45,7 @@ const ActionsDropdown = (props: IProps) => {
 		if (onToggle !== undefined) {
 			onToggle(false);
 		}
-	}
+	};
 
 	useClickOutside(refDropdown, closeDropdown, isOpen);
 

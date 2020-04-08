@@ -64,9 +64,11 @@ export const Tooltip: React.FC<IProps> = ({
 		</div>
 	);
 
-	if (showByClick) {
-		useClickOutside(refOverflowVisibleContainer, handleHideTooltip);
-	}
+	useClickOutside(
+		refOverflowVisibleContainer,
+		handleHideTooltip,
+		isShow && showByClick
+	);
 
 	return (
 		<div className={cn("kit-tooltip", className)}>

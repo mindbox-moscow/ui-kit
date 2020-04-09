@@ -50,7 +50,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
 	const debouncedWindowSize = useDebouncedWindowSize();
 	const hasFilterActions = filterActions && filterActions.length > 0;
-	const hasheadInformation = doesContainFilter && headInformation;
+	const hasHeadInformation = doesContainFilter && headInformation;
 
 	React.useEffect(
 		() => {
@@ -124,7 +124,7 @@ export const FilterWrapper: React.FC<Props> = ({
 				>
 					{doesContainFilter && (
 						<div className="kit-filter__top-filter">
-							{hasheadInformation ? (<div className="kit-filter__top-info">
+							{hasHeadInformation ? (<div className="kit-filter__top-info">
 								{headInformation}
 							</div>) : <div />}
 							<div className="kit-filter__top-right">

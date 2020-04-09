@@ -522,6 +522,9 @@ class ExampleFlatSelectorSimple extends React.Component {
 			onCancelSelection={() => console.log("clear selected")}
 			isDataOutdated={true}
 			filterActionsCaption="Еще"
+			isUndoRedoEnabled={true}
+			onUndo={() => {}}
+			onRedo={() => {}}
 			filterActions={[
 				{
 					component: (

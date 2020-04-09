@@ -33,6 +33,11 @@ export interface StateProps {
 	shouldShowStatistics?: boolean;
 	showApplyButton?: boolean;
 	headInformation?: React.ReactElement;
+	isUndoRedoEnabled?: boolean;
+	canRedo?: boolean;
+	canUndo?: boolean;
+	onUndo?: () => void;
+	onRedo?: () => void;
 }
 
 export interface CallbackProps {

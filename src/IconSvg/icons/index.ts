@@ -4,6 +4,7 @@ import { ArrowBottom } from "./ArrowBottom";
 import { ArrowRight } from "./ArrowRight";
 import { Calendar } from "./Calendar";
 import { CatalogTree } from "./CatalogTree";
+import { CircleArrow } from "./CircleArrow";
 import { Close } from "./Close";
 import { Coins } from "./Coins";
 import { CrossArrows } from "./CrossArrows";
@@ -32,6 +33,7 @@ type IconType =
 	| "catalog-tree"
 	| "close"
 	| "calendar"
+	| "circle-arrow"
 	| "coins"
 	| "dots"
 	| "percent-round"
@@ -62,6 +64,7 @@ const icons: Icons = {
 	"arrow-right": ArrowRight,
 	calendar: Calendar,
 	"catalog-tree": CatalogTree,
+	"circle-arrow": CircleArrow,
 	close: Close,
 	coins: Coins,
 	"cross-arrows": CrossArrows,

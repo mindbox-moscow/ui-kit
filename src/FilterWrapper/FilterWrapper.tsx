@@ -45,7 +45,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
 	const debouncedWindowSize = useDebouncedWindowSize();
 	const hasFilterActions = filterActions && filterActions.length > 0;
-
+	const hasheadInformation = doesContainFilter && headInformation;
+	
 	React.useEffect(
 		() => {
 			rerenderBrackets();
@@ -116,13 +117,11 @@ export const FilterWrapper: React.FC<Props> = ({
 								filterActions.length === 0)
 					})}
 				>
-					{(hasFilterActions || headInformation) && (
+					{(hasFilterActions || hasheadInformation) &&  (
 						<div className="kit-filter__top-filter">
-							{headInformation && (
-								<div className="kit-filter__top-info">
-									{headInformation}
-								</div>
-							)}
+							{hasheadInformation && (<div className="kit-filter__top-info">
+								{headInformation}
+							</div>)}
 							{hasFilterActions && (
 								<FilterActions
 									filterActions={filterActions}

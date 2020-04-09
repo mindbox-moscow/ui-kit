@@ -43,6 +43,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics = true,
 	showApplyButton = false,
+	isUndoRedoEnabled = false,
 	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
@@ -50,7 +51,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	const debouncedWindowSize = useDebouncedWindowSize();
 	const hasFilterActions = filterActions && filterActions.length > 0;
 	const hasheadInformation = doesContainFilter && headInformation;
-	
+
 	React.useEffect(
 		() => {
 			rerenderBrackets();
@@ -133,34 +134,38 @@ export const FilterWrapper: React.FC<Props> = ({
 										filterActionsCaption={filterActionsCaption}
 									/>
 								)}
-								<Button
-									onClick={onUndo}
-									size="xxs"
-									color="gray"
-									disabled={!canUndo}
-									type="button"
-								>
-									<IconSvg type="circle-arrow" className="kit-filter__undo" />
-								</Button>
-								<Button
-									onClick={onRedo}
-									size="xxs"
-									color="gray"
-									disabled={!canRedo}
-									type="button"
-								>
-									<IconSvg type="circle-arrow" className="kit-filter__redo" />
-								</Button>
+								{isUndoRedoEnabled && (
+									<>
+										<Button
+											onClick={onUndo}
+											size="xxs"
+											color="gray"
+											disabled={!canUndo}
+											type="button"
+										>
+											<IconSvg type="circle-arrow" className="kit-filter__undo" />
+										</Button>
+										<Button
+											onClick={onRedo}
+											size="xxs"
+											color="gray"
+											disabled={!canRedo}
+											type="button"
+										>
+											<IconSvg type="circle-arrow" className="kit-filter__redo" />
+										</Button>
+									</>
+								)}
 							</div>
 						</div>
 					)}
 					<ul className="kit-filter__all-wrap">
 						{!doesContainFilter &&
-						scrollState === ScrollState.Minified ? (
-							<ButtonUp />
-						) : (
-							children
-						)}
+							scrollState === ScrollState.Minified ? (
+								<ButtonUp />
+							) : (
+								children
+							)}
 					</ul>
 					{doesContainFilter ? (
 						<div className="kit-filter__wrap">
@@ -174,8 +179,8 @@ export const FilterWrapper: React.FC<Props> = ({
 											{applyButtonCaption}
 										</button>
 									) : (
-										<ButtonUp />
-									)
+											<ButtonUp />
+										)
 								) : null}
 							</div>
 							{selectionState !== SelectionStateType.None &&
@@ -197,16 +202,16 @@ export const FilterWrapper: React.FC<Props> = ({
 							</InfoWrapper>
 						</div>
 					) : (
-						<div className="kit-filter__short-wrap-filter">
-							{selectionState !== SelectionStateType.None &&
-								countSelectedItems()}
-							<InfoWrapper
-								statisticsValue={statisticsValue}
-								statisticsDescription={statisticsDescription}
-								shouldShowStatistics={shouldShowStatistics}
-							/>
-						</div>
-					)}
+							<div className="kit-filter__short-wrap-filter">
+								{selectionState !== SelectionStateType.None &&
+									countSelectedItems()}
+								<InfoWrapper
+									statisticsValue={statisticsValue}
+									statisticsDescription={statisticsDescription}
+									shouldShowStatistics={shouldShowStatistics}
+								/>
+							</div>
+						)}
 				</div>
 			</FilterWrapperContext.Provider>
 		</>

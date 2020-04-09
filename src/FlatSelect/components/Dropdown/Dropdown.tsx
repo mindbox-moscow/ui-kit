@@ -90,7 +90,10 @@ const Dropdown = React.forwardRef(
 
 		const clearSelectionSection = (): JSX.Element | null => {
 			return onSelectionClear == null ? null : (
-				<span onClick={onSelectionClears} />
+				<span
+					className="kit-selectR-clear"
+					onClick={onSelectionClears}
+				/>
 			);
 		};
 

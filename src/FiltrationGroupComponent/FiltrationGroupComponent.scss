@@ -247,6 +247,15 @@
 			margin-right: -22px;
 		}
 	}
+
+	.kit-filtration-group > .kit-filtration-group & {
+		&_or,
+		&_and {
+			.kit-filtration-group__label-line-horizontal {
+				@include createHorisontalBrackets(-30px, 50%);
+			}
+		}
+	}
 }
 
 .kit-filtration-group__label-line-vertical {

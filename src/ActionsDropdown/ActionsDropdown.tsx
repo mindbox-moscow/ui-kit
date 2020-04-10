@@ -43,7 +43,7 @@ const ActionsDropdown = (props: IProps) => {
 		if (onToggle !== undefined) {
 			onToggle(false);
 		}
-	}
+	};
 
 	useClickOutside(refDropdown, closeDropdown, isOpen);
 
@@ -63,6 +63,7 @@ const ActionsDropdown = (props: IProps) => {
 				className="kit-actions-dropdown__toggle"
 				aria-label={toggleBtnText}
 				onClick={toggleDropdown}
+				type="button"
 			>
 				<IconSvg
 					className="kit-actions-dropdown__toggle-icon"

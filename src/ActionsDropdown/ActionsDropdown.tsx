@@ -31,9 +31,7 @@ const ActionsDropdown = (props: IProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const refDropdown = useRef<HTMLDivElement>(null);
 
-	const toggleDropdown = (e: React.MouseEvent) => {
-		e.preventDefault();
-
+	const toggleDropdown = () => {
 		setIsOpen(curr => !curr);
 		if (onToggle !== undefined) {
 			onToggle(!isOpen);
@@ -65,6 +63,7 @@ const ActionsDropdown = (props: IProps) => {
 				className="kit-actions-dropdown__toggle"
 				aria-label={toggleBtnText}
 				onClick={toggleDropdown}
+				type="button"
 			>
 				<IconSvg
 					className="kit-actions-dropdown__toggle-icon"

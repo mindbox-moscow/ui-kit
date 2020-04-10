@@ -212,6 +212,16 @@
 		}
 	}
 
+	/* stylelint-disable no-descending-specificity */
+	.kit-filtration-group > .kit-filtration-group & {
+		&_or,
+		&_and {
+			.kit-filtration-group__label-line-horizontal {
+				@include createHorisontalBrackets(-30px, 50%);
+			}
+		}
+	}
+
 	&_and {
 		color: $andColor;
 
@@ -247,15 +257,7 @@
 			margin-right: -22px;
 		}
 	}
-
-	.kit-filtration-group > .kit-filtration-group & {
-		&_or,
-		&_and {
-			.kit-filtration-group__label-line-horizontal {
-				@include createHorisontalBrackets(-30px, 50%);
-			}
-		}
-	}
+	/* stylelint-enable no-descending-specificity */
 }
 
 .kit-filtration-group__label-line-vertical {

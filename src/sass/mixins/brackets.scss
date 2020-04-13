@@ -86,18 +86,20 @@
 				left: -16px;
 			}
 		}
+	}
 
+	> .kit-filtration-condition > .kit-filtration-group_edit {
 		> .kit-filtration-group:first-of-type {
 			&::before {
 				content: "";
 				position: absolute;
 				top: 0;
 				left: -26px;
-				height: 50%;
+				z-index: 3;
 				display: block;
 				width: 2px;
+				height: 50%;
 				background-color: $braketColor;
-				z-index: 3;
 				pointer-events: none;
 			}
 		}
@@ -111,6 +113,7 @@
 		~ .kit-filtration-group__buttons:not(.kit-filtration-group__buttons_no-children),
 	&.kit-filtration-group_not-children {
 		&::before {
+			/* stylelint-disable-next-line declaration-no-important */
 			background-color: $color !important;
 		}
 	}

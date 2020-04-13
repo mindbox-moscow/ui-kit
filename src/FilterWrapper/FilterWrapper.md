@@ -108,6 +108,181 @@ class ExampleFlatSelectorSimple extends React.Component {
 		buttonUpCaption="Вверх"
 	>
 		<FiltrationGroupComponent
+			andLabel="И"
+			groupType="and"
+			moreConditionToggleCaption="Действие"
+			orLabel="ИЛИ"
+			shouldShowButtons={true}
+			shouldShowDuplicateButton={false}
+			shouldShowLabel={false}
+			state="view"
+			addSimpleConditionButton={
+				<FilterConditionEditorButton
+					label="Добавить фильтр"
+					toggleOpen={() => console.log("toggle")}
+					isOpened={false}
+					iconType="filter"
+				/>
+			}
+			addGroupConditionButton={
+				<Button color="silver" size="small" hasBorder="true">
+					<IconSvg type="cross-arrows" />И
+				</Button>
+			}
+		>
+			<FiltrationConditionComponent
+				editorComponent={null}
+				filterablePropertyName="Клиент"
+				filtrationMethodName={null}
+				helpComponent={null}
+				moreConditionToggleCaption="Действие"
+				state="view"
+				linkedConditionComponent={
+					<FiltrationGroupComponent
+						andLabel="И"
+						groupType="and"
+						moreConditionToggleCaption="Действие"
+						orLabel="ИЛИ"
+						shouldShowButtons={false}
+						shouldShowDuplicateButton={false}
+						shouldShowLabel={false}
+						state="view"
+					>
+						<FiltrationGroupComponent
+							andLabel="И"
+							groupType="or"
+							moreConditionToggleCaption="Действие"
+							orLabel="ИЛИ"
+							shouldShowButtons={false}
+							shouldShowDuplicateButton={true}
+							shouldShowLabel={true}
+							state="view"
+						>
+							<FiltrationConditionComponent
+								editorComponent={null}
+								filterablePropertyName="Розничный заказ"
+								filtrationMethodName="есть такие"
+								helpComponent={null}
+								moreConditionToggleCaption="Действие"
+								state="view"
+								linkedConditionComponent={
+									<FiltrationGroupComponent
+										andLabel="И"
+										groupType="or"
+										moreConditionToggleCaption="Действие"
+										orLabel="ИЛИ"
+										shouldShowButtons={false}
+										shouldShowDuplicateButton={false}
+										shouldShowLabel={true}
+										state="view"
+									>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+									</FiltrationGroupComponent>
+								}
+							/>
+							<FiltrationConditionComponent
+								editorComponent={null}
+								filterablePropertyName="Розничный заказ"
+								filtrationMethodName="есть такие"
+								helpComponent={null}
+								moreConditionToggleCaption="Действие"
+								state="view"
+								linkedConditionComponent={
+									<FiltrationGroupComponent
+										andLabel="И"
+										groupType="or"
+										moreConditionToggleCaption="Действие"
+										orLabel="ИЛИ"
+										shouldShowButtons={false}
+										shouldShowDuplicateButton={false}
+										shouldShowLabel={true}
+										state="view"
+									>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+									</FiltrationGroupComponent>
+								}
+							/>
+						</FiltrationGroupComponent>
+					</FiltrationGroupComponent>
+				}
+			/>
+		</FiltrationGroupComponent>
+	</FilterWrapper>
+	<FilterWrapper
+		scrollState="full"
+		filterActions={[]}
+		statisticsDescription="Всего клиентов"
+		statisticsValue={1021318}
+		doesContainFilter={true}
+		applyButtonCaption="Применить фильтр"
+		clearButtonCaption="Сбросить фильтр"
+		onApply={() => console.log("apply filter")}
+		onClear={() => console.log("clear filter")}
+		buttonUpCaption="Вверх"
+	>
+		<FiltrationGroupComponent
 			onClickOutside={() => {}}
 			state="view"
 			groupType="or"

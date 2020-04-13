@@ -93,7 +93,8 @@ const FiltrationGroupComponent = ({
 				if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroup
-					)
+					) &&
+					lastChildElement !== firstChildElement
 				) {
 					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
@@ -175,15 +176,18 @@ const FiltrationGroupComponent = ({
 			labelRef.style.height = `${groupRefHeight - heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
-				labelLineRef.style.height = `${groupRefHeight - heightLine}px`;
+				const hasOneChildren =
+					MIN_HEIGHT / 2 === groupRefHeight - heightLine;
+				labelLineRef.style.height = `${!hasOneChildren &&
+					groupRefHeight - heightLine}px`;
 			} else {
-				labelLineRef.style.height = "0px";
+				labelLineRef.style.height = "";
 			}
 
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop}px`;
 			} else {
-				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
+				labelLineRef.style.top = "";
 			}
 		}
 	};

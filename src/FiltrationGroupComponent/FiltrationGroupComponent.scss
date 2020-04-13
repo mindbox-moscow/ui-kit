@@ -178,6 +178,7 @@
 	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
+	height: 0;
 	margin-top: 0;
 	margin-left: -1px;
 	box-sizing: border-box;
@@ -222,6 +223,7 @@
 	}
 
 	&_and {
+		top: $minHeight / 2;
 		color: $andColor;
 
 		@include changeHorisontalBracketsColor($andColor);
@@ -236,6 +238,7 @@
 	}
 
 	&_or {
+		top: $minHeight / 2;
 		color: $orColor;
 
 		@include changeHorisontalBracketsColor($orColor);

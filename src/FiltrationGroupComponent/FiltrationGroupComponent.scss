@@ -23,7 +23,6 @@
 	$self: &;
 	position: relative;
 	z-index: 3;
-	z-index: 2;
 	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
@@ -213,7 +212,7 @@
 	}
 
 	/* stylelint-disable no-descending-specificity */
-	.kit-filtration-group > .kit-filtration-group & {
+	.kit-filtration-group > .kit-filtration-group > & {
 		&_or,
 		&_and {
 			.kit-filtration-group__label-line-horizontal {

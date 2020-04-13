@@ -95,15 +95,6 @@ $searchFocusBgColor: #fffde5;
 		box-sizing: border-box;
 	}
 
-	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
-		> .kit-filter-condition-selector__hierarchy-button_selected
-		&::before,
-	.kit-filter-condition-selector__hierarchy-simple-filter_simpleFilterableProperty
-		> .kit-filter-condition-selector__hierarchy-button_selected
-		&:hover {
-		background-color: #ffffff;
-	}
-
 	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
 		> .kit-filter-condition-selector__hierarchy-button
 		&::before {

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { createPortal } from "react-dom";
+import { Portal } from "../Portal";
 import { Props } from "./types";
 
 import "./OverflowVisibleContainer.scss";
@@ -23,15 +23,6 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 			0
 		);
 		const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
-		const [portal] = React.useState(document.createElement("div"));
-
-		React.useEffect(() => {
-			document.body.appendChild(portal);
-
-			return () => {
-				document.body.removeChild(portal);
-			};
-		}, []);
 
 		React.useEffect(() => {
 			handleShowPopup();
@@ -58,20 +49,21 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 			}
 		};
 
-		return createPortal(
-			<div
-				ref={ref}
-				className={cn("kit-overflow-visiblecontainer", className, {
-					"kit-overflow-visiblecontainer_fixed": fixed
-				})}
-				style={{
-					left: positionLeft,
-					top: positionTop
-				}}
-			>
-				{isLoaded && children}
-			</div>,
-			portal
+		return (
+			<Portal>
+				<div
+					ref={ref}
+					className={cn("kit-overflow-visiblecontainer", className, {
+						"kit-overflow-visiblecontainer_fixed": fixed
+					})}
+					style={{
+						left: positionLeft,
+						top: positionTop
+					}}
+				>
+					{isLoaded && children}
+				</div>
+			</Portal>
 		);
 	}
 );

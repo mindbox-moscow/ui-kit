@@ -22,7 +22,6 @@
 .kit-filtration-group {
 	$self: &;
 	position: relative;
-	z-index: 3;
 	min-height: $minHeight;
 	margin: 0;
 	padding: 0;
@@ -44,17 +43,10 @@
 
 	&_shaded {
 		@include opacityBlock(0.3);
-
-		z-index: auto;
 	}
 
 	&_edit {
 		@include opacityBlock();
-		z-index: 5;
-
-		.kit-filtration-group {
-			z-index: 3;
-		}
 
 		> .kit-filtration-group__label_hover_or,
 		> .kit-filtration-group__label_hover_and {
@@ -119,7 +111,7 @@
 		width: 100%;
 		max-width: calc(100% - 30px);
 		margin: 0;
-		padding-left: 20px;
+		margin-left: 20px;
 		box-sizing: border-box;
 
 		> .kit-filtration-condition__item-text {
@@ -140,7 +132,6 @@
 	position: absolute;
 	top: 0;
 	left: -10px;
-	z-index: 2;
 	display: flex;
 	align-items: center;
 	width: calc(100% + 10px);
@@ -174,7 +165,6 @@
 .kit-filtration-group__label-line {
 	position: absolute;
 	left: 5px;
-	z-index: 4;
 	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
@@ -189,8 +179,8 @@
 		cursor: default;
 	}
 
-	.kit-filtration-group_edit & {
-		z-index: 8;
+	.kit-filtration-group_edit > & {
+		z-index: 5;
 	}
 
 	.kit-filtration-group_hover > .kit-filtration-group__label_hover_or ~ & {
@@ -223,7 +213,7 @@
 	}
 
 	&_and {
-		top: $minHeight / 2;
+		top: 0;
 		color: $andColor;
 
 		@include changeHorisontalBracketsColor($andColor);
@@ -238,7 +228,7 @@
 	}
 
 	&_or {
-		top: $minHeight / 2;
+		top: 0;
 		color: $orColor;
 
 		@include changeHorisontalBracketsColor($orColor);
@@ -265,7 +255,7 @@
 .kit-filtration-group__label-line-vertical {
 	position: absolute;
 	left: 0;
-	z-index: 3;
+	z-index: 1;
 	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
@@ -325,7 +315,6 @@
 .kit-filtration-group__label-text {
 	position: absolute;
 	left: 0;
-	z-index: 5;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -398,8 +387,6 @@
 
 .kit-filtration-group__buttons {
 	position: relative;
-	z-index: 3;
-	z-index: 2;
 	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
@@ -441,21 +428,12 @@
 		margin-left: 20px;
 	}
 
-	> * {
-		z-index: 2;
-	}
-
 	&_no-children {
-		> * {
-			z-index: 3;
-		}
-
 		&::before {
 			content: "";
 			position: absolute;
 			top: 0;
 			left: -10px;
-			z-index: 3;
 			display: block;
 			width: calc(100% + 10px);
 			height: 100%;
@@ -565,7 +543,6 @@
 	position: absolute;
 	top: 7px;
 	right: 13px;
-	z-index: 10;
 	padding: 0;
 	background: none;
 	border: 0;

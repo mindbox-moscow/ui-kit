@@ -12,21 +12,14 @@
 		color: $removeColor;
 	}
 
-	&_show-dropdown {
-		z-index: 6;
-	}
-
 	.kit-filter-details {
 		top: calc(100% - 5px);
 		left: 0;
-		z-index: 20;
 	}
 }
 
 .kit-filtration-condition__item-text {
 	position: relative;
-	z-index: 3;
-	z-index: 4;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
@@ -100,7 +93,6 @@
 	}
 
 	&_edit {
-		z-index: 5;
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #ffffff;
 
@@ -112,7 +104,6 @@
 
 		> .kit-filtration-condition__content {
 			position: relative;
-			z-index: 3;
 			background-color: $editModeColorBg;
 		}
 
@@ -179,7 +170,6 @@
 	&_read-only {
 		> .kit-filtration-condition__drag-and-drop,
 		> .kit-filtration-condition__content > b {
-			z-index: 0;
 			pointer-events: none;
 			cursor: default;
 		}
@@ -218,7 +208,6 @@
 .kit-filtration-condition__copy,
 .kit-filtration-condition__remove,
 .kit-filtration-condition__more {
-	z-index: 1;
 	margin-left: 2px;
 	outline: none;
 	visibility: hidden;
@@ -268,7 +257,6 @@
 
 .kit-filtration-condition__popover {
 	position: relative;
-	z-index: 2;
 	margin-top: -3px;
 	padding: 10px 14px 12px 18px;
 	background-color: #ffffff;

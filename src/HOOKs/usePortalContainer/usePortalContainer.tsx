@@ -20,10 +20,6 @@ export function usePortalContainer(
 		return () => {
 			if (containerRef.current && parentElem) {
 				containerRef.current.remove();
-
-				if (parentElem.childNodes.length === -1) {
-					parentElem.remove();
-				}
 			}
 		};
 	}, []);

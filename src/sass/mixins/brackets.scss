@@ -86,12 +86,10 @@
 				left: -16px;
 			}
 		}
-	}
 
-	> .kit-filtration-condition > .kit-filtration-group_edit {
 		> .kit-filtration-group:first-of-type {
 			&::before {
-				content: "";
+				// content: "";
 				position: absolute;
 				top: 0;
 				left: -26px;

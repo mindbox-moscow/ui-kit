@@ -178,16 +178,21 @@ const FiltrationGroupComponent = ({
 			if (firstChildElement && lastChildElement) {
 				const hasOneChildren =
 					MIN_HEIGHT / 2 === groupRefHeight - heightLine;
+
 				labelLineRef.style.height = `${!hasOneChildren &&
 					groupRefHeight - heightLine}px`;
 			} else {
-				labelLineRef.style.height = "";
+				labelLineRef.style.height = "0px";
 			}
 
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop}px`;
 			} else {
-				labelLineRef.style.top = "";
+				if (labelLineRef.clientHeight === 0) {
+					labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
+				} else {
+					labelLineRef.style.top = "";
+				}
 			}
 		}
 	};

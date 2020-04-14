@@ -82,6 +82,13 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 		onConditionRemove();
 	};
 
+	const handleCreateCondition = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		if (onCreateCondition) {
+			onCreateCondition();
+		}
+	}
+
 	const editModeContent = (
 		<FilterDetails
 			helpCaption={filterablePropertyName}
@@ -131,18 +138,18 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							</span>
 						)}
 						{filtrationMethodParametersComponent}
+						{
+							onCreateCondition && (
+								<button
+									type="button"
+									className="kit-filtration-condition__create"
+									onClick={handleCreateCondition}
+								>
+									<IconSvg type="add" />
+								</button>
+							)
+						}
 					</div>
-					{
-						onCreateCondition && (
-							<button
-								type="button"
-								className="kit-filtration-condition__create"
-								onClick={onCreateCondition}
-							>
-								<IconSvg type="add" />
-							</button>
-						)
-					}
 					<button
 						type="button"
 						className="kit-filtration-condition__remove"

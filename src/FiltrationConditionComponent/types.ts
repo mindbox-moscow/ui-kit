@@ -26,4 +26,5 @@ export interface ICallbackProps {
 	onConditionStateToggle: () => void; // вызывается, когда мы кликаем в режиме просмотра на условие. если мы уже в режиме редактирования, то повторный клик его снимает.
 	onConditionRemove: () => void; // вызывается при клике на корзинку
 	onConditionCopy: () => void;
+	onCreateCondition?: () => void;
 }

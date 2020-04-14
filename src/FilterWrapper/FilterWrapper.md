@@ -2900,6 +2900,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				state="view"
+				onCreateCondition={() => console.log("onCreateCondition")}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
 						onClickOutside={() => {}}
@@ -3005,6 +3006,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 				filtrationMethodName="есть такие"
 				state="linkedConditionEdit"
 				onConditionStateToggle={() => console.log("state toggle")}
+				onCreateCondition={() => console.log("onCreateCondition")}
 				linkedConditionComponent={
 					<FiltrationGroupComponent
 						onClickOutside={() => {}}

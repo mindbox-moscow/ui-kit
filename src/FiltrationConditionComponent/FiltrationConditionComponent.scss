@@ -26,7 +26,6 @@
 .kit-filtration-condition__item-text {
 	position: relative;
 	z-index: 3;
-	z-index: 4;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
@@ -44,12 +43,22 @@
 			visibility: visible;
 		}
 
+		.kit-filtration-condition__create {
+			background-color: $copyColorBg;
+			color: $copyColor;
+
+			&:hover {
+				background-color: darken($copyColorBg, 10%);
+			}
+		}
+
 		> .kit-filtration-condition__drag-and-drop {
 			display: flex;
 		}
 
 		.kit-filtration-group_edit & {
 			> .kit-filtration-condition__content,
+			> .kit-filtration-condition__create,
 			> .kit-filtration-condition__drag-and-drop,
 			> .kit-filtration-condition__copy {
 				background-color: #ffffff;
@@ -61,8 +70,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		display: block;
-		width: calc(100% + #{$groupHoverMarginLeft});
+		display: none;
+		width: calc(100% - #{$groupHoverMarginRightWithButton});
 		height: calc(100% + #{$groupHoverMarginTop});
 		min-height: 26px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
@@ -88,6 +97,7 @@
 
 	&_hover {
 		&::before {
+			display: block;
 			content: "";
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
@@ -134,6 +144,7 @@
 
 	&_linked-condition-edit {
 		&::before {
+			display: block;
 			content: "";
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
@@ -143,6 +154,11 @@
 		> .kit-filtration-condition__remove,
 		> .kit-filtration-condition__more {
 			display: none;
+		}
+
+		> .kit-filtration-condition__create {
+			margin-top: -3px;
+			margin-bottom: -3px;
 		}
 
 		&:hover:not(&_read-only) {
@@ -222,6 +238,17 @@
 	margin-left: 2px;
 	outline: none;
 	visibility: hidden;
+	transition: background-color 0.15s ease-in-out;
+	cursor: pointer;
+}
+
+.kit-filtration-condition__create {
+	z-index: 1;
+	margin-left: 2px;
+	padding: 3px 8px 0 8px;
+	outline: none;
+	border: none;
+	background: none;
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 }

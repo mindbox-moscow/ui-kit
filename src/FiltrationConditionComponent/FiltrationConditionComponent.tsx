@@ -26,6 +26,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 	onConditionCopy,
 	onConditionRemove,
 	moreConditionToggleCaption,
+	onCreateCondition,
 	moreActions
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
@@ -131,6 +132,17 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						)}
 						{filtrationMethodParametersComponent}
 					</div>
+					{
+						onCreateCondition && (
+							<button
+								type="button"
+								className="kit-filtration-condition__create"
+								onClick={onCreateCondition}
+							>
+								<IconSvg type="add" />
+							</button>
+						)
+					}
 					<button
 						type="button"
 						className="kit-filtration-condition__remove"

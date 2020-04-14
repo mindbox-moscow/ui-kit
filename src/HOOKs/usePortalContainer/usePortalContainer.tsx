@@ -7,18 +7,25 @@ export function usePortalContainer(
 	const containerRef = React.useRef<HTMLDivElement | null>(null);
 
 	React.useEffect(() => {
-		const existingParent = document.querySelector(`#${id}`);
+		if (containerRef.current) {
+			const existingParent =
+				id === undefined ? null : document.querySelector(`#${id}`);
 
-		const parentElem =
-			existingParent ||
-			(containerRef.current &&
+			if (existingParent) {
+				existingParent.insertAdjacentElement(
+					position,
+					containerRef.current
+				);
+			} else {
 				document.body.insertAdjacentElement(
 					position,
 					containerRef.current
-				));
+				);
+			}
+		}
 
 		return () => {
-			if (containerRef.current && parentElem) {
+			if (containerRef.current) {
 				containerRef.current.remove();
 			}
 		};

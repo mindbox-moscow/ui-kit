@@ -2,14 +2,13 @@
 
 // Mixins
 @mixin opacityBlock($opacity: 1) {
-	> .kit-filtration-condition
-		> .kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
-		> * {
+	>.kit-filtration-condition>.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_edit):not(.kit-filtration-condition__item-text_linked-condition-edit) {
+		>* {
 			opacity: $opacity;
 		}
 
 		&:hover {
-			> * {
+			>* {
 				opacity: 1;
 			}
 		}
@@ -57,19 +56,19 @@
 			z-index: 3;
 		}
 
-		> .kit-filtration-group__label_hover_or,
-		> .kit-filtration-group__label_hover_and {
+		>.kit-filtration-group__label_hover_or,
+		>.kit-filtration-group__label_hover_and {
 			background-color: $hoverColorBg;
 		}
 
-		> .kit-filtration-group {
-			> .kit-filtration-group__label-line_hover_or {
+		>.kit-filtration-group {
+			>.kit-filtration-group__label-line_hover_or {
 				color: $orColorEdit;
 
 				@include changeHorisontalBracketsColor($orColorEdit);
 			}
 
-			> .kit-filtration-group__label-line_hover_and {
+			>.kit-filtration-group__label-line_hover_and {
 				color: $andColorEdit;
 
 				@include changeHorisontalBracketsColor($andColorEdit);
@@ -83,8 +82,9 @@
 
 	&:not(#{ $self }_not-children) {
 		#{ $self }_not-children {
-			> .kit-filtration-group__label-line_or,
-			> .kit-filtration-group__label-line_and {
+
+			>.kit-filtration-group__label-line_or,
+			>.kit-filtration-group__label-line_and {
 				.kit-filtration-group__label-text-buttons {
 					margin-right: -11px;
 				}
@@ -105,25 +105,25 @@
 			@include changeColorVerticalSmallBracket($andColorEdit);
 		}
 
-		> .kit-filtration-group__label_hover_or {
+		>.kit-filtration-group__label_hover_or {
 			background-color: $hoverColorBg;
 			color: $orColorEdit;
 		}
 
-		> .kit-filtration-group__label_hover_and {
+		>.kit-filtration-group__label_hover_and {
 			background-color: $hoverColorBg;
 			color: $andColorEdit;
 		}
 	}
 
-	> .kit-filtration-condition {
+	>.kit-filtration-condition {
 		width: 100%;
 		max-width: calc(100% - 30px);
 		margin: 0;
 		padding-left: 20px;
 		box-sizing: border-box;
 
-		> .kit-filtration-condition__item-text {
+		>.kit-filtration-condition__item-text {
 			@include createHorisontalBrackets(-16px, 16px);
 		}
 	}
@@ -156,18 +156,18 @@
 		cursor: default;
 	}
 
-	& ~ .kit-filtration-group,
-	& ~ .kit-filtration-condition {
+	&~.kit-filtration-group,
+	&~.kit-filtration-condition {
 		.kit-filtration-group__label {
 			border-radius: 0 0 0 3px;
 		}
 	}
 
-	& ~ ul {
+	&~ul {
 		margin-left: 30px;
 	}
 
-	& ~ .kit-filtration-group_not-children.kit-filtration-group_edit {
+	&~.kit-filtration-group_not-children.kit-filtration-group_edit {
 		margin-left: 60px;
 	}
 }
@@ -193,14 +193,14 @@
 		z-index: 8;
 	}
 
-	.kit-filtration-group_hover > .kit-filtration-group__label_hover_or ~ & {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_or~& {
 		color: $orColorEdit;
 
 		@include changeHorisontalBracketsColor($orColorEdit);
 		@include changeColorVerticalSmallBracket($orColorEdit);
 	}
 
-	.kit-filtration-group_hover > .kit-filtration-group__label_hover_and ~ & {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_and~& {
 		color: $andColorEdit;
 
 		@include changeHorisontalBracketsColor($andColorEdit);
@@ -213,7 +213,8 @@
 	}
 
 	/* stylelint-disable no-descending-specificity */
-	.kit-filtration-group > .kit-filtration-group & {
+	.kit-filtration-group>.kit-filtration-group & {
+
 		&_or,
 		&_and {
 			.kit-filtration-group__label-line-horizontal {
@@ -228,7 +229,7 @@
 		@include changeHorisontalBracketsColor($andColor);
 		@include changeColorVerticalSmallBracket($andColor);
 
-		.kit-filtration-group_edit > & {
+		.kit-filtration-group_edit>& {
 			color: $andColorEdit;
 
 			@include changeHorisontalBracketsColor($andColorEdit);
@@ -242,7 +243,7 @@
 		@include changeHorisontalBracketsColor($orColor);
 		@include changeColorVerticalSmallBracket($orColor);
 
-		.kit-filtration-group_edit > & {
+		.kit-filtration-group_edit>& {
 			color: $orColorEdit;
 
 			@include changeHorisontalBracketsColor($orColorEdit);
@@ -250,13 +251,14 @@
 		}
 	}
 
-	.kit-filtration-group_not-children > &_or,
-	.kit-filtration-group_not-children > &_and {
+	.kit-filtration-group_not-children>&_or,
+	.kit-filtration-group_not-children>&_and {
 		.kit-filtration-group__label-text-height {
 			margin-top: 4px;
 			margin-right: -22px;
 		}
 	}
+
 	/* stylelint-enable no-descending-specificity */
 }
 
@@ -282,39 +284,27 @@
 		background-color: $orColor;
 	}
 
-	.kit-filtration-group_edit > .kit-filtration-group__label-line_or & {
+	.kit-filtration-group_edit>.kit-filtration-group__label-line_or & {
 		background-color: $orColorEdit;
 	}
 
-	.kit-filtration-group_edit > .kit-filtration-group__label-line_and & {
+	.kit-filtration-group_edit>.kit-filtration-group__label-line_and & {
 		background-color: $andColorEdit;
 	}
 
-	.kit-filtration-group_edit
-		> .kit-filtration-group
-		> .kit-filtration-group__label-line_hover_or
-		& {
+	.kit-filtration-group_edit>.kit-filtration-group>.kit-filtration-group__label-line_hover_or & {
 		background-color: $orColorEdit;
 	}
 
-	.kit-filtration-group_edit
-		> .kit-filtration-group
-		> .kit-filtration-group__label-line_hover_and
-		& {
+	.kit-filtration-group_edit>.kit-filtration-group>.kit-filtration-group__label-line_hover_and & {
 		background-color: $andColorEdit;
 	}
 
-	.kit-filtration-group_hover
-		> .kit-filtration-group__label_hover_or
-		~ .kit-filtration-group__label-line
-		& {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_or~.kit-filtration-group__label-line & {
 		background-color: $orColorEdit;
 	}
 
-	.kit-filtration-group_hover
-		> .kit-filtration-group__label_hover_and
-		~ .kit-filtration-group__label-line
-		& {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_and~.kit-filtration-group__label-line & {
 		background-color: $andColorEdit;
 		color: #ffffff;
 	}
@@ -348,12 +338,12 @@
 		background-color: $orColor;
 	}
 
-	.kit-filtration-group__label-line-vertical > & {
+	.kit-filtration-group__label-line-vertical>& {
 		border-radius: 4px;
 	}
 
-	.kit-filtration-group_edit > .kit-filtration-group__label-line_or &,
-	.kit-filtration-group_edit > .kit-filtration-group__label-line_and & {
+	.kit-filtration-group_edit>.kit-filtration-group__label-line_or &,
+	.kit-filtration-group_edit>.kit-filtration-group__label-line_and & {
 		margin-left: 2px;
 		background-color: transparent;
 		transform: translateX(-100%);
@@ -363,32 +353,20 @@
 		}
 	}
 
-	.kit-filtration-group_edit
-		> .kit-filtration-group
-		> .kit-filtration-group__label-line_hover_or
-		& {
+	.kit-filtration-group_edit>.kit-filtration-group>.kit-filtration-group__label-line_hover_or & {
 		background-color: $orColorEdit;
 	}
 
-	.kit-filtration-group_edit
-		> .kit-filtration-group
-		> .kit-filtration-group__label-line_hover_and
-		& {
+	.kit-filtration-group_edit>.kit-filtration-group>.kit-filtration-group__label-line_hover_and & {
 		background-color: $andColorEdit;
 		color: #ffffff;
 	}
 
-	.kit-filtration-group_hover
-		> .kit-filtration-group__label_hover_or
-		~ .kit-filtration-group__label-line
-		& {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_or~.kit-filtration-group__label-line & {
 		background-color: $orColorEdit;
 	}
 
-	.kit-filtration-group_hover
-		> .kit-filtration-group__label_hover_and
-		~ .kit-filtration-group__label-line
-		& {
+	.kit-filtration-group_hover>.kit-filtration-group__label_hover_and~.kit-filtration-group__label-line & {
 		background-color: $andColorEdit;
 		color: #ffffff;
 	}
@@ -406,13 +384,13 @@
 
 	@include createHorisontalBrackets;
 
-	.kit-filtration-group_hover > & {
+	.kit-filtration-group_hover>& {
 		button {
 			opacity: 1;
 		}
 	}
 
-	.kit-filtration-group_shaded > & {
+	.kit-filtration-group_shaded>& {
 		button {
 			opacity: 0.3;
 
@@ -422,12 +400,16 @@
 		}
 	}
 
-	.kit-filtration-group_edit > & {
+	.kit-filtration-group_edit>& {
 		outline: none;
 
-		> .kit-filter-editor .kit-filter-editor__btn,
-		> .kit-button {
+		>.kit-filter-editor .kit-filter-editor__btn,
+		>.kit-button {
 			opacity: 1;
+		}
+
+		>.kit-button:disabled {
+			opacity: 0.35;
 		}
 	}
 
@@ -435,16 +417,16 @@
 		margin-left: 20px;
 	}
 
-	.kit-filtration-group > .kit-filtration-condition & {
+	.kit-filtration-group>.kit-filtration-condition & {
 		margin-left: 20px;
 	}
 
-	> * {
+	>* {
 		z-index: 2;
 	}
 
 	&_no-children {
-		> * {
+		>* {
 			z-index: 3;
 		}
 
@@ -460,7 +442,7 @@
 		}
 	}
 
-	> *:not(:last-child) {
+	>*:not(:last-child) {
 		margin-right: 5px;
 	}
 }
@@ -543,10 +525,7 @@
 		background-color: $andColorEdit;
 	}
 
-	.kit-filtration-group_edit
-		> .kit-filtration-group
-		> .kit-filtration-group__label-line_hover_and
-		& {
+	.kit-filtration-group_edit>.kit-filtration-group>.kit-filtration-group__label-line_hover_and & {
 		background-color: $andColorEdit;
 	}
 
@@ -586,18 +565,16 @@
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	box-sizing: border-box;
 
-	.kit-filtration-group_not-children > .kit-filtration-group__label-line_or &,
-	.kit-filtration-group_not-children
-		> .kit-filtration-group__label-line_and
-		& {
+	.kit-filtration-group_not-children>.kit-filtration-group__label-line_or &,
+	.kit-filtration-group_not-children>.kit-filtration-group__label-line_and & {
 		margin-right: 9px;
 	}
 
-	> *:not(:first-child) {
+	>*:not(:first-child) {
 		margin-left: 1px;
 	}
 
-	> *:first-child {
+	>*:first-child {
 		border-radius: 4px 0 0 4px;
 	}
 }

@@ -3132,6 +3132,78 @@ class ExampleEditorButton extends React.Component {
 					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
+				<FiltrationGroupComponent
+					onClickOutside={() => {}}
+					state="shaded"
+					groupType="and"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
+					}
+				>
+					<FiltrationConditionComponent
+						filterablePropertyName="Пол"
+						filtrationMethodName="заполнен и женский"
+					/>
+					<FiltrationConditionComponent
+						filterablePropertyName="Возраст"
+						filtrationMethodName="заполнен и от 35 до 60 лет"
+					/>
+					<FiltrationGroupComponent
+						onClickOutside={() => {}}
+						state="shaded"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={true}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Пол"
+							filtrationMethodName="заполнен и женский"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Возраст"
+							filtrationMethodName="заполнен и от 35 до 60 лет"
+						/>
+					</FiltrationGroupComponent>
+				</FiltrationGroupComponent>
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>
@@ -4135,6 +4207,78 @@ class ExampleEditorButton extends React.Component {
 					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
+				<FiltrationGroupComponent
+					onClickOutside={() => {}}
+					state="shaded"
+					groupType="and"
+					andLabel="И"
+					orLabel="ИЛИ"
+					shouldShowLabel={true}
+					onGroupTypeToggle={() => console.log("type toggle")}
+					onConditionStateToggle={() => console.log("state toggle")}
+					onConditionRemove={() => console.log("remove")}
+					addSimpleConditionButton={
+						<FilterConditionEditorButton
+							label="Добавить фильтр"
+							toggleOpen={() => console.log("toggle")}
+							isOpened={false}
+							iconType="filter"
+						/>
+					}
+					addGroupConditionButton={
+						<Button color="silver" size="small" hasBorder="true">
+							<IconSvg type="cross-arrows" />И
+						</Button>
+					}
+				>
+					<FiltrationConditionComponent
+						filterablePropertyName="Пол"
+						filtrationMethodName="заполнен и женский"
+					/>
+					<FiltrationConditionComponent
+						filterablePropertyName="Возраст"
+						filtrationMethodName="заполнен и от 35 до 60 лет"
+					/>
+					<FiltrationGroupComponent
+						onClickOutside={() => {}}
+						state="shaded"
+						groupType="and"
+						andLabel="И"
+						orLabel="ИЛИ"
+						shouldShowLabel={true}
+						onGroupTypeToggle={() => console.log("type toggle")}
+						onConditionStateToggle={() =>
+							console.log("state toggle")
+						}
+						onConditionRemove={() => console.log("remove")}
+						addSimpleConditionButton={
+							<FilterConditionEditorButton
+								label="Добавить фильтр"
+								toggleOpen={() => console.log("toggle")}
+								isOpened={false}
+								iconType="filter"
+							/>
+						}
+						addGroupConditionButton={
+							<Button
+								color="silver"
+								size="small"
+								hasBorder="true"
+							>
+								<IconSvg type="cross-arrows" />И
+							</Button>
+						}
+					>
+						<FiltrationConditionComponent
+							filterablePropertyName="Пол"
+							filtrationMethodName="заполнен и женский"
+						/>
+						<FiltrationConditionComponent
+							filterablePropertyName="Возраст"
+							filtrationMethodName="заполнен и от 35 до 60 лет"
+						/>
+					</FiltrationGroupComponent>
+				</FiltrationGroupComponent>
 			</FiltrationGroupComponent>
 		</FiltrationGroupComponent>
 	</FilterWrapper>

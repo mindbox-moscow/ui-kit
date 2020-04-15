@@ -2898,7 +2898,7 @@ class ExampleFlatSelectorSimple extends React.Component {
 			/>
 			<FiltrationConditionComponent
 				filterablePropertyName="Розничный заказ"
-				filtrationMethodName="есть такие "
+				filtrationMethodName="есть такие"
 				state="view"
 				onCreateCondition={() => console.log("onCreateCondition")}
 				linkedConditionComponent={

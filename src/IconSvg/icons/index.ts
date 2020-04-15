@@ -1,4 +1,5 @@
 import { IconsProps } from "../types";
+import { Add } from "./Add";
 import { AreaSelection } from "./AreaSelection";
 import { ArrowBottom } from "./ArrowBottom";
 import { ArrowRight } from "./ArrowRight";
@@ -30,6 +31,7 @@ type ISvgProps = {
 } & Partial<IconsProps>;
 
 type IconType =
+	| "add"
 	| "catalog-tree"
 	| "close"
 	| "calendar"
@@ -59,6 +61,7 @@ type IconType =
 type Icons = { [key in IconType]: (props: ISvgProps) => JSX.Element };
 
 const icons: Icons = {
+	"add": Add,
 	"area-selection": AreaSelection,
 	"arrow-bottom": ArrowBottom,
 	"arrow-right": ArrowRight,

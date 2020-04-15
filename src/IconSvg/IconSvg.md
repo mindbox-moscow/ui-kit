@@ -6,6 +6,7 @@
 		alignItems: "center"
 	}}
 >
+	<IconSvg type="add" />
 	<IconSvg className="custom-class-name" type="percent-round" />
 	<IconSvg type="catalog-tree" />
 	<IconSvg type="coins" />

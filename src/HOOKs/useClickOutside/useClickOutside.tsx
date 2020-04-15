@@ -49,13 +49,13 @@ export function useClickOutside(
 			};
 
 			if (shouldBeSubscribed) {
-				document.addEventListener("click", listner);
+				document.addEventListener("mousedown", listner);
 			} else {
-				document.removeEventListener("click", listner);
+				document.removeEventListener("mousedown", listner);
 			}
 
 			return () => {
-				document.removeEventListener("click", listner);
+				document.removeEventListener("mousedown", listner);
 			};
 		},
 		[shouldBeSubscribed]

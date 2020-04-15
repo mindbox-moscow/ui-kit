@@ -26,7 +26,8 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 	onConditionCopy,
 	onConditionRemove,
 	moreConditionToggleCaption,
-	onCreateCondition,
+	isLinkedCondition,
+	onLinkedConditionEditModeToggle,
 	moreActions
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
@@ -84,8 +85,8 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 
 	const handleCreateCondition = (e: React.MouseEvent) => {
 		e.stopPropagation();
-		if (onCreateCondition) {
-			onCreateCondition();
+		if (onLinkedConditionEditModeToggle) {
+			onLinkedConditionEditModeToggle();
 		}
 	}
 
@@ -139,7 +140,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						)}
 						{filtrationMethodParametersComponent}
 						{
-							onCreateCondition && (
+							isLinkedCondition && (
 								<button
 									type="button"
 									className="kit-filtration-condition__create"

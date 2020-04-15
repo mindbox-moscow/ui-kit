@@ -117,7 +117,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 					<div
 						ref={refContent}
 						className="kit-filtration-condition__content"
-						onClick={onConditionStateToggle}
+						onMouseDown={onConditionStateToggle}
 					>
 						<b>{filterablePropertyName}</b>
 						{filtrationMethodName && (

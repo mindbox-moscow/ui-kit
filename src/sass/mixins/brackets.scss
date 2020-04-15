@@ -89,13 +89,13 @@
 
 		> .kit-filtration-group:first-of-type {
 			&::before {
-				// content: "";
+				content: "";
 				position: absolute;
 				top: 0;
 				left: -26px;
 				display: block;
 				width: 2px;
-				height: 50%;
+				height: $minHeight / 2;
 				background-color: $braketColor;
 				pointer-events: none;
 			}

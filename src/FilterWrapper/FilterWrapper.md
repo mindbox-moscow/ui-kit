@@ -265,6 +265,123 @@ class ExampleFlatSelectorSimple extends React.Component {
 								}
 							/>
 						</FiltrationGroupComponent>
+						<FiltrationGroupComponent
+							andLabel="И"
+							groupType="or"
+							moreConditionToggleCaption="Действие"
+							orLabel="ИЛИ"
+							shouldShowButtons={false}
+							shouldShowDuplicateButton={true}
+							shouldShowLabel={true}
+							state="view"
+						>
+							<FiltrationConditionComponent
+								editorComponent={null}
+								filterablePropertyName="Розничный заказ"
+								filtrationMethodName="есть такие"
+								helpComponent={null}
+								moreConditionToggleCaption="Действие"
+								state="view"
+								linkedConditionComponent={
+									<FiltrationGroupComponent
+										andLabel="И"
+										groupType="or"
+										moreConditionToggleCaption="Действие"
+										orLabel="ИЛИ"
+										shouldShowButtons={false}
+										shouldShowDuplicateButton={false}
+										shouldShowLabel={true}
+										state="view"
+									>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+									</FiltrationGroupComponent>
+								}
+							/>
+							<FiltrationConditionComponent
+								editorComponent={null}
+								filterablePropertyName="Розничный заказ"
+								filtrationMethodName="есть такие"
+								helpComponent={null}
+								moreConditionToggleCaption="Действие"
+								state="view"
+								linkedConditionComponent={
+									<FiltrationGroupComponent
+										andLabel="И"
+										groupType="or"
+										moreConditionToggleCaption="Действие"
+										orLabel="ИЛИ"
+										shouldShowButtons={false}
+										shouldShowDuplicateButton={false}
+										shouldShowLabel={true}
+										state="view"
+									>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+										<FiltrationConditionComponent
+											editorComponent={null}
+											filterablePropertyName="Розничный заказ"
+											filtrationMethodName="есть такие"
+											helpComponent={null}
+											moreConditionToggleCaption="Действие"
+											state="view"
+										/>
+									</FiltrationGroupComponent>
+								}
+							/>
+						</FiltrationGroupComponent>
 					</FiltrationGroupComponent>
 				}
 			/>

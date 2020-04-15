@@ -47,6 +47,7 @@
 
 	&_edit {
 		@include opacityBlock();
+		z-index: 2;
 
 		> .kit-filtration-group__label_hover_or,
 		> .kit-filtration-group__label_hover_and {

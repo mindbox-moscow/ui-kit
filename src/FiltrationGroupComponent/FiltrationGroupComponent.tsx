@@ -3,6 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
+import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent";
 import { neutralZoneClass, useClickOutside } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
@@ -34,6 +35,7 @@ const FiltrationGroupComponent = ({
 	moreActions
 }: Props) => {
 	const context = useContext(FilterWrapperContext);
+	const contextCondition = useContext(FiltrationConditionComponentContext);
 	const shouldRerenderBrackets = useRef(false);
 
 	const classes = Object.values(SearchClasses);
@@ -193,6 +195,15 @@ const FiltrationGroupComponent = ({
 				} else {
 					labelLineRef.style.top = "";
 				}
+			}
+
+			if (contextCondition && contextCondition.isLinkedCondition) {
+				const height =
+					groupRefHeight - heightLine + positionTop - MIN_HEIGHT / 2;
+				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
+				labelLineRef.style.height = `${
+					height === MIN_HEIGHT / 2 ? "" : height
+				}px`;
 			}
 		}
 	};

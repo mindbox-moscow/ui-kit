@@ -25,7 +25,7 @@ export const FilterConditionEditorButton = React.forwardRef<
 	const { toggleOpen, label, isOpened, iconType, ...otherProps } = props;
 
 	const refButton = React.useRef<HTMLButtonElement>(null);
-	const refFilterEditor = React.useRef<HTMLDivElement>(null);
+	const refFilterConditionSelector = React.useRef<HTMLDivElement>(null);
 
 	React.useImperativeHandle(ref, () => ({
 		focus: () => {
@@ -41,10 +41,10 @@ export const FilterConditionEditorButton = React.forwardRef<
 		}
 	};
 
-	useClickOutside(refFilterEditor, handleClose, isOpened);
+	useClickOutside(refFilterConditionSelector, handleClose, isOpened);
 
 	return (
-		<div className="kit-filter-editor" ref={refFilterEditor}>
+		<div className="kit-filter-editor" ref={refFilterConditionSelector}>
 			<button
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {
@@ -58,8 +58,9 @@ export const FilterConditionEditorButton = React.forwardRef<
 			</button>
 			{isOpened && (
 				<FilterConditionSelector
-					{...otherProps}
+					ref={refFilterConditionSelector}
 					onConditionStateToggle={handleClose}
+					{...otherProps}
 				/>
 			)}
 		</div>

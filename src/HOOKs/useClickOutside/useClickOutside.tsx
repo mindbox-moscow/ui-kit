@@ -23,6 +23,8 @@ export function useClickOutside(
 	shouldBeSubscribed = true,
 	ignoreNeutralZoneClass = false
 ) {
+	let targetMouseDown: HTMLElement;
+
 	React.useEffect(
 		() => {
 			const listner = (e: MouseEvent) => {
@@ -41,21 +43,29 @@ export function useClickOutside(
 							e,
 							overflowVisibleContainerClass
 						) ||
-						!e.isTrusted
+						!e.isTrusted ||
+						targetMouseDown !== target
 					)
 				) {
 					handler(e);
 				}
 			};
 
+			const handleMouseDown = (e: MouseEvent) => {
+				targetMouseDown = e.target as HTMLElement;
+			};
+
 			if (shouldBeSubscribed) {
-				document.addEventListener("mousedown", listner);
+				document.addEventListener("click", listner);
+				document.addEventListener("mousedown", handleMouseDown);
 			} else {
-				document.removeEventListener("mousedown", listner);
+				document.removeEventListener("click", listner);
+				document.addEventListener("mousedown", handleMouseDown);
 			}
 
 			return () => {
-				document.removeEventListener("mousedown", listner);
+				document.removeEventListener("click", listner);
+				document.addEventListener("mousedown", handleMouseDown);
 			};
 		},
 		[shouldBeSubscribed]

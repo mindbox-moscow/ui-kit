@@ -269,7 +269,7 @@ const Dropdown = React.forwardRef(
 					)}
 					style={style}
 					ref={dropdownRef}
-					onMouseDown={handleClick}
+					onClick={handleClick}
 					onKeyDown={handleOnKeyDown}
 				>
 					<span className="kit-selectR-choice">

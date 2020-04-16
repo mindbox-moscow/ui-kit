@@ -44,7 +44,7 @@ export const FilterConditionEditorButton = React.forwardRef<
 	useClickOutside(refFilterConditionSelector, handleClose, isOpened);
 
 	return (
-		<div className="kit-filter-editor" ref={refFilterConditionSelector}>
+		<div className="kit-filter-editor">
 			<button
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {
@@ -58,9 +58,9 @@ export const FilterConditionEditorButton = React.forwardRef<
 			</button>
 			{isOpened && (
 				<FilterConditionSelector
+					{...otherProps}
 					ref={refFilterConditionSelector}
 					onConditionStateToggle={handleClose}
-					{...otherProps}
 				/>
 			)}
 		</div>

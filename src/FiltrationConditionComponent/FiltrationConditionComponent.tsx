@@ -73,6 +73,11 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 		setShowPopover(shoudShowSegment);
 	};
 
+	const value = {
+		renderPopover,
+		isLinkedCondition: linkedConditionComponent ? true : false
+	};
+
 	const onConditionCopyClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 		onConditionCopy();
@@ -101,11 +106,12 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 	);
 
 	return (
-		<FiltrationConditionComponentContext.Provider value={renderPopover}>
+		<FiltrationConditionComponentContext.Provider value={value}>
 			<li
 				className={cn("kit-filtration-condition", {
 					"kit-filtration-condition_edit": state === "edit",
-					"kit-filtration-condition_show-dropdown": showDropdown
+					"kit-filtration-condition_show-dropdown": showDropdown,
+					"kit-filtration-condition_linked-condition": linkedConditionComponent
 				})}
 			>
 				<div

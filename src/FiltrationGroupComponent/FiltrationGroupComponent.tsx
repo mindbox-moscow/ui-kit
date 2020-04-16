@@ -3,6 +3,7 @@ import { useContext, useEffect, useMemo, useRef } from "react";
 import * as React from "react";
 import { ActionsDropdown } from "../ActionsDropdown";
 import { FilterWrapperContext } from "../FilterWrapper";
+import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent";
 import { neutralZoneClass, useClickOutside } from "../HOOKs";
 import { IconSvg } from "../IconSvg";
 import { LabelButton } from "./components";
@@ -34,6 +35,7 @@ const FiltrationGroupComponent = ({
 	moreActions
 }: Props) => {
 	const context = useContext(FilterWrapperContext);
+	const contextCondition = useContext(FiltrationConditionComponentContext);
 	const shouldRerenderBrackets = useRef(false);
 
 	const classes = Object.values(SearchClasses);
@@ -93,7 +95,8 @@ const FiltrationGroupComponent = ({
 				if (
 					firstChildElement.classList.contains(
 						SearchClasses.KitFiltrationGroup
-					)
+					) &&
+					lastChildElement !== firstChildElement
 				) {
 					const labelLine = firstChildElement.querySelector(
 						".kit-filtration-group__label-line"
@@ -175,7 +178,11 @@ const FiltrationGroupComponent = ({
 			labelRef.style.height = `${groupRefHeight - heightGroup}px`;
 
 			if (firstChildElement && lastChildElement) {
-				labelLineRef.style.height = `${groupRefHeight - heightLine}px`;
+				const hasOneChildren =
+					MIN_HEIGHT / 2 === groupRefHeight - heightLine;
+
+				labelLineRef.style.height = `${!hasOneChildren &&
+					groupRefHeight - heightLine}px`;
 			} else {
 				labelLineRef.style.height = "0px";
 			}
@@ -183,7 +190,20 @@ const FiltrationGroupComponent = ({
 			if (positionTop !== 0) {
 				labelLineRef.style.top = `${positionTop}px`;
 			} else {
+				if (labelLineRef.clientHeight === 0) {
+					labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
+				} else {
+					labelLineRef.style.top = "";
+				}
+			}
+
+			if (contextCondition && contextCondition.isLinkedCondition) {
+				const height =
+					groupRefHeight - heightLine + positionTop - MIN_HEIGHT / 2;
 				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
+				labelLineRef.style.height = `${
+					height === MIN_HEIGHT / 2 ? "" : height
+				}px`;
 			}
 		}
 	};

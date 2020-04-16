@@ -249,6 +249,7 @@
 			margin-right: -22px;
 		}
 	}
+
 	/* stylelint-enable no-descending-specificity */
 }
 
@@ -417,6 +418,10 @@
 		> .kit-filter-editor .kit-filter-editor__btn,
 		> .kit-button {
 			opacity: 1;
+		}
+
+		> .kit-button:disabled {
+			opacity: 0.35;
 		}
 	}
 

@@ -23,49 +23,61 @@ export function useClickOutside(
 	shouldBeSubscribed = true,
 	ignoreNeutralZoneClass = false
 ) {
-	let targetMouseDown: HTMLElement;
+	let preventHandlerCall = false;
 
 	React.useEffect(
 		() => {
-			const listner = (e: MouseEvent) => {
-				const target = e.target as HTMLElement;
+			const listener = (e: MouseEvent) => {
+				if (!preventHandlerCall) {
+					const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
+						? false
+						: fromElementWithClassEvent(e, neutralZoneClass);
 
-				const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
-					? false
-					: fromElementWithClassEvent(e, neutralZoneClass);
-
-				if (
-					!(
-						(ref.current && ref.current.contains(target)) ||
-						isIgnoreNeutralZoneClass ||
-						fromElementWithClassEvent(e, uiDatePickerClass) ||
-						fromElementWithClassEvent(
-							e,
-							overflowVisibleContainerClass
-						) ||
-						!e.isTrusted ||
-						targetMouseDown !== target
-					)
-				) {
-					handler(e);
+					if (
+						!(
+							isIgnoreNeutralZoneClass ||
+							fromElementWithClassEvent(e, uiDatePickerClass) ||
+							fromElementWithClassEvent(
+								e,
+								overflowVisibleContainerClass
+							) ||
+							!e.isTrusted
+						)
+					) {
+						handler(e);
+					}
 				}
+
+				preventHandlerCall = false;
 			};
 
 			const handleMouseDown = (e: MouseEvent) => {
-				targetMouseDown = e.target as HTMLElement;
+				preventHandlerCall = true;
 			};
 
 			if (shouldBeSubscribed) {
-				document.addEventListener("click", listner);
-				document.addEventListener("mousedown", handleMouseDown);
+				document.addEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.addEventListener("mousedown", handleMouseDown);
 			} else {
-				document.removeEventListener("click", listner);
-				document.addEventListener("mousedown", handleMouseDown);
+				document.removeEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.removeEventListener(
+						"mousedown",
+						handleMouseDown
+					);
 			}
 
 			return () => {
-				document.removeEventListener("click", listner);
-				document.addEventListener("mousedown", handleMouseDown);
+				document.removeEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.removeEventListener(
+						"mousedown",
+						handleMouseDown
+					);
 			};
 		},
 		[shouldBeSubscribed]

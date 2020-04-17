@@ -60,4 +60,4 @@ jobs:
         git config --global user.name "IT Mindbox"
         git add --all
         git commit --message "📝 Update docs via build"
-        git push "https://${{PAGES_PUBLISH_TOKEN}}@github.com/mindbox-moscow/ui-kit.git" gh-pages
+        git push "https://${{secrets.PAGES_PUBLISH_TOKEN}}@github.com/mindbox-moscow/ui-kit.git" gh-pages

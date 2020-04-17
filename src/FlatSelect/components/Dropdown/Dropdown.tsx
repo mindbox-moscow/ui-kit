@@ -51,11 +51,18 @@ const Dropdown = React.forwardRef(
 		let itemsListSearch: HTMLLIElement[] = [];
 		let refSearch: HTMLInputElement | null = null;
 		let onMarkFirstElement: (() => void) | null = null;
+		let searchTerm = "";
 
 		React.useEffect(() => {
 			positionDropDown();
-			itemsListSearch = [];
-		});
+		}, []);
+
+		React.useEffect(
+			() => {
+				itemsListSearch = [];
+			},
+			[show, searchTerm]
+		);
 
 		React.useImperativeHandle(ref, () => ({
 			hide() {
@@ -146,7 +153,7 @@ const Dropdown = React.forwardRef(
 			}
 
 			setTimeout(() => {
-				if (onMarkFirstElement && refSearch!.value !== "") {
+				if (onMarkFirstElement && searchTerm !== "") {
 					onMarkFirstElement();
 				}
 			}, 0);
@@ -230,6 +237,10 @@ const Dropdown = React.forwardRef(
 			}
 		};
 
+		const getSearchTerm = (term: string) => {
+			searchTerm = term;
+		};
+
 		const placeholder = headerInfo ? (
 			<span className="kit-selectR-chosen">{headerInfo}</span>
 		) : (
@@ -244,7 +255,8 @@ const Dropdown = React.forwardRef(
 			onSearchRef: setSearchRef,
 			onItemsRef: setItemListRef,
 			onFocusElement: handleFocusFirstElement,
-			onCloseDropdown: hide
+			onCloseDropdown: hide,
+			getSearchTerm
 		};
 
 		return (

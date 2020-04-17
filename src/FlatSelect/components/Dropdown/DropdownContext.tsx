@@ -11,6 +11,7 @@ interface IContext {
 		itemElement: React.RefObject<HTMLLIElement>
 	) => void;
 	onCloseDropdown: () => void;
+	getSearchTerm: (term: string) => void;
 }
 
 export const DropdownContext = React.createContext<IContext | null>(null);

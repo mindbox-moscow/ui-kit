@@ -59,6 +59,7 @@ export const Textbox: React.FC<TextboxProps> = ({
 
 		if (context && context.contextOnKeyDownSearch) {
 			context.contextOnKeyDownSearch();
+			context.getSearchTerm(newValue);
 		}
 
 		if (newValue != null && newValue !== "" && type === InputType.Number) {

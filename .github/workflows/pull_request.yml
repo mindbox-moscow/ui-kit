@@ -1,0 +1,42 @@
+name: Pull Request
+
+on: pull_request
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+      
+    - name: checkout  
+      uses: actions/checkout@v2
+      
+    - name: Setup shared libs
+      run: sudo apt-get install libgbm1
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Prepare build
+      run: |
+        rm -rf .git
+        rm -rf docs
+        git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+        yarn global add webpack-cli@3.1.2 webpack@4
+        yarn
+
+    - name: Build
+      run: |     
+        node ./deploy/patch-version.js
+        yarn build
+        yarn build:examples
+        yarn build:npm-module
+        yarn test

@@ -1,7 +1,9 @@
-name: Pull Request
+name: master
 
-on: pull_request
-
+on: 
+    push:
+        branches:
+            - master
 jobs:
 
   build:
@@ -39,3 +41,23 @@ jobs:
 
     - name: Run Test  
       run: yarn test
+
+    - name: Publish
+      run: |
+        cd build
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm config set scope "@mindbox"
+        npm config list
+        npm publish --access public 
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Update docs
+      run: |          
+        cd ./docs
+        git config --global user.email "it@mindbox.ru"
+        git config --global user.name "IT Mindbox"
+        git add --all
+        git commit --message "📝 Update docs via build"
+        git push "https://${{PAGES_PUBLISH_TOKEN}}@github.com/mindbox-moscow/ui-kit.git" gh-pages

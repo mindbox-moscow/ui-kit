@@ -12,21 +12,14 @@
 		color: $removeColor;
 	}
 
-	&_show-dropdown {
-		z-index: 6;
-	}
-
 	.kit-filter-details {
 		top: calc(100% - 5px);
 		left: 0;
-		z-index: 20;
 	}
 }
 
 .kit-filtration-condition__item-text {
 	position: relative;
-	z-index: 3;
-	z-index: 4;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
@@ -61,8 +54,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		display: block;
-		width: calc(100% + #{$groupHoverMarginLeft});
+		display: none;
+		width: calc(100% + #{$groupHoverMarginRightWithButton});
 		height: calc(100% + #{$groupHoverMarginTop});
 		min-height: 26px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
@@ -86,9 +79,15 @@
 		margin-right: 5px;
 	}
 
+	.kit-filtration-condition__content > span:empty,
+	.kit-filtration-condition__content > span.kit-block-wrapper {
+		margin-right: 0;
+	}
+
 	&_hover {
 		&::before {
 			content: "";
+			display: block;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
@@ -100,7 +99,6 @@
 	}
 
 	&_edit {
-		z-index: 5;
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #ffffff;
 
@@ -112,7 +110,6 @@
 
 		> .kit-filtration-condition__content {
 			position: relative;
-			z-index: 3;
 			background-color: $editModeColorBg;
 		}
 
@@ -130,11 +127,21 @@
 		> .kit-filtration-condition__more {
 			visibility: visible;
 		}
+
+		.kit-filtration-condition__create {
+			color: #ffffff;
+
+			&:hover {
+				background-color: transparent;
+				opacity: 0.6;
+			}
+		}
 	}
 
 	&_linked-condition-edit {
 		&::before {
 			content: "";
+			display: block;
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
@@ -143,6 +150,11 @@
 		> .kit-filtration-condition__remove,
 		> .kit-filtration-condition__more {
 			display: none;
+		}
+
+		.kit-filtration-condition__create:hover {
+			background-color: transparent;
+			opacity: 0.6;
 		}
 
 		&:hover:not(&_read-only) {
@@ -179,7 +191,6 @@
 	&_read-only {
 		> .kit-filtration-condition__drag-and-drop,
 		> .kit-filtration-condition__content > b {
-			z-index: 0;
 			pointer-events: none;
 			cursor: default;
 		}
@@ -218,12 +229,35 @@
 .kit-filtration-condition__copy,
 .kit-filtration-condition__remove,
 .kit-filtration-condition__more {
-	z-index: 1;
 	margin-left: 2px;
 	outline: none;
 	visibility: hidden;
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
+}
+
+.kit-filtration-condition__create {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	height: 100%;
+	margin-bottom: -3px;
+	margin-left: -3px;
+	padding: 0 5px;
+	background: none;
+	border: none;
+	outline: none;
+	color: $copyColor;
+	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		background-color: darken($copyColorBg, 10%);
+	}
+}
+
+.kit-filtration-condition .kit-filtration-condition__create {
+	vertical-align: middle;
 }
 
 .kit-filtration-condition__copy {
@@ -268,7 +302,6 @@
 
 .kit-filtration-condition__popover {
 	position: relative;
-	z-index: 2;
 	margin-top: -3px;
 	padding: 10px 14px 12px 18px;
 	background-color: #ffffff;

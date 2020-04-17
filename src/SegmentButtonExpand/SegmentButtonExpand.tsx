@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent/FiltrationConditionComponentContext";
+import { FiltrationConditionComponentContext } from "../FiltrationConditionComponent";
 import { IconSvg } from "../IconSvg";
 import { ISegmentButtonExpandProps as Props } from "./types";
 
@@ -20,9 +20,12 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 
 	React.useEffect(
 		() => {
-			const renderPopover = context;
-			if (renderPopover) {
-				renderPopover(children, filterAction(), isOpen && !hidden);
+			if (context) {
+				const renderPopover = context.renderPopover;
+
+				if (renderPopover) {
+					renderPopover(children, filterAction(), isOpen && !hidden);
+				}
 			}
 		},
 		[children, isOpen, hidden]

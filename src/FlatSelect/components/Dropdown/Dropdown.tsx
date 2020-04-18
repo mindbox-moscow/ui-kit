@@ -46,7 +46,7 @@ const Dropdown = React.forwardRef(
 		const [show, setShow] = React.useState(false);
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
-		const refPanel = React.useRef(null);
+		const refPanel = React.useRef<HTMLDivElement>(null);
 
 		let itemsListSearch: HTMLLIElement[] = [];
 		let refSearch: HTMLInputElement | null = null;

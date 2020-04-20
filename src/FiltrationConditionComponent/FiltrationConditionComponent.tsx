@@ -146,7 +146,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						)}
 						{filtrationMethodParametersComponent}
 						{
-							isLinkedCondition && (
+							state !== "readOnly" && isLinkedCondition && (
 								<button
 									type="button"
 									className="kit-filtration-condition__create"

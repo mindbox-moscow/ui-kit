@@ -214,14 +214,6 @@
 	}
 }
 
-.kit-filtration-condition__item-text__block-method-params {
-	display: inline-flex;
-
-	> *:not(:last-child) {
-		margin-right: 10px;
-	}
-}
-
 .kit-filtration-condition__content {
 	@extend %read-only-prevent;
 	@extend %hover-edit-background-white;

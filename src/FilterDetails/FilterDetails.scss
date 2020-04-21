@@ -15,12 +15,6 @@
 		margin-left: -5px;
 	}
 
-	&_menu {
-		.kit-filter-details__helper_extended {
-			max-height: 423px;
-		}
-	}
-
 	&_top {
 		top: 100%;
 	}
@@ -35,6 +29,11 @@
 			right: 0;
 			left: auto;
 		}
+	}
+
+	.kit-filtration-condition & {
+		top: calc(100% - 5px);
+		left: 0;
 	}
 }
 
@@ -77,6 +76,10 @@
 		height: 100%;
 		max-height: 300px;
 		animation: extended 0.15s ease 0.15s forwards;
+	}
+
+	.kit-filter-details_menu &_extended {
+		max-height: 423px;
 	}
 }
 

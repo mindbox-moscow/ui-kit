@@ -200,7 +200,7 @@ export const FlatSelect = <TValue extends object>({
 	let selectedItemKey: SelectedItemKey = "";
 	let selectedItemText: string | JSX.Element = "";
 
-	if (selectedValue !== null) {
+	if (selectedValue != null) {
 		selectedItemKey =
 			selectedValue instanceof Array
 				? selectedValue.map(value => itemFormatter(value).key)

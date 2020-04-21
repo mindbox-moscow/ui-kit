@@ -25,36 +25,36 @@ export function useClickOutside(
 ) {
 	let preventHandlerCall = false;
 
+	const listener = (e: MouseEvent) => {
+		if (!preventHandlerCall) {
+			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
+				? false
+				: fromElementWithClassEvent(e, neutralZoneClass);
+
+			if (
+				!(
+					isIgnoreNeutralZoneClass ||
+					fromElementWithClassEvent(e, uiDatePickerClass) ||
+					fromElementWithClassEvent(
+						e,
+						overflowVisibleContainerClass
+					) ||
+					!e.isTrusted
+				)
+			) {
+				handler(e);
+			}
+		}
+
+		preventHandlerCall = false;
+	};
+
+	const handleMouseDown = (e: MouseEvent) => {
+		preventHandlerCall = true;
+	};
+
 	React.useEffect(
 		() => {
-			const listener = (e: MouseEvent) => {
-				if (!preventHandlerCall) {
-					const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
-						? false
-						: fromElementWithClassEvent(e, neutralZoneClass);
-
-					if (
-						!(
-							isIgnoreNeutralZoneClass ||
-							fromElementWithClassEvent(e, uiDatePickerClass) ||
-							fromElementWithClassEvent(
-								e,
-								overflowVisibleContainerClass
-							) ||
-							!e.isTrusted
-						)
-					) {
-						handler(e);
-					}
-				}
-
-				preventHandlerCall = false;
-			};
-
-			const handleMouseDown = (e: MouseEvent) => {
-				preventHandlerCall = true;
-			};
-
 			if (shouldBeSubscribed) {
 				document.addEventListener("click", listener);
 				// tslint:disable-next-line: no-unused-expression

@@ -36,7 +36,6 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			isFixedDropdown = false,
 			onSelectionClear
 		} = props;
 
@@ -282,7 +281,6 @@ const Dropdown = React.forwardRef(
 					<OverflowVisibleContainer
 						ref={refPanel}
 						parentRef={dropdownRef}
-						isFixed={isFixedDropdown}
 					>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel

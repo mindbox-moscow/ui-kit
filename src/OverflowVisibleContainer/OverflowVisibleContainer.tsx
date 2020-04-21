@@ -13,12 +13,10 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 		const {
 			parentRef,
 			className,
-			isFixed = false,
 			children
 		} = props;
 
-		const isFixedFilterContext = React.useContext(OverflowVisibleFixedContext);
-		const isFixedDropdown = isFixedFilterContext || isFixed;
+		const isFixed = React.useContext(OverflowVisibleFixedContext);
 		
 		let isLoaded = false;
 		let positionLeft = 0;
@@ -32,7 +30,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 			} = parentRef.current.getBoundingClientRect();
 
 			positionLeft = left + pageXOffset;
-			positionTop = isFixedDropdown
+			positionTop = isFixed
 				? top + height
 				: top + pageYOffset + height;
 			isLoaded = true;
@@ -43,7 +41,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 				<div
 					ref={ref}
 					className={cn("kit-overflow-visiblecontainer", className, {
-						"kit-overflow-visiblecontainer_fixed": isFixedDropdown
+						"kit-overflow-visiblecontainer_fixed": isFixed
 					})}
 					style={{
 						left: positionLeft + "px",

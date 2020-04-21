@@ -14,4 +14,3 @@ interface IContext {
 }
 
 export const DropdownContext = React.createContext<IContext | null>(null);
-export const DropdownFixedStateContext = React.createContext<boolean>(false);

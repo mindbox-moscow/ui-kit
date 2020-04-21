@@ -13,7 +13,7 @@ import {
 } from "./types";
 
 import { Button } from "../Button";
-import { DropdownFixedStateContext } from "../FlatSelect";
+import { OverflowVisibleFixedContext } from "../OverflowVisibleContainer/OverflowVisibleContext";
 import "./FilterWrapper.scss";
 import { FilterWrapperContext } from "./FilterWrapperContext";
 
@@ -113,7 +113,7 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	return (
 		<>
-			<DropdownFixedStateContext.Provider value={scrollState === ScrollState.Minified}>
+			<OverflowVisibleFixedContext.Provider value={scrollState === ScrollState.Minified}>
 				<FilterWrapperContext.Provider value={contextValue}>
 					<div
 						ref={refFilterWrapper}
@@ -216,7 +216,7 @@ export const FilterWrapper: React.FC<Props> = ({
 							)}
 					</div>
 				</FilterWrapperContext.Provider>
-			</DropdownFixedStateContext.Provider>
+			</OverflowVisibleFixedContext.Provider>
 		</>
 	);
 };

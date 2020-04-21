@@ -44,6 +44,7 @@ const Dropdown = React.forwardRef(
 			false
 		);
 		const [show, setShow] = React.useState(false);
+		const [searchTerm, setSearchTerm] = React.useState("");
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
 		const refPanel = React.useRef(null);
@@ -51,7 +52,6 @@ const Dropdown = React.forwardRef(
 		let itemsListSearch: HTMLLIElement[] = [];
 		let refSearch: HTMLInputElement | null = null;
 		let onMarkFirstElement: (() => void) | null = null;
-		let searchTerm = "";
 
 		React.useEffect(() => {
 			positionDropDown();
@@ -61,7 +61,7 @@ const Dropdown = React.forwardRef(
 			() => {
 				itemsListSearch = [];
 			},
-			[show, searchTerm]
+			[show]
 		);
 
 		React.useImperativeHandle(ref, () => ({
@@ -235,10 +235,6 @@ const Dropdown = React.forwardRef(
 			if (element) {
 				element.focus({ preventScroll: true });
 			}
-		};
-
-		const setSearchTerm = (term: string) => {
-			searchTerm = term;
 		};
 
 		const placeholder = headerInfo ? (

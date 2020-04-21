@@ -1,8 +1,7 @@
 import * as React from "react";
 import { SelectDropMain } from "..";
+import { DropdownContext, Search } from "../";
 import { neutralZoneClass } from "../../../HOOKs";
-import { Textbox } from "../../../Textbox";
-import { DropdownContext } from "../Dropdown";
 import { SelectionMode, SelectSearchListProps } from "./types";
 
 export const SelectSearchList: React.FC<SelectSearchListProps> = ({
@@ -107,7 +106,7 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 			<div className="kit-selectR-drop-header">
 				<div className="kit-selectR-search">
 					<span className="kit-selectR-input">
-						<Textbox
+						<Search
 							notFormControl={true}
 							value={searchTextValue}
 							onChange={onInputChange}

@@ -24,6 +24,7 @@ export interface TextboxProps {
 	precision?: number;
 	className?: string;
 	autoFocus?: boolean;
+	onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
 // tslint:disable-next-line: interface-name

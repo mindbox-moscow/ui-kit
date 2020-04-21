@@ -237,7 +237,7 @@ const Dropdown = React.forwardRef(
 			}
 		};
 
-		const getSearchTerm = (term: string) => {
+		const setSearchTerm = (term: string) => {
 			searchTerm = term;
 		};
 
@@ -256,7 +256,7 @@ const Dropdown = React.forwardRef(
 			onItemsRef: setItemListRef,
 			onFocusElement: handleFocusFirstElement,
 			onCloseDropdown: hide,
-			getSearchTerm
+			setSearchTerm
 		};
 
 		return (

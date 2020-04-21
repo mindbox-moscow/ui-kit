@@ -1,4 +1,5 @@
 @import "../sass/main";
+$createButtonColor: #717171;
 
 .kit-filtration-condition {
 	position: relative;
@@ -249,7 +250,7 @@
 	background: none;
 	border: none;
 	outline: none;
-	color: #717171;
+	color: $createButtonColor;
 	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
 	cursor: pointer;
 

@@ -60,7 +60,7 @@ export const FilterConditionEditorButton = React.forwardRef<
 				<FilterConditionSelector
 					{...otherProps}
 					ref={refFilterConditionSelector}
-					onConditionStateToggle={toggleOpen}
+					onConditionStateToggle={handleClose}
 				/>
 			)}
 		</div>

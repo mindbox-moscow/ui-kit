@@ -23,39 +23,61 @@ export function useClickOutside(
 	shouldBeSubscribed = true,
 	ignoreNeutralZoneClass = false
 ) {
+	let preventHandlerCall = false;
+
+	const listener = (e: MouseEvent) => {
+		if (!preventHandlerCall) {
+			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
+				? false
+				: fromElementWithClassEvent(e, neutralZoneClass);
+
+			if (
+				!(
+					isIgnoreNeutralZoneClass ||
+					fromElementWithClassEvent(e, uiDatePickerClass) ||
+					fromElementWithClassEvent(
+						e,
+						overflowVisibleContainerClass
+					) ||
+					!e.isTrusted
+				)
+			) {
+				handler(e);
+			}
+		}
+
+		preventHandlerCall = false;
+	};
+
+	const handleMouseDown = (e: MouseEvent) => {
+		preventHandlerCall = true;
+	};
+
 	React.useEffect(
 		() => {
-			const listner = (e: MouseEvent) => {
-				const target = e.target as HTMLElement;
-
-				const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
-					? false
-					: fromElementWithClassEvent(e, neutralZoneClass);
-
-				if (
-					!(
-						(ref.current && ref.current.contains(target)) ||
-						isIgnoreNeutralZoneClass ||
-						fromElementWithClassEvent(e, uiDatePickerClass) ||
-						fromElementWithClassEvent(
-							e,
-							overflowVisibleContainerClass
-						) ||
-						!e.isTrusted
-					)
-				) {
-					handler(e);
-				}
-			};
-
 			if (shouldBeSubscribed) {
-				document.addEventListener("click", listner);
+				document.addEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.addEventListener("mousedown", handleMouseDown);
 			} else {
-				document.removeEventListener("click", listner);
+				document.removeEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.removeEventListener(
+						"mousedown",
+						handleMouseDown
+					);
 			}
 
 			return () => {
-				document.removeEventListener("click", listner);
+				document.removeEventListener("click", listener);
+				// tslint:disable-next-line: no-unused-expression
+				ref.current &&
+					ref.current.removeEventListener(
+						"mousedown",
+						handleMouseDown
+					);
 			};
 		},
 		[shouldBeSubscribed]

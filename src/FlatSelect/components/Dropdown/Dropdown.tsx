@@ -1,12 +1,11 @@
 import cn from "classnames";
 import * as React from "react";
-import { FilterWrapperContext } from "../../../FilterWrapper";
 import { neutralZoneClass } from "../../../HOOKs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
 import { Panel } from "../Panel";
-import { DropdownContext } from "./DropdownContext";
+import { DropdownContext, DropdownFixedStateContext } from "./DropdownContext";
 import { DropdownProps } from "./types";
 
 export interface DropdownHandles {
@@ -238,7 +237,8 @@ const Dropdown = React.forwardRef(
 		);
 
 		const style = { ...props.style, marginLeft: "0 !important" };
-		const wrapperFilter = React.useContext(FilterWrapperContext);
+		const isFixedFilterContext = React.useContext(DropdownFixedStateContext);
+		const isFixed = isFixedFilterContext || isFixedDropdown;
 
 		const contextValues = {
 			contextOnKeyDownItems: handleContextOnKeyDownItems,
@@ -248,7 +248,6 @@ const Dropdown = React.forwardRef(
 			onItemsRef: setItemListRef,
 			onSearchRef: setSearchRef
 		};
-		const isFixed = wrapperFilter ? wrapperFilter.isFixed : isFixedDropdown;
 
 		return (
 			<div className="kit-flat-select">

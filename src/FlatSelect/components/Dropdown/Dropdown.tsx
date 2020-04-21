@@ -1,5 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
+import { FilterWrapperContext } from "../../../FilterWrapper";
 import { neutralZoneClass } from "../../../HOOKs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
@@ -18,8 +19,8 @@ const HEIGHT_HEADER = 90;
 const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
 	bubbles: true,
 	cancelable: true,
-	key: "Enter",
 	code: "Enter",
+	key: "Enter",
 	view: window
 });
 
@@ -237,15 +238,17 @@ const Dropdown = React.forwardRef(
 		);
 
 		const style = { ...props.style, marginLeft: "0 !important" };
+		const wrapperFilter = React.useContext(FilterWrapperContext);
 
 		const contextValues = {
-			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
 			contextOnKeyDownItems: handleContextOnKeyDownItems,
-			onSearchRef: setSearchRef,
-			onItemsRef: setItemListRef,
+			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
+			onCloseDropdown: hide,
 			onFocusElement: handleFocusFirstElement,
-			onCloseDropdown: hide
+			onItemsRef: setItemListRef,
+			onSearchRef: setSearchRef
 		};
+		const isFixed = wrapperFilter ? wrapperFilter.isFixed : isFixedDropdown;
 
 		return (
 			<div className="kit-flat-select">
@@ -261,10 +264,10 @@ const Dropdown = React.forwardRef(
 						`${String(width && Width.getClass(width))}`,
 						{
 							[`${closedClassName}`]: !show && closedClassName,
+							"kit-selectR-disabled": disabled,
 							"kit-selectR-open": show,
 							[`${openedClassName}`]: show,
-							"kit-selectR-placeholder": !headerInfo,
-							"kit-selectR-disabled": disabled
+							"kit-selectR-placeholder": !headerInfo
 						}
 					)}
 					style={style}
@@ -282,7 +285,7 @@ const Dropdown = React.forwardRef(
 					<OverflowVisibleContainer
 						ref={refPanel}
 						parentRef={dropdownRef}
-						isFixed={isFixedDropdown}
+						isFixed={isFixed}
 					>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel

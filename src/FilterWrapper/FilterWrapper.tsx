@@ -105,6 +105,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	);
 
 	const contextValue = {
+		isFixed: scrollState === ScrollState.Minified,
 		rerenderBrackets,
 		scrollState,
 		updateBrackets

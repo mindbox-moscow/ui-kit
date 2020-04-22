@@ -44,7 +44,6 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics = true,
 	showApplyButton = false,
-	isUndoRedoEnabled = false,
 	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
@@ -136,28 +135,24 @@ export const FilterWrapper: React.FC<Props> = ({
 											filterActionsCaption={filterActionsCaption}
 										/>
 									)}
-									{isUndoRedoEnabled && (
-										<>
-											<Button
-												onClick={onUndo}
-												size="xxs"
-												color="gray"
-												disabled={!canUndo}
-												type="button"
-											>
-												<IconSvg type="circle-arrow" className="kit-filter__undo" />
-											</Button>
-											<Button
-												onClick={onRedo}
-												size="xxs"
-												color="gray"
-												disabled={!canRedo}
-												type="button"
-											>
-												<IconSvg type="circle-arrow" className="kit-filter__redo" />
-											</Button>
-										</>
-									)}
+									<Button
+										onClick={onUndo}
+										size="xxs"
+										color="gray"
+										disabled={!canUndo}
+										type="button"
+									>
+										<IconSvg type="circle-arrow" className="kit-filter__undo" />
+									</Button>
+									<Button
+										onClick={onRedo}
+										size="xxs"
+										color="gray"
+										disabled={!canRedo}
+										type="button"
+									>
+										<IconSvg type="circle-arrow" className="kit-filter__redo" />
+									</Button>
 								</div>
 							</div>
 						)}

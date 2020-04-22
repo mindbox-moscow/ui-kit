@@ -170,9 +170,9 @@ export const FilterWrapper: React.FC<Props> = ({
 									{showApplyButton ? (
 										scrollState !== ScrollState.Minified ? (
 											<button
-												type="button"
 												className="kit-filter__use-filter"
 												onClick={onApply}
+												type="button"
 											>
 												{applyButtonCaption}
 											</button>

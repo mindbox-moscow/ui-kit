@@ -26,25 +26,26 @@
 	transition: color 0.15s ease-in-out;
 
 	&:hover:not(&_read-only) {
-		> .kit-filtration-condition__content {
+		>.kit-filtration-condition__content {
 			background-color: $hoverColorBg;
 			cursor: pointer;
 		}
 
-		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove,
-		> .kit-filtration-condition__more {
+		>.kit-filtration-condition__copy,
+		>.kit-filtration-condition__remove,
+		>.kit-filtration-condition__more {
 			visibility: visible;
 		}
 
-		> .kit-filtration-condition__drag-and-drop {
+		>.kit-filtration-condition__drag-and-drop {
 			display: flex;
 		}
 
 		.kit-filtration-group_edit & {
-			> .kit-filtration-condition__content,
-			> .kit-filtration-condition__drag-and-drop,
-			> .kit-filtration-condition__copy {
+
+			>.kit-filtration-condition__content,
+			>.kit-filtration-condition__drag-and-drop,
+			>.kit-filtration-condition__copy {
 				background-color: #ffffff;
 			}
 		}
@@ -68,19 +69,19 @@
 	.kit-filtration-condition__content {
 		min-height: 26px;
 
-		> * {
+		>* {
 			vertical-align: sub;
 		}
 	}
 
-	.kit-filtration-condition__content > span,
+	.kit-filtration-condition__content>span,
 	b {
 		position: relative;
 		margin-right: 5px;
 	}
 
-	.kit-filtration-condition__content > span:empty,
-	.kit-filtration-condition__content > span.kit-block-wrapper {
+	.kit-filtration-condition__content>span:empty,
+	.kit-filtration-condition__content>span.kit-block-wrapper {
 		margin-right: 0;
 	}
 
@@ -91,7 +92,7 @@
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
-		& + .kit-filtration-group_hover {
+		&+.kit-filtration-group_hover {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
 			}
@@ -103,17 +104,17 @@
 		color: #ffffff;
 
 		&:hover:not(&_read-only) {
-			> .kit-filtration-condition__content {
+			>.kit-filtration-condition__content {
 				background-color: $editModeColorBg;
 			}
 		}
 
-		> .kit-filtration-condition__content {
+		>.kit-filtration-condition__content {
 			position: relative;
 			background-color: $editModeColorBg;
 		}
 
-		> .kit-filtration-condition__drag-and-drop {
+		>.kit-filtration-condition__drag-and-drop {
 			display: flex;
 			background-color: $editModeColorBg;
 		}
@@ -122,9 +123,9 @@
 			background-color: #ffffff;
 		}
 
-		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove,
-		> .kit-filtration-condition__more {
+		>.kit-filtration-condition__copy,
+		>.kit-filtration-condition__remove,
+		>.kit-filtration-condition__more {
 			visibility: visible;
 		}
 
@@ -146,9 +147,9 @@
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
 		}
 
-		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove,
-		> .kit-filtration-condition__more {
+		>.kit-filtration-condition__copy,
+		>.kit-filtration-condition__remove,
+		>.kit-filtration-condition__more {
 			display: none;
 		}
 
@@ -163,7 +164,7 @@
 			}
 		}
 
-		& + .kit-filtration-group_edit {
+		&+.kit-filtration-group_edit {
 			&::before {
 				border-radius: 0 0 0 $itemHoverBorderRadius;
 			}
@@ -171,33 +172,34 @@
 	}
 
 	&_shaded {
-		> * {
+		>* {
 			opacity: 0.3;
 		}
 
 		&:hover {
-			> * {
+			>* {
 				opacity: 1;
 			}
 		}
 	}
 
-	> .kit-filtration-condition__content {
+	>.kit-filtration-condition__content {
 		[class*="kit-segment"]:not(.kit-segment-content__count) {
 			margin-left: 10px;
 		}
 	}
 
 	&_read-only {
-		> .kit-filtration-condition__drag-and-drop,
-		> .kit-filtration-condition__content > b {
+
+		>.kit-filtration-condition__drag-and-drop,
+		>.kit-filtration-condition__content>b {
 			pointer-events: none;
 			cursor: default;
 		}
 
-		> .kit-filtration-condition__copy,
-		> .kit-filtration-condition__remove,
-		> .kit-filtration-condition__more {
+		>.kit-filtration-condition__copy,
+		>.kit-filtration-condition__remove,
+		>.kit-filtration-condition__more {
 			display: none;
 		}
 	}
@@ -247,7 +249,7 @@
 	background: none;
 	border: none;
 	outline: none;
-	color: $copyColor;
+	color: $createButtonColor;
 	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
 	cursor: pointer;
 
@@ -295,7 +297,7 @@
 .kit-filtration-condition__item-text__block-method-params {
 	display: inline-flex;
 
-	> *:not(:last-child) {
+	>*:not(:last-child) {
 		margin-right: 10px;
 	}
 }

@@ -28,7 +28,7 @@ const Search = (props: IProps) => {
 		[context!.onSearchRef]
 	);
 
-	const handleOnChange = (changedValue: string | number) => {
+	const handleChange = (changedValue: string | number) => {
 		onChange(changedValue);
 		if (context && context.contextOnKeyDownSearch) {
 			context.contextOnKeyDownSearch();
@@ -36,7 +36,7 @@ const Search = (props: IProps) => {
 		}
 	};
 
-	const handleOnKeyDown = (e: React.KeyboardEvent) => {
+	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (context && context.contextOnKeyDownSearch) {
 			switch (e.keyCode) {
 				case KeysCodes.ArrowDown:
@@ -52,8 +52,8 @@ const Search = (props: IProps) => {
 		<Textbox
 			{...props}
 			ref={refTextbox}
-			onKeyDown={handleOnKeyDown}
-			onChange={handleOnChange}
+			onKeyDown={handleKeyDown}
+			onChange={handleChange}
 		/>
 	);
 };

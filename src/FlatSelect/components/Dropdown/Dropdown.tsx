@@ -52,23 +52,6 @@ const Dropdown = React.forwardRef(
 		let refSearch: HTMLInputElement | null = null;
 		let onMarkFirstElement: (() => void) | null = null;
 
-		React.useEffect(() => {
-			positionDropDown();
-		}, []);
-
-		React.useEffect(
-			() => {
-				itemsListSearch = [];
-			},
-			[show]
-		);
-
-		React.useImperativeHandle(ref, () => ({
-			hide() {
-				changeVisibility(false);
-			}
-		}));
-
 		const positionDropDown = () => {
 			const windowHeight = window.innerHeight / 2;
 
@@ -83,6 +66,21 @@ const Dropdown = React.forwardRef(
 				}
 			}
 		};
+
+		React.useEffect(positionDropDown, []);
+
+		React.useEffect(
+			() => {
+				itemsListSearch = [];
+			},
+			[show]
+		);
+
+		React.useImperativeHandle(ref, () => ({
+			hide() {
+				changeVisibility(false);
+			}
+		}));
 
 		const handleClick = () => {
 			if (!disabled) {
@@ -115,7 +113,7 @@ const Dropdown = React.forwardRef(
 			changeVisibility(false);
 		};
 
-		const handleOnKeyDown = (e: React.KeyboardEvent) => {
+		const handleKeyDown = (e: React.KeyboardEvent) => {
 			if (e.keyCode === KeysCodes.Enter) {
 				handleClick();
 			}
@@ -277,7 +275,7 @@ const Dropdown = React.forwardRef(
 					style={style}
 					ref={dropdownRef}
 					onClick={handleClick}
-					onKeyDown={handleOnKeyDown}
+					onKeyDown={handleKeyDown}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}

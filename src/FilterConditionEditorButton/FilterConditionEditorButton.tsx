@@ -6,6 +6,7 @@ import {
 } from "../FilterConditionSelector";
 import { useClickOutside } from "../HOOKs";
 import { IconSvg, IconSvgTypes } from "../IconSvg";
+import { KeysCodes } from "../utils/constants";
 import "./FilterConditionEditorButton.scss";
 import { Props as ButtonProps } from "./types";
 
@@ -35,6 +36,15 @@ export const FilterConditionEditorButton = React.forwardRef<
 		}
 	}));
 
+	const handleToggle = (e: React.KeyboardEvent) => {
+		if (
+			document.activeElement === refButton.current &&
+			e.keyCode === KeysCodes.Enter
+		) {
+			toggleOpen();
+		}
+	};
+
 	const handleClose = () => {
 		if (isOpened) {
 			toggleOpen();
@@ -44,7 +54,7 @@ export const FilterConditionEditorButton = React.forwardRef<
 	useClickOutside(refFilterConditionSelector, handleClose, isOpened);
 
 	return (
-		<div className="kit-filter-editor">
+		<div className="kit-filter-editor" onKeyDown={handleToggle}>
 			<button
 				ref={refButton}
 				className={cn("kit-filter-editor__btn", {

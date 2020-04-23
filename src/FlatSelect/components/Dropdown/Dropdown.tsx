@@ -18,8 +18,8 @@ const HEIGHT_HEADER = 90;
 const EVENT_ENTER = new window.KeyboardEvent("searchEnter", {
 	bubbles: true,
 	cancelable: true,
-	key: "Enter",
 	code: "Enter",
+	key: "Enter",
 	view: window
 });
 
@@ -36,7 +36,6 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			isFixedDropdown = false,
 			onSelectionClear
 		} = props;
 
@@ -47,7 +46,7 @@ const Dropdown = React.forwardRef(
 		const [searchTerm, setSearchTerm] = React.useState("");
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
-		const refPanel = React.useRef(null);
+		const refPanel = React.useRef<HTMLDivElement>(null);
 
 		let itemsListSearch: HTMLLIElement[] = [];
 		let refSearch: HTMLInputElement | null = null;
@@ -246,12 +245,12 @@ const Dropdown = React.forwardRef(
 		const style = { ...props.style, marginLeft: "0 !important" };
 
 		const contextValues = {
-			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
 			contextOnKeyDownItems: handleContextOnKeyDownItems,
-			onSearchRef: setSearchRef,
-			onItemsRef: setItemListRef,
-			onFocusElement: handleFocusFirstElement,
+			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
 			onCloseDropdown: hide,
+			onFocusElement: handleFocusFirstElement,
+			onItemsRef: setItemListRef,
+			onSearchRef: setSearchRef,
 			setSearchTerm
 		};
 
@@ -269,10 +268,10 @@ const Dropdown = React.forwardRef(
 						`${String(width && Width.getClass(width))}`,
 						{
 							[`${closedClassName}`]: !show && closedClassName,
+							"kit-selectR-disabled": disabled,
 							"kit-selectR-open": show,
 							[`${openedClassName}`]: show,
-							"kit-selectR-placeholder": !headerInfo,
-							"kit-selectR-disabled": disabled
+							"kit-selectR-placeholder": !headerInfo
 						}
 					)}
 					style={style}
@@ -290,7 +289,6 @@ const Dropdown = React.forwardRef(
 					<OverflowVisibleContainer
 						ref={refPanel}
 						parentRef={dropdownRef}
-						isFixed={isFixedDropdown}
 					>
 						<DropdownContext.Provider value={contextValues}>
 							<Panel

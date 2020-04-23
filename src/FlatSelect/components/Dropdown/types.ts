@@ -17,7 +17,6 @@ export interface DropdownProps {
 	panelClass?: string;
 	style?: React.CSSProperties;
 	onAdaptive?: () => boolean;
-	isFixedDropdown?: boolean;
 	children?: React.ReactNode;
 }
 

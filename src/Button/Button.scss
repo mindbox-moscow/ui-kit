@@ -1,5 +1,6 @@
 .kit-button {
 	$self: &;
+	position: relative;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -16,10 +17,6 @@
 
 	svg {
 		margin-right: 5px;
-	}
-
-	.kit-filtration-group__buttons > & {
-		position: relative;
 	}
 
 	&:disabled {

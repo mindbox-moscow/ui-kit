@@ -93,7 +93,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 		if (onLinkedConditionEditModeToggle) {
 			onLinkedConditionEditModeToggle();
 		}
-	}
+	};
 
 	const editModeContent = (
 		<FilterDetails
@@ -134,7 +134,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						className="kit-filtration-condition__content"
 						onClick={onConditionStateToggle}
 					>
-						<b>{filterablePropertyName}</b>
+						<b>{filterablePropertyName} </b>
 						{filtrationMethodName && (
 							<span
 								className={cn({
@@ -145,17 +145,15 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							</span>
 						)}
 						{filtrationMethodParametersComponent}
-						{
-							state !== "readOnly" && isLinkedCondition && (
-								<button
-									type="button"
-									className="kit-filtration-condition__create"
-									onClick={handleCreateCondition}
-								>
-									<IconSvg type="add" />
-								</button>
-							)
-						}
+						{state !== "readOnly" && isLinkedCondition && (
+							<button
+								type="button"
+								className="kit-filtration-condition__create"
+								onClick={handleCreateCondition}
+							>
+								<IconSvg type="add" />
+							</button>
+						)}
 					</div>
 					<button
 						type="button"

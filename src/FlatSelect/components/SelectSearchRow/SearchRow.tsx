@@ -135,10 +135,6 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				"kit-selectR-nesting": hasNested,
 				"kit-selectR-highlighted": markedItem
 			})}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-			onFocus={handleMouseEnter}
-			onBlur={handleMouseLeave}
 		>
 			<div
 				className={cn("kit-selectR-label", {

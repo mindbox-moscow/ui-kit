@@ -13,6 +13,7 @@ import {
 } from "./types";
 
 import { Button } from "../Button";
+import { OverflowVisibleFixedContext } from "../OverflowVisibleContainer/OverflowVisibleContext";
 import "./FilterWrapper.scss";
 import { FilterWrapperContext } from "./FilterWrapperContext";
 
@@ -43,7 +44,6 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics = true,
 	showApplyButton = false,
-	isUndoRedoEnabled = false,
 	headInformation
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
@@ -112,108 +112,107 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	return (
 		<>
-			<FilterWrapperContext.Provider value={contextValue}>
-				<div
-					ref={refFilterWrapper}
-					className={cn("kit-filter", {
-						"kit-filter_short":
-							!doesContainFilter &&
-							(filterActions == null ||
-								filterActions.length === 0)
-					})}
-				>
-					{doesContainFilter && (
-						<div className="kit-filter__top-filter">
-							{hasHeadInformation ? (<div className="kit-filter__top-info">
-								{headInformation}
-							</div>) : <div />}
-							<div className="kit-filter__top-right">
-								{hasFilterActions && (
-									<FilterActions
-										filterActions={filterActions}
-										filterActionsCaption={filterActionsCaption}
-									/>
-								)}
-								{isUndoRedoEnabled && (
-									<>
-										<Button
-											onClick={onUndo}
-											size="xxs"
-											color="gray"
-											disabled={!canUndo}
-											type="button"
-										>
-											<IconSvg type="circle-arrow" className="kit-filter__undo" />
-										</Button>
-										<Button
-											onClick={onRedo}
-											size="xxs"
-											color="gray"
-											disabled={!canRedo}
-											type="button"
-										>
-											<IconSvg type="circle-arrow" className="kit-filter__redo" />
-										</Button>
-									</>
-								)}
+			<OverflowVisibleFixedContext.Provider value={scrollState === ScrollState.Minified}>
+				<FilterWrapperContext.Provider value={contextValue}>
+					<div
+						ref={refFilterWrapper}
+						className={cn("kit-filter", {
+							"kit-filter_short":
+								!doesContainFilter &&
+								(filterActions == null ||
+									filterActions.length === 0)
+						})}
+					>
+						{doesContainFilter && (
+							<div className="kit-filter__top-filter">
+								{hasHeadInformation ? (<div className="kit-filter__top-info">
+									{headInformation}
+								</div>) : <div />}
+								<div className="kit-filter__top-right">
+									{hasFilterActions && (
+										<FilterActions
+											filterActions={filterActions}
+											filterActionsCaption={filterActionsCaption}
+										/>
+									)}
+									<Button
+										onClick={onUndo}
+										size="xxs"
+										color="gray"
+										disabled={!canUndo}
+										type="button"
+									>
+										<IconSvg type="circle-arrow" className="kit-filter__undo" />
+									</Button>
+									<Button
+										onClick={onRedo}
+										size="xxs"
+										color="gray"
+										disabled={!canRedo}
+										type="button"
+									>
+										<IconSvg type="circle-arrow" className="kit-filter__redo" />
+									</Button>
+								</div>
 							</div>
-						</div>
-					)}
-					<ul className="kit-filter__all-wrap">
-						{!doesContainFilter &&
-							scrollState === ScrollState.Minified ? (
-								<ButtonUp />
-							) : (
-								children
-							)}
-					</ul>
-					{doesContainFilter ? (
-						<div className="kit-filter__wrap">
-							<div className="kit-filter__wrap-filter">
-								{showApplyButton ? (
-									scrollState !== ScrollState.Minified ? (
-										<button
-											className="kit-filter__use-filter"
-											onClick={onApply}
-										>
-											{applyButtonCaption}
-										</button>
-									) : (
-											<ButtonUp />
-										)
-								) : null}
-							</div>
-							{selectionState !== SelectionStateType.None &&
-								countSelectedItems()}
-							<InfoWrapper
-								isWarning={isDataOutdated}
-								statisticsValue={statisticsValue}
-								statisticsDescription={statisticsDescription}
-								shouldShowStatistics={shouldShowStatistics}
-							>
-								<button
-									className="kit-filter__clear-filter-btn"
-									onClick={onClear}
-									type="button"
-								>
-									<IconSvg type="close" />
-									{clearButtonCaption}
-								</button>
-							</InfoWrapper>
-						</div>
-					) : (
-							<div className="kit-filter__short-wrap-filter">
+						)}
+						<ul className="kit-filter__all-wrap">
+							{!doesContainFilter &&
+								scrollState === ScrollState.Minified ? (
+									<ButtonUp />
+								) : (
+									children
+								)}
+						</ul>
+						{doesContainFilter ? (
+							<div className="kit-filter__wrap">
+								<div className="kit-filter__wrap-filter">
+									{showApplyButton ? (
+										scrollState !== ScrollState.Minified ? (
+											<button
+												className="kit-filter__use-filter"
+												onClick={onApply}
+												type="button"
+											>
+												{applyButtonCaption}
+											</button>
+										) : (
+												<ButtonUp />
+											)
+									) : null}
+								</div>
 								{selectionState !== SelectionStateType.None &&
 									countSelectedItems()}
 								<InfoWrapper
+									isWarning={isDataOutdated}
 									statisticsValue={statisticsValue}
 									statisticsDescription={statisticsDescription}
 									shouldShowStatistics={shouldShowStatistics}
-								/>
+								>
+									<button
+										className="kit-filter__clear-filter-btn"
+										onClick={onClear}
+										type="button"
+									>
+										<IconSvg type="close" />
+										{clearButtonCaption}
+									</button>
+								</InfoWrapper>
 							</div>
-						)}
-				</div>
-			</FilterWrapperContext.Provider>
+						) : (
+								<div className="kit-filter__short-wrap-filter">
+									{selectionState !== SelectionStateType.None &&
+										countSelectedItems()}
+									<InfoWrapper
+										statisticsValue={statisticsValue}
+										statisticsDescription={statisticsDescription}
+										shouldShowStatistics={shouldShowStatistics}
+									/>
+								</div>
+							)}
+					</div>
+				</FilterWrapperContext.Provider>
+			</OverflowVisibleFixedContext.Provider>
 		</>
 	);
 };

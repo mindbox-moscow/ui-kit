@@ -195,6 +195,11 @@
 	border-top-left-radius: $itemHoverBorderRadius;
 	border-bottom-left-radius: $itemHoverBorderRadius;
 
+	.kit-filtration-condition__item-text & * {
+		position: relative;
+		margin-right: 5px;
+	}
+
 	.kit-filtration-condition__item-text > & {
 		[class*="kit-segment"]:not(.kit-segment-content__count) {
 			margin-left: 10px;
@@ -216,12 +221,6 @@
 		> *:not(.kit-filtration-condition__create) {
 			vertical-align: sub;
 		}
-	}
-
-	.kit-filtration-condition__item-text & > span,
-	.kit-filtration-condition__item-text & > b {
-		position: relative;
-		margin-right: 5px;
 	}
 
 	.kit-filtration-condition__item-text & > span:empty,

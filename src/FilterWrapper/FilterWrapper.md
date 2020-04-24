@@ -1737,7 +1737,7 @@ class ExampleEditorButton extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			showPopup: true,
+			showPopup: false,
 			selectedId: "name",
 			expansionState: {
 				behaviour: false,

@@ -56,8 +56,14 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			: renderToStaticMarkup(title);
 
 	const handelSelectEnter = (e: KeyboardEvent) => {
+		const { onCloseDropdown } = context!;
+
 		if (e.target === refElement.current && !disabled && onClickHandler) {
 			onClickHandler();
+
+			if (!isForMultiSelect) {
+				onCloseDropdown();
+			}
 		}
 	};
 

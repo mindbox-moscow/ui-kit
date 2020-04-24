@@ -114,32 +114,6 @@
 	}
 }
 
-.kit-filtration-condition__drag-and-drop {
-	position: absolute;
-	top: 3px;
-	right: 100%;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	width: 5px;
-	height: calc(100% - 6px);
-	background-color: $hoverColorBg;
-	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
-
-	.kit-filtration-condition__item-text_edit > & {
-		display: flex;
-		background-color: $editModeColorBg;
-	}
-
-	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only)
-		> & {
-		display: flex;
-	}
-
-	@extend %read-only-prevent;
-	@extend %hover-edit-background-white;
-}
-
 .kit-filtration-condition__item-text {
 	$self: &;
 	position: relative;
@@ -215,8 +189,11 @@
 }
 
 .kit-filtration-condition__content {
-	@extend %read-only-prevent;
 	@extend %hover-edit-background-white;
+	margin-left: -5px;
+	padding-left: 5px;
+	border-top-left-radius: $itemHoverBorderRadius;
+	border-bottom-left-radius: $itemHoverBorderRadius;
 
 	.kit-filtration-condition__item-text > & {
 		[class*="kit-segment"]:not(.kit-segment-content__count) {
@@ -229,16 +206,20 @@
 		background-color: $editModeColorBg;
 	}
 
+	.kit-filtration-condition__item-text_linked-condition-edit > & {
+		cursor: pointer;
+	}
+
 	.kit-filtration-condition__item-text & {
 		min-height: 26px;
 
-		> * {
+		> *:not(.kit-filtration-condition__create) {
 			vertical-align: sub;
 		}
 	}
 
 	.kit-filtration-condition__item-text & > span,
-	.kit-filtration-condition__item-text b {
+	.kit-filtration-condition__item-text & > b {
 		position: relative;
 		margin-right: 5px;
 	}
@@ -248,7 +229,7 @@
 		margin-right: 0;
 	}
 
-	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only)
+	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
 		> & {
 		background-color: $hoverColorBg;
 		cursor: pointer;
@@ -297,11 +278,6 @@
 .kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only)
 	> %button-control-visible-not-read-only {
 	visibility: visible;
-}
-
-.kit-filtration-condition__item-text_read-only > %read-only-prevent {
-	pointer-events: none;
-	cursor: default;
 }
 
 .kit-filtration-group_edit

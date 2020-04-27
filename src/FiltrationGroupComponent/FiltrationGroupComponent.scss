@@ -47,7 +47,11 @@
 
 	&_edit {
 		@include opacityBlock();
-		z-index: 2;
+
+		&,
+		&#{$self}_not-children {
+			z-index: 2;
+		}
 
 		> .kit-filtration-group__label_hover_or,
 		> .kit-filtration-group__label_hover_and {
@@ -112,11 +116,11 @@
 		width: 100%;
 		max-width: calc(100% - 30px);
 		margin: 0;
-		margin-left: 20px;
+		margin-left: 17px;
 		box-sizing: border-box;
 
 		> .kit-filtration-condition__item-text {
-			@include createHorisontalBrackets(-16px, 16px);
+			@include createHorisontalBrackets(-13px, 16px);
 		}
 	}
 

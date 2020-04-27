@@ -191,7 +191,6 @@
 
 .kit-filtration-condition__content {
 	@extend %hover-edit-background-white;
-	margin-left: -5px;
 	padding-right: 5px;
 	padding-left: 5px;
 	border-top-left-radius: $itemHoverBorderRadius;
@@ -201,6 +200,10 @@
 		position: relative;
 
 		&::before {
+			content: " ";
+		}
+
+		&::after {
 			content: " ";
 		}
 	}

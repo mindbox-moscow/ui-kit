@@ -128,13 +128,12 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							state === "view"
 					})}
 				>
-					<div className="kit-filtration-condition__drag-and-drop" />
 					<div
 						ref={refContent}
 						className="kit-filtration-condition__content"
 						onClick={onConditionStateToggle}
 					>
-						<b>{filterablePropertyName} </b>
+						<b>{filterablePropertyName}</b>
 						{filtrationMethodName && (
 							<span
 								className={cn({

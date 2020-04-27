@@ -56,8 +56,14 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			: renderToStaticMarkup(title);
 
 	const handelSelectEnter = (e: KeyboardEvent) => {
+		const { onCloseDropdown } = context!;
+
 		if (e.target === refElement.current && !disabled && onClickHandler) {
 			onClickHandler();
+
+			if (!isForMultiSelect) {
+				onCloseDropdown();
+			}
 		}
 	};
 
@@ -135,10 +141,6 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				"kit-selectR-nesting": hasNested,
 				"kit-selectR-highlighted": markedItem
 			})}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-			onFocus={handleMouseEnter}
-			onBlur={handleMouseLeave}
 		>
 			<div
 				className={cn("kit-selectR-label", {

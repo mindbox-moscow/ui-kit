@@ -43,6 +43,7 @@ const Dropdown = React.forwardRef(
 			false
 		);
 		const [show, setShow] = React.useState(false);
+		const [searchTerm, setSearchTerm] = React.useState("");
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
 		const refPanel = React.useRef<HTMLDivElement>(null);
@@ -50,17 +51,6 @@ const Dropdown = React.forwardRef(
 		let itemsListSearch: HTMLLIElement[] = [];
 		let refSearch: HTMLInputElement | null = null;
 		let onMarkFirstElement: (() => void) | null = null;
-
-		React.useEffect(() => {
-			positionDropDown();
-			itemsListSearch = [];
-		});
-
-		React.useImperativeHandle(ref, () => ({
-			hide() {
-				changeVisibility(false);
-			}
-		}));
 
 		const positionDropDown = () => {
 			const windowHeight = window.innerHeight / 2;
@@ -76,6 +66,21 @@ const Dropdown = React.forwardRef(
 				}
 			}
 		};
+
+		React.useEffect(positionDropDown, []);
+
+		React.useEffect(
+			() => {
+				itemsListSearch = [];
+			},
+			[show]
+		);
+
+		React.useImperativeHandle(ref, () => ({
+			hide() {
+				changeVisibility(false);
+			}
+		}));
 
 		const handleClick = () => {
 			if (!disabled) {
@@ -108,7 +113,7 @@ const Dropdown = React.forwardRef(
 			changeVisibility(false);
 		};
 
-		const handleOnKeyDown = (e: React.KeyboardEvent) => {
+		const handleKeyDown = (e: React.KeyboardEvent) => {
 			if (e.keyCode === KeysCodes.Enter) {
 				handleClick();
 			}
@@ -145,7 +150,7 @@ const Dropdown = React.forwardRef(
 			}
 
 			setTimeout(() => {
-				if (onMarkFirstElement && refSearch!.value !== "") {
+				if (onMarkFirstElement && searchTerm !== "") {
 					onMarkFirstElement();
 				}
 			}, 0);
@@ -243,7 +248,8 @@ const Dropdown = React.forwardRef(
 			onCloseDropdown: hide,
 			onFocusElement: handleFocusFirstElement,
 			onItemsRef: setItemListRef,
-			onSearchRef: setSearchRef
+			onSearchRef: setSearchRef,
+			setSearchTerm
 		};
 
 		return (
@@ -269,7 +275,7 @@ const Dropdown = React.forwardRef(
 					style={style}
 					ref={dropdownRef}
 					onClick={handleClick}
-					onKeyDown={handleOnKeyDown}
+					onKeyDown={handleKeyDown}
 				>
 					<span className="kit-selectR-choice">
 						{placeholder}

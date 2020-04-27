@@ -1737,7 +1737,7 @@ class ExampleEditorButton extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			showPopup: true,
+			showPopup: false,
 			selectedId: "name",
 			expansionState: {
 				behaviour: false,
@@ -5229,6 +5229,7 @@ class ExampleEditorButton extends React.Component {
 				filterablePropertyName="Розничный заказ"
 				filtrationMethodName="есть такие"
 				state="linkedConditionEdit"
+				isLinkedCondition={true}
 				onConditionStateToggle={() => console.log("state toggle")}
 				onCreateCondition={() => console.log("onCreateCondition")}
 				linkedConditionComponent={

@@ -80,10 +80,15 @@
 			}
 		}
 
-		> .kit-filtration-group__buttons,
-		> .kit-filtration-condition:first-of-type {
+		> .kit-filtration-group__buttons {
 			&::before {
 				left: -16px;
+			}
+		}
+
+		> .kit-filtration-condition:first-of-type {
+			&::before {
+				left: -13px;
 			}
 		}
 

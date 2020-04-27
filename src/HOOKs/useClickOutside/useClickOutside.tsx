@@ -26,6 +26,8 @@ export function useClickOutside(
 	let preventHandlerCall = false;
 
 	const listener = (e: MouseEvent) => {
+		const target = e.target as HTMLElement;
+
 		if (!preventHandlerCall) {
 			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
 				? false
@@ -33,6 +35,7 @@ export function useClickOutside(
 
 			if (
 				!(
+					(ref.current && ref.current.contains(target)) ||
 					isIgnoreNeutralZoneClass ||
 					fromElementWithClassEvent(e, uiDatePickerClass) ||
 					fromElementWithClassEvent(

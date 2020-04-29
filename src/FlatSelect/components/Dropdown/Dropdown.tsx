@@ -36,19 +36,20 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			onSelectionClear
+			onSelectionClear,
+			isOpen,
+			onClick
 		} = props;
 
 		const [isInBottomOfScreen, setIsInBottomOfScreen] = React.useState(
 			false
 		);
-		const [show, setShow] = React.useState(false);
 		const [searchTerm, setSearchTerm] = React.useState("");
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
 		const refPanel = React.useRef<HTMLDivElement>(null);
 
-		let itemsListSearch: HTMLLIElement[] = [];
+		let itemsListSearch: HTMLDivElement[] = [];
 		let refSearch: HTMLInputElement | null = null;
 		let onMarkFirstElement: (() => void) | null = null;
 
@@ -73,23 +74,13 @@ const Dropdown = React.forwardRef(
 			() => {
 				itemsListSearch = [];
 			},
-			[show]
+			[isOpen]
 		);
-
-		React.useImperativeHandle(ref, () => ({
-			hide() {
-				changeVisibility(false);
-			}
-		}));
 
 		const handleClick = () => {
 			if (!disabled) {
-				changeVisibility(!show);
+				onClick();
 			}
-		};
-
-		const changeVisibility = (show: boolean) => {
-			setShow(show);
 		};
 
 		const clearSelectionSection = (): JSX.Element | null => {
@@ -109,10 +100,6 @@ const Dropdown = React.forwardRef(
 			}
 		};
 
-		const hide = () => {
-			changeVisibility(false);
-		};
-
 		const handleKeyDown = (e: React.KeyboardEvent) => {
 			if (e.keyCode === KeysCodes.Enter) {
 				handleClick();
@@ -124,7 +111,7 @@ const Dropdown = React.forwardRef(
 				switch (e.keyCode) {
 					case KeysCodes.Esc:
 						e.preventDefault();
-						changeVisibility(false);
+						onClick();
 						handleFocusElement(dropdownRef.current);
 						break;
 
@@ -207,7 +194,7 @@ const Dropdown = React.forwardRef(
 		};
 
 		const setItemListRef = (
-			itemElement: React.RefObject<HTMLLIElement>
+			itemElement: React.RefObject<HTMLDivElement>
 		) => {
 			if (itemElement.current) {
 				itemsListSearch = [...itemsListSearch, itemElement.current];
@@ -217,7 +204,7 @@ const Dropdown = React.forwardRef(
 		const handleFocusFirstElement = (
 			onMouseEnter: () => void,
 			onMouseLeave: () => void,
-			itemElement: React.RefObject<HTMLLIElement>
+			itemElement: React.RefObject<HTMLDivElement>
 		) => {
 			if (itemsListSearch[0] === itemElement.current) {
 				onMarkFirstElement = onMouseEnter;
@@ -245,7 +232,7 @@ const Dropdown = React.forwardRef(
 		const contextValues = {
 			contextOnKeyDownItems: handleContextOnKeyDownItems,
 			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
-			onCloseDropdown: hide,
+			onCloseDropdown: onClick,
 			onFocusElement: handleFocusFirstElement,
 			onItemsRef: setItemListRef,
 			onSearchRef: setSearchRef,
@@ -265,10 +252,10 @@ const Dropdown = React.forwardRef(
 						`${String(height && Height.getClass(height))}`,
 						`${String(width && Width.getClass(width))}`,
 						{
-							[`${closedClassName}`]: !show && closedClassName,
+							[`${closedClassName}`]: !isOpen && closedClassName,
 							"kit-selectR-disabled": disabled,
-							"kit-selectR-open": show,
-							[`${openedClassName}`]: show,
+							"kit-selectR-open": isOpen,
+							[`${openedClassName}`]: isOpen,
 							"kit-selectR-placeholder": !headerInfo
 						}
 					)}
@@ -283,7 +270,7 @@ const Dropdown = React.forwardRef(
 					</span>
 				</div>
 
-				{show && (
+				{isOpen && (
 					<OverflowVisibleContainer
 						ref={refPanel}
 						parentRef={dropdownRef}
@@ -295,7 +282,7 @@ const Dropdown = React.forwardRef(
 								className={cn(panelClass, neutralZoneClass, {
 									"kit-selectR-above": isInBottomOfScreen
 								})}
-								onCLose={hide}
+								onCLose={onClick}
 							>
 								{children}
 							</Panel>

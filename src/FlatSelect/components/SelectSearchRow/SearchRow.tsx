@@ -19,7 +19,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	onClickHandler
 }) => {
 	const context = React.useContext(DropdownContext);
-	const refElement = React.useRef<HTMLLIElement>(null);
+	const refElement = React.useRef<HTMLDivElement>(null);
 	const [markedItem, setMarkedItem] = React.useState(false);
 
 	React.useEffect(
@@ -44,9 +44,9 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 
 	const renderСhildren = (): JSX.Element | null => {
 		return hasNested ? (
-			<ul className="kit-selectR-results kit-selectR-results-default">
+			<div className="kit-selectR-results kit-selectR-results-default">
 				{children}
-			</ul>
+			</div>
 		) : null;
 	};
 
@@ -129,7 +129,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	return (
-		<li
+		<div
 			ref={refElement}
 			tabIndex={0}
 			onKeyDown={handleOnKeyDown}
@@ -152,6 +152,6 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				{text}
 			</div>
 			{renderСhildren()}
-		</li>
+		</div>
 	);
 };

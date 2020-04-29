@@ -27,6 +27,7 @@ export const FlatSelect = <TValue extends object>({
 }: SelectProps<TValue> & { children?: React.ReactNode }) => {
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
 	const dropdownRef = React.useRef<DropdownHandles>(null);
+	const [isOpen, setIsOpen] = React.useState(false);
 
 	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
@@ -215,8 +216,14 @@ export const FlatSelect = <TValue extends object>({
 		onChange(null);
 	};
 
+	const handleClick = () => {
+		setIsOpen(prev => !prev);
+	};
+
 	return (
 		<Dropdown
+			onClick={handleClick}
+			isOpen={isOpen}
 			id={id}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}

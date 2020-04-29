@@ -199,10 +199,7 @@
 	.kit-filtration-condition__item-text & * {
 		position: relative;
 
-		&::before {
-			content: " ";
-		}
-
+		&::before,
 		&::after {
 			content: " ";
 		}

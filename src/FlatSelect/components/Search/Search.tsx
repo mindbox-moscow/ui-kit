@@ -21,11 +21,11 @@ const Search = (props: IProps) => {
 
 	React.useEffect(
 		() => {
-			if (context && context.onSearchRef) {
-				context.onSearchRef(refTextbox);
+			if (context && context.setSearchRef) {
+				context.setSearchRef(refTextbox);
 			}
 		},
-		[context!.onSearchRef]
+		[context!.setSearchRef]
 	);
 
 	const handleChange = (changedValue: string | number) => {

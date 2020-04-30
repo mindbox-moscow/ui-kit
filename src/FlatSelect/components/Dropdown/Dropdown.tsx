@@ -47,11 +47,11 @@ const Dropdown = React.forwardRef(
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
 		const refPanel = React.useRef<HTMLDivElement>(null);
+		let refSearch = React.useRef<HTMLInputElement>(null);
 
 		let itemsListSearch: HTMLLIElement[] = [];
-		let refSearch: HTMLInputElement | null = null;
-		let onMarkFirstElement: (() => void) | null = null;
-		let unMarkFirstElement: (() => void) | null = null;
+		let markFirstElement: (() => void) | null = null;
+		let unmarkFirstElement: (() => void) | null = null;
 
 		const positionDropDown = () => {
 			const windowHeight = window.innerHeight / 2;
@@ -72,17 +72,17 @@ const Dropdown = React.forwardRef(
 
 		React.useEffect(
 			() => {
-				handleFocusElement(refSearch);
+				handleFocusElement(refSearch.current);
 			},
 			[show]
 		);
 
 		React.useEffect(
 			() => {
-				if (searchTerm === "" && unMarkFirstElement) {
-					unMarkFirstElement();
-				} else if (searchTerm !== "" && onMarkFirstElement) {
-					onMarkFirstElement();
+				if (searchTerm === "" && unmarkFirstElement) {
+					unmarkFirstElement();
+				} else if (searchTerm !== "" && markFirstElement) {
+					markFirstElement();
 				}
 			},
 			[searchTerm]
@@ -90,18 +90,14 @@ const Dropdown = React.forwardRef(
 
 		React.useImperativeHandle(ref, () => ({
 			hide() {
-				changeVisibility(false);
+				setShow(false);
 			}
 		}));
 
 		const handleClick = () => {
 			if (!disabled) {
-				changeVisibility(!show);
+				setShow(prev => !prev);
 			}
-		};
-
-		const changeVisibility = (show: boolean) => {
-			setShow(show);
 		};
 
 		const clearSelectionSection = (): JSX.Element | null => {
@@ -122,7 +118,7 @@ const Dropdown = React.forwardRef(
 		};
 
 		const hide = () => {
-			changeVisibility(false);
+			setShow(false);
 		};
 
 		const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -136,7 +132,7 @@ const Dropdown = React.forwardRef(
 				switch (e.keyCode) {
 					case KeysCodes.Esc:
 						e.preventDefault();
-						changeVisibility(false);
+						setShow(false);
 						handleFocusElement(dropdownRef.current);
 						break;
 
@@ -178,7 +174,7 @@ const Dropdown = React.forwardRef(
 
 				case KeysCodes.Esc:
 					e.preventDefault();
-					handleFocusElement(refSearch);
+					handleFocusElement(refSearch.current);
 					break;
 
 				case KeysCodes.ArrowDown:
@@ -197,7 +193,7 @@ const Dropdown = React.forwardRef(
 					e.stopPropagation();
 
 					if (currentIndex === 0) {
-						handleFocusElement(refSearch);
+						handleFocusElement(refSearch.current);
 					} else {
 						itemsListSearch[currentIndex - 1].focus({
 							preventScroll: true
@@ -210,10 +206,10 @@ const Dropdown = React.forwardRef(
 		const setSearchRef = (
 			searchElement: React.RefObject<HTMLInputElement>
 		) => {
-			refSearch = searchElement.current;
+			refSearch = searchElement;
 		};
 
-		const setItemListRef = (
+		const addItemListRef = (
 			itemElement: React.RefObject<HTMLLIElement>
 		) => {
 			if (itemElement.current) {
@@ -227,11 +223,10 @@ const Dropdown = React.forwardRef(
 			itemElement: React.RefObject<HTMLLIElement>
 		) => {
 			if (itemsListSearch[0] === itemElement.current) {
-				onMarkFirstElement = onMouseEnter;
-				unMarkFirstElement = onMouseLeave;
+				markFirstElement = onMouseEnter;
+				unmarkFirstElement = onMouseLeave;
 			}
 
-			console.log("__2");
 			onMouseLeave();
 		};
 
@@ -256,8 +251,8 @@ const Dropdown = React.forwardRef(
 			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
 			onCloseDropdown: hide,
 			onFocusElement: handleFocusFirstElement,
-			onItemsRef: setItemListRef,
-			onSearchRef: setSearchRef,
+			addItemsRef: addItemListRef,
+			setSearchRef,
 			setSearchTerm
 		};
 

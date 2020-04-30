@@ -570,6 +570,13 @@
 	color: #3875d7;
 }
 
+.kit-selectR-module {
+	.form-controls,
+	input.form-control {
+		width: 100%;
+	}
+}
+
 .kit-selectR-module-state {
 	font-style: italic;
 }

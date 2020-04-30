@@ -8,12 +8,16 @@ interface IProps {
 }
 
 export const Wrapper: React.FC<IProps> = props => {
-	const { tag = "span", children } = props;
+	const { tag = "div", children } = props;
 
 	const Tag = tag;
 
 	return (
-		<Tag className={cn("kit-block-wrapper", `kit-block-wrapper_${tag}`)}>
+		<Tag
+			className={cn("kit-block-wrapper", {
+				"kit-block-wrapper_inline": tag === "span"
+			})}
+		>
 			{children}
 		</Tag>
 	);

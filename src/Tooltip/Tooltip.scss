@@ -70,7 +70,6 @@
 	border: 1px solid #c7c5bd;
 	border-radius: 4px;
 	box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.35);
-	visibility: hidden;
 	box-sizing: border-box;
 	font-family: "PT Sans", sans-serif;
 	color: #000000;
@@ -81,10 +80,6 @@
 
 	&_top {
 		bottom: 30px;
-	}
-
-	&_show {
-		visibility: visible;
 	}
 }
 

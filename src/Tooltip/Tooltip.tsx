@@ -71,10 +71,7 @@ export const Tooltip: React.FC<IProps> = ({
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				className={cn(
 					"kit-tooltip__content",
-					`kit-tooltip__content_${position}`,
-					{
-						"kit-tooltip__content_show": isShow
-					}
+					`kit-tooltip__content_${position}`
 				)}
 			>
 				{showByClick && (

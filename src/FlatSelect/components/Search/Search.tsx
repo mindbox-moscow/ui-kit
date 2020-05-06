@@ -19,15 +19,6 @@ const Search = (props: IProps) => {
 	const context = React.useContext(DropdownContext);
 	const refTextbox = React.useRef<HTMLInputElement>(null);
 
-	React.useEffect(
-		() => {
-			if (context && context.setSearchRef) {
-				context.setSearchRef(refTextbox);
-			}
-		},
-		[context!.setSearchRef]
-	);
-
 	const handleChange = (changedValue: string | number) => {
 		onChange(changedValue);
 		if (context && context.contextOnKeyDownSearch) {
@@ -47,6 +38,17 @@ const Search = (props: IProps) => {
 			}
 		}
 	};
+
+	if (context) {
+		React.useEffect(
+			() => {
+				if (context.setSearchRef) {
+					context.setSearchRef(refTextbox);
+				}
+			},
+			[context.setSearchRef]
+		);
+	}
 
 	return (
 		<Textbox

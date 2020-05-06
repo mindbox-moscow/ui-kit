@@ -111,12 +111,11 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const onExpand = () => toggleExpand(id);
 
 	const onSelectItem = () => {
-		if ( !isSelected ) {
+		if (!isSelected) {
 			onSelect(id);
 			onExpand();
-			setTimeout(() => {
-				setNextFocus();
-			}, 1);
+
+			requestAnimationFrame(setNextFocus);
 		}
 	};
 

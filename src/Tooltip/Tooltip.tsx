@@ -22,6 +22,7 @@ export const Tooltip: React.FC<IProps> = ({
 	const [isShow, setIsShow] = React.useState(false);
 	const refTitle = React.useRef<HTMLDivElement>(null);
 	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
+	const refContent = React.useRef<HTMLDivElement>(null);
 
 	const handleShowTooltip = () => {
 		setIsShow(true);
@@ -30,6 +31,23 @@ export const Tooltip: React.FC<IProps> = ({
 	const handleHideTooltip = () => {
 		setIsShow(false);
 	};
+
+	React.useEffect(
+		() => {
+			const refContentCurrent = refContent.current;
+
+			if (refContentCurrent) {
+				const { left } = refContentCurrent.getBoundingClientRect();
+
+				if (left < 0) {
+					refContentCurrent.style.transform = `translate(${Math.abs(
+						left
+					)}px ,0)`;
+				}
+			}
+		},
+		[isShow]
+	);
 
 	if (!children) {
 		return (
@@ -40,28 +58,40 @@ export const Tooltip: React.FC<IProps> = ({
 	}
 
 	const tooltipContent = (
-		<div
-			onMouseEnter={showByClick ? undefined : handleShowTooltip}
-			onMouseLeave={showByClick ? undefined : handleHideTooltip}
-			className={cn(
-				"kit-tooltip__content",
-				`kit-tooltip__content_${position}`,
-				{
-					"kit-tooltip__content_show": isShow
-				}
-			)}
-		>
-			{showByClick && (
-				<button
-					type="button"
-					onClick={handleHideTooltip}
-					className="kit-tooltip__close"
-				>
-					<IconSvg type="close" className="kit-tooltip__close-icon" />
-				</button>
-			)}
-			{children}
-		</div>
+		<>
+			<div
+				className={cn(
+					"kit-tooltip__arrow",
+					`kit-tooltip__arrow_${position}`
+				)}
+			/>
+			<div
+				ref={refContent}
+				onMouseEnter={showByClick ? undefined : handleShowTooltip}
+				onMouseLeave={showByClick ? undefined : handleHideTooltip}
+				className={cn(
+					"kit-tooltip__content",
+					`kit-tooltip__content_${position}`,
+					{
+						"kit-tooltip__content_show": isShow
+					}
+				)}
+			>
+				{showByClick && (
+					<button
+						type="button"
+						onClick={handleHideTooltip}
+						className="kit-tooltip__close"
+					>
+						<IconSvg
+							type="close"
+							className="kit-tooltip__close-icon"
+						/>
+					</button>
+				)}
+				{children}
+			</div>
+		</>
 	);
 
 	useClickOutside(

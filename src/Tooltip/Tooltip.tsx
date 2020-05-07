@@ -5,9 +5,11 @@ import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./Tooltip.scss";
 
+type Position = "top" | "bottom";
+
 interface IProps {
 	title: string | JSX.Element;
-	position?: "top" | "bottom";
+	position?: Position;
 	showByClick?: boolean;
 	className?: string;
 }
@@ -20,6 +22,10 @@ export const Tooltip: React.FC<IProps> = ({
 	showByClick = false
 }) => {
 	const [isShow, setIsShow] = React.useState(false);
+	const [
+		viewPortPosition,
+		setViewPortPosition
+	] = React.useState<Position | null>(null);
 	const refTitle = React.useRef<HTMLDivElement>(null);
 	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
 	const refContent = React.useRef<HTMLDivElement>(null);
@@ -35,14 +41,36 @@ export const Tooltip: React.FC<IProps> = ({
 	React.useEffect(
 		() => {
 			const refContentCurrent = refContent.current;
+			const viewPortWidth = document.documentElement.clientWidth;
+			const viewPortHeight = window.innerHeight;
+
+			if (viewPortHeight) {
+				setViewPortPosition(null);
+			}
 
 			if (refContentCurrent) {
-				const { left } = refContentCurrent.getBoundingClientRect();
+				const {
+					left,
+					width,
+					top,
+					height
+				} = refContentCurrent.getBoundingClientRect();
+				const offsetLeft = width + left;
+				const offsetTopCenter = top - viewPortHeight / 2;
+				let transformX = 0;
 
 				if (left < 0) {
-					refContentCurrent.style.transform = `translate(${Math.abs(
-						left
-					)}px ,0)`;
+					transformX = left;
+				} else if (viewPortWidth < offsetLeft) {
+					transformX = viewPortWidth - offsetLeft;
+				} else if (top < 0) {
+					setViewPortPosition("bottom");
+				} else if (offsetTopCenter + height > viewPortHeight / 2) {
+					setViewPortPosition("top");
+				}
+
+				if (transformX !== 0) {
+					refContentCurrent.style.transform = `translate(${transformX}px ,0)`;
 				}
 			}
 		},
@@ -62,7 +90,9 @@ export const Tooltip: React.FC<IProps> = ({
 			<div
 				className={cn(
 					"kit-tooltip__arrow",
-					`kit-tooltip__arrow_${position}`
+					`kit-tooltip__arrow_${
+						viewPortPosition ? viewPortPosition : position
+					}`
 				)}
 			/>
 			<div
@@ -71,7 +101,9 @@ export const Tooltip: React.FC<IProps> = ({
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				className={cn(
 					"kit-tooltip__content",
-					`kit-tooltip__content_${position}`
+					`kit-tooltip__content_${
+						viewPortPosition ? viewPortPosition : position
+					}`
 				)}
 			>
 				{showByClick && (

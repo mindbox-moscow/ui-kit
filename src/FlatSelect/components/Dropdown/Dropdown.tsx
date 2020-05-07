@@ -47,7 +47,7 @@ const Dropdown = React.forwardRef(
 
 		const dropdownRef = React.useRef<HTMLDivElement>(null);
 		const refPanel = React.useRef<HTMLDivElement>(null);
-		let refSearch = React.useRef<HTMLInputElement>(null);
+		const refSearch = React.useRef<HTMLInputElement | null>(null);
 
 		const itemsListSearch: HTMLLIElement[] = [];
 		let markFirstElement: (() => void) | null = null;
@@ -180,7 +180,7 @@ const Dropdown = React.forwardRef(
 		const setSearchRef = (
 			searchElement: React.RefObject<HTMLInputElement>
 		) => {
-			refSearch = searchElement;
+			refSearch.current = searchElement.current;
 		};
 
 		const addItemListRef = (

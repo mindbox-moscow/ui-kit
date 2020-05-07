@@ -36,7 +36,8 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			onSelectionClear
+			onSelectionClear,
+			ignoreNeutralZoneClass
 		} = props;
 
 		const [isInBottomOfScreen, setIsInBottomOfScreen] = React.useState(
@@ -296,6 +297,7 @@ const Dropdown = React.forwardRef(
 									"kit-selectR-above": isInBottomOfScreen
 								})}
 								onCLose={hide}
+								ignoreNeutralZoneClass={ignoreNeutralZoneClass}
 							>
 								{children}
 							</Panel>

@@ -31,6 +31,7 @@ export interface SelectPropsBase<TValue, TSelection> {
 	selectElementCaption: ({}) => string;
 	loadListCaption?: string;
 	isFixedDropdown?: boolean;
+	ignoreNeutralZoneClass?: boolean;
 }
 
 // tslint:disable-next-line: interface-name

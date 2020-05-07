@@ -14,4 +14,14 @@ interface IContext {
 	setSearchTerm: (term: string) => void;
 }
 
-export const DropdownContext = React.createContext<IContext | null>(null);
+const context: IContext = {
+	contextOnKeyDownSearch: () => {},
+	contextOnKeyDownItems: () => {},
+	setSearchRef: () => {},
+	addItemsRef: () => {},
+	onFocusElement: () => {},
+	onCloseDropdown: () => {},
+	setSearchTerm: () => {}
+};
+
+export const DropdownContext = React.createContext<IContext>(context);

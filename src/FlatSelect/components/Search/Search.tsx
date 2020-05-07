@@ -21,34 +21,26 @@ const Search = (props: IProps) => {
 
 	const handleChange = (changedValue: string | number) => {
 		onChange(changedValue);
-		if (context && context.contextOnKeyDownSearch) {
-			context.contextOnKeyDownSearch();
-			context.setSearchTerm(changedValue as string);
-		}
+		context.contextOnKeyDownSearch();
+		context.setSearchTerm(changedValue as string);
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
-		if (context && context.contextOnKeyDownSearch) {
-			switch (e.keyCode) {
-				case KeysCodes.ArrowDown:
-				case KeysCodes.ArrowUp:
-				case KeysCodes.Esc:
-				case KeysCodes.Enter:
-					context.contextOnKeyDownSearch(e);
-			}
+		switch (e.keyCode) {
+			case KeysCodes.ArrowDown:
+			case KeysCodes.ArrowUp:
+			case KeysCodes.Esc:
+			case KeysCodes.Enter:
+				context.contextOnKeyDownSearch(e);
 		}
 	};
 
-	if (context) {
-		React.useEffect(
-			() => {
-				if (context.setSearchRef) {
-					context.setSearchRef(refTextbox);
-				}
-			},
-			[context.setSearchRef]
-		);
-	}
+	React.useEffect(
+		() => {
+			context.setSearchRef(refTextbox);
+		},
+		[context.setSearchRef]
+	);
 
 	return (
 		<Textbox

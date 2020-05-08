@@ -3,10 +3,10 @@ import { DropdownContext, Search } from "../";
 import { neutralZoneClass } from "../../../HOOKs";
 import { SelectionMode, SelectSearchListProps } from "./types";
 
-type Ref = HTMLDivElement;
+type RefSelectSearchList = HTMLDivElement;
 
 const SelectSearchList: React.RefForwardingComponent<
-	Ref,
+	RefSelectSearchList,
 	SelectSearchListProps
 > = (
 	{
@@ -27,10 +27,10 @@ const SelectSearchList: React.RefForwardingComponent<
 	const [minimized, setMinimized] = React.useState<boolean>(false);
 	const context = React.useContext(DropdownContext);
 
-	let clearFilter: JSX.Element = React.createElement("div");
-	let headerAddition: JSX.Element = React.createElement("div");
-	let selectedComponents: JSX.Element = React.createElement("div");
-	let applyButton: JSX.Element = React.createElement("div");
+	let clearFilter: JSX.Element = <div />;
+	let headerAddition: JSX.Element = <div />;
+	let selectedComponents: JSX.Element = <div />;
+	let applyButton: JSX.Element = <div />;
 
 	const onToggleChoices = () => {
 		setMinimized(prevMinimized => !prevMinimized);
@@ -73,9 +73,9 @@ const SelectSearchList: React.RefForwardingComponent<
 			}
 			const minimizeButtonClasses =
 				"kit-selectR-horizontal-extension-image " +
-				(minimized
-					? "kit-selectR-horizontal-extension-image-open"
-					: "kit-selectR-horizontal-extension-image-close");
+				`kit-selectR-horizontal-extension-image-${
+					minimized ? "open" : "close"
+				}`;
 			selectedComponents = (
 				<div className="kit-selectR-drop-module kit-selectR-drop-module-items">
 					<ul className={choisesClasses}>{selectedChildren}</ul>

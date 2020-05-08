@@ -1,13 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
 
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
+	makeItemsComponents,
 	SelectedItem,
 	SelectionMode,
-	SelectPropsBase,
-	SelectSearchRow
+	SelectPropsBase
 } from "../FlatSelect";
+import { mergeDuplicates } from "../utils/helpers";
 
 interface IProps<TEntity, TSelection>
 	extends SelectPropsBase<TEntity, TSelection> {
@@ -45,18 +45,14 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 	selectElementCaption,
 	captionSearchLoader,
 	captionNothingFound,
+	placeholder,
 	...props
 }: IProps<TEntity, TEntity[]> & { children?: React.ReactNode }) => {
-	const [, setShouldSearchTextBeSelected] = useState(false);
-
 	const getItemsInfo = (): string => {
 		const selectedItemsCount = selectedValue.length;
-		const placeholder =
-			props.placeholder === null ? selectCaption : props.placeholder;
-		const overrideHeaderInfo =
-			props.overrideHeaderInfo === null
-				? false
-				: props.overrideHeaderInfo;
+		const overrideHeaderInfo = props.overrideHeaderInfo
+			? false
+			: props.overrideHeaderInfo;
 
 		return selectedItemsCount === 0 || overrideHeaderInfo
 			? placeholder
@@ -64,11 +60,11 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 	};
 
 	const makeSelectedItemsComponents = () => {
-		return selectedValue.map(itemFormatter).map((item, index) => {
+		return selectedValue.map(itemFormatter).map(item => {
 			return (
 				<SelectedItem
-					key={index}
-					itemName={item.text == null ? "" : item.text}
+					key={item.key}
+					itemName={item.text}
 					itemSystemName={item.key.toString()}
 					onClearClick={onItemRemoved(item.value)}
 					onTextClick={onTextClick(item.text)}
@@ -78,12 +74,10 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 	};
 
 	const onSearchChange = (newSearchTerm: string) => {
-		setShouldSearchTextBeSelected(false);
 		onSearchChange(newSearchTerm);
 	};
 
 	const onTextClick = (itemText: string) => () => {
-		setShouldSearchTextBeSelected(true);
 		onSearchChange(itemText);
 	};
 
@@ -93,59 +87,10 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 		onSelectionChange(newSelectedItems);
 	};
 
-	const mergeDuplicates = (...arr: any) => {
-		return [...new Set([].concat(...arr))];
-	};
-
 	const onItemSelect = (item: TEntity) => () => {
 		const newSelectedItems = mergeDuplicates(selectedValue, item);
 
 		onSelectionChange(newSelectedItems);
-	};
-
-	const makeItemsComponents = () => {
-		const result = items.map(itemFormatter).map(item => {
-			const isSelected = selectedValue.some(
-				selectedItem => selectedItem === item.value
-			);
-
-			return (
-				<SelectSearchRow
-					key={item.key}
-					text={item.text}
-					onClickHandler={
-						isSelected ? undefined : onItemSelect(item.value)
-					}
-					isSelected={isSelected}
-					isForMultiSelect={true}
-					disabled={isSelected || (isLoading && !hasMoreData)}
-				/>
-			);
-		});
-
-		if (isLoading) {
-			result.push(
-				<SelectSearchRow
-					key="_loading"
-					text={captionSearchLoader}
-					unselectable={true}
-					isLoader={true}
-					disabled={false}
-				/>
-			);
-		} else if (items.length === 0 && !hasMoreData) {
-			result.push(
-				<SelectSearchRow
-					key="_nothingFound"
-					text={captionNothingFound}
-					unselectable={true}
-					isLoader={false}
-					disabled={true}
-				/>
-			);
-		}
-
-		return result;
 	};
 
 	return (
@@ -163,7 +108,16 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 			resetFilterCaption={resetFilterCaption}
 			closeCaption={closeCaption}
 		>
-			{makeItemsComponents()}
+			{makeItemsComponents(
+				items,
+				itemFormatter,
+				selectedValue,
+				captionSearchLoader,
+				captionNothingFound,
+				isLoading,
+				hasMoreData,
+				onItemSelect
+			)}
 		</AsyncSearchSelectBase>
 	);
 };

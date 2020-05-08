@@ -43,27 +43,22 @@ const AsyncSearchSelectBase: React.FC<IProps> = props => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	useEffect(
-		() => {
-			onLoadNextPortion();
-		},
-		[isOpen]
-	);
-
-	const handleClick = () => {
+	const toggleOpen = () => {
 		setIsOpen(prev => !prev);
 	};
 	const getScrollParent = () => {
 		return selectSearchListRef.current;
 	};
 
+	useEffect(onLoadNextPortion, [isOpen]);
+
 	return (
 		<Dropdown
 			isOpen={isOpen}
-			onClick={handleClick}
+			onClick={toggleOpen}
 			headerInfo={headerInfo}
 			className="form-control_all"
-			height={height !== null ? Height.Normal : undefined}
+			height={height ? Height.Normal : undefined}
 			disabled={disabled}
 		>
 			<SelectSearchList

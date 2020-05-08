@@ -32,12 +32,6 @@ const SelectedItem: FC<IProps> = props => {
 		}
 	};
 
-	let nameToBeShown = itemName;
-
-	if (nameToBeShown.length > 50) {
-		nameToBeShown = nameToBeShown.substr(0, 47) + "...";
-	}
-
 	return (
 		<li className={cn("kit-selectR-choices-result", className)}>
 			{children}
@@ -45,7 +39,7 @@ const SelectedItem: FC<IProps> = props => {
 				className={cn("kit-selectR-choices-label", textClassName)}
 				onClick={handleTextClick}
 			>
-				{nameToBeShown}
+				{itemName}
 			</span>
 			<span className="kit-selectR-clear" onClick={handleClearClick} />
 		</li>

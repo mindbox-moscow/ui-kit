@@ -1,7 +1,11 @@
 import * as React from "react";
 
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
-import { SelectionMode, SelectPropsBase, SelectSearchRow } from "../FlatSelect";
+import {
+	SelectionMode,
+	SelectPropsBase,
+	makeItemsComponents
+} from "../FlatSelect";
 
 interface IProps<TEntity, TSelection>
 	extends SelectPropsBase<TEntity, TSelection> {
@@ -45,51 +49,6 @@ const AsyncSearchSelect = <TEntity extends object>({
 		onSelectionChange(item);
 	};
 
-	const makeItemsComponents = () => {
-		const result = items.map(itemFormatter).map(item => {
-			const isSelected = item.value === selectedValue;
-
-			return (
-				<SelectSearchRow
-					key={item.key}
-					text={item.text}
-					onClickHandler={
-						isSelected
-							? undefined
-							: () => onItemSelected(item.value)
-					}
-					isSelected={isSelected}
-					isForMultiSelect={false}
-					disabled={isSelected || (isLoading && !hasMoreData)}
-				/>
-			);
-		});
-
-		if (isLoading) {
-			result.push(
-				<SelectSearchRow
-					key="_loading"
-					text={captionSearchLoader}
-					unselectable={true}
-					isLoader={true}
-					disabled={false}
-				/>
-			);
-		} else if (items.length === 0 && !hasMoreData) {
-			result.push(
-				<SelectSearchRow
-					key="_nothingFound"
-					text={captionNothingFound}
-					unselectable={true}
-					isLoader={false}
-					disabled={true}
-				/>
-			);
-		}
-
-		return result;
-	};
-
 	return (
 		<AsyncSearchSelectBase
 			searchText={searchText}
@@ -104,7 +63,16 @@ const AsyncSearchSelect = <TEntity extends object>({
 			resetFilterCaption={resetFilterCaption}
 			closeCaption={closeCaption}
 		>
-			{makeItemsComponents()}
+			{makeItemsComponents(
+				items,
+				itemFormatter,
+				selectedValue,
+				captionSearchLoader,
+				captionNothingFound,
+				isLoading,
+				hasMoreData,
+				onItemSelected
+			)}
 		</AsyncSearchSelectBase>
 	);
 };

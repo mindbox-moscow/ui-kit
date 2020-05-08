@@ -19,10 +19,10 @@ const Search = (props: IProps) => {
 	const context = React.useContext(DropdownContext);
 	const refTextbox = React.useRef<HTMLInputElement>(null);
 
-	const handleChange = (changedValue: string | number) => {
+	const handleChange = (changedValue: string) => {
 		onChange(changedValue);
 		context.contextOnKeyDownSearch();
-		context.setSearchTerm(changedValue as string);
+		context.setSearchTerm(changedValue);
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {

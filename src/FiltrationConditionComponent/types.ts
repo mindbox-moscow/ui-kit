@@ -21,6 +21,7 @@ export interface IStateProps {
 	moreActions?: IActionProps[];
 	withAlert?: boolean;
 	isLinkedCondition?: boolean;
+	classNameContent?: string;
 }
 
 export interface ICallbackProps {

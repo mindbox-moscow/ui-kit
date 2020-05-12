@@ -3,16 +3,31 @@ import * as React from "react";
 import { SelectSearchRow } from "../components/SelectSearchRow";
 import { SelectItem } from "../types";
 
-export const makeItemsComponents = <TEntity extends object>(
-	items: TEntity[],
-	itemFormatter: (value: TEntity) => SelectItem<TEntity>,
-	selectedValue: TEntity | TEntity[],
-	captionSearchLoader: string,
-	captionNothingFound: string,
-	isLoading: boolean,
-	hasMoreData: boolean,
-	onItemSelected: (item: TEntity) => void
+interface IProps<TEntity> {
+	items: TEntity[];
+	itemFormatter: (value: TEntity) => SelectItem<TEntity>;
+	selectedValue: TEntity | TEntity[];
+	captionSearchLoader: string;
+	captionNothingFound: string;
+	isLoading: boolean;
+	hasMoreData: boolean;
+	onItemSelected: (item: TEntity) => void;
+}
+
+const makeItemsComponents = <TEntity extends object>(
+	props: IProps<TEntity>
 ): JSX.Element[] => {
+	const {
+		items,
+		itemFormatter,
+		captionSearchLoader,
+		captionNothingFound,
+		isLoading,
+		hasMoreData,
+		onItemSelected,
+		selectedValue
+	} = props;
+
 	const onSelectItem = () => (
 		isSelected: boolean,
 		item: SelectItem<TEntity>
@@ -66,3 +81,5 @@ export const makeItemsComponents = <TEntity extends object>(
 
 	return itemsComponents;
 };
+
+export { makeItemsComponents, IProps as ItemsComponentsProps };

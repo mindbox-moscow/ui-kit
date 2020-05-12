@@ -3,6 +3,7 @@ import * as React from "react";
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
 	AsyncSelectProps,
+	ItemsComponentsProps,
 	makeItemsComponents,
 	SelectionMode
 } from "../FlatSelect";
@@ -31,6 +32,17 @@ const AsyncSearchSelect = <TEntity extends object>({
 		onSelectionChange(item);
 	};
 
+	const itemComponentProps: ItemsComponentsProps<TEntity> = {
+		items,
+		itemFormatter,
+		selectedValue,
+		captionSearchLoader,
+		captionNothingFound,
+		isLoading,
+		hasMoreData,
+		onItemSelected
+	};
+
 	return (
 		<AsyncSearchSelectBase
 			searchText={searchText}
@@ -45,16 +57,7 @@ const AsyncSearchSelect = <TEntity extends object>({
 			resetFilterCaption={resetFilterCaption}
 			closeCaption={closeCaption}
 		>
-			{makeItemsComponents(
-				items,
-				itemFormatter,
-				selectedValue,
-				captionSearchLoader,
-				captionNothingFound,
-				isLoading,
-				hasMoreData,
-				onItemSelected
-			)}
+			{makeItemsComponents(itemComponentProps)}
 		</AsyncSearchSelectBase>
 	);
 };

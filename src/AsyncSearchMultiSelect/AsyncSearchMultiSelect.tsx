@@ -3,6 +3,7 @@ import * as React from "react";
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
 	AsyncSelectProps,
+	ItemsComponentsProps,
 	makeItemsComponents,
 	SelectedItem,
 	SelectionMode
@@ -75,6 +76,17 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 		onSelectionChange(newSelectedItems);
 	};
 
+	const itemComponentProps: ItemsComponentsProps<TEntity> = {
+		items,
+		itemFormatter,
+		selectedValue,
+		captionSearchLoader,
+		captionNothingFound,
+		isLoading,
+		hasMoreData,
+		onItemSelected: onItemSelect
+	};
+
 	return (
 		<AsyncSearchSelectBase
 			disabled={disabled}
@@ -90,16 +102,7 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 			resetFilterCaption={resetFilterCaption}
 			closeCaption={closeCaption}
 		>
-			{makeItemsComponents(
-				items,
-				itemFormatter,
-				selectedValue,
-				captionSearchLoader,
-				captionNothingFound,
-				isLoading,
-				hasMoreData,
-				onItemSelect
-			)}
+			{makeItemsComponents(itemComponentProps)}
 		</AsyncSearchSelectBase>
 	);
 };

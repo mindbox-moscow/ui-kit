@@ -47,7 +47,7 @@ export interface AsyncSelectProps<TEntity, TSelection>
 	hasMoreData: boolean;
 	disabled?: boolean;
 	overrideHeaderInfo?: boolean;
-	placeholder: string;
+	placeholder?: string;
 	onSearchChange: (newSearchTerm: string) => void;
 	onClearFilter: () => void;
 	onLoadNextPortion: () => void;

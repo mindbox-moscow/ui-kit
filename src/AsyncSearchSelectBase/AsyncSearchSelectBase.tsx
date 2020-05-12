@@ -50,7 +50,12 @@ const AsyncSearchSelectBase: React.FC<IProps> = props => {
 		return selectSearchListRef.current;
 	};
 
-	useEffect(onLoadNextPortion, [isOpen]);
+	useEffect(
+		() => {
+			onLoadNextPortion();
+		},
+		[isOpen]
+	);
 
 	return (
 		<Dropdown

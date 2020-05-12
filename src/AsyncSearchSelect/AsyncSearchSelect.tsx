@@ -42,7 +42,6 @@ const AsyncSearchSelect = <TEntity extends object>({
 		hasMoreData,
 		onItemSelected
 	};
-
 	return (
 		<AsyncSearchSelectBase
 			searchText={searchText}

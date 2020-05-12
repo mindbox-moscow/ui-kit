@@ -13,7 +13,6 @@ interface IProps<TEntity> {
 	hasMoreData: boolean;
 	onItemSelected: (item: TEntity) => void;
 }
-
 const makeItemsComponents = <TEntity extends object>(
 	props: IProps<TEntity>
 ): JSX.Element[] => {
@@ -37,7 +36,7 @@ const makeItemsComponents = <TEntity extends object>(
 		}
 	};
 
-	const itemsComponents = items.map(itemFormatter).map(item => {
+	const itemsComponents = items.map(itemFormatter).map((item, index) => {
 		let isSelected: boolean;
 
 		if (Array.isArray(selectedValue)) {
@@ -50,7 +49,7 @@ const makeItemsComponents = <TEntity extends object>(
 
 		return (
 			<SelectSearchRow
-				key={item.key}
+				key={index}
 				text={item.text}
 				onClickHandler={onSelectItem}
 				isSelected={isSelected}

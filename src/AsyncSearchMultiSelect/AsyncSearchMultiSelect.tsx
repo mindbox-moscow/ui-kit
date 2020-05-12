@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useCallback } from "react";
 
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
@@ -13,6 +14,7 @@ import { mergeDuplicates } from "../utils/helpers";
 interface IProps<TEntity, TSelection>
 	extends AsyncSelectProps<TEntity, TSelection> {
 	selectCaption: string;
+	placeholder: string;
 }
 
 const AsyncSearchMultiSelect = <TEntity extends object>({
@@ -39,8 +41,10 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 
 		return selectedItemsCount === 0 || overrideHeaderInfo
 			? placeholder
-			: selectElementCaption({ selectedItemsCount });
+			: selectElementCaption(selectedItemsCount);
 	};
+
+	const headerInfo = getItemsInfo();
 
 	const makeSelectedItemsComponents = () => {
 		return selectedValue.map(itemFormatter).map(item => {
@@ -56,9 +60,9 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 		});
 	};
 
-	const onSearchChange = (newSearchTerm: string) => {
+	const onSearchChange = useCallback((newSearchTerm: string) => {
 		onSearchChange(newSearchTerm);
-	};
+	}, []);
 
 	const onTextClick = (itemText: string) => () => {
 		onSearchChange(itemText);
@@ -86,12 +90,11 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 		hasMoreData,
 		onItemSelected: onItemSelect
 	};
-
 	return (
 		<AsyncSearchSelectBase
 			disabled={disabled}
 			searchText={searchText}
-			headerInfo={getItemsInfo()}
+			headerInfo={headerInfo}
 			showClearFilter={true}
 			canLoadMoreDataRightNow={!isLoading && hasMoreData}
 			onClearFilter={onClearFilter}

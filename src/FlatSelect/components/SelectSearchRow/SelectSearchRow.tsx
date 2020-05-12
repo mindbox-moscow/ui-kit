@@ -5,7 +5,7 @@ import { KeysCodes } from "../../../utils/constants";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
 
-export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
+const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
 	unselectable,
 	disabled = false,
@@ -155,3 +155,5 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		</div>
 	);
 };
+
+export { SelectSearchRow };

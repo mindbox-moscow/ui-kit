@@ -9,8 +9,8 @@ import {
 
 const AsyncSearchSelect = <TEntity extends object>({
 	searchText,
-	isLoading,
-	hasMoreData,
+	isLoading = false,
+	hasMoreData = false,
 	items,
 	selectedValue,
 	itemFormatter,

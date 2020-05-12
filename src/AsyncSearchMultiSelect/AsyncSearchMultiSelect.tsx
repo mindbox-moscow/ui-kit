@@ -17,28 +17,24 @@ interface IProps<TEntity, TSelection>
 const AsyncSearchMultiSelect = <TEntity extends object>({
 	selectedValue,
 	itemFormatter,
-	disabled,
+	disabled = false,
 	searchText,
-	isLoading,
-	hasMoreData,
+	isLoading = false,
+	hasMoreData = false,
 	onClearFilter,
 	onLoadNextPortion,
 	onSelectionChange,
 	items,
 	resetFilterCaption,
 	closeCaption,
-	selectCaption,
 	selectElementCaption,
 	captionSearchLoader,
 	captionNothingFound,
-	placeholder,
-	...props
+	overrideHeaderInfo = false,
+	placeholder
 }: IProps<TEntity, TEntity[]> & { children?: React.ReactNode }) => {
 	const getItemsInfo = (): string => {
 		const selectedItemsCount = selectedValue.length;
-		const overrideHeaderInfo = props.overrideHeaderInfo
-			? false
-			: props.overrideHeaderInfo;
 
 		return selectedItemsCount === 0 || overrideHeaderInfo
 			? placeholder

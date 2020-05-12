@@ -39,7 +39,6 @@ export const makeItemsComponents = <TEntity extends object>(
 				text={item.text}
 				onClickHandler={onSelectItem}
 				isSelected={isSelected}
-				isForMultiSelect={false}
 				disabled={isSelected || (isLoading && !hasMoreData)}
 			/>
 		);
@@ -52,7 +51,6 @@ export const makeItemsComponents = <TEntity extends object>(
 				text={captionSearchLoader}
 				unselectable={true}
 				isLoader={true}
-				disabled={false}
 			/>
 		);
 	} else if (items.length === 0 && !hasMoreData) {
@@ -61,7 +59,6 @@ export const makeItemsComponents = <TEntity extends object>(
 				key="_nothingFound"
 				text={captionNothingFound}
 				unselectable={true}
-				isLoader={false}
 				disabled={true}
 			/>
 		);

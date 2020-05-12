@@ -23,9 +23,10 @@ export const Tooltip: React.FC<IProps> = ({
 }) => {
 	const [isShow, setIsShow] = React.useState(false);
 	const [
-		viewPortPosition,
-		setViewPortPosition
+		viewportOverflowCorrection,
+		setViewportOverflowCorrection
 	] = React.useState<Position | null>(null);
+
 	const refTitle = React.useRef<HTMLDivElement>(null);
 	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
 	const refContent = React.useRef<HTMLDivElement>(null);
@@ -40,37 +41,39 @@ export const Tooltip: React.FC<IProps> = ({
 
 	React.useEffect(
 		() => {
-			const refContentCurrent = refContent.current;
-			const viewPortWidth = document.documentElement.clientWidth;
-			const viewPortHeight = window.innerHeight;
+			const contentContainer = refContent.current;
+			const viewportWidth = document.documentElement.clientWidth;
+			const viewportHeight = window.innerHeight;
 
-			if (viewPortHeight) {
-				setViewPortPosition(null);
+			if (viewportHeight) {
+				setViewportOverflowCorrection(null);
 			}
 
-			if (refContentCurrent) {
+			if (contentContainer) {
 				const {
 					left,
 					width,
 					top,
 					height
-				} = refContentCurrent.getBoundingClientRect();
+				} = contentContainer.getBoundingClientRect();
 				const offsetLeft = width + left;
-				const offsetTopCenter = top - viewPortHeight / 2;
+				const offsetTopCenter = top - viewportHeight / 2;
 				let transformX = 0;
 
-				if (left < 0) {
-					transformX = left;
-				} else if (viewPortWidth < offsetLeft) {
-					transformX = viewPortWidth - offsetLeft;
-				} else if (top < 0) {
-					setViewPortPosition("bottom");
-				} else if (offsetTopCenter + height > viewPortHeight / 2) {
-					setViewPortPosition("top");
-				}
+				if (isShow) {
+					if (left < 0) {
+						transformX = Math.abs(left);
+					} else if (viewportWidth < offsetLeft) {
+						transformX = viewportWidth - offsetLeft;
+					} else if (top < 0) {
+						setViewportOverflowCorrection("bottom");
+					} else if (offsetTopCenter + height > viewportHeight / 2) {
+						setViewportOverflowCorrection("top");
+					}
 
-				if (transformX !== 0) {
-					refContentCurrent.style.transform = `translate(${transformX}px ,0)`;
+					if (transformX !== 0) {
+						contentContainer.style.transform = `translate(${transformX}px ,0)`;
+					}
 				}
 			}
 		},
@@ -90,9 +93,8 @@ export const Tooltip: React.FC<IProps> = ({
 			<div
 				className={cn(
 					"kit-tooltip__arrow",
-					`kit-tooltip__arrow_${
-						viewPortPosition ? viewPortPosition : position
-					}`
+					`kit-tooltip__arrow_${viewportOverflowCorrection ||
+						position}`
 				)}
 			/>
 			<div
@@ -101,9 +103,8 @@ export const Tooltip: React.FC<IProps> = ({
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				className={cn(
 					"kit-tooltip__content",
-					`kit-tooltip__content_${
-						viewPortPosition ? viewPortPosition : position
-					}`
+					`kit-tooltip__content_${viewportOverflowCorrection ||
+						position}`
 				)}
 			>
 				{showByClick && (

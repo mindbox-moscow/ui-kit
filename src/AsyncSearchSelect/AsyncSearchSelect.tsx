@@ -2,28 +2,10 @@ import * as React from "react";
 
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
-	SelectionMode,
-	SelectPropsBase,
-	makeItemsComponents
+	AsyncSelectProps,
+	makeItemsComponents,
+	SelectionMode
 } from "../FlatSelect";
-
-interface IProps<TEntity, TSelection>
-	extends SelectPropsBase<TEntity, TSelection> {
-	searchText: string;
-	isLoading: boolean;
-	hasMoreData: boolean;
-	disabled?: boolean;
-	overrideHeaderInfo?: boolean;
-	placeholder?: string;
-	onSearchChange: (newSearchTerm: string) => void;
-	onClearFilter: () => void;
-	onLoadNextPortion: () => void;
-	onSelectionChange: (newSelectedValues: TSelection) => void;
-	resetFilterCaption?: string;
-	closeCaption?: string;
-	captionSearchLoader: string;
-	captionNothingFound: string;
-}
 
 const AsyncSearchSelect = <TEntity extends object>({
 	searchText,
@@ -41,7 +23,7 @@ const AsyncSearchSelect = <TEntity extends object>({
 	closeCaption,
 	captionSearchLoader,
 	captionNothingFound
-}: IProps<TEntity, TEntity> & { children?: React.ReactNode }) => {
+}: AsyncSelectProps<TEntity, TEntity> & { children?: React.ReactNode }) => {
 	const selectedItemText =
 		selectedValue != null ? itemFormatter(selectedValue).text : "";
 
@@ -77,4 +59,4 @@ const AsyncSearchSelect = <TEntity extends object>({
 	);
 };
 
-export { AsyncSearchSelect, IProps as AsyncSearchSelectProps };
+export { AsyncSearchSelect };

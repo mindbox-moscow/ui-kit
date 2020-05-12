@@ -38,3 +38,22 @@ export interface SelectProps<TValue>
 	extends SelectPropsBase<TValue, TValue | TValue[]> {
 	onChange: (newSelectedValue: TValue | null) => void;
 }
+
+// tslint:disable-next-line: interface-name
+export interface AsyncSelectProps<TEntity, TSelection>
+	extends SelectPropsBase<TEntity, TSelection> {
+	searchText: string;
+	isLoading: boolean;
+	hasMoreData: boolean;
+	disabled?: boolean;
+	overrideHeaderInfo?: boolean;
+	placeholder: string;
+	onSearchChange: (newSearchTerm: string) => void;
+	onClearFilter: () => void;
+	onLoadNextPortion: () => void;
+	onSelectionChange: (newSelectedValues: TSelection) => void;
+	resetFilterCaption?: string;
+	closeCaption?: string;
+	captionSearchLoader: string;
+	captionNothingFound: string;
+}

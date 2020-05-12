@@ -41,26 +41,26 @@ export const Tooltip: React.FC<IProps> = ({
 
 	React.useEffect(
 		() => {
-			const contentContainer = refContent.current;
-			const viewportWidth = document.documentElement.clientWidth;
-			const viewportHeight = window.innerHeight;
+			if (isShow) {
+				const contentContainer = refContent.current;
+				const viewportWidth = document.documentElement.clientWidth;
+				const viewportHeight = window.innerHeight;
 
-			if (viewportHeight) {
-				setViewportOverflowCorrection(null);
-			}
+				if (viewportHeight) {
+					setViewportOverflowCorrection(null);
+				}
 
-			if (contentContainer) {
-				const {
-					left,
-					width,
-					top,
-					height
-				} = contentContainer.getBoundingClientRect();
-				const offsetLeft = width + left;
-				const offsetTopCenter = top - viewportHeight / 2;
-				let transformX = 0;
+				if (contentContainer) {
+					const {
+						left,
+						width,
+						top,
+						height
+					} = contentContainer.getBoundingClientRect();
+					const offsetLeft = width + left;
+					const offsetTopCenter = top - viewportHeight / 2;
+					let transformX = 0;
 
-				if (isShow) {
 					if (left < 0) {
 						transformX = Math.abs(left);
 					} else if (viewportWidth < offsetLeft) {

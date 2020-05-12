@@ -262,9 +262,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 					</div>
 					<div
 						ref={wrapperListRef}
-						className={
-							"kit-filter-condition-selector__hierarchy-wrap"
-						}
+						className="kit-filter-condition-selector__hierarchy-wrap"
 					>
 						<FilterConditionSelectorContext.Provider
 							value={valueContext}

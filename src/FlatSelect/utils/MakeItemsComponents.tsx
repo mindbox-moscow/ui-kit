@@ -12,6 +12,7 @@ interface IProps<TEntity> {
 	isLoading: boolean;
 	hasMoreData: boolean;
 	onItemSelected: (item: TEntity) => void;
+	isForMultiSelect?: boolean;
 }
 const makeItemsComponents = <TEntity extends object>(
 	props: IProps<TEntity>
@@ -24,20 +25,21 @@ const makeItemsComponents = <TEntity extends object>(
 		isLoading,
 		hasMoreData,
 		onItemSelected,
-		selectedValue
+		selectedValue,
+		isForMultiSelect = false
 	} = props;
 
-	const onSelectItem = () => (
+	const onSelectItem = (
 		isSelected: boolean,
 		item: SelectItem<TEntity>
-	) => {
-		if (isSelected) {
+	) => () => {
+		if (!isSelected) {
 			onItemSelected(item.value);
 		}
 	};
 
 	const itemsComponents = items.map(itemFormatter).map((item, index) => {
-		let isSelected: boolean;
+		let isSelected = false;
 
 		if (Array.isArray(selectedValue)) {
 			isSelected = selectedValue.some(
@@ -51,9 +53,10 @@ const makeItemsComponents = <TEntity extends object>(
 			<SelectSearchRow
 				key={index}
 				text={item.text}
-				onClickHandler={onSelectItem}
+				onClickHandler={onSelectItem(isSelected, item)}
 				isSelected={isSelected}
 				disabled={isSelected || (isLoading && !hasMoreData)}
+				isForMultiSelect={isForMultiSelect}
 			/>
 		);
 	});

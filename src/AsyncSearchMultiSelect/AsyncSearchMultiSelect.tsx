@@ -69,12 +69,12 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 	};
 
 	const onItemRemoved = (item: TEntity) => () => {
-		const newSelectedItems = selectedValue.filter(value => value === item);
+		const newSelectedItems = selectedValue.filter(value => value !== item);
 
 		onSelectionChange(newSelectedItems);
 	};
 
-	const onItemSelect = (item: TEntity) => () => {
+	const onItemSelected = (item: TEntity) => {
 		const newSelectedItems = mergeDuplicates(selectedValue, item);
 
 		onSelectionChange(newSelectedItems);
@@ -88,7 +88,8 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 		captionNothingFound,
 		isLoading,
 		hasMoreData,
-		onItemSelected: onItemSelect
+		onItemSelected,
+		isForMultiSelect: true
 	};
 	return (
 		<AsyncSearchSelectBase

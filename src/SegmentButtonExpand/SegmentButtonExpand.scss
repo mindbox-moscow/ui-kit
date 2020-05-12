@@ -29,10 +29,6 @@ $borderPopoverColor: #dddddc;
 	&_open {
 		border-color: transparent;
 
-		svg {
-			transform: rotate(180deg);
-		}
-
 		&::after,
 		&::before {
 			content: "";
@@ -49,7 +45,7 @@ $borderPopoverColor: #dddddc;
 		}
 
 		&::before {
-			top: -3px;
+			top: -4px;
 			left: -2px;
 			z-index: 1;
 			display: block;
@@ -60,14 +56,18 @@ $borderPopoverColor: #dddddc;
 			border-color: $borderPopoverColor;
 			border-radius: 10px 10px 0 0;
 		}
-
-		svg {
-			z-index: 1;
-		}
 	}
 
 	&_hide {
 		display: none;
+	}
+}
+
+.kit-segment-button-expand__icon {
+	z-index: 1;
+
+	.kit-segment-button-expand_open & {
+		transform: rotate(180deg);
 	}
 }
 
@@ -91,8 +91,8 @@ $borderPopoverColor: #dddddc;
 	line-height: 1;
 	color: $textFilterColor;
 	cursor: pointer;
+}
 
-	svg {
-		margin-right: 6px;
-	}
+.kit-segment-button-expand__button-filter-icon {
+	margin-right: 6px;
 }

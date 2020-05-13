@@ -39,7 +39,10 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 					type="button"
 					onClick={handleClick(filterActionClick)}
 				>
-					<IconSvg type="filter" />
+					<IconSvg
+						type="filter"
+						className="kit-segment-button-expand__button-filter-icon"
+					/>
 					{filterActionCaption}
 				</button>
 			)
@@ -64,7 +67,10 @@ export const SegmentButtonExpand: React.FC<Props> = ({
 			type="button"
 			onClick={handleClick(onClick, disabled)}
 		>
-			<IconSvg type="segment-expand" />
+			<IconSvg
+				type="segment-expand"
+				className="kit-segment-button-expand__icon"
+			/>
 		</button>
 	);
 };

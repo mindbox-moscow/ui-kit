@@ -111,11 +111,12 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const onExpand = () => toggleExpand(id);
 
 	const onSelectItem = () => {
-		onSelect(id);
-		onExpand();
-		setTimeout(() => {
-			setNextFocus();
-		}, 1);
+		if (!isSelected) {
+			onSelect(id);
+			onExpand();
+
+			requestAnimationFrame(setNextFocus);
+		}
 	};
 
 	const isSimpleFilterableProperty = type === "simpleFilterableProperty";

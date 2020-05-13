@@ -3,8 +3,8 @@ import * as React from "react";
 interface IContext {
 	contextOnKeyDownSearch: (e?: React.KeyboardEvent) => void;
 	contextOnKeyDownItems: (e: React.KeyboardEvent) => void;
-	onSearchRef: (searchElement: React.RefObject<HTMLInputElement>) => void;
-	onItemsRef: (itemElement: React.RefObject<HTMLLIElement>) => void;
+	setSearchRef: (searchElement: React.RefObject<HTMLInputElement>) => void;
+	addItemsRef: (itemElement: React.RefObject<HTMLLIElement>) => void;
 	onFocusElement: (
 		onMouseEnter: () => void,
 		onMouseLeave: () => void,
@@ -14,4 +14,14 @@ interface IContext {
 	setSearchTerm: (term: string) => void;
 }
 
-export const DropdownContext = React.createContext<IContext | null>(null);
+const context: IContext = {
+	contextOnKeyDownSearch: () => {},
+	contextOnKeyDownItems: () => {},
+	setSearchRef: () => {},
+	addItemsRef: () => {},
+	onFocusElement: () => {},
+	onCloseDropdown: () => {},
+	setSearchTerm: () => {}
+};
+
+export const DropdownContext = React.createContext<IContext>(context);

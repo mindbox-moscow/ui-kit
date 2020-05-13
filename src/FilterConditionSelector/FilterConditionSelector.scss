@@ -116,6 +116,12 @@ $searchFocusBgColor: #fffde5;
 		&::before {
 		border-left-color: #ffffff;
 	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions.kit-filter-condition-selector__hierarchy-item_expanded
+		> .kit-filter-condition-selector__hierarchy-button
+		&::before {
+		transform: rotate(90deg);
+	}
 }
 
 .kit-filter-condition-selector__text {

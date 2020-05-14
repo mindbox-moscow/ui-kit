@@ -116,6 +116,12 @@ $searchFocusBgColor: #fffde5;
 		&::before {
 		border-left-color: #ffffff;
 	}
+
+	.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions.kit-filter-condition-selector__hierarchy-item_expanded
+		> .kit-filter-condition-selector__hierarchy-button
+		&::before {
+		transform: rotate(90deg);
+	}
 }
 
 .kit-filter-condition-selector__text {
@@ -134,23 +140,6 @@ $searchFocusBgColor: #fffde5;
 	overscroll-behavior-y: contain;
 	scroll-snap-type: y proximity;
 	scroll-padding: 50% 0;
-
-	&_search {
-		.kit-filter-condition-selector__hierarchy-simple-filter_filterablePropertyWithLinkedConditions
-			> .kit-filter-condition-selector__hierarchy-button
-			.kit-filter-condition-selector__hierarchy-name::before {
-			content: "";
-			position: absolute;
-			left: 1px;
-			display: block;
-			width: 8px;
-			height: 8px;
-			background-color: $toggleCircleColor;
-			border: 0;
-			border-radius: 50%;
-			box-sizing: border-box;
-		}
-	}
 }
 
 .kit-filter-condition-selector__hierarchy {

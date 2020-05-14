@@ -197,8 +197,6 @@
 	border-bottom-left-radius: $itemHoverBorderRadius;
 
 	.kit-filtration-condition__item-text & * {
-		position: relative;
-
 		&::before,
 		&::after {
 			content: " ";
@@ -206,8 +204,11 @@
 	}
 
 	.kit-filtration-condition__item-text > & {
-		[class*="kit-segment"]:not(.kit-segment-content__count) {
+		.kit-segment-button-expand,
+		.kit-segment-button-edit,
+		.kit-segment-content {
 			margin-left: 10px;
+			vertical-align: middle;
 		}
 	}
 
@@ -221,11 +222,9 @@
 	}
 
 	.kit-filtration-condition__item-text & {
-		min-height: 26px;
-
-		> *:not(.kit-filtration-condition__create) {
-			vertical-align: sub;
-		}
+		position: relative;
+		padding-top: 3px;
+		padding-bottom: 3px;
 	}
 
 	.kit-filtration-condition__item-text & > span:empty,

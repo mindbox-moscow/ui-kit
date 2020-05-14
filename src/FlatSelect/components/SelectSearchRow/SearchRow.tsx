@@ -27,7 +27,7 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			document.addEventListener("searchEnter", handelSelectEnter);
 
 			if (context) {
-				context.onItemsRef(refElement);
+				context.addItemsRef(refElement);
 				context.onFocusElement(
 					handleMouseEnter,
 					handleMouseLeave,

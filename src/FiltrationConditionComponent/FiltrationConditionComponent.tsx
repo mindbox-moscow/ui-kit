@@ -28,7 +28,8 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 	moreConditionToggleCaption,
 	isLinkedCondition,
 	onLinkedConditionEditModeToggle,
-	moreActions
+	moreActions,
+	classNameContent
 }) => {
 	const refContent = React.createRef<HTMLDivElement>();
 	const [popoverFilterAction, setPopoverFilterAction] = useState<
@@ -130,7 +131,10 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 				>
 					<div
 						ref={refContent}
-						className="kit-filtration-condition__content"
+						className={cn(
+							"kit-filtration-condition__content",
+							classNameContent
+						)}
 						onClick={onConditionStateToggle}
 					>
 						<b>{filterablePropertyName}</b>

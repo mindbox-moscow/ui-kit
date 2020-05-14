@@ -122,7 +122,6 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 					const selectedElement =
 						valueContext.selectedElement || null;
 
-					if (searchTerm === "") {
 						if (
 							selectedElement &&
 							(selectedElement.type ===
@@ -135,18 +134,6 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 						} else {
 							setNextFocus();
 						}
-					} else {
-						if (
-							selectedElement &&
-							selectedElement.type ===
-								"filterablePropertyCategory" &&
-							!selectedElement.isExpanded
-						) {
-							onExpandCurrent();
-						} else {
-							setNextFocus();
-						}
-					}
 
 					break;
 				case KeysCodes.ArrowDown:

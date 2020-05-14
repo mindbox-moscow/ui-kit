@@ -7,8 +7,6 @@ export interface IProps {
 	width: Width;
 	allowedClickTargetClasses?: string[];
 	parentRef?: React.RefObject<HTMLElement>;
-	onCLose: () => void;
-	ignoreNeutralZoneClass?: boolean;
 }
 
 // tslint:disable-next-line: interface-name

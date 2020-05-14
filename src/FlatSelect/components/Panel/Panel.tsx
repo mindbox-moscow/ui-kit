@@ -3,16 +3,7 @@ import * as React from "react";
 import { Width } from "../../../utils";
 import { IProps } from "./types";
 
-import { useClickOutside } from "../../../HOOKs";
-
-const Panel: React.FC<IProps> = ({
-	className,
-	width,
-	children,
-	parentRef,
-	onCLose,
-	ignoreNeutralZoneClass = true
-}) => {
+const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
 	React.useEffect(() => {
@@ -25,8 +16,6 @@ const Panel: React.FC<IProps> = ({
 			panelRef.current.style.width = `${clientWidth}px`;
 		}
 	}, []);
-
-	useClickOutside(panelRef, onCLose, true, ignoreNeutralZoneClass);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;

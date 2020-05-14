@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { neutralZoneClass } from "../../../HOOKs";
+import { neutralZoneClass, useClickOutside } from "../../../HOOKs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
@@ -36,8 +36,7 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			onSelectionClear,
-			ignoreNeutralZoneClass
+			onSelectionClear
 		} = props;
 
 		const [isInBottomOfScreen, setIsInBottomOfScreen] = React.useState(
@@ -213,7 +212,14 @@ const Dropdown = React.forwardRef(
 			}
 		};
 
-		React.useEffect(positionDropDown, []);
+		React.useEffect(
+			() => {
+				if (show) {
+					positionDropDown();
+				}
+			},
+			[show]
+		);
 
 		React.useEffect(
 			() => {
@@ -255,6 +261,8 @@ const Dropdown = React.forwardRef(
 			setSearchTerm
 		};
 
+		useClickOutside(refPanel, hide, show, true);
+
 		return (
 			<div className="kit-flat-select">
 				<div
@@ -286,26 +294,23 @@ const Dropdown = React.forwardRef(
 					</span>
 				</div>
 
-				{show && (
-					<OverflowVisibleContainer
-						ref={refPanel}
-						parentRef={dropdownRef}
-					>
-						<DropdownContext.Provider value={contextValues}>
-							<Panel
-								parentRef={dropdownRef}
-								width={width || Width.Full}
-								className={cn(panelClass, neutralZoneClass, {
-									"kit-selectR-above": isInBottomOfScreen
-								})}
-								onCLose={hide}
-								ignoreNeutralZoneClass={ignoreNeutralZoneClass}
-							>
-								{children}
-							</Panel>
-						</DropdownContext.Provider>
-					</OverflowVisibleContainer>
-				)}
+				<OverflowVisibleContainer
+					ref={refPanel}
+					parentRef={dropdownRef}
+					isShow={show}
+				>
+					<DropdownContext.Provider value={contextValues}>
+						<Panel
+							parentRef={dropdownRef}
+							width={width || Width.Full}
+							className={cn(panelClass, neutralZoneClass, {
+								"kit-selectR-above": isInBottomOfScreen
+							})}
+						>
+							{show && children}
+						</Panel>
+					</DropdownContext.Provider>
+				</OverflowVisibleContainer>
 			</div>
 		);
 	}

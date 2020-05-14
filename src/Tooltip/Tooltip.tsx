@@ -157,6 +157,7 @@ export const Tooltip: React.FC<IProps> = ({
 						ref={refOverflowVisibleContainer}
 						parentRef={refTitle}
 						className="kit-tooltip__popup"
+						isShow={isShow}
 					>
 						{tooltipContent}
 					</OverflowVisibleContainer>
@@ -164,6 +165,7 @@ export const Tooltip: React.FC<IProps> = ({
 					<OverflowVisibleContainer
 						parentRef={refTitle}
 						className="kit-tooltip__popup"
+						isShow={isShow}
 					>
 						{tooltipContent}
 					</OverflowVisibleContainer>

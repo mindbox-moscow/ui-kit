@@ -1,23 +1,25 @@
 import cn from "classnames";
 import * as React from "react";
 import { Portal } from "../Portal";
-import { Props } from "./types";
 
 import "./OverflowVisibleContainer.scss";
 import { OverflowVisibleFixedContext } from "./OverflowVisibleContext";
 
+export interface IProps {
+	parentRef: React.RefObject<HTMLElement>;
+	className?: string;
+	children?: React.ReactNode;
+	isShow: boolean;
+}
+
 type Ref = HTMLDivElement;
 
-export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
+export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 	(props, ref) => {
-		const {
-			parentRef,
-			className,
-			children
-		} = props;
+		const { parentRef, className, children, isShow } = props;
 
 		const isFixed = React.useContext(OverflowVisibleFixedContext);
-		
+
 		let isLoaded = false;
 		let positionLeft = 0;
 		let positionTop = 0;
@@ -30,9 +32,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 			} = parentRef.current.getBoundingClientRect();
 
 			positionLeft = left + pageXOffset;
-			positionTop = isFixed
-				? top + height
-				: top + pageYOffset + height;
+			positionTop = isFixed ? top + height : top + pageYOffset + height;
 			isLoaded = true;
 		}
 
@@ -41,7 +41,8 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, Props>(
 				<div
 					ref={ref}
 					className={cn("kit-overflow-visiblecontainer", className, {
-						"kit-overflow-visiblecontainer_fixed": isFixed
+						"kit-overflow-visiblecontainer_fixed": isFixed,
+						"kit-overflow-visiblecontainer_open": isShow
 					})}
 					style={{
 						left: positionLeft + "px",

@@ -21,6 +21,8 @@
 }
 
 .kit-tooltip__arrow {
+	$self: &;
+
 	position: absolute;
 	left: 3px;
 	z-index: 11;
@@ -57,9 +59,19 @@
 		bottom: 31px;
 		transform: rotate(180deg);
 	}
+
+	&_not-portal {
+		left: 8px;
+
+		&#{$self}_bottom {
+			top: 31px;
+		}
+	}
 }
 
 .kit-tooltip__content {
+	$self: &;
+
 	position: absolute;
 	left: -60px;
 	z-index: 10;
@@ -80,6 +92,12 @@
 
 	&_top {
 		bottom: 30px;
+	}
+
+	&_not-portal {
+		&#{$self}_bottom {
+			top: 30px;
+		}
 	}
 }
 

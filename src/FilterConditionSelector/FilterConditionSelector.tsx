@@ -182,7 +182,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 		}
 	};
 
-	const getSelectedElement = ():    SelectedElement | null => {
+	const getSelectedElement = (): SelectedElement | null => {
 		return valueContext.selectedElement || null;
 	};
 

@@ -49,7 +49,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				scrollParentOnKeyDown();
 			}
 		},
-		[isSelected]
+		[isSelected, context]
 	);
 
 	const scrollParentOnKeyDown = () => {

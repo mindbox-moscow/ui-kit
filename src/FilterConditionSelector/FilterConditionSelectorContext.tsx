@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ElementType } from "./FilterConditionSelectorItem";
 
-interface SelectedElement {
+export interface SelectedElement {
 	isSelected: boolean;
 	isExpanded: boolean;
 	type: ElementType;

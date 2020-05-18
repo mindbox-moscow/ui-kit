@@ -2,7 +2,6 @@ import * as React from "react";
 import { Height, Width } from "../utils";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 
-import { DropdownHandles } from "./components/Dropdown";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
 import "./FlatSelect.scss";
@@ -26,14 +25,7 @@ export const FlatSelect = <TValue extends object>({
 	selectedItemFormatter
 }: SelectProps<TValue> & { children?: React.ReactNode }) => {
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const dropdownRef = React.useRef<DropdownHandles>(null);
 	const [isOpen, setIsOpen] = React.useState(false);
-
-	const hide = React.useCallback(() => {
-		if (dropdownRef.current) {
-			dropdownRef.current.hide();
-		}
-	}, []);
 
 	const searchTermChanged = React.useCallback((newSearchTerm: string) => {
 		setSearchTerm(newSearchTerm);
@@ -41,7 +33,7 @@ export const FlatSelect = <TValue extends object>({
 
 	const handleOnChange = (newSelectedValue: TValue) => {
 		if (!(selectedValue instanceof Array)) {
-			hide();
+			setIsOpen(prev => !prev);
 		}
 		onChange(newSelectedValue);
 	};

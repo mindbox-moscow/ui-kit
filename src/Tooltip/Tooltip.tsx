@@ -165,24 +165,21 @@ export const Tooltip: React.FC<IProps> = ({
 				{title}
 			</div>
 			{isShow &&
-				shouldUsePortal &&
-				(showByClick ? (
+				(shouldUsePortal ? (
 					<OverflowVisibleContainer
-						ref={refOverflowVisibleContainer}
+						ref={
+							showByClick
+								? refOverflowVisibleContainer
+								: undefined
+						}
 						parentRef={refTitle}
 						className="kit-tooltip__popup"
 					>
 						{tooltipContent}
 					</OverflowVisibleContainer>
 				) : (
-					<OverflowVisibleContainer
-						parentRef={refTitle}
-						className="kit-tooltip__popup"
-					>
-						{tooltipContent}
-					</OverflowVisibleContainer>
+					tooltipContent
 				))}
-			{isShow && !shouldUsePortal && tooltipContent}
 		</div>
 	);
 };

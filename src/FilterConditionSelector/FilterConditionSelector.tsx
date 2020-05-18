@@ -4,7 +4,8 @@ import { FilterDetails } from "../FilterDetails/FilterDetails";
 import { KeysCodes } from "../utils/constants";
 import {
 	FilterConditionSelectorContext,
-	IProps
+	IProps,
+	SelectedElement
 } from "./FilterConditionSelectorContext";
 import { IMenuModeMap, MenuMode, Props } from "./types";
 
@@ -119,21 +120,20 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 				case KeysCodes.Enter:
 					e.preventDefault();
 
-					const selectedElement =
-						valueContext.selectedElement || null;
+					const selectedElement = getSelectedElement();
 
-						if (
-							selectedElement &&
-							(selectedElement.type ===
-								"filterablePropertyCategory" ||
-								selectedElement.type ===
-									"filterablePropertyWithLinkedConditions") &&
-							!selectedElement.isExpanded
-						) {
-							onExpandCurrent();
-						} else {
-							setNextFocus();
-						}
+					if (
+						selectedElement &&
+						(selectedElement.type ===
+							"filterablePropertyCategory" ||
+							selectedElement.type ===
+								"filterablePropertyWithLinkedConditions") &&
+						!selectedElement.isExpanded
+					) {
+						onExpandCurrent();
+					} else {
+						setNextFocus();
+					}
 
 					break;
 				case KeysCodes.ArrowDown:
@@ -162,7 +162,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 			case KeysCodes.Enter:
 				e.preventDefault();
 
-				const selectedElement = valueContext.selectedElement || null;
+				const selectedElement = getSelectedElement();
 
 				if (selectedElement) {
 					selectedElement.onSelect();
@@ -180,6 +180,10 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 
 				onConditionStateToggle();
 		}
+	};
+
+	const getSelectedElement = (): SelectedElement | null => {
+		return valueContext.selectedElement || null;
 	};
 
 	const ChildItem = childRenderer;

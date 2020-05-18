@@ -156,4 +156,9 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	);
 };
 
-export { SelectSearchRow };
+const MomoizedSelectSearchRow = React.memo<React.FC<SelectSearchRowProps>>(
+	SelectSearchRow,
+	() => true
+);
+
+export { MomoizedSelectSearchRow as SelectSearchRow };

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useCallback } from "react";
 
 import { AsyncSearchSelectBase } from "../AsyncSearchSelectBase";
 import {
@@ -34,7 +33,8 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 	captionSearchLoader,
 	captionNothingFound,
 	overrideHeaderInfo = false,
-	placeholder
+	placeholder,
+	onSearchChange
 }: IProps<TEntity, TEntity[]> & { children?: React.ReactNode }) => {
 	const getItemsInfo = (): string => {
 		const selectedItemsCount = selectedValue.length;
@@ -59,10 +59,6 @@ const AsyncSearchMultiSelect = <TEntity extends object>({
 			);
 		});
 	};
-
-	const onSearchChange = useCallback((newSearchTerm: string) => {
-		onSearchChange(newSearchTerm);
-	}, []);
 
 	const onTextClick = (itemText: string) => () => {
 		onSearchChange(itemText);

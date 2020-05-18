@@ -4,7 +4,8 @@ import { FilterDetails } from "../FilterDetails/FilterDetails";
 import { KeysCodes } from "../utils/constants";
 import {
 	FilterConditionSelectorContext,
-	IProps
+	IProps,
+	SelectedElement
 } from "./FilterConditionSelectorContext";
 import { IMenuModeMap, MenuMode, Props } from "./types";
 
@@ -119,33 +120,19 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 				case KeysCodes.Enter:
 					e.preventDefault();
 
-					const selectedElement =
-						valueContext.selectedElement || null;
+					const selectedElement = getSelectedElement();
 
-					if (searchTerm === "") {
-						if (
-							selectedElement &&
-							(selectedElement.type ===
-								"filterablePropertyCategory" ||
-								selectedElement.type ===
-									"filterablePropertyWithLinkedConditions") &&
-							!selectedElement.isExpanded
-						) {
-							onExpandCurrent();
-						} else {
-							setNextFocus();
-						}
-					} else {
-						if (
-							selectedElement &&
+					if (
+						selectedElement &&
+						(selectedElement.type ===
+							"filterablePropertyCategory" ||
 							selectedElement.type ===
-								"filterablePropertyCategory" &&
-							!selectedElement.isExpanded
-						) {
-							onExpandCurrent();
-						} else {
-							setNextFocus();
-						}
+								"filterablePropertyWithLinkedConditions") &&
+						!selectedElement.isExpanded
+					) {
+						onExpandCurrent();
+					} else {
+						setNextFocus();
 					}
 
 					break;
@@ -175,7 +162,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 			case KeysCodes.Enter:
 				e.preventDefault();
 
-				const selectedElement = valueContext.selectedElement || null;
+				const selectedElement = getSelectedElement();
 
 				if (selectedElement) {
 					selectedElement.onSelect();
@@ -193,6 +180,10 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 
 				onConditionStateToggle();
 		}
+	};
+
+	const getSelectedElement = (): SelectedElement | null => {
+		return valueContext.selectedElement || null;
 	};
 
 	const ChildItem = childRenderer;
@@ -262,13 +253,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 					</div>
 					<div
 						ref={wrapperListRef}
-						className={cn(
-							"kit-filter-condition-selector__hierarchy-wrap",
-							{
-								"kit-filter-condition-selector__hierarchy-wrap_search":
-									debouncedSearchTerm !== ""
-							}
-						)}
+						className="kit-filter-condition-selector__hierarchy-wrap"
 					>
 						<FilterConditionSelectorContext.Provider
 							value={valueContext}

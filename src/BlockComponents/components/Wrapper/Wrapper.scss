@@ -2,8 +2,9 @@
 	> * {
 		vertical-align: middle;
 	}
-}
 
-span.kit-block-wrapper {
-	display: inline-flex;
+	&_inline {
+		display: inline-flex;
+		vertical-align: middle;
+	}
 }

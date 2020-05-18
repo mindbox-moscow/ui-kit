@@ -237,6 +237,7 @@
 	position: relative;
 	display: block;
 	background-image: none;
+	outline: none;
 	list-style: none;
 }
 .kit-selectR-result.kit-selectR-disabled > .kit-selectR-label {
@@ -244,7 +245,8 @@
 	color: #000000 !important;
 	cursor: default;
 }
-.kit-selectR-result > .kit-selectR-label:hover {
+.kit-selectR-result > .kit-selectR-label:hover,
+.kit-selectR-result:focus > .kit-selectR-label {
 	background: #3875d7;
 	color: #ffffff;
 }

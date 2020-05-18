@@ -19,34 +19,28 @@ const Search = (props: IProps) => {
 	const context = React.useContext(DropdownContext);
 	const refTextbox = React.useRef<HTMLInputElement>(null);
 
-	React.useEffect(
-		() => {
-			if (context && context.onSearchRef) {
-				context.onSearchRef(refTextbox);
-			}
-		},
-		[context!.onSearchRef]
-	);
-
-	const handleChange = (changedValue: string | number) => {
+	const handleChange = (changedValue: string) => {
 		onChange(changedValue);
-		if (context && context.contextOnKeyDownSearch) {
-			context.contextOnKeyDownSearch();
-			context.setSearchTerm(changedValue as string);
-		}
+		context.contextOnKeyDownSearch();
+		context.setSearchTerm(changedValue);
 	};
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
-		if (context && context.contextOnKeyDownSearch) {
-			switch (e.keyCode) {
-				case KeysCodes.ArrowDown:
-				case KeysCodes.ArrowUp:
-				case KeysCodes.Esc:
-				case KeysCodes.Enter:
-					context.contextOnKeyDownSearch(e);
-			}
+		switch (e.keyCode) {
+			case KeysCodes.ArrowDown:
+			case KeysCodes.ArrowUp:
+			case KeysCodes.Esc:
+			case KeysCodes.Enter:
+				context.contextOnKeyDownSearch(e);
 		}
 	};
+
+	React.useEffect(
+		() => {
+			context.setSearchRef(refTextbox);
+		},
+		[context.setSearchRef]
+	);
 
 	return (
 		<Textbox

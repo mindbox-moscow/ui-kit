@@ -49,7 +49,7 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 				scrollParentOnKeyDown();
 			}
 		},
-		[isSelected]
+		[isSelected, context]
 	);
 
 	const scrollParentOnKeyDown = () => {
@@ -111,11 +111,11 @@ export const FilterConditionSelectorItem: React.FC<Props> = ({
 	const onExpand = () => toggleExpand(id);
 
 	const onSelectItem = () => {
-		onSelect(id);
+		if (!isSelected) {
+			onSelect(id);
+		}
 		onExpand();
-		setTimeout(() => {
-			setNextFocus();
-		}, 1);
+		requestAnimationFrame(setNextFocus);
 	};
 
 	const isSimpleFilterableProperty = type === "simpleFilterableProperty";

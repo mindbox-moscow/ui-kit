@@ -89,6 +89,7 @@
 	outline: none;
 	color: $createButtonColor;
 	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
+	transform: translateX(5px);
 	cursor: pointer;
 
 	&:hover {
@@ -190,14 +191,24 @@
 
 .kit-filtration-condition__content {
 	@extend %hover-edit-background-white;
-	margin-left: -5px;
+	padding-right: 5px;
 	padding-left: 5px;
 	border-top-left-radius: $itemHoverBorderRadius;
 	border-bottom-left-radius: $itemHoverBorderRadius;
 
+	.kit-filtration-condition__item-text & * {
+		&::before,
+		&::after {
+			content: " ";
+		}
+	}
+
 	.kit-filtration-condition__item-text > & {
-		[class*="kit-segment"]:not(.kit-segment-content__count) {
+		.kit-segment-button-expand,
+		.kit-segment-button-edit,
+		.kit-segment-content {
 			margin-left: 10px;
+			vertical-align: middle;
 		}
 	}
 
@@ -211,17 +222,9 @@
 	}
 
 	.kit-filtration-condition__item-text & {
-		min-height: 26px;
-
-		> *:not(.kit-filtration-condition__create) {
-			vertical-align: sub;
-		}
-	}
-
-	.kit-filtration-condition__item-text & > span,
-	.kit-filtration-condition__item-text & > b {
 		position: relative;
-		margin-right: 5px;
+		padding-top: 3px;
+		padding-bottom: 3px;
 	}
 
 	.kit-filtration-condition__item-text & > span:empty,

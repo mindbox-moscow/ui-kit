@@ -5,9 +5,11 @@ import { IconSvg } from "../IconSvg";
 import { OverflowVisibleContainer } from "../OverflowVisibleContainer";
 import "./Tooltip.scss";
 
+type Position = "top" | "bottom";
+
 interface IProps {
 	title: string | JSX.Element;
-	position?: "top" | "bottom";
+	position?: Position;
 	showByClick?: boolean;
 	className?: string;
 }
@@ -20,8 +22,14 @@ export const Tooltip: React.FC<IProps> = ({
 	showByClick = false
 }) => {
 	const [isShow, setIsShow] = React.useState(false);
+	const [
+		viewportOverflowCorrection,
+		setViewportOverflowCorrection
+	] = React.useState<Position | null>(null);
+
 	const refTitle = React.useRef<HTMLDivElement>(null);
 	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
+	const refContent = React.useRef<HTMLDivElement>(null);
 
 	const handleShowTooltip = () => {
 		setIsShow(true);
@@ -30,6 +38,47 @@ export const Tooltip: React.FC<IProps> = ({
 	const handleHideTooltip = () => {
 		setIsShow(false);
 	};
+
+	React.useEffect(
+		() => {
+			if (isShow) {
+				const contentContainer = refContent.current;
+				const viewportWidth = document.documentElement.clientWidth;
+				const viewportHeight = window.innerHeight;
+
+				if (viewportHeight) {
+					setViewportOverflowCorrection(null);
+				}
+
+				if (contentContainer) {
+					const {
+						left,
+						width,
+						top,
+						height
+					} = contentContainer.getBoundingClientRect();
+					const offsetLeft = width + left;
+					const offsetTopCenter = top - viewportHeight / 2;
+					let transformX = 0;
+
+					if (left < 0) {
+						transformX = Math.abs(left);
+					} else if (viewportWidth < offsetLeft) {
+						transformX = viewportWidth - offsetLeft;
+					} else if (top < 0) {
+						setViewportOverflowCorrection("bottom");
+					} else if (offsetTopCenter + height > viewportHeight / 2) {
+						setViewportOverflowCorrection("top");
+					}
+
+					if (transformX !== 0) {
+						contentContainer.style.transform = `translate(${transformX}px ,0)`;
+					}
+				}
+			}
+		},
+		[isShow]
+	);
 
 	if (!children) {
 		return (
@@ -40,28 +89,39 @@ export const Tooltip: React.FC<IProps> = ({
 	}
 
 	const tooltipContent = (
-		<div
-			onMouseEnter={showByClick ? undefined : handleShowTooltip}
-			onMouseLeave={showByClick ? undefined : handleHideTooltip}
-			className={cn(
-				"kit-tooltip__content",
-				`kit-tooltip__content_${position}`,
-				{
-					"kit-tooltip__content_show": isShow
-				}
-			)}
-		>
-			{showByClick && (
-				<button
-					type="button"
-					onClick={handleHideTooltip}
-					className="kit-tooltip__close"
-				>
-					<IconSvg type="close" className="kit-tooltip__close-icon" />
-				</button>
-			)}
-			{children}
-		</div>
+		<>
+			<div
+				className={cn(
+					"kit-tooltip__arrow",
+					`kit-tooltip__arrow_${viewportOverflowCorrection ||
+						position}`
+				)}
+			/>
+			<div
+				ref={refContent}
+				onMouseEnter={showByClick ? undefined : handleShowTooltip}
+				onMouseLeave={showByClick ? undefined : handleHideTooltip}
+				className={cn(
+					"kit-tooltip__content",
+					`kit-tooltip__content_${viewportOverflowCorrection ||
+						position}`
+				)}
+			>
+				{showByClick && (
+					<button
+						type="button"
+						onClick={handleHideTooltip}
+						className="kit-tooltip__close"
+					>
+						<IconSvg
+							type="close"
+							className="kit-tooltip__close-icon"
+						/>
+					</button>
+				)}
+				{children}
+			</div>
+		</>
 	);
 
 	useClickOutside(

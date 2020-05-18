@@ -98,7 +98,7 @@ export const FilterWrapper: React.FC<Props> = ({
 			size="small"
 			color="silver"
 			hasBorder={true}
-			className={neutralZoneClass}
+			className={cn(neutralZoneClass, "kit-filter__button-up")}
 		>
 			{buttonUpCaption}
 		</Button>
@@ -112,7 +112,9 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	return (
 		<>
-			<OverflowVisibleFixedContext.Provider value={scrollState === ScrollState.Minified}>
+			<OverflowVisibleFixedContext.Provider
+				value={scrollState === ScrollState.Minified}
+			>
 				<FilterWrapperContext.Provider value={contextValue}>
 					<div
 						ref={refFilterWrapper}
@@ -125,14 +127,20 @@ export const FilterWrapper: React.FC<Props> = ({
 					>
 						{doesContainFilter && (
 							<div className="kit-filter__top-filter">
-								{hasHeadInformation ? (<div className="kit-filter__top-info">
-									{headInformation}
-								</div>) : <div />}
+								{hasHeadInformation ? (
+									<div className="kit-filter__top-info">
+										{headInformation}
+									</div>
+								) : (
+									<div />
+								)}
 								<div className="kit-filter__top-right">
 									{hasFilterActions && (
 										<FilterActions
 											filterActions={filterActions}
-											filterActionsCaption={filterActionsCaption}
+											filterActionsCaption={
+												filterActionsCaption
+											}
 										/>
 									)}
 									<Button
@@ -142,7 +150,10 @@ export const FilterWrapper: React.FC<Props> = ({
 										disabled={!canUndo}
 										type="button"
 									>
-										<IconSvg type="circle-arrow" className="kit-filter__undo" />
+										<IconSvg
+											type="circle-arrow"
+											className="kit-filter__undo"
+										/>
 									</Button>
 									<Button
 										onClick={onRedo}
@@ -151,18 +162,21 @@ export const FilterWrapper: React.FC<Props> = ({
 										disabled={!canRedo}
 										type="button"
 									>
-										<IconSvg type="circle-arrow" className="kit-filter__redo" />
+										<IconSvg
+											type="circle-arrow"
+											className="kit-filter__redo"
+										/>
 									</Button>
 								</div>
 							</div>
 						)}
 						<ul className="kit-filter__all-wrap">
 							{!doesContainFilter &&
-								scrollState === ScrollState.Minified ? (
-									<ButtonUp />
-								) : (
-									children
-								)}
+							scrollState === ScrollState.Minified ? (
+								<ButtonUp />
+							) : (
+								children
+							)}
 						</ul>
 						{doesContainFilter ? (
 							<div className="kit-filter__wrap">
@@ -177,8 +191,8 @@ export const FilterWrapper: React.FC<Props> = ({
 												{applyButtonCaption}
 											</button>
 										) : (
-												<ButtonUp />
-											)
+											<ButtonUp />
+										)
 									) : null}
 								</div>
 								{selectionState !== SelectionStateType.None &&
@@ -186,7 +200,9 @@ export const FilterWrapper: React.FC<Props> = ({
 								<InfoWrapper
 									isWarning={isDataOutdated}
 									statisticsValue={statisticsValue}
-									statisticsDescription={statisticsDescription}
+									statisticsDescription={
+										statisticsDescription
+									}
 									shouldShowStatistics={shouldShowStatistics}
 								>
 									<button
@@ -200,16 +216,18 @@ export const FilterWrapper: React.FC<Props> = ({
 								</InfoWrapper>
 							</div>
 						) : (
-								<div className="kit-filter__short-wrap-filter">
-									{selectionState !== SelectionStateType.None &&
-										countSelectedItems()}
-									<InfoWrapper
-										statisticsValue={statisticsValue}
-										statisticsDescription={statisticsDescription}
-										shouldShowStatistics={shouldShowStatistics}
-									/>
-								</div>
-							)}
+							<div className="kit-filter__short-wrap-filter">
+								{selectionState !== SelectionStateType.None &&
+									countSelectedItems()}
+								<InfoWrapper
+									statisticsValue={statisticsValue}
+									statisticsDescription={
+										statisticsDescription
+									}
+									shouldShowStatistics={shouldShowStatistics}
+								/>
+							</div>
+						)}
 					</div>
 				</FilterWrapperContext.Provider>
 			</OverflowVisibleFixedContext.Provider>

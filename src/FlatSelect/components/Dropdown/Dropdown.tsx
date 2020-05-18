@@ -224,15 +224,18 @@ const Dropdown = (props: DropdownProps) => {
 
 	const style = { ...props.style, marginLeft: "0 !important" };
 
-	const contextValues = {
-		contextOnKeyDownItems: handleContextOnKeyDownItems,
-		contextOnKeyDownSearch: handleContextOnKeyDownSearch,
-		onCloseDropdown: onClick,
-		onFocusElement: handleFocusFirstElement,
-		setItemRef: setItemListRef,
-		onSearchRef: setSearchRef,
-		setSearchTerm
-	};
+	const contextValues = React.useMemo(
+		() => ({
+			contextOnKeyDownItems: handleContextOnKeyDownItems,
+			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
+			onCloseDropdown: onClick,
+			onFocusElement: handleFocusFirstElement,
+			setItemRef: setItemListRef,
+			onSearchRef: setSearchRef,
+			setSearchTerm
+		}),
+		[]
+	);
 
 	return (
 		<div className="kit-flat-select">

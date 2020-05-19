@@ -212,7 +212,9 @@ const Dropdown = React.forwardRef(
 			}
 		};
 
-		React.useEffect(positionDropDown, []);
+		React.useEffect(() => {
+			positionDropDown
+		}, [show]);
 
 		React.useEffect(
 			() => {

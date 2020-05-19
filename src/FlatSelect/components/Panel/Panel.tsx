@@ -14,19 +14,6 @@ const Panel: React.FC<IProps> = ({
 }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
-	React.useEffect(() => {
-		panelHeightOverride();
-	}, []);
-
-	React.useEffect(() => {
-		if (parentRef && parentRef.current && panelRef.current) {
-			const { clientWidth } = parentRef.current;
-			panelRef.current.style.width = `${clientWidth}px`;
-		}
-	}, []);
-
-	useClickOutside(panelRef, onCLose, true, true);
-
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
 
@@ -60,6 +47,17 @@ const Panel: React.FC<IProps> = ({
 	const handleClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
+
+	React.useEffect(panelHeightOverride);
+
+	React.useEffect(() => {
+		if (parentRef && parentRef.current && panelRef.current) {
+			const { clientWidth } = parentRef.current;
+			panelRef.current.style.width = `${clientWidth}px`;
+		}
+	}, []);
+
+	useClickOutside(panelRef, onCLose, true, true);
 
 	return (
 		<div

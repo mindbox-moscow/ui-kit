@@ -8,6 +8,7 @@
 		border-top: 2px solid $braketColor;
 		pointer-events: none;
 		transform: translateY(-1px);
+		z-index: 1;
 	}
 }
 
@@ -45,7 +46,7 @@
 		}
 
 		& ~ .kit-filtration-group {
-			.kit-filtration-group__label-line
+			> .kit-filtration-group__label-line
 				.kit-filtration-group__label-line-horizontal {
 				&::after {
 					opacity: $opacity;
@@ -56,7 +57,7 @@
 		&
 			~ .kit-filtration-group__label-line
 			.kit-filtration-group__label-line-vertical {
-			z-index: 1;
+			z-index: 2;
 			opacity: $opacity;
 		}
 	}
@@ -77,6 +78,7 @@
 				height: #{$minHeight / 2};
 				background-color: $braketColor;
 				pointer-events: none;
+				z-index: 1;
 			}
 		}
 
@@ -103,6 +105,7 @@
 				height: $minHeight / 2;
 				background-color: $braketColor;
 				pointer-events: none;
+				z-index: 1;
 			}
 		}
 	}

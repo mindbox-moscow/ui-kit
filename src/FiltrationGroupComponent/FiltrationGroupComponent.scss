@@ -48,7 +48,7 @@
 	&_edit {
 		@include opacityBlock();
 
-		z-index: 2;
+		z-index: 5;
 
 		> .kit-filtration-group__label_hover_or,
 		> .kit-filtration-group__label_hover_and {
@@ -148,6 +148,7 @@
 	border-radius: 3px 0 0 3px;
 	box-sizing: border-box;
 	color: $braketColor;
+	z-index: 1;
 
 	.kit-filtration-group_read-only & {
 		pointer-events: none;
@@ -263,7 +264,7 @@
 .kit-filtration-group__label-line-vertical {
 	position: absolute;
 	left: 0;
-	z-index: 1;
+	z-index: 2;
 	display: inline-flex;
 	align-items: center;
 	width: $borderWidthLine;
@@ -400,6 +401,7 @@
 	min-height: $minHeight;
 	padding-right: 20px;
 	outline: none;
+	z-index: 1;
 
 	@include createHorisontalBrackets;
 

@@ -70,6 +70,7 @@
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000000, 0.1);
 	box-sizing: border-box;
+	z-index: 1;
 }
 
 .kit-filtration-condition__negative-name-part {
@@ -81,7 +82,7 @@
 	z-index: 1;
 	display: inline-flex;
 	height: 100%;
-	margin-bottom: -3px;
+	margin-top: -3px;
 	margin-left: -3px;
 	padding: 0 5px;
 	background: none;
@@ -122,6 +123,7 @@
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
 	transition: color 0.15s ease-in-out;
+	z-index: 2;
 
 	&::before {
 		position: absolute;
@@ -136,6 +138,10 @@
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
+	}
+
+	&_show-dropdown {
+		z-index: 3;
 	}
 
 	&_shaded {
@@ -167,6 +173,7 @@
 	&_edit {
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #ffffff;
+		z-index: 5;
 
 		[class*="kit-segment"] {
 			background-color: #ffffff;
@@ -195,6 +202,7 @@
 	padding-left: 5px;
 	border-top-left-radius: $itemHoverBorderRadius;
 	border-bottom-left-radius: $itemHoverBorderRadius;
+	line-height: 26px;
 
 	.kit-filtration-condition__item-text & * {
 		&::before,
@@ -223,8 +231,6 @@
 
 	.kit-filtration-condition__item-text & {
 		position: relative;
-		padding-top: 3px;
-		padding-bottom: 3px;
 	}
 
 	.kit-filtration-condition__item-text & > span:empty,

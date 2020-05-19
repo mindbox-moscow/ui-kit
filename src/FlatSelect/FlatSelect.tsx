@@ -10,7 +10,7 @@ import "./FlatSelect.scss";
 export const FlatSelect = <TValue extends {}>(
 	props: SelectProps<TValue> & {
 		children?: React.ReactNode;
-		forwardRef?: React.Ref<DropdownHandles>;
+		forwardRef?: React.RefObject<DropdownHandles>;
 	}
 ) => {
 	const {
@@ -34,9 +34,7 @@ export const FlatSelect = <TValue extends {}>(
 	} = props;
 
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const dropdownRef = forwardRef
-		? (forwardRef as React.RefObject<DropdownHandles>)
-		: React.useRef<DropdownHandles>(null);
+	const dropdownRef = React.useRef<DropdownHandles>(null);
 
 	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
@@ -227,7 +225,7 @@ export const FlatSelect = <TValue extends {}>(
 
 	return (
 		<Dropdown
-			ref={dropdownRef}
+			ref={forwardRef || dropdownRef}
 			id={id}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}

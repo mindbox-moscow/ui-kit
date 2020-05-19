@@ -258,7 +258,8 @@ const Dropdown = React.forwardRef(
 			onFocusElement: handleFocusFirstElement,
 			addItemsRef: addItemListRef,
 			setSearchRef,
-			setSearchTerm
+			setSearchTerm,
+			isOpenDropdown: show
 		};
 
 		useClickOutside(refPanel, hide, show, true);
@@ -307,7 +308,7 @@ const Dropdown = React.forwardRef(
 								"kit-selectR-above": isInBottomOfScreen
 							})}
 						>
-							{show && children}
+							{children}
 						</Panel>
 					</DropdownContext.Provider>
 				</OverflowVisibleContainer>

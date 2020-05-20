@@ -137,6 +137,15 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						)}
 						onClick={onConditionStateToggle}
 					>
+						{state !== "readOnly" && isLinkedCondition && (
+							<button
+								type="button"
+								className="kit-filtration-condition__create"
+								onClick={handleCreateCondition}
+							>
+								<IconSvg type="add" />
+							</button>
+						)}
 						<b>{filterablePropertyName}</b>
 						{filtrationMethodName && (
 							<span
@@ -148,15 +157,6 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							</span>
 						)}
 						{filtrationMethodParametersComponent}
-						{state !== "readOnly" && isLinkedCondition && (
-							<button
-								type="button"
-								className="kit-filtration-condition__create"
-								onClick={handleCreateCondition}
-							>
-								<IconSvg type="add" />
-							</button>
-						)}
 					</div>
 					<button
 						type="button"

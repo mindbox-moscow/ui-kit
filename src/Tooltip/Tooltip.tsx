@@ -12,7 +12,6 @@ interface IProps {
 	position?: Position;
 	showByClick?: boolean;
 	className?: string;
-	shouldUsePortal?: boolean;
 }
 
 export const Tooltip: React.FC<IProps> = ({
@@ -20,8 +19,7 @@ export const Tooltip: React.FC<IProps> = ({
 	position = "bottom",
 	className,
 	children,
-	showByClick = false,
-	shouldUsePortal = false
+	showByClick = false
 }) => {
 	const [isShow, setIsShow] = React.useState(false);
 	const [
@@ -95,10 +93,7 @@ export const Tooltip: React.FC<IProps> = ({
 				className={cn(
 					"kit-tooltip__arrow",
 					`kit-tooltip__arrow_${viewportOverflowCorrection ||
-						position}`,
-					{
-						"kit-tooltip__arrow_not-portal": !shouldUsePortal
-					}
+						position}`
 				)}
 			/>
 			<div
@@ -108,10 +103,7 @@ export const Tooltip: React.FC<IProps> = ({
 				className={cn(
 					"kit-tooltip__content",
 					`kit-tooltip__content_${viewportOverflowCorrection ||
-						position}`,
-					{
-						"kit-tooltip__content_not-portal": !shouldUsePortal
-					}
+						position}`
 				)}
 			>
 				{showByClick && (
@@ -131,11 +123,7 @@ export const Tooltip: React.FC<IProps> = ({
 		</>
 	);
 
-	useClickOutside(
-		refContent,
-		handleHideTooltip,
-		isShow && showByClick
-	);
+	useClickOutside(refContent, handleHideTooltip, isShow && showByClick);
 
 	return (
 		<div className={cn("kit-tooltip", className)}>
@@ -158,17 +146,14 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 				{title}
 			</div>
-			{isShow &&
-				(shouldUsePortal ? (
-					<OverflowVisibleContainer
-						parentRef={refTitle}
-						className="kit-tooltip__popup"
-					>
-						{tooltipContent}
-					</OverflowVisibleContainer>
-				) : (
-					tooltipContent
-				))}
+			{isShow && (
+				<OverflowVisibleContainer
+					parentRef={refTitle}
+					className="kit-tooltip__popup"
+				>
+					{tooltipContent}
+				</OverflowVisibleContainer>
+			)}
 		</div>
 	);
 };

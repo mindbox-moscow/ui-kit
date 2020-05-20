@@ -4,11 +4,11 @@
 		position: absolute;
 		top: $top;
 		left: $left;
+		z-index: 1;
 		width: 13px;
 		border-top: 2px solid $braketColor;
 		pointer-events: none;
 		transform: translateY(-1px);
-		z-index: 1;
 	}
 }
 
@@ -73,12 +73,12 @@
 				position: absolute;
 				top: 0;
 				left: 4px;
+				z-index: 1;
 				display: block;
 				width: 2px;
 				height: #{$minHeight / 2};
 				background-color: $braketColor;
 				pointer-events: none;
-				z-index: 1;
 			}
 		}
 
@@ -100,12 +100,12 @@
 				position: absolute;
 				top: 0;
 				left: -26px;
+				z-index: 1;
 				display: block;
 				width: 2px;
 				height: $minHeight / 2;
 				background-color: $braketColor;
 				pointer-events: none;
-				z-index: 1;
 			}
 		}
 	}
@@ -125,6 +125,10 @@
 
 	&.kit-filtration-group_not-children {
 		z-index: 1;
+	}
+
+	&.kit-filtration-group_not-children.kit-filtration-group_edit {
+		z-index: 5;
 	}
 }
 

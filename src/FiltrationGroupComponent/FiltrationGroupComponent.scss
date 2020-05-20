@@ -74,7 +74,7 @@
 		min-height: $minHeight;
 
 		&#{$self}_edit {
-			z-index: 2;
+			z-index: 5;
 		}
 	}
 
@@ -140,6 +140,7 @@
 	position: absolute;
 	top: 0;
 	left: -10px;
+	z-index: 1;
 	display: flex;
 	align-items: center;
 	width: calc(100% + 10px);
@@ -148,7 +149,6 @@
 	border-radius: 3px 0 0 3px;
 	box-sizing: border-box;
 	color: $braketColor;
-	z-index: 1;
 
 	.kit-filtration-group_read-only & {
 		pointer-events: none;
@@ -396,12 +396,12 @@
 
 .kit-filtration-group__buttons {
 	position: relative;
+	z-index: 1;
 	display: inline-flex;
 	align-items: center;
 	min-height: $minHeight;
 	padding-right: 20px;
 	outline: none;
-	z-index: 1;
 
 	@include createHorisontalBrackets;
 
@@ -557,6 +557,7 @@
 	position: absolute;
 	top: 7px;
 	right: 13px;
+	z-index: 10;
 	padding: 0;
 	background: none;
 	border: 0;
@@ -578,13 +579,6 @@
 	border-radius: 4px 0 0 4px;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
 	box-sizing: border-box;
-
-	.kit-filtration-group_not-children > .kit-filtration-group__label-line_or &,
-	.kit-filtration-group_not-children
-		> .kit-filtration-group__label-line_and
-		& {
-		margin-right: 9px;
-	}
 
 	> *:not(:first-child) {
 		margin-left: 1px;

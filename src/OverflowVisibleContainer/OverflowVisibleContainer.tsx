@@ -9,14 +9,14 @@ export interface IProps {
 	parentRef: React.RefObject<HTMLElement>;
 	className?: string;
 	children?: React.ReactNode;
-	isShow: boolean;
+	hidden?: boolean;
 }
 
 type Ref = HTMLDivElement;
 
 export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 	(props, ref) => {
-		const { parentRef, className, children, isShow } = props;
+		const { parentRef, className, children, hidden = false } = props;
 
 		const isFixed = React.useContext(OverflowVisibleFixedContext);
 
@@ -42,7 +42,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 					ref={ref}
 					className={cn("kit-overflow-visiblecontainer", className, {
 						"kit-overflow-visiblecontainer_fixed": isFixed,
-						"kit-overflow-visiblecontainer_open": isShow
+						"kit-overflow-visiblecontainer_open": hidden
 					})}
 					style={{
 						left: positionLeft + "px",

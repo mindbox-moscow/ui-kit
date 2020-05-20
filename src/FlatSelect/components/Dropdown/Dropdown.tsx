@@ -298,7 +298,7 @@ const Dropdown = React.forwardRef(
 				<OverflowVisibleContainer
 					ref={refPanel}
 					parentRef={dropdownRef}
-					isShow={show}
+					hidden={show}
 				>
 					<DropdownContext.Provider value={contextValues}>
 						<Panel

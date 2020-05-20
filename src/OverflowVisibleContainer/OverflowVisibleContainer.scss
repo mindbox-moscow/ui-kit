@@ -1,13 +1,12 @@
 .kit-overflow-visiblecontainer {
 	position: absolute;
-	display: none;
 
 	&_fixed {
 		position: fixed;
 		z-index: 10;
 	}
 
-	&_open {
-		display: block;
+	&_hidden {
+		display: none;
 	}
 }

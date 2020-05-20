@@ -196,13 +196,6 @@
 	border-top-left-radius: $itemHoverBorderRadius;
 	border-bottom-left-radius: $itemHoverBorderRadius;
 
-	.kit-filtration-condition__item-text & * {
-		&::before,
-		&::after {
-			content: " ";
-		}
-	}
-
 	.kit-filtration-condition__item-text > & {
 		.kit-segment-button-expand,
 		.kit-segment-button-edit,

@@ -186,6 +186,7 @@
 			display: block;
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
+			z-index: 2;
 		}
 
 		& + .kit-filtration-group_edit {
@@ -227,6 +228,7 @@
 
 	.kit-filtration-condition__item-text_linked-condition-edit > & {
 		cursor: pointer;
+		z-index: 2;
 	}
 
 	.kit-filtration-condition__item-text & {

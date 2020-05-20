@@ -1,6 +1,8 @@
 .kit-flat-select {
 	position: relative;
+	display: inline-block;
 	width: auto;
+	vertical-align: middle;
 }
 
 .kit-selectR.form-control:focus {

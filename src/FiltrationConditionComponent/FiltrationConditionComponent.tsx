@@ -111,8 +111,7 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 			<li
 				className={cn("kit-filtration-condition", {
 					"kit-filtration-condition_edit": state === "edit",
-					"kit-filtration-condition_show-dropdown": showDropdown,
-					"kit-filtration-condition_linked-condition": linkedConditionComponent
+					"kit-filtration-condition_linked-condition": linkedConditionComponent,
 				})}
 			>
 				<div
@@ -126,7 +125,8 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						"kit-filtration-condition__item-text_shaded":
 							state === "shaded",
 						"kit-filtration-condition__item-text_view":
-							state === "view"
+							state === "view",
+						"kit-filtration-condition__item-text_show-dropdown": showDropdown
 					})}
 				>
 					<div

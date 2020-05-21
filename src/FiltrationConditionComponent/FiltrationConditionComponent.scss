@@ -63,6 +63,7 @@
 
 .kit-filtration-condition__popover {
 	position: relative;
+	z-index: 1;
 	margin-top: -3px;
 	padding: 10px 14px 12px 18px;
 	background-color: #ffffff;
@@ -81,7 +82,7 @@
 	z-index: 1;
 	display: inline-flex;
 	height: 100%;
-	margin-bottom: -3px;
+	margin-top: -3px;
 	margin-left: -3px;
 	padding: 0 5px;
 	background: none;
@@ -118,6 +119,7 @@
 .kit-filtration-condition__item-text {
 	$self: &;
 	position: relative;
+	z-index: 2;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
@@ -136,6 +138,10 @@
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
+	}
+
+	&_show-dropdown {
+		z-index: 3;
 	}
 
 	&_shaded {
@@ -165,6 +171,7 @@
 	}
 
 	&_edit {
+		z-index: 10;
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #ffffff;
 
@@ -176,6 +183,7 @@
 	&_linked-condition-edit {
 		&::before {
 			content: "";
+			z-index: 2;
 			display: block;
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
@@ -195,6 +203,7 @@
 	padding-left: 5px;
 	border-top-left-radius: $itemHoverBorderRadius;
 	border-bottom-left-radius: $itemHoverBorderRadius;
+	line-height: 26px;
 
 	.kit-filtration-condition__item-text & * {
 		&::before,
@@ -218,13 +227,12 @@
 	}
 
 	.kit-filtration-condition__item-text_linked-condition-edit > & {
+		z-index: 2;
 		cursor: pointer;
 	}
 
 	.kit-filtration-condition__item-text & {
 		position: relative;
-		padding-top: 3px;
-		padding-bottom: 3px;
 	}
 
 	.kit-filtration-condition__item-text & > span:empty,

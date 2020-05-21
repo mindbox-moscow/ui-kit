@@ -63,6 +63,7 @@
 
 .kit-filtration-condition__popover {
 	position: relative;
+	z-index: 1;
 	margin-top: -3px;
 	padding: 10px 14px 12px 18px;
 	background-color: #ffffff;
@@ -70,7 +71,6 @@
 	border-radius: 3px;
 	box-shadow: 1px 1px 4px 0 rgba(#000000, 0.1);
 	box-sizing: border-box;
-	z-index: 1;
 }
 
 .kit-filtration-condition__negative-name-part {
@@ -119,11 +119,11 @@
 .kit-filtration-condition__item-text {
 	$self: &;
 	position: relative;
+	z-index: 2;
 	display: inline-flex;
 	margin-right: 5px;
 	padding: 3px 0 3px 0;
 	transition: color 0.15s ease-in-out;
-	z-index: 2;
 
 	&::before {
 		position: absolute;
@@ -171,9 +171,9 @@
 	}
 
 	&_edit {
+		z-index: 10;
 		border-radius: 0 $itemHoverBorderRadius + 1 $itemHoverBorderRadius + 1 0;
 		color: #ffffff;
-		z-index: 5;
 
 		[class*="kit-segment"] {
 			background-color: #ffffff;
@@ -183,10 +183,10 @@
 	&_linked-condition-edit {
 		&::before {
 			content: "";
+			z-index: 2;
 			display: block;
 			background-color: $linkedConditionEditModeColorBg;
 			border-radius: $itemHoverBorderRadius $itemHoverBorderRadius 0 0;
-			z-index: 2;
 		}
 
 		& + .kit-filtration-group_edit {
@@ -227,8 +227,8 @@
 	}
 
 	.kit-filtration-condition__item-text_linked-condition-edit > & {
-		cursor: pointer;
 		z-index: 2;
+		cursor: pointer;
 	}
 
 	.kit-filtration-condition__item-text & {

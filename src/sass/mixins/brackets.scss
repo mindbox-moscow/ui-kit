@@ -94,7 +94,7 @@
 			}
 		}
 
-		> .kit-filtration-group:first-of-type {
+		> .kit-filtration-group:first-of-type:not(.kit-filtration-group_not-children) {
 			&::before {
 				content: "";
 				position: absolute;

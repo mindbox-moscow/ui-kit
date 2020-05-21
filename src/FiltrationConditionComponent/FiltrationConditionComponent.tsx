@@ -137,17 +137,17 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						)}
 						onClick={onConditionStateToggle}
 					>
-						<b>{filterablePropertyName}</b>
+						<b>{filterablePropertyName} </b>
 						{filtrationMethodName && (
 							<span
 								className={cn({
 									"kit-filtration-condition_with-alert": withAlert
 								})}
 							>
-								{filtrationMethodName}
+								{filtrationMethodName}{" "}
 							</span>
 						)}
-						{filtrationMethodParametersComponent}
+						{filtrationMethodParametersComponent}{" "}
 						{state !== "readOnly" && isLinkedCondition && (
 							<button
 								type="button"

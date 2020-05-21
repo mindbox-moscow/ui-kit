@@ -205,13 +205,6 @@
 	border-bottom-left-radius: $itemHoverBorderRadius;
 	line-height: 26px;
 
-	.kit-filtration-condition__item-text & * {
-		&::before,
-		&::after {
-			content: " ";
-		}
-	}
-
 	.kit-filtration-condition__item-text > & {
 		.kit-segment-button-expand,
 		.kit-segment-button-edit,

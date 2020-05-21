@@ -150,6 +150,7 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 	const handleKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		switch (e.keyCode) {
 			case KeysCodes.ArrowDown:
+			case KeysCodes.Enter:
 				e.preventDefault();
 
 				if (searchRef.current && listRef.current) {
@@ -158,16 +159,6 @@ const FilterConditionSelector: React.RefForwardingComponent<Ref, Props> = (
 				}
 
 				onNextSelected();
-				break;
-			case KeysCodes.Enter:
-				e.preventDefault();
-
-				const selectedElement = getSelectedElement();
-
-				if (selectedElement) {
-					selectedElement.onSelect();
-				}
-
 				break;
 
 			case KeysCodes.Esc:

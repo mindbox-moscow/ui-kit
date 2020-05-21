@@ -28,7 +28,6 @@ export const Tooltip: React.FC<IProps> = ({
 	] = React.useState<Position | null>(null);
 
 	const refTitle = React.useRef<HTMLDivElement>(null);
-	const refOverflowVisibleContainer = React.useRef<HTMLDivElement>(null);
 	const refContent = React.useRef<HTMLDivElement>(null);
 
 	const handleShowTooltip = () => {
@@ -98,7 +97,7 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 			/>
 			<div
-				ref={refContent}
+				ref={showByClick ? refContent : undefined}
 				onMouseEnter={showByClick ? undefined : handleShowTooltip}
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				className={cn(
@@ -124,11 +123,7 @@ export const Tooltip: React.FC<IProps> = ({
 		</>
 	);
 
-	useClickOutside(
-		refOverflowVisibleContainer,
-		handleHideTooltip,
-		isShow && showByClick
-	);
+	useClickOutside(refContent, handleHideTooltip, isShow && showByClick);
 
 	return (
 		<div className={cn("kit-tooltip", className)}>
@@ -151,23 +146,14 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 				{title}
 			</div>
-			{isShow &&
-				(showByClick ? (
-					<OverflowVisibleContainer
-						ref={refOverflowVisibleContainer}
-						parentRef={refTitle}
-						className="kit-tooltip__popup"
-					>
-						{tooltipContent}
-					</OverflowVisibleContainer>
-				) : (
-					<OverflowVisibleContainer
-						parentRef={refTitle}
-						className="kit-tooltip__popup"
-					>
-						{tooltipContent}
-					</OverflowVisibleContainer>
-				))}
+			{isShow && (
+				<OverflowVisibleContainer
+					parentRef={refTitle}
+					className="kit-tooltip__popup"
+				>
+					{tooltipContent}
+				</OverflowVisibleContainer>
+			)}
 		</div>
 	);
 };

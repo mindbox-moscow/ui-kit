@@ -111,7 +111,6 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 			<li
 				className={cn("kit-filtration-condition", {
 					"kit-filtration-condition_edit": state === "edit",
-					"kit-filtration-condition_show-dropdown": showDropdown,
 					"kit-filtration-condition_linked-condition": linkedConditionComponent
 				})}
 			>
@@ -126,7 +125,8 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						"kit-filtration-condition__item-text_shaded":
 							state === "shaded",
 						"kit-filtration-condition__item-text_view":
-							state === "view"
+							state === "view",
+						"kit-filtration-condition__item-text_show-dropdown": showDropdown
 					})}
 				>
 					<div
@@ -146,17 +146,17 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 								<IconSvg type="add" />
 							</button>
 						)}
-						<b>{filterablePropertyName}</b>
+						<b>{filterablePropertyName} </b>
 						{filtrationMethodName && (
 							<span
 								className={cn({
 									"kit-filtration-condition_with-alert": withAlert
 								})}
 							>
-								{filtrationMethodName}
+								{filtrationMethodName}{" "}
 							</span>
 						)}
-						{filtrationMethodParametersComponent}
+						{filtrationMethodParametersComponent}{" "}
 					</div>
 					<button
 						type="button"

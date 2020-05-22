@@ -44,6 +44,8 @@ const FiltrationGroupComponent = ({
 	const kitFiltrationLabelRef = React.useRef<HTMLDivElement>(null);
 	const kitFiltrationLabelLineRef = React.useRef<HTMLDivElement>(null);
 
+	const [showDropdown, setShowDropdown] = React.useState(false);
+
 	useEffect(() => {
 		calculateMainVerticalBracket();
 	});
@@ -351,6 +353,10 @@ const FiltrationGroupComponent = ({
 		}
 	};
 
+	const handleToggleActionsDropdown = () => {
+		setShowDropdown(prev => !prev);
+	};
+
 	useClickOutside(kitFiltrationRef, handleStateToggle, state === "edit");
 
 	return (
@@ -381,7 +387,8 @@ const FiltrationGroupComponent = ({
 			<div
 				ref={kitFiltrationLabelLineRef}
 				className={cn("kit-filtration-group__label-line", {
-					[`kit-filtration-group__label-line_${groupType}`]: shouldShowLabel
+					[`kit-filtration-group__label-line_${groupType}`]: shouldShowLabel,
+					"kit-filtration-group__label-line_show-dropdown": showDropdown
 				})}
 				onClick={handleGroupLabelClick}
 				onMouseOver={handleHoverAddClassLabel}
@@ -403,6 +410,9 @@ const FiltrationGroupComponent = ({
 												"kit-filtration-group__more",
 												neutralZoneClass
 											)}
+											onToggle={
+												handleToggleActionsDropdown
+											}
 											toggleBtnText={
 												moreConditionToggleCaption || ""
 											}

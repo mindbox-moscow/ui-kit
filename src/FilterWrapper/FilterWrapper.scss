@@ -57,6 +57,13 @@
 		}
 	}
 
+	> .kit-filtration-group_not-children.kit-filtration-group_edit {
+		> .kit-filtration-group__label-line_or,
+		> .kit-filtration-group__label-line_and {
+			left: -5px;
+		}
+	}
+
 	~ .kit-filtration-group__label-line {
 		padding-top: 2px;
 	}

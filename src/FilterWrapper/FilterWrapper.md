@@ -5224,6 +5224,7 @@ class ExampleEditorButton extends React.Component {
 			<FiltrationConditionComponent
 				filterablePropertyName="Пол"
 				filtrationMethodName="заполнен и мужской"
+				isLinkedCondition={true}
 			/>
 			<FiltrationConditionComponent
 				filterablePropertyName="Розничный заказ"

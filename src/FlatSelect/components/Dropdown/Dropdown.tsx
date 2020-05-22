@@ -298,14 +298,14 @@ const Dropdown = React.forwardRef(
 				<OverflowVisibleContainer
 					ref={refPanel}
 					parentRef={dropdownRef}
-					hidden={!show}
 				>
 					<DropdownContext.Provider value={contextValues}>
 						<Panel
 							parentRef={dropdownRef}
 							width={width || Width.Full}
 							className={cn(panelClass, neutralZoneClass, {
-								"kit-selectR-above": isInBottomOfScreen
+								"kit-selectR-above": isInBottomOfScreen,
+								"kit-selectR-drop_hidden": !show
 							})}
 						>
 							{children}

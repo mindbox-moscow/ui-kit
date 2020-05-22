@@ -14,9 +14,7 @@ const Panel: React.FC<IProps> = ({
 	parentRef,
 	onCLose
 }) => {
-	let resizeObserver: ResizeObserver;
-
-	const panelRef = React.createRef<HTMLDivElement>();
+	const panelRef = React.useRef<HTMLDivElement | null>(null);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
@@ -61,17 +59,19 @@ const Panel: React.FC<IProps> = ({
 			const { clientWidth } = parentRef.current;
 			panelRef.current.style.width = `${clientWidth}px`;
 
-			resizeObserver = new ResizeObserver(handleResizePanel);
-
 			resizeObserver.observe(panelRef.current);
 		}
 
 		return () => {
-			if (panelRef.current !== null && resizeObserver !== null) {
+			if (panelRef.current !== null && resizeObserver) {
 				resizeObserver.unobserve(panelRef.current);
 			}
 		};
 	}, []);
+
+	const resizeObserver: ResizeObserver = new ResizeObserver(
+		handleResizePanel
+	);
 
 	useClickOutside(panelRef, onCLose, true, true);
 

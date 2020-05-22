@@ -50,10 +50,6 @@ const Panel: React.FC<IProps> = ({
 		e.stopPropagation();
 	};
 
-	const handleResizePanel = () => {
-		panelHeightOverride();
-	};
-
 	React.useEffect(() => {
 		if (parentRef && parentRef.current && panelRef.current) {
 			const { clientWidth } = parentRef.current;
@@ -70,7 +66,7 @@ const Panel: React.FC<IProps> = ({
 	}, []);
 
 	const resizeObserver: ResizeObserver = new ResizeObserver(
-		handleResizePanel
+		panelHeightOverride
 	);
 
 	useClickOutside(panelRef, onCLose, true, true);

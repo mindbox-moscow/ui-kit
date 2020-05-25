@@ -1,7 +1,7 @@
 import * as React from "react";
 import { SelectDropMainProps } from "./types";
 
-export const SelectDropMain: React.FC<SelectDropMainProps> = ({
+const SelectDropMain: React.FC<SelectDropMainProps> = ({
 	children,
 	getChildRef
 }) => {
@@ -21,3 +21,5 @@ export const SelectDropMain: React.FC<SelectDropMainProps> = ({
 		</div>
 	);
 };
+
+export { SelectDropMain };

@@ -297,7 +297,7 @@ const Dropdown = React.forwardRef(
 								className={cn(panelClass, neutralZoneClass, {
 									"kit-selectR-above": isInBottomOfScreen
 								})}
-								onCLose={hide}
+								onClose={hide}
 							>
 								{children}
 							</Panel>

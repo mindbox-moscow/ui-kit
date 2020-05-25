@@ -10,7 +10,7 @@ const Panel: React.FC<IProps> = ({
 	width,
 	children,
 	parentRef,
-	onCLose
+	onClose
 }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
@@ -25,7 +25,7 @@ const Panel: React.FC<IProps> = ({
 		}
 	}, []);
 
-	useClickOutside(panelRef, onCLose, true, true);
+	useClickOutside(panelRef, onClose, true, true);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;

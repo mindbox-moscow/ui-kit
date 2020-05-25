@@ -46,6 +46,7 @@ export function useClickOutside(
 				)
 			) {
 				handler(e);
+				console.log(true);
 			}
 		}
 

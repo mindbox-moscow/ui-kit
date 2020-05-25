@@ -4,7 +4,7 @@ import { DropdownContext, Search } from "../";
 import { neutralZoneClass } from "../../../HOOKs";
 import { SelectionMode, SelectSearchListProps } from "./types";
 
-export const SelectSearchList: React.FC<SelectSearchListProps> = ({
+const SelectSearchList: React.FC<SelectSearchListProps> = ({
 	headerInfo,
 	clearFilterHandler,
 	resetFilterCaption,
@@ -126,3 +126,5 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 		</div>
 	);
 };
+
+export { SelectSearchList };

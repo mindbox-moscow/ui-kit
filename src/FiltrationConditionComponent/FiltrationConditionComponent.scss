@@ -82,15 +82,16 @@
 	z-index: 1;
 	display: inline-flex;
 	height: 100%;
-	margin-top: -3px;
-	margin-left: -3px;
+	margin-top: -2px;
+	margin-right: 5px;
+	margin-left: -5px;
 	padding: 0 5px;
 	background: none;
 	border: none;
+	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 	outline: none;
 	color: $createButtonColor;
 	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
-	transform: translateX(5px);
 	cursor: pointer;
 
 	&:hover {

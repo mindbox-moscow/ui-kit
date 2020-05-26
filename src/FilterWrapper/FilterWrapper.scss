@@ -14,16 +14,10 @@
 		height: 46px;
 		padding: 0;
 		box-sizing: border-box;
-		font-family: "PT Sans";
+		font-family: "PT Sans", sans-serif;
 		font-size: 14px;
 		line-height: 19px;
-		color: #a4a4a4;
 		letter-spacing: -0.4px;
-
-		.kit-filter__all-wrap {
-			display: flex;
-			align-items: center;
-		}
 	}
 }
 
@@ -32,7 +26,7 @@
 	height: 100%;
 	margin-left: auto;
 
-	>* {
+	> * {
 		height: 100%;
 	}
 }
@@ -42,23 +36,41 @@
 	padding: 0;
 	box-sizing: border-box;
 
-	>.kit-filtration-group_not-children {
+	.kit-filter_short & {
+		display: flex;
+		align-items: center;
+	}
+
+	> .kit-filtration-group_not-children {
 		.kit-filtration-group__buttons {
 			@include removeHorisontalBrackets;
 
-			>.kit-filter-editor .kit-filter-editor__btn,
-			>.kit-button {
+			> .kit-filter-editor .kit-filter-editor__btn,
+			> .kit-button {
 				opacity: 1;
 			}
 
-			>.kit-button:disabled {
+			> .kit-button:disabled {
 				opacity: 0.35;
 			}
 		}
 	}
 
-	~.kit-filtration-group__label-line {
+	> .kit-filtration-group_not-children.kit-filtration-group_edit {
+		> .kit-filtration-group__label-line_or,
+		> .kit-filtration-group__label-line_and {
+			left: -5px;
+		}
+	}
+
+	~ .kit-filtration-group__label-line {
 		padding-top: 2px;
+	}
+}
+
+.kit-filter__button-up {
+	.kit-filter__wrap-filter & {
+		margin-left: 22px;
 	}
 }
 
@@ -67,20 +79,6 @@
 	align-items: center;
 	flex-grow: 1;
 	box-sizing: border-box;
-
-	.kit-button {
-		margin-left: 22px;
-	}
-}
-
-.kit-filter__btn-wrap {
-	display: flex;
-	margin-top: 56px;
-	box-sizing: border-box;
-
-	.kit-button:not(:last-child) {
-		margin-right: 10px;
-	}
 }
 
 .kit-filter__btn {
@@ -102,20 +100,18 @@
 	display: flex;
 	height: 40px;
 	border-top: 1px solid #d4d4d4;
+	border-radius: 0 0 3px 3px;
+	overflow: hidden;
 	box-sizing: border-box;
 }
 
-.kit-filter__info-wrap,
-.kit-filter__count-block {
-	display: flex;
-	align-items: center;
-	height: 100%;
-	box-sizing: border-box;
+.kit-filter__info-wrap {
+	@extend %flex-wrapper;
 }
 
 .kit-filter__use-filter {
 	width: 399px;
-	height: 40px;
+	height: 100%;
 	background-color: #e2eaf0;
 	border: 0;
 	outline: none;
@@ -132,27 +128,9 @@
 	}
 }
 
-.kit-filter__clients,
-.kit-filter__clients-number {
-	box-sizing: border-box;
-	font-family: "PT Sans", sans-serif;
-	font-size: 14px;
-	line-height: 19px;
-	color: #333333;
-	letter-spacing: -0.4px;
-}
-
-.kit-filter__clients-number {
-	.preloader_trigger.state-active {
-		position: static;
-		display: inline-block;
-		margin-top: 0;
-		margin-left: 5px;
-		vertical-align: middle;
-	}
-}
-
 .kit-filter__clients {
+	@extend %clients;
+
 	display: inline-flex;
 	align-items: center;
 	height: 100%;
@@ -168,8 +146,18 @@
 }
 
 .kit-filter__clients-number {
+	@extend %clients;
+
 	box-sizing: border-box;
 	font-weight: 600;
+
+	.preloader_trigger.state-active {
+		position: static;
+		display: inline-block;
+		margin-top: 0;
+		margin-left: 5px;
+		vertical-align: middle;
+	}
 }
 
 .kit-filter__clear-filter-btn {
@@ -190,6 +178,15 @@
 	transition: background-color 0.15s ease-in-out;
 	cursor: pointer;
 
+	.kit-filter__count-block & {
+		height: auto;
+		margin: 0 10px 0 30px;
+		padding: 0;
+		background-color: transparent;
+		border-bottom: 1px dotted $clearButtonCountColor;
+		color: $clearButtonCountColor;
+	}
+
 	&:hover {
 		background-color: darken($clearButtonColorBg, 10%);
 	}
@@ -200,19 +197,12 @@
 }
 
 .kit-filter__count-block {
+	@extend %flex-wrapper;
+
 	height: 100%;
 	padding-left: 15px;
 	border: 2px solid transparent;
 	box-sizing: border-box;
-
-	.kit-filter__clear-filter-btn {
-		height: auto;
-		margin: 0 10px 0 30px;
-		padding: 0;
-		background-color: transparent;
-		border-bottom: 1px dotted $clearButtonCountColor;
-		color: $clearButtonCountColor;
-	}
 
 	&_part,
 	&_concrete,
@@ -247,18 +237,29 @@
 .kit-filter__top-right {
 	display: flex;
 
-	>*:not(:last-child) {
+	> *:not(:last-child) {
 		margin-right: 8px;
 	}
+}
 
-	.kit-filter__undo {
-		display: block;
-		margin: 0 12px;
-	}
+.kit-filter__undo {
+	display: block;
+	margin: 0 12px;
+}
 
-	.kit-filter__redo {
-		display: block;
-		transform: scale(-1, 1);
-		margin: 0 12px;
-	}
+.kit-filter__redo {
+	display: block;
+	margin: 0 12px;
+	transform: scale(-1, 1);
+}
+
+%clients {
+	background-color: #ffffff;
+}
+
+%flex-wrapper {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	box-sizing: border-box;
 }

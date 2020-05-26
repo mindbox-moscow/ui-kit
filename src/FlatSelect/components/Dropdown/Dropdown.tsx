@@ -216,14 +216,8 @@ const Dropdown = React.forwardRef(
 			() => {
 				if (show) {
 					positionDropDown();
+					setFocusOnElement(refSearch.current);
 				}
-			},
-			[show]
-		);
-
-		React.useEffect(
-			() => {
-				setFocusOnElement(refSearch.current);
 			},
 			[show]
 		);

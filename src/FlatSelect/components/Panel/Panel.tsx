@@ -1,5 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
+import ResizeObserver from "resize-observer-polyfill";
+
 import { Width } from "../../../utils";
 import { IProps } from "./types";
 
@@ -50,6 +52,25 @@ const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 	const handleClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
+
+	React.useEffect(() => {
+		if (parentRef && parentRef.current && panelRef.current) {
+			const { clientWidth } = parentRef.current;
+			panelRef.current.style.width = `${clientWidth}px`;
+
+			resizeObserver.observe(panelRef.current);
+		}
+
+		return () => {
+			if (panelRef.current !== null && resizeObserver) {
+				resizeObserver.unobserve(panelRef.current);
+			}
+		};
+	}, []);
+
+	const resizeObserver: ResizeObserver = new ResizeObserver(
+		panelHeightOverride
+	);
 
 	return (
 		<div

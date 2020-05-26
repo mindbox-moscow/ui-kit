@@ -2,7 +2,6 @@ import * as React from "react";
 import { Height, Width } from "../utils";
 import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
 
-import { useCombinedRefs } from "../HOOKs";
 import { DropdownHandles } from "./components/Dropdown";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
@@ -36,7 +35,7 @@ export const FlatSelect = <TValue extends {}>(
 
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
 	const currentRef = React.useRef<DropdownHandles>(null);
-	const dropdownRef = useCombinedRefs(currentRef, forwardRef);
+	const dropdownRef = forwardRef || currentRef;
 
 	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
@@ -227,7 +226,7 @@ export const FlatSelect = <TValue extends {}>(
 
 	return (
 		<Dropdown
-			ref={forwardRef || dropdownRef}
+			ref={dropdownRef}
 			id={id}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as InfiniteScroll from "react-infinite-scroller";
 
 import { Dropdown, SelectionMode, SelectSearchList } from "../FlatSelect";
@@ -41,26 +41,16 @@ const AsyncSearchSelectBase: React.FC<IProps> = props => {
 
 	const selectSearchListRef = useRef<HTMLDivElement>(null);
 
-	const [isOpen, setIsOpen] = useState(false);
-
-	const toggleOpen = () => {
-		setIsOpen(prev => !prev);
-	};
 	const getScrollParent = () => {
 		return selectSearchListRef.current;
 	};
 
-	useEffect(
-		() => {
-			onLoadNextPortion();
-		},
-		[isOpen]
-	);
+	useEffect(() => {
+		onLoadNextPortion();
+	}, []);
 
 	return (
 		<Dropdown
-			isOpen={isOpen}
-			onClick={toggleOpen}
 			headerInfo={headerInfo}
 			className="form-control_all"
 			height={height ? Height.Normal : undefined}

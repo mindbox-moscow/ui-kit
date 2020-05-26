@@ -5,21 +5,21 @@ import { KeysCodes } from "../../../utils/constants";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
 
-const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
+export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
 	unselectable,
-	disabled = false,
+	disabled,
 	isSelected,
-	isForMultiSelect = false,
+	isForMultiSelect,
 	hasNested,
-	isLoader = false,
+	isLoader,
 	text,
 	title,
 	children,
 	onClickHandler
 }) => {
 	const context = React.useContext(DropdownContext);
-	const refElement = React.useRef<HTMLDivElement>(null);
+	const refElement = React.useRef<HTMLLIElement>(null);
 	const [markedItem, setMarkedItem] = React.useState(false);
 
 	React.useEffect(
@@ -44,9 +44,9 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 
 	const renderСhildren = (): JSX.Element | null => {
 		return hasNested ? (
-			<div className="kit-selectR-results kit-selectR-results-default">
+			<ul className="kit-selectR-results kit-selectR-results-default">
 				{children}
-			</div>
+			</ul>
 		) : null;
 	};
 
@@ -129,7 +129,7 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	return (
-		<div
+		<li
 			ref={refElement}
 			tabIndex={0}
 			onKeyDown={handleOnKeyDown}
@@ -152,12 +152,6 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 				{text}
 			</div>
 			{renderСhildren()}
-		</div>
+		</li>
 	);
 };
-
-const MomoizedSelectSearchRow = React.memo<React.FC<SelectSearchRowProps>>(
-	SelectSearchRow
-);
-
-export { MomoizedSelectSearchRow as SelectSearchRow };

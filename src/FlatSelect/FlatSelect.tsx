@@ -1,31 +1,51 @@
 import * as React from "react";
 import { Height, Width } from "../utils";
-import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
+import {
+	Dropdown,
+	DropdownHandles,
+	SelectSearchList,
+	SelectSearchRow
+} from "./components";
 
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
 import "./FlatSelect.scss";
 
-export const FlatSelect = <TValue extends object>({
-	id,
-	placeholder,
-	disabled,
-	width,
-	className,
-	height,
-	onChange,
-	headerInfo,
-	selectedValue,
-	itemFormatter,
-	isLoading,
-	selectElementCaption,
-	items,
-	allowNull,
-	loadListCaption,
-	selectedItemFormatter
-}: SelectProps<TValue> & { children?: React.ReactNode }) => {
+export const FlatSelect = <TValue extends {}>(
+	props: SelectProps<TValue> & {
+		children?: React.ReactNode;
+		forwardRef?: React.RefObject<DropdownHandles>;
+	}
+) => {
+	const {
+		id,
+		placeholder,
+		disabled,
+		width,
+		className,
+		height,
+		onChange,
+		headerInfo,
+		selectedValue,
+		itemFormatter,
+		isLoading,
+		selectElementCaption,
+		items,
+		allowNull,
+		loadListCaption,
+		selectedItemFormatter,
+		forwardRef
+	} = props;
+
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const [isOpen, setIsOpen] = React.useState(false);
+	const currentRef = React.useRef<DropdownHandles>(null);
+	const dropdownRef = forwardRef || currentRef;
+
+	const hide = React.useCallback(() => {
+		if (dropdownRef.current) {
+			dropdownRef.current.hide();
+		}
+	}, []);
 
 	const searchTermChanged = React.useCallback((newSearchTerm: string) => {
 		setSearchTerm(newSearchTerm);
@@ -33,7 +53,7 @@ export const FlatSelect = <TValue extends object>({
 
 	const handleOnChange = (newSelectedValue: TValue) => {
 		if (!(selectedValue instanceof Array)) {
-			setIsOpen(prev => !prev);
+			hide();
 		}
 		onChange(newSelectedValue);
 	};
@@ -208,14 +228,9 @@ export const FlatSelect = <TValue extends object>({
 		onChange(null);
 	};
 
-	const handleClick = () => {
-		setIsOpen(prev => !prev);
-	};
-
 	return (
 		<Dropdown
-			onClick={handleClick}
-			isOpen={isOpen}
+			ref={dropdownRef}
 			id={id}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}

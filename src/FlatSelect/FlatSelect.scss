@@ -1,6 +1,8 @@
 .kit-flat-select {
 	position: relative;
+	display: inline-block;
 	width: auto;
+	vertical-align: middle;
 }
 
 .kit-selectR.form-control:focus {
@@ -116,6 +118,10 @@
 	border-top: 0;
 	border-radius: 0 0 2px 2px;
 	color: #000000;
+
+	&_hidden {
+		display: none;
+	}
 }
 
 .kit-selectR-drop-header {

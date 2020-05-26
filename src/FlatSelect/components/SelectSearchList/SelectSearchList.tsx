@@ -121,7 +121,7 @@ export const SelectSearchList: React.FC<SelectSearchListProps> = ({
 				{applyButton}
 			</div>
 			<SelectDropMain getChildRef={getRefDropMain}>
-				{children}
+				{ context.isOpenDropdown && children }
 			</SelectDropMain>
 		</div>
 	);

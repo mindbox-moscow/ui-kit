@@ -7,26 +7,35 @@ import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
 import "./FlatSelect.scss";
 
-export const FlatSelect = <TValue extends object>({
-	id,
-	placeholder,
-	disabled,
-	width,
-	className,
-	height,
-	onChange,
-	headerInfo,
-	selectedValue,
-	itemFormatter,
-	isLoading,
-	selectElementCaption,
-	items,
-	allowNull,
-	loadListCaption,
-	selectedItemFormatter
-}: SelectProps<TValue> & { children?: React.ReactNode }) => {
+export const FlatSelect = <TValue extends {}>(
+	props: SelectProps<TValue> & {
+		children?: React.ReactNode;
+		forwardRef?: React.RefObject<DropdownHandles>;
+	}
+) => {
+	const {
+		id,
+		placeholder,
+		disabled,
+		width,
+		className,
+		height,
+		onChange,
+		headerInfo,
+		selectedValue,
+		itemFormatter,
+		isLoading,
+		selectElementCaption,
+		items,
+		allowNull,
+		loadListCaption,
+		selectedItemFormatter,
+		forwardRef
+	} = props;
+
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const dropdownRef = React.useRef<DropdownHandles>(null);
+	const currentRef = React.useRef<DropdownHandles>(null);
+	const dropdownRef = forwardRef || currentRef;
 
 	const hide = React.useCallback(() => {
 		if (dropdownRef.current) {
@@ -217,6 +226,7 @@ export const FlatSelect = <TValue extends object>({
 
 	return (
 		<Dropdown
+			ref={dropdownRef}
 			id={id}
 			headerInfo={selectedItemText}
 			placeholder={placeholder}

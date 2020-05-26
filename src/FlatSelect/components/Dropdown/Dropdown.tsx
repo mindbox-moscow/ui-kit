@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { neutralZoneClass } from "../../../HOOKs";
+import { neutralZoneClass, useClickOutside } from "../../../HOOKs";
 import { OverflowVisibleContainer } from "../../../OverflowVisibleContainer";
 import { Height, Width } from "../../../utils";
 import { KeysCodes } from "../../../utils/constants";
@@ -252,8 +252,11 @@ const Dropdown = React.forwardRef(
 			onFocusElement: handleFocusFirstElement,
 			addItemsRef: addItemListRef,
 			setSearchRef,
-			setSearchTerm
+			setSearchTerm,
+			isOpenDropdown: show
 		};
+
+		useClickOutside(refPanel, hide, show, true);
 
 		return (
 			<div className="kit-flat-select">
@@ -286,25 +289,23 @@ const Dropdown = React.forwardRef(
 					</span>
 				</div>
 
-				{show && (
-					<OverflowVisibleContainer
-						ref={refPanel}
-						parentRef={dropdownRef}
-					>
-						<DropdownContext.Provider value={contextValues}>
-							<Panel
-								parentRef={dropdownRef}
-								width={width || Width.Full}
-								className={cn(panelClass, neutralZoneClass, {
-									"kit-selectR-above": isInBottomOfScreen
-								})}
-								onCLose={hide}
-							>
-								{children}
-							</Panel>
-						</DropdownContext.Provider>
-					</OverflowVisibleContainer>
-				)}
+				<OverflowVisibleContainer
+					ref={refPanel}
+					parentRef={dropdownRef}
+				>
+					<DropdownContext.Provider value={contextValues}>
+						<Panel
+							parentRef={dropdownRef}
+							width={width || Width.Full}
+							className={cn(panelClass, neutralZoneClass, {
+								"kit-selectR-above": isInBottomOfScreen,
+								"kit-selectR-drop_hidden": !show
+							})}
+						>
+							{children}
+						</Panel>
+					</DropdownContext.Provider>
+				</OverflowVisibleContainer>
 			</div>
 		);
 	}

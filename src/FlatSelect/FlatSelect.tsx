@@ -1,8 +1,12 @@
 import * as React from "react";
 import { Height, Width } from "../utils";
-import { Dropdown, SelectSearchList, SelectSearchRow } from "./components";
+import {
+	Dropdown,
+	DropdownHandles,
+	SelectSearchList,
+	SelectSearchRow
+} from "./components";
 
-import { DropdownHandles } from "./components/Dropdown";
 import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
 import "./FlatSelect.scss";

@@ -1,7 +1,7 @@
 .kit-flat-select {
 	position: relative;
 	display: inline-block;
-	width: auto;
+	width: 100%;
 	vertical-align: middle;
 }
 
@@ -419,11 +419,14 @@
 	height: 100%;
 }
 .kit-selectR-choices-label {
-	display: inline-block;
+	display: -webkit-box;
 	padding: 3px 24px 3px 6px;
+	overflow: hidden;
 	font-size: 13px;
 	line-height: 1.16;
 	vertical-align: middle;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 .kit-selectR-choices-default .kit-selectR-choices-result {
 	display: block;

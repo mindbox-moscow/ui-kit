@@ -1,13 +1,16 @@
 {
 	"name": "@mindbox/ui-kit",
-	"version": "0.3.0-dev",
+	"version": "0.4.0-dev",
 	"types": "./build",
 	"main": "./build",
-	"dependencies": {},
+	"dependencies": {
+		"react-infinite-scroller": "^1.2.4"
+	},
 	"peerDependencies": {
 		"classnames": "^2.2.6",
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
+		"react-infinite-scroller": "^1.2.4",
 		"resize-observer-polyfill": "^1.5.1"
 	},
 	"scripts": {
@@ -24,6 +27,7 @@
 		"@types/node": "^10.17.5",
 		"@types/react": "^16.9.17",
 		"@types/react-dom": "^16.9.4",
+		"@types/react-infinite-scroller": "^1.2.1",
 		"classnames": "^2.2.6",
 		"cpy": "^7.0.1",
 		"file-loader": "^2.0.0",

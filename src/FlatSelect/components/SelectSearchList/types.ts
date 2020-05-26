@@ -10,7 +10,7 @@ export interface SelectSearchListProps {
 	makeSelectedComponents?: () => JSX.Element[];
 	resetFilterCaption?: string;
 	closeCaption?: string;
-	getChildRef?: (ref: React.RefObject<HTMLElement>) => void;
+	children?: React.ReactNode;
 }
 
 export enum SelectionMode {

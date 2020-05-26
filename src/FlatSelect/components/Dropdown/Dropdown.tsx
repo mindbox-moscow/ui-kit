@@ -245,16 +245,19 @@ const Dropdown = React.forwardRef(
 
 		const style = { ...props.style, marginLeft: "0 !important" };
 
-		const contextValues = {
-			contextOnKeyDownItems: handleContextOnKeyDownItems,
-			contextOnKeyDownSearch: handleContextOnKeyDownSearch,
-			onCloseDropdown: hide,
-			onFocusElement: handleFocusFirstElement,
-			addItemsRef: addItemListRef,
-			setSearchRef,
-			setSearchTerm,
-			isOpenDropdown: show
-		};
+		const contextValues = React.useMemo(
+			() => ({
+				contextOnKeyDownItems: handleContextOnKeyDownItems,
+				contextOnKeyDownSearch: handleContextOnKeyDownSearch,
+				onCloseDropdown: hide,
+				onFocusElement: handleFocusFirstElement,
+				addItemsRef: addItemListRef,
+				setSearchRef,
+				setSearchTerm,
+				isOpenDropdown: show
+			}),
+			[]
+		);
 
 		useClickOutside(refPanel, hide, show, true);
 

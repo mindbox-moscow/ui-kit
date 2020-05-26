@@ -5,7 +5,7 @@ import { KeysCodes } from "../../../utils/constants";
 import { DropdownContext } from "../Dropdown";
 import { SelectSearchRowProps } from "./types";
 
-export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
+const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	className,
 	unselectable,
 	disabled,
@@ -155,3 +155,9 @@ export const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 		</li>
 	);
 };
+
+const MomoizedSelectSearchRow = React.memo<React.FC<SelectSearchRowProps>>(
+	SelectSearchRow
+);
+
+export { MomoizedSelectSearchRow as SelectSearchRow };

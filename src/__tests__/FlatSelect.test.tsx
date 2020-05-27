@@ -41,7 +41,7 @@ const openSelect = () => {
 };
 
 const getSelectItems = () => {
-	return select.find("SelectSearchRow");
+	return select.find("Memo(SelectSearchRow)");
 };
 
 const getPanelElement = () => {
@@ -53,11 +53,11 @@ const getSearchElement = () => {
 };
 
 const toBeSelectClosed = () => {
-	expect(getPanelElement()).toHaveLength(0);
+	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeTruthy();
 };
 
 const toBeSelectOpen = () => {
-	expect(getPanelElement()).toHaveLength(1);
+	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeFalsy();
 };
 
 const toBeItemIsHighlighted = (

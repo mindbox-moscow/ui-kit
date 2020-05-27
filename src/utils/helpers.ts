@@ -27,3 +27,7 @@ export const checkBrowser = (browserName: BrowserList): boolean => {
 
 	return regExp.test(window.navigator.userAgent);
 };
+
+export const mergeDuplicates = <T>(...arr: Array<T | T[]>): T[] => {
+	return [...new Set(([] as T[]).concat(...arr))];
+};

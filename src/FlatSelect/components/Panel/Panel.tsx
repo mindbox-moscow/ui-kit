@@ -1,17 +1,11 @@
 import cn from "classnames";
 import * as React from "react";
+import ResizeObserver from "resize-observer-polyfill";
+
 import { Width } from "../../../utils";
 import { IProps } from "./types";
 
-import { useClickOutside } from "../../../HOOKs";
-
-const Panel: React.FC<IProps> = ({
-	className,
-	width,
-	children,
-	parentRef,
-	onClose
-}) => {
+const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 	const panelRef = React.createRef<HTMLDivElement>();
 
 	React.useEffect(() => {
@@ -24,8 +18,6 @@ const Panel: React.FC<IProps> = ({
 			panelRef.current.style.width = `${clientWidth}px`;
 		}
 	}, []);
-
-	useClickOutside(panelRef, onClose, true, true);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
@@ -60,6 +52,25 @@ const Panel: React.FC<IProps> = ({
 	const handleClick = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
+
+	React.useEffect(() => {
+		if (parentRef && parentRef.current && panelRef.current) {
+			const { clientWidth } = parentRef.current;
+			panelRef.current.style.width = `${clientWidth}px`;
+
+			resizeObserver.observe(panelRef.current);
+		}
+
+		return () => {
+			if (panelRef.current !== null && resizeObserver) {
+				resizeObserver.unobserve(panelRef.current);
+			}
+		};
+	}, []);
+
+	const resizeObserver: ResizeObserver = new ResizeObserver(
+		panelHeightOverride
+	);
 
 	return (
 		<div

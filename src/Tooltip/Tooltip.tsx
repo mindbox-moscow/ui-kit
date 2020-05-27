@@ -40,14 +40,12 @@ export const Tooltip: React.FC<IProps> = ({
 
 	React.useEffect(
 		() => {
+			setViewportOverflowCorrection(null);
+
 			if (isShow) {
 				const contentContainer = refContent.current;
 				const viewportWidth = document.documentElement.clientWidth;
 				const viewportHeight = window.innerHeight;
-
-				if (viewportHeight) {
-					setViewportOverflowCorrection(null);
-				}
 
 				if (contentContainer) {
 					const {

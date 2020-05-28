@@ -256,7 +256,7 @@ const Dropdown = React.forwardRef(
 				setSearchTerm,
 				isOpenDropdown: show
 			}),
-			[]
+			[children]
 		);
 
 		useClickOutside(refPanel, hide, show, true);

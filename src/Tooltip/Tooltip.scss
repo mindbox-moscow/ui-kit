@@ -3,12 +3,14 @@
 	position: relative;
 	display: inline-flex;
 	align-items: center;
+	vertical-align: middle;
 }
 
 .kit-tooltip__title {
 	position: relative;
 	display: inline-flex;
-	align-items: center;
+	align-items: inherit;
+	transform: translateY(-1px);
 	cursor: default;
 
 	&_pointer {

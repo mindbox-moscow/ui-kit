@@ -138,13 +138,13 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							classNameContent
 						)}
 						onClick={
-							state !== "readOnly" && state != "notApplicable"
+							state !== "readOnly" && state !== "notApplicable"
 								? onConditionStateToggle
 								: () => {}
 						}
 					>
 						{state !== "readOnly" &&
-							state != "notApplicable" &&
+							state !== "notApplicable" &&
 							isLinkedCondition && (
 								<button
 									type="button"

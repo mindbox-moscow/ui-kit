@@ -17,6 +17,7 @@
 	@extend %button-control;
 	@extend %button-control-view;
 	@extend %button-control-display-none-read-only;
+	@extend %button-control-display-none-not-applicable;
 	@extend %button-control-display-none-linked-condition-edit;
 	@extend %button-control-visible-edit;
 	@extend %button-control-visible-not-read-only;
@@ -49,6 +50,7 @@
 .kit-filtration-condition__more {
 	@extend %button-control;
 	@extend %button-control-display-none-read-only;
+	@extend %button-control-display-none-not-applicable;
 	@extend %button-control-display-none-linked-condition-edit;
 	@extend %button-control-visible-edit;
 	@extend %button-control-visible-not-read-only;
@@ -74,6 +76,10 @@
 }
 
 .kit-filtration-condition__negative-name-part {
+	color: $removeColor;
+}
+
+.kit-filtration-condition__item-text_not-applicable {
 	color: $removeColor;
 }
 
@@ -267,6 +273,11 @@
 
 .kit-filtration-condition__item-text_read-only
 	> %button-control-display-none-read-only {
+	display: none;
+}
+
+.kit-filtration-condition__item-text_not-applicable
+	> %button-control-display-none-not-applicable {
 	display: none;
 }
 

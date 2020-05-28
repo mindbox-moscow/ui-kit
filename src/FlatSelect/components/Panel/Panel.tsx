@@ -13,12 +13,13 @@ const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 
 		if (panel) {
 			const { top, bottom, height } = panel.getBoundingClientRect();
+			const offsetHeight = document.body.offsetHeight;
 			let cutMaxHeight = 0;
 
 			if (top < 0) {
 				cutMaxHeight = height - Math.abs(top);
-			} else if (bottom > document.body.offsetHeight) {
-				cutMaxHeight = document.body.offsetHeight - bottom;
+			} else if (bottom > offsetHeight) {
+				cutMaxHeight = offsetHeight - bottom;
 			}
 
 			if (cutMaxHeight > 0) {

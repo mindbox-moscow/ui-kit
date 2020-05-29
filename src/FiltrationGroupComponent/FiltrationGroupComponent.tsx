@@ -280,7 +280,10 @@ const FiltrationGroupComponent = ({
 		if (
 			hasChildren &&
 			shouldShowLabel &&
-			(state === "view" || state === "shaded" || state === "readOnly")
+			(state === "view" ||
+				state === "shaded" ||
+				state === "readOnly" ||
+				state === "notApplicable")
 		) {
 			return false;
 		}
@@ -301,7 +304,12 @@ const FiltrationGroupComponent = ({
 	};
 
 	const renderGroupClose = () => {
-		if (state === "view" || state === "shaded" || state === "readOnly") {
+		if (
+			state === "view" ||
+			state === "shaded" ||
+			state === "readOnly" ||
+			state == "notApplicable"
+		) {
 			return false;
 		}
 
@@ -331,7 +339,11 @@ const FiltrationGroupComponent = ({
 	};
 
 	const handleGroupLabelClick = () => {
-		if (state === "edit") {
+		if (
+			state === "edit" ||
+			state === "readOnly" ||
+			state === "notApplicable"
+		) {
 			return;
 		}
 

@@ -1,4 +1,6 @@
+import * as cn from "classnames";
 import * as React from "react";
+
 import { DropdownContext, Search } from "../";
 import { neutralZoneClass } from "../../../HOOKs";
 import { SelectionMode, SelectSearchListProps } from "./types";
@@ -102,7 +104,7 @@ const SelectSearchList: React.RefForwardingComponent<
 	}
 
 	return (
-		<div className={className}>
+		<div className={cn("kit-selectR__search-list", className)}>
 			<div className="kit-selectR-drop-header">
 				<div className="kit-selectR-search">
 					<span className="kit-selectR-input">

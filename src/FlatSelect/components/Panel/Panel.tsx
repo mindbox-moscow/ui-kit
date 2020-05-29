@@ -3,48 +3,29 @@ import * as React from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 import { Width } from "../../../utils";
+import { DropdownContext } from "../Dropdown";
 import { IProps } from "./types";
 
 const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
-	const panelRef = React.createRef<HTMLDivElement>();
-
-	React.useEffect(() => {
-		panelHeightOverride();
-	}, []);
-
-	React.useEffect(() => {
-		if (parentRef && parentRef.current && panelRef.current) {
-			const { clientWidth } = parentRef.current;
-			panelRef.current.style.width = `${clientWidth}px`;
-		}
-	}, []);
+	const panelRef = React.useRef<HTMLDivElement>(null);
+	const { isOpenDropdown } = React.useContext(DropdownContext);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
 
 		if (panel) {
-			const { top, bottom } = panel.getBoundingClientRect();
+			const { top, bottom, height } = panel.getBoundingClientRect();
+			const offsetHeight = top >= 0 && document.body.offsetHeight;
 			let cutMaxHeight = 0;
 
 			if (top < 0) {
-				cutMaxHeight = top;
-			} else if (bottom > document.body.offsetHeight) {
-				cutMaxHeight = document.body.offsetHeight - bottom;
+				cutMaxHeight = height - Math.abs(top);
+			} else if (bottom > offsetHeight && offsetHeight) {
+				cutMaxHeight = offsetHeight - bottom;
 			}
 
-			if (cutMaxHeight < 0) {
-				// Ищем SelectDropMain и меняем максимальную высоту, минимум 100
-				const selectList = panel.querySelector(
-					".kit-selectR-drop-main"
-				) as HTMLElement;
-				const maxHeightStyle = parseInt(
-					getComputedStyle(selectList).maxHeight,
-					10
-				);
-				if (!isNaN(maxHeightStyle)) {
-					selectList.style.maxHeight =
-						Math.max(cutMaxHeight + maxHeightStyle, 150) + "px";
-				}
+			if (cutMaxHeight > 0) {
+				panel.style.maxHeight = `${cutMaxHeight}px`;
 			}
 		}
 	};
@@ -53,20 +34,25 @@ const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 		e.stopPropagation();
 	};
 
-	React.useEffect(() => {
-		if (parentRef && parentRef.current && panelRef.current) {
-			const { clientWidth } = parentRef.current;
-			panelRef.current.style.width = `${clientWidth}px`;
+	React.useEffect(
+		() => {
+			if (isOpenDropdown) {
+				if (parentRef && parentRef.current && panelRef.current) {
+					const { clientWidth } = parentRef.current;
+					panelRef.current.style.width = `${clientWidth}px`;
 
-			resizeObserver.observe(panelRef.current);
-		}
-
-		return () => {
-			if (panelRef.current !== null && resizeObserver) {
-				resizeObserver.unobserve(panelRef.current);
+					resizeObserver.observe(panelRef.current);
+				}
 			}
-		};
-	}, []);
+
+			return () => {
+				if (panelRef.current !== null && resizeObserver) {
+					resizeObserver.unobserve(panelRef.current);
+				}
+			};
+		},
+		[isOpenDropdown]
+	);
 
 	const resizeObserver: ResizeObserver = new ResizeObserver(
 		panelHeightOverride

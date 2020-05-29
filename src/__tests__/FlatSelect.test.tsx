@@ -171,11 +171,11 @@ describe("FlatSelect", () => {
 			getSelectElement().simulate("keydown", { keyCode: KeysCodes.Enter })
 		);
 
-		it("open dropdown after click", () => {
+		it("open dropdown after keydown 'Enter'", () => {
 			toBeSelectOpen();
 		});
 
-		it("close after click again", () => {
+		it("close after keydown 'Enter' again", () => {
 			getSelectElement().simulate("keydown", {
 				keyCode: KeysCodes.Enter
 			});

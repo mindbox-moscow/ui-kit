@@ -1,8 +1,6 @@
 .kit-flat-select {
 	position: relative;
-	display: inline-block;
-	width: 100%;
-	vertical-align: middle;
+	width: auto;
 }
 
 .kit-selectR.form-control:focus {
@@ -109,6 +107,8 @@
 }
 
 .kit-selectR__search-list {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
 }
 

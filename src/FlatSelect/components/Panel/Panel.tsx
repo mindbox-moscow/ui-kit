@@ -3,10 +3,12 @@ import * as React from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 import { Width } from "../../../utils";
+import { DropdownContext } from "../Dropdown";
 import { IProps } from "./types";
 
 const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 	const panelRef = React.useRef<HTMLDivElement>(null);
+	const { isOpenDropdown } = React.useContext(DropdownContext);
 
 	const panelHeightOverride = () => {
 		const panel = panelRef.current;
@@ -32,20 +34,25 @@ const Panel: React.FC<IProps> = ({ className, width, children, parentRef }) => {
 		e.stopPropagation();
 	};
 
-	React.useEffect(() => {
-		if (parentRef && parentRef.current && panelRef.current) {
-			const { clientWidth } = parentRef.current;
-			panelRef.current.style.width = `${clientWidth}px`;
+	React.useEffect(
+		() => {
+			if (isOpenDropdown) {
+				if (parentRef && parentRef.current && panelRef.current) {
+					const { clientWidth } = parentRef.current;
+					panelRef.current.style.width = `${clientWidth}px`;
 
-			resizeObserver.observe(panelRef.current);
-		}
-
-		return () => {
-			if (panelRef.current !== null && resizeObserver) {
-				resizeObserver.unobserve(panelRef.current);
+					resizeObserver.observe(panelRef.current);
+				}
 			}
-		};
-	}, []);
+
+			return () => {
+				if (panelRef.current !== null && resizeObserver) {
+					resizeObserver.unobserve(panelRef.current);
+				}
+			};
+		},
+		[isOpenDropdown]
+	);
 
 	const resizeObserver: ResizeObserver = new ResizeObserver(
 		panelHeightOverride

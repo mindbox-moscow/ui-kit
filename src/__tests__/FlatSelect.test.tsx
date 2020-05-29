@@ -1,16 +1,25 @@
 import * as React from "react";
+import { act } from "react-dom/test-utils";
 
 import { mount, ReactWrapper } from "enzyme";
 import { FlatSelect, SelectProps } from "../FlatSelect";
 import { KeysCodes } from "../utils/constants";
+
+const mokeOnChange = jest.fn(value => value);
+
+const map: any = {
+	click: null
+};
+
+document.addEventListener = jest.fn((event, cb) => {
+	map[event] = cb;
+});
 
 const itemFormatter = (value: any) => ({
 	key: value ? "true" : "false",
 	text: value ? "Да" : "Нет",
 	value
 });
-
-const mokeOnChange = jest.fn(value => value);
 
 const createDefaultProps = () => {
 	return {
@@ -26,10 +35,15 @@ const createDefaultProps = () => {
 
 let select: ReactWrapper;
 let props: SelectProps<any>;
+let wrapper: HTMLElement;
 
 beforeEach(() => {
+	wrapper = document.createElement("div");
+	wrapper.classList.add("kit-overflow-isnt-neutral-zone-marker");
+	document.body.appendChild(wrapper);
+
 	props = createDefaultProps();
-	select = mount(<FlatSelect {...props} />);
+	select = mount(<FlatSelect {...props} />, { attachTo: wrapper });
 });
 
 const getSelectElement = () => {
@@ -129,6 +143,24 @@ describe("FlatSelect", () => {
 
 		it("close after click again", () => {
 			openSelect();
+
+			toBeSelectClosed();
+		});
+
+		it("close dropdown if click outside with ignore class 'kit-overflow-isnt-neutral-zone-marker'", () => {
+			act(() => {
+				map.click({
+					target: wrapper,
+					composedPath: () => [
+						wrapper,
+						window.document.body,
+						window.document,
+						window
+					],
+					isTrusted: true
+				});
+			});
+			select.update();
 
 			toBeSelectClosed();
 		});

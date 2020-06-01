@@ -124,8 +124,8 @@ export const Tooltip: React.FC<IProps> = ({
 	useClickOutside(refContent, handleHideTooltip, isShow && showByClick);
 
 	return (
-		<div className={cn("kit-tooltip", className)}>
-			<div
+		<span className={cn("kit-tooltip", className)}>
+			<span
 				onMouseEnter={showByClick ? undefined : handleShowTooltip}
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				onClick={showByClick ? handleShowTooltip : undefined}
@@ -143,7 +143,7 @@ export const Tooltip: React.FC<IProps> = ({
 					/>
 				)}
 				{title}
-			</div>
+			</span>
 			{isShow && (
 				<OverflowVisibleContainer
 					parentRef={refTitle}
@@ -152,6 +152,6 @@ export const Tooltip: React.FC<IProps> = ({
 					{tooltipContent}
 				</OverflowVisibleContainer>
 			)}
-		</div>
+		</span>
 	);
 };

@@ -5,7 +5,8 @@ type ConditionState =
 	| "edit"
 	| "shaded"
 	| "linkedConditionEdit"
-	| "readOnly";
+	| "readOnly"
+	| "notApplicable";
 
 export interface IStateProps {
 	filterablePropertyName: string; // название объекта фильтрации. типа "Розничный заказ", "Покупка" или "Цена"

@@ -1,6 +1,6 @@
+import { ResizeObserver } from "@juggle/resize-observer";
 import cn from "classnames";
 import * as React from "react";
-import ResizeObserver from "resize-observer-polyfill";
 
 import { Width } from "../../../utils";
 import { DropdownContext } from "../Dropdown";

@@ -85,6 +85,7 @@ module.exports = {
 		"**/FiltrationConditionComponent/FiltrationConditionComponentContext.tsx",
 		"**/OverflowVisibleContainer/OverflowVisibleContext.tsx",
 		"**/utils/**",
-		"**/ActionsDropdown/components/**"
+		"**/ActionsDropdown/components/**",
+		"**/__tests__/**"
 	]
 };

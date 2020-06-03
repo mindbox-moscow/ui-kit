@@ -20,7 +20,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 	(props, ref) => {
 		const { parentRef, className, children } = props;
 
-		const currentRef = React.useRef<HTMLDivElement>(null);
+		const currentRef = React.useRef<HTMLDivElement>();
 		const containerRef =
 			(ref as React.RefObject<HTMLDivElement>) || currentRef;
 		const ticking = React.useRef(false);
@@ -43,8 +43,9 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 			) {
 				ticking.current = false;
 
-				containerRef.current.style.transform = `translateY(${positionTop -
-					scrollableContainer.current.scrollTop}px)`;
+				containerRef.current.style.willChange = "transform";
+				containerRef.current.style.transform = `translate3d(0, ${positionTop -
+					scrollableContainer.current.scrollTop}px, 0)`;
 				containerRef.current.style.zIndex = `9999`;
 			}
 		};

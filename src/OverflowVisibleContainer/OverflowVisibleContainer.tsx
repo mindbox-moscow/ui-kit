@@ -1,5 +1,7 @@
 import cn from "classnames";
 import * as React from "react";
+
+import { useDebouncedWindowSize } from "../HOOKs";
 import { Portal } from "../Portal";
 
 import "./OverflowVisibleContainer.scss";
@@ -19,6 +21,8 @@ type Ref = HTMLDivElement;
 export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 	(props, ref) => {
 		const { parentRef, className, children } = props;
+
+		const debouncedWindowSize = useDebouncedWindowSize();
 
 		const currentRef = React.useRef<HTMLDivElement>();
 		const containerRef =
@@ -58,7 +62,7 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 			ticking.current = true;
 		};
 
-		React.useEffect(() => {
+		const calculatePosition = () => {
 			if (parentRef && parentRef.current) {
 				const {
 					left,
@@ -70,14 +74,25 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 				setPositionTop(
 					isFixed ? top + height : top + pageYOffset + height
 				);
-				setIsLoaded(true);
+			}
+		};
 
-				if (scrollableContainer && scrollableContainer.current) {
-					scrollableContainer.current.addEventListener(
-						"scroll",
-						requestCalculate
-					);
-				}
+		React.useEffect(
+			() => {
+				calculatePosition();
+			},
+			[debouncedWindowSize, isFixed]
+		);
+
+		React.useEffect(() => {
+			calculatePosition();
+			setIsLoaded(true);
+
+			if (scrollableContainer && scrollableContainer.current) {
+				scrollableContainer.current.addEventListener(
+					"scroll",
+					requestCalculate
+				);
 			}
 
 			return () => {

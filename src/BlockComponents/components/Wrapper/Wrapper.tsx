@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import "./Wrapper.scss";
-
 interface IProps {
 	tag?: "div" | "span";
 }

@@ -1,8 +1,6 @@
 .kit-flat-select {
 	position: relative;
-	display: inline-block;
-	width: 100%;
-	vertical-align: middle;
+	width: auto;
 }
 
 .kit-selectR.form-control:focus {
@@ -108,9 +106,16 @@
 	background-position: -84px 50%;
 }
 
+.kit-selectR__search-list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
 .kit-selectR-drop {
 	position: absolute;
 	z-index: 9997;
+	display: flex;
 	min-width: 100%;
 	margin-top: -1px;
 	background: #ffffff;
@@ -601,7 +606,9 @@
 	z-index: 2;
 }
 .kit-selectR-drop-right {
-	float: right;
+	display: flex;
+	flex-direction: column;
+	order: 10;
 	width: 60%;
 }
 .kit-selectR-drop-right::before {

@@ -1,4 +1,3 @@
-import cn from "classnames";
 import * as React from "react";
 
 import "./Wrapper.scss";
@@ -12,13 +11,5 @@ export const Wrapper: React.FC<IProps> = props => {
 
 	const Tag = tag;
 
-	return (
-		<Tag
-			className={cn("kit-block-wrapper", {
-				"kit-block-wrapper_inline": tag === "span"
-			})}
-		>
-			{children}
-		</Tag>
-	);
+	return <Tag className="kit-block-wrapper">{children}</Tag>;
 };

@@ -4,12 +4,11 @@ $error: #ffeeeb;
 .kit-block-invalid-high-light {
 	position: relative;
 	display: inline-block;
-	margin-right: 5px;
 	padding-right: 3px;
 	padding-left: 3px;
 	background-color: $error;
 	border-radius: 4px;
-	line-height: 19px;
+	line-height: 17px;
 	color: #000000;
 
 	> span {

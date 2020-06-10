@@ -16,7 +16,8 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	text,
 	title,
 	children,
-	onClickHandler
+	onClickHandler,
+	closeOnSelectOverride = false
 }) => {
 	const context = React.useContext(DropdownContext);
 	const refElement = React.useRef<HTMLLIElement>(null);
@@ -68,7 +69,7 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleClick = () => {
-		const { onCloseDropdown, isChildSelect } = context;
+		const { onCloseDropdown } = context;
 
 		if (disabled) {
 			return;
@@ -78,7 +79,7 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			onClickHandler();
 		}
 
-		if (!isForMultiSelect || isChildSelect) {
+		if (!isForMultiSelect || closeOnSelectOverride) {
 			onCloseDropdown();
 		}
 	};

@@ -10,4 +10,5 @@ export interface SelectSearchRowProps {
 	hasNested?: boolean;
 	className?: string;
 	onClickHandler?: () => void;
+	closeOnSelectOverride?: boolean;
 }

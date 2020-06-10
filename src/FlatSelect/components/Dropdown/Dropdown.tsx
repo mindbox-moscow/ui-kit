@@ -255,8 +255,7 @@ const Dropdown = React.forwardRef(
 				addItemsRef: addItemListRef,
 				setSearchRef,
 				setSearchTerm,
-				isOpenDropdown: show,
-				isChildSelect
+				isOpenDropdown: show
 			}),
 			[children, show]
 		);

@@ -81,11 +81,10 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 			() => {
 				calculatePosition();
 			},
-			[debouncedWindowSize, isFixed]
+			[debouncedWindowSize, isFixed, children]
 		);
 
 		React.useEffect(() => {
-			calculatePosition();
 			setIsLoaded(true);
 
 			if (scrollableContainer && scrollableContainer.current) {

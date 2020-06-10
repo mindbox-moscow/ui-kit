@@ -36,8 +36,7 @@ const Dropdown = React.forwardRef(
 			width,
 			panelClass,
 			children,
-			onSelectionClear,
-			isChildSelect = false
+			onSelectionClear
 		} = props;
 
 		const [isInBottomOfScreen, setIsInBottomOfScreen] = React.useState(
@@ -260,7 +259,7 @@ const Dropdown = React.forwardRef(
 			[children, show]
 		);
 
-		useClickOutside(refPanel, hide, show, true, isChildSelect);
+		useClickOutside(refPanel, hide, show, true);
 
 		return (
 			<div className="kit-flat-select">

@@ -3,7 +3,6 @@ import * as React from "react";
 export const neutralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
 const uiDatePickerClass = "ui-datepicker";
 const overflowVisibleContainerClass = "kit-overflow-visiblecontainer";
-const flatSelectClass = "kit-selectR";
 
 const fromElementWithClassEvent = (
 	event: Event,
@@ -22,7 +21,8 @@ export function useClickOutside(
 	ref: React.RefObject<HTMLElement>,
 	handler: (e: MouseEvent) => void,
 	shouldBeSubscribed = true,
-	ignoreNeutralZoneClass = false
+	ignoreNeutralZoneClass = false,
+	isChildOverflowVisibleContainer = false
 ) {
 	let preventHandlerCall = false;
 
@@ -33,10 +33,7 @@ export function useClickOutside(
 			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
 				? false
 				: fromElementWithClassEvent(e, neutralZoneClass);
-			const isIgnoreOverflowVisibleContainerClass = fromElementWithClassEvent(
-				e,
-				flatSelectClass
-			)
+			const isIgnoreOverflowVisibleContainerClass = isChildOverflowVisibleContainer
 				? false
 				: fromElementWithClassEvent(e, overflowVisibleContainerClass);
 

@@ -18,6 +18,7 @@ export interface DropdownProps {
 	style?: React.CSSProperties;
 	onAdaptive?: () => boolean;
 	children?: React.ReactNode;
+	isChildSelect?: boolean;
 }
 
 // tslint:disable-next-line: interface-name

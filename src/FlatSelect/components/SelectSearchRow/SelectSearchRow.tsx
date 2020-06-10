@@ -68,7 +68,7 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 	};
 
 	const handleClick = () => {
-		const { onCloseDropdown } = context!;
+		const { onCloseDropdown, isChildSelect } = context;
 
 		if (disabled) {
 			return;
@@ -78,7 +78,7 @@ const SelectSearchRow: React.FC<SelectSearchRowProps> = ({
 			onClickHandler();
 		}
 
-		if (!isForMultiSelect) {
+		if (!isForMultiSelect || isChildSelect) {
 			onCloseDropdown();
 		}
 	};

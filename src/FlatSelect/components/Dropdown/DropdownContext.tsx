@@ -13,6 +13,7 @@ interface IContext {
 	onCloseDropdown: () => void;
 	setSearchTerm: (term: string) => void;
 	isOpenDropdown: boolean;
+	isChildSelect: boolean;
 }
 
 const context: IContext = {
@@ -23,7 +24,8 @@ const context: IContext = {
 	onFocusElement: () => {},
 	onCloseDropdown: () => {},
 	setSearchTerm: () => {},
-	isOpenDropdown: false
+	isOpenDropdown: false,
+	isChildSelect: false
 };
 
 export const DropdownContext = React.createContext<IContext>(context);

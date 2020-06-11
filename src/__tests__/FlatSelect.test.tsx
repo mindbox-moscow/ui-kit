@@ -60,32 +60,36 @@ beforeEach(() => {
 	select = mount(<FlatSelect {...props} />, { attachTo: wrapper });
 });
 
-const getSelectElement = () => {
-	return select.find("div.kit-selectR");
+const getSelectElement = (selector: ReactWrapper = select) => {
+	return selector.find("div.kit-selectR");
 };
 
-const openSelect = () => {
-	getSelectElement().simulate("click");
+const openSelect = (selector: ReactWrapper = select) => {
+	getSelectElement(selector).simulate("click");
 };
 
 const getSelectItems = () => {
 	return select.find("Memo(SelectSearchRow)");
 };
 
-const getPanelElement = () => {
-	return select.find("Panel");
+const getPanelElement = (selector: ReactWrapper = select) => {
+	return selector.find("Panel");
 };
 
 const getSearchElement = () => {
 	return select.find("Search");
 };
 
-const toBeSelectClosed = () => {
-	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeTruthy();
+const toBeSelectClosed = (selector: ReactWrapper = select) => {
+	expect(
+		getPanelElement(selector).hasClass("kit-selectR-drop_hidden")
+	).toBeTruthy();
 };
 
-const toBeSelectOpen = () => {
-	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeFalsy();
+const toBeSelectOpen = (selector: ReactWrapper = select) => {
+	expect(
+		getPanelElement(selector).hasClass("kit-selectR-drop_hidden")
+	).toBeFalsy();
 };
 
 const toBeItemIsHighlighted = (
@@ -184,15 +188,13 @@ describe("FlatSelect", () => {
 				<TestFlatSelect {...props} />
 			);
 
-			customSelect.find("div.kit-selectR").simulate("click");
+			openSelect(customSelect);
 			act(() => {
 				customSelect.instance().handleClose();
 			});
 			customSelect.update();
 
-			expect(
-				customSelect.find("Panel").hasClass("kit-selectR-drop_hidden")
-			).toBeTruthy();
+			toBeSelectClosed(customSelect);
 		});
 	});
 

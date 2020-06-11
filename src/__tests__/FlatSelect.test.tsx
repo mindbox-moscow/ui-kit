@@ -2,8 +2,22 @@ import * as React from "react";
 import { act } from "react-dom/test-utils";
 
 import { mount, ReactWrapper } from "enzyme";
-import { FlatSelect, SelectProps } from "../FlatSelect";
+import { DropdownHandles, FlatSelect, SelectProps } from "../FlatSelect";
 import { KeysCodes } from "../utils/constants";
+
+class TestFlatSelect<T> extends React.Component<SelectProps<T>> {
+	public ref = React.createRef<DropdownHandles>();
+
+	public handleClose = () => {
+		if (this.ref && this.ref.current) {
+			this.ref.current.hide();
+		}
+	};
+
+	public render() {
+		return <FlatSelect {...this.props} forwardRef={this.ref} />;
+	}
+}
 
 const mokeOnChange = jest.fn(value => value);
 
@@ -163,6 +177,22 @@ describe("FlatSelect", () => {
 			select.update();
 
 			toBeSelectClosed();
+		});
+
+		it("call ref with function hide, dropdown has been closed", () => {
+			const customSelect = mount<TestFlatSelect<object>>(
+				<TestFlatSelect {...props} />
+			);
+
+			customSelect.find("div.kit-selectR").simulate("click");
+			act(() => {
+				customSelect.instance().handleClose();
+			});
+			customSelect.update();
+
+			expect(
+				customSelect.find("Panel").hasClass("kit-selectR-drop_hidden")
+			).toBeTruthy();
 		});
 	});
 

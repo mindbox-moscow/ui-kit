@@ -38,6 +38,7 @@ export interface StateProps {
 	canUndo?: boolean;
 	onUndo?: () => void;
 	onRedo?: () => void;
+	scrollHtmlElement?: HTMLElement;
 }
 
 export interface CallbackProps {

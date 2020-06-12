@@ -44,7 +44,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	buttonUpCaption,
 	shouldShowStatistics = true,
 	showApplyButton = false,
-	headInformation
+	headInformation,
+	scrollHtmlElement = window
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
@@ -82,7 +83,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	};
 
 	const handleScrollUp = () => {
-		window.scrollTo({
+		scrollHtmlElement.scrollTo({
 			behavior: "smooth",
 			top: 0
 		});

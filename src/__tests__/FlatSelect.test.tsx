@@ -2,8 +2,22 @@ import * as React from "react";
 import { act } from "react-dom/test-utils";
 
 import { mount, ReactWrapper } from "enzyme";
-import { FlatSelect, SelectProps } from "../FlatSelect";
+import { DropdownHandles, FlatSelect, SelectProps } from "../FlatSelect";
 import { KeysCodes } from "../utils/constants";
+
+class TestFlatSelect<T> extends React.Component<SelectProps<T>> {
+	public ref = React.createRef<DropdownHandles>();
+
+	public handleClose = () => {
+		if (this.ref && this.ref.current) {
+			this.ref.current.hide();
+		}
+	};
+
+	public render() {
+		return <FlatSelect {...this.props} forwardRef={this.ref} />;
+	}
+}
 
 const mokeOnChange = jest.fn(value => value);
 
@@ -46,32 +60,36 @@ beforeEach(() => {
 	select = mount(<FlatSelect {...props} />, { attachTo: wrapper });
 });
 
-const getSelectElement = () => {
-	return select.find("div.kit-selectR");
+const getSelectElement = (selector: ReactWrapper = select) => {
+	return selector.find("div.kit-selectR");
 };
 
-const openSelect = () => {
-	getSelectElement().simulate("click");
+const openSelect = (selector: ReactWrapper = select) => {
+	getSelectElement(selector).simulate("click");
 };
 
 const getSelectItems = () => {
 	return select.find("Memo(SelectSearchRow)");
 };
 
-const getPanelElement = () => {
-	return select.find("Panel");
+const getPanelElement = (selector: ReactWrapper = select) => {
+	return selector.find("Panel");
 };
 
 const getSearchElement = () => {
 	return select.find("Search");
 };
 
-const toBeSelectClosed = () => {
-	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeTruthy();
+const toBeSelectClosed = (selector: ReactWrapper = select) => {
+	expect(
+		getPanelElement(selector).hasClass("kit-selectR-drop_hidden")
+	).toBeTruthy();
 };
 
-const toBeSelectOpen = () => {
-	expect(getPanelElement().hasClass("kit-selectR-drop_hidden")).toBeFalsy();
+const toBeSelectOpen = (selector: ReactWrapper = select) => {
+	expect(
+		getPanelElement(selector).hasClass("kit-selectR-drop_hidden")
+	).toBeFalsy();
 };
 
 const toBeItemIsHighlighted = (
@@ -163,6 +181,20 @@ describe("FlatSelect", () => {
 			select.update();
 
 			toBeSelectClosed();
+		});
+
+		it("call ref with function hide, dropdown has been closed", () => {
+			const customSelect = mount<TestFlatSelect<object>>(
+				<TestFlatSelect {...props} />
+			);
+
+			openSelect(customSelect);
+			act(() => {
+				customSelect.instance().handleClose();
+			});
+			customSelect.update();
+
+			toBeSelectClosed(customSelect);
 		});
 	});
 

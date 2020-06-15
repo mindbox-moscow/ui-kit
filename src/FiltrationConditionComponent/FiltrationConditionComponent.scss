@@ -58,6 +58,10 @@
 	background-color: $copyColorBg;
 	border-radius: 0 $itemHoverBorderRadius $itemHoverBorderRadius 0;
 
+	.kit-filtration-condition__item-text_show-dropdown & {
+		visibility: visible;
+	}
+
 	&:hover {
 		background-color: darken($copyColorBg, 10%);
 	}
@@ -239,7 +243,8 @@
 		margin-right: 0;
 	}
 
-	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
+	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit),
+	.kit-filtration-condition__item-text_show-dropdown:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
 		> & {
 		background-color: $hoverColorBg;
 		cursor: pointer;

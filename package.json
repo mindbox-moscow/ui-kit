@@ -21,7 +21,7 @@
 		"build": "styleguidist build",
 		"build:examples": "webpack --mode production",
 		"build:npm-module": "tsc -p tsconfig.npm.json && node ./deploy/copy-assets-to-build.js",
-		"screen:test": "backstop test",
+		"screen:test": "backstop test --docker",
 		"screen:approve": "backstop approve"
 	},
 	"devDependencies": {

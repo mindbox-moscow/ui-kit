@@ -21,6 +21,6 @@ const detailsRows = [
 ];
 
 <div style={{ display: "flex", justifyContent: "space-between" }}>
-    <DetalizationBlockInfo rows={detailsRows} />
+    <DetalizationBlockInfo rows={detailsRows} hasButton buttonText="Подробнее" />
 </div>
 ```

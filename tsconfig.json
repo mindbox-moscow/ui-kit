@@ -3,7 +3,10 @@
 		"baseUrl": ".",
 		"module": "commonjs",
 		"target": "es5",
-		"lib": ["es2017", "dom"],
+		"lib": [
+			"es2017",
+			"dom"
+		],
 		"sourceMap": true,
 		"jsx": "react",
 		"moduleResolution": "node",
@@ -17,7 +20,9 @@
 		"noUnusedLocals": true,
 		"downlevelIteration": true
 	},
-	"include": ["src"],
+	"include": [
+		"src"
+	],
 	"exclude": [
 		"node_modules",
 		"dist",

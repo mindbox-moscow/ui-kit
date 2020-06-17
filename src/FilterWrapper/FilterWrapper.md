@@ -1921,9 +1921,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationConditionComponent
@@ -2215,9 +2213,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationGroupComponent
@@ -2240,9 +2236,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationGroupComponent
@@ -2265,9 +2259,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 				>
 					<FiltrationGroupComponent
@@ -2292,13 +2284,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 					>
 						<FiltrationGroupComponent
@@ -2323,13 +2309,7 @@ class ExampleEditorButton extends React.Component {
 								/>
 							}
 							addGroupConditionButton={
-								<Button
-									color="silver"
-									size="small"
-									hasBorder="true"
-								>
-									<IconSvg type="cross-arrows" />И
-								</Button>
+								<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 							}
 						/>
 					</FiltrationGroupComponent>
@@ -2402,9 +2382,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -2457,9 +2435,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -2516,9 +2492,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -2569,9 +2543,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -2657,9 +2629,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -2682,9 +2652,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}
 					onConditionStateToggle={() => console.log("state toggle")}
@@ -2750,9 +2718,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationGroupComponent
@@ -2774,9 +2740,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 				/>
 			</FiltrationGroupComponent>
@@ -2817,9 +2781,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			moreConditionToggleCaption="Действие"
 			moreActions={[
@@ -2848,9 +2810,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			/>
 		</FiltrationGroupComponent>
@@ -2894,9 +2854,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		/>
 	</FilterWrapper>
@@ -2940,9 +2898,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			moreConditionToggleCaption="Действие"
 			moreActions={[
@@ -2971,9 +2927,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3005,9 +2959,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3060,9 +3012,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationGroupComponent
@@ -3078,9 +3028,7 @@ class ExampleEditorButton extends React.Component {
 				onConditionRemove={() => console.log("remove")}
 				addSimpleConditionButton={<ExampleEditorButton />}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				moreConditionToggleCaption="Действие"
 				moreActions={[
@@ -3118,9 +3066,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3150,9 +3096,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 				>
 					<FiltrationConditionComponent
@@ -3184,13 +3128,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 					>
 						<FiltrationConditionComponent
@@ -3245,9 +3183,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationGroupComponent
@@ -3269,9 +3205,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3307,13 +3241,7 @@ class ExampleEditorButton extends React.Component {
 										/>
 									}
 									addGroupConditionButton={
-										<Button
-											color="silver"
-											size="small"
-											hasBorder="true"
-										>
-											<IconSvg type="cross-arrows" />И
-										</Button>
+										<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -3355,14 +3283,7 @@ class ExampleEditorButton extends React.Component {
 													/>
 												}
 												addGroupConditionButton={
-													<Button
-														color="silver"
-														size="small"
-														hasBorder="true"
-													>
-														<IconSvg type="cross-arrows" />
-														И
-													</Button>
+													<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -3429,9 +3350,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3484,9 +3403,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationGroupComponent
@@ -3508,9 +3425,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3546,13 +3461,7 @@ class ExampleEditorButton extends React.Component {
 										/>
 									}
 									addGroupConditionButton={
-										<Button
-											color="silver"
-											size="small"
-											hasBorder="true"
-										>
-											<IconSvg type="cross-arrows" />И
-										</Button>
+										<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -3594,14 +3503,7 @@ class ExampleEditorButton extends React.Component {
 													/>
 												}
 												addGroupConditionButton={
-													<Button
-														color="silver"
-														size="small"
-														hasBorder="true"
-													>
-														<IconSvg type="cross-arrows" />
-														И
-													</Button>
+													<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -3652,14 +3554,7 @@ class ExampleEditorButton extends React.Component {
 																		/>
 																	}
 																	addGroupConditionButton={
-																		<Button
-																			color="silver"
-																			size="small"
-																			hasBorder="true"
-																		>
-																			<IconSvg type="cross-arrows" />
-																			И
-																		</Button>
+																		<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 																	}
 																	onGroupTypeToggle={() =>
 																		console.log(
@@ -3711,15 +3606,7 @@ class ExampleEditorButton extends React.Component {
 																					/>
 																				}
 																				addGroupConditionButton={
-																					<Button
-																						color="silver"
-																						size="small"
-																						hasBorder="true"
-																					>
-																						<IconSvg type="cross-arrows" />
-
-																						И
-																					</Button>
+																					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 																				}
 																				onGroupTypeToggle={() =>
 																					console.log(
@@ -3819,9 +3706,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3876,9 +3761,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 		>
 			<FiltrationGroupComponent
@@ -3900,9 +3783,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -3938,13 +3819,7 @@ class ExampleEditorButton extends React.Component {
 										/>
 									}
 									addGroupConditionButton={
-										<Button
-											color="silver"
-											size="small"
-											hasBorder="true"
-										>
-											<IconSvg type="cross-arrows" />И
-										</Button>
+										<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 									}
 									onGroupTypeToggle={() =>
 										console.log("type toggle")
@@ -3986,14 +3861,7 @@ class ExampleEditorButton extends React.Component {
 													/>
 												}
 												addGroupConditionButton={
-													<Button
-														color="silver"
-														size="small"
-														hasBorder="true"
-													>
-														<IconSvg type="cross-arrows" />
-														И
-													</Button>
+													<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 												}
 												onGroupTypeToggle={() =>
 													console.log("type toggle")
@@ -4060,9 +3928,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 			>
 				<FiltrationConditionComponent
@@ -4225,9 +4091,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 				>
 					<FiltrationConditionComponent
@@ -4259,13 +4123,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 					>
 						<FiltrationConditionComponent
@@ -4330,9 +4188,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4363,13 +4219,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4421,9 +4271,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4453,13 +4301,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4515,9 +4357,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4548,13 +4388,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4597,9 +4431,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4629,13 +4461,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4678,9 +4504,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4711,13 +4535,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4763,9 +4581,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4792,13 +4608,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4847,9 +4657,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4875,13 +4683,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -4931,9 +4733,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -4959,13 +4759,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -5017,9 +4811,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5049,13 +4841,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -5108,9 +4894,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5142,13 +4926,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -5214,9 +4992,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5252,13 +5028,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>
@@ -5318,9 +5088,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5507,9 +5275,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5686,9 +5452,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5828,9 +5592,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -5994,9 +5756,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -6023,9 +5783,7 @@ class ExampleEditorButton extends React.Component {
 					/>
 				}
 				addGroupConditionButton={
-					<Button color="silver" size="small" hasBorder="true">
-						<IconSvg type="cross-arrows" />И
-					</Button>
+					<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 				}
 				onGroupTypeToggle={() => console.log("type toggle")}
 				onConditionStateToggle={() => console.log("state toggle")}
@@ -6057,9 +5815,7 @@ class ExampleEditorButton extends React.Component {
 						/>
 					}
 					addGroupConditionButton={
-						<Button color="silver" size="small" hasBorder="true">
-							<IconSvg type="cross-arrows" />И
-						</Button>
+						<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 					}
 					onGroupTypeToggle={() => console.log("type toggle")}
 					onConditionStateToggle={() => console.log("state toggle")}
@@ -6110,9 +5866,7 @@ class ExampleEditorButton extends React.Component {
 				/>
 			}
 			addGroupConditionButton={
-				<Button color="silver" size="small" hasBorder="true">
-					<IconSvg type="cross-arrows" />И
-				</Button>
+				<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 			}
 			onGroupTypeToggle={() => console.log("type toggle")}
 			onConditionStateToggle={() => console.log("state toggle")}
@@ -6143,13 +5897,7 @@ class ExampleEditorButton extends React.Component {
 							/>
 						}
 						addGroupConditionButton={
-							<Button
-								color="silver"
-								size="small"
-								hasBorder="true"
-							>
-								<IconSvg type="cross-arrows" />И
-							</Button>
+							<LegacyFilterGroupButton icon="cross-arrows">И</LegacyFilterGroupButton>
 						}
 						onGroupTypeToggle={() => console.log("type toggle")}
 						onConditionStateToggle={() =>

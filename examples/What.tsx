@@ -3,8 +3,9 @@ import "./styles.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { ActionFilter } from "../src/ActionFilter/ActionFilter";
-import { Button } from "../src/Button/Button";
 import { DateField, Days, Months } from "../src/DateField/DateField";
 import { Page } from "../src/Page/Page";
 import { Row } from "../src/Row/Row";
@@ -41,9 +42,9 @@ const days: Days = [
 class What extends React.Component<{}> {
     public state = { date1: new Date(2013, 12, 12), date2: new Date(), date3: new Date() };
 
-    public handleChangeDate1 = (val: Date) => this.setState({date1: val});
-    public handleChangeDate2 = (val: Date) => this.setState({date2: val});
-    public handleChangeDate3 = (val: Date) => this.setState({date3: val});
+    public handleChangeDate1 = (val: Date) => this.setState({ date1: val });
+    public handleChangeDate2 = (val: Date) => this.setState({ date2: val });
+    public handleChangeDate3 = (val: Date) => this.setState({ date3: val });
 
     public render() {
         const { date1, date2, date3 } = this.state;
@@ -84,9 +85,13 @@ class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо добавить хотя бы
                             одно действие
@@ -153,9 +158,12 @@ class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
 
@@ -202,7 +210,7 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <DateField months={months} days={days} onChange={this.handleChangeDate2} value={date2}  />
+                        <DateField months={months} days={days} onChange={this.handleChangeDate2} value={date2} />
                     </Row>
                     <Row
                         isEdit={true}
@@ -233,9 +241,12 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <Button color="gray" hasUnderline={true} size="xs">
+                        <NewButton
+                            size="small"
+                            type="primary"
+                        >
                             Редактировать
-                        </Button>
+                        </NewButton>
                     </Row>
                     <Row isEdit={true} isSelect={true} title="Действие 3" isAction={true}>
                         <Select
@@ -252,9 +263,12 @@ class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
 
@@ -301,7 +315,7 @@ class What extends React.Component<{}> {
                                 { title: "Создать новую рассылку" }
                             ]}
                         />
-                        <DateField months={months} days={days} onChange={this.handleChangeDate3} value={date3}  />
+                        <DateField months={months} days={days} onChange={this.handleChangeDate3} value={date3} />
                     </Row>
                     <Row
                         isEdit={true}
@@ -341,12 +355,18 @@ class What extends React.Component<{}> {
                                 { title: "Email 3" }
                             ]}
                         >
-                            <Button color="gray" hasUnderline={true} size="normal">
+                            <NewButton
+                                size="medium"
+                                type="primary"
+                            >
                                 Сохранить черновик рассылки
-                            </Button>
-                            <Button color="gray" hasUnderline={true} size="normal">
+                            </NewButton>
+                            <NewButton
+                                size="medium"
+                                type="primary"
+                            >
                                 Сохранить и перейти к редактированию
-                            </Button>
+                            </NewButton>
                         </ActionFilter>
                     </Row>
                     <Row isEdit={true} isSelect={true} title="Действие 3" isAction={true}>
@@ -364,9 +384,12 @@ class What extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
             </Page>

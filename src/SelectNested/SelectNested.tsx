@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Button } from "../Button";
+import cn from "classnames";
+
+import { Button as NewButton } from "@mindbox-moscow/ui-components"
+
 import { IconSvg } from "../IconSvg";
 import { Input } from "../Input";
 import "./SelectNested.scss";
-
-import cn from "classnames";
 
 interface IOption {
 	id: number;
@@ -117,26 +118,20 @@ export class SelectNested extends React.PureComponent<IProps, IState> {
 		<div className="kit-select-nested__dropdown-wrap">
 			{this.renderDropdownList(options)}
 			<div className="kit-select-nested__dropdown-footer">
-				<Button
-					className="kit-select-nested__dropdown-footer-submit"
-					type="button"
-					color="gray"
+				<NewButton
 					size="medium"
-					hasBorder={true}
+					type="primary"
 					onClick={this.handleChoose}
 				>
 					{this.props.submitBtnText}
-				</Button>
-				<Button
-					className="kit-select-nested__dropdown-footer-reset"
-					type="button"
-					mode="simple_text"
-					color="gray"
+				</NewButton>
+				<NewButton
 					size="medium"
+					type="secondary"
 					onClick={this.handleToggle}
 				>
 					{this.props.cancelBtnText}
-				</Button>
+				</NewButton>
 			</div>
 		</div>
 	);

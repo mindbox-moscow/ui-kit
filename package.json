@@ -23,6 +23,7 @@
 		"build:npm-module": "tsc -p tsconfig.npm.json && node ./deploy/copy-assets-to-build.js"
 	},
 	"devDependencies": {
+		"@mindbox-moscow/ui-components": "^1.40.0",
 		"@svgr/webpack": "^4.3.0",
 		"@types/classnames": "^2.2.6",
 		"@types/enzyme": "^3.10.5",

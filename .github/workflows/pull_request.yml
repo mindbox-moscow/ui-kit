@@ -36,8 +36,8 @@ jobs:
         run: |
           node ./deploy/patch-version.js
           npm run build
-          npm run:examples
-          npm run:npm-module
+          npm run build:examples
+          npm run build:npm-module
 
       - name: Run Test
         run: npm run test

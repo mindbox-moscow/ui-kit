@@ -1,0 +1,24 @@
+name: Cleanup trigger after branch deleted
+on:
+  delete
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set variables
+        run: |
+          echo "##[set-output name=deleted_branch;]$(cat $GITHUB_EVENT_PATH | jq '.ref' | sed 's/\"//g')"
+          echo "##[set-output name=deleted_ref_type;]$(cat $GITHUB_EVENT_PATH | jq '.ref_type' | sed 's/\"//g')"
+          echo "##[set-output name=repository_name;]$(cat $GITHUB_EVENT_PATH | jq '.repository.name' | sed 's/\"//g')"
+        id: set_variables
+
+      - name: Repository Dispatch
+        if: ${{ steps.set_variables.outputs.deleted_ref_type == 'branch' }}
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GH_FULL_TOKEN }}
+          repository: mindbox-moscow/frontend-core
+          event-type: cleanup-k8s
+          client-payload: '{"ref": "${{ steps.set_variables.outputs.deleted_branch }}", "repository": "${{ steps.set_variables.outputs.repository_name }}"}'

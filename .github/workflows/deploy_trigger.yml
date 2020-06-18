@@ -1,0 +1,25 @@
+name: Deployment trigger for test static container
+
+on:
+  pull_request:
+    branches-ignore: master
+  push:
+    branches-ignore: master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        run: |
+          echo "##[set-output name=ref_name;]$(cat $GITHUB_EVENT_PATH | jq '.ref' | sed 's/\"//g')"
+          echo "##[set-output name=repository_name;]$(cat $GITHUB_EVENT_PATH | jq '.repository.name' | sed 's/\"//g')"
+        id: set_variables
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GH_FULL_TOKEN }}
+          repository: mindbox-moscow/frontend-core
+          event-type: deploy-k8s
+          client-payload: '{"ref": "${{ steps.set_variables.outputs.ref_name }}", "sha": "${{ github.sha }}", "repository": "${{ steps.set_variables.outputs.repository_name }}", "actor": "${{ github.actor }}"}'

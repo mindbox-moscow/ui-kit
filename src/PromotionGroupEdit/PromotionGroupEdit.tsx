@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Button as NewButton } from "@mindbox-moscow/ui-components";
 
-// import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
 import { PromotionEditContainer } from "../PromotionEditContainer";

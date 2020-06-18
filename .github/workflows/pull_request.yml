@@ -3,39 +3,43 @@ name: Pull Request
 on: pull_request
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
 
-        steps:
-            - name: Dump GitHub context
-              env:
-                  GITHUB_CONTEXT: ${{ toJson(github) }}
-              run: echo "$GITHUB_CONTEXT"
+  build:
 
-            - name: checkout
-              uses: actions/checkout@v2
+    runs-on: ubuntu-latest
 
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: "10.x"
+    steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
 
-            - name: Prepare build
-              run: |
-                  rm -rf .git
-                  rm -rf docs
-                  git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
-                  yarn global add webpack-cli@3.1.2 webpack@4
-                  yarn
-            - name: Build
-              run: |
-                  node ./deploy/patch-version.js
-                  yarn build
-                  yarn build:examples
-                  yarn build:npm-module
+    - name: checkout
+      uses: actions/checkout@v2
 
-            - name: Run Screenshot Test Jest
-              run: yarn test-in-docker:ci
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
 
-            - name: Run Screenshot Test
-              run: yarn screen:test
+    - name: Prepare build
+      run: |
+        rm -rf .git
+        rm -rf docs
+        git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+        yarn global add webpack-cli@3.1.2 webpack@4
+        yarn
+
+    - name: Build
+      run: |
+        node ./deploy/patch-version.js
+        yarn build
+        yarn build:examples
+        yarn build:npm-module
+
+    - name: Run Screenshot Test JEST
+	  run: yarn test-in-docker:ci
+
+	- name: Run Screenshot Test BackstopJS
+	  run: yarn screen:test
+

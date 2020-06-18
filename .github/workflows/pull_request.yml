@@ -41,7 +41,7 @@ jobs:
       run: yarn test
 
     - name: Archive BackstopJS artifacts
-        uses: actions/upload-artifact@v1
-        with:
+       uses: actions/upload-artifact@v1
+       with:
         name: backstop_data
         path: backstop_data

@@ -13,10 +13,10 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-      
-    - name: checkout  
+
+    - name: checkout
       uses: actions/checkout@v2
-          
+
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
@@ -31,11 +31,17 @@ jobs:
         yarn
 
     - name: Build
-      run: |     
+      run: |
         node ./deploy/patch-version.js
         yarn build
         yarn build:examples
         yarn build:npm-module
 
-    - name: Run Test  
+    - name: Run Test
       run: yarn test
+
+	- name: Archive BackstopJS artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: backstop_data
+        path: backstop_data

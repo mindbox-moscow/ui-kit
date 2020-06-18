@@ -1,5 +1,5 @@
-import * as cn from "classnames";
 import * as React from "react";
+import cn from "classnames";
 import {
 	DateRangeValue,
 	DateRangeValueTypes,
@@ -163,17 +163,17 @@ const DateRange = ({ onChange, caption, value, className }: IProps) => {
 									: ""}
 							</span>
 						) : (
-							<span className="kit-date-range__radio-content">
-								{radioConcreteFromText}
-								<span className="kit-date-range__radio-date-placeholder">
-									{periodPlaceholder}
+								<span className="kit-date-range__radio-content">
+									{radioConcreteFromText}
+									<span className="kit-date-range__radio-date-placeholder">
+										{periodPlaceholder}
+									</span>
+									{radioConcreteToText}
+									<span className="kit-date-range__radio-date-placeholder">
+										{periodPlaceholder}
+									</span>
 								</span>
-								{radioConcreteToText}
-								<span className="kit-date-range__radio-date-placeholder">
-									{periodPlaceholder}
-								</span>
-							</span>
-						)}
+							)}
 					</RadioButton>
 
 					{shouldShowFilter && (

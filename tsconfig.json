@@ -7,6 +7,7 @@
 			"es2017",
 			"dom"
 		],
+		"esModuleInterop": true,
 		"sourceMap": true,
 		"jsx": "react",
 		"moduleResolution": "node",
@@ -18,7 +19,11 @@
 		"strictNullChecks": true,
 		"suppressImplicitAnyIndexErrors": true,
 		"noUnusedLocals": true,
-		"downlevelIteration": true
+		"downlevelIteration": true,
+		"types": [
+			"react",
+			"jest"
+		]
 	},
 	"include": [
 		"src"

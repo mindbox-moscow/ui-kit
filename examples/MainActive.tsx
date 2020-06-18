@@ -3,7 +3,8 @@ import "./styles.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from "../src/Button/Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { DateField } from "../src/DateField/DateField";
 import { Page } from "../src/Page/Page";
 import { RadioButton } from "../src/RadioButton/RadioButton";
@@ -24,7 +25,7 @@ class MainActive extends React.Component<{}> {
     public toggleWhatState = (isEdit: boolean) => this.setState({ whatEdit: isEdit });
     public toggleWhomState = (isEdit: boolean) => this.setState({ whomEdit: isEdit });
     public toggleWhenState = (isEdit: boolean) => this.setState({ whenEdit: isEdit });
-    public handleChangeDate = (val: Date) => this.setState({ date: val});
+    public handleChangeDate = (val: Date) => this.setState({ date: val });
 
     public render() {
         const { whatEdit, whomEdit, whenEdit, date } = this.state;
@@ -196,14 +197,14 @@ class MainActive extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit={true} isFooter={true}>
-                                <Button
-                                    color="gray"
-                                    hasUnderline={true}
-                                    disabled={true}
+                                <NewButton
+                                    disabled
                                     size="large"
+                                    type="primary"
                                 >
                                     Сохранить
-                                </Button>
+                                </NewButton>
+
                                 <Text mode="danger">
                                     Для сохранения изменений необходимо выбрать
                                     событие или настроить график
@@ -218,15 +219,21 @@ class MainActive extends React.Component<{}> {
                             </Row>
                                 <Row title="Инициатор события">
                                     Потребители из фильтра&nbsp;
-                                <Button color="lightgray" inheritFont={true} size="xs">
+                                <NewButton
+                                        type="tertiary"
+                                        size="small"
+                                    >
                                         Условия фильтрации
-                                </Button>
+                                </NewButton>
                                 </Row>
                                 <Row title="Запуск по событию">
                                     Активация секретного кода потребителем&nbsp;
-                                <Button color="lightgray" inheritFont={true} size="xs">
+                                <NewButton
+                                        type="tertiary"
+                                        size="small"
+                                    >
                                         Условия фильтрации
-                                </Button>
+                                </NewButton>
                                 </Row>
                             </>
                         )}
@@ -297,9 +304,12 @@ class MainActive extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit={true} isFooter={true}>
-                                <Button color="gray" hasUnderline={true} size="large">
+                                <NewButton
+                                    size="large"
+                                    type="primary"
+                                >
                                     Сохранить
-                                </Button>
+                                </NewButton>
                             </Row>
                         </>
                     ) : (
@@ -313,9 +323,12 @@ class MainActive extends React.Component<{}> {
                             </Row>
                                 <Row title="Цель триггера">
                                     Потребители из фильтра&nbsp;
-                                <Button color="lightgray" inheritFont={true} size="xs">
+                                <NewButton
+                                        type="tertiary"
+                                        size="small"
+                                    >
                                         Условия фильтрации
-                                </Button>
+                                </NewButton>
                                 </Row>
                             </>
                         )}
@@ -433,9 +446,12 @@ class MainActive extends React.Component<{}> {
                                         { title: "Создать новую рассылку" }
                                     ]}
                                 />
-                                <Button color="gray" hasUnderline={true} size="xs">
+                                <NewButton
+                                    size="small"
+                                    type="primary"
+                                >
                                     Редактировать
-                                </Button>
+                                </NewButton>
                             </Row>
                             <Row
                                 isEdit={true}
@@ -477,9 +493,12 @@ class MainActive extends React.Component<{}> {
                                         { title: "Создать новую рассылку" }
                                     ]}
                                 />
-                                <Button color="gray" hasUnderline={true} size="xs">
+                                <NewButton
+                                    size="small"
+                                    type="primary"
+                                >
                                     Редактировать
-                                </Button>
+                                </NewButton>
                             </Row>
                             <Row isEdit={true} isSelect={true} title="Действие 4" isAction={true}>
                                 <Select
@@ -504,9 +523,12 @@ class MainActive extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit={true} isFooter={true}>
-                                <Button color="gray" hasUnderline={true} size="large">
+                                <NewButton
+                                    size="large"
+                                    type="primary"
+                                >
                                     Сохранить
-                                </Button>
+                                </NewButton>
                             </Row>
                         </>
                     ) : (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "../Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
 
 import "./ConditionEditorPopup.scss";
 
@@ -13,17 +13,7 @@ interface IProps {
 	onCancelFilterButtonClick: () => void;
 }
 
-const ENTER_KEY = 13;
-
 export class ConditionEditorPopup extends React.Component<IProps> {
-	public handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
-		const { onAddFilterButtonClick, isAddFilterButtonEnabled } = this.props;
-
-		if (e.keyCode === ENTER_KEY && isAddFilterButtonEnabled) {
-			onAddFilterButtonClick();
-		}
-	};
-
 	public render() {
 		const {
 			innerEditorComponent,
@@ -39,27 +29,26 @@ export class ConditionEditorPopup extends React.Component<IProps> {
 			<div className="kit-filter-editor-component">
 				{innerEditorComponent}
 				<div className="kit-filter-editor-component__buttons">
-					<Button
-						color="silver"
-						hasBorder={true}
-						disabled={!isAddFilterButtonEnabled}
-						onClick={onAddFilterButtonClick}
-						size="medium"
-						className="kit-filter-editor-component__btn"
-						onKeyDown={this.handleKeyDown}
-					>
-						{addFilterButtonCaption}
-					</Button>
-					{viewMode === "edit" && (
-						<Button
-							color="silver"
-							hasBorder={true}
-							onClick={onCancelFilterButtonClick}
+					<div className="kit-filter-editor-component__buttons-item kit-filter-editor-component__buttons-item--add">
+						<NewButton
+							disabled={!isAddFilterButtonEnabled}
 							size="medium"
-							className="kit-filter-editor-component__btn kit-filter-editor-component__cancel"
+							type="secondary"
+							onClick={onAddFilterButtonClick}
 						>
-							{cancelFilterButtonCaption}
-						</Button>
+							{addFilterButtonCaption}
+						</NewButton>
+					</div>
+					{viewMode === "edit" && (
+						<div className="kit-filter-editor-component__buttons-item kit-filter-editor-component__buttons-item--cancel">
+							<NewButton
+								size="medium"
+								type="secondary"
+								onClick={onCancelFilterButtonClick}
+							>
+								{cancelFilterButtonCaption}
+							</NewButton>
+						</div>
 					)}
 				</div>
 			</div>

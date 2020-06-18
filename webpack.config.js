@@ -85,11 +85,17 @@ module.exports = () => ({
 								}
 							}
 						}
+					},
+					{
+						loader: "file-loader",
+						options: {
+							name: "[name].[ext]"
+						}
 					}
 				]
 			},
 			{
-				test: /\.(png|jpg|gif|woff)$/,
+				test: /\.(png|jpg|gif|woff|woff2)$/,
 				use: [
 					{
 						loader: "file-loader",

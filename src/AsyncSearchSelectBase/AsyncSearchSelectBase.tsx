@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect, useRef } from "react";
-import * as InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from "react-infinite-scroller";
 
 import { Dropdown, SelectionMode, SelectSearchList } from "../FlatSelect";
 import { Height } from "../utils";

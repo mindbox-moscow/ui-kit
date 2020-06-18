@@ -1,6 +1,6 @@
 name: master
 
-on: 
+on:
     push:
         branches:
             - master
@@ -15,32 +15,32 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-      
-    - name: checkout  
+
+    - name: checkout
       uses: actions/checkout@v2
-          
+
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
+        registry-url: "https://npm.pkg.github.com/mindbox-moscow"
 
     - name: Prepare build
       run: |
         rm -rf .git
         rm -rf docs
         git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
-        yarn global add webpack-cli@3.1.2 webpack@4
-        yarn
+        npm ci
 
     - name: Build
-      run: |     
+      run: |
         node ./deploy/patch-version.js
-        yarn build
-        yarn build:examples
-        yarn build:npm-module
+        npm run build
+        npm run build:examples
+        npm run build:npm-module
 
-    - name: Run Test  
-      run: yarn test
+    - name: Run Test
+      run: npm run test
 
     - name: Publish
       run: |
@@ -48,13 +48,13 @@ jobs:
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm config set scope "@mindbox"
         npm config list
-        npm publish --access public 
+        npm publish --access public
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Update docs
-      run: |          
+      run: |
         cd ./docs
         git config --global user.email "it@mindbox.ru"
         git config --global user.name "IT Mindbox"

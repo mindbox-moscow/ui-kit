@@ -38,16 +38,13 @@ $kit-select-nested-padding-left: 10px;
 	appearance: none;
 
 	.kit-select-nested_show_dropdown & {
+		z-index: 2;
 		padding-bottom: 4px;
 		background-color: #f6f7f7;
 		border: 1px solid #8aacc2;
 		border-bottom-width: 0;
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
-	}
-
-	.kit-select-nested_show_dropdown & {
-		z-index: 2;
 	}
 }
 
@@ -294,10 +291,8 @@ $kit-select-nested-padding-left: 10px;
 	padding: 10px 16px;
 	background-color: #f6f7f7;
 	border-top: 1px solid #d7d8da;
-}
 
-.kit-select-nested__dropdown-footer-submit {
-	min-width: 107px;
-	margin-right: 13px;
-	font-weight: bold;
+	& > button {
+		margin-right: 13px;
+	}
 }

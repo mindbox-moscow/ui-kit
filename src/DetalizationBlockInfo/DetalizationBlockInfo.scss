@@ -1,29 +1,31 @@
 .kit-detalization-info {
-    width: 100%;
-    box-sizing: border-box;
-    font-family: "PT Sans", sans-serif;
-    font-size: 14px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+}
 
-    &__row {
-        display: flex;
+.kit-detalization-info__row {
+	display: flex;
 
-        &:not(:last-child) {
-            margin-bottom: 4px;
-        }
-    }
+	&:not(:last-child) {
+		margin-bottom: 4px;
+	}
+}
 
-    &__value {
-        margin-left: 4px;
-        font-weight: 900;
-    }
+.kit-detalization-info__value {
+	margin-left: 4px;
+	font-weight: 900;
+}
 
-    &__help {
-        margin-left: 6px;
-    }
+.kit-detalization-info__help {
+	margin-left: 6px;
+}
 
-    &__button {
-        width: 100%;
-        margin-top: 9px;
-		outline: none;
-    }
+.kit-detalization-info__row-button {
+	margin-top: 9px;
+
+	button {
+		width: 100%;
+	}
 }

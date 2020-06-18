@@ -205,7 +205,7 @@ const FiltrationGroupComponent = ({
 				labelLineRef.style.top = `${MIN_HEIGHT / 2}px`;
 				labelLineRef.style.height = `${
 					height === MIN_HEIGHT / 2 ? "" : height
-				}px`;
+					}px`;
 			}
 		}
 	};
@@ -454,8 +454,8 @@ const FiltrationGroupComponent = ({
 									/>
 								</div>
 							) : (
-								labelMap[groupType]
-							)}
+									labelMap[groupType]
+								)}
 						</div>
 					)}
 				</div>

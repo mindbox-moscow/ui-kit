@@ -1,19 +1,20 @@
-.kit-filter-editor-component__btn {
-	width: 100%;
-	outline: none;
-
-	.kit-button__text {
-		color: #000000;
-	}
-}
-
 .kit-filter-editor-component__buttons {
 	display: flex;
 	outline: none;
 }
 
-.kit-filter-editor-component__cancel {
-	width: auto;
-	min-width: 113px;
-	margin-left: 10px;
+.kit-filter-editor-component__buttons-item {
+	margin-right: 10px;
+
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+.kit-filter-editor-component__buttons-item--add {
+	width: 100%;
+
+	button {
+		width: 100%;
+	}
 }

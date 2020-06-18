@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Button } from "../Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { Alert } from "./Alert";
 
 interface IState {
@@ -31,9 +32,13 @@ export class AlertExample extends React.Component<{}, IState> {
 				Группа «При регистрации через приложение» перенесена в группу
 				«Акции для новых клиентов»
 			</span>
-			<Button onClick={this.hideAlert} color="gray" size="medium">
+			<NewButton
+				size="medium"
+				type="primary"
+				onClick={this.hideAlert}
+			>
 				Отменить
-			</Button>
+			</NewButton>
 		</div>
 	);
 
@@ -42,14 +47,13 @@ export class AlertExample extends React.Component<{}, IState> {
 
 		return (
 			<>
-				<Button
-					onClick={this.showAlert}
-					color="gray"
+				<NewButton
 					size="medium"
-					hasBorder={true}
+					type="secondary"
+					onClick={this.showAlert}
 				>
 					Показать уведомление
-				</Button>
+				</NewButton>
 				{showAlert && (
 					<Alert
 						onOutsideClick={this.onAlertOutsideClick}

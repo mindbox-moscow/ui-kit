@@ -3,7 +3,8 @@ import "./styles.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from "../src/Button/Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
 import { Page } from "../src/Page/Page";
 import { Row } from "../src/Row/Row";
@@ -68,9 +69,13 @@ class Whom extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             в блоке «Когда»
@@ -128,9 +133,12 @@ class Whom extends React.Component<{}> {
                         Активация секретного кода потребителем
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
 
@@ -190,9 +198,13 @@ class Whom extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать сегмент
                         </Text>
@@ -257,9 +269,12 @@ class Whom extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
 
@@ -320,9 +335,13 @@ class Whom extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline disabled size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо настроить фильтр
                         </Text>
@@ -378,9 +397,12 @@ class Whom extends React.Component<{}> {
                         {" "}
                     </Row>
                     <Row isEdit isFooter>
-                        <Button color="gray" hasUnderline size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
             </Page>

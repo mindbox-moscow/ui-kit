@@ -17,21 +17,21 @@ yarn add @mindbox/ui-kit
 # Contributing to ui kit
 Install dependencies
 ```shell
-yarn
+npm i
 ```
 
 To start styleguidist localhost server:
 
 ```shell
-yarn start
+npm run start
 ```
 
 To build static styleguide page:
 
 ```shell
 # Build basic styleguidist page
-yarn build
+npm run build
 
 # Build pages from 'examples' folder
-yarn run build:examples
+npm run build:examples
 ```

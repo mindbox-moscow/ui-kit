@@ -22,7 +22,7 @@ class ExampleFlatSelect extends React.Component {
 
 		const itemFormatter = value => ({
 			key: value ? "true" : "false",
-			text: value ? "Да" : "Нет",
+			text: value ? "Даsdsdadadasd" : "Нет",
 			value
 		});
 

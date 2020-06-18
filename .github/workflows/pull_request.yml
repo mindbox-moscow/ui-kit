@@ -35,8 +35,8 @@ jobs:
                   yarn build:examples
                   yarn build:npm-module
 
-            - name: Run Screenshot Test
-              run: yarn screen:test
+            - name: Run Test
+              run: yarn test
 
             - name: Archive BackstopJS artifacts
               uses: actions/upload-artifact@v1

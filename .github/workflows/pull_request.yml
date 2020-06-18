@@ -38,8 +38,5 @@ jobs:
             - name: Run Test
               run: yarn test
 
-            - name: Archive BackstopJS artifacts
-              uses: actions/upload-artifact@v1
-              with:
-                  name: backstop_data
-                  path: backstop_data
+            - name: Run Screenshot Test
+              run: yarn screen:test

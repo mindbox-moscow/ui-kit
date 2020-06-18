@@ -64,5 +64,6 @@
 	"asyncCaptureLimit": 2,
 	"asyncCompareLimit": 7,
 	"debug": false,
-	"debugWindow": false
+	"debugWindow": false,
+	"dockerCommandTemplate": "docker run --rm -t --mount type=bind,source=\"{cwd}\",target=/src backstopjs/backstopjs:{version} {backstopCommand} {args}"
 }

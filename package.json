@@ -15,7 +15,7 @@
 		"react-infinite-scroller": "^1.2.4"
 	},
 	"scripts": {
-		"test": "jest && backstop test",
+		"test": "jest",
 		"test:watch": "jest --watch",
 		"start": "styleguidist server",
 		"build": "styleguidist build",

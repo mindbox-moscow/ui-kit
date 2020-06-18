@@ -38,6 +38,9 @@ jobs:
             - name: Run Test
               run: yarn test
 
+            - name: Run Screenshot Test
+            - run: yarn screen:test
+
             - name: Archive BackstopJS artifacts
               uses: actions/upload-artifact@v1
               with:

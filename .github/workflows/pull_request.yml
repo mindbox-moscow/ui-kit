@@ -19,7 +19,7 @@ jobs:
 
     - name: Use Node.js
       uses: actions/setup-node@v1
-      with:
+      with:ч
         node-version: '10.x'
 
     - name: Prepare build
@@ -40,8 +40,8 @@ jobs:
     - name: Run Test
       run: yarn test
 
-	- name: Archive BackstopJS artifacts
-      uses: actions/upload-artifact@v1
-      with:
+    - name: Archive BackstopJS artifacts
+        uses: actions/upload-artifact@v1
+        with:
         name: backstop_data
         path: backstop_data

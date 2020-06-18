@@ -3,45 +3,43 @@ name: Pull Request
 on: pull_request
 
 jobs:
+    build:
+        runs-on: ubuntu-latest
 
-  build:
+        steps:
+            - name: Dump GitHub context
+              env:
+                  GITHUB_CONTEXT: ${{ toJson(github) }}
+              run: echo "$GITHUB_CONTEXT"
 
-    runs-on: ubuntu-latest
+            - name: checkout
+              uses: actions/checkout@v2
 
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "10.x"
 
-    - name: checkout
-      uses: actions/checkout@v2
+            - name: Prepare build
+              run: |
+                  rm -rf .git
+                  rm -rf docs
+                  git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+                  yarn global add webpack-cli@3.1.2 webpack@4
+                  yarn
 
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
+            - name: Build
+              run: |
+                  node ./deploy/patch-version.js
+                  yarn build
+                  yarn build:examples
+                  yarn build:npm-module
 
-    - name: Prepare build
-      run: |
-        rm -rf .git
-        rm -rf docs
-        git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
-        yarn global add webpack-cli@3.1.2 webpack@4
-        yarn
+            - name: Run Test
+              run: yarn test
 
-    - name: Build
-      run: |
-        node ./deploy/patch-version.js
-        yarn build
-        yarn build:examples
-        yarn build:npm-module
-
-    - name: Run Test
-      run: yarn test
-
-    - name: Archive BackstopJS artifacts
-       uses: actions/upload-artifact@v1
-       with:
-        name: backstop_data
-        path: backstop_data
+            - name: Archive BackstopJS artifacts
+              uses: actions/upload-artifact@v1
+              with:
+                  name: backstop_data
+                  path: backstop_data

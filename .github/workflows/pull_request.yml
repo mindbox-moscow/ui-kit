@@ -27,7 +27,6 @@ jobs:
                   git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
                   yarn global add webpack-cli@3.1.2 webpack@4
                   yarn
-
             - name: Build
               run: |
                   node ./deploy/patch-version.js

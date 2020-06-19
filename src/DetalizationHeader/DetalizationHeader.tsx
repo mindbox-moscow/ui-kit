@@ -1,9 +1,11 @@
 import * as React from "react";
-import { Button } from "../Button/Button";
+import cn from "classnames";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { DropDown } from "../DropDown/DropDown";
+
 import "./DetalizationHeader.scss";
 
-import cn from "classnames";
 
 const list = [{
     year: "2017",
@@ -22,32 +24,32 @@ const list = [{
         "Декабрь",
     ]
 },
-    {
-        year: "2018",
-        months: [
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Окрябрь",
-            "Ноябрь",
-            "Декабрь",
-        ]
-    },
-    {
-        year: "2019",
-        months: [
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-        ]
-    }
+{
+    year: "2018",
+    months: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Окрябрь",
+        "Ноябрь",
+        "Декабрь",
+    ]
+},
+{
+    year: "2019",
+    months: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+    ]
+}
 ];
 
 interface Props {
@@ -62,10 +64,19 @@ export class DetalizationHeader extends React.Component<Props> {
             <div className={cn("kit-detalizationHeader", className)}>
                 <h1 className="kit-detalizationHeader__title">{title}</h1>
                 <div className="kit-detalizationHeader__controls">
-                    <Button className="kit-detalizationHeader__btn" hasBorder size="medium" arrow="left" color="gray">Январь</Button>
-                    {/*<Button className="kit-detalizationHeader__btn kit-detalizationHeader__btn-month" hasBorder size="medium" color="gray" >Февраль 2019</Button>*/}
+                    <NewButton
+                        size="medium"
+                        type="secondary"
+                    >
+                        &larr; Январь
+                    </NewButton>
                     <DropDown itemYears={list}></DropDown>
-                    <Button className="kit-detalizationHeader__btn" hasBorder disabled size="medium" arrow="right" color="gray">Март</Button>
+                    <NewButton
+                        size="medium"
+                        type="secondary"
+                    >
+                        Март &rarr;
+                    </NewButton>
                 </div>
             </div>
         );

@@ -1,8 +1,10 @@
 import * as React from "react";
-import "./DetalizationBlockInfo.scss";
+import cn from "classnames";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { Help } from "../Help/Help";
-import { Button } from "../Button/Button";
-import cn from 'classnames';
+
+import "./DetalizationBlockInfo.scss";
 
 interface Props {
     className?: string;
@@ -29,15 +31,15 @@ export class DetalizationBlockInfo extends React.Component<Props> {
             <div className={cn("kit-detalization-info", className)}>
                 {rows.map(renderDetailsRow)}
                 {hasButton &&
-                    <Button
-                        className="kit-detalization-info__button"
-                        size="medium"
-                        color="gray"
-                        onClick={onClick}
-                        hasBorder
-                    >
-                        {buttonText}
-                    </Button>
+                    <div className="kit-detalization-info__row-button">
+                        <NewButton
+                            size="medium"
+                            type="secondary"
+                            onClick={onClick}
+                        >
+                            {buttonText}
+                        </NewButton>
+                    </div>
                 }
             </div>
         );

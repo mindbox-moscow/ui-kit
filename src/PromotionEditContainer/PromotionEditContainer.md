@@ -1,39 +1,42 @@
 ```jsx
-<PromotionEditContainer
-	closeBtnLabel="Закрыть"
-	onCloseClick={() => console.log("PromotionEditContainer closed")}
->
-	<div style={{ width: "40%" }}>
-		<Input defaultValue="Любой контент" />
-	</div>
-</PromotionEditContainer>
-<br />
-<PromotionEditContainer
-	closeBtnLabel="Закрыть"
-	onCloseClick={() => console.log("PromotionEditContainer closed")}
->
-	<PromotionEditContainer.Header>
-		<div style={{ width: "40%" }}>
-			<Input defaultValue="Header" />
-		</div>
-	</PromotionEditContainer.Header>
+const NewButton = require("@mindbox-moscow/ui-components").Button;
 
-	<PromotionEditContainer.Main>
+<>
+	<PromotionEditContainer
+		closeBtnLabel="Закрыть"
+		onCloseClick={() => console.log("PromotionEditContainer closed")}
+	>
 		<div style={{ width: "40%" }}>
-			<Input defaultValue="Main" />
+			<Input defaultValue="Любой контент" />
 		</div>
-	</PromotionEditContainer.Main>
+	</PromotionEditContainer>
+	<br />
+	<PromotionEditContainer
+		closeBtnLabel="Закрыть"
+		onCloseClick={() => console.log("PromotionEditContainer closed")}
+	>
+		<PromotionEditContainer.Header>
+			<div style={{ width: "40%" }}>
+				<Input defaultValue="Header" />
+			</div>
+		</PromotionEditContainer.Header>
 
-	<PromotionEditContainer.Footer>
-		<div style={{ width: "40%" }}>
-			<Button
-				type="button"
-				size="medium"
-				color="gray"
-			>
-				Footer
-			</Button>
-		</div>
-	</PromotionEditContainer.Footer>
-</PromotionEditContainer>
+		<PromotionEditContainer.Main>
+			<div style={{ width: "40%" }}>
+				<Input defaultValue="Main" />
+			</div>
+		</PromotionEditContainer.Main>
+
+		<PromotionEditContainer.Footer>
+			<div style={{ width: "40%" }}>
+				<NewButton
+					size="medium"
+					type="primary"
+				>
+					Footer
+				</NewButton>
+			</div>
+		</PromotionEditContainer.Footer>
+	</PromotionEditContainer>
+</>
 ```

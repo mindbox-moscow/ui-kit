@@ -832,7 +832,8 @@
 		groupType="or"
 		andLabel="И"
 		orLabel="ИЛИ"
-		shouldShowLabel={true}
+		shouldShowButtons={true}
+		shouldShowLabel={false}
 		addSimpleConditionButton={
 			<FilterConditionEditorButton
 				label="Добавить фильтр"
@@ -841,9 +842,9 @@
 			/>
 		}
 		addGroupConditionButton={
-			<Button color="silver" size="xxs" hasBorder type="button">
+			<LegacyFilterGroupButton>
 				Добавить группу И
-			</Button>
+			</LegacyFilterGroupButton>
 		}
 	>
 		<FiltrationConditionComponent

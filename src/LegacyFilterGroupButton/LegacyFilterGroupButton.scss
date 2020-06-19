@@ -1,0 +1,42 @@
+$textColor: #265378;
+$borderColor: #c7d8e2;
+$borderHoverColor: #5897fb;
+$bgColor: #f1f5f8;
+$bgHoverColor: #e2eaf0;
+
+.kit-legacy-filter-group-button {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	min-height: 22px;
+	margin: 0;
+	padding: 0 23px;
+	background-color: $bgColor;
+	border: 1px solid $borderColor;
+	border-radius: 4px;
+	outline: none;
+	font-family: "PT Sans", sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+	color: $textColor;
+	text-align: center;
+	transition: color 0.15s, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out;
+	cursor: pointer;
+
+	&:disabled {
+		opacity: 0.35;
+		cursor: auto;
+	}
+
+	&:hover:not(:disabled),
+	&:focus:not(:disabled) {
+		background-color: $bgHoverColor;
+		border-color: $borderHoverColor;
+		color: $textColor;
+	}
+
+	svg {
+		margin-right: 5px;
+	}
+}

@@ -9,37 +9,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
-    - name: checkout
-      uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
 
-    - name: Use Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+          registry-url: "https://npm.pkg.github.com/mindbox-moscow"
 
-    - name: Prepare build
-      run: |
-        rm -rf .git
-        rm -rf docs
-        git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
-        yarn global add webpack-cli@3.1.2 webpack@4
-        yarn
+      - name: Prepare build
+        run: |
+          rm -rf .git
+          rm -rf docs
+          git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
+          npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
-    - name: Build
-      run: |
-        node ./deploy/patch-version.js
-        yarn build
-        yarn build:examples
-        yarn build:npm-module
+      - name: Build
+        run: |
+          node ./deploy/patch-version.js
+          npm run build
+          npm run build:examples
+          npm run build:npm-module
 
-    - name: Run Screenshot Test JEST
-      run: yarn test-in-docker:ci
-
-    - name: Run Screenshot Test BackstopJS
-      run: yarn screen:test
-
+      - name: Run Test
+        run: npm run test

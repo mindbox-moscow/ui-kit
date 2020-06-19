@@ -3,7 +3,8 @@ import "./styles.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from "../src/Button/Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { Checkbox } from "../src/Checkbox/Checkbox";
 import { DateField, Days, Months } from "../src/DateField/DateField";
 import { Input } from "../src/Input/Input";
@@ -45,9 +46,9 @@ const days: Days = [
 class When extends React.Component<{}> {
     public state = { dateFrom: new Date(2013, 12, 12), dateTo: new Date() };
 
-    public handleChangeDateFrom = (val: Date) => this.setState({dateFrom: val});
-    public handleChangeDateTo = (val: Date) => this.setState({dateTo: val});
-    
+    public handleChangeDateFrom = (val: Date) => this.setState({ dateFrom: val });
+    public handleChangeDateTo = (val: Date) => this.setState({ dateTo: val });
+
     public render() {
         const { dateTo, dateFrom } = this.state;
         return (
@@ -130,9 +131,13 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             или настроить график
@@ -165,8 +170,8 @@ class When extends React.Component<{}> {
                         </RadioButton>
                     </Row>
                     <Row isEdit={true} isControl={true} title="Дата и время старта">
-                        <DateField onChange={this.handleChangeDateFrom} days={days} months={months} value={dateFrom}  />
-                        <TimeField hours={12} minutes={23}  />
+                        <DateField onChange={this.handleChangeDateFrom} days={days} months={months} value={dateFrom} />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row isEdit={true} isControl={true} title="Дата окончания">
                         <DateField
@@ -177,7 +182,7 @@ class When extends React.Component<{}> {
                             value={dateTo}
 
                         />
-                        <TimeField disabled={true} hours={12} minutes={20}  />
+                        <TimeField disabled={true} hours={12} minutes={20} />
                         <Checkbox
                             checked={true}
                             text="Триггер активен до конца кампании"
@@ -229,9 +234,13 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             или настроить график
@@ -363,9 +372,13 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             или настроить график
@@ -446,9 +459,13 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             или настроить график
@@ -529,9 +546,13 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} disabled={true} size="large">
+                        <NewButton
+                            disabled
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                         <Text mode="danger">
                             Для сохранения изменений необходимо выбрать событие
                             или настроить график
@@ -654,9 +675,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -810,9 +834,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -936,9 +963,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -997,7 +1027,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1020,9 +1050,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1079,7 +1112,7 @@ class When extends React.Component<{}> {
                         неделю с момента старт
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1102,9 +1135,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1170,7 +1206,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1193,9 +1229,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1300,7 +1339,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1323,9 +1362,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1415,7 +1457,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1438,9 +1480,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1564,7 +1609,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1587,9 +1632,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
                 <div
@@ -1695,7 +1743,7 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} title="Время">
-                        <TimeField hours={12} minutes={23}  />
+                        <TimeField hours={12} minutes={23} />
                     </Row>
                     <Row
                         help="Текст подсказки"
@@ -1718,9 +1766,12 @@ class When extends React.Component<{}> {
                         />
                     </Row>
                     <Row isEdit={true} isFooter={true}>
-                        <Button color="gray" hasUnderline={true} size="large">
+                        <NewButton
+                            size="large"
+                            type="primary"
+                        >
                             Сохранить
-                        </Button>
+                        </NewButton>
                     </Row>
                 </SectionWrapper>
             </Page>

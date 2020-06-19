@@ -3,7 +3,8 @@ import "./styles.scss";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button } from "../src/Button/Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { SectionWrapper } from "../src/SectionWrapper/SectionWrapper";
 import { Row } from "../src/Row/Row";
 import { Page, Header } from "../src/Page";
@@ -33,50 +34,49 @@ class Main extends React.Component<{}> {
                 badgeTitle="Триггер активен"
             >
                 <Header>
-                    <Button
-                        className="kit-page__button"
-                        icon="pause"
-                        hasBorder
-                        color="gray"
-                        size="medium"
-                    >
-                        Остановить
-                    </Button>
-                    <Button
-                        className="kit-page__button"
-                        icon="play"
-                        hasBorder
-                        color="gray"
-                        size="medium"
-                        disabled
-                    >
-                        Запустить
-                    </Button>
-                    <Button
-                        className="kit-page__button"
-                        hasBorder
-                        color="gray"
-                        size="medium"
-                    >
-                        Сохранить и выйти
-                    </Button>
-                    <Button
-                        className="kit-page__button"
-                        hasBorder
-                        color="gray"
-                        size="medium"
-                    >
-                        Клонировать
-                    </Button>
-                    <Button
-                        className="kit-page__button"
-                        hasBorder
-                        color="gray"
-                        size="medium"
-                        mode="danger"
-                    >
-                        Удалить
-                    </Button>
+                    <span className="kit-page__button">
+                        <NewButton
+                            icon="pause"
+                            size="medium"
+                            type="secondary"
+                        >
+                            Остановить
+                        </NewButton>
+                    </span>
+                    <span className="kit-page__button">
+                        <NewButton
+                            disabled
+                            icon="play"
+                            size="medium"
+                            type="secondary"
+                        >
+                            Запустить
+                        </NewButton>
+                    </span>
+                    <span className="kit-page__button">
+                        <NewButton
+                            size="medium"
+                            type="secondary"
+                        >
+                            Сохранить и выйти
+                        </NewButton>
+                    </span>
+                    <span className="kit-page__button">
+                        <NewButton
+                            size="medium"
+                            type="secondary"
+                        >
+                            Клонировать
+                        </NewButton>
+                    </span>
+                    <span className="kit-page__button">
+                        <NewButton
+                            size="medium"
+                            type="negative"
+                        >
+                            Удалить
+                        </NewButton>
+                    </span>
                 </Header>
                 <SectionWrapper
                     title="Когда"
@@ -163,14 +163,13 @@ class Main extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit isFooter>
-                                <Button
-                                    color="gray"
-                                    hasUnderline
+                                <NewButton
                                     disabled
                                     size="large"
+                                    type="primary"
                                 >
                                     Сохранить
-                                </Button>
+                                </NewButton>
                                 <Text mode="danger">
                                     Для сохранения изменений необходимо выбрать
                                     событие или настроить график
@@ -178,19 +177,19 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <>
-                            <Row title="Период активности">
-                                Триггер активен на протяжении всей кампании: 25
-                                авг 2018 – 1 янв 2019
+                            <>
+                                <Row title="Период активности">
+                                    Триггер активен на протяжении всей кампании: 25
+                                    авг 2018 – 1 янв 2019
                             </Row>
-                            <Row title="Инициатор события">Любой</Row>
-                            <Row title="Запуск">
-                                <Text mode="danger">
-                                    Настройте режим запуска триггера
+                                <Row title="Инициатор события">Любой</Row>
+                                <Row title="Запуск">
+                                    <Text mode="danger">
+                                        Настройте режим запуска триггера
                                 </Text>
-                            </Row>
-                        </>
-                    )}
+                                </Row>
+                            </>
+                        )}
                 </SectionWrapper>
                 <SectionWrapper
                     title="Кому"
@@ -244,14 +243,13 @@ class Main extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit isFooter>
-                                <Button
-                                    color="gray"
-                                    hasUnderline
+                                <NewButton
                                     disabled
                                     size="large"
+                                    type="primary"
                                 >
                                     Сохранить
-                                </Button>
+                                </NewButton>
                                 <Text mode="danger">
                                     Для сохранения изменений необходимо выбрать
                                     событие в блоке «Когда»
@@ -259,17 +257,17 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <>
-                            <Row title="Применять к потребителю">
-                                Каждый раз при попадании в фильтр триггера
+                            <>
+                                <Row title="Применять к потребителю">
+                                    Каждый раз при попадании в фильтр триггера
                             </Row>
-                            <Row title="Число срабатываний">Неограничено</Row>
-                            <Row title="Цель триггера">
-                                Настройте потребителей, к которым будут
-                                применяться действия триггера
+                                <Row title="Число срабатываний">Неограничено</Row>
+                                <Row title="Цель триггера">
+                                    Настройте потребителей, к которым будут
+                                    применяться действия триггера
                             </Row>
-                        </>
-                    )}
+                            </>
+                        )}
                 </SectionWrapper>
                 <SectionWrapper
                     title="Что"
@@ -328,14 +326,13 @@ class Main extends React.Component<{}> {
                                 />
                             </Row>
                             <Row isEdit isFooter>
-                                <Button
-                                    color="gray"
-                                    hasUnderline
+                                <NewButton
                                     disabled
                                     size="large"
+                                    type="primary"
                                 >
                                     Сохранить
-                                </Button>
+                                </NewButton>
                                 <Text mode="danger">
                                     Для сохранения изменений необходимо добавить
                                     хотя бы одно действие
@@ -343,10 +340,10 @@ class Main extends React.Component<{}> {
                             </Row>
                         </>
                     ) : (
-                        <Row title="Действие">
-                            Настройте одно или несколько действий триггера
-                        </Row>
-                    )}
+                            <Row title="Действие">
+                                Настройте одно или несколько действий триггера
+                            </Row>
+                        )}
                 </SectionWrapper>
             </Page>
         );

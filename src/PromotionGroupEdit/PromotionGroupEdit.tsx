@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Button } from "../Button";
+import { Button as NewButton } from "@mindbox-moscow/ui-components";
+
 import { Checkbox } from "../Checkbox";
 import { Input } from "../Input";
 import { PromotionEditContainer } from "../PromotionEditContainer";
@@ -166,22 +167,18 @@ export class PromotionGroupEdit extends React.PureComponent<IProps, IState> {
 					<PromotionEditContainer.Footer>
 						<fieldset className="kit-promotion-group-edit__submit">
 							<div className="kit-promotion-group-edit__submit-inner">
-								<Button
-									className="kit-promotion-group-edit__submit-btn"
-									type="submit"
+								<NewButton
 									size="medium"
-									color="gray"
+									type="primary"
 								>
 									{labels.submitBtn}
-								</Button>
-								<Button
-									type="reset"
+								</NewButton>
+								<NewButton
 									size="medium"
-									color="gray"
-									mode="simple_text"
+									type="secondary"
 								>
 									{labels.cancelBtn}
-								</Button>
+								</NewButton>
 							</div>
 						</fieldset>
 					</PromotionEditContainer.Footer>

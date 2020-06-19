@@ -32,10 +32,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
-      - name: Install packages
-        uses: ianwalter/puppeteer@12728ddef82390d1ecd4732fb543f62177392fbb
+      - name: Test
+        uses: stug111/action-puppeteer@v1
         with:
-          args: npm i
+            command: npm run test
 
       - name: Build
         run: |
@@ -43,8 +43,3 @@ jobs:
           npm run build
           npm run build:examples
           npm run build:npm-module
-
-      - name: Test
-        uses: ianwalter/puppeteer@12728ddef82390d1ecd4732fb543f62177392fbb
-        with:
-          args: npm run test

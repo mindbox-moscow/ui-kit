@@ -38,8 +38,8 @@ jobs:
         yarn build:npm-module
 
     - name: Run Screenshot Test JEST
-	  run: yarn test-in-docker:ci
+      run: yarn test-in-docker:ci
 
-	- name: Run Screenshot Test BackstopJS
-	  run: yarn screen:test
+    - name: Run Screenshot Test BackstopJS
+      run: yarn screen:test
 

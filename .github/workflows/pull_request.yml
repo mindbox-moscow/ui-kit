@@ -30,7 +30,7 @@ jobs:
           git clone -b gh-pages https://github.com/mindbox-moscow/ui-kit.git docs
           npm ci
         env:
-      NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
       - name: Start server
         run: npm run start &

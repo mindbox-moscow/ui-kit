@@ -32,9 +32,3 @@ build/
 
 # using yarn for build
 package-lock.json
-
-/backstop_data/bitmaps_test
-/backstop_data/ci_report
-/backstop_data/html_report
-/backstop_data/json_report
-

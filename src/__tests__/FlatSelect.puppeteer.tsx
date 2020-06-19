@@ -11,7 +11,7 @@ describe("FlatSelect", () => {
 
 	it("FlatSelect Open", async () => {
 		const page = await browser.newPage();
-		await page.goto("http://localhost:6060/#!/FlatSelect");
+		await page.goto("file:///home/runner/work/ui-kit/ui-kit/docs/index.html#!/FlatSelect");
 		const image = await page.screenshot();
 
 		expect(image).toMatchImageSnapshot();

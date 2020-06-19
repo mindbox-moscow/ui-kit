@@ -32,14 +32,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
-      - name: Start server
-        run: npm run start &
-
-      - name: Start puppeteer
-        run: sh ./deploy/puppeteer.sh
-
-      - name: Test
-        run: npm run test
+      - name: Install packages
+        uses: ianwalter/puppeteer@12728ddef82390d1ecd4732fb543f62177392fbb
+        with:
+          args: npm i
 
       - name: Build
         run: |
@@ -47,3 +43,8 @@ jobs:
           npm run build
           npm run build:examples
           npm run build:npm-module
+
+      - name: Test
+        uses: ianwalter/puppeteer@12728ddef82390d1ecd4732fb543f62177392fbb
+        with:
+          args: npm run test

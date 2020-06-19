@@ -6,4 +6,6 @@ window.HTMLElement.prototype.scrollIntoView = () => {};
 
 configure({ adapter: new Adapter() });
 
+jest.setTimeout(10000);
+
 expect.extend({ toMatchImageSnapshot });

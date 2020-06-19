@@ -32,12 +32,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
+      - name: Start puppeteer
+        run: sh ./deploy/puppeteer.sh
+
+      - name: Start server
+        run: npm run start
+
+      - name: Test
+        run: npm run test
+
       - name: Build
         run: |
           node ./deploy/patch-version.js
           npm run build
           npm run build:examples
           npm run build:npm-module
-
-      - name: Run Test
-        run: npm run test

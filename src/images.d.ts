@@ -16,3 +16,9 @@ declare module "*.svg" {
 declare module "vfile-message" {
 	export type VFileMessage = any;
 }
+
+declare namespace jest {
+	interface Matchers<R> {
+		toMatchImageSnapshot(): R;
+	}
+}

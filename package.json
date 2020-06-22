@@ -16,6 +16,8 @@
 	},
 	"scripts": {
 		"test": "jest",
+		"test:unit": "jest unit",
+		"test:screenshots": "jest screenshot",
 		"test:watch": "jest --watch",
 		"start": "styleguidist server",
 		"build": "styleguidist build",

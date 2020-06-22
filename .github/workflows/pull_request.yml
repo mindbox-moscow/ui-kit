@@ -32,11 +32,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
-      - name: Test
-        uses: stug111/action-puppeteer@v1
-        with:
-            command: npm run test
-
       - name: Build
         run: |
           node ./deploy/patch-version.js

@@ -22,9 +22,7 @@
 		"start": "styleguidist server",
 		"build": "styleguidist build",
 		"build:examples": "webpack --mode production",
-		"build:npm-module": "tsc -p tsconfig.npm.json && node ./deploy/copy-assets-to-build.js",
-		"screenshot-test:local": "make local_test",
-		"screenshot-test:ci": "make ci_test"
+		"build:npm-module": "tsc -p tsconfig.npm.json && node ./deploy/copy-assets-to-build.js"
 	},
 	"devDependencies": {
 		"@mindbox-moscow/ui-components": "^1.40.0",

@@ -46,7 +46,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
 
-
       - name: Build UI-kit docs
         run: |
           node ./deploy/patch-version.js

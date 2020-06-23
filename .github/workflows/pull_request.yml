@@ -38,3 +38,9 @@ jobs:
           npm run build
           npm run build:examples
           npm run build:npm-module
+
+      - name: Unit Test
+        run: npm run test:unit
+
+      - name: Screenshot Test
+        run: npm run test:screenshots

@@ -55,6 +55,7 @@ export const Badge: React.FC<IProps> = props => {
 			})}
 			style={{ background }}
 		>
+			THIS BADGE IS BROKEN
 			{children}
 		</div>
 	);

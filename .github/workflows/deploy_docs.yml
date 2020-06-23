@@ -64,7 +64,7 @@ jobs:
       - name: Build docker image
         run: docker build . -t ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
 
-      - name: Authenticate in yandex registry
+      - name: Authenticate in Dockerhub
         run: echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login --username itmindbox --password-stdin
 
       - name: Push docker image
@@ -109,6 +109,7 @@ jobs:
           jq -nc '{"body": "You can check your **UI-Kit Docs** changes at\nhttps://ui-kit-${{ steps.branch_hash.outputs.hash_payload }}.staging.directcrm.ru"}' | \
           curl -sL -X POST -d @- \
             -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/comments
 
       - name: Slack notification if the job has failed
@@ -134,4 +135,5 @@ jobs:
           jq -nc '{"body": "Your **UI-Kit Docs** deploy failed. Check logs at\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' | \
           curl -sL -X POST -d @- \
             -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/comments"

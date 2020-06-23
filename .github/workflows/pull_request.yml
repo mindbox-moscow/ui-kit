@@ -44,3 +44,10 @@ jobs:
 
       - name: Screenshot Test
         run: npm run test:screenshots
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: Fail Screenshot Test
+          path: src/__tests__/__image_snapshots__/__diff_output__

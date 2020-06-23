@@ -32,3 +32,4 @@ dist/
 docs/
 build/
 .idea/
+__diff_output__

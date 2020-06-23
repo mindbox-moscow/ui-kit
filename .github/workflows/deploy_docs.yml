@@ -78,6 +78,7 @@ jobs:
         with:
           args: kubectl apply -f ./kubernetes/deploy.yaml
 
+
       - name: Slack notification if the job has completed
         uses: 8398a7/action-slack@v2
         with:

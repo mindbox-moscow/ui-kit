@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ui-kit-HASH_PAYLOAD
+  namespace: newfrontend
+spec:
+  selector:
+    matchLabels:
+      app: ui-kit-HASH_PAYLOAD
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ui-kit-HASH_PAYLOAD
+    spec:
+      containers:
+      - name: ui-kit
+        image: DOCKER_IMAGE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ui-kit-HASH_PAYLOAD
+  namespace: newfrontend
+spec:
+  selector:
+    app: ui-kit-HASH_PAYLOAD
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ui-kit-HASH_PAYLOAD
+  namespace: newfrontend
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: >-
+      Host(`ui-kit-HASH_PAYLOAD.staging.directcrm.ru`)
+    kind: Rule
+    services:
+      - name: ui-kit-HASH_PAYLOAD
+        namespace: newfrontend
+        port: 80
+        passHostHeader: false
+  tls:
+    secretName: kubernetes-staging-directcrm-tls-cert

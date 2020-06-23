@@ -18,7 +18,7 @@
 	"scripts": {
 		"test": "jest",
 		"test:unit": "jest unit",
-		"test:screenshots": "jest screenshot",
+		"test:screenshots": "jest screenshot -c ./jest.config-screenshots.js",
 		"test:watch": "jest --watch",
 		"start": "styleguidist server",
 		"build": "styleguidist build",

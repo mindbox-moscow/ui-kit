@@ -16,6 +16,10 @@ module.exports = {
 			}
 		}
 	},
+	globalSetup: "<rootDir>/jest/setup.js",
+	globalTeardown: "<rootDir>/jest/teardown.js",
 	setupFilesAfterEnv: ["<rootDir>/jest/setupTests.ts"],
-	snapshotSerializers: ["enzyme-to-json/serializer"]
+	snapshotSerializers: ["enzyme-to-json/serializer"],
+	preset: "jest-puppeteer-docker",
+	testEnvironment: "jsdom"
 };

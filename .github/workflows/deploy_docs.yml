@@ -76,6 +76,7 @@ jobs:
         with:
           args: apply -f ./kubernetes/deploy.yaml
 
+          
       # - name: Deploy to cluster
       #   uses: wahyd4/kubectl-helm-action@master
       #   env:

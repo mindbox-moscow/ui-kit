@@ -95,7 +95,7 @@ jobs:
 
       - name: Add comment to commit if the job has completed
         run: |
-          jq -nc '{"body": "You can check your **UI-Kit Docs** changes at\nhttps://ui-kit-${{ steps.branch_hash.outputs.hash_payload }}.staging.directcrm.ru"}' | \
+          jq -nc '{"body": ":heavy_check_mark: You can check your **UI-Kit Docs** changes at\nhttps://ui-kit-${{ steps.branch_hash.outputs.hash_payload }}.staging.directcrm.ru"}' | \
           curl -sL -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
@@ -121,7 +121,7 @@ jobs:
       - name: Add comment to commit if the job has failed
         if: ${{ failure() }}
         run: |
-          jq -nc '{"body": "Your **UI-Kit Docs** deploy failed. Check logs at\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' | \
+          jq -nc '{"body": ":negative_squared_cross_mark: Your **UI-Kit Docs** deploy failed. Check logs at\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' | \
           curl -sL -X POST -d @- \
             -H "Content-Type: application/json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \

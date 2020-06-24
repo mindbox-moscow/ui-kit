@@ -1,29 +1,21 @@
 import puppeteer from "puppeteer";
-
-const url = `file://${process.cwd()}/docs/index.html#!/FlatSelect`;
+import { closeBrowser, getPage, openBrowser } from "../../jest/utils";
 
 describe("FlatSelect", () => {
-	let browser: puppeteer.Browser;
+	let page: puppeteer.Page;
 
 	beforeAll(async () => {
-		browser = await puppeteer.launch({
-			args: ["--no-sandbox"],
-			executablePath: "/usr/bin/google-chrome"
-		});
+		await openBrowser();
+		page = await getPage('/index.html#!/FlatSelect');
 	});
 
 	it("FlatSelect Open", async () => {
-		const page = await browser.newPage();
-		await page.goto(url);
 		const image = await page.screenshot();
 
 		expect(image).toMatchImageSnapshot();
 	});
 
 	it("FlatSelect Close", async () => {
-		const page = await browser.newPage();
-
-		await page.goto(url);
 		await page.click("div.kit-selectR");
 		const image = await page.screenshot();
 
@@ -31,6 +23,6 @@ describe("FlatSelect", () => {
 	});
 
 	afterAll(async () => {
-		await browser.close();
+		await closeBrowser()
 	});
 });

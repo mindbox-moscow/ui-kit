@@ -1,0 +1,128 @@
+name: Deploy Docs container
+
+on:
+  pull_request:
+    branches-ignore: master
+  push:
+    branches-ignore: master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      registry: itmindbox
+      image: dev_ui_kit
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v1
+
+      - name: Transform branch name
+        run: echo "##[set-output name=branch;]$(echo $EXT_BRANCH_NAME | sed 's/refs\/heads\///g' | sed 's/[_.\/]/-/g')"
+        id: transform_branch
+        env:
+          EXT_BRANCH_NAME: ${{ github.ref }}
+
+      - name: Get branch name hash
+        run: echo "##[set-output name=hash_payload;]$(echo $BRANCH | md5sum | sed 's/  -//g')"
+        id: branch_hash
+        env:
+          BRANCH: ${{ steps.transform_branch.outputs.branch }}
+
+      - name: Setup Node.JS
+        uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: "12.x"
+          registry-url: "https://npm.pkg.github.com/mindbox-moscow"
+
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GRP_TOKEN }}
+
+      - name: Build UI-kit docs
+        run: |
+          node ./deploy/patch-version.js
+          npm run build
+          npm run build:examples
+
+      - name: Build docker image
+        run: docker build . -t ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+
+      - name: Authenticate in Dockerhub
+        run: echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login --username itmindbox --password-stdin
+
+      - name: Push docker image
+        run: docker push ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+
+      - name: Set variables in deployment.yaml
+        run: |
+          sed -i "s~DOCKER_IMAGE~$DOCKER_IMAGE~g" ./kubernetes/deploy.yaml
+          sed -i "s~HASH_PAYLOAD~$HASH_PAYLOAD~g" ./kubernetes/deploy.yaml
+        env:
+          DOCKER_IMAGE: ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+          HASH_PAYLOAD: ${{ steps.branch_hash.outputs.hash_payload }}
+
+      - name: Deploy to cluster
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.DEV_FRONTEND_GHA_KUBE_CONFIG_DATA }}
+        with:
+          args: apply -f ./kubernetes/deploy.yaml
+
+      - name: Slack notification if the job has completed
+        uses: 8398a7/action-slack@v2
+        with:
+          status: custom
+          payload: |
+            {
+              attachments: [{
+                "author_name": "Author: ${{ github.actor }}",
+                fallback: 'fallback',
+                color: 'good',
+                title: "UI-Kit Docs",
+              text: "You can check your UI-Kit Docs changes at\nhttps://ui-kit-${{ steps.branch_hash.outputs.hash_payload }}.staging.directcrm.ru\n\nand check your PR at \nhttps://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Add comment to commit if the job has completed
+        run: |
+          jq -nc '{"body": ":heavy_check_mark: You can check your **UI-Kit Docs** changes at\nhttps://ui-kit-${{ steps.branch_hash.outputs.hash_payload }}.staging.directcrm.ru"}' | \
+          curl -sL -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/comments
+
+      - name: Slack notification if the job has failed
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v2
+        with:
+          status: custom
+          payload: |
+            {
+              attachments: [{
+                "author_name": "Author: ${{ github.event.client_payload.actor }}",
+                color: "#FF0000",
+                title: "UI-Kit Docs",
+              text: "Your UI-Kit Docs deploy failed. Check logs at\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Add comment to commit if the job has failed
+        if: ${{ failure() }}
+        run: |
+          jq -nc '{"body": ":negative_squared_cross_mark: Your **UI-Kit Docs** deploy failed. Check logs at\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"}' | \
+          curl -sL -X POST -d @- \
+            -H "Content-Type: application/json" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/commits/${{ github.sha }}/comments"

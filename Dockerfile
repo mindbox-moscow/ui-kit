@@ -1,28 +1,32 @@
-FROM node:10.16.3
+FROM nginx:latest
 
-ENV ROOT_DIR /app
+ADD ./docs/ /var/www/
 
-RUN apt-get update && \
-	apt-get install -y git sudo software-properties-common
+RUN echo '\n\
+	#user www www;\n\
+	worker_processes 1;\n\
+	\n\
+	events {\n\
+	worker_connections  4096;\n\
+	}\n\
+	\n\
+	http {\n\
+	server {\n\
+	listen 80 default_server;\n\
+	server_tokens off;\n\
+	error_page 403 /index.html;\n\
+	error_page 404 /index.html;\n\
+	\n\
+	root /var/www;\n\
+	index index.html;\n\
+	\n\
+	server_name localhost;\n\
+	\n\
+	location / {\n\
+	try_files $uri $uri/ =404;\n\
+	}\n\
+	}\n\
+	}'\
+	> /etc/nginx/nginx.conf
 
-RUN wget https://dl-ssl.google.com/linux/linux_signing_key.pub && sudo apt-key add linux_signing_key.pub
-RUN sudo add-apt-repository "deb http://dl.google.com/linux/chrome/deb/ stable main"
-
-RUN	apt-get -y update && apt-get -y install google-chrome-stable
-
-RUN apt-get -qqy update \
-  && apt-get -qqy --no-install-recommends install \
-    libfontconfig \
-    libfreetype6 \
-    xfonts-cyrillic \
-    xfonts-scalable \
-    fonts-liberation \
-    fonts-ipafont-gothic \
-    fonts-wqy-zenhei \
-  && rm -rf /var/lib/apt/lists/* \
-  && apt-get -qyy clean
-
-RUN mkdir ${ROOT_DIR}
-WORKDIR ${ROOT_DIR}
-
-CMD [ "npm", "run", "test:screenshots" ]
+EXPOSE 80

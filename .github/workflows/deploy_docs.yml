@@ -53,20 +53,20 @@ jobs:
           npm run build:examples
 
       - name: Build docker image
-        run: docker build . -t ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+        run: docker build . -t ${{ env.registry }}/${{ env.image }}-${{ steps.transform_branch.outputs.branch }}:${{ github.sha }}
 
       - name: Authenticate in Dockerhub
         run: echo '${{ secrets.DOCKERHUB_TOKEN }}' | docker login --username itmindbox --password-stdin
 
       - name: Push docker image
-        run: docker push ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+        run: docker push ${{ env.registry }}/${{ env.image }}-${{ steps.transform_branch.outputs.branch }}:${{ github.sha }}
 
       - name: Set variables in deployment.yaml
         run: |
           sed -i "s~DOCKER_IMAGE~$DOCKER_IMAGE~g" ./kubernetes/deploy.yaml
           sed -i "s~HASH_PAYLOAD~$HASH_PAYLOAD~g" ./kubernetes/deploy.yaml
         env:
-          DOCKER_IMAGE: ${{ env.registry }}/${{ env.image }}:${{ steps.transform_branch.outputs.branch }}
+          DOCKER_IMAGE: ${{ env.registry }}/${{ env.image }}-${{ steps.transform_branch.outputs.branch }}:${{ github.sha }}
           HASH_PAYLOAD: ${{ steps.branch_hash.outputs.hash_payload }}
 
       - name: Deploy to cluster

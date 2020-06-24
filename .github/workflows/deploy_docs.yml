@@ -49,8 +49,8 @@ jobs:
       - name: Build UI-kit docs
         run: |
           node ./deploy/patch-version.js
-          npm run build
-          npm run build:examples
+          npm run build:development
+          npm run build:development-examples
 
       - name: Build docker image
         run: docker build . -t ${{ env.registry }}/${{ env.image }}-${{ steps.transform_branch.outputs.branch }}:${{ github.sha }}

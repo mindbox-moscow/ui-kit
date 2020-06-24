@@ -21,6 +21,8 @@
 		"test:watch": "jest --watch",
 		"start": "styleguidist server",
 		"build": "styleguidist build",
+		"build:development": "cross-env NODE_ENV=development styleguidist build",
+		"build:development-examples": "webpack --mode development",
 		"build:examples": "webpack --mode production",
 		"build:npm-module": "tsc -p tsconfig.npm.json && node ./deploy/copy-assets-to-build.js"
 	},
@@ -39,6 +41,7 @@
 		"@types/react-infinite-scroller": "^1.2.1",
 		"classnames": "^2.2.6",
 		"cpy": "^7.0.1",
+		"cross-env": "^7.0.2",
 		"enzyme": "^3.11.0",
 		"enzyme-adapter-react-16": "^1.15.2",
 		"enzyme-to-json": "^3.4.4",

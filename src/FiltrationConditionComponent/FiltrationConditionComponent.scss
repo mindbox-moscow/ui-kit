@@ -92,13 +92,13 @@
 	z-index: 1;
 	display: inline-flex;
 	height: 100%;
-	margin-top: -2px;
-	margin-right: 5px;
+	margin-top: -1px;
+	margin-right: 2px;
 	margin-left: -5px;
 	padding: 0 5px;
 	background: none;
 	border: none;
-	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
+	border-radius: $itemHoverBorderRadius $itemHoverBorderRadius;
 	outline: none;
 	color: $createButtonColor;
 	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
@@ -106,6 +106,10 @@
 
 	&:hover {
 		background-color: darken($copyColorBg, 10%);
+
+		rect {
+			stroke: #6a98e1;
+		}
 	}
 
 	.kit-filtration-condition & {
@@ -121,9 +125,14 @@
 		}
 	}
 
-	.kit-filtration-condition__item-text_linked-condition-edit &:hover {
-		background-color: transparent;
-		opacity: 0.6;
+	.kit-filtration-condition__item-text_linked-condition-edit & {
+		rect {
+			stroke: #6a98e1;
+		}
+
+		&:hover {
+			background-color: transparent;
+		}
 	}
 }
 

@@ -35,3 +35,11 @@ npm run build
 # Build pages from 'examples' folder
 npm run build:examples
 ```
+
+# Start screenshot test local
+
+```shell
+sh screenshot-test.sh
+```
+
+if you use `Windows` then change `pwd` to `pwd -W` in `screenshot-test.sh` 

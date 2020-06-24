@@ -12,7 +12,7 @@ export const Add = ({ className }: ISvgProps) => (
 	>
 		<g transform="translate(1 1)" fill="none" fill-rule="evenodd">
 			<rect
-				stroke="#D9E7FE"
+				stroke="#6A98E1"
 				opacity=".75"
 				width="16"
 				height="16"

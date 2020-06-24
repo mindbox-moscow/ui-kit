@@ -52,7 +52,7 @@
 
 		> .kit-filtration-group__label_hover_or,
 		> .kit-filtration-group__label_hover_and {
-			background-color: $hoverColorBg;
+			background-color: $editColorBg;
 		}
 
 		> .kit-filtration-group {
@@ -67,6 +67,12 @@
 
 				@include changeHorisontalBracketsColor($andColorEdit);
 			}
+		}
+
+		.kit-segment-button-expand,
+		.kit-segment-button-edit,
+		.kit-segment-content {
+			border-color: $segmentBorderColotEditMode;
 		}
 	}
 
@@ -103,12 +109,12 @@
 		}
 
 		> .kit-filtration-group__label_hover_or {
-			background-color: $hoverColorBg;
+			background-color: $editColorBg;
 			color: $orColorEdit;
 		}
 
 		> .kit-filtration-group__label_hover_and {
-			background-color: $hoverColorBg;
+			background-color: $editColorBg;
 			color: $andColorEdit;
 		}
 	}

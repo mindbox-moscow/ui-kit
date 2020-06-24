@@ -93,7 +93,7 @@
 	display: inline-flex;
 	height: 100%;
 	margin-top: -1px;
-	margin-right: 2px;
+	margin-right: 3px;
 	margin-left: -5px;
 	padding: 0 5px;
 	background: none;
@@ -105,11 +105,7 @@
 	cursor: pointer;
 
 	&:hover {
-		background-color: darken($copyColorBg, 10%);
-
-		rect {
-			stroke: #6a98e1;
-		}
+		background-color: $editColorBg;
 	}
 
 	.kit-filtration-condition & {
@@ -125,14 +121,12 @@
 		}
 	}
 
-	.kit-filtration-condition__item-text_linked-condition-edit & {
-		rect {
-			stroke: #6a98e1;
-		}
+	.kit-filtration-condition__item-text_linked-condition-edit &:hover {
+		background-color: transparent;
+	}
 
-		&:hover {
-			background-color: transparent;
-		}
+	.kit-filtration-group_edit &:hover {
+		background-color: $createHoverColorEditMode;
 	}
 }
 

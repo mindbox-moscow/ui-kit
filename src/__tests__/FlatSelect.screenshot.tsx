@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { closeBrowser, getPage, openBrowser } from "../../jest/utils";
+import { closeBrowser, getPage, openBrowser } from "../utils/puppeteer";
 
 describe("FlatSelect", () => {
 	let page: puppeteer.Page;

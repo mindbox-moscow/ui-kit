@@ -1,30 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-import { FiltrationConditionComponent } from "../../../src/FiltrationConditionComponent";
-import { FiltrationGroupComponent } from "../../../src/FiltrationGroupComponent";
+import {
+	FiltrationConditionComponentTest,
+	FiltrationGroupComponentTest
+} from "../utils";
 
 const SingleConditionLableOr = () => (
-	<FiltrationGroupComponent
+	<FiltrationGroupComponentTest
 		state="view"
 		groupType="or"
-		andLabel="И"
-		orLabel="ИЛИ"
 		shouldShowLabel={true}
-		shouldShowButtons={false}
-		shouldShowDuplicateButton={false}
-		onGroupTypeToggle={() => {}}
-		onConditionStateToggle={() => {}}
-		onConditionRemove={() => {}}
-		onConditionCopy={() => {}}
 	>
-		<FiltrationConditionComponent
+		<FiltrationConditionComponentTest
 			filterablePropertyName="Пол"
+			filtrationMethodName=""
 			editorComponent={""}
 			state="view"
-			onConditionStateToggle={() => {}}
-			onConditionCopy={() => {}}
-			onConditionRemove={() => {}}
 			filtrationMethodParametersComponent={
 				<span>
 					от <span style={{ fontWeight: "bold" }}>10</span> до{" "}
@@ -32,7 +23,7 @@ const SingleConditionLableOr = () => (
 				</span>
 			}
 		/>
-	</FiltrationGroupComponent>
+	</FiltrationGroupComponentTest>
 );
 
 const entryElement = document.createElement("div");

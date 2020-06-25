@@ -16,7 +16,11 @@ const getEntries = () => {
 	let entry = {};
 
 	for (let name of getExampleNames()) {
-		entry[name] = `./${name}`;
+		const parse = path.parse(name);
+
+		if (parse.dir !== "examples/screenshot-test/utils") {
+			entry[name] = `./${name}`;
+		}
 	}
 
 	return entry;

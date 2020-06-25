@@ -73,7 +73,7 @@ describe("Brackets", () => {
 
 	it("Render FilterWrapper editing external group", async () => {
 		page = await getPage(
-			"examples/screenshot-test/brackets/FilterWrapperEditingEternalGroup.html"
+			"examples/screenshot-test/brackets/FilterWrapperEditingExternalGroup.html"
 		);
 
 		const image = await page.screenshot();

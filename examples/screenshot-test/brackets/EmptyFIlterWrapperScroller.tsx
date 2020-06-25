@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { ScrollState } from "../../../src/FilterWrapper";
 import { FilterWrapperTest, FiltrationGroupComponentTest } from "../utils";
 
-const EmptyFilterWrapper = () => (
+const FilterWrapper = () => (
 	<FilterWrapperTest
 		scrollState={ScrollState.Minified}
 		showApplyButton={false}
@@ -26,7 +26,7 @@ ReactDOM.render(
 			marginRight: "auto"
 		}}
 	>
-		<EmptyFilterWrapper />
+		<FilterWrapper />
 	</div>,
 	entryElement
 );

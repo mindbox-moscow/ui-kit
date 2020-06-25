@@ -26,6 +26,13 @@ export const FiltrationGroupComponentTest: React.FC<Partial<Props>> = props => {
 			onConditionStateToggle={() => {}}
 			onConditionRemove={() => {}}
 			onConditionCopy={() => {}}
+			moreConditionToggleCaption="Действие"
+			moreActions={[
+				{
+					title: "Редактировать",
+					onClick: () => {}
+				}
+			]}
 			{...props}
 		/>
 	);

@@ -66,6 +66,13 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("Render FilterWrapper editing internal group", async () => {
+		page = await getPage("brackets/FilterWrapperEditingInternalGroup.html");
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	afterAll(async () => {
 		await closeBrowser();
 	});

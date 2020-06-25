@@ -7,10 +7,19 @@ import {
 	FiltrationGroupComponentTest
 } from "../utils";
 
-const EmptyFilterWrapper = () => (
-	<FilterWrapperTest>
-		<FiltrationGroupComponentTest state="shaded">
-			<FiltrationGroupComponentTest state="edit" groupType="and">
+const FilterWrapper = () => (
+	<FilterWrapperTest doesContainFilter={true}>
+		<FiltrationGroupComponentTest
+			state="shaded"
+			groupType="or"
+			shouldShowLabel={true}
+		>
+			<FiltrationGroupComponentTest
+				state="edit"
+				groupType="and"
+				shouldShowLabel={true}
+				shouldShowButtons={true}
+			>
 				<FiltrationConditionComponentTest
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и мужской"
@@ -20,7 +29,11 @@ const EmptyFilterWrapper = () => (
 					filtrationMethodName="заполнен и от 18 до 35 лет"
 				/>
 			</FiltrationGroupComponentTest>
-			<FiltrationGroupComponentTest state="shaded" groupType="and">
+			<FiltrationGroupComponentTest
+				state="shaded"
+				groupType="and"
+				shouldShowLabel={true}
+			>
 				<FiltrationConditionComponentTest
 					filterablePropertyName="Пол"
 					filtrationMethodName="заполнен и женский"
@@ -29,7 +42,11 @@ const EmptyFilterWrapper = () => (
 					filterablePropertyName="Возраст"
 					filtrationMethodName="заполнен и от 35 до 60 лет"
 				/>
-				<FiltrationGroupComponentTest state="shaded" groupType="and">
+				<FiltrationGroupComponentTest
+					state="shaded"
+					groupType="and"
+					shouldShowLabel={true}
+				>
 					<FiltrationConditionComponentTest
 						filterablePropertyName="Пол"
 						filtrationMethodName="заполнен и женский"
@@ -41,6 +58,7 @@ const EmptyFilterWrapper = () => (
 					<FiltrationGroupComponentTest
 						state="shaded"
 						groupType="and"
+						shouldShowLabel={true}
 					>
 						<FiltrationConditionComponentTest
 							filterablePropertyName="Пол"
@@ -69,7 +87,7 @@ ReactDOM.render(
 			marginRight: "auto"
 		}}
 	>
-		<EmptyFilterWrapper />
+		<FilterWrapper />
 	</div>,
 	entryElement
 );

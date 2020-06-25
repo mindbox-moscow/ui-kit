@@ -7,20 +7,13 @@ import {
 	FiltrationGroupComponentTest
 } from "../utils";
 
-const EmptyFilterWrapper = () => (
+const FilterWrapper = () => (
 	<FilterWrapperTest doesContainFilter={true}>
 		<FiltrationGroupComponentTest
 			state="edit"
 			groupType="or"
 			shouldShowLabel={true}
 			shouldShowButtons={true}
-			moreConditionToggleCaption="Действие"
-			moreActions={[
-				{
-					title: "Редактировать",
-					onClick: () => {}
-				}
-			]}
 		>
 			<FiltrationGroupComponentTest
 				groupType="and"
@@ -65,7 +58,7 @@ ReactDOM.render(
 			marginRight: "auto"
 		}}
 	>
-		<EmptyFilterWrapper />
+		<FilterWrapper />
 	</div>,
 	entryElement
 );

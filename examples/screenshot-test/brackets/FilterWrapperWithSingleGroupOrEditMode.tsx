@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { FilterWrapperTest, FiltrationGroupComponentTest } from "../utils";
 
-const EmptyFilterWrapper = () => (
+const FilterWrapper = () => (
 	<FilterWrapperTest doesContainFilter={true}>
 		<FiltrationGroupComponentTest
 			state="edit"
@@ -26,7 +26,7 @@ ReactDOM.render(
 			marginRight: "auto"
 		}}
 	>
-		<EmptyFilterWrapper />
+		<FilterWrapper />
 	</div>,
 	entryElement
 );

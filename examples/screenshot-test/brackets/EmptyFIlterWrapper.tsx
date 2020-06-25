@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import { FilterWrapperTest, FiltrationGroupComponentTest } from "../utils";
 
-const EmptyFilterWrapper = () => (
+const FilterWrapper = () => (
 	<FilterWrapperTest>
 		<FiltrationGroupComponentTest shouldShowButtons={true} />
 		<i>Добавьте фильтр, чтобы создать выборку клиентов</i>
@@ -22,7 +22,7 @@ ReactDOM.render(
 			marginRight: "auto"
 		}}
 	>
-		<EmptyFilterWrapper />
+		<FilterWrapper />
 	</div>,
 	entryElement
 );

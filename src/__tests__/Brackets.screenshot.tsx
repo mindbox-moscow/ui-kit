@@ -62,6 +62,24 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("Render FilterWrapper with group 'Or' in edit mode", async () => {
+		page = await getPage(
+			"examples/screenshot-test/brackets/FilterWrapperWithSingleGroupOrEditMode.html"
+		);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("Render FilterWrapper editing external group", async () => {
+		page = await getPage(
+			"examples/screenshot-test/brackets/FilterWrapperEditingEternalGroup.html"
+		);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	afterAll(async () => {
 		await closeBrowser();
 	});

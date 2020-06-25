@@ -6,7 +6,7 @@ describe("FlatSelect", () => {
 
 	beforeAll(async () => {
 		await openBrowser();
-		page = await getPage('/index.html#!/FlatSelect');
+		page = await getPage("index.html#!/FlatSelect");
 	});
 
 	it("FlatSelect Open", async () => {
@@ -23,6 +23,6 @@ describe("FlatSelect", () => {
 	});
 
 	afterAll(async () => {
-		await closeBrowser()
+		await closeBrowser();
 	});
 });

@@ -9,14 +9,14 @@ const getExampleNames = () => {
 	const subResult = glob.sync(testFilesPath);
 	names = [...names, ...subResult];
 
-	return names.map(p => path.basename(p, ".tsx"));
+	return names.map(p => p.replace(/\.[^/.]+$/, ""));
 };
 
 const getEntries = () => {
 	let entry = {};
 
 	for (let name of getExampleNames()) {
-		entry[name] = `./examples/${name}.tsx`;
+		entry[name] = `./${name}`;
 	}
 
 	return entry;

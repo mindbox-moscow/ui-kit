@@ -11,14 +11,19 @@ async function openBrowser() {
 
 async function getPage(url: string) {
 	const page = await browser.newPage();
-	await page.goto(`file://${process.cwd()}/docs/${url}`)
 
-	return page
+	await page.setViewport({
+		width: 1920,
+		height: 1080
+	});
+
+	await page.goto(`file://${process.cwd()}/docs/${url}`);
+
+	return page;
 }
 
 async function closeBrowser() {
 	await browser.close();
 }
 
-export { openBrowser, getPage, closeBrowser }
-
+export { openBrowser, getPage, closeBrowser };

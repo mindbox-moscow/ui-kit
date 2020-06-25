@@ -6,27 +6,59 @@ describe("Brackets", () => {
 
 	beforeAll(async () => {
 		await openBrowser();
-		page = await getPage("/Brackets.html");
 	});
 
 	it("Render single condition without label", async () => {
-		const element = await page.$('[test-id="SingleConditionWithoutLabel"]');
+		page = await getPage(
+			"examples/screenshot-test/brackets/SingleConditionWithoutLabel.html"
+		);
 
-		const image = await element!.screenshot();
+		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
 	it("Render single condition with label and", async () => {
-		const element = await page.$('[test-id="SingleConditionLableAnd"]');
+		page = await getPage(
+			"examples/screenshot-test/brackets/SingleConditionLableAnd.html"
+		);
 
-		const image = await element!.screenshot();
+		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
 	it("Render single condition with label or", async () => {
-		const element = await page.$('[test-id="SingleConditionLableOr"]');
+		page = await getPage(
+			"examples/screenshot-test/brackets/SingleConditionLableOr.html"
+		);
 
-		const image = await element!.screenshot();
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("Render empty FilterWrapper", async () => {
+		page = await getPage(
+			"examples/screenshot-test/brackets/EmptyFIlterWrapper.html"
+		);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("Render FilterWrapper with button up", async () => {
+		page = await getPage(
+			"examples/screenshot-test/brackets/EmptyFIlterWrapperScroller.html"
+		);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("Render FilterWrapper with group 'Or' ", async () => {
+		page = await getPage(
+			"examples/screenshot-test/brackets/FilterWrapperWithSingleGroupOr.html"
+		);
+
+		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 

@@ -17,7 +17,9 @@ async function getPage(url: string) {
 		height: 1080
 	});
 
-	await page.goto(`file://${process.cwd()}/docs/${url}`);
+	await page.goto(
+		`file://${process.cwd()}/docs/examples/screenshot-test/${url}`
+	);
 
 	return page;
 }

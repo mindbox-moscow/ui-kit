@@ -7,3 +7,4 @@ export {
 } from "./FiltrationConditionComponentTest";
 export { FiltrationGroupComponentTest } from "./FiltrationGroupComponentTest";
 export { LegacyFilterGroupButtonTest } from "./LegacyFilterGroupButtonTest";
+export { FlatSelectTest } from "./FlatSelectTest";

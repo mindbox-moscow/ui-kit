@@ -6,7 +6,9 @@ const getExampleNames = () => {
 	let names = [];
 
 	const testFilesPath = path.join("examples", `**/*.tsx`);
-	const subResult = glob.sync(testFilesPath);
+	const subResult = glob.sync(testFilesPath, {
+		ignore: "examples/**/utils/**"
+	});
 	names = [...names, ...subResult];
 
 	return names.map(p => p.replace(/\.[^/.]+$/, ""));
@@ -16,11 +18,7 @@ const getEntries = () => {
 	let entry = {};
 
 	for (let name of getExampleNames()) {
-		const parse = path.parse(name);
-
-		if (parse.dir !== "examples/screenshot-test/utils") {
-			entry[name] = `./${name}`;
-		}
+		entry[name] = `./${name}`;
 	}
 
 	return entry;

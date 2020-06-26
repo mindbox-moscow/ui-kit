@@ -20,7 +20,9 @@ $mainColor: #999999;
 	font-size: 11px;
 	line-height: 1;
 	color: $mainColor;
-	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+	transition-property: background-color, color;
 	transform: translateY(-2px);
 	cursor: default;
 }

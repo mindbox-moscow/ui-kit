@@ -10,7 +10,7 @@ export const Add = ({ className }: ISvgProps) => (
 		viewBox="0 0 18 18"
 		xmlns="http://www.w3.org/2000/svg"
 	>
-		<g transform="translate(1 1)" fill="none" fill-rule="evenodd">
+		<g transform="translate(1 1)" fill="none" fillRule="evenodd">
 			<rect
 				stroke="#6A98E1"
 				opacity=".75"
@@ -20,9 +20,9 @@ export const Add = ({ className }: ISvgProps) => (
 			/>
 			<g
 				stroke="#6A98E1"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth="2"
 			>
 				<path d="M8 4v8M4 8h8" />
 			</g>

@@ -128,6 +128,18 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("hover on condition", async () => {
+		page = await getPage("brackets/FiltrationGroupComponentExample1.html");
+
+		const conditions = await page.$$(
+			"div.kit-filtration-condition__content"
+		);
+		await conditions[0].hover();
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	it("render FiltrationGroupComponentExample2 correctly", async () => {
 		page = await getPage("brackets/FiltrationGroupComponentExample2.html");
 

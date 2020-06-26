@@ -1,8 +1,8 @@
 #!/bin/bash
 
-declare -a arr_images=($(curl -H "Authorization: Bearer $1" https://container-registry.api.cloud.yandex.net/container-registry/v1/images\?repositoryName\=crpo9tj76o3c7pi8i72n/dev_new_frontend/$2 | jq '.images[].id' | sed 's/"//g'))
+HUB_TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d "{$1}" https://hub.docker.com/v2/users/login/ | jq -r .token)
 
-for i in "${arr_images[@]}"
-do
-   curl -X DELETE -H "Authorization: Bearer $1" https://container-registry.api.cloud.yandex.net/container-registry/v1/images/$i
-done
+curl -i -X DELETE \
+  -H "Accept: application/json" \
+  -H "Authorization: JWT $HUB_TOKEN" \
+  https://hub.docker.com/v2/repositories/itmindbox/$2

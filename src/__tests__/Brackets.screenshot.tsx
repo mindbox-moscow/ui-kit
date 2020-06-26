@@ -8,49 +8,49 @@ describe("Brackets", () => {
 		await openBrowser();
 	});
 
-	it("Render single condition without label", async () => {
+	it("render single condition without label", async () => {
 		page = await getPage("brackets/SingleConditionWithoutLabel.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render single condition with label and", async () => {
+	it("render single condition with label and", async () => {
 		page = await getPage("brackets/SingleConditionLableAnd.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render single condition with label or", async () => {
+	it("render single condition with label or", async () => {
 		page = await getPage("brackets/SingleConditionLableOr.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render empty FilterWrapper", async () => {
+	it("render empty FilterWrapper", async () => {
 		page = await getPage("brackets/EmptyFIlterWrapper.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render FilterWrapper with button up", async () => {
+	it("render FilterWrapper with button up", async () => {
 		page = await getPage("brackets/EmptyFIlterWrapperScroller.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render FilterWrapper with group 'Or' ", async () => {
+	it("render FilterWrapper with group 'Or' ", async () => {
 		page = await getPage("brackets/FilterWrapperWithSingleGroupOr.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render FilterWrapper with group 'Or' in edit mode", async () => {
+	it("render FilterWrapper with group 'Or' in edit mode", async () => {
 		page = await getPage(
 			"brackets/FilterWrapperWithSingleGroupOrEditMode.html"
 		);
@@ -59,35 +59,35 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render FilterWrapper editing external group", async () => {
+	it("render FilterWrapper editing external group", async () => {
 		page = await getPage("brackets/FilterWrapperEditingExternalGroup.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render FilterWrapper editing internal group", async () => {
+	it("render FilterWrapper editing internal group", async () => {
 		page = await getPage("brackets/FilterWrapperEditingInternalGroup.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render editing linked condition", async () => {
+	it("render editing linked condition", async () => {
 		page = await getPage("brackets/EditingLinkedCondition.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Render editing simple condition", async () => {
+	it("render editing simple condition", async () => {
 		page = await getPage("brackets/EditingSimpleCondition.html");
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();
 	});
 
-	it("Editing simple condition, mouse move to validate icon", async () => {
+	it("editing simple condition, mouse move to validate icon", async () => {
 		page = await getPage("brackets/EditingSimpleCondition.html");
 
 		const tooltip = await page.$("span.kit-tooltip__title");
@@ -98,6 +98,15 @@ describe("Brackets", () => {
 		}, tooltip);
 
 		await page.mouse.move(rect.x, rect.y);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("editing a filter with nested display conditions with buttons", async () => {
+		page = await getPage(
+			"brackets/EditingFilterWithNestedConditionsButtons.html"
+		);
 
 		const image = await page.screenshot();
 		expect(image).toMatchImageSnapshot();

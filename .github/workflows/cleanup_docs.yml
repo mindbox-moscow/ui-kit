@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Set variables
       run: |
         echo "##[set-output name=deleted_branch;]$(cat $GITHUB_EVENT_PATH | jq '.ref' | sed 's/\"//g')"
@@ -28,17 +27,8 @@ jobs:
       env:
         BRANCH: ${{ steps.transform_branch.outputs.branch }}
 
-    - name: Install YC
-      run: |
-        sudo curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-        sudo ln -s /home/runner/yandex-cloud/bin/yc /bin/yc
-
-    - name: Remove Docker Image
-      run: |
-        yc config profile create cleaner
-        echo '${{ secrets.CONTAINER_REGISTRY_KEY }}' >> iam_key.json | yc config set service-account-key iam_key.json
-        rm iam_key.json
-        ./scripts/cleaner.sh $(yc iam create-token) ${{ steps.transform_branch.outputs.branch }}
+    - name: Remove docker image
+      run: ./scripts/cleaner.sh ${{ secrets.DOCKE_HUB_LOGIN_PAYLOAD }} ${{ steps.transform_branch.outputs.branch }}
 
     - name: Set variables in deployment.yaml
       run: sed -i "s~HASH_PAYLOAD~$HASH_PAYLOAD~g" ./kubernetes/deploy.yaml

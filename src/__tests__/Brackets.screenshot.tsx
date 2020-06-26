@@ -142,6 +142,13 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("render FiltrationGroupComponentExample4 correctly", async () => {
+		page = await getPage("brackets/FiltrationGroupComponentExample4.html");
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	afterAll(async () => {
 		await closeBrowser();
 	});

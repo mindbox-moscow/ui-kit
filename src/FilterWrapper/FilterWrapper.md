@@ -5170,8 +5170,15 @@ class ExampleEditorButton extends React.Component {
 						onConditionRemove={() => console.log("remove")}
 					>
 						<FiltrationConditionComponent
+							isLinkedCondition={true}
 							filterablePropertyName="Идентификатор в мобильном приложении"
 							filtrationMethodName="заполнен и равен 42"
+							filtrationMethodParametersComponent={
+								<>
+									<SegmentButtonEdit onClick={() => {}} />
+									<SegmentContent content="~1 469 718" />
+								</>
+							}
 						/>
 						<FiltrationConditionComponent
 							filterablePropertyName="Идентификатор в мобильном приложении"

@@ -92,20 +92,21 @@
 	z-index: 1;
 	display: inline-flex;
 	height: 100%;
-	margin-top: -2px;
-	margin-right: 5px;
+	margin-right: 3px;
 	margin-left: -5px;
 	padding: 0 5px;
 	background: none;
 	border: none;
-	border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
+	border-radius: $itemHoverBorderRadius;
 	outline: none;
 	color: $createButtonColor;
-	transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+	transition-property: background-color, color;
 	cursor: pointer;
 
 	&:hover {
-		background-color: darken($copyColorBg, 10%);
+		background-color: $editColorBg;
 	}
 
 	.kit-filtration-condition & {
@@ -123,7 +124,10 @@
 
 	.kit-filtration-condition__item-text_linked-condition-edit &:hover {
 		background-color: transparent;
-		opacity: 0.6;
+	}
+
+	.kit-filtration-group_edit &:hover {
+		background-color: $createHoverColorEditMode;
 	}
 }
 
@@ -145,7 +149,7 @@
 		height: calc(100% + #{$groupHoverMarginTop});
 		min-height: 26px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-		background-color: $hoverColorBg;
+		background-color: $topBorderColor;
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
@@ -246,6 +250,12 @@
 	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-condition__item-text_show-dropdown:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
 		> & {
+		background-color: $hoverColorBg;
+		cursor: pointer;
+	}
+
+	.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
+		> &:hover {
 		background-color: $hoverColorBg;
 		cursor: pointer;
 	}

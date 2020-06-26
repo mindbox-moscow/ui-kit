@@ -80,6 +80,29 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("Render editing simple condition", async () => {
+		page = await getPage("brackets/EditingSimpleCondition.html");
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
+	it("Editing simple condition, mouse move to validate icon", async () => {
+		page = await getPage("brackets/EditingSimpleCondition.html");
+
+		const tooltip = await page.$("span.kit-tooltip__title");
+		const rect = await page.evaluate(tooltip => {
+			const { x, y } = tooltip.getBoundingClientRect();
+
+			return { x, y };
+		}, tooltip);
+
+		await page.mouse.move(rect.x, rect.y);
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	afterAll(async () => {
 		await closeBrowser();
 	});

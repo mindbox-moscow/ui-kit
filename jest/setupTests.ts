@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() });
 
 const toMatchImageSnapshot = configureToMatchImageSnapshot({
 	customDiffConfig: {
-		threshold: 0.2
+		threshold: 0.15
 	}
 });
 

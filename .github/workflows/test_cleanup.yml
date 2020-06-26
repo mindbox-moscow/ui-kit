@@ -30,4 +30,4 @@ jobs:
           BRANCH: ${{ steps.transform_branch.outputs.branch }}
 
       - name: Remove docker image
-        run: ./scripts/cleaner.sh ${{ secrets.DOCKER_HUB_LOGIN_PAYLOAD }} ${{ steps.transform_branch.outputs.branch }}
+        run: ./scripts/cleaner.sh ${{ secrets.DOCKERHUB_LOGIN_PAYLOAD_IN_BASE64 }} ${{ steps.transform_branch.outputs.branch }}

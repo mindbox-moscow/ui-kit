@@ -73,6 +73,13 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("Render editing linked condition", async () => {
+		page = await getPage("brackets/EditingLinkedCondition.html");
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	afterAll(async () => {
 		await closeBrowser();
 	});

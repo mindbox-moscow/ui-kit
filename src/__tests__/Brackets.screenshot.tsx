@@ -73,6 +73,15 @@ describe("Brackets", () => {
 		expect(image).toMatchImageSnapshot();
 	});
 
+	it("internal group with open menu", async () => {
+		page = await getPage("brackets/FilterWrapperEditingInternalGroup.html");
+
+		await page.click("button.kit-filter-editor__btn");
+
+		const image = await page.screenshot();
+		expect(image).toMatchImageSnapshot();
+	});
+
 	it("render editing linked condition", async () => {
 		page = await getPage("brackets/EditingLinkedCondition.html");
 

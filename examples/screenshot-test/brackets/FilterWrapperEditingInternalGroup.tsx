@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import {
+	EditorButtonTest,
 	FilterWrapperTest,
 	FiltrationConditionComponentTest,
 	FiltrationGroupComponentTest
@@ -19,6 +20,7 @@ const FilterWrapper = () => (
 				groupType="and"
 				shouldShowLabel={true}
 				shouldShowButtons={true}
+				addSimpleConditionButton={<EditorButtonTest />}
 			>
 				<FiltrationConditionComponentTest
 					filterablePropertyName="Пол"

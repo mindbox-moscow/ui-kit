@@ -149,7 +149,7 @@
 		height: calc(100% + #{$groupHoverMarginTop});
 		min-height: 26px;
 		margin: #{-$groupHoverMarginTop} 0 0 #{-$groupHoverMarginLeft};
-		background-color: $hoverColorBg;
+		background-color: $topBorderColor;
 		border-radius: $itemHoverBorderRadius 0 0 $itemHoverBorderRadius;
 		box-sizing: border-box;
 		cursor: pointer;
@@ -250,6 +250,12 @@
 	.kit-filtration-condition__item-text:hover:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit),
 	.kit-filtration-condition__item-text_show-dropdown:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
 		> & {
+		background-color: $hoverColorBg;
+		cursor: pointer;
+	}
+
+	.kit-filtration-condition__item-text:not(.kit-filtration-condition__item-text_read-only):not(.kit-filtration-condition__item-text_linked-condition-edit)
+		> &:hover {
 		background-color: $hoverColorBg;
 		cursor: pointer;
 	}

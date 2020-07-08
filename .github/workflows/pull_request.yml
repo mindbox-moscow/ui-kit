@@ -3,9 +3,7 @@ name: Pull Request
 on: pull_request
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +14,13 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          lfs: true
 
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: "10.x"
           registry-url: "https://npm.pkg.github.com/mindbox-moscow"
 
       - name: Prepare build

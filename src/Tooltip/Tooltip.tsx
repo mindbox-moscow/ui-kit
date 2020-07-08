@@ -29,6 +29,9 @@ export const Tooltip: React.FC<IProps> = ({
 
 	const refTitle = React.useRef<HTMLDivElement>(null);
 	const refContent = React.useRef<HTMLDivElement>(null);
+	console.log("__", {
+		refContent
+	});
 
 	const handleShowTooltip = () => {
 		setIsShow(true);
@@ -46,6 +49,12 @@ export const Tooltip: React.FC<IProps> = ({
 				const contentContainer = refContent.current;
 				const viewportWidth = document.documentElement.clientWidth;
 				const viewportHeight = window.innerHeight;
+
+				console.log("__", {
+					contentContainer,
+					viewportWidth,
+					viewportHeight
+				});
 
 				if (contentContainer) {
 					const {
@@ -74,7 +83,7 @@ export const Tooltip: React.FC<IProps> = ({
 				}
 			}
 		},
-		[isShow]
+		[isShow, refContent]
 	);
 
 	if (!children) {
@@ -95,7 +104,7 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 			/>
 			<div
-				ref={showByClick ? refContent : undefined}
+				ref={refContent}
 				onMouseEnter={showByClick ? undefined : handleShowTooltip}
 				onMouseLeave={showByClick ? undefined : handleHideTooltip}
 				className={cn(
@@ -144,14 +153,12 @@ export const Tooltip: React.FC<IProps> = ({
 				)}
 				{title}
 			</span>
-			{isShow && (
-				<OverflowVisibleContainer
-					parentRef={refTitle}
-					className="kit-tooltip__popup"
-				>
-					{tooltipContent}
-				</OverflowVisibleContainer>
-			)}
+			<OverflowVisibleContainer
+				parentRef={refTitle}
+				className="kit-tooltip__popup"
+			>
+				{isShow && tooltipContent}
+			</OverflowVisibleContainer>
 		</span>
 	);
 };

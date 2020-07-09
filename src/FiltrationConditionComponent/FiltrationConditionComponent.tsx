@@ -121,9 +121,9 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 						"kit-filtration-condition__item-text_linked-condition-edit":
 							state === "linkedConditionEdit",
 						"kit-filtration-condition__item-text_read-only":
-							state === "readOnly",
+							state === "readOnly" || state === "readOnlyNotApplicable",
 						"kit-filtration-condition__item-text_not-applicable":
-							state === "notApplicable",
+							state === "notApplicable" || state === "readOnlyNotApplicable",
 						"kit-filtration-condition__item-text_shaded":
 							state === "shaded",
 						"kit-filtration-condition__item-text_view":
@@ -138,9 +138,9 @@ const FiltrationConditionComponent: React.FC<Props> = ({
 							classNameContent
 						)}
 						onClick={
-							state !== "readOnly" && state !== "notApplicable"
+							state !== "readOnly" && state !== "notApplicable" && state !== "readOnlyNotApplicable"
 								? onConditionStateToggle
-								: () => {}
+								: () => { }
 						}
 					>
 						{state !== "readOnly" &&

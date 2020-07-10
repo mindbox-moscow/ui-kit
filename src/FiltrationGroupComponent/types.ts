@@ -8,7 +8,8 @@ type ConditionState =
 	| "shaded"
 	| "linkedConditionEdit"
 	| "readOnly"
-	| "notApplicable";
+	| "notApplicable"
+	| "readOnlyNotApplicable";
 
 export interface IStateProps {
 	groupType: GroupType; // тип группы: И или ИЛИ

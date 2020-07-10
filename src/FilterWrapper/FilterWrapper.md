@@ -2528,11 +2528,12 @@ class ExampleEditorButton extends React.Component {
 	<div>
 		<h1>Пример 2.1 - Скрытая кнопка "Применить фильтр"</h1>
 		<FilterWrapper
-			scrollState="minified"
+			scrollState="full"
 			filterActions={[]}
 			statisticsDescription="Всего клиентов"
 			statisticsValue={1021318}
 			doesContainFilter={true}
+			showApplyButton={true}
 			applyButtonCaption="Применить фильтр"
 			clearButtonCaption="Сбросить фильтр"
 			onApply={() => console.log("apply filter")}

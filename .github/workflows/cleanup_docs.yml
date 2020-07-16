@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Set variables
       run: |
-        echo "##[set-output name=deleted_branch;]$(cat $GITHUB_EVENT_PATH | jq '.ref' | sed 's/\"//g')"
+        echo "##[set-output name=deleted_branch;]$(cat $GITHUB_EVENT_PATH | jq '.ref' | sed 's/\"//g' | tr '[A-Z]' '[a-z]')"
       id: set_variables
 
     - name: Checkout the repository

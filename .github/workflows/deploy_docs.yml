@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Transform branch name
-        run: echo "##[set-output name=branch;]$(echo $EXT_BRANCH_NAME | sed 's/refs\/heads\///g' | sed 's/[_.\/]/-/g')"
+        run: echo "##[set-output name=branch;]$(echo $EXT_BRANCH_NAME | sed 's/refs\/heads\///g' | sed 's/[_.\/]/-/g' | tr '[A-Z]' '[a-z]')"
         id: transform_branch
         env:
           EXT_BRANCH_NAME: ${{ github.ref }}

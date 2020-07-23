@@ -77,6 +77,10 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 			}
 		};
 
+		function recalculateOnWindowScroll() {
+			requestAnimationFrame(calculatePosition);
+		}
+
 		React.useEffect(
 			() => {
 				calculatePosition();
@@ -93,6 +97,9 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 					requestCalculate
 				);
 			}
+			else {
+				window.addEventListener('scroll', recalculateOnWindowScroll, true)
+			}
 
 			return () => {
 				if (scrollableContainer && scrollableContainer.current) {
@@ -100,6 +107,9 @@ export const OverflowVisibleContainer = React.forwardRef<Ref, IProps>(
 						"scroll",
 						requestCalculate
 					);
+				}
+				else {
+					window.removeEventListener('scroll', recalculateOnWindowScroll, true)
 				}
 			};
 		}, []);

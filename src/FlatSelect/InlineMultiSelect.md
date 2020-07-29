@@ -1,12 +1,10 @@
 ```jsx
-class MultiSelectExample extends React.Component {
+class InlineMultiSelectExample extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			items: ["Foo", "Bar", "Baz", "Spam"],
 			selectedValue: ["Bar", "Baz"],
-			height: 2,
-			width: 4
 		};
 	}
 
@@ -20,11 +18,9 @@ class MultiSelectExample extends React.Component {
 		});
 
 		return (
-			<MultiSelect
+			<InlineMultiSelect
 				items={items}
 				selectedValue={selectedValue}
-				height={height}
-				width={width}
 				itemFormatter={itemFormatter}
 			/>
 		);
@@ -32,6 +28,6 @@ class MultiSelectExample extends React.Component {
 }
 
 <div>
-	<MultiSelectExample />
+	<InlineMultiSelectExample />
 </div>;
 ```

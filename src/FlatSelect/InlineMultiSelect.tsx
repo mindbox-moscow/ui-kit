@@ -12,29 +12,19 @@ import { SelectedItemKey, SelectItem, SelectProps } from "./types";
 
 import "./FlatSelect.scss";
 
-export const MultiSelect = <TValue extends {}>(
+export const InlineMultiSelect = <TValue extends {}>(
 	props: SelectProps<TValue> & {
 		children?: React.ReactNode;
-		forwardRef?: React.RefObject<DropdownHandles>;
 	}
 ) => {
 	const {
-		id,
-		placeholder,
-		disabled,
-		width,
-		className,
-		height,
-		headerInfo,
 		selectedValue,
 		itemFormatter,
 		items,
-		forwardRef
 	} = props;
 
 	const [searchTerm, setSearchTerm] = React.useState<string>("");
-	const currentRef = React.useRef<DropdownHandles>(null);
-	const dropdownRef = forwardRef || currentRef;
+	const dropdownRef = React.useRef<DropdownHandles>(null);
 
 	const searchTermChanged = React.useCallback((newSearchTerm: string) => {
 		setSearchTerm(newSearchTerm);
@@ -151,19 +141,15 @@ export const MultiSelect = <TValue extends {}>(
 	return (
 		<Dropdown
 			ref={dropdownRef}
-			id={id}
 			headerInfo={"Hello from MultiSelect!"}
-			placeholder={placeholder}
-			disabled={disabled}
-			className={className}
-			width={width || Width.Normal}
+			width={Width.Normal}
 			openedClassName="form-control select2-container-active select2-dropdown-open"
-			height={height || Height.Small}
+			height={Height.Normal}
 		>
 			<SelectSearchList
 				onInputChange={searchTermChanged}
 				searchTextValue={searchTerm}
-				headerInfo={headerInfo}
+				headerInfo={"This is header"}
 				selectionMode={SelectionMode.Multiple}
 			>
 				{renderRows(selectedItemKey)}

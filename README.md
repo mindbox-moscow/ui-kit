@@ -38,11 +38,6 @@ npm run build:examples
 
 # Start screenshot test local
 
-You should have **Docker** on your local machine. You can [download it here.](https://www.docker.com/get-started)
+You should have **Docker** on your local machine. You can [download it here](https://www.docker.com/get-started).
 
-```shell
-npm run build
-sh screenshot-test.sh
-```
-
-if you use `Windows` then change `pwd` to `pwd -W` in `screenshot-test.sh` 
+Build "examples" and then run `screenshot-test[.sh,.ps1]`.

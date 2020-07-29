@@ -1,17 +1,14 @@
-import * as React from "react";
-import { Height, Width } from "../utils";
+import React from "react";
+
 import {
 	Dropdown,
 	SelectSearchList,
 	SelectSearchRow,
 	SelectionMode
-} from "./components";
+} from "../../../src/FlatSelect";
+import { Width, Height } from "../../../src/utils";
 
-import { SelectProps } from "./types";
-
-import "./FlatSelect.scss";
-
-export const InlineMultiSelect = (_: SelectProps<string>) => {
+export const MultiSelectTest = () => {
 	const items: Array<[string, boolean]> = [["Foo", false], ["Bar", true], ["Baz", true], ["Spam", false]];
 	const selectRows = items.map(([text, selected]) => (
 		<SelectSearchRow

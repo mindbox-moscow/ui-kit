@@ -8,4 +8,5 @@ export {
 export { FiltrationGroupComponentTest } from "./FiltrationGroupComponentTest";
 export { LegacyFilterGroupButtonTest } from "./LegacyFilterGroupButtonTest";
 export { FlatSelectTest } from "./FlatSelectTest";
+export { MultiSelectTest } from "./MultiSelectTest";
 export { EditorButtonTest } from "./EditorButtonTest";

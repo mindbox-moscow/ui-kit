@@ -365,14 +365,7 @@
 	user-select: none;
 	-webkit-touch-callout: none;
 
-	.kit-selectR-result > &:hover,
-	.kit-selectR-result:focus > & {
-		background: #3875d7;
-		color: #ffffff;
-	}
-
 	.kit-selectR-result.kit-selectR-disabled > & {
-		opacity: 0.3;
 		color: #000000;
 		cursor: default;
 	}
@@ -389,6 +382,12 @@
 	}
 	.kit-selectR-results-default .kit-selectR-selected-multi > & {
 		color: #7f7f7f;
+	}
+
+	.kit-selectR-result > &:hover,
+	.kit-selectR-result:focus > & {
+		background: #3875d7;
+		color: #ffffff;
 	}
 
 	.kit-selectR-results-default .kit-selectR-unselectable > & {

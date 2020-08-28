@@ -26,61 +26,35 @@ export function useClickOutside(
 	let preventHandlerCall = false;
 
 	const listener = (e: MouseEvent) => {
-		const target = e.target as HTMLElement;
-
-		if (!preventHandlerCall) {
-			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
-				? false
-				: fromElementWithClassEvent(e, neutralZoneClass);
-
-			if (
-				!(
-					(ref.current && ref.current.contains(target)) ||
-					isIgnoreNeutralZoneClass ||
-					fromElementWithClassEvent(e, uiDatePickerClass) ||
-					fromElementWithClassEvent(
-						e,
-						overflowVisibleContainerClass
-					) ||
-					!e.isTrusted
-				)
-			) {
-				handler(e);
-			}
+		if (preventHandlerCall) {
+			return;
 		}
 
-		preventHandlerCall = false;
+		handler(e);
 	};
 
 	const handleMouseDown = (e: MouseEvent) => {
-		preventHandlerCall = true;
+		preventHandlerCall = false;
+		preventHandlerCall = preventHandlerCall || ref.current != null && ref.current.contains(e.target as HTMLElement);
+		preventHandlerCall = preventHandlerCall || ignoreNeutralZoneClass ? false : fromElementWithClassEvent(e, exports.neutralZoneClass);
+		preventHandlerCall = preventHandlerCall || fromElementWithClassEvent(e, uiDatePickerClass);
+		preventHandlerCall = preventHandlerCall || fromElementWithClassEvent(e, overflowVisibleContainerClass);
+		preventHandlerCall = preventHandlerCall || !e.isTrusted;
 	};
 
 	React.useEffect(
 		() => {
 			if (shouldBeSubscribed) {
 				document.addEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.addEventListener("mousedown", handleMouseDown);
+				document.addEventListener("mousedown", handleMouseDown);
 			} else {
 				document.removeEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.removeEventListener(
-						"mousedown",
-						handleMouseDown
-					);
+				document.removeEventListener("mousedown", handleMouseDown);
 			}
 
 			return () => {
 				document.removeEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.removeEventListener(
-						"mousedown",
-						handleMouseDown
-					);
+				document.removeEventListener("mousedown", handleMouseDown);
 			};
 		},
 		[shouldBeSubscribed]

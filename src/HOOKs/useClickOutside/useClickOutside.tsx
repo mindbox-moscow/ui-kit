@@ -34,13 +34,19 @@ export function useClickOutside(
 	};
 
 	const handleMouseDown = (e: MouseEvent) => {
-		preventHandlerCall = false;
-		preventHandlerCall = preventHandlerCall || ref.current != null && ref.current.contains(e.target as HTMLElement);
-		preventHandlerCall = preventHandlerCall || ignoreNeutralZoneClass ? false : fromElementWithClassEvent(e, exports.neutralZoneClass);
-		preventHandlerCall = preventHandlerCall || fromElementWithClassEvent(e, uiDatePickerClass);
-		preventHandlerCall = preventHandlerCall || fromElementWithClassEvent(e, overflowVisibleContainerClass);
-		preventHandlerCall = preventHandlerCall || !e.isTrusted;
+		preventHandlerCall =
+			isEventWasInvokedOnCurrentElementOrChildren(e) ||
+			isEventWasInvokenOnElementWithNeutralZoneClass(e) ||
+			isEventWasInvokedOnElementWithUiDatePickerClass(e) ||
+			isEventWasInvokedOnElementWithOverflowVisibleContainerClass(e) ||
+			isEventWasInvokedOnNotTrustedElement(e);
 	};
+
+	const isEventWasInvokedOnCurrentElementOrChildren = (e: MouseEvent) => ref.current != null && ref.current.contains(e.target as HTMLElement);
+	const isEventWasInvokenOnElementWithNeutralZoneClass = (e: MouseEvent) => ignoreNeutralZoneClass ? false : fromElementWithClassEvent(e, exports.neutralZoneClass);
+	const isEventWasInvokedOnElementWithUiDatePickerClass = (e: MouseEvent) => fromElementWithClassEvent(e, uiDatePickerClass);
+	const isEventWasInvokedOnElementWithOverflowVisibleContainerClass = (e: MouseEvent) => fromElementWithClassEvent(e, overflowVisibleContainerClass);
+	const isEventWasInvokedOnNotTrustedElement = (e: MouseEvent) => !e.isTrusted;
 
 	React.useEffect(
 		() => {

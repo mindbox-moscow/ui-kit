@@ -4,10 +4,76 @@ export const neutralZoneClass = "kit-overflow-isnt-neutral-zone-marker";
 const uiDatePickerClass = "ui-datepicker";
 const overflowVisibleContainerClass = "kit-overflow-visiblecontainer";
 
-const fromElementWithClassEvent = (
+export function useClickOutside(
+	ref: React.RefObject<HTMLElement>,
+	handler: (e: MouseEvent) => void,
+	shouldBeSubscribed = true,
+	ignoreNeutralZoneClass = false
+) {
+	React.useEffect(
+		() => {
+			let preventHandlerCall = false;
+
+			const handleClick = (e: MouseEvent) => {
+				if (preventHandlerCall) {
+					return;
+				}
+
+				handler(e);
+			};
+
+			const handleClickStarted = (e: MouseEvent) => {
+				preventHandlerCall =
+					isEventWasInvokedOnCurrentElementOrChildren(e, ref) ||
+					isEventWasInvokedOnElementWithNeutralZoneClass(e, ignoreNeutralZoneClass) ||
+					isEventWasInvokedOnElementWithUiDatePickerClass(e) ||
+					isEventWasInvokedOnElementWithOverflowVisibleContainerClass(e) ||
+					isEventWasInvokedOnNotTrustedElement(e);
+			};
+
+			if (shouldBeSubscribed) {
+				document.addEventListener("click", handleClick);
+				document.addEventListener("mousedown", handleClickStarted);
+				document.addEventListener("touchstart", handleClickStarted);
+			}
+
+			return () => {
+				document.removeEventListener("click", handleClick);
+				document.removeEventListener("mousedown", handleClickStarted);
+				document.removeEventListener("touchstart", handleClickStarted);
+			};
+		},
+		[shouldBeSubscribed]
+	);
+}
+
+function isEventWasInvokedOnNotTrustedElement(e: MouseEvent): boolean {
+	return !e.isTrusted;
+}
+
+function isEventWasInvokedOnCurrentElementOrChildren(e: MouseEvent, ref: React.RefObject<HTMLElement>): boolean {
+	return ref.current != null && ref.current.contains(e.target as HTMLElement);;
+}
+
+function isEventWasInvokedOnElementWithNeutralZoneClass(e: MouseEvent, ignoreNeutralZoneClass: boolean): boolean {
+	if (ignoreNeutralZoneClass) {
+		return false;
+	}
+	return fromElementWithClassEvent(e, exports.neutralZoneClass);
+}
+
+function isEventWasInvokedOnElementWithUiDatePickerClass(e: MouseEvent): boolean {
+	return fromElementWithClassEvent(e, uiDatePickerClass);
+}
+
+function isEventWasInvokedOnElementWithOverflowVisibleContainerClass(e: MouseEvent): boolean {
+	return fromElementWithClassEvent(e, overflowVisibleContainerClass);
+}
+
+function fromElementWithClassEvent(
 	event: Event,
 	elementClass: string
-): boolean => {
+): boolean {
 	return event
 		.composedPath()
 		.some(
@@ -16,73 +82,3 @@ const fromElementWithClassEvent = (
 				pathEvent.classList.contains(elementClass)
 		);
 };
-
-export function useClickOutside(
-	ref: React.RefObject<HTMLElement>,
-	handler: (e: MouseEvent) => void,
-	shouldBeSubscribed = true,
-	ignoreNeutralZoneClass = false
-) {
-	let preventHandlerCall = false;
-
-	const listener = (e: MouseEvent) => {
-		const target = e.target as HTMLElement;
-
-		if (!preventHandlerCall) {
-			const isIgnoreNeutralZoneClass = ignoreNeutralZoneClass
-				? false
-				: fromElementWithClassEvent(e, neutralZoneClass);
-
-			if (
-				!(
-					(ref.current && ref.current.contains(target)) ||
-					isIgnoreNeutralZoneClass ||
-					fromElementWithClassEvent(e, uiDatePickerClass) ||
-					fromElementWithClassEvent(
-						e,
-						overflowVisibleContainerClass
-					) ||
-					!e.isTrusted
-				)
-			) {
-				handler(e);
-			}
-		}
-
-		preventHandlerCall = false;
-	};
-
-	const handleMouseDown = (e: MouseEvent) => {
-		preventHandlerCall = true;
-	};
-
-	React.useEffect(
-		() => {
-			if (shouldBeSubscribed) {
-				document.addEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.addEventListener("mousedown", handleMouseDown);
-			} else {
-				document.removeEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.removeEventListener(
-						"mousedown",
-						handleMouseDown
-					);
-			}
-
-			return () => {
-				document.removeEventListener("click", listener);
-				// tslint:disable-next-line: no-unused-expression
-				ref.current &&
-					ref.current.removeEventListener(
-						"mousedown",
-						handleMouseDown
-					);
-			};
-		},
-		[shouldBeSubscribed]
-	);
-}

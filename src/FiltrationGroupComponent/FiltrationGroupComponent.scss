@@ -69,18 +69,18 @@
 			}
 		}
 
-        .kit-segment-button-expand {
-            &_open {
-                border-color: transparent;
-            }
-        }
-
         .kit-segment-button-expand,
 		.kit-segment-button-edit,
 		.kit-segment-content {
 			border-color: $segmentBorderColotEditMode;
 		}
+
+        .kit-segment-button-expand {
+            &_open {
+                border-color: transparent;
 	}
+        }
+    }
 
 	&_not-children {
 		min-height: $minHeight;

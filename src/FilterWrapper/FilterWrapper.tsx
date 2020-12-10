@@ -113,9 +113,7 @@ export const FilterWrapper: React.FC<Props> = ({
 
 	return (
 		<>
-			<OverflowVisibleFixedContext.Provider
-				value={scrollState === ScrollState.Minified}
-			>
+			<OverflowVisibleFixedContext.Provider value={false}>
 				<FilterWrapperContext.Provider value={contextValue}>
 					<div
 						ref={refFilterWrapper}

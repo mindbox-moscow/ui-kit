@@ -45,7 +45,8 @@ export const FilterWrapper: React.FC<Props> = ({
 	shouldShowStatistics = true,
 	showApplyButton = false,
 	headInformation,
-	scrollHtmlElement = window
+	scrollHtmlElement = window,
+	testId
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();
@@ -123,6 +124,7 @@ export const FilterWrapper: React.FC<Props> = ({
 								(filterActions == null ||
 									filterActions.length === 0)
 						})}
+						data-testid={"wrapper.filter." + testId}
 					>
 						{doesContainFilter && (
 							<div className="kit-filter__top-filter">
@@ -186,6 +188,7 @@ export const FilterWrapper: React.FC<Props> = ({
 												className="kit-filter__use-filter"
 												onClick={onApply}
 												type="button"
+												data-testid={"apply.button.filter." + testId}
 											>
 												{applyButtonCaption}
 											</button>
@@ -208,6 +211,7 @@ export const FilterWrapper: React.FC<Props> = ({
 										className="kit-filter__clear-filter-btn"
 										onClick={onClear}
 										type="button"
+										data-testid={"clear.button.filter." + testId}
 									>
 										<IconSvg type="close" />
 										{clearButtonCaption}

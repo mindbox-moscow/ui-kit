@@ -46,7 +46,7 @@ export const FilterWrapper: React.FC<Props> = ({
 	showApplyButton = false,
 	headInformation,
 	scrollHtmlElement = window,
-	testId
+	testId = ""
 }) => {
 	const [updateBrackets, setUpdateBrackets] = useState(0);
 	const refFilterWrapper = React.createRef<HTMLDivElement>();

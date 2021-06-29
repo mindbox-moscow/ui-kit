@@ -39,6 +39,7 @@ export interface StateProps {
 	onUndo?: () => void;
 	onRedo?: () => void;
 	scrollHtmlElement?: HTMLElement;
+	testId?: string;
 }
 
 export interface CallbackProps {

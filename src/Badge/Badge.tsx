@@ -4,7 +4,21 @@ import "./Badge.scss";
 
 import cn from "classnames";
 
-type Mode = "success" | "danger" | "warning" | "disabled" | "ghost";
+export const badgeModes = {
+	danger: 'danger',
+	disabled: 'disabled',
+	ghost: 'ghost',
+	success: 'success',
+	warning: 'warning',
+} as {
+	danger: 'danger',
+	disabled: 'disabled',
+	ghost: 'ghost',
+	success: 'success',
+	warning: 'warning',
+}
+
+export type BadgeMode = typeof badgeModes[keyof typeof badgeModes]
 
 const ModeColors = {
 	danger: COLORS.Danger,
@@ -21,10 +35,11 @@ const ProgressColors = {
 interface IProps {
 	color?: COLORS | string;
 	size?: string;
-	mode?: Mode;
+	mode?: BadgeMode;
 	progress?: number;
 	progressColor?: COLORS | string;
 }
+
 
 export const Badge: React.FC<IProps> = props => {
 	const {
